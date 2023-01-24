@@ -186,11 +186,11 @@
         <a href="#"><i class="fa fa-angle-right"></i></a>
     </div>
 
-    <script src="public/js/sidefilter.js"></script>
+    <script src="<?php echo BASE_URL; ?>public/js/sidefilter.js"></script>
     <?php if (isset($_SESSION['id']) && !empty($_SESSION['id'])) { ?>
-        <script src="public/js/navbar.js"></script>
+        <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
     <?php } else { ?>
-        <script src="public/js/navbarcopy.js"></script>
+        <script src="<?php echo BASE_URL; ?>public/js/navbarcopy.js"></script>
     <?php } ?>
 
 </body>
