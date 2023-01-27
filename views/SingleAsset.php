@@ -85,8 +85,16 @@
             </div>
             <div class="category"><?= $this->asset['assetType']; ?></div>
             <h1>Free</h1>
-            <div class="buy-btn">Buy Now</div>
-            <div class="buy-btn">Add to Cart</div>
+            <div id="not-claimed">
+                <a href="/indieabode/asset/checkout?id=<?= $this->asset['assetID'] ?>">
+                    <div class="buy-btn">Buy Now</div>
+                </a>
+                <div class="buy-btn">Add to Cart</div>
+            </div>
+
+            <div id="claimed">
+                <div class="buy-btn">In Library</div>
+            </div>
 
             <div class="details">
                 <div class="row">
@@ -221,6 +229,18 @@
         <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
     <?php } else { ?>
         <script src="<?php echo BASE_URL; ?>public/js/navbarcopy.js"></script>
+    <?php } ?>
+
+    <?php if ($this->hasClaimed) { ?>
+        <script>
+            document.getElementById('not-claimed').style.display = 'none';
+            document.getElementById('claimed').style.display = 'block';
+        </script>
+    <?php } else { ?>
+        <script>
+            document.getElementById('not-claimed').style.display = 'block';
+            document.getElementById('claimed').style.display = 'none';
+        </script>
     <?php } ?>
 
 </body>

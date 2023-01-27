@@ -24,22 +24,22 @@
         <div class="navbar-links">
             <div class="ul">
                 <div class="dropdown" data-dropdown>
-                    <a href="/indieabode/games" data-dropdown-button>Games<i class="fa fa-angle-down droparrow"></i></a>
+                    <a href="<?php echo BASE_URL; ?>games" data-dropdown-button>Games<i class="fa fa-angle-down droparrow"></i></a>
 
                     <div class="dropdown-menu">
                         <div class="arrow arrow1"></div>
                         <div class=".ulsub">
-                            <a href="/indieabode/gigs">Gigs <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                            <a href="/indieabode/devlogs">Devlogs <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                            <a>Crowdfunding
+                            <a href="<?php echo BASE_URL; ?>gigs">Gigs <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                            <a href="<?php echo BASE_URL; ?>devlogs">Devlogs <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                            <a href="<?php echo BASE_URL; ?>crowdfunding">Crowdfunding
                                 <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                            <a>Action <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                            <a>Adventure <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                            <a>RPG <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                            <a>Racing <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                            <a>Simulation <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                            <a>Strategy <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                            <a href="/indieabode/pages/games.php">Browse&nbsp;all&nbsp;assets
+                            <a href="<?php echo BASE_URL; ?>games?classification=action">Action <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                            <a href="<?php echo BASE_URL; ?>games?classification=adventure">Adventure <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                            <a href="<?php echo BASE_URL; ?>games?classification=rpg">RPG <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                            <a href="<?php echo BASE_URL; ?>games?classification=racing">Racing <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                            <a href="<?php echo BASE_URL; ?>games?classification=simulation">Simulation <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                            <a href="<?php echo BASE_URL; ?>games?classification=strategy">Strategy <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                            <a href="<?php echo BASE_URL; ?>games">Browse&nbsp;all&nbsp;assets
                                 <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                         </div>
                     </div>
@@ -51,29 +51,28 @@
                     <div class="dropdown-menu">
                         <div class="arrow arrow2"></div>
                         <div class=".ulsub">
-                            <a href="/indieabode/assets/classification_2D">2D <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                            <a>3D <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                            <a>Audio <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                            <a>Visual&nbsp;Effects
+                            <a href="<?php echo BASE_URL; ?>assets?classification=2D">2D <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                            <a href="<?php echo BASE_URL; ?>assets?classification=3D">3D <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                            <a href="<?php echo BASE_URL; ?>assets?classification=audio">Audio <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                            <a href="<?php echo BASE_URL; ?>assets?classification=visual-effects">Visual&nbsp;Effects
                                 <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                            <a>Textures <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                            <a>Maps <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                            <a>Tools <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                            <a href="/indieabode/pages/assets.php">Browse&nbsp;all&nbsp;assets
+                            <a href="<?php echo BASE_URL; ?>assets?classification=textures">Textures <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                            <a href="<?php echo BASE_URL; ?>assets?classification=maps">Maps <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                            <a href="<?php echo BASE_URL; ?>assets?classification=tools">Tools <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                            <a href="/indieabode/assets">Browse&nbsp;all&nbsp;assets
                                 <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                         </div>
                     </div>
                 </div>
 
                 <div class="dropdown" data-dropdown>
-                    <a href="/indieabode/jams" data-dropdown-button>Jams<i class="fa fa-angle-down droparrow"></i></a>
+                    <a href="<?php echo BASE_URL; ?>jams" data-dropdown-button>Jams<i class="fa fa-angle-down droparrow"></i></a>
 
                     <div class="dropdown-menu">
                         <div class="arrow arrow3"></div>
                         <div class=".ulsub">
-                            <a>Join Jams <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                            <a href="/indieabode/pages/gamejamform.php">Host Jams <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                            <a>Jam&nbsp;Dashboard
+                            <a href="<?php echo BASE_URL; ?>jams">Join Jams <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                            <a href="<?php echo BASE_URL; ?>jams-calender">Jam&nbsp;Calender
                                 <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                         </div>
                     </div>
@@ -85,9 +84,9 @@
                     <div class="dropdown-menu">
                         <div class="arrow arrow4"></div>
                         <div class=".ulsub">
-                            <a>Feed <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                            <a>Forum <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                            <a>Help&nbsp;&&nbsp;Support
+                            <a href="<?php echo BASE_URL; ?>feed">Feed <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                            <a href="<?php echo BASE_URL; ?>forum">Forum <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                            <a href="<?php echo BASE_URL; ?>help-&-support">Help&nbsp;&&nbsp;Support
                                 <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                         </div>
                     </div>
@@ -115,9 +114,8 @@
                     <div class="dropdown-menu">
                         <div class="arrow arrow6"></div>
                         <div class=".ulsub">
-                            <a>Library <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                            <a href="/indieabode/pages/cart.php">Cart <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                            <a>Wishlist <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                            <a href="<?php echo BASE_URL; ?>library">Library <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                            <a href="<?php echo BASE_URL; ?>cart">Cart <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
 
                             <hr />
 

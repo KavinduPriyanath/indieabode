@@ -18,10 +18,26 @@ class Assets_Model extends Model
         return $stmt->fetchAll();
     }
 
-    function show2dAssets()
+    function showClassifiedAssets($assetClassification)
     {
 
-        $stmt = $this->db->prepare("SELECT * FROM freeasset WHERE assetClassification='2d'");
+        if ($assetClassification == '2d') {
+            $sql = "SELECT * FROM freeasset WHERE assetClassification='2d'";
+        } else if ($assetClassification == '3d') {
+            $sql = "SELECT * FROM freeasset WHERE assetClassification='3d'";
+        } else if ($assetClassification == 'audio') {
+            $sql = "SELECT * FROM freeasset WHERE assetClassification='audio'";
+        } else if ($assetClassification == 'visual-effects') {
+            $sql = "SELECT * FROM freeasset WHERE assetClassification='visualeffects'";
+        } else if ($assetClassification == 'textures') {
+            $sql = "SELECT * FROM freeasset WHERE assetClassification='textures'";
+        } else if ($assetClassification == 'maps') {
+            $sql = "SELECT * FROM freeasset WHERE assetClassification='maps'";
+        } else if ($assetClassification == 'tools') {
+            $sql = "SELECT * FROM freeasset WHERE assetClassification='tools'";
+        }
+
+        $stmt = $this->db->prepare($sql);
 
         $stmt->execute();
 

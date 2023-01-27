@@ -80,17 +80,17 @@
 
         <div class="type-filter">
             <div class="elements">
-                <input type="checkbox" name="" id="Released" class="checkbox" />
+                <input type="checkbox" name="released" id="Released" class="checkbox" />
                 <label for="Released">Released</label>
             </div>
 
             <div class="elements">
-                <input type="checkbox" name="" id="Early" class="checkbox" />
+                <input type="checkbox" name="early" id="Early" class="checkbox" />
                 <label for="Early">Early Access</label>
             </div>
 
             <div class="elements">
-                <input type="checkbox" name="" id="Upcoming" class="checkbox" />
+                <input type="checkbox" name="upcoming" id="Upcoming" class="checkbox" />
                 <label for="Upcoming">Upcoming</label>
             </div>
         </div>

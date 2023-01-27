@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 23, 2023 at 06:35 AM
+-- Generation Time: Jan 27, 2023 at 06:40 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -382,7 +382,8 @@ CREATE TABLE `gig` (
 
 INSERT INTO `gig` (`gigID`, `gigName`, `gigTrailor`, `gigScreenshot`, `gigDetails`, `game`, `gameDeveloperID`, `gamePublisherID`, `gigTagline`, `currentStage`, `plannedReleaseDate`, `estimatedShare`, `expectedCost`, `visibility`, `gigCoverImg`) VALUES
 (2, 'dwdw', '', '', 'vevvv', 'Albion Online', 12, 0, 'ddwdw', 'adventure', 'dwdwd', 'veveve', 'sdvsdv', 'draft', ''),
-(3, 'cec', '', '', 'cece', 'Albion Online', 12, 0, 'cece', 'action', 'cececc', '12', 'cfvf', 'draft', 'Cover-cec.jpeg');
+(3, 'cec', '', '', 'cece', 'Albion Online', 12, 0, 'cece', 'action', 'cececc', '12', 'cfvf', 'draft', 'Cover-cec.jpeg'),
+(4, 'cecec', '', '', 'vrvrvr', 'Cloud Climber', 12, 0, 'cececev', 'action', 'vrvrvr', 'vvevr', 'vrr', 'draft', 'Cover-cecec.jpg');
 
 -- --------------------------------------------------------
 
@@ -405,6 +406,26 @@ CREATE TABLE `joinjam` (
   `gamerID` int(11) NOT NULL,
   `gameJamID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `library`
+--
+
+CREATE TABLE `library` (
+  `id` int(11) NOT NULL,
+  `developerID` varchar(50) NOT NULL,
+  `itemID` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `library`
+--
+
+INSERT INTO `library` (`id`, `developerID`, `itemID`) VALUES
+(3, '12', '1'),
+(6, '12', '2');
 
 -- --------------------------------------------------------
 
@@ -649,6 +670,12 @@ ALTER TABLE `gig`
   ADD KEY `gameDeveloperID` (`gameDeveloperID`);
 
 --
+-- Indexes for table `library`
+--
+ALTER TABLE `library`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -686,7 +713,13 @@ ALTER TABLE `gamer`
 -- AUTO_INCREMENT for table `gig`
 --
 ALTER TABLE `gig`
-  MODIFY `gigID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `gigID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `library`
+--
+ALTER TABLE `library`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
