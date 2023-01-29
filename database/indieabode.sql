@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 27, 2023 at 06:40 PM
+-- Generation Time: Jan 29, 2023 at 06:46 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -142,7 +142,29 @@ INSERT INTO `devlog` (`publishDate`, `description`, `name`, `Tagline`, `Type`, `
 ('2022-12-16 04:43:20', 'Genshin Impact takes place in the fantasy world of Teyvat, home to seven nations, each of which is tied to a different element and ', 'devlog 1', 'grggjhkjlkadueiiqokslakankaj', 'Tutorial', 'draft', 'SS-devlog 1.jpg', 'Almighty Shields', 16, '0000-00-00'),
 ('2022-12-16 05:58:59', 'yhfgjh', 'dev ,', 'ukuh', 'Tutorial', 'draft', 'SS-dev ,.jpg', 'Stray', 17, '2020-12-29'),
 ('2023-01-15 14:51:20', 'fefef', 'efef', 'fefe', 'Game Design', 'draft', '', 'efe', 18, '0000-00-00'),
-('2023-01-15 15:18:53', 'rgrgerg', 'gerg', 'greg', 'Game Design', 'draft', '', 'Albion Online', 19, '0000-00-00');
+('2023-01-15 15:18:53', 'rgrgerg', 'gerg', 'greg', 'Postmortem', 'draft', '', 'Albion Online', 19, '0000-00-00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `devlog_posttype`
+--
+
+CREATE TABLE `devlog_posttype` (
+  `id` int(11) NOT NULL,
+  `postType` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `devlog_posttype`
+--
+
+INSERT INTO `devlog_posttype` (`id`, `postType`) VALUES
+(1, 'Major Update'),
+(2, 'Postmortem'),
+(3, 'Game Design'),
+(4, 'Tutorial'),
+(5, 'Marketing');
 
 -- --------------------------------------------------------
 
@@ -198,7 +220,7 @@ CREATE TABLE `freeasset` (
 --
 
 INSERT INTO `freeasset` (`assetID`, `assetName`, `assetGenre`, `assetDetails`, `assetScreenshots`, `assetTitle`, `assetTagline`, `assetClassification`, `assetReleaseStatus`, `assetTags`, `assetFile`, `assetLicense`, `assetCoverImg`, `assetVisibility`, `assetVideoURL`, `assetType`, `assetStyle`, `assetCreatorID`) VALUES
-(1, 'Sprout Lands', '', '', 'SS-Sprout Lands-0.png,SS-Sprout Lands-1.png', '', 'cute pixel pastel farming asset pack', '2d', 'released', 'pixel art, sprout la', 'Asset-Sprout Lands.zip', 'proprietary', 'Cover-Sprout Lands.png', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'tileset', 'pixelart', 12),
+(1, 'Sprout Lands', '', '', 'SS-Sprout Lands-0.png,SS-Sprout Lands-1.png', '', 'cute pixel art pastel farming asset pack with stylish design ', '2d', 'released', 'pixel art, sprout la', 'Asset-Sprout Lands.zip', 'proprietary', 'Cover-Sprout Lands.png', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'tileset', 'pixelart', 12),
 (2, 'Cozy People', '', '', 'SS-Cozy People-0.png,SS-Cozy People-1.png', '', 'Animated characters, hairstyles and clothes!', '3d', 'released', 'people, characters', 'Asset-Cozy People.zip', 'open-source', 'Cover-Cozy People.png', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'sprite', 'pixelart', 12);
 
 -- --------------------------------------------------------
@@ -241,15 +263,14 @@ CREATE TABLE `freegame` (
 --
 
 INSERT INTO `freegame` (`gameID`, `gameName`, `releaseStatus`, `gameDetails`, `gameScreenshots`, `gameTrailor`, `gameTagline`, `gameClassification`, `gameTags`, `gameFeatures`, `gameFile`, `gameVisibility`, `gameCoverImg`, `gameDeveloperID`, `minOS`, `minProcessor`, `minMemory`, `minStorage`, `minGraphics`, `minOther`, `recommendOS`, `recommendProcessor`, `recommendMemory`, `recommendStorage`, `recommendGraphics`, `recommendOther`) VALUES
-(33, 'Stray', 'released', 'Stray is a 2022 adventure game developed by BlueTwelve Studio and published by Annapurna Interactive. The story follows a stray cat who falls into a walled city populated by robots, machines, and mutant bacteria, and sets out to return to the surface with the help of a drone companion, B-12. The game is presented through a third-person perspective. The player traverses by leaping across platforms and climbing up obstacles, and can interact with the environment to open new paths. Using B-12, they can store items found throughout the world and hack into technology to solve puzzles. Throughout the game, the player must evade the antagonistic Zurks and Sentinels, which attempt to kill them', 'SS-Stray.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'follows a stray cat who falls into a walled city populated by robots, machines', 'adventure', '3d, stray, dogs', 'singleplayer', 'Game-Stray.zip', 0, 'Cover-Stray.jpg', 12, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', 'English'),
-(38, 'Albion Online', 'released', 'Genshin Impact takes place in the fantasy world of Teyvat, home to seven nations, each of which is tied to a different element and ', '', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'follows a stray cat who falls into a walled city populated by robots, machines', 'adventure', 'genshin', 'singleplayer', 'Game-Albion Online.zip', 0, 'Cover-Albion Online.jpg', 12, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', 'English'),
+(33, 'Stray', 'released', 'Stray is a 2022 adventure game developed by BlueTwelve Studio and published by Annapurna Interactive. The story follows a stray cat who falls into a walled city populated by robots, machines, and mutant bacteria, and sets out to return to the surface with the help of a drone companion, B-12. The game is presented through a third-person perspective. The player traverses by leaping across platforms and climbing up obstacles, and can interact with the environment to open new paths. Using B-12, they can store items found throughout the world and hack into technology to solve puzzles. Throughout the game, the player must evade the antagonistic Zurks and Sentinels, which attempt to kill them', 'SS-Stray.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'climb the tower in calm and peaceful environment', 'adventure', '3d, stray, dogs', 'singleplayer', 'Game-Stray.zip', 0, 'Cover-Stray.jpg', 12, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', 'English'),
+(38, 'Albion Online', 'released', 'Genshin Impact takes place in the fantasy world of Teyvat, home to seven nations, each of which is tied to a different element and ', '', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'climb the tower in calm and peaceful environment', 'adventure', 'genshin', 'singleplayer', 'Game-Albion Online.zip', 0, 'Cover-Albion Online.jpg', 12, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', 'English'),
 (40, 'Cloud Climber', 'early access', 'Genshin Impact takes place in the fantasy world of Teyvat, home to seven nations, each of which is tied to a different element and ', '', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'climb the tower in calm and peaceful environment', 'adventure', 'genshin', 'singleplayer', 'Game-Cloud Climber.zip', 0, 'Cover-Cloud Climber.jpg', 12, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', 'English'),
-(41, 'Plocks', 'released', 'Genshin Impact takes place in the fantasy world of Teyvat, home to seven nations, each of which is tied to a different element and ', '', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', '2D cloud climber', 'adventure', 'genshin', 'singleplayer', 'Game-Plocks.zip', 0, 'Cover-Plocks.png', 12, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', 'English'),
-(42, 'Halo Infinite', 'released', 'Genshin Impact takes place in the fantasy world of Teyvat, home to seven nations, each of which is tied to a different element and ', '', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'An awesome fps shooter gane', 'action', 'genshin', 'singleplayer', 'Game-Halo Infinite.zip', 0, 'Cover-Halo Infinite.jpg', 12, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', 'English'),
+(41, 'Plocks', 'released', 'Genshin Impact takes place in the fantasy world of Teyvat, home to seven nations, each of which is tied to a different element and ', '', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'climb the tower in calm and peaceful environment and survive', 'adventure', 'genshin', 'singleplayer', 'Game-Plocks.zip', 0, 'Cover-Plocks.png', 12, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', 'English'),
+(42, 'Halo Infinite', 'released', 'Genshin Impact takes place in the fantasy world of Teyvat, home to seven nations, each of which is tied to a different element and ', '', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'An awesome fps shooter game with latest weapon handlings', 'action', 'genshin', 'singleplayer', 'Game-Halo Infinite.zip', 0, 'Cover-Halo Infinite.jpg', 12, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', 'English'),
 (43, 'Cloud Climber', 'released', 'Genshin Impact takes place in the fantasy world of Teyvat, home to seven nations, each of which is tied to a different element and ', '', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'climb the tower in calm and peaceful environment', 'action', 'genshin', 'singleplayer', 'Game-Cloud Climber.zip', 0, 'Cover-Cloud Climber.jpg', 12, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', 'English'),
-(45, 'Albion Online', 'released', 'Genshin Impact takes place in the fantasy world of Teyvat, home to seven nations, each of which is tied to a different element and \r\n\r\n\r\n', '', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'Download this ASAP', 'action', 'genshin', 'singleplayer', 'Game-Albion Online.zip', 0, 'Cover-Albion Online.jpg', 16, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', 'English'),
-(52, 'Albion Online', 'released', 'dwdwefe', '', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'climb the tower in calm and peaceful environment', 'RPG', 'gregreg', 'singleplayer', '', 0, 'Cover-Albion Online.jpg', 12, 'a', 'Intel Core I3', 'grg', 'rg', 'mx330', 'rgr', 'r', 'Intel Core I5', 'rgr', 'grg', 'mx1650', 'a'),
-(53, 'vrve', 'upcoming', 'vrvervre', '', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'gregr', 'racing', 'vrvre', 'vrverr', '', 0, 'Cover-vrve.png', 12, 'windows 7', 'vrvvrv', 'rver', 'vervre', 'vervr', 'frv', 'vr', 'vrvre', 'vrev', 'rvr', 'mx1650', 'vrver');
+(45, 'Albion Online', 'released', 'Genshin Impact takes place in the fantasy world of Teyvat, home to seven nations, each of which is tied to a different element and \r\n\r\n\r\n', '', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'climb the tower in calm and peaceful environment', 'action', 'genshin', 'singleplayer', 'Game-Albion Online.zip', 0, 'Cover-Albion Online.jpg', 16, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', 'English'),
+(52, 'Albion Online', 'released', 'dwdwefe', '', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'climb the tower in calm and peaceful environment', 'RPG', 'gregreg', 'singleplayer', '', 0, 'Cover-Albion Online.jpg', 12, 'a', 'Intel Core I3', 'grg', 'rg', 'mx330', 'rgr', 'r', 'Intel Core I5', 'rgr', 'grg', 'mx1650', 'a');
 
 -- --------------------------------------------------------
 
@@ -425,7 +446,7 @@ CREATE TABLE `library` (
 
 INSERT INTO `library` (`id`, `developerID`, `itemID`) VALUES
 (3, '12', '1'),
-(6, '12', '2');
+(7, '12', '2');
 
 -- --------------------------------------------------------
 
@@ -639,6 +660,12 @@ ALTER TABLE `devlog`
   ADD PRIMARY KEY (`devLogID`);
 
 --
+-- Indexes for table `devlog_posttype`
+--
+ALTER TABLE `devlog_posttype`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `freeasset`
 --
 ALTER TABLE `freeasset`
@@ -686,6 +713,12 @@ ALTER TABLE `devlog`
   MODIFY `devLogID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
+-- AUTO_INCREMENT for table `devlog_posttype`
+--
+ALTER TABLE `devlog_posttype`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `freeasset`
 --
 ALTER TABLE `freeasset`
@@ -719,7 +752,7 @@ ALTER TABLE `gig`
 -- AUTO_INCREMENT for table `library`
 --
 ALTER TABLE `library`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables

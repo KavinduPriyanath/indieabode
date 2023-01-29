@@ -30,34 +30,24 @@
     <!-- Filters-->
 
     <div class="side-nav" id="side-menu">
-        <p>Post Type</p>
+        <form action="" method="GET">
+            <button type="submit">Search</button>
+            <p>Post Type</p>
 
-        <div class="type-filter">
-            <div class="elements">
-                <input type="checkbox" name="" id="Windows" class="checkbox" />
-                <label for="Windows">Major Update</label>
-            </div>
+            <div class="type-filter">
 
-            <div class="elements">
-                <input type="checkbox" name="" id="Mac" class="checkbox" />
-                <label for="Mac">Postmortem</label>
-            </div>
+                <?php foreach ($this->posttypes as $posttype) { ?>
+                    <div class="elements">
+                        <input type="checkbox" name="posttypes[]" id="Windows" class="checkbox" value="<?= $posttype['postType']; ?>" <?php if (in_array($posttype['postType'], $this->checked)) {
+                                                                                                                                            echo "checked";
+                                                                                                                                        } ?> />
+                        <label for="Windows"><?= $posttype['postType']; ?></label>
+                    </div>
+                <?php } ?>
 
-            <div class="elements">
-                <input type="checkbox" name="" id="Linux" class="checkbox" />
-                <label for="Linux">Game Design</label>
-            </div>
 
-            <div class="elements">
-                <input type="checkbox" name="" id="Android" class="checkbox" />
-                <label for="Android">Tutorials</label>
             </div>
-
-            <div class="elements">
-                <input type="checkbox" name="" id="Web" class="checkbox" />
-                <label for="Webx">Marketing</label>
-            </div>
-        </div>
+        </form>
     </div>
     <div class="upper-break">
         <div class="trigger" onclick="openSideMenu()">
@@ -100,6 +90,7 @@
                 </div>
             </a>
         <?php } ?>
+
     </div>
 
     <!--Pagination-->

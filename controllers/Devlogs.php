@@ -11,7 +11,20 @@ class Devlogs extends Controller
 
     function index()
     {
-        $this->view->devlogs = $this->model->showAllDevlogs();
+        $this->view->checked = [];
+
+        if (isset($_GET['posttypes'])) {
+            $this->view->checked = $_GET['posttypes'];
+
+            $checkedTypes = [];
+            $checkedTypes =  $_GET['posttypes'];
+            $this->view->devlogs = $this->model->showFilteredDevlog($checkedTypes);
+        } else {
+            $this->view->devlogs = $this->model->showAllDevlogs();
+        }
+
+        $this->view->posttypes = $this->model->filters();
+
 
         $this->view->render('Main/Devlogs');
     }

@@ -4,27 +4,19 @@ body {
 
 /* Page Topic*/
 
-.page-topic {
-
-    /* -GameJams- */
-    display: block;
+.page-topic h1{
     text-align: center;
-    
-    /*margin-top: 20px;*/
-    padding-top: 20px;
-    
-    
-    
-    font-family: 'Kreon';
-    font-style: normal;
-    font-weight: 200;        
-    font-size: 15px;
-    line-height: 22px;
-        /* identical to box height */
-    
-    
-    color: #FFFFFF;
-    
+    font-size: 25px;
+    margin: 20px 0px 5px 0px;
+    color: rgb(0, 0, 0);
+}
+
+#topic-break {
+    color: #86AFEC;
+    background-color: #86AFEC;
+    border-width: 0px;
+    height: 0.5px;
+    margin: 0px 150px 15px 175px;
 }
 
 
@@ -89,41 +81,24 @@ input[type="radio"] {
 
 .trigger {
     display: inline-block;
-    font-size: 19px;
-    /*background-color: rgb(195, 194, 194);
-    font-family: 'Times New Roman', Times, serif;*/
-    padding: 10px 20px 10px 15px;
-    margin: 25px 15px 5px 175px;
+    font-size: 18px;
+    /* background-color: rgb(195, 194, 194); */
+    font-family: 'Kreon', serif;
+    padding: 10px 20px 5px 15px;
+    margin: 15px 15px 0px 175px;
     border-radius: 3.5px;
-
-    font-family: 'Kreon';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 23px;
-    line-height: 29px;
-        /* identical to box height */
-    
-    
-    color: #FFFFFF;
+    cursor: pointer;
 }
 
 .sort {
     display: inline-block;
-    font-size: 19px;
-    /*background-color: rgb(195, 194, 194);
-    font-family: 'Times New Roman', Times, serif;*/
-    padding: 10px 20px 10px 15px;
-    margin: 25px 150px 5px 15px;
+    font-size: 18px;
+    /* background-color: rgb(195, 194, 194); */
+    font-family: 'Kreon', serif;
+    padding: 10px 20px 5px 15px;
+    margin: 15px 150px 0px 15px;
     border-radius: 3.5px;
     transition: margin 0.3s;
-
-    font-family: 'Kreon';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 25px;
-    
-    color: #FFFFFF;
 }
 
 .sort img {
@@ -148,13 +123,7 @@ input[type="radio"] {
     justify-content: space-between;
 }
 
-#topic-break {
-   
-    margin: 5px 150px 15px 175px;
-    color: #86AFEC;
-    
-    border: 1px solid #86AFEC;
-}
+
 
 #filter-on {
     display: none;
@@ -170,7 +139,9 @@ input[type="radio"] {
 }
 
 .card {
-    background-color: #95B2C8;
+    background-image: url('/indieabode/public/images/navbar/bgcard.jpg');
+    background-size:cover;
+    background-attachment: fixed;
     width: 282.5px;
     margin: 10px;
     border-radius: 10px;

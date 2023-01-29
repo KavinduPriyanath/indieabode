@@ -43,7 +43,7 @@
 
                         <label id="game-tagline" for="game-tagline">Tagline</label><br>
                         <p>Shown when we link your game to other pages</p>
-                        <input type="text" name="game-tagline" id="game-tagline" placeholder="Short Description about your game" /><br><br>
+                        <input type="text" name="game-tagline" id="game-tagline" minlength="40" maxlength="70" placeholder="Short Description about your game" /><br><br>
 
                         <!--classification details-->
                         <label id="game-classification" for="game-classification">Classification</label><br>

@@ -141,7 +141,7 @@
             <i class="fa fa-angle-double-left" id="filter-on"></i> filters
         </div>
         <div class="sort" id="sort">
-            <img src="../images/assets/sort.png" alt="" /> sort by: <span>Release Date</span>
+            <img src="/indieabode/public/images/games/sort.png" alt="" /> sort by: <span>Release Date</span>
         </div>
     </div>
 

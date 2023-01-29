@@ -33,13 +33,15 @@
                             <a href="<?php echo BASE_URL; ?>devlogs">Devlogs <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                             <a href="<?php echo BASE_URL; ?>crowdfunding">Crowdfunding
                                 <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                            <hr />
                             <a href="<?php echo BASE_URL; ?>games?classification=action">Action <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                             <a href="<?php echo BASE_URL; ?>games?classification=adventure">Adventure <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                             <a href="<?php echo BASE_URL; ?>games?classification=rpg">RPG <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                             <a href="<?php echo BASE_URL; ?>games?classification=racing">Racing <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                             <a href="<?php echo BASE_URL; ?>games?classification=simulation">Simulation <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                             <a href="<?php echo BASE_URL; ?>games?classification=strategy">Strategy <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                            <a href="<?php echo BASE_URL; ?>games">Browse&nbsp;all&nbsp;assets
+                            <hr />
+                            <a href="<?php echo BASE_URL; ?>games">Browse&nbsp;all&nbsp;games
                                 <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                         </div>
                     </div>
@@ -59,6 +61,7 @@
                             <a href="<?php echo BASE_URL; ?>assets?classification=textures">Textures <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                             <a href="<?php echo BASE_URL; ?>assets?classification=maps">Maps <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                             <a href="<?php echo BASE_URL; ?>assets?classification=tools">Tools <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                            <hr />
                             <a href="/indieabode/assets">Browse&nbsp;all&nbsp;assets
                                 <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                         </div>

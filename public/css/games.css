@@ -13,12 +13,13 @@
     width: 250px;
     position: absolute;
     z-index: 1;
-    top: 150px;
+    top: 170px;
     left: 175px;
-    background-color: lightgray;
+    /* background-color: lightgray; */
     opacity: 0.9;
     overflow-x: hidden;
-    padding-top: 30px;
+    overflow-y: hidden;
+    padding-top: 15px;
     transition: 0.3s;
 }
 
@@ -26,7 +27,7 @@
     padding: 10px 10px 10px 30px;
     text-decoration: none;
     font-size: 22px;
-    color: rgb(60, 54, 54);
+    color: rgb(23, 20, 46);
     display: block;
     transition: 0.3s;
 }
@@ -59,21 +60,22 @@ input[type="radio"] {
 
 .trigger {
     display: inline-block;
-    font-size: 19px;
-    background-color: rgb(195, 194, 194);
-    font-family:'Times New Roman', Times, serif;
-    padding: 10px 20px 10px 15px;
-    margin: 25px 15px 5px 175px;
+    font-size: 18px;
+    /* background-color: rgb(195, 194, 194); */
+    font-family: 'Kreon', serif;
+    padding: 10px 20px 5px 15px;
+    margin: 15px 15px 0px 175px;
     border-radius: 3.5px;
+    cursor: pointer;
 }
 
 .sort {
     display: inline-block;
-    font-size: 19px;
-    background-color: rgb(195, 194, 194);
-    font-family:'Times New Roman', Times, serif;
-    padding: 10px 20px 10px 15px;
-    margin: 25px 150px 5px 15px;
+    font-size: 18px;
+    /* background-color: rgb(195, 194, 194); */
+    font-family: 'Kreon', serif;
+    padding: 10px 20px 5px 15px;
+    margin: 15px 150px 0px 15px;
     border-radius: 3.5px;
     transition: margin 0.3s;
 }
@@ -99,7 +101,7 @@ input[type="radio"] {
     background-color: #86AFEC;
     border-width: 0px;
     height: 0.5px;
-    margin: 5px 150px 15px 175px;
+    margin: 0px 150px 15px 175px;
 }
 
 #filter-on {
@@ -111,8 +113,8 @@ input[type="radio"] {
 .page-topic h1{
     text-align: center;
     font-size: 25px;
-    margin: 20px;
-    color: white;
+    margin: 20px 0px 5px 0px;
+    color: rgb(0, 0, 0);
 }
 
 /*Cards*/
@@ -129,7 +131,10 @@ input[type="radio"] {
 }
 
 .card {
-    background-color: #95B2C8;
+    /* background-color: #c3deee; */
+    background-image: url('/indieabode/public/images/navbar/bgcard.jpg');
+    background-size:cover;
+    background-attachment: fixed;
     width: 282.5px;
     margin: 10px;
     border-radius: 10px;
