@@ -28,11 +28,6 @@
                 Create a new project
             </div>
             <hr>
-            <div class="btn-box">
-                <div id="btn"></div>
-                <button type="button" class="toggle-btn" id="game-active" style="background-color:#749ABD;">Game</button>
-                <button type="button" class="toggle-btn" onclick="uploadAsset()">Assets</button>
-            </div><br>
 
             <form action="/indieabode/gameupload/uploadgame" method="POST" id="upload-game-form" class="input-upload-group" enctype="multipart/form-data">
                 <div class="upload-row">

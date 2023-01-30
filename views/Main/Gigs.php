@@ -20,6 +20,10 @@
     include 'includes/navbar.php';
     ?>
 
+    <div class="page-topic">
+        <h1>-Gigs-</h1>
+    </div>
+
     <!-- Filters-->
 
     <div class="side-nav" id="side-menu">
@@ -135,7 +139,7 @@
             <i class="fa fa-angle-double-left" id="filter-on"></i> filters
         </div>
         <div class="sort" id="sort">
-            <img src="../images/games/sort.png" alt="" /> sort by: <span>Release Date</span>
+            <img src="/indieabode/public/images/games/sort.png" alt="" /> sort by: <span>Release Date</span>
         </div>
     </div>
 
@@ -147,7 +151,7 @@
         <?php foreach ($this->gigs as $gig) { ?>
             <a href="">
                 <div class="card">
-                    <h3><?= $gig['gigName'] ?></h3>
+                    <h3 id="gig-name"><?= $gig['gigName'] ?></h3>
                     <div class="card-image">
                         <img src="/indieabode/public/uploads/gigs/cover/<?= $gig['gigCoverImg'] ?>" alt="" />
                     </div>

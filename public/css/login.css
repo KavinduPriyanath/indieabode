@@ -5,8 +5,12 @@
   margin: 50px auto;
   text-align: center;
   position: relative;
-  width: 45%;
-  background: rgb(138, 155, 198, 0.44);
+  width: 28%;
+  /* background: rgb(138, 155, 198, 0.44); */
+  /* background-image: url('/indieabode/public/images/navbar/bgnew4.jpg');
+    background-size:cover;
+    background-attachment: fixed; */
+    background-color: rgb(29, 113, 141);
   border-radius: 8px;
 }
 
@@ -17,7 +21,7 @@
   font-family: 'Kreon', serif;
   font-weight: bold;
   margin: 40px 20px;
-  background-color: #84AED4;
+  background-color:rgba(138, 155, 198, 0.44);
   border: none;
   padding: 10px;
   border-radius: 12px;
@@ -26,9 +30,9 @@
 .form-login-label{
   text-align: left;
   display: block;
-  color:white;
+  color:rgb(0, 0, 0);
   font-size: 22px;
-  margin: 10px 70px 0px 100px;
+  margin: 10px 70px 0px 15px;
 }
 
 #username {
@@ -39,8 +43,8 @@
 form input[type=text], input[type=password] {
   display: inline-block;
   height: 40px;
-  width: 500px;
-  margin: -10px 100px 10px 100px;
+  width: 400px;
+  margin: -10px 100px 10px 15px;
   border-radius: 8px;
   border: none;
   padding: 8px 10px;
@@ -96,7 +100,7 @@ form input[type=text], input[type=password] {
 .full-name input[type=text]{
   display: inline-block;
   height: 40px;
-  width: 232.5px;
+  width: 184px;
   border-radius: 8px;
   border: none;
   padding: 8px 10px;
@@ -104,7 +108,7 @@ form input[type=text], input[type=password] {
 }
 
 .full-name #firstname {
-  margin: 10px 0px 0px 100px;
+  margin: 10px 0px 0px 15px;
 }
 
 .full-name #lastname {
@@ -190,4 +194,35 @@ form input[type=checkbox] {
   display: inline-block;
   font-size: 18px;
   color: white;
+}
+
+.container {
+  height: 60px;
+  width: 60px;
+  background-color: #ffffff;
+  box-shadow: 0 0 25px rgba(17, 1, 68, 0.08);
+  border-radius: 8px;
+  position: relative;
+  cursor: pointer;
+}
+
+.container img {
+  width: 70%;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  cursor: pointer;
+}
+
+.radio-btn {
+  margin: 0px 40px 0px 0px;
+}
+
+.avatars {
+  margin: 20px 40px;
+  display: flex;
+  justify-content: space-between;
 }

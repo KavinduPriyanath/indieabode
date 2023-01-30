@@ -41,46 +41,53 @@
             <a href="/indieabode/dashboard/sales">Sales&nbsp;&&nbsp;Bundles</a>
             <a href="/indieabode/dashboard/analytics">Analytics</a>
             <a href="/indieabode/dashboard/payouts">Payouts</a>
-
         </div>
         <div class="content-row">
 
-            <?php foreach ($this->games as $game) { ?>
-                <div class="game-card">
-                    <div class="left-col">
-                        <div class="icon"><img src="/indieabode/public/uploads/games/cover/<?= $game['gameCoverImg'] ?>" alt=""></div>
-                        <div class="details">
-                            <div class="game-name"><?= $game['gameName'] ?></div>
-                            <div class="game-stat-tabs">
-                                <a href="">Edit</a>
-                                <a href="">Analytics</a>
-                                <a href="">Devlogs</a>
-                                <a href="">Publishers</a>
-                                <a href="">Metadata</a>
+            <a href="/indieabode/creategig" id="gig-btn">
+                <div class="add-btn">
+                    <div class="add-logo">
+                        <img src="/indieabode/public/images/dashboard/add-devlog.png" alt="">
+                    </div>
+                    <div class="text">Create new Gig</div>
+                </div>
+            </a>
+
+            <h3>Published Gigs</h3>
+
+            <div class="devlog-cards">
+                <?php foreach ($this->gigs as $gig) { ?>
+                    <div class="game-card">
+                        <div class="left-col">
+                            <div class="icon"><img src="/indieabode/public/uploads/games/cover/<?= $devlog['devlogImg'] ?>" alt=""></div>
+                            <div class="details">
+                                <div class="devlog-name"><?= $gig['gigName']; ?></div>
+                                <div class="game-name">
+                                    <?= $gig['game']; ?>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="right-col">
-                        <div class="views">
-                            <div class="count">10</div>
-                            <div class="label">views</div>
+                        <div class="right-col">
+                            <div class="views">
+                                <div class="count">10</div>
+                                <div class="label">views</div>
+                            </div>
+                            <div class="downloads">
+                                <div class="count">2</div>
+                                <div class="label">likes</div>
+                            </div>
+                            <div class="ratings">
+                                <div class="count">8</div>
+                                <div class="label">comments</div>
+                            </div>
                         </div>
-                        <div class="downloads">
-                            <div class="count">2</div>
-                            <div class="label">downloads</div>
-                        </div>
-                        <div class="ratings">
-                            <div class="count">8</div>
-                            <div class="label">ratings</div>
-                        </div>
-                        <div class="revenue">
-                            <div class="count">$0</div>
-                            <div class="label">revenue</div>
+                        <div class="edit-btn">
+                            Edit
                         </div>
                     </div>
-                </div>
-            <?php } ?>
+                <?php } ?>
+            </div>
 
         </div>
     </div>

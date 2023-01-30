@@ -41,6 +41,43 @@
             <label class="form-login-label">Username</label> <br>
             <input type="text" name="username" id="user-name" placeholder="username" required /><br>
 
+            <label for="userrole" class="form-login-label">Who are you?</label>
+            <select id="userrole" name="userrole">
+                <?php foreach ($this->userRoles as $userRole) { ?>
+                    <option value="<?= $userRole['roleType']; ?>"><?= $userRole['roleType']; ?></option>
+                <?php } ?>
+            </select> <br>
+
+            <div class="form-login-label">Select your avatar</div>
+            <div class="avatars">
+
+                <div class="container">
+                    <input type="radio" id="avatar1" name="avatar" class="radio-btn" value="avatar1.png" />
+                    <label for="avatar1">
+                        <img src="/indieabode/public/images/avatars/profile.png" />
+                    </label>
+                </div>
+                <div class="container">
+                    <input type="radio" id="avatar2" name="avatar" class="radio-btn" value="avatar2.png" checked />
+                    <label for="avatar2">
+                        <img src="/indieabode/public/images/avatars/profile.png" />
+                    </label>
+                </div>
+                <div class="container">
+                    <input type="radio" id="avatar3" name="avatar" class="radio-btn" value="avatar3.png" />
+                    <label for="avatar3">
+                        <img src="/indieabode/public/images/avatars/profile.png" />
+                    </label>
+                </div>
+                <div class="container">
+                    <input type="radio" id="avatar4" name="avatar" class="radio-btn" value="avatar4.png" />
+                    <label for="avatar4">
+                        <img src="/indieabode/public/images/avatars/profile.png" />
+                    </label>
+                </div>
+
+            </div>
+
 
             <label class="form-login-label">Email</label><br>
             <input type="text" name="email" id="title" placeholder="email" required /><br>

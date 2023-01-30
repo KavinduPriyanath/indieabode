@@ -11,6 +11,9 @@ class Register extends Controller
     function index()
     {
         //print_r($_POST);
+
+        $this->view->userRoles = $this->model->UserRoles();
+
         $this->view->render('Register');
     }
 
@@ -21,13 +24,15 @@ class Register extends Controller
         $username = $_POST['username'];
         $firstname = $_POST['firstname'];
         $lastname = $_POST['lastname'];
+        $avatar = $_POST['avatar'];
+        $userRole = $_POST['userrole'];
 
         $count = $this->model->checkUser($email);
 
         if (!empty($count)) {
             header('location:/indieabode/dw');
         } else {
-            $this->model->insertUser($email, $username, $password, $firstname, $lastname);
+            $this->model->insertUser($email, $username, $password, $firstname, $lastname, $avatar, $userRole);
 
             header('location:/indieabode/');
         }

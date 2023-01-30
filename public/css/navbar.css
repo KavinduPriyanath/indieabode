@@ -46,7 +46,9 @@ body {
     display: flex;
 }
 
-
+.navbar hr{
+    border: 1.5px solid #315168;
+}
 
 .navbar-links a  {
     text-decoration: none;

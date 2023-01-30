@@ -46,6 +46,7 @@ class Games extends Controller
 
     function sideFilters()
     {
-        header('location:/indieabode/aaa');
+        // header('location:/indieabode/aaa');
+        echo "hello";
     }
 }

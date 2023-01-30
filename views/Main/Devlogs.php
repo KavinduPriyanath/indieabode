@@ -31,7 +31,6 @@
 
     <div class="side-nav" id="side-menu">
         <form action="" method="GET">
-            <button type="submit">Search</button>
             <p>Post Type</p>
 
             <div class="type-filter">
@@ -47,6 +46,7 @@
 
 
             </div>
+            <button type="submit" id="filter-button">Apply</button>
         </form>
     </div>
     <div class="upper-break">
@@ -54,9 +54,9 @@
             <i class="fa fa-angle-double-right" id="filter-off"></i>
             <i class="fa fa-angle-double-left" id="filter-on"></i> filters
         </div>
-        <a href="/indieabode/pages/devlogForm.php">
-            <button type="submit" name="submit" id="adddev">Add a devlog</button>
-        </a>
+        <div class="sort" id="sort">
+            <img src="/indieabode/public/images/games/sort.png" alt="" /> sort by: <span>Release Date</span>
+        </div>
     </div>
 
     <hr id="topic-break" />
@@ -75,17 +75,28 @@
                             <h4><?= $devlog['Type'] ?></h4>
                         </div>
                     </div>
-                    <div class="game-intro">
-                        <h3><?= $devlog['name'] ?></h3>
-                        <div class="cmts">
-                            <img src="../uploads/devlog/<?= $devlog['devlogImg'] ?>" alt="">
+                    <div class="post-title">
+                        <div class="title">
+                            <p><?= $devlog['gameName'] ?></p>
+                        </div>
+                        <div class="images">
+                            <div class="like-image">
+                                <div class="like-logo"><img src="/indieabode/public/images/devlogs/like.png" alt="" /></div>
+                                <div class="like-count">12</div>
+                            </div>
+                            <div class="comment-image">
+                                <div class="cmt-logo"><img src="/indieabode/public/images/devlogs/comment.png" alt="" /></div>
+                                <div class="cmt-count">2</div>
+
+                            </div>
                         </div>
                     </div>
-                    <div class="post-title">
-                        <h3><?= $devlog['gameName'] ?></h3>
+                    <div class="game-intro">
+                        <h3><?= $devlog['name'] ?></h3>
                     </div>
+
                     <div class="tagline">
-                        <h3><?= $devlog['Tagline'] ?></h3>
+                        <?= $devlog['Tagline'] ?>
                     </div>
                 </div>
             </a>
