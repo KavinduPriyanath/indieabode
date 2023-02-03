@@ -22,8 +22,8 @@
 
     <div class="wrapper">
         <div class="btn-box">
-            <a href="/indieabode/pages/login.php"><button type="button" class="toggle-btn login-toggle-btn">Login</button></a>
-            <a href="/indieabode/pages/register.php"><button type="button" class="toggle-btn">Register</button></a>
+            <a href="/indieabode/login"><button type="button" class="toggle-btn login-toggle-btn">Login</button></a>
+            <a href="/indieabode/register"><button type="button" class="toggle-btn">Register</button></a>
         </div>
         <form action="/indieabode/login/signin" method="POST" id="form">
             <label class="form-login-label" id="username">Email or Username</label><br>
@@ -64,6 +64,9 @@
         </div>
     </div>
 
+    <?php
+    include 'includes/footer.php';
+    ?>
 
 </body>
 

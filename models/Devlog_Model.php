@@ -53,4 +53,18 @@ class Devlog_Model extends Model
 
     //     return $screenshots;
     // }
+
+    function gameDetails($gameName)
+    {
+
+        $sql = "SELECT * FROM freegame WHERE gameName='$gameName'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $game = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $game;
+    }
 }

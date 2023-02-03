@@ -20,6 +20,16 @@
     include 'includes/navbar.php';
     ?>
 
+    <h2 id="heading"><?= $this->game['gameName'] ?></h2>
+
+    <div class="topics">
+        <a href="/indieabode/game?id=<?= $this->game['gameID'] ?>">Overview
+        </a>
+        <a href="/indieabode/game/reviews?id=<?= $this->game['gameID'] ?>">Reviews</a>
+    </div>
+    <hr id="topic-break">
+
+
     <!--Slideshow and Overview-->
 
     <div class="container">
@@ -34,20 +44,18 @@
             </button>
             <ul data-slides>
                 <li class="slide" data-active>
-                    <img src="../images/singlegame/1.jpg" alt="Nature Image #1" />
+                    <img src="/indieabode/public/uploads/games/ss/<?= $this->screenshots[0]; ?>" alt="Nature Image #1" />
                 </li>
-                <li class="slide">
-                    <img src="../images/singlegame/2.jpeg" alt="Nature Image #2" />
-                </li>
-                <li class="slide">
-                    <img src="../images/singlegame/3.jpg" alt="Nature Image #3" />
-                </li>
+                <?php for ($i = 1; $i < $this->ssCount; $i++) { ?>
+                    <li class="slide">
+                        <img src="/indieabode/public/uploads/games/ss/<?= $this->screenshots[$i]; ?>" alt="Nature Image #2" />
+                    </li>
+                <?php } ?>
             </ul>
+
 
             <div class="tagline">
                 <p>
-                    As Spirit Guardians our duty is to help the troubled humans of this world before
-                    the world collapses.
                     <?= $this->game['gameTagline']; ?>
                 </p>
             </div>
@@ -55,49 +63,13 @@
             <div class="genre-feature">
                 <div class="genre">
                     Genre<br>
-                    <p>Action, Adventure, Strategy</p>
+                    <p><?= $this->game['gameClassification']; ?></p>
                 </div>
                 <div class="feature">
                     Feature<br>
-                    <p>Single Player</p>
+                    <p><?= $this->game['gameFeatures']; ?></p>
                 </div>
             </div>
-
-            <!--Ratings, Views, Downloads-->
-            <!--
-    <div class="ratings">
-      <div class="stars">
-        <img src="../images/singlegame/Filled Star.png" alt="" />
-        <img src="../images/singlegame/Filled Star.png" alt="" />
-        <img src="../images/singlegame/Filled Star.png" alt="" />
-        <img src="../images/singlegame/Filled Star.png" alt="" />
-        <img src="../images/singlegame/Blank Star.png" alt="" />
-        <p>(246)</p>
-      </div>
-    </div>
-
-    <div class="views-downloads">
-          <img src="../images/singlegame/view.png" alt="" />
-          <p id="views">200</p>
-          <img src="../images/singlegame/download.png" alt="" />
-          <p id="downloads">10</p>
-    </div>
--->
-
-            <!--Rate & View All-->
-            <!--
-    <div class="info-box">
-      <button id="rate-btn" onclick="AddReview()">Rate this Game</button>
-      <button id="all-btn">View all by miHoYo</button>
-    </div>
--->
-
-            <!--
-    <div class="tagline">
-      <p>
-      <?= $game['gameTagline']; ?>
-      </p>
-    </div>  -->
         </div>
 
 
@@ -105,10 +77,9 @@
 
         <div class="card">
             <div class="card-image game" style="background-image: url('<?php echo '/indieabode/public/uploads/games/cover/' . $this->game['gameCoverImg']; ?>')"></div>
-            <div class="category"><?= $this->game['gameName']; ?></div>
             <h3>Free</h3>
-            <div class="buy-btn">Buy Now</div>
-            <div class="buy-btn">Add to Cart</div>
+            <div class="buy-btn" onclick="ButtonClick()">Buy Now</div>
+            <div class="buy-btn" onclick="ButtonClick()">Add to Cart</div>
 
             <div class="row">
                 <p class="title">Release Date</p>
@@ -130,7 +101,7 @@
 
             <div class="row">
                 <p class="title">Platform</p>
-                <p class="sub-title"><?= $this->game['minOS']; ?></p>
+                <p class="sub-title"><?= $this->game['platform']; ?></p>
             </div>
             <hr />
 
@@ -140,6 +111,7 @@
             </div>
             <hr />
         </div>
+    </div>
     </div>
 
     <!--Description-->
@@ -158,96 +130,11 @@
 
     <!--Reviews-->
     <div class="reviews">
-        <h3>Ratings</h3>
-
-        <div class="review">
-            <div class="left">
-                <img src="/indieabode/public/images/games/profile.png" alt="" />
-                <p class="username">Kavindu&nbsp;Priyanath</p>
-                <p class="assets-count">Assets:&nbsp;27</p>
-                <p class="reviews-count">Reviews:&nbsp;11</p>
-            </div>
-            <div class="right">
-                <div class="rating-stars">
-                    <img src="/indieabode/public/images/games/Filled Star.png" alt="" />
-                    <img src="/indieabode/public/images/games/Filled Star.png" alt="" />
-                    <img src="/indieabode/public/images/games/Filled Star.png" alt="" />
-                    <img src="/indieabode/public/images/games/Filled Star.png" alt="" />
-                    <img src="/indieabode/public/images/games/Blank Star.png" alt="" />
-                    <p>12 Dec 2021</p>
-                </div>
-                <h3 class="review-title">Very Customizable</h3>
-                <p class="review-detail">
-                    Hey! The actual sprite without empty space in the image is about
-                    38x20 pixels, but it depends on the animation as in some theres a
-                    sword and stuff. So because of that I kept the image size as 120x80
-                    pixels for every animation. And the character is centered correctly
-                    to be in the middle/bottom of the whole image.
-                </p>
-                <div class="like-buttons">
-                    <img src="/indieabode/public/images/games/like.png" alt="" />
-                    <img src="/indieabode/public/images/games/dislike.png" alt="" />
-                </div>
-            </div>
-        </div>
-
-        <div class="review">
-            <div class="left">
-                <img src="/indieabode/public/images/games/profile.png" alt="" />
-                <p class="username">Kavindu&nbsp;Priyanath</p>
-                <p class="assets-count">Assets:&nbsp;27</p>
-                <p class="reviews-count">Reviews:&nbsp;11</p>
-            </div>
-            <div class="right">
-                <div class="rating-stars">
-                    <img src="/indieabode/public/images/games/Filled Star.png" alt="" />
-                    <img src="/indieabode/public/images/games/Filled Star.png" alt="" />
-                    <img src="/indieabode/public/images/games/Filled Star.png" alt="" />
-                    <img src="/indieabode/public/images/games/Filled Star.png" alt="" />
-                    <img src="/indieabode/public/images/games/Blank Star.png" alt="" />
-                    <p>12 Dec 2021</p>
-                </div>
-                <h3 class="review-title">Very Customizable</h3>
-                <p class="review-detail">
-                    Hey! The actual sprite without empty space in the image is about
-                    38x20 pixels, but it depends on the animation as in some theres a
-                    sword and stuff. So because of that I kept the image size as 120x80
-                    pixels for every animation. And the character is centered correctly
-                    to be in the middle/bottom of the whole image.
-                </p>
-                <div class="like-buttons">
-                    <img src="../images/singlegame/like.png" alt="" />
-                    <img src="../images/singlegame/dislike.png" alt="" />
-                </div>
-            </div>
-        </div>
-
-        <div class="rate-game">
-            <button id="rate-btn" onclick="AddReview()">Rate this Game</button>
-        </div>
-
-        <div class="review-form" id="review-form">
-            <h4>Write a review for Genshin Impact</h4><br>
-            <p>
-                Please describe what you liked or disliked about this asset and
-                whether you recommend it to others
-            </p>
-            <p>Please remember to be polite and follow the Rules and Guidelines.</p>
-            <form action="#">
-                <label for="topic">Title: </label>
-                <input type="text" id="topic" name="topic" placeholder="Enter a topic..." />
-                <br />
-                <label for="rate">Rating: </label> <br />
-                <label for="details">Details:</label>
-                <textarea name="details" id="details" placeholder="Write somethinghttps://github.com/KavinduPriyanath/indieabode/pull/26/conflict?name=pages%252Fupload.php&ancestor_oid=28074c1e30dee2fde2d68aed9995442d835617d2&base_oid=37233d93a73700f961036609e0416eadc182c437&head_oid=1913d302ae98bbd67f41579c6f668d45a625baa5..."></textarea>
-                <input type="submit" value="Post Review" /><br>
-            </form>
-        </div>
 
         <div class="game-specification">
             <h3>Specifications</h3>
             <div class="game-spec-details">
-                <h3>Windows</h3>
+                <h3><?= $this->game['platform']; ?></h3>
                 <hr>
 
                 <table>
@@ -257,50 +144,47 @@
                     </tr>
                     <tr>
                         <td>
-                            <p>OS</p>Windows 10
+                            <p>OS</p><?= $this->game['minOS']; ?>
                         </td>
                         <td>
-                            <p>OS</p>Windows 10
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p>Processor</p>Intel Core I5
-                        </td>
-                        <td>
-                            <p>Processor</p>Intel Core I5
+                            <p>OS</p><?= $this->game['recommendOS']; ?>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <p>Memory</p>8GB
+                            <p>Processor</p><?= $this->game['minProcessor']; ?>
                         </td>
                         <td>
-                            <p>Memory</p>8GB
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p>Storage</p>14 GB
-                        </td>
-                        <td>
-                            <p>Storage</p>14 GB
+                            <p>Processor</p><?= $this->game['recommendProcessor']; ?>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <p>Graphics</p>NVIDIA GeForce 1660
+                            <p>Memory</p><?= $this->game['minMemory']; ?>
                         </td>
                         <td>
-                            <p>Graphics</p>NVIDIA GeForce 1660
+                            <p>Memory</p><?= $this->game['recommendMemory']; ?>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <p>Other</p>English Language Support
+                            <p>Storage</p><?= $this->game['minStorage']; ?>
                         </td>
                         <td>
-                            <p>Other</p>English Language Support
+                            <p>Storage</p><?= $this->game['recommendStorage']; ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>Graphics</p><?= $this->game['minGraphics']; ?>
+                        </td>
+                        <td>
+                            <p>Graphics</p><?= $this->game['recommendGraphics']; ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>Other</p><?= $this->game['other']; ?>
                         </td>
                     </tr>
                 </table>
@@ -311,11 +195,18 @@
     </div>
 
 
+    <script src="<?php echo BASE_URL; ?>public/js/assets.js"></script>
     <?php if (isset($_SESSION['id']) && !empty($_SESSION['id'])) { ?>
         <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
     <?php } else { ?>
         <script src="<?php echo BASE_URL; ?>public/js/navbarcopy.js"></script>
     <?php } ?>
+
+    <script>
+        function ButtonClick() {
+            alert("Cant perform this action as a gamedeveloper");
+        }
+    </script>
 
 </body>
 

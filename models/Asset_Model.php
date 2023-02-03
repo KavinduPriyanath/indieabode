@@ -94,10 +94,10 @@ class Asset_Model extends Model
         $stmt->execute(["$ownerID", "$assetID"]);
     }
 
-    function AlreadyClaimed($assetID)
+    function AlreadyClaimed($assetID, $userID)
     {
 
-        $sql = "SELECT * FROM library WHERE itemID='$assetID' LIMIT 1";
+        $sql = "SELECT * FROM library WHERE itemID='$assetID' AND developerID='$userID' LIMIT 1";
 
         $stmt = $this->db->prepare($sql);
 
@@ -110,5 +110,19 @@ class Asset_Model extends Model
         } else {
             return false;
         }
+    }
+
+    function AssetStats($assetID)
+    {
+
+        $sql = "SELECT * FROM asset_stats WHERE assetID='$assetID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $stats = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $stats;
     }
 }

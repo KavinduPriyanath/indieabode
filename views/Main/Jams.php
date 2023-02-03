@@ -209,6 +209,10 @@
         </div>
 
 
+        <?php
+        include 'includes/footer.php';
+        ?>
+
         <script src="<?php echo BASE_URL; ?>public/js/sidefilter.js"></script>
         <?php if (isset($_SESSION['id']) && !empty($_SESSION['id'])) { ?>
             <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>

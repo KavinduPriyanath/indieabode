@@ -9,9 +9,9 @@ class Games_Model extends Model
     }
 
 
-    function showAllGames()
+    function showAllGames($min, $max)
     {
-        $stmt = $this->db->prepare("SELECT * FROM freegame");
+        $stmt = $this->db->prepare("SELECT * FROM freegame LIMIT $min, $max");
 
         $stmt->execute();
 
@@ -40,5 +40,20 @@ class Games_Model extends Model
         $stmt->execute();
 
         return $stmt->fetchAll();
+    }
+
+    function totalGamesPageCount()
+    {
+        $stmt = $this->db->prepare("SELECT count(gameID) AS id FROM freegame");
+
+        $stmt->execute();
+
+        $gamesCount = $stmt->fetchAll();
+
+        $totalGames = $gamesCount[0]['id'];
+
+        $totalPages = ceil($totalGames / 24);
+
+        return $totalPages;
     }
 }

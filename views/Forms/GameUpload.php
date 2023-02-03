@@ -60,6 +60,20 @@
                             <option value="upcoming">Upcoming</option>
                         </select><br><br>
 
+                        <!--Releasing status-->
+                        <label id="" for="">Platform</label><br>
+                        <select id="" name="game-platform">
+                            <option value="Windows" selected>Windows</option>
+                            <option value="MacOS">MacOS</option>
+                            <option value="Linux">Linux</option>
+                        </select><br><br>
+
+                        <label id="" for="">Game Type</label><br>
+                        <select id="" name="game-type">
+                            <option value="Base Game" selected>Base Game</option>
+                            <option value="DLC">DLC</option>
+                        </select><br><br>
+
                         <label id="game-details" for="game-details">Details</label><br>
                         <p id="p">This will be the content of your game page</p><br>
                         <textarea id="game-details" name="game-details" rows="9" cols="50"></textarea><br><br>
@@ -152,7 +166,7 @@
 
                         <label id="game-screenshots" for="game-screenshots">Screenshots</label><br>
                         <p>These will appear on your game's page. Optional but highly recommended. Upload 3 to 5 for best results</p><br>
-                        <input type="file" id="game-screenshots" name="game-screenshots" accept=".jpg,.jpeg,.png" multiple="multiple"><br><br>
+                        <input type="file" id="game-screenshots" name="game-screenshots[]" accept=".jpg,.jpeg,.png" multiple="multiple"><br><br>
                     </div>
                 </div>
                 <br><br>

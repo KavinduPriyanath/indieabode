@@ -1,6 +1,6 @@
 <?php
 
-class Crowdfunding extends Controller
+class Crowdfundings extends Controller
 {
 
     function __construct()
@@ -11,7 +11,7 @@ class Crowdfunding extends Controller
 
     function index()
     {
-        // $this->view->gigs = $this->model->showAllGigs();
+        $this->view->crowdfundings = $this->model->showAllCrowdfundings();
 
         $this->view->render('Main/Crowdfundings');
     }

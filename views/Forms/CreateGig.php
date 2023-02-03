@@ -103,7 +103,7 @@
                         <label id="game-illustration-vedio" for="game-illustration-vedio">Game Illustration Video</label><br />
                         <p>Add the link to your Youtube video</p>
                         <br />
-                        <input type="url" id="game-illustration-vedio" name="game-illustration-vedio" placeholder="eg: https://www.youtube.com/" /><br /><br />
+                        <input type="url" id="game-illustration-vedio" name="gig-trailer" placeholder="eg: https://www.youtube.com/" /><br /><br />
 
 
 
@@ -113,7 +113,7 @@
                             recommended. Upload 3 to 5 for best results
                         </p>
                         <br />
-                        <input type="file" id="game-screenshots" name="game-screenshots" accept=".jpg,.jpeg,.png" multiple="multiple" /><br /><br />
+                        <input type="file" id="game-screenshots" name="gig-screenshots[]" accept=".jpg,.jpeg,.png" multiple="multiple" /><br /><br />
                     </div>
                 </div>
                 <br /><br />

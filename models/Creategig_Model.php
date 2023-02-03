@@ -76,4 +76,30 @@ class Creategig_Model extends Model
 
         return $new_game_cover_img_name;
     }
+
+    function uploadScreenshots($gameName)
+    {
+
+        //Screenshots
+        $allowed_exts = array("jpg", "jpeg", "png");
+        $screenshots = [];
+        $ssCount = count($_FILES['gig-screenshots']['name']);
+        for ($i = 0; $i < $ssCount; $i++) {
+            $ssName = $_FILES['gig-screenshots']['name'][$i];
+            $ssExt = strtolower(pathinfo($ssName, PATHINFO_EXTENSION));
+            if (in_array($ssExt, $allowed_exts)) {
+
+                $newSSName = "SS-" . $gameName . '-' . $i . '.' . $ssExt;
+                $ss_upload_path = 'public/uploads/gigs/screenshots/' . $newSSName;
+
+                move_uploaded_file($_FILES['gig-screenshots']['tmp_name'][$i], $ss_upload_path);
+
+                array_push($screenshots, $newSSName);
+            }
+        }
+
+        $screenshotsURL = implode(',', $screenshots);
+
+        return $screenshotsURL;
+    }
 }

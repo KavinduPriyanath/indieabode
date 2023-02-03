@@ -173,15 +173,17 @@
     <!--Pagination-->
 
     <div class="pagination">
-        <a href="#"><i class="fa fa-angle-left"></i></a>
-        <a href="#" class="active">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <a href="#">5</a>
-        <a href="#">6</a>
-        <a href="#"><i class="fa fa-angle-right"></i></a>
+        <a href="/indieabode/games?page=<?= $this->prevPage; ?>" id="prev"><i class="fa fa-angle-left"></i></a>
+        <?php for ($i = 1; $i <= $this->gamesPagesCount; $i++) : ?>
+            <a href="/indieabode/games?page=<?= $i; ?>" class="active"><?= $i ?></a>
+        <?php endfor; ?>
+
+        <a href="/indieabode/games?page=<?= $this->nextPage; ?>" id="next"><i class="fa fa-angle-right"></i></a>
     </div>
+
+    <?php
+    include 'includes/footer.php';
+    ?>
 
 
     <script src="<?php echo BASE_URL; ?>public/js/sidefilter.js"></script>
@@ -190,6 +192,15 @@
     <?php } else { ?>
         <script src="<?php echo BASE_URL; ?>public/js/navbarcopy.js"></script>
     <?php } ?>
+
+    <script>
+        <?php if ($_GET['page'] == 1) { ?>
+            document.getElementById("prev").style.pointerEvents = "none";
+        <?php  } ?>
+        <?php if ($_GET['page'] == $this->gamesPagesCount) { ?>
+            document.getElementById("next").style.pointerEvents = "none";
+        <?php  } ?>
+    </script>
 
 </body>
 

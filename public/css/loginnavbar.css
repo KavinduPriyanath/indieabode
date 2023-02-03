@@ -13,6 +13,9 @@ body {
     background-size:cover;
     background-attachment: fixed;
     font-family: 'Kreon', serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .navbar {

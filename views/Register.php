@@ -54,25 +54,25 @@
                 <div class="container">
                     <input type="radio" id="avatar1" name="avatar" class="radio-btn" value="avatar1.png" />
                     <label for="avatar1">
-                        <img src="/indieabode/public/images/avatars/profile.png" />
+                        <img src="/indieabode/public/images/avatars/avatar1.png" />
                     </label>
                 </div>
                 <div class="container">
                     <input type="radio" id="avatar2" name="avatar" class="radio-btn" value="avatar2.png" checked />
                     <label for="avatar2">
-                        <img src="/indieabode/public/images/avatars/profile.png" />
+                        <img src="/indieabode/public/images/avatars/avatar2.png" />
                     </label>
                 </div>
                 <div class="container">
                     <input type="radio" id="avatar3" name="avatar" class="radio-btn" value="avatar3.png" />
                     <label for="avatar3">
-                        <img src="/indieabode/public/images/avatars/profile.png" />
+                        <img src="/indieabode/public/images/avatars/avatar3.png" />
                     </label>
                 </div>
                 <div class="container">
                     <input type="radio" id="avatar4" name="avatar" class="radio-btn" value="avatar4.png" />
                     <label for="avatar4">
-                        <img src="/indieabode/public/images/avatars/profile.png" />
+                        <img src="/indieabode/public/images/avatars/avatar4.png" />
                     </label>
                 </div>
 
@@ -106,6 +106,10 @@
         </form>
 
     </div>
+
+    <?php
+    include 'includes/footer.php';
+    ?>
 
 </body>
 

@@ -53,4 +53,21 @@ class Game_Model extends Model
 
     //     return $screenshots;
     // }
+
+    function getScreenshots($id)
+    {
+        $sql = "SELECT * FROM freegame WHERE gameID='$id' LIMIT 1";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $game = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $ss = $game['gameScreenshots'];
+
+        $screenshots = explode(',', $ss);
+
+        return $screenshots;
+    }
 }

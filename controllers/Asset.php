@@ -27,7 +27,9 @@ class Asset extends Controller
 
             $this->view->ssCount = count($this->model->getScreenshots($assetID));
 
-            $this->view->hasClaimed = $this->model->AlreadyClaimed($assetID);
+            $this->view->hasClaimed = $this->model->AlreadyClaimed($assetID, $_SESSION['id']);
+
+            $this->view->stats = $this->model->AssetStats($assetID);
 
             $this->view->render('SingleAsset');
         }
@@ -94,5 +96,12 @@ class Asset extends Controller
         readfile($downloadPath);
 
         $this->model->AddtoLibrary($_GET['id'], $_SESSION['id']);
+    }
+
+    function reviews()
+    {
+        $this->view->asset = $this->model->showSingleAsset($_GET['id']);
+
+        $this->view->render('Reviews/Asset-Reviews');
     }
 }

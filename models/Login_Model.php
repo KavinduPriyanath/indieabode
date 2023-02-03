@@ -16,7 +16,7 @@ class Login_Model extends Model
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        $sql = "SELECT * FROM gamer WHERE email = '$email' AND password = '$password' LIMIT 1";
+        $sql = "SELECT * FROM gamer WHERE email = '$email' LIMIT 1";
 
         $stmt = $this->db->prepare($sql);
 
@@ -24,7 +24,11 @@ class Login_Model extends Model
 
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        return $user;
+        if (password_verify($password, $user['password'])) {
+            return $user;
+        } else {
+            return null;
+        }
     }
 
     public function resetPassword()

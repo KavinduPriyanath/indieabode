@@ -12,6 +12,13 @@ class Games extends Controller
     function index()
     {
 
+        //pagination 
+        $maxLimit = 24;
+        $page = isset($_GET['page']) ? $_GET['page'] : 1;
+        $start = ($page - 1) * $maxLimit;
+        $this->view->prevPage = $page - 1;
+        $this->view->nextPage = $page + 1;
+
         $this->view->title = "Games";
 
         if (isset($_GET['classification'])) {
@@ -37,9 +44,10 @@ class Games extends Controller
                 $this->view->title = "Category: Strategy";
             }
         } else {
-            $this->view->games = $this->model->showAllGames();
+            $this->view->games = $this->model->showAllGames($start, $maxLimit);
         }
 
+        $this->view->gamesPagesCount = $this->model->totalGamesPageCount();
 
         $this->view->render('Main/Games');
     }

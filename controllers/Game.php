@@ -19,11 +19,18 @@ class Game extends Controller
 
             $this->view->gameDeveloper = $this->model->getGameDeveloper($this->model->showSingleGame($gameID));
 
-            // $this->view->screenshots = $this->model->getScreenshots($assetID);
+            $this->view->screenshots = $this->model->getScreenshots($gameID);
 
-            // $this->view->ssCount = count($this->model->getScreenshots($assetID));
+            $this->view->ssCount = count($this->model->getScreenshots($gameID));
 
             $this->view->render('SingleGame');
         }
+    }
+
+    function reviews()
+    {
+        $this->view->game = $this->model->showSingleGame($_GET['id']);
+
+        $this->view->render('Reviews/Game-Reviews');
     }
 }
