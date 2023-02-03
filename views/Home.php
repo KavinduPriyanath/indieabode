@@ -19,7 +19,7 @@
     include 'includes/footer.php';
     ?>
 
-    <?php if (isset($_SESSION['id']) && !empty($_SESSION['id'])) { ?>
+    <?php if (isset($_SESSION['logged']) && !empty($_SESSION['id'])) { ?>
         <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
     <?php } else { ?>
         <script src="<?php echo BASE_URL; ?>public/js/navbarcopy.js"></script>

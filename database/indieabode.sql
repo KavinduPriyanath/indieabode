@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 03, 2023 at 06:56 AM
+-- Generation Time: Feb 03, 2023 at 10:16 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -47,6 +47,29 @@ CREATE TABLE `account` (
 
 INSERT INTO `account` (`userID`, `profilePhoto`, `location`, `tagline`, `socialLink`, `phoneNumber`, `fullName`, `cardNo`, `expireDate`, `cvv`, `birthDate`) VALUES
 (29, '', 'Sri Lanka', 'I am a full time indie game developer', '', '0768729813', 'Kavindu Priyanath', '', '0000-00-00', '', '0000-00-00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `activation_keys`
+--
+
+CREATE TABLE `activation_keys` (
+  `userID` int(11) NOT NULL,
+  `activationCode` varchar(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `activation_keys`
+--
+
+INSERT INTO `activation_keys` (`userID`, `activationCode`) VALUES
+(31, '12457'),
+(32, '41753'),
+(32, '80621'),
+(32, '43436'),
+(32, '48155'),
+(32, '33799');
 
 -- --------------------------------------------------------
 
@@ -477,7 +500,7 @@ CREATE TABLE `gamer` (
   `lastName` varchar(50) NOT NULL,
   `loginDate` timestamp NOT NULL DEFAULT current_timestamp(),
   `logoutTime` timestamp NOT NULL DEFAULT current_timestamp(),
-  `verified` varchar(255) NOT NULL,
+  `verified` int(1) NOT NULL DEFAULT 0,
   `token` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -486,17 +509,17 @@ CREATE TABLE `gamer` (
 --
 
 INSERT INTO `gamer` (`gamerID`, `email`, `password`, `accountStatus`, `avatar`, `userRole`, `username`, `firstName`, `lastName`, `loginDate`, `logoutTime`, `verified`, `token`) VALUES
-(16, 'himash@gmail.com', '1234Himash*', 0, '', '', 'Himash', 'kavindu', 'priyanath', '2022-12-16 05:44:52', '2022-12-16 05:44:52', '', ''),
-(20, 'gg@gmail.com', '123', 0, '', '', '2020cs029', 'kavindu', 'priyanath', '2023-01-13 13:43:58', '2023-01-13 13:43:58', '', ''),
-(23, 'Kaeya1@gmail.com', 'dwdw', 0, '', '', '2020cs029', 'dwd', 'dwdw', '2023-01-13 14:00:10', '2023-01-13 14:00:10', '', ''),
-(27, 'gg11@gmail.com', '1234', 0, 'avatar1.png', '', 'kavindu1', 'dwd', 'rasanka', '2023-01-30 12:57:08', '2023-01-30 12:57:08', '', ''),
-(29, 'fefrg@tht.comwd', '12', 0, 'avatar3.png', 'game developer', 'Beidouwdw', 'kavindu', 'Alwis', '2023-01-30 13:25:35', '2023-01-30 13:25:35', '', ''),
-(30, '7prenddwd@gmail.com', '$2y$10$X5kEg1zAm8CkveveKRBgMOh7JIvGR6wEs1unUykymgSnaJpus3E52', 0, 'avatar3.png', 'game developer', 'dwdwd', 'dwd', 'dwdw', '2023-01-31 13:20:50', '2023-01-31 13:20:50', '', ''),
-(31, 'kavindupriyanath@gmail.com', '$2y$10$uJ7hc9iIp.k09kiHcxYYr.XWp5f05N0zOyddye/s3JTTR4U5az2ne', 0, 'avatar4.png', 'game developer', 'Prend', 'Kavindu', 'Priyanath', '2023-02-02 06:03:50', '2023-02-02 06:03:50', '', ''),
-(32, 'gg12@gmail.com', '$2y$10$UDoYcHzhBBvds30XRrKcMuYo0ihiawRM8tXsBMJ8FN0VUeg1l3JXS', 0, 'avatar1.png', 'gamer', 'dwd', 'dwd', 'ddw', '2023-02-03 05:46:08', '2023-02-03 05:46:08', '', ''),
-(33, '12@gmail.com', '$2y$10$oVcZsDSaBOSh3FVa1RbbCuh49BFf.gQLLiR5vTmUZU4g8oP/MecOe', 0, 'avatar2.png', 'asset creator', 'fefef', 'dwd', 'dwdwd', '2023-02-03 05:48:40', '2023-02-03 05:48:40', '', ''),
-(34, '123@gmail.com', '$2y$10$WIjUW6Ygh4wn3aBxwbl.QO7ILJqVbkqsC7zHiF.Adm0Wlmw6eNd.O', 0, 'avatar3.png', 'gamejam organizer', 'Beidouww', 'kimalw', 'wdwd', '2023-02-03 05:50:44', '2023-02-03 05:50:44', '', ''),
-(35, 's@gmail.com', '$2y$10$OMVIPdbrwmtDQitYDQ6iBexEVvWh1BdSb5m8i4H4NKAPCJQwk2De2', 0, 'avatar1.png', 'game publisher', 'sss', 'kavinduss', 'sss', '2023-02-03 05:52:28', '2023-02-03 05:52:28', '', '');
+(16, 'himash@gmail.com', '1234Himash*', 0, '', '', 'Himash', 'kavindu', 'priyanath', '2022-12-16 05:44:52', '2022-12-16 05:44:52', 0, ''),
+(20, 'gg@gmail.com', '123', 0, '', '', '2020cs029', 'kavindu', 'priyanath', '2023-01-13 13:43:58', '2023-01-13 13:43:58', 0, ''),
+(23, 'Kaeya1@gmail.com', 'dwdw', 0, '', '', '2020cs029', 'dwd', 'dwdw', '2023-01-13 14:00:10', '2023-01-13 14:00:10', 0, ''),
+(27, 'gg11@gmail.com', '1234', 0, 'avatar1.png', '', 'kavindu1', 'dwd', 'rasanka', '2023-01-30 12:57:08', '2023-01-30 12:57:08', 0, ''),
+(29, 'fefrg@tht.comwd', '12', 0, 'avatar3.png', 'game developer', 'Beidouwdw', 'kavindu', 'Alwis', '2023-01-30 13:25:35', '2023-01-30 13:25:35', 0, ''),
+(30, '7prenddwd@gmail.com', '$2y$10$X5kEg1zAm8CkveveKRBgMOh7JIvGR6wEs1unUykymgSnaJpus3E52', 0, 'avatar3.png', 'game developer', 'dwdwd', 'dwd', 'dwdw', '2023-01-31 13:20:50', '2023-01-31 13:20:50', 0, ''),
+(31, 'kavindupriyanath@gmail.com', '$2y$10$uJ7hc9iIp.k09kiHcxYYr.XWp5f05N0zOyddye/s3JTTR4U5az2ne', 0, 'avatar4.png', 'game developer', 'Prend', 'Kavindu', 'Priyanath', '2023-02-02 06:03:50', '2023-02-02 06:03:50', 1, ''),
+(32, 'gg12@gmail.com', '$2y$10$UDoYcHzhBBvds30XRrKcMuYo0ihiawRM8tXsBMJ8FN0VUeg1l3JXS', 0, 'avatar1.png', 'gamer', 'dwd', 'dwd', 'ddw', '2023-02-03 05:46:08', '2023-02-03 05:46:08', 0, ''),
+(33, '12@gmail.com', '$2y$10$oVcZsDSaBOSh3FVa1RbbCuh49BFf.gQLLiR5vTmUZU4g8oP/MecOe', 0, 'avatar2.png', 'asset creator', 'fefef', 'dwd', 'dwdwd', '2023-02-03 05:48:40', '2023-02-03 05:48:40', 0, ''),
+(34, '123@gmail.com', '$2y$10$WIjUW6Ygh4wn3aBxwbl.QO7ILJqVbkqsC7zHiF.Adm0Wlmw6eNd.O', 0, 'avatar3.png', 'gamejam organizer', 'Beidouww', 'kimalw', 'wdwd', '2023-02-03 05:50:44', '2023-02-03 05:50:44', 0, ''),
+(35, 's@gmail.com', '$2y$10$OMVIPdbrwmtDQitYDQ6iBexEVvWh1BdSb5m8i4H4NKAPCJQwk2De2', 0, 'avatar1.png', 'game publisher', 'sss', 'kavinduss', 'sss', '2023-02-03 05:52:28', '2023-02-03 05:52:28', 0, '');
 
 -- --------------------------------------------------------
 
@@ -805,6 +828,12 @@ ALTER TABLE `account`
   ADD PRIMARY KEY (`userID`);
 
 --
+-- Indexes for table `activation_keys`
+--
+ALTER TABLE `activation_keys`
+  ADD KEY `userID` (`userID`);
+
+--
 -- Indexes for table `addassetsale`
 --
 ALTER TABLE `addassetsale`
@@ -1015,6 +1044,12 @@ ALTER TABLE `user_role`
 --
 ALTER TABLE `account`
   ADD CONSTRAINT `account_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `gamer` (`gamerID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `activation_keys`
+--
+ALTER TABLE `activation_keys`
+  ADD CONSTRAINT `activation_keys_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `gamer` (`gamerID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `asset_stats`
