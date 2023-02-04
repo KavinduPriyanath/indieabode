@@ -20,10 +20,10 @@
 		<a href="#" class="brand"><i class='bx bxs-smile icon'></i>Indie Abode</a>
 		<ul class="side-menu">
 			<li class="divider" data-text="main">Main</li>
-			<li><a href="../Main/GameDB" class="active"><i class='bx bxs-dashboard icon'></i> Dashboard <i
+			<li><a href="<?php echo BASE_URL; ?>GameDB" class="active"><i class='bx bxs-dashboard icon'></i> Dashboard <i
 						class='bx bx-chevron-right icon-right'></i> </a></li>
 			<ul class="side-dropdown">
-				<li><a href="../Main/Admin_G.php">Game Dashboard</a></li>
+				<li><a href="<?php echo BASE_URL; ?>Admin_G">Game Dashboard</a></li>
 				<li><a href="#">Asset Dashboard</a></li>
 				<li><a href="#">Gigs Dashboard</a></li>
 				<li><a href="#">Crowdfund Dashboard</a></li>
@@ -35,9 +35,9 @@
 			</li>
 
 			<li class="divider" data-text="Settings">Settings</li>
-			<li><a href="#"><i class='bx bx-user-plus icon'></i> Add new admin</a></li>
+			<li><a href="<?php echo BASE_URL; ?>Admin_addNew"><i class='bx bx-user-plus icon'></i> Add new admin</a></li>
 			<li>
-				<a href="#"><i class='bx bxs-trash icon'></i> Remove user</a>
+				<a href="<?php echo BASE_URL; ?>Admin_userMg"><i class='bx bxs-trash icon'></i> Remove user</a>
 			</li>
 		</ul>
 	</section>
@@ -46,7 +46,7 @@
 	<!-- NAVBAR -->
 	<section id="content">
 		<!-- NAVBAR -->
-		<nav>
+		<!-- <nav>
 			<i class='bx bx-menu toggle-sidebar'></i>
 			<form action="#">
 				<div class="form-group">
@@ -72,7 +72,7 @@
 					<li><a href="#"><i class='bx bxs-log-out-circle'></i> Logout</a></li>
 				</ul>
 			</div>
-		</nav>
+		</nav> -->
 		<!-- NAVBAR -->
 
 		<!-- MAIN -->

@@ -9,7 +9,7 @@ class Admin_userMg_Model extends Model
     }
 
     function viewUser(){
-        $sql = "SELECT * FROM gamer";
+        $sql = "SELECT * FROM gamer WHERE accountStatus = 0";
     
         $stmt = $this->db->prepare($sql);
 

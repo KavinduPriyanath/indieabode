@@ -20,24 +20,24 @@
 		<a href="#" class="brand"><i class='bx bxs-smile icon'></i>Indie Abode</a>
 		<ul class="side-menu">
 			<li class="divider" data-text="main">Main</li>
-			<li><a href="../Main/GameDB.php" class="active"><i class='bx bxs-dashboard icon'></i> Dashboard <i
+			<li><a href="<?php echo BASE_URL; ?>GameDB" class="active"><i class='bx bxs-dashboard icon'></i> Dashboard <i
 						class='bx bx-chevron-right icon-right'></i> </a></li>
 			<ul class="side-dropdown">
-				<li><a href="../Main/Admin_G.php">Game Dashboard</a></li>
-				<li><a href="asset-db.html">Asset Dashboard</a></li>
-				<li><a href="gigs-db.html">Gigs Dashboard</a></li>
-				<li><a href="crowdfund-db.html">Crowdfund Dashboard</a></li>
-				<li><a href="devlogs-db.html">Devlogs Dashboard</a></li>
-				<li><a href="gamejam-db.html">Game Jam Dashboard</a></li>
+				<li><a href="<?php echo BASE_URL; ?>Admin_G">Game Dashboard</a></li>
+				<li><a href="#">Asset Dashboard</a></li>
+				<li><a href="#">Gigs Dashboard</a></li>
+				<li><a href="#">Crowdfund Dashboard</a></li>
+				<li><a href="#">Devlogs Dashboard</a></li>
+				<li><a href="#">Game Jam Dashboard</a></li>
 			</ul>
 			<li>
-				<a href="complaints.html"><i class='bx bxs-message-square-error icon'></i> Complaints </a>
+				<a href="#"><i class='bx bxs-message-square-error icon'></i> Complaints </a>
 			</li>
 
 			<li class="divider" data-text="Settings">Settings</li>
-			<li><a href="addnew-admin.html"><i class='bx bx-user-plus icon'></i> Add new admin</a></li>
+			<li><a href="<?php echo BASE_URL; ?>Admin_addNew"><i class='bx bx-user-plus icon'></i> Add new admin</a></li>
 			<li>
-				<a href="remove-user.html"><i class='bx bxs-trash icon'></i> Remove user</a>
+				<a href="<?php echo BASE_URL; ?>Admin_userMg"><i class='bx bxs-trash icon'></i> Remove user</a>
 			</li>
 		</ul>
 	</section>
