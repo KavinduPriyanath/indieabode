@@ -89,7 +89,9 @@
 
             <div class="row">
                 <p class="title">Developer</p>
-                <p class="sub-title"><?= $this->gameDeveloper['username']; ?></p>
+                <a href="/indieabode/portfolio?profile=<?= $this->gameDeveloper['username']; ?>">
+                    <p class="sub-title"><?= $this->gameDeveloper['username']; ?></p>
+                </a>
             </div>
             <hr />
 

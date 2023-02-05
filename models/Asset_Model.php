@@ -125,4 +125,32 @@ class Asset_Model extends Model
 
         return $stats;
     }
+
+    function AddtoCart($assetID, $ownerID)
+    {
+
+        $sql = "INSERT INTO cart(userID, itemID) VALUES (?,?)";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute(["$ownerID", "$assetID"]);
+    }
+
+    function AlreadyInCart($assetID, $userID)
+    {
+
+        $sql = "SELECT * FROM cart WHERE itemID='$assetID' AND userID='$userID' LIMIT 1";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $asset = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($asset != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

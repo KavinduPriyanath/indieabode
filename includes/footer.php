@@ -5,9 +5,9 @@
     <div class="first-row">
         <div class="left">
             <a href="#">About</a>
-            <a href="#">Privacy</a>
-            <a href="#">Terms</a>
-            <a href="#">Help</a>
+            <a href="/indieabode/legal/privacy_policy">Privacy</a>
+            <a href="/indieabode/legal/terms_of_service">Terms</a>
+            <a href="/indieabode/support_center">Help</a>
         </div>
         <div class="right">
             <a href="#"><img src="/indieabode/public/images/footer/twitter.png" alt="" /></a>

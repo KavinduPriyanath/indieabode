@@ -92,7 +92,7 @@
                                 <div class=".ulsub">
                                     <a href="<?php echo BASE_URL; ?>feed">Feed <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                     <a href="<?php echo BASE_URL; ?>forum">Forum <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                                    <a href="<?php echo BASE_URL; ?>help-&-support">Help&nbsp;&&nbsp;Support
+                                    <a href="<?php echo BASE_URL; ?>support_center">Help&nbsp;&&nbsp;Support
                                         <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                 </div>
                             </div>
@@ -128,7 +128,7 @@
                                     <a href="/indieabode/dashboard">Dashboard <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                     <a href="/indieabode/gameupload">Upload&nbsp;project
                                         <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                                    <a href="/indieabode/portfolio">Portfolio <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                                    <a href="/indieabode/portfolio?profile=<?= $_SESSION['username']; ?>">Portfolio <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
 
                                     <hr />
 
@@ -197,7 +197,7 @@
                                 <div class=".ulsub">
                                     <a href="<?php echo BASE_URL; ?>feed">Feed <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                     <a href="<?php echo BASE_URL; ?>forum">Forum <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                                    <a href="<?php echo BASE_URL; ?>help-&-support">Help&nbsp;&&nbsp;Support
+                                    <a href="<?php echo BASE_URL; ?>support_center">Help&nbsp;&&nbsp;Support
                                         <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                 </div>
                             </div>
@@ -287,7 +287,7 @@
                                 <div class=".ulsub">
                                     <a href="<?php echo BASE_URL; ?>feed">Feed <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                     <a href="<?php echo BASE_URL; ?>forum">Forum <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                                    <a href="<?php echo BASE_URL; ?>help-&-support">Help&nbsp;&&nbsp;Support
+                                    <a href="<?php echo BASE_URL; ?>support_center">Help&nbsp;&&nbsp;Support
                                         <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                 </div>
                             </div>
@@ -370,7 +370,7 @@
                                 <div class=".ulsub">
                                     <a href="<?php echo BASE_URL; ?>feed">Feed <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                     <a href="<?php echo BASE_URL; ?>forum">Forum <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                                    <a href="<?php echo BASE_URL; ?>help-&-support">Help&nbsp;&&nbsp;Support
+                                    <a href="<?php echo BASE_URL; ?>support_center">Help&nbsp;&&nbsp;Support
                                         <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                 </div>
                             </div>
@@ -462,7 +462,7 @@
                                 <div class=".ulsub">
                                     <a href="<?php echo BASE_URL; ?>feed">Feed <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                     <a href="<?php echo BASE_URL; ?>forum">Forum <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                                    <a href="<?php echo BASE_URL; ?>help-&-support">Help&nbsp;&&nbsp;Support
+                                    <a href="<?php echo BASE_URL; ?>support_center">Help&nbsp;&&nbsp;Support
                                         <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                 </div>
                             </div>
@@ -590,7 +590,7 @@
                             <div class=".ulsub">
                                 <a href="<?php echo BASE_URL; ?>feed">Feed <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                 <a href="<?php echo BASE_URL; ?>forum">Forum <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                                <a href="<?php echo BASE_URL; ?>help-&-support">Help&nbsp;&&nbsp;Support
+                                <a href="<?php echo BASE_URL; ?>support_center">Help&nbsp;&&nbsp;Support
                                     <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                             </div>
                         </div>

@@ -26,7 +26,7 @@ class Game_Model extends Model
     {
         $gameDeveloperID = $game['gameDeveloperID'];
 
-        $sql = "SELECT * FROM gamer WHERE gamerID='$gameDeveloperID'";
+        $sql = "SELECT * FROM gamer WHERE gamerID='$gameDeveloperID' LIMIT 1";
 
         $stmt = $this->db->prepare($sql);
 

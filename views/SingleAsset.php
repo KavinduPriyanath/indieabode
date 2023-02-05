@@ -96,7 +96,9 @@
                 <a href="/indieabode/asset/checkout?id=<?= $this->asset['assetID'] ?>">
                     <div class="buy-btn">Buy Now</div>
                 </a>
-                <div class="buy-btn">Add to Cart</div>
+                <a href="/indieabode/asset/AddToCart?id=<?= $this->asset['assetID'] ?>">
+                    <div class="buy-btn" id="cart-btn">Add to Cart</div>
+                </a>
             </div>
 
             <div id="claimed">
@@ -160,6 +162,16 @@
         <script>
             document.getElementById('not-claimed').style.display = 'block';
             document.getElementById('claimed').style.display = 'none';
+        </script>
+    <?php } ?>
+
+    <?php if ($this->hasInCart) { ?>
+        <script>
+            document.getElementById('cart-btn').innerHTML = "View In Cart";
+        </script>
+    <?php } else { ?>
+        <script>
+            document.getElementById('cart-btn').innerHTML = "Add to Cart";
         </script>
     <?php } ?>
 

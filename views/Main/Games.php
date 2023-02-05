@@ -194,10 +194,9 @@
     <?php } ?>
 
     <script>
-        <?php if ($_GET['page'] == 1) { ?>
+        <?php if (count($_GET) == 1 || $_GET['page'] == 1) { ?>
             document.getElementById("prev").style.pointerEvents = "none";
-        <?php  } ?>
-        <?php if ($_GET['page'] == $this->gamesPagesCount) { ?>
+        <?php } else if ($_GET['page'] == $this->gamesPagesCount) { ?>
             document.getElementById("next").style.pointerEvents = "none";
         <?php  } ?>
     </script>

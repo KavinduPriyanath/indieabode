@@ -29,6 +29,8 @@ class Asset extends Controller
 
             $this->view->hasClaimed = $this->model->AlreadyClaimed($assetID, $_SESSION['id']);
 
+            $this->view->hasInCart = $this->model->AlreadyInCart($assetID, $_SESSION['id']);
+
             $this->view->stats = $this->model->AssetStats($assetID);
 
             $this->view->render('SingleAsset');
@@ -103,5 +105,15 @@ class Asset extends Controller
         $this->view->asset = $this->model->showSingleAsset($_GET['id']);
 
         $this->view->render('Reviews/Asset-Reviews');
+    }
+
+    function AddToCart()
+    {
+        $this->model->AddtoCart($_GET['id'], $_SESSION['id']);
+
+        $query = parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
+        parse_str($query, $result);
+
+        header('Location:/indieabode/asset/?' . http_build_query($result));
     }
 }
