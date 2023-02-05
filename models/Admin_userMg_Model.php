@@ -8,9 +8,19 @@ class Admin_userMg_Model extends Model
         parent::__construct();
     }
 
-    function viewUser(){
-        $sql = "SELECT * FROM gamer WHERE accountStatus = 0";
-    
+    function viewUser($filter_text=""){
+
+        
+
+        if ($filter_text==""){
+            $sql = "SELECT * FROM `gamer` WHERE accountStatus=0";
+        }
+
+        else{
+            $sql = "SELECT * FROM `gamer` WHERE accountStatus=0 AND userRole= '".$filter_text."'";
+        }
+        
+
         $stmt = $this->db->prepare($sql);
 
         $stmt->execute();
@@ -20,6 +30,8 @@ class Admin_userMg_Model extends Model
 
        return $user;
     }
+
+    
 
     function delete_user($user_id){
         $sql = "UPDATE gamer SET accountStatus=1 WHERE gamerID = ".$user_id;

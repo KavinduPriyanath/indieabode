@@ -8,6 +8,9 @@
     <title>Indieabode</title>
 
     <style>
+		body {
+	background-image:url("<?php echo BASE_URL?>public/images/background/1.jpg");
+		}
         <?php
         include 'public/css/admin.css';
         include 'public/css/admin_userMg.css';
@@ -16,6 +19,7 @@
 </head>
 
 <body>
+	
     	<!-- SIDEBAR -->
 	<section id="sidebar">
 		<a href="#" class="brand"><i class='bx bxs-smile icon'></i>Indie Abode</a>
@@ -63,12 +67,12 @@
 			</div>
 
 			<div class="search-user-type">
-				<button class="btn active" onclick="filterSelection('all')"> Show all Users</button>
-				<button class="btn" onclick="filterSelection('cars')"> Gamers</button>
-				<button class="btn" onclick="filterSelection('animals')"> Game Developers</button>
-				<button class="btn" onclick="filterSelection('fruits')"> Game Publishers</button>
-				<button class="btn" onclick="filterSelection('colors')"> Asset Creators</button>
-				<button class="btn" onclick="filterSelection('colors')"> Game Jam Organizers</button>
+				<button class="<?php echo $this->active == 'all' ? 'btn active' : 'btn'; ?>"   onclick="filterSelection('all')"> Show all Users</button>
+				<a class="<?php echo $this->active == 'gamer' ? 'btn active' : 'btn'; ?>"  href='/indieabode/Admin_userMg/viewFilteredUser/gamer'"> Gamers</a>
+				<button class="<?php echo $this->active == 'game_developer' ? 'btn active' : 'btn'; ?>"  onclick="filterSelection('game_developer')"> Game Developers</button>
+				<button class="<?php echo $this->active == 'game_publisher' ? 'btn active' : 'btn'; ?>"  onclick="filterSelection('game_publisher')"> Game Publishers</button>
+				<button class="<?php echo $this->active == 'assets_creator' ? 'btn active' : 'btn'; ?>"  onclick="filterSelection('assets_creator')"> Asset Creators</button>
+				<button class="<?php echo $this->active == 'gamejam_organizer' ? 'btn active' : 'btn'; ?>"  onclick="filterSelection('gamejam_organizer')"> Game Jam Organizers</button>
 			</div>
 			<!--
 			<div class="container">
@@ -128,13 +132,31 @@
 
 
 
-    <script src="<?php echo BASE_URL; ?>public/js/admin.js"></script>
-    <script src="<?php echo BASE_URL; ?>public/js/admin_userMg.js"></script>
-    <?php if (isset($_SESSION['id']) && !empty($_SESSION['id'])) { ?>
-        <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
-    <?php } else { ?>
-        <script src="<?php echo BASE_URL; ?>public/js/navbarcopy.js"></script>
-    <?php } ?>
+	<script>
+		function filterSelection(filter_text) {
+		// var x, i;
+		// x = document.getElementsByClassName("filterDiv");
+		// if (c == "all") c = "";
+		// for (i = 0; i < x.length; i++) {
+		//   w3RemoveClass(x[i], "show");
+		//   if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+		// }
+
+		console.log(filter_text)
+
+		if (filter_text==="all"){
+			window.location.href = '/indieabode/Admin_userMg'
+		}
+
+		else{
+			window.location.href = '/indieabode/Admin_userMg/viewFilteredUser/'+ filter_text
+		}
+
+		
+
+		}
+	</script>
+
 
 </body>
 

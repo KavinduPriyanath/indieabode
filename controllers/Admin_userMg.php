@@ -27,7 +27,21 @@ class Admin_userMg extends Controller
         //    echo $user_id;
         //    $this->view = $this->model->delete_user($user_id);
         // }
+        $this->view->active="all";
+        $this->view->render('Main/Admin_userMg');
+    }
 
+    public function viewFilteredUser($filter_text){
+
+        
+        $this->view->users = $this->model->viewUser($filter_text);
+        if(empty($this->users)){
+            echo "empty";
+
+        }else{
+            echo "na";
+        }
+        $this->view->active=$filter_text;
         $this->view->render('Main/Admin_userMg');
     }
 
