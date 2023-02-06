@@ -37,7 +37,7 @@ class Gameupload_Model extends Model
     ) {
         $sql = "INSERT INTO freegame (gameName, releaseStatus, 
         gameDetails, 
-        gameTrailor, 
+        gameTrailor, 0
         gameTagline, 
         gameClassification, 
         gameTags, 
