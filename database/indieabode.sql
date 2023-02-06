@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 06, 2023 at 06:16 AM
+-- Generation Time: Feb 06, 2023 at 06:38 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -151,9 +151,16 @@ INSERT INTO `asset_stats` (`assetID`, `downloads`, `views`, `ratings`, `ratingCo
 
 CREATE TABLE `cart` (
   `id` int(11) NOT NULL,
-  `gamerID` int(11) NOT NULL,
-  `itemID` int(11) NOT NULL
+  `userID` varchar(30) NOT NULL,
+  `itemID` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`id`, `userID`, `itemID`) VALUES
+(1, '31', '1');
 
 -- --------------------------------------------------------
 
@@ -558,6 +565,18 @@ CREATE TABLE `gamesale` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `games_cart`
+--
+
+CREATE TABLE `games_cart` (
+  `id` int(11) NOT NULL,
+  `gamerID` int(11) NOT NULL,
+  `itemID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `game_specifications`
 --
 
@@ -890,8 +909,7 @@ ALTER TABLE `asset_stats`
 -- Indexes for table `cart`
 --
 ALTER TABLE `cart`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `gamerID` (`gamerID`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `complaint_reasons_items`
@@ -948,6 +966,13 @@ ALTER TABLE `gamer`
   ADD PRIMARY KEY (`gamerID`);
 
 --
+-- Indexes for table `games_cart`
+--
+ALTER TABLE `games_cart`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `gamerID` (`gamerID`);
+
+--
 -- Indexes for table `gig`
 --
 ALTER TABLE `gig`
@@ -987,7 +1012,7 @@ ALTER TABLE `account`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `complaint_reasons_items`
@@ -1044,6 +1069,12 @@ ALTER TABLE `gamer`
   MODIFY `gamerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
+-- AUTO_INCREMENT for table `games_cart`
+--
+ALTER TABLE `games_cart`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `gig`
 --
 ALTER TABLE `gig`
@@ -1084,10 +1115,10 @@ ALTER TABLE `asset_stats`
   ADD CONSTRAINT `asset_stats_ibfk_1` FOREIGN KEY (`assetID`) REFERENCES `freeasset` (`assetID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `cart`
+-- Constraints for table `games_cart`
 --
-ALTER TABLE `cart`
-  ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`gamerID`) REFERENCES `gamer` (`gamerID`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `games_cart`
+  ADD CONSTRAINT `games_cart_ibfk_1` FOREIGN KEY (`gamerID`) REFERENCES `gamer` (`gamerID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `gig`
