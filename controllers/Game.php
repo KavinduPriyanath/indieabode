@@ -23,6 +23,8 @@ class Game extends Controller
 
             $this->view->ssCount = count($this->model->getScreenshots($gameID));
 
+            $this->view->popularGames = $this->model->PopularGames();
+
             $this->view->render('SingleGame');
         }
     }

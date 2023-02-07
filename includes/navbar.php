@@ -98,19 +98,6 @@
                             </div>
                         </div>
 
-                        <div class="dropdown" id="not-logged" data-dropdown>
-                            <a href="#" data-dropdown-button>Sign Up<i class="fa fa-angle-down droparrow"></i></a>
-
-                            <div class="dropdown-menu">
-                                <div class="arrow arrow5"></div>
-                                <div class=".ulsub">
-                                    <a href="/indieabode/login">Log&nbsp;In <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                                    <a href="/indieabode/register">Sign&nbsp;Up
-                                        <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                                </div>
-                            </div>
-                        </div>
-
                         <div class="dropdown" id="logged" data-dropdown>
                             <a href="#" data-dropdown-button>
                                 <div class="pp"><img src="public/images/avatars/<?= $_SESSION['avatar'] ?>" alt=""></div>
@@ -596,7 +583,7 @@
                         </div>
                     </div>
 
-                    <div class="dropdown" id="not-logged" data-dropdown>
+                    <div class="dropdown" data-dropdown>
                         <a href="#" data-dropdown-button>Sign Up<i class="fa fa-angle-down droparrow"></i></a>
 
                         <div class="dropdown-menu">
@@ -609,33 +596,7 @@
                         </div>
                     </div>
 
-                    <div class="dropdown" id="logged" data-dropdown>
-                        <a href="#" data-dropdown-button>
-                            <div class="pp"><img src="public/images/avatars/<?= $_SESSION['avatar'] ?>" alt=""></div>
-                            <?= $_SESSION['username']; ?>
-                        </a>
 
-                        <div class="dropdown-menu">
-                            <div class="arrow arrow6"></div>
-                            <div class=".ulsub">
-                                <a href="<?php echo BASE_URL; ?>library">Library <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                                <a href="<?php echo BASE_URL; ?>cart">Cart <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-
-                                <hr />
-
-                                <a href="/indieabode/dashboard">Dashboard <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                                <a href="/indieabode/gameupload">Upload&nbsp;project
-                                    <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                                <a href="/indieabode/portfolio">Portfolio <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-
-                                <hr />
-
-                                <a>Settings <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                                <a href="/indieabode/login/logout">Log&nbsp;Out
-                                    <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                            </div>
-                        </div>
-                    </div>
 
                     <div class="search">
                         <form action="" class="search-bar">

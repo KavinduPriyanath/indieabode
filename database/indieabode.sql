@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 06, 2023 at 06:38 AM
+-- Generation Time: Feb 07, 2023 at 12:38 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -46,8 +46,7 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`userID`, `profilePhoto`, `location`, `tagline`, `socialLink`, `phoneNumber`, `fullName`, `cardNo`, `expireDate`, `cvv`, `birthDate`) VALUES
-(16, '', 'Sri Lanka', 'I am a full time indie game developer', '', '0768729813', 'Kavindu Priyanath', '', '0000-00-00', '', '0000-00-00'),
-(31, '', 'Sri Lanka', 'Full time indie game developer', '', '', '', '', '0000-00-00', '', '0000-00-00');
+(16, '', 'Sri Lanka', 'I am a full time indie game developer', '', '0768729813', 'Kavindu Priyanath', '', '0000-00-00', '', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -65,14 +64,15 @@ CREATE TABLE `activation_keys` (
 --
 
 INSERT INTO `activation_keys` (`userID`, `activationCode`) VALUES
-(31, '12457'),
 (32, '41753'),
 (32, '80621'),
 (32, '43436'),
 (32, '48155'),
 (32, '33799'),
 (30, '53864'),
-(36, '21467');
+(36, '21467'),
+(30, '91094'),
+(39, '55150');
 
 -- --------------------------------------------------------
 
@@ -94,6 +94,19 @@ CREATE TABLE `addassetsale` (
 CREATE TABLE `addgamesale` (
   `gameSaleID` int(11) NOT NULL,
   `gameID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `id` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -160,7 +173,11 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id`, `userID`, `itemID`) VALUES
-(1, '31', '1');
+(1, '31', '1'),
+(2, '31', '2'),
+(3, '31', '1'),
+(4, '31', '1'),
+(5, '37', '2');
 
 -- --------------------------------------------------------
 
@@ -282,23 +299,25 @@ CREATE TABLE `devlog` (
   `devlogImg` varchar(255) NOT NULL,
   `gameName` varchar(255) NOT NULL,
   `devLogID` int(11) NOT NULL,
-  `ReleaseDate` date DEFAULT NULL
+  `ReleaseDate` date DEFAULT NULL,
+  `likeCount` int(11) NOT NULL DEFAULT 0,
+  `commentCount` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `devlog`
 --
 
-INSERT INTO `devlog` (`publishDate`, `description`, `name`, `Tagline`, `Type`, `Visibility`, `devlogImg`, `gameName`, `devLogID`, `ReleaseDate`) VALUES
-('2022-12-15 19:26:39', 'What is a game inventory?\r\nIn RPGs, an item inventory is a common UI feature where one can view all the items that have been collected thus far. Often, these are sorted by categories, such as \"equipment\" or \"potions.\" In other game genres, the items may take effect as soon as they are obtained.', 'Added Inventory System', 'craft new items easily with the upgraded inventory', 'Game Design', 'public', 'SS-Added Inventory System.png', 'Almighty Shields', 14, '0000-00-00'),
-('2022-12-15 19:26:39', 'What is a game inventory?\r\nIn RPGs, an item inventory is a common UI feature where one can view all the items that have been collected thus far. Often, these are sorted by categories, such as \"equipment\" or \"potions.\" In other game genres, the items may take effect as soon as they are obtained.', 'Added Inventory System', 'craft new items easily with the upgraded inventory', 'Game Design', 'public', 'SS-Added Inventory System.png', 'Almighty Shields', 20, '0000-00-00'),
-('2022-12-15 19:26:39', 'What is a game inventory?\r\nIn RPGs, an item inventory is a common UI feature where one can view all the items that have been collected thus far. Often, these are sorted by categories, such as \"equipment\" or \"potions.\" In other game genres, the items may take effect as soon as they are obtained.', 'Added Inventory System', 'craft new items easily with the upgraded inventory', 'Game Design', 'public', 'SS-Added Inventory System.png', 'Almighty Shields', 21, '2023-01-31'),
-('2022-12-15 19:26:39', 'What is a game inventory?\r\nIn RPGs, an item inventory is a common UI feature where one can view all the items that have been collected thus far. Often, these are sorted by categories, such as \"equipment\" or \"potions.\" In other game genres, the items may take effect as soon as they are obtained.', 'Added Inventory System', 'craft new items easily with the upgraded inventory', 'Game Design', 'public', 'SS-Added Inventory System.png', 'Almighty Shields', 22, '2023-01-31'),
-('2023-01-30 15:07:27', 'dwdwd', 'dwd', 'ddw', 'Game Design', 'draft', '', 'Stray', 23, '0000-00-00'),
-('2023-01-31 15:51:49', 'gregergerg', 'fewfewf', 'gergre', 'Tutorial', 'draft', '', 'Albion Online 2', 24, '0000-00-00'),
-('2023-01-31 15:57:34', 'gegegeg', 'weff', 'geg', 'Tutorial', 'draft', 'Cover-Albion Online 2.jpg', 'Albion Online 2', 25, '0000-00-00'),
-('2023-01-31 16:01:20', 'gregerg', 'gergre', 'grgerg', 'Major Update', 'draft', 'SS-Albion Online 2.png', 'Albion Online 2', 26, '0000-00-00'),
-('2023-01-31 16:15:19', 'dwdwd', 'dwd', 'dwd', 'Major Update', 'draft', 'SS-Albion Online 2.jpg', 'Albion Online 2', 27, '0000-00-00');
+INSERT INTO `devlog` (`publishDate`, `description`, `name`, `Tagline`, `Type`, `Visibility`, `devlogImg`, `gameName`, `devLogID`, `ReleaseDate`, `likeCount`, `commentCount`) VALUES
+('2022-12-15 19:26:39', 'What is a game inventory?\r\nIn RPGs, an item inventory is a common UI feature where one can view all the items that have been collected thus far. Often, these are sorted by categories, such as \"equipment\" or \"potions.\" In other game genres, the items may take effect as soon as they are obtained.', 'Added Inventory System', 'craft new items easily with the upgraded inventory', 'Game Design', 'public', 'SS-Added Inventory System.png', 'Almighty Shields', 14, '0000-00-00', 0, 0),
+('2022-12-15 19:26:39', 'What is a game inventory?\r\nIn RPGs, an item inventory is a common UI feature where one can view all the items that have been collected thus far. Often, these are sorted by categories, such as \"equipment\" or \"potions.\" In other game genres, the items may take effect as soon as they are obtained.', 'Added Inventory System', 'craft new items easily with the upgraded inventory', 'Game Design', 'public', 'SS-Added Inventory System.png', 'Almighty Shields', 20, '0000-00-00', 0, 0),
+('2022-12-15 19:26:39', 'What is a game inventory?\r\nIn RPGs, an item inventory is a common UI feature where one can view all the items that have been collected thus far. Often, these are sorted by categories, such as \"equipment\" or \"potions.\" In other game genres, the items may take effect as soon as they are obtained.', 'Added Inventory System', 'craft new items easily with the upgraded inventory', 'Game Design', 'public', 'SS-Added Inventory System.png', 'Almighty Shields', 21, '2023-01-31', 0, 0),
+('2022-12-15 19:26:39', 'What is a game inventory?\r\nIn RPGs, an item inventory is a common UI feature where one can view all the items that have been collected thus far. Often, these are sorted by categories, such as \"equipment\" or \"potions.\" In other game genres, the items may take effect as soon as they are obtained.', 'Added Inventory System', 'craft new items easily with the upgraded inventory', 'Game Design', 'public', 'SS-Added Inventory System.png', 'Almighty Shields', 22, '2023-01-31', 0, 0),
+('2023-01-30 15:07:27', 'dwdwd', 'dwd', 'ddw', 'Game Design', 'draft', '', 'Stray', 23, '0000-00-00', 0, 0),
+('2023-01-31 15:51:49', 'gregergerg', 'fewfewf', 'gergre', 'Tutorial', 'draft', '', 'Albion Online 2', 24, '0000-00-00', 0, 0),
+('2023-01-31 15:57:34', 'gegegeg', 'weff', 'geg', 'Tutorial', 'draft', 'Cover-Albion Online 2.jpg', 'Albion Online 2', 25, '0000-00-00', 0, 0),
+('2023-01-31 16:01:20', 'gregerg', 'gergre', 'grgerg', 'Major Update', 'draft', 'SS-Albion Online 2.png', 'Albion Online 2', 26, '0000-00-00', 0, 0),
+('2023-01-31 16:15:19', 'dwdwd', 'dwd', 'dwd', 'Major Update', 'draft', 'SS-Albion Online 2.jpg', 'Albion Online 2', 27, '0000-00-00', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -380,8 +399,8 @@ CREATE TABLE `freeasset` (
 --
 
 INSERT INTO `freeasset` (`assetID`, `assetName`, `assetGenre`, `assetPrice`, `version`, `assetDetails`, `assetScreenshots`, `assetTitle`, `assetTagline`, `assetClassification`, `assetReleaseStatus`, `assetTags`, `assetFile`, `assetLicense`, `assetCoverImg`, `assetVisibility`, `assetVideoURL`, `assetType`, `assetStyle`, `assetCreatorID`, `fileSize`, `fileExtension`) VALUES
-(1, 'Sprout Lands', '', 'Free', '1.1', 'Lorem ipsum dolor <br> sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut eros et nisl sagittis vestibulum. Nullam nulla eros, ultricies sit amet, nonummy id, imperdiet feugiat, pede. Sed lectus. Donec mollis hendrerit risus. Phasellus nec sem in justo pellentesque facilisis. Etiam imperdiet imperdiet orci. Nunc nec neque. Phasellus leo dolor, tempus non, auctor et, hendrerit quis, nisi. Curabitur ligula sapien, tincidunt non, euismod vitae, posuere imperdiet, leo. Maecenas malesuada. Praesent congue erat at massa. Sed cursus turpis vitae tortor. Donec posuere vulputate arcu. Phasellus accumsan cursus velit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed aliquam, nisi quis porttitor congue, elit erat euismod orci, ac', 'SS-Sprout Lands-0.png,SS-Sprout Lands-1.png', '', 'cute pixel art pastel farming asset pack with stylish design ', '2d', 'released', 'pixel art, sprout la', 'Asset-Sprout Lands.zip', 'proprietary', 'Cover-Sprout Lands.png', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'tileset', 'pixelart', 31, '113', 'zip'),
-(2, 'Cozy People', '', 'Free', '2.3', 'ur goal is to organize resources and make game development more accessible. We hope to foster an online space where you can share your progress with other first-time game makers and get help from experienced devs. By the end of two weeks, you will hopefully have some working game or prototype to share—it\'s an exciting first step to making games! Individuals and teams are welcome, and we encourage you to both play to your strengths and try something new.', 'SS-Cozy People-0.png,SS-Cozy People-1.png', '', 'Animated characters, hairstyles and clothes!', '3d', 'released', 'people, characters', 'Asset-Cozy People.zip', 'open-source', 'Cover-Cozy People.png', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'sprite', 'pixelart', 31, '87', 'exe');
+(1, 'Sprout Lands', '', 'Free', '1.1', 'Lorem ipsum dolor <br> sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut eros et nisl sagittis vestibulum. Nullam nulla eros, ultricies sit amet, nonummy id, imperdiet feugiat, pede. Sed lectus. Donec mollis hendrerit risus. Phasellus nec sem in justo pellentesque facilisis. Etiam imperdiet imperdiet orci. Nunc nec neque. Phasellus leo dolor, tempus non, auctor et, hendrerit quis, nisi. Curabitur ligula sapien, tincidunt non, euismod vitae, posuere imperdiet, leo. Maecenas malesuada. Praesent congue erat at massa. Sed cursus turpis vitae tortor. Donec posuere vulputate arcu. Phasellus accumsan cursus velit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed aliquam, nisi quis porttitor congue, elit erat euismod orci, ac', 'SS-Sprout Lands-0.png,SS-Sprout Lands-1.png', '', 'cute pixel art pastel farming asset pack with stylish design ', '2d', 'released', 'pixel art, sprout la', 'Asset-Sprout Lands.zip', 'proprietary', 'Cover-Sprout Lands.png', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'tileset', 'pixelart', 33, '113', 'zip'),
+(2, 'Cozy People', '', 'Free', '2.3', 'ur goal is to organize resources and make game development more accessible. We hope to foster an online space where you can share your progress with other first-time game makers and get help from experienced devs. By the end of two weeks, you will hopefully have some working game or prototype to share—it\'s an exciting first step to making games! Individuals and teams are welcome, and we encourage you to both play to your strengths and try something new.', 'SS-Cozy People-0.png,SS-Cozy People-1.png', '', 'Animated characters, hairstyles and clothes!', '3d', 'released', 'people, characters', 'Asset-Cozy People.zip', 'open-source', 'Cover-Cozy People.png', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'sprite', 'pixelart', 33, '87', 'exe');
 
 -- --------------------------------------------------------
 
@@ -518,7 +537,7 @@ CREATE TABLE `gamer` (
   `gamerID` int(11) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `accountStatus` tinyint(1) NOT NULL,
+  `accountStatus` int(11) NOT NULL DEFAULT 1,
   `avatar` varchar(255) NOT NULL,
   `userRole` varchar(50) NOT NULL,
   `username` varchar(50) NOT NULL,
@@ -541,12 +560,13 @@ INSERT INTO `gamer` (`gamerID`, `email`, `password`, `accountStatus`, `avatar`, 
 (27, 'gg11@gmail.com', '1234', 0, 'avatar1.png', '', 'kavindu1', 'dwd', 'rasanka', '2023-01-30 12:57:08', '2023-01-30 12:57:08', 0, ''),
 (29, 'fefrg@tht.comwd', '12', 0, 'avatar3.png', 'game developer', 'Beidouwdw', 'kavindu', 'Alwis', '2023-01-30 13:25:35', '2023-01-30 13:25:35', 0, ''),
 (30, '7prenddwd@gmail.com', '$2y$10$X5kEg1zAm8CkveveKRBgMOh7JIvGR6wEs1unUykymgSnaJpus3E52', 0, 'avatar3.png', 'game developer', 'dwdwd', 'dwd', 'dwdw', '2023-01-31 13:20:50', '2023-01-31 13:20:50', 0, ''),
-(31, 'kavindupriyanath@gmail.com', '$2y$10$uJ7hc9iIp.k09kiHcxYYr.XWp5f05N0zOyddye/s3JTTR4U5az2ne', 0, 'avatar4.png', 'game developer', 'Prend', 'Kavindu', 'Priyanath', '2023-02-02 06:03:50', '2023-02-02 06:03:50', 1, ''),
 (32, 'gg12@gmail.com', '$2y$10$UDoYcHzhBBvds30XRrKcMuYo0ihiawRM8tXsBMJ8FN0VUeg1l3JXS', 0, 'avatar1.png', 'gamer', 'dwd', 'dwd', 'ddw', '2023-02-03 05:46:08', '2023-02-03 05:46:08', 0, ''),
 (33, '12@gmail.com', '$2y$10$oVcZsDSaBOSh3FVa1RbbCuh49BFf.gQLLiR5vTmUZU4g8oP/MecOe', 0, 'avatar2.png', 'asset creator', 'fefef', 'dwd', 'dwdwd', '2023-02-03 05:48:40', '2023-02-03 05:48:40', 0, ''),
 (34, '123@gmail.com', '$2y$10$WIjUW6Ygh4wn3aBxwbl.QO7ILJqVbkqsC7zHiF.Adm0Wlmw6eNd.O', 0, 'avatar3.png', 'gamejam organizer', 'Beidouww', 'kimalw', 'wdwd', '2023-02-03 05:50:44', '2023-02-03 05:50:44', 0, ''),
 (35, 's@gmail.com', '$2y$10$OMVIPdbrwmtDQitYDQ6iBexEVvWh1BdSb5m8i4H4NKAPCJQwk2De2', 0, 'avatar1.png', 'game publisher', 'sss', 'kavinduss', 'sss', '2023-02-03 05:52:28', '2023-02-03 05:52:28', 0, ''),
-(36, 'binula28@gmail.com', '$2y$10$mzXB9ExXzRc8eNjOE0PJl.P5fkGgBJDYkHGr0qekoX2/qbskqFW36', 0, 'avatar3.png', 'gamejam organizer', 'Prenddd', 'kavindu', 'dwd', '2023-02-06 04:19:58', '2023-02-06 04:19:58', 1, '');
+(36, 'binula28@gmail.com', '$2y$10$mzXB9ExXzRc8eNjOE0PJl.P5fkGgBJDYkHGr0qekoX2/qbskqFW36', 0, 'avatar3.png', 'gamejam organizer', 'Prenddd', 'kavindu', 'dwd', '2023-02-06 04:19:58', '2023-02-06 04:19:58', 1, ''),
+(38, 'fefrgddd@tht.com', '$2y$10$bD6KrONk1bi6HIQvpbW.lu1iTT4Uhc4J4DeQQWk7Dmpzgw2REXvPq', 1, 'avatar1.png', 'game developer', 'dwwdd', 'dwdd', 'dwdwd', '2023-02-06 15:17:21', '2023-02-06 15:17:21', 0, ''),
+(39, 'kavindupriyanath@gmail.com', '$2y$10$b9GGTlAjD24xlb6XCveaj.JtzwNGB6HdeC2yacSEgXFTw6A5buO7W', 1, 'avatar3.png', 'game developer', 'Beidou', 'kavindu', 'priyanath', '2023-02-06 15:20:03', '2023-02-06 15:20:03', 1, '');
 
 -- --------------------------------------------------------
 
@@ -887,6 +907,12 @@ ALTER TABLE `addgamesale`
   ADD KEY `gameID` (`gameID`);
 
 --
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `assetcart`
 --
 ALTER TABLE `assetcart`
@@ -1009,10 +1035,16 @@ ALTER TABLE `account`
   MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `complaint_reasons_items`
@@ -1066,7 +1098,7 @@ ALTER TABLE `gamejam`
 -- AUTO_INCREMENT for table `gamer`
 --
 ALTER TABLE `gamer`
-  MODIFY `gamerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `gamerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `games_cart`

@@ -153,4 +153,13 @@ class Asset_Model extends Model
             return false;
         }
     }
+
+    function PopularAssets()
+    {
+        $stmt = $this->db->prepare("SELECT * FROM freeasset LIMIT 4");
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
 }

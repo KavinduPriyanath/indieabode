@@ -33,6 +33,8 @@ class Asset extends Controller
 
             $this->view->stats = $this->model->AssetStats($assetID);
 
+            $this->view->popularAssets = $this->model->PopularAssets();
+
             $this->view->render('SingleAsset');
         }
     }

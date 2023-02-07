@@ -196,13 +196,43 @@
         </div>
     </div>
 
+    <!--See Also -->
+    <div class="more">
+        <h3 id="more-heading">You may also like</h3>
+        <div class="cards-container">
+
+            <!--Cards-->
+
+            <div class="bottom-container">
+
+                <?php foreach ($this->popularGames as $popularGame) { ?>
+                    <a href="/indieabode/game?id=<?= $popularGame['gameID'] ?>">
+                        <div class="popular-card">
+                            <div class="popular-card-img"> <img src="/indieabode/public/uploads/games/cover/<?= $popularGame['gameCoverImg'] ?>" alt="">
+                            </div>
+                            <div class="pgame-intro">
+                                <h3><?= $popularGame['gameName'] ?></h3>
+                                <p>Free</p>
+                            </div>
+                            <div class="ptagline"><?= $popularGame['gameTagline'] ?></div>
+                        </div>
+                    </a>
+                <?php } ?>
+
+
+            </div>
+        </div>
+    </div>
+
+
+    <?php
+    include 'includes/footer.php';
+    ?>
 
     <script src="<?php echo BASE_URL; ?>public/js/assets.js"></script>
-    <?php if (isset($_SESSION['id']) && !empty($_SESSION['id'])) { ?>
-        <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
-    <?php } else { ?>
-        <script src="<?php echo BASE_URL; ?>public/js/navbarcopy.js"></script>
-    <?php } ?>
+
+    <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
+
 
     <script>
         function ButtonClick() {

@@ -144,14 +144,49 @@
         <?= $this->asset['assetDetails']; ?>
     </div>
 
+    <!--See Also -->
+    <div class="more">
+        <h3 id="more-heading">You may also like</h3>
+        <div class="cards-container">
+
+            <!--Cards-->
+
+            <div class="bottom-container">
+
+                <?php foreach ($this->popularAssets as $popularAsset) { ?>
+
+
+
+                    <a href="/indieabode/asset?id=<?= $popularAsset['assetID'] ?>">
+                        <div class="popular-card">
+                            <div class="popular-card-img"> <img src="/indieabode/public/uploads/assets/cover/<?= $popularAsset['assetCoverImg'] ?>" alt="">
+
+                                <div class="asset-type"> <?= $popularAsset['assetType'] ?> </div>
+                            </div>
+                            <div class="pgame-intro">
+                                <h3><?= $popularAsset['assetName'] ?></h3>
+                                <p>Free</p>
+                            </div>
+                            <div class="ptagline"><?= $popularAsset['assetTagline'] ?></div>
+                        </div>
+                    </a>
+                <?php } ?>
+
+
+            </div>
+        </div>
+    </div>
+
+    <?php
+    include 'includes/footer.php';
+    ?>
+
 
 
     <script src="<?php echo BASE_URL; ?>public/js/assets.js"></script>
-    <?php if (isset($_SESSION['id']) && !empty($_SESSION['id'])) { ?>
-        <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
-    <?php } else { ?>
-        <script src="<?php echo BASE_URL; ?>public/js/navbarcopy.js"></script>
-    <?php } ?>
+
+    <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
+
 
     <?php if ($this->hasClaimed) { ?>
         <script>

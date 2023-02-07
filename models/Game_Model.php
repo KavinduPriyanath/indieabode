@@ -70,4 +70,13 @@ class Game_Model extends Model
 
         return $screenshots;
     }
+
+    function PopularGames()
+    {
+        $stmt = $this->db->prepare("SELECT * FROM freegame LIMIT 4");
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
 }
