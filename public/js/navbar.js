@@ -16,15 +16,15 @@ document.addEventListener("mouseover", (e) => {
 });
 
 //display user profile if logged
-// let islogged = true;
+let islogged = true;
 
-// const notloggedMenu = document.getElementById("not-logged");
-// const loggedMenu = document.getElementById("logged");
+const notloggedMenu = document.getElementById("not-logged");
+const loggedMenu = document.getElementById("logged");
 
-// if (islogged) {
-//   notloggedMenu.style.display = "none";
-//   loggedMenu.style.display = "block";
-// } else {
-//   loggedMenu.style.display = "none";
-//   notloggedMenu.style.display = "block";
-// }
+if (islogged) {
+  notloggedMenu.style.display = "none";
+  loggedMenu.style.display = "block";
+} else {
+  loggedMenu.style.display = "none";
+  notloggedMenu.style.display = "block";
+}

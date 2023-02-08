@@ -12,9 +12,9 @@ class Index extends Controller
 
     function index()
     {
-        // if (isset($_SESSION['id'])) {
-        //     print_r($_SESSION['id']);
-        // }
+        if (isset($_SESSION['id'])) {
+            print_r($_SESSION['id']);
+        }
 
         // echo "Im index controller";
         $this->view->render('Home');

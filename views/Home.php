@@ -14,14 +14,11 @@
     include 'includes/navbar.php';
     ?>
 
-
-    <?php
-    include 'includes/footer.php';
-    ?>
-
-
-    <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
-
+    <?php if (isset($_SESSION['id']) && !empty($_SESSION['id'])) { ?>
+        <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
+    <?php } else { ?>
+        <script src="<?php echo BASE_URL; ?>public/js/navbarcopy.js"></script>
+    <?php } ?>
 
 </body>
 
