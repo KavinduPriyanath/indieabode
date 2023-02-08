@@ -163,6 +163,7 @@
                             </div>
                         </div>
 
+
                         <div class="dropdown" data-dropdown>
                             <a href="<?php echo BASE_URL; ?>jams" data-dropdown-button>Jams<i class="fa fa-angle-down droparrow"></i></a>
 
@@ -230,6 +231,7 @@
                                 </div>
                             </div>
                         </div>
+
 
                         <div class="search">
                             <form action="" class="search-bar">
@@ -305,14 +307,16 @@
                                     <a href="<?php echo BASE_URL; ?>library">Library <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                     <a href="<?php echo BASE_URL; ?>cart">Cart <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
 
+
                                     <hr />
 
                                     <a href="/indieabode/dashboard">Dashboard <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                                    <a href="/indieabode/gameupload">Upload&nbsp;project
+                                    <a href="/indieabode/assetupload">Upload&nbsp;Assets
                                         <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                     <a href="/indieabode/portfolio">Portfolio <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
 
                                     <hr />
+
 
                                     <a>Settings <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                     <a href="/indieabode/login/logout">Log&nbsp;Out
@@ -336,27 +340,26 @@
                     <div class="ul">
 
 
-                        <div class="dropdown" data-dropdown>
-                            <a href="<?php echo BASE_URL; ?>jams" data-dropdown-button>Jams<i class="fa fa-angle-down droparrow"></i></a>
 
-                            <div class="dropdown-menu">
-                                <div class="arrow arrow3"></div>
-                                <div class=".ulsub">
-                                    <a href="<?php echo BASE_URL; ?>jams">Join Jams <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                                    <a href="<?php echo BASE_URL; ?>jams-calender">Jam&nbsp;Calender
-                                        <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                                </div>
-                            </div>
+                        <div class="dropdown" data-dropdown>
+                            <a href="<?php echo BASE_URL; ?>jams" data-dropdown-button>Jams</a>
+                        </div>
+
+                        <div class="dropdown" data-dropdown>
+                            <a href="<?php echo BASE_URL; ?>jams" data-dropdown-button>Calender</a>
                         </div>
 
                         <div class="dropdown" data-dropdown>
                             <a href="#" data-dropdown-button>Community<i class="fa fa-angle-down droparrow"></i></a>
 
+
                             <div class="dropdown-menu">
                                 <div class="arrow arrow4"></div>
                                 <div class=".ulsub">
                                     <a href="<?php echo BASE_URL; ?>feed">Feed <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+
                                     <a href="<?php echo BASE_URL; ?>forum">Forum <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+
                                     <a href="<?php echo BASE_URL; ?>support_center">Help&nbsp;&&nbsp;Support
                                         <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                 </div>
@@ -385,15 +388,12 @@
                             <div class="dropdown-menu">
                                 <div class="arrow arrow6"></div>
                                 <div class=".ulsub">
-                                    <a href="<?php echo BASE_URL; ?>library">Library <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                                    <a href="<?php echo BASE_URL; ?>cart">Cart <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
 
-                                    <hr />
 
-                                    <a href="/indieabode/dashboard">Dashboard <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                                    <a href="/indieabode/gameupload">Upload&nbsp;project
+                                    <a href="/indieabode/dashboardjamo">Dashboard <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                                    <a href="/indieabode/GameJamForm">Host&nbsp;Jam
                                         <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                                    <a href="/indieabode/portfolio">Portfolio <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+
 
                                     <hr />
 
@@ -419,6 +419,7 @@
                     <div class="ul">
                         <div class="dropdown" data-dropdown>
                             <a href="<?php echo BASE_URL; ?>games" data-dropdown-button>Games<i class="fa fa-angle-down droparrow"></i></a>
+
 
                             <div class="dropdown-menu">
                                 <div class="arrow arrow1"></div>
@@ -459,6 +460,7 @@
                             <a href="#" data-dropdown-button>Sign Up<i class="fa fa-angle-down droparrow"></i></a>
 
                             <div class="dropdown-menu">
+
                                 <div class="arrow arrow5"></div>
                                 <div class=".ulsub">
                                     <a href="/indieabode/login">Log&nbsp;In <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
@@ -514,6 +516,7 @@
                     <div class="dropdown" data-dropdown>
                         <a href="<?php echo BASE_URL; ?>games" data-dropdown-button>Games<i class="fa fa-angle-down droparrow"></i></a>
 
+
                         <div class="dropdown-menu">
                             <div class="arrow arrow1"></div>
                             <div class=".ulsub">
@@ -556,6 +559,7 @@
                         </div>
                     </div>
 
+
                     <div class="dropdown" data-dropdown>
                         <a href="<?php echo BASE_URL; ?>jams" data-dropdown-button>Jams<i class="fa fa-angle-down droparrow"></i></a>
 
@@ -583,7 +587,9 @@
                         </div>
                     </div>
 
+
                     <div class="dropdown" data-dropdown>
+
                         <a href="#" data-dropdown-button>Sign Up<i class="fa fa-angle-down droparrow"></i></a>
 
                         <div class="dropdown-menu">
@@ -595,6 +601,8 @@
                             </div>
                         </div>
                     </div>
+
+
 
 
 

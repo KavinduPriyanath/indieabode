@@ -28,6 +28,7 @@ class Register extends Controller
         $userRole = $_POST['userrole'];
         $confirmPassword = $_POST['confirmPassword'];
 
+
         //check password strength
         $uppercase = preg_match('@[A-Z]@', $password);
         $lowercase = preg_match('@[a-z]@', $password);
@@ -39,12 +40,14 @@ class Register extends Controller
         if (!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password) < 8) {
             $strongPassword = false;
         } else {
+
             $strongPassword = true;
         }
 
         if ($password == $confirmPassword && $strongPassword == true) {
             //hash password
             $hasedPassword = password_hash($password, PASSWORD_DEFAULT);
+
 
             $count = $this->model->checkUser($email);
 
