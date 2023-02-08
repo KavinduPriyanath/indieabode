@@ -1,0 +1,6 @@
+<br />
+<b>Warning</b>:  Undefined global variable $currentAssetID in <b>C:\xampp\htdocs\indieabode\controllers\Asset.php</b> on line <b>34</b><br />
+<br />
+<b>Warning</b>:  Trying to access array offset on value of type bool in <b>C:\xampp\htdocs\indieabode\models\Asset_Model.php</b> on line <b>68</b><br />
+<br />
+<b>Warning</b>:  readfile(public/uploads/assets/file/): Failed to open stream: No such file or directory in <b>C:\xampp\htdocs\indieabode\controllers\Asset.php</b> on line <b>45</b><br />
