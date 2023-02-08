@@ -88,6 +88,7 @@ class Asset extends Controller
 
             $mail->send();
             //header('location:/indieabode/forgotpassword/resetmailsent');
+            header("location:/indieabode/asset?id=" . $_GET['id']);
         } catch (Exception $e) {
             header('location:/indieabode/downloadfailed');
         }

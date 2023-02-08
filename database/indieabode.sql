@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 07, 2023 at 12:38 PM
+-- Generation Time: Feb 08, 2023 at 07:56 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -46,7 +46,8 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`userID`, `profilePhoto`, `location`, `tagline`, `socialLink`, `phoneNumber`, `fullName`, `cardNo`, `expireDate`, `cvv`, `birthDate`) VALUES
-(16, '', 'Sri Lanka', 'I am a full time indie game developer', '', '0768729813', 'Kavindu Priyanath', '', '0000-00-00', '', '0000-00-00');
+(16, '', 'Sri Lanka', 'I am a full time indie game developer', '', '0768729813', 'Kavindu Priyanath', '', '0000-00-00', '', '0000-00-00'),
+(40, '', '', '', '', '', '', '', '0000-00-00', '', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -566,7 +567,8 @@ INSERT INTO `gamer` (`gamerID`, `email`, `password`, `accountStatus`, `avatar`, 
 (35, 's@gmail.com', '$2y$10$OMVIPdbrwmtDQitYDQ6iBexEVvWh1BdSb5m8i4H4NKAPCJQwk2De2', 0, 'avatar1.png', 'game publisher', 'sss', 'kavinduss', 'sss', '2023-02-03 05:52:28', '2023-02-03 05:52:28', 0, ''),
 (36, 'binula28@gmail.com', '$2y$10$mzXB9ExXzRc8eNjOE0PJl.P5fkGgBJDYkHGr0qekoX2/qbskqFW36', 0, 'avatar3.png', 'gamejam organizer', 'Prenddd', 'kavindu', 'dwd', '2023-02-06 04:19:58', '2023-02-06 04:19:58', 1, ''),
 (38, 'fefrgddd@tht.com', '$2y$10$bD6KrONk1bi6HIQvpbW.lu1iTT4Uhc4J4DeQQWk7Dmpzgw2REXvPq', 1, 'avatar1.png', 'game developer', 'dwwdd', 'dwdd', 'dwdwd', '2023-02-06 15:17:21', '2023-02-06 15:17:21', 0, ''),
-(39, 'kavindupriyanath@gmail.com', '$2y$10$b9GGTlAjD24xlb6XCveaj.JtzwNGB6HdeC2yacSEgXFTw6A5buO7W', 1, 'avatar3.png', 'game developer', 'Beidou', 'kavindu', 'priyanath', '2023-02-06 15:20:03', '2023-02-06 15:20:03', 1, '');
+(39, 'kavindupriyanath@gmail.com', '$2y$10$b9GGTlAjD24xlb6XCveaj.JtzwNGB6HdeC2yacSEgXFTw6A5buO7W', 1, 'avatar3.png', 'game developer', 'Beidou', 'kavindu', 'priyanath', '2023-02-06 15:20:03', '2023-02-06 15:20:03', 1, ''),
+(40, 'kavindupriyanath@gmail.comdwd', '$2y$10$jTjhXQgLr9UQHPI4MRArCORyzlUnhn5aeeq/9yE8prtic9RJYoSYC', 1, 'avatar2.png', 'game developer', 'dw', 'swd', 'dwd', '2023-02-07 12:01:41', '2023-02-07 12:01:41', 0, '');
 
 -- --------------------------------------------------------
 
@@ -687,7 +689,9 @@ CREATE TABLE `library` (
 INSERT INTO `library` (`id`, `developerID`, `itemID`) VALUES
 (3, '12', '1'),
 (8, '30', '1'),
-(9, '30', '2');
+(9, '30', '2'),
+(10, '39', '2'),
+(13, '39', '1');
 
 -- --------------------------------------------------------
 
@@ -1032,7 +1036,7 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `admin`
@@ -1098,7 +1102,7 @@ ALTER TABLE `gamejam`
 -- AUTO_INCREMENT for table `gamer`
 --
 ALTER TABLE `gamer`
-  MODIFY `gamerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `gamerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `games_cart`
@@ -1116,7 +1120,7 @@ ALTER TABLE `gig`
 -- AUTO_INCREMENT for table `library`
 --
 ALTER TABLE `library`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `user_role`

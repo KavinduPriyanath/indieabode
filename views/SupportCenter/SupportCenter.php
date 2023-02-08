@@ -25,7 +25,7 @@
         <div class="first-three">
             <a href="">
                 <div class="card">
-                    <img src="card-demo.png" alt="" />
+                    <img src="/indieabode/public/images/support_center/general.png" alt="" />
                     <div class="card-topic">General Info</div>
                     <div class="topic-tagline">
                         Have you experienced any problem while using the website?
@@ -35,7 +35,7 @@
 
             <a href="/indieabode/legal/">
                 <div class="card">
-                    <img src="card-demo.png" alt="" />
+                    <img src="/indieabode/public/images/support_center/legal.png" alt="" />
                     <div class="card-topic">Legal Policies</div>
                     <div class="topic-tagline">
                         Have you experienced any problem while using the website?
@@ -45,7 +45,7 @@
 
             <a href="">
                 <div class="card">
-                    <img src="card-demo.png" alt="" />
+                    <img src="/indieabode/public/images/support_center/technical-issues.png" alt="" />
                     <div class="card-topic">Game Technical Issues</div>
                     <div class="topic-tagline">
                         Have you experienced any problem while using the website?
@@ -58,7 +58,7 @@
         <div class="second-three">
             <a href="">
                 <div class="card">
-                    <img src="card-demo.png" alt="" />
+                    <img src="/indieabode/public/images/support_center/publishing.png" alt="" />
                     <div class="card-topic">Publishing</div>
                     <div class="topic-tagline">
                         Have you experienced any problem while using the website?
@@ -68,7 +68,7 @@
 
             <a href="">
                 <div class="card">
-                    <img src="card-demo.png" alt="" />
+                    <img src="/indieabode/public/images/support_center/payment.png" alt="" />
                     <div class="card-topic">Orders & Payments</div>
                     <div class="topic-tagline">
                         Have you experienced any problem while using the website?
@@ -78,7 +78,7 @@
 
             <a href="">
                 <div class="card">
-                    <img src="card-demo.png" alt="" />
+                    <img src="/indieabode/public/images/support_center/additional-issues.png" alt="" />
                     <div class="card-topic">Additional Issues</div>
                     <div class="topic-tagline">
                         Have you experienced any problem while using the website?

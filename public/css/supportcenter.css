@@ -44,4 +44,12 @@
 
 .support-cards a {
     text-decoration: none;
+    color: black;
+}
+
+.card:hover {
+    cursor: pointer;
+    transform: scale(1.02);
+    transition: all 0.5s ease;
+    color: rgb(44, 63, 94);
 }

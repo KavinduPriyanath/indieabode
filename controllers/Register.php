@@ -52,7 +52,7 @@ class Register extends Controller
                 header('location:/indieabode/dw');
             } else {
                 $this->model->insertUser($email, $username, $hasedPassword, $firstname, $lastname, $avatar, $userRole);
-
+                $this->model->addUserAccount($username);
                 header('location:/indieabode/');
             }
         } else {
