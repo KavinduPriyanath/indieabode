@@ -11,7 +11,7 @@ class Admin_addNew extends Controller
     function index()
     {
         //print_r($_POST);
-        $this->view->render('/Main/Admin_addNew');
+        $this->view->render('/Admin/Admin_addNew');
     }
 
     function addAdmin()

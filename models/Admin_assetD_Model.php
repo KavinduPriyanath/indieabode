@@ -1,6 +1,6 @@
 <?php
 
-class Admin_G_Model extends Model
+class Admin_assetD_Model extends Model
 {
 
     function __construct()
@@ -10,27 +10,30 @@ class Admin_G_Model extends Model
 
     function recentActivities()
     {
-        $sql ="SELECT DISTINCT COALESCE(freegame.gameName, (SELECT gameName FROM freegame f WHERE f.gameID = downloadgame.gameID)) as gameName,
-                        CASE
-                        WHEN allgames.gameID IN (SELECT gameID FROM downloadgame) THEN downloadgame.created_at
-                        ELSE  freegame.created_at
-                        END as created_at,
-                        CASE
-                        WHEN allgames.gameID IN (SELECT gameID FROM downloadgame) THEN 'game download'
-                        ELSE 'game upload'
-                        END as description,
-                        gamer.username as name
-                FROM (
-                SELECT gameID, created_at,gamerID
-                FROM downloadgame
-                UNION
-                SELECT gameID, created_at,gameDeveloperID
-                FROM freegame
-                ) as allgames
-                LEFT JOIN freegame ON allgames.gameID = freegame.gameID
-                LEFT JOIN downloadgame ON allgames.gameID = downloadgame.gameID
-                LEFT JOIN gamer ON gamer.gamerID = allgames.gamerID
-                ORDER BY `created_at` DESC LIMIT 10";
+        $sql ="SELECT DISTINCT COALESCE(freeasset.assetName, (SELECT assetName FROM freeasset f WHERE f.assetID = downloadasset.assetID)) as assetName,
+        CASE
+        WHEN allassets.assetID IN (SELECT assetID FROM downloadasset) THEN downloadasset.created_at
+        ELSE  freeasset.created_at
+        END as created_at,
+        CASE
+        WHEN allassets.assetID IN (SELECT assetID FROM downloadasset) THEN 'Asset download'
+        ELSE 'Asset upload'
+        END as description,
+        gamer.username as name
+FROM (
+SELECT assetID, created_at, gamerID
+FROM downloadasset
+UNION
+SELECT assetID, created_at, assetCreatorID
+FROM freeasset
+) as allassets
+LEFT JOIN freeasset ON allassets.assetID = freeasset.assetID
+LEFT JOIN downloadasset ON allassets.assetID = downloadasset.assetID
+LEFT JOIN gamer ON allassets.gamerID = gamer.gamerID
+ORDER BY `created_at` DESC LIMIT 10;
+
+
+        ";
 
         $stmt = $this->db->prepare($sql);
         $stmt->execute();
@@ -40,11 +43,12 @@ class Admin_G_Model extends Model
         return $data;
     }
 
-    function TopGames(){
-      $sql = "SELECT downloadgame.gameID, freegame.gameName as name, COUNT(downloadgame.gameID) as count, freegame.gameCoverImg as img
-      FROM downloadgame
-      LEFT JOIN freegame ON downloadgame.gameID = freegame.gameID
-      GROUP BY downloadgame.gameID, freegame.gameName ORDER BY count DESC LIMIT 3        
+
+    function TopAssets(){
+      $sql = "SELECT downloadasset.assetID, freeasset.assetName as name, COUNT(downloadasset.assetID) as count, freeasset.assetCoverImg as img
+      FROM downloadasset
+      LEFT JOIN freeasset ON downloadasset.assetID = freeasset.assetID
+      GROUP BY downloadasset.assetID, freeasset.assetName ORDER BY count DESC LIMIT 3        
       ";
       $stmt = $this->db->prepare($sql);
       $stmt->execute();

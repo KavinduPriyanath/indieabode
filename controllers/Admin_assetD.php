@@ -1,6 +1,6 @@
 <?php
 
-class GameDB extends Controller
+class Admin_assetD extends Controller
 {
 
     function __construct()
@@ -11,12 +11,16 @@ class GameDB extends Controller
 
     function index()
     {
-        $this->view->userCount = $this->model->userCount();
+        $top_assets= $this->model->TopAssets();
+        $this->view->top_assets = $top_assets;
+
+        $recent_activities= $this->model->recentActivities();
+        $this->view->recent_activities = $recent_activities;
+
+        // $this->view->userCount = $this->model->userCount();
 
         // $this->view->totalDownloads = $this->model->totalDownloads();
 
-
-        //chart 
         //print_r($_POST);
         $downloadasset = $this->model->getData("downloadasset",30);
         $downloadgame = $this->model->getData("downloadgame",30);
@@ -46,6 +50,6 @@ class GameDB extends Controller
         $this->view->downloadasset_data=$downloadasset_data;
         $this->view->downloadgame_data=$downloadgame_data;
 
-        $this->view->render('Main/GameDB');
+        $this->view->render('Admin/Admin_assetD');
     }
 }

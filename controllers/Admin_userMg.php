@@ -28,7 +28,7 @@ class Admin_userMg extends Controller
         //    $this->view = $this->model->delete_user($user_id);
         // }
         $this->view->active="all";
-        $this->view->render('Main/Admin_userMg');
+        $this->view->render('Admin/Admin_userMg');
     }
 
     public function viewFilteredUser($filter_text){
@@ -42,7 +42,7 @@ class Admin_userMg extends Controller
             echo "na";
         }
         $this->view->active=$filter_text;
-        $this->view->render('Main/Admin_userMg');
+        $this->view->render('Admin/Admin_userMg');
     }
 
     public function deleteUser($userid){

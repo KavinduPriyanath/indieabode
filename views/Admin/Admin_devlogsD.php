@@ -16,8 +16,13 @@
 </head>
 
 <body>
+
+	<?php
+    include 'includes/A_navbar.php';
+    ?>
     	<!-- SIDEBAR -->
 	<section id="sidebar">
+
 		<div class="admin-card">
 			<div class="profile-picture">
 				<img src="/indieabode/public/images/Admin/admin-1.png" alt="user-image" class="rounded-circle"/>
@@ -29,7 +34,6 @@
 				</div>
 			</div>
 		</div>
-
 		<!-- <a href="#" class="brand"><i class='bx bxs-smile icon'></i>Indie Abode</a> -->
 		<ul class="side-menu">
 			<li class="divider" data-text="main">Main</li>
@@ -58,62 +62,130 @@
 
 	<!-- NAVBAR -->
 	<section id="content">
+		
+		<!-- MAIN -->
 		<main>
-			<h1 class="title">Dashboard</h1>
-			
+			<h1 class="title">Devlogs Dashboard</h1>
+			<!-- <ul class="breadcrumbs">
+				<li><a href="#" class="active">Dashboard/Devlogs Dashboard</a></li>
+			</ul> -->
 			<div class="info-data">
-				<div class="card">
+				<div class="card db-card">
 					<div class="total-views">
-						<div class="main-total-view-left">
-							<h3>Registered Users</h3>
-							<h1><?= $this->userCount ?></h1>
-						</div>
-						<div class="main-total-view-right">
-							<i class='bx bx-user view-icon'></i>
-						</div>
-					</div>
-				</div>
-				<div class="card">
-					<div class="total-views">
-						<div class="main-total-view-left">
-							<h3>Total Transactions</h3>
-							<h1>1356700.00</h1>
-						</div>
-						<div class="main-total-view-right">
-							<i class='bx bx-money view-icon'></i>
-						</div>
-					</div>
-				</div>
-				<div class="card">
-					<div class="total-views">
-						<div class="main-total-view-left">
-							<h3>Total Downloads</h3>
+						<div class="main-total-view-left total-games">
+							<h3>Total Posts</h3>
 							<h1>135</h1>
+						</div>
+						<div class="main-total-view-right">
+							<i class='bx bx-upload view-icon'></i>
+						</div>
+					</div>
+				</div>
+				<div class="card">
+					<div class="total-views">
+						<div class="main-total-view-left total-games">
+							<h3>Total Views</h3>
+							<h1>15</h1>
 						</div>
 						<div class="main-total-view-right">
 							<i class='bx bx-download view-icon'></i>
 						</div>
 					</div>
 				</div>
+				<div class="card">
+					<div class="total-views">
+						<div class="main-total-view-left">
+							<h3>Total Likes</h3>
+							<h1>13567</h1>
+						</div>
+						<div class="main-total-view-right">
+							<i class='bx bx-money view-icon'></i>
+						</div>
+					</div>
+
+				</div>
 			</div>
 			<div class="data">
 				<div class="content-data active-user">
 					<div class="recentOrders">
-						<?php
-							$data = array(12, 19, 3, 5, 2, 3);
-							$data_js = json_encode($data);
-							?>
+						<div class="cardHeader">
+							<h2>Recent Activities</h2>
+							<a href="#" class="btn">View All</a>
+						</div>
 
-							<script>
-							var data = <?php echo $data_js; ?>;
-							</script>
+						<table>
+							<thead>
+								<tr>
+									<td>Name</td>
+									<td>User Role</td>
+									<td>Task</td>
+									<td>Time</td>
+								</tr>
+							</thead>
 
-						<canvas id="myChart"></canvas>
+							<tbody>
+								<tr>
+									<td>Kavindu Priyanath</td>
+									<td>Game Developer</td>
+									<td>Created a Gig</td>
+									<td><span>07.39 a.m</span></td>
+								</tr>
+
+								<tr>
+									<td>Himash Liyanage</td>
+									<td>Game Publisher</td>
+									<td>Ordered a Gig</td>
+									<td><span>08.23 a.m</span></td>
+								</tr>
+
+								<tr>
+									<td>Yeshan Pasindu</td>
+									<td>Asset Creator</td>
+									<td>Created a Gig</td>
+									<td><span>09.00 a.m</span></td>
+								</tr>
+
+								<tr>
+									<td>Nadee Darshika</td>
+									<td>Game Jam Organizer</td>
+									<td>Ordered a Gig</td>
+									<td><span>09.12 a.m</span></td>
+								</tr>
+
+								<tr>
+									<td>Prasad Darshana</td>
+									<td>Gamer</td>
+									<td>Ordered a Gig</td>
+									<td><span>09.35 a.m</span></td>
+								</tr>
+
+								<tr>
+									<td>Nethmi Imanya</td>
+									<td>Game Developer</td>
+									<td>Created a Gig</td>
+									<td><span>12.01 p.m</span></td>
+								</tr>
+
+								<tr>
+									<td>Umasha Kaumadi</td>
+									<td>Gamer</td>
+									<td>Ordered a Gig</td>
+									<td><span>12.30 p.m</span></td>
+								</tr>
+
+								<tr>
+									<td>Kaveesha Gimhani</td>
+									<td>Game Developer</td>
+									<td>Created a Gig</td>
+									<td><span>3.00 p.m</span></td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
 				</div>
-				<div class="content-data popular-games">
+				<!-- <div class="content-data popular-games">
 					<div class="popular-header">
-						<h2>Most Popular Games</h2>
+						<h2>Most Popular Assets</h2>
 					</div>
 					<div class="popular-cards">
 
@@ -160,60 +232,28 @@
 						</div>
 
 					</div>
-				</div>
+				</div> -->
 
 
-				<div class="content-data popular-assets">
-					<div class="popular-header">
-						<h2>Most Popular Assets</h2>
+				<!-- <div class="content-data popular-assets">
+					<div class="popular-header Game-DB-Graph">
+						<h2>Transaction Graph</h2>
+						<?php
+							$data = array(12, 19, 3, 5, 2, 3);
+							$data_js = json_encode($data);
+							?>
+
+							<script>
+							var data = <?php echo $data_js; ?>;
+							</script>
+
+						<canvas id="myChart"></canvas>
 					</div>
-					<div class="popular-asset-card">
-						<div class="asset-cvr-img">
-							<img src="gm-2.jpg">
-						</div>
-
-						<div class="asset-name gm-crd">
-							The spirit and the Mouse
-						</div>
-
-						<div class="asset-count ast-crd">
-							250+
-						</div>
-					</div>
-
-					<div class="popular-asset-card">
-						<div class="asset-cvr-img">
-							<img src="gm-2.jpg">
-						</div>
-
-						<div class="asset-name gm-crd">
-							The spirit and the Mouse
-						</div>
-
-						<div class="asset-count ast-crd">
-							250+
-						</div>
-					</div>
-
-					<div class="popular-asset-card">
-						<div class="asset-cvr-img">
-							<img src="gm-2.jpg">
-						</div>
-
-						<div class="asset-name gm-crd">
-							The spirit and the Mouse
-						</div>
-
-						<div class="asset-count ast-crd">
-							250+
-						</div>
-					</div>
-				</div>
+				</div> -->
 			</div>
 		</main>
 		<!-- MAIN -->
 	</section>
-	<!-- NAVBAR -->
 
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 
@@ -223,20 +263,21 @@
 		type: 'line',
 		data: {
 			labels: <?php echo json_encode($this->labels); ?>,
-			datasets: [{
+			datasets: [
+			{
 				label: 'Downloaded Assests',
 				data: <?php echo json_encode($this->downloadasset_data); ?>,
 				borderColor: 'rgba(75, 192, 192, 1)',
 				backgroundColor: 'rgba(75, 192, 192, 0.2)',
 				fill: false
-			},
-			{
-				label: 'Downloaded Games',
-				data: <?php echo json_encode($this->downloadgame_data); ?>,
-				borderColor: 'rgba(0, 0, 0, 1)',
-				backgroundColor: 'rgba(0, 0, 0, 0.2)',
-				fill: false
 			}
+			// {
+			// 	label: 'Downloaded Games',
+			// 	data: <?php echo json_encode($this->downloadgame_data); ?>,
+			// 	borderColor: 'rgba(0, 0, 0, 1)',
+			// 	backgroundColor: 'rgba(0, 0, 0, 0.2)',
+			// 	fill: false
+			// }
 			
 			]
 		},
@@ -251,6 +292,7 @@
 		}
 	});
 	</script>
+
 
     <script src="<?php echo BASE_URL; ?>public/js/admin.js"></script>
     <!-- <?php if (isset($_SESSION['id']) && !empty($_SESSION['id'])) { ?>

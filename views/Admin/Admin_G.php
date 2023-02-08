@@ -16,8 +16,13 @@
 </head>
 
 <body>
+
+	<?php
+    include 'includes/A_navbar.php';
+    ?>
     	<!-- SIDEBAR -->
 	<section id="sidebar">
+
 		<div class="admin-card">
 			<div class="profile-picture">
 				<img src="/indieabode/public/images/Admin/admin-1.png" alt="user-image" class="rounded-circle"/>
@@ -58,22 +63,53 @@
 
 	<!-- NAVBAR -->
 	<section id="content">
+		
+		<!-- MAIN -->
 		<main>
-			<h1 class="title">Dashboard</h1>
-			
+			<h1 class="title">Game Dashboard</h1>
+			<!-- <ul class="breadcrumbs">
+				<li><a href="#" class="active">Dashboard/Game Dashboard</a></li>
+			</ul> -->
 			<div class="info-data">
-				<div class="card">
+				<div class="card db-card">
 					<div class="total-views">
-						<div class="main-total-view-left">
-							<h3>Registered Users</h3>
-							<h1><?= $this->userCount ?></h1>
+						<div class="main-total-view-left total-games">
+							<h3>Uploaded Games</h3>
+							<div class="free-download">
+							Free Games<br>
+							<h1>135</h1>
+							</div>
+							<div class="paid-download">
+							Paid Games<br>
+							<h1>15</h1>
+							</div>
+							<!-- <h1>13567</h1> -->
 						</div>
 						<div class="main-total-view-right">
-							<i class='bx bx-user view-icon'></i>
+							<i class='bx bx-upload view-icon'></i>
 						</div>
 					</div>
 				</div>
-				<div class="card">
+				<div class="card db-card">
+					<div class="total-views">
+						<div class="main-total-view-left total-games">
+							<h3>Total Downloads</h3>
+							<div class="free-download">
+							Free Games<br>
+							<h1>135</h1>
+							</div>
+							<div class="paid-download">
+							Paid Games<br>
+							<h1>15</h1>
+							</div>
+							<!-- <h1>135</h1> -->
+						</div>
+						<div class="main-total-view-right">
+							<i class='bx bx-download view-icon'></i>
+						</div>
+					</div>
+				</div>
+				<div class="card db-card">
 					<div class="total-views">
 						<div class="main-total-view-left">
 							<h3>Total Transactions</h3>
@@ -83,22 +119,73 @@
 							<i class='bx bx-money view-icon'></i>
 						</div>
 					</div>
-				</div>
-				<div class="card">
-					<div class="total-views">
-						<div class="main-total-view-left">
-							<h3>Total Downloads</h3>
-							<h1>135</h1>
-						</div>
-						<div class="main-total-view-right">
-							<i class='bx bx-download view-icon'></i>
-						</div>
-					</div>
+
 				</div>
 			</div>
 			<div class="data">
 				<div class="content-data active-user">
 					<div class="recentOrders">
+						<div class="cardHeader">
+							<h2>Recent Activities</h2>
+							<a href="#" class="btn">View All</a>
+						</div>
+
+						<table>
+							<thead>
+								<tr>
+									<td>User</td>
+									<td>Description</td>
+									<td>Game Name</td>
+									<td>Time</td>
+								</tr>
+							</thead>
+
+							<tbody>
+							<?php foreach ($this->recent_activities as $user) { ?>
+								<tr>
+									<td>
+									<?php echo $user['name']; ?>
+									</td>
+									<td><?php echo $user['description']; ?></td>
+									<td><?php echo $user['gameName']; ?></td>
+									<td><?php echo $user['created_at']; ?></td>
+									
+								</tr>
+                  			  <?php } ?>						
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="content-data popular-games">
+					<div class="popular-header">
+						<h2>Most Popular Games</h2>
+					</div>
+					<div class="popular-cards">
+					<?php foreach ($this->top_games as $game) { ?>
+						<div class="popular-game-card">
+							<div class="game-cvr-img">
+								<img src=<?php echo "'".$game['img']."'"; ?>>
+							</div>
+
+							<div class="game-name gm-crd">
+								<?php echo $game['name']; ?>
+							</div>
+
+							<div class="game-count gm-crd">
+								<?php echo $game['count']; ?>+
+							</div>
+						</div>
+					<?php } ?>
+						
+
+					</div>
+				</div>
+
+
+				<div class="content-data popular-assets">
+					<div class="popular-header">
+						<h2>Transaction Graph</h2>
+						<!-- <h2>Transaction Graph</h2> -->
 						<?php
 							$data = array(12, 19, 3, 5, 2, 3);
 							$data_js = json_encode($data);
@@ -108,112 +195,15 @@
 							var data = <?php echo $data_js; ?>;
 							</script>
 
-						<canvas id="myChart"></canvas>
-					</div>
-				</div>
-				<div class="content-data popular-games">
-					<div class="popular-header">
-						<h2>Most Popular Games</h2>
-					</div>
-					<div class="popular-cards">
+							<canvas id="myChart"></canvas>
+						<!-- <canvas id="myChart" style="display: block; width: 500px; height: 450px;" width="553" height="276" class="chartjs-render-monitor"></canvas> -->
 
-						<div class="popular-game-card">
-							<div class="game-cvr-img">
-								<img src="gm-2.jpg">
-							</div>
-
-							<div class="game-name gm-crd">
-								The spirit and the Mouse
-							</div>
-
-							<div class="game-count gm-crd">
-								250+
-							</div>
-						</div>
-
-						<div class="popular-game-card">
-							<div class="game-cvr-img">
-								<img src="gm-2.jpg">
-							</div>
-
-							<div class="game-name gm-crd">
-								The spirit and the Mouse
-							</div>
-
-							<div class="game-count gm-crd">
-								250+
-							</div>
-						</div>
-
-						<div class="popular-game-card">
-							<div class="game-cvr-img">
-								<img src="gm-2.jpg">
-							</div>
-
-							<div class="game-name gm-crd">
-								The spirit and the Mouse
-							</div>
-
-							<div class="game-count gm-crd">
-								250+
-							</div>
-						</div>
-
-					</div>
-				</div>
-
-
-				<div class="content-data popular-assets">
-					<div class="popular-header">
-						<h2>Most Popular Assets</h2>
-					</div>
-					<div class="popular-asset-card">
-						<div class="asset-cvr-img">
-							<img src="gm-2.jpg">
-						</div>
-
-						<div class="asset-name gm-crd">
-							The spirit and the Mouse
-						</div>
-
-						<div class="asset-count ast-crd">
-							250+
-						</div>
-					</div>
-
-					<div class="popular-asset-card">
-						<div class="asset-cvr-img">
-							<img src="gm-2.jpg">
-						</div>
-
-						<div class="asset-name gm-crd">
-							The spirit and the Mouse
-						</div>
-
-						<div class="asset-count ast-crd">
-							250+
-						</div>
-					</div>
-
-					<div class="popular-asset-card">
-						<div class="asset-cvr-img">
-							<img src="gm-2.jpg">
-						</div>
-
-						<div class="asset-name gm-crd">
-							The spirit and the Mouse
-						</div>
-
-						<div class="asset-count ast-crd">
-							250+
-						</div>
 					</div>
 				</div>
 			</div>
 		</main>
 		<!-- MAIN -->
 	</section>
-	<!-- NAVBAR -->
 
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 
@@ -223,13 +213,14 @@
 		type: 'line',
 		data: {
 			labels: <?php echo json_encode($this->labels); ?>,
-			datasets: [{
-				label: 'Downloaded Assests',
-				data: <?php echo json_encode($this->downloadasset_data); ?>,
-				borderColor: 'rgba(75, 192, 192, 1)',
-				backgroundColor: 'rgba(75, 192, 192, 0.2)',
-				fill: false
-			},
+			datasets: [
+			// {
+			// 	label: 'Downloaded Assests',
+			// 	data: <?php echo json_encode($this->downloadasset_data); ?>,
+			// 	borderColor: 'rgba(75, 192, 192, 1)',
+			// 	backgroundColor: 'rgba(75, 192, 192, 0.2)',
+			// 	fill: false
+			// },
 			{
 				label: 'Downloaded Games',
 				data: <?php echo json_encode($this->downloadgame_data); ?>,
@@ -252,12 +243,13 @@
 	});
 	</script>
 
+
     <script src="<?php echo BASE_URL; ?>public/js/admin.js"></script>
-    <!-- <?php if (isset($_SESSION['id']) && !empty($_SESSION['id'])) { ?>
+    <?php if (isset($_SESSION['id']) && !empty($_SESSION['id'])) { ?>
         <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
     <?php } else { ?>
         <script src="<?php echo BASE_URL; ?>public/js/navbarcopy.js"></script>
-    <?php } ?> -->
+    <?php } ?>
 
 </body>
 
