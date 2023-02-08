@@ -1,0 +1,60 @@
+.body-container{
+    display:flex;
+}
+
+.admin-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 30px;
+    margin-top: 1%;
+    max-width: 490px;
+    width: 100%;
+  }
+  
+  .profile-picture {
+    margin-top: 20px;
+  }
+  
+  .rounded-circle {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .user-details {
+    margin-top: 5px;
+    text-align: center;
+  }
+  
+  .user-role {
+    font-size: 24px;
+    font-weight: 1000;
+    color: #973752;
+  }
+  
+  .email-address .box {
+    width: 200px;
+    padding: 7px;
+    border: 1px solid gray;
+    text-align: center;
+    font-size: 18px;
+    color:#474e4e;
+  }
+
+  .crd-views{
+    background:rgb(167 201 217);
+  }
+
+  .crd-dwd{
+    background:#92a8af;
+  }
+
+  .crd-vw{
+    background:#89aeb7;
+  }
+
+  .db-card{
+    background:#869dad;
+  }

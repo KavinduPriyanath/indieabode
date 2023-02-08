@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
     <style>
-        <?php include 'public/css/loginnavbar.css'; ?><?php include 'public/css/footer.css'; ?>
+        <?php include 'public/css/loginnavbar.css'; ?>
     </style>
 
     <title>IndieAbode</title>
