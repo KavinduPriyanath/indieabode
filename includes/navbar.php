@@ -190,19 +190,6 @@
                             </div>
                         </div>
 
-                        <div class="dropdown" id="not-logged" data-dropdown>
-                            <a href="#" data-dropdown-button>Sign Up<i class="fa fa-angle-down droparrow"></i></a>
-
-                            <div class="dropdown-menu">
-                                <div class="arrow arrow5"></div>
-                                <div class=".ulsub">
-                                    <a href="/indieabode/login">Log&nbsp;In <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                                    <a href="/indieabode/register">Sign&nbsp;Up
-                                        <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                                </div>
-                            </div>
-                        </div>
-
                         <div class="dropdown" id="logged" data-dropdown>
                             <a href="#" data-dropdown-button>
                                 <div class="pp"><img src="public/images/avatars/<?= $_SESSION['avatar'] ?>" alt=""></div>
@@ -280,19 +267,6 @@
                             </div>
                         </div>
 
-                        <div class="dropdown" id="not-logged" data-dropdown>
-                            <a href="#" data-dropdown-button>Sign Up<i class="fa fa-angle-down droparrow"></i></a>
-
-                            <div class="dropdown-menu">
-                                <div class="arrow arrow5"></div>
-                                <div class=".ulsub">
-                                    <a href="/indieabode/login">Log&nbsp;In <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                                    <a href="/indieabode/register">Sign&nbsp;Up
-                                        <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                                </div>
-                            </div>
-                        </div>
-
                         <div class="dropdown" id="logged" data-dropdown>
                             <a href="#" data-dropdown-button>
                                 <div class="pp"><img src="public/images/avatars/<?= $_SESSION['avatar'] ?>" alt=""></div>
@@ -358,19 +332,6 @@
                                     <a href="<?php echo BASE_URL; ?>feed">Feed <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                     <a href="<?php echo BASE_URL; ?>forum">Forum <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                     <a href="<?php echo BASE_URL; ?>support_center">Help&nbsp;&&nbsp;Support
-                                        <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="dropdown" id="not-logged" data-dropdown>
-                            <a href="#" data-dropdown-button>Sign Up<i class="fa fa-angle-down droparrow"></i></a>
-
-                            <div class="dropdown-menu">
-                                <div class="arrow arrow5"></div>
-                                <div class=".ulsub">
-                                    <a href="/indieabode/login">Log&nbsp;In <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                                    <a href="/indieabode/register">Sign&nbsp;Up
                                         <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                 </div>
                             </div>
@@ -450,19 +411,6 @@
                                     <a href="<?php echo BASE_URL; ?>feed">Feed <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                     <a href="<?php echo BASE_URL; ?>forum">Forum <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                     <a href="<?php echo BASE_URL; ?>support_center">Help&nbsp;&&nbsp;Support
-                                        <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="dropdown" id="not-logged" data-dropdown>
-                            <a href="#" data-dropdown-button>Sign Up<i class="fa fa-angle-down droparrow"></i></a>
-
-                            <div class="dropdown-menu">
-                                <div class="arrow arrow5"></div>
-                                <div class=".ulsub">
-                                    <a href="/indieabode/login">Log&nbsp;In <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                                    <a href="/indieabode/register">Sign&nbsp;Up
                                         <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                 </div>
                             </div>
