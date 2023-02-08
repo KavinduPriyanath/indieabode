@@ -1,0 +1,168 @@
+body {
+    color: rgb(0, 0, 0);
+
+    /*height: 100vh;*/
+    justify-content: center;
+    align-items: flex-end;
+    background: rgb(51, 88, 121);
+    font-family: 'Kreon';
+    font-style: normal;
+}
+
+.card1 {
+    display: grid;
+    grid-auto-flow: column;
+    grid-column-gap: 20%;
+    margin-top: 50px;
+    background-color: #95B2C8;
+    justify-content: center;
+    border-radius: 8px 8px 0 0;
+    position: absolute;
+    width: 80%;
+    padding: 20px 0 10px 0;
+    left: 10%;
+}
+
+.card1-left {
+    text-align: left;
+    justify-content: left;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 35px;
+    padding: 15px 50px 0 0;
+
+}
+
+.card1-right {
+    display: grid;
+    grid-auto-flow: column;
+    grid-column-gap: 15%;
+    text-align: center;
+    margin-right: 45%;
+
+}
+
+.card2 {
+    display: flex;
+    margin-top: 3.8%;
+    justify-content: left;
+    position: absolute;
+    width: 80%;
+    height: 40px;
+    left: 10%;
+    top: 23.7%;
+    padding-top: 8px;
+    background: #447AA4;
+    border-radius: 0px;
+}
+
+.card2 .right1 {
+    margin-left: 5%;
+}
+
+.card3 {
+
+    justify-content: left;
+    position: absolute;
+    margin-top: 2.75%;
+    width: 80%;
+    height: fit-content;
+    left: 10%;
+    top: 31.9%;
+    background: #507B9B;
+    border-radius: 0px;
+}
+
+.card3-1 {
+    display: flex;
+    justify-content: center;
+
+    width: 14%;
+    margin-top: 2%;
+    margin-left: 5%;
+
+    background: #A5B9BD;
+    border-radius: 5px;
+
+    font-family: 'Kreon';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 25px;
+}
+
+.card3-2 {
+    justify-content: center;
+
+    width: 14%;
+    margin-top: 2%;
+    margin-left: 5%;
+
+
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 28px;
+    /* identical to box height */
+
+
+    color: #A2C0CA;
+}
+
+.card3-3 {
+    display: flex;
+    margin: 2% 5% 1.5% 5%;
+
+    background: rgba(92, 147, 177, 0.3);
+
+}
+
+.card3-3-Left img {
+
+    width: 100px;
+    height: 80px;
+
+}
+
+.card3-3-center {
+    margin-left: 2%;
+
+}
+
+.card3-3-center h3 {
+    margin-top: 2%;
+    font-weight: 700;
+    font-size: 23px;
+    line-height: 29px;
+
+    color: #0A2E64;
+}
+
+.card3-3-center p {
+    font-weight: 500;
+    font-size: 19px;
+    line-height: 24px;
+
+    color: #0E5160;
+}
+
+.card3-3-right {
+    /*display: flex;*/
+    display: grid;
+    grid-auto-flow: column;
+    grid-column-gap: 15%;
+    margin-left: 15%;
+    text-align: center;
+    width: 40%;
+    height: 80px;
+    align-content: center;
+    background: rgba(103, 169, 206, 0.3);
+}
+
+.card3-3-right2 {
+    font-weight: 300;
+    font-size: 17px;
+
+    text-align: center;
+    margin-left: 3%;
+    margin-top: 2.5%;
+}

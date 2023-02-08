@@ -27,12 +27,15 @@ class Register extends Controller
         $avatar = $_POST['avatar'];
         $userRole = $_POST['userrole'];
 
+        //hash password
+        $hasedPassword = password_hash($password, PASSWORD_DEFAULT);
+
         $count = $this->model->checkUser($email);
 
         if (!empty($count)) {
             header('location:/indieabode/dw');
         } else {
-            $this->model->insertUser($email, $username, $password, $firstname, $lastname, $avatar, $userRole);
+            $this->model->insertUser($email, $username, $hasedPassword, $firstname, $lastname, $avatar, $userRole);
 
             header('location:/indieabode/');
         }
