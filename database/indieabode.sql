@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 29, 2023 at 06:46 AM
+-- Generation Time: Feb 08, 2023 at 07:14 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -20,6 +20,26 @@ SET time_zone = "+00:00";
 --
 -- Database: `indieabode`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `account`
+--
+
+CREATE TABLE `account` (
+  `userID` int(11) NOT NULL,
+  `profilePhoto` varchar(100) NOT NULL,
+  `location` varchar(100) NOT NULL,
+  `tagline` varchar(100) NOT NULL,
+  `socialLink` varchar(50) NOT NULL,
+  `phoneNumber` varchar(15) NOT NULL,
+  `fullName` varchar(50) NOT NULL,
+  `cardNo` varchar(30) NOT NULL,
+  `expireDate` date NOT NULL,
+  `cvv` varchar(10) NOT NULL,
+  `birthDate` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -90,10 +110,71 @@ CREATE TABLE `cart` (
 
 CREATE TABLE `complaint` (
   `complaintID` int(11) NOT NULL,
-  `priority` varchar(10) NOT NULL,
+  `reason` varchar(40) NOT NULL,
   `description` text NOT NULL,
   `gamerID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `complaint_reasons_items`
+--
+
+CREATE TABLE `complaint_reasons_items` (
+  `id` int(11) NOT NULL,
+  `reason` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `complaint_reasons_items`
+--
+
+INSERT INTO `complaint_reasons_items` (`id`, `reason`) VALUES
+(1, 'Broken'),
+(2, 'Offensive material'),
+(3, 'Uploader not authorized to distribute'),
+(4, 'Miscategorized — Shows up on wrong part of itch.io, incorrect tags, incorrect platforms, etc.'),
+(5, 'Spam'),
+(6, 'Other');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `complaint_reason_jams`
+--
+
+CREATE TABLE `complaint_reason_jams` (
+  `id` int(11) NOT NULL,
+  `reason` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `complaint_reason_jams`
+--
+
+INSERT INTO `complaint_reason_jams` (`id`, `reason`) VALUES
+(1, 'Miscategorized — Shows up on wrong part of indieabode, incorrect tags, incorrect platforms, etc.'),
+(2, 'Spam'),
+(3, 'Other');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `complaint_reason_sales`
+--
+
+CREATE TABLE `complaint_reason_sales` (
+  `id` int(11) NOT NULL,
+  `reason` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `complaint_reason_sales`
+--
+
+INSERT INTO `complaint_reason_sales` (`id`, `reason`) VALUES
+(0, 'spam');
 
 -- --------------------------------------------------------
 
@@ -104,14 +185,13 @@ CREATE TABLE `complaint` (
 CREATE TABLE `crowdfund` (
   `crowdFundID` int(11) NOT NULL,
   `currentAmount` float NOT NULL,
-  `duration` int(11) NOT NULL,
+  `deadline` date NOT NULL,
   `expectedAmount` float NOT NULL,
   `gameDeveloperID` int(11) NOT NULL,
   `gameID` int(11) NOT NULL,
-  `cardNumber` varchar(30) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `cvv` varchar(3) NOT NULL,
-  `expireDate` date NOT NULL
+  `title` varchar(50) NOT NULL,
+  `backers` int(11) NOT NULL,
+  `details` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -139,10 +219,10 @@ CREATE TABLE `devlog` (
 
 INSERT INTO `devlog` (`publishDate`, `description`, `name`, `Tagline`, `Type`, `Visibility`, `devlogImg`, `gameName`, `devLogID`, `ReleaseDate`) VALUES
 ('2022-12-15 19:26:39', 'What is a game inventory?\r\nIn RPGs, an item inventory is a common UI feature where one can view all the items that have been collected thus far. Often, these are sorted by categories, such as \"equipment\" or \"potions.\" In other game genres, the items may take effect as soon as they are obtained.', 'Added Inventory System', 'craft new items easily with the upgraded inventory', 'Game Design', 'public', 'SS-Added Inventory System.png', 'Almighty Shields', 14, '0000-00-00'),
-('2022-12-16 04:43:20', 'Genshin Impact takes place in the fantasy world of Teyvat, home to seven nations, each of which is tied to a different element and ', 'devlog 1', 'grggjhkjlkadueiiqokslakankaj', 'Tutorial', 'draft', 'SS-devlog 1.jpg', 'Almighty Shields', 16, '0000-00-00'),
-('2022-12-16 05:58:59', 'yhfgjh', 'dev ,', 'ukuh', 'Tutorial', 'draft', 'SS-dev ,.jpg', 'Stray', 17, '2020-12-29'),
-('2023-01-15 14:51:20', 'fefef', 'efef', 'fefe', 'Game Design', 'draft', '', 'efe', 18, '0000-00-00'),
-('2023-01-15 15:18:53', 'rgrgerg', 'gerg', 'greg', 'Postmortem', 'draft', '', 'Albion Online', 19, '0000-00-00');
+('2022-12-15 19:26:39', 'What is a game inventory?\r\nIn RPGs, an item inventory is a common UI feature where one can view all the items that have been collected thus far. Often, these are sorted by categories, such as \"equipment\" or \"potions.\" In other game genres, the items may take effect as soon as they are obtained.', 'Added Inventory System', 'craft new items easily with the upgraded inventory', 'Game Design', 'public', 'SS-Added Inventory System.png', 'Almighty Shields', 20, '0000-00-00'),
+('2022-12-15 19:26:39', 'What is a game inventory?\r\nIn RPGs, an item inventory is a common UI feature where one can view all the items that have been collected thus far. Often, these are sorted by categories, such as \"equipment\" or \"potions.\" In other game genres, the items may take effect as soon as they are obtained.', 'Added Inventory System', 'craft new items easily with the upgraded inventory', 'Game Design', 'public', 'SS-Added Inventory System.png', 'Almighty Shields', 21, '2023-01-31'),
+('2022-12-15 19:26:39', 'What is a game inventory?\r\nIn RPGs, an item inventory is a common UI feature where one can view all the items that have been collected thus far. Often, these are sorted by categories, such as \"equipment\" or \"potions.\" In other game genres, the items may take effect as soon as they are obtained.', 'Added Inventory System', 'craft new items easily with the upgraded inventory', 'Game Design', 'public', 'SS-Added Inventory System.png', 'Almighty Shields', 22, '2023-01-31'),
+('2023-01-30 15:07:27', 'dwdwd', 'dwd', 'ddw', 'Game Design', 'draft', '', 'Stray', 23, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -174,8 +254,19 @@ INSERT INTO `devlog_posttype` (`id`, `postType`) VALUES
 
 CREATE TABLE `downloadasset` (
   `assetID` int(11) NOT NULL,
-  `gamerID` int(11) NOT NULL
+  `gamerID` int(11) NOT NULL,
+  `created_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `downloadasset`
+--
+
+INSERT INTO `downloadasset` (`assetID`, `gamerID`, `created_at`) VALUES
+(1, 12, '0000-00-00 00:00:00'),
+(1, 1, '0000-00-00 00:00:00'),
+(1, 16, '0000-00-00 00:00:00'),
+(1, 20, '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -185,8 +276,73 @@ CREATE TABLE `downloadasset` (
 
 CREATE TABLE `downloadgame` (
   `gamerID` int(11) NOT NULL,
-  `gameID` int(11) NOT NULL
+  `gameID` int(11) NOT NULL,
+  `created_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `downloadgame`
+--
+
+INSERT INTO `downloadgame` (`gamerID`, `gameID`, `created_at`) VALUES
+(1, 1, '2023-02-05 06:17:02'),
+(1, 1, '2023-02-05 06:17:02'),
+(1, 1, '2023-02-05 06:17:02'),
+(1, 1, '2023-02-05 06:17:02'),
+(1, 1, '2023-02-05 06:17:02'),
+(1, 1, '2023-02-05 06:17:02'),
+(1, 1, '2023-02-05 06:17:02'),
+(1, 1, '2023-02-05 06:17:02'),
+(1, 1, '2023-02-04 06:17:02'),
+(1, 1, '2023-02-04 06:17:02'),
+(1, 1, '2023-02-01 06:17:02'),
+(1, 1, '2023-02-02 06:17:02'),
+(1, 1, '2023-02-02 06:17:02'),
+(1, 1, '2023-02-02 06:17:02'),
+(1, 1, '2023-02-06 07:03:07'),
+(1, 1, '2023-02-06 07:03:07'),
+(1, 1, '2023-02-06 07:03:07'),
+(1, 1, '2023-02-06 07:03:07'),
+(1, 1, '2023-02-06 07:03:07'),
+(1, 1, '2023-02-07 07:03:07'),
+(1, 1, '2023-02-07 07:03:07'),
+(1, 1, '2023-02-08 07:03:07'),
+(1, 1, '2023-02-08 07:03:07'),
+(1, 1, '2023-02-08 07:03:07'),
+(1, 1, '2023-02-09 07:03:07'),
+(1, 1, '2023-01-07 07:03:07'),
+(1, 1, '2023-01-07 07:03:07'),
+(1, 1, '2023-01-08 07:03:07'),
+(1, 1, '2023-01-08 07:03:07'),
+(1, 1, '2023-01-08 07:03:07'),
+(1, 1, '2023-01-19 07:03:07'),
+(1, 1, '2023-01-17 07:03:07'),
+(1, 1, '2023-01-17 07:03:07'),
+(1, 1, '2023-01-08 07:03:07'),
+(1, 1, '2023-01-28 07:03:07'),
+(1, 1, '2023-01-28 07:03:07'),
+(1, 1, '2023-01-29 07:03:07'),
+(1, 1, '2023-01-27 07:03:07'),
+(1, 1, '2023-01-27 07:03:07'),
+(1, 1, '2023-01-28 07:03:07'),
+(1, 1, '2023-01-28 07:03:07'),
+(1, 1, '2023-01-28 07:03:07'),
+(1, 1, '2023-01-29 07:03:07'),
+(1, 1, '2023-01-17 07:03:07'),
+(1, 1, '2023-01-17 07:03:07'),
+(1, 1, '2023-01-18 07:03:07'),
+(1, 1, '2023-01-18 07:03:07'),
+(1, 1, '2023-01-18 07:03:07'),
+(1, 1, '2023-01-19 07:03:07'),
+(1, 40, '2023-02-05 17:58:14'),
+(1, 40, '2023-02-05 17:58:14'),
+(1, 40, '2023-02-05 17:58:14'),
+(1, 41, '2023-02-05 17:58:14'),
+(1, 41, '2023-02-05 17:58:14'),
+(1, 41, '2023-02-05 17:58:14'),
+(1, 42, '2023-02-05 17:58:14'),
+(1, 42, '2023-02-05 17:58:14'),
+(1, 43, '2023-02-05 17:58:14');
 
 -- --------------------------------------------------------
 
@@ -212,16 +368,17 @@ CREATE TABLE `freeasset` (
   `assetVideoURL` varchar(255) NOT NULL,
   `assetType` varchar(30) NOT NULL,
   `assetStyle` varchar(20) NOT NULL,
-  `assetCreatorID` int(11) NOT NULL
+  `assetCreatorID` int(11) NOT NULL,
+  `created_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `freeasset`
 --
 
-INSERT INTO `freeasset` (`assetID`, `assetName`, `assetGenre`, `assetDetails`, `assetScreenshots`, `assetTitle`, `assetTagline`, `assetClassification`, `assetReleaseStatus`, `assetTags`, `assetFile`, `assetLicense`, `assetCoverImg`, `assetVisibility`, `assetVideoURL`, `assetType`, `assetStyle`, `assetCreatorID`) VALUES
-(1, 'Sprout Lands', '', '', 'SS-Sprout Lands-0.png,SS-Sprout Lands-1.png', '', 'cute pixel art pastel farming asset pack with stylish design ', '2d', 'released', 'pixel art, sprout la', 'Asset-Sprout Lands.zip', 'proprietary', 'Cover-Sprout Lands.png', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'tileset', 'pixelart', 12),
-(2, 'Cozy People', '', '', 'SS-Cozy People-0.png,SS-Cozy People-1.png', '', 'Animated characters, hairstyles and clothes!', '3d', 'released', 'people, characters', 'Asset-Cozy People.zip', 'open-source', 'Cover-Cozy People.png', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'sprite', 'pixelart', 12);
+INSERT INTO `freeasset` (`assetID`, `assetName`, `assetGenre`, `assetDetails`, `assetScreenshots`, `assetTitle`, `assetTagline`, `assetClassification`, `assetReleaseStatus`, `assetTags`, `assetFile`, `assetLicense`, `assetCoverImg`, `assetVisibility`, `assetVideoURL`, `assetType`, `assetStyle`, `assetCreatorID`, `created_at`) VALUES
+(1, 'Sprout Lands', '', '', 'SS-Sprout Lands-0.png,SS-Sprout Lands-1.png', '', 'cute pixel art pastel farming asset pack with stylish design ', '2d', 'released', 'pixel art, sprout la', 'Asset-Sprout Lands.zip', 'proprietary', 'Cover-Sprout Lands.png', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'tileset', 'pixelart', 12, '2023-02-06 10:39:35'),
+(2, 'Cozy People', '', '', 'SS-Cozy People-0.png,SS-Cozy People-1.png', '', 'Animated characters, hairstyles and clothes!', '3d', 'released', 'people, characters', 'Asset-Cozy People.zip', 'open-source', 'Cover-Cozy People.png', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'sprite', 'pixelart', 12, '2023-02-06 10:39:35');
 
 -- --------------------------------------------------------
 
@@ -255,22 +412,23 @@ CREATE TABLE `freegame` (
   `recommendMemory` varchar(255) NOT NULL,
   `recommendStorage` varchar(255) NOT NULL,
   `recommendGraphics` varchar(255) NOT NULL,
-  `recommendOther` varchar(255) NOT NULL
+  `recommendOther` varchar(255) NOT NULL,
+  `created_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `freegame`
 --
 
-INSERT INTO `freegame` (`gameID`, `gameName`, `releaseStatus`, `gameDetails`, `gameScreenshots`, `gameTrailor`, `gameTagline`, `gameClassification`, `gameTags`, `gameFeatures`, `gameFile`, `gameVisibility`, `gameCoverImg`, `gameDeveloperID`, `minOS`, `minProcessor`, `minMemory`, `minStorage`, `minGraphics`, `minOther`, `recommendOS`, `recommendProcessor`, `recommendMemory`, `recommendStorage`, `recommendGraphics`, `recommendOther`) VALUES
-(33, 'Stray', 'released', 'Stray is a 2022 adventure game developed by BlueTwelve Studio and published by Annapurna Interactive. The story follows a stray cat who falls into a walled city populated by robots, machines, and mutant bacteria, and sets out to return to the surface with the help of a drone companion, B-12. The game is presented through a third-person perspective. The player traverses by leaping across platforms and climbing up obstacles, and can interact with the environment to open new paths. Using B-12, they can store items found throughout the world and hack into technology to solve puzzles. Throughout the game, the player must evade the antagonistic Zurks and Sentinels, which attempt to kill them', 'SS-Stray.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'climb the tower in calm and peaceful environment', 'adventure', '3d, stray, dogs', 'singleplayer', 'Game-Stray.zip', 0, 'Cover-Stray.jpg', 12, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', 'English'),
-(38, 'Albion Online', 'released', 'Genshin Impact takes place in the fantasy world of Teyvat, home to seven nations, each of which is tied to a different element and ', '', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'climb the tower in calm and peaceful environment', 'adventure', 'genshin', 'singleplayer', 'Game-Albion Online.zip', 0, 'Cover-Albion Online.jpg', 12, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', 'English'),
-(40, 'Cloud Climber', 'early access', 'Genshin Impact takes place in the fantasy world of Teyvat, home to seven nations, each of which is tied to a different element and ', '', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'climb the tower in calm and peaceful environment', 'adventure', 'genshin', 'singleplayer', 'Game-Cloud Climber.zip', 0, 'Cover-Cloud Climber.jpg', 12, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', 'English'),
-(41, 'Plocks', 'released', 'Genshin Impact takes place in the fantasy world of Teyvat, home to seven nations, each of which is tied to a different element and ', '', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'climb the tower in calm and peaceful environment and survive', 'adventure', 'genshin', 'singleplayer', 'Game-Plocks.zip', 0, 'Cover-Plocks.png', 12, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', 'English'),
-(42, 'Halo Infinite', 'released', 'Genshin Impact takes place in the fantasy world of Teyvat, home to seven nations, each of which is tied to a different element and ', '', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'An awesome fps shooter game with latest weapon handlings', 'action', 'genshin', 'singleplayer', 'Game-Halo Infinite.zip', 0, 'Cover-Halo Infinite.jpg', 12, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', 'English'),
-(43, 'Cloud Climber', 'released', 'Genshin Impact takes place in the fantasy world of Teyvat, home to seven nations, each of which is tied to a different element and ', '', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'climb the tower in calm and peaceful environment', 'action', 'genshin', 'singleplayer', 'Game-Cloud Climber.zip', 0, 'Cover-Cloud Climber.jpg', 12, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', 'English'),
-(45, 'Albion Online', 'released', 'Genshin Impact takes place in the fantasy world of Teyvat, home to seven nations, each of which is tied to a different element and \r\n\r\n\r\n', '', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'climb the tower in calm and peaceful environment', 'action', 'genshin', 'singleplayer', 'Game-Albion Online.zip', 0, 'Cover-Albion Online.jpg', 16, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', 'English'),
-(52, 'Albion Online', 'released', 'dwdwefe', '', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'climb the tower in calm and peaceful environment', 'RPG', 'gregreg', 'singleplayer', '', 0, 'Cover-Albion Online.jpg', 12, 'a', 'Intel Core I3', 'grg', 'rg', 'mx330', 'rgr', 'r', 'Intel Core I5', 'rgr', 'grg', 'mx1650', 'a');
+INSERT INTO `freegame` (`gameID`, `gameName`, `releaseStatus`, `gameDetails`, `gameScreenshots`, `gameTrailor`, `gameTagline`, `gameClassification`, `gameTags`, `gameFeatures`, `gameFile`, `gameVisibility`, `gameCoverImg`, `gameDeveloperID`, `minOS`, `minProcessor`, `minMemory`, `minStorage`, `minGraphics`, `minOther`, `recommendOS`, `recommendProcessor`, `recommendMemory`, `recommendStorage`, `recommendGraphics`, `recommendOther`, `created_at`) VALUES
+(1, 'Stray', 'released', 'Stray is a 2022 adventure game developed by BlueTwelve Studio and published by Annapurna Interactive. The story follows a stray cat who falls into a walled city populated by robots, machines, and mutant bacteria, and sets out to return to the surface with the help of a drone companion, B-12. The game is presented through a third-person perspective. The player traverses by leaping across platforms and climbing up obstacles, and can interact with the environment to open new paths. Using B-12, they can store items found throughout the world and hack into technology to solve puzzles. Throughout the game, the player must evade the antagonistic Zurks and Sentinels, which attempt to kill them', 'SS-Stray.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'climb the tower in calm and peaceful environment', 'adventure', '3d, stray, dogs', 'singleplayer', 'Game-Stray.zip', 0, 'Cover-Stray.jpg', 12, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', 'English', '2023-02-05 18:23:52'),
+(38, 'Albion Online', 'released', 'Genshin Impact takes place in the fantasy world of Teyvat, home to seven nations, each of which is tied to a different element and ', '', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'climb the tower in calm and peaceful environment', 'adventure', 'genshin', 'singleplayer', 'Game-Albion Online.zip', 0, 'Cover-Albion Online.jpg', 12, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', 'English', '2023-02-04 18:24:20'),
+(40, 'Cloud Climber', 'early access', 'Genshin Impact takes place in the fantasy world of Teyvat, home to seven nations, each of which is tied to a different element and ', '', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'climb the tower in calm and peaceful environment', 'adventure', 'genshin', 'singleplayer', 'Game-Cloud Climber.zip', 0, 'Cover-Cloud Climber.jpg', 12, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', 'English', '2023-02-03 20:43:16'),
+(41, 'Plocks', 'released', 'Genshin Impact takes place in the fantasy world of Teyvat, home to seven nations, each of which is tied to a different element and ', '', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'climb the tower in calm and peaceful environment and survive', 'adventure', 'genshin', 'singleplayer', 'Game-Plocks.zip', 0, 'Cover-Plocks.png', 12, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', 'English', '2023-02-05 20:43:36'),
+(42, 'Halo Infinite', 'released', 'Genshin Impact takes place in the fantasy world of Teyvat, home to seven nations, each of which is tied to a different element and ', '', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'An awesome fps shooter game with latest weapon handlings', 'action', 'genshin', 'singleplayer', 'Game-Halo Infinite.zip', 0, 'Cover-Halo Infinite.jpg', 12, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', 'English', '2023-02-05 20:44:03'),
+(43, 'Cloud Climber', 'released', 'Genshin Impact takes place in the fantasy world of Teyvat, home to seven nations, each of which is tied to a different element and ', '', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'climb the tower in calm and peaceful environment', 'action', 'genshin', 'singleplayer', 'Game-Cloud Climber.zip', 0, 'Cover-Cloud Climber.jpg', 12, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', 'English', '2023-02-04 20:44:20'),
+(45, 'Albion Online', 'released', 'Genshin Impact takes place in the fantasy world of Teyvat, home to seven nations, each of which is tied to a different element and \r\n\r\n\r\n', '', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'climb the tower in calm and peaceful environment', 'action', 'genshin', 'singleplayer', 'Game-Albion Online.zip', 0, 'Cover-Albion Online.jpg', 16, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', 'English', '2023-02-02 20:44:40'),
+(52, 'Albion Online', 'released', 'dwdwefe', '', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'climb the tower in calm and peaceful environment', 'RPG', 'gregreg', 'singleplayer', '', 0, 'Cover-Albion Online.jpg', 12, 'a', 'Intel Core I3', 'grg', 'rg', 'mx330', 'rgr', 'r', 'Intel Core I5', 'rgr', 'grg', 'mx1650', 'a', '2023-02-02 20:44:55');
 
 -- --------------------------------------------------------
 
@@ -340,6 +498,7 @@ CREATE TABLE `gamer` (
   `password` varchar(255) NOT NULL,
   `accountStatus` tinyint(1) NOT NULL,
   `avatar` varchar(255) NOT NULL,
+  `userRole` varchar(50) NOT NULL,
   `username` varchar(50) NOT NULL,
   `firstName` varchar(50) NOT NULL,
   `lastName` varchar(50) NOT NULL,
@@ -353,11 +512,13 @@ CREATE TABLE `gamer` (
 -- Dumping data for table `gamer`
 --
 
-INSERT INTO `gamer` (`gamerID`, `email`, `password`, `accountStatus`, `avatar`, `username`, `firstName`, `lastName`, `loginDate`, `logoutTime`, `verified`, `token`) VALUES
-(12, 'kavindupriyanath@gmail.com', 'Kimalrasanka123!', 0, '', 'prend', 'kavindu', 'priyanath', '2022-12-14 15:12:16', '2022-12-14 15:12:16', '', ''),
-(16, 'himash@gmail.com', '1234Himash*', 0, '', 'Himash', 'kavindu', 'priyanath', '2022-12-16 05:44:52', '2022-12-16 05:44:52', '', ''),
-(20, 'gg@gmail.com', '123', 0, '', '2020cs029', 'kavindu', 'priyanath', '2023-01-13 13:43:58', '2023-01-13 13:43:58', '', ''),
-(23, 'Kaeya1@gmail.com', 'dwdw', 0, '', '2020cs029', 'dwd', 'dwdw', '2023-01-13 14:00:10', '2023-01-13 14:00:10', '', '');
+INSERT INTO `gamer` (`gamerID`, `email`, `password`, `accountStatus`, `avatar`, `userRole`, `username`, `firstName`, `lastName`, `loginDate`, `logoutTime`, `verified`, `token`) VALUES
+(1, 'fefrg@tht.comwd', '12', 0, 'avatar3.png', 'game developer', 'Beidouwdw', 'kavindu', 'Alwis', '2023-01-30 13:25:35', '2023-01-30 13:25:35', '', ''),
+(12, 'kavindupriyanath@gmail.com', 'Kimalrasanka123!', 1, '', '', 'prend', 'kavindu', 'priyanath', '2022-12-14 15:12:16', '2022-12-14 15:12:16', '', ''),
+(16, 'himash@gmail.com', '1234Himash*', 0, '', 'gamer', 'Himash', 'kavindu', 'priyanath', '2022-12-16 05:44:52', '2022-12-16 05:44:52', '', ''),
+(20, 'gg@gmail.com', '123', 1, '', '', '2020cs029', 'kavindu', 'priyanath', '2023-01-13 13:43:58', '2023-01-13 13:43:58', '', ''),
+(23, 'Kaeya1@gmail.com', 'dwdw', 1, '', '', '2020cs029', 'dwd', 'dwdw', '2023-01-13 14:00:10', '2023-01-13 14:00:10', '', ''),
+(27, 'gg11@gmail.com', '1234', 0, 'avatar1.png', '', 'kavindu1', 'dwd', 'rasanka', '2023-01-30 12:57:08', '2023-01-30 12:57:08', '', '');
 
 -- --------------------------------------------------------
 
@@ -371,6 +532,27 @@ CREATE TABLE `gamesale` (
   `saleStartingDate` datetime NOT NULL,
   `discountGamePrice` float NOT NULL,
   `gamePercentage` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `game_specifications`
+--
+
+CREATE TABLE `game_specifications` (
+  `gameID` int(11) NOT NULL,
+  `min_os` int(11) NOT NULL,
+  `min_processor` int(11) NOT NULL,
+  `min_memory` int(11) NOT NULL,
+  `min_storage` int(11) NOT NULL,
+  `min_graphics` int(11) NOT NULL,
+  `rec_os` int(11) NOT NULL,
+  `rec_processor` int(11) NOT NULL,
+  `rec_memory` int(11) NOT NULL,
+  `rec_storage` int(11) NOT NULL,
+  `rec_graphics` int(11) NOT NULL,
+  `other` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -402,9 +584,11 @@ CREATE TABLE `gig` (
 --
 
 INSERT INTO `gig` (`gigID`, `gigName`, `gigTrailor`, `gigScreenshot`, `gigDetails`, `game`, `gameDeveloperID`, `gamePublisherID`, `gigTagline`, `currentStage`, `plannedReleaseDate`, `estimatedShare`, `expectedCost`, `visibility`, `gigCoverImg`) VALUES
-(2, 'dwdw', '', '', 'vevvv', 'Albion Online', 12, 0, 'ddwdw', 'adventure', 'dwdwd', 'veveve', 'sdvsdv', 'draft', ''),
-(3, 'cec', '', '', 'cece', 'Albion Online', 12, 0, 'cece', 'action', 'cececc', '12', 'cfvf', 'draft', 'Cover-cec.jpeg'),
-(4, 'cecec', '', '', 'vrvrvr', 'Cloud Climber', 12, 0, 'cececev', 'action', 'vrvrvr', 'vvevr', 'vrr', 'draft', 'Cover-cecec.jpg');
+(3, 'Open World Classic', '', '', 'cece', 'Albion Online', 12, 0, 'climb the tower in calm and peaceful environment', 'action', 'cececc', '12', 'cfvf', 'draft', 'Cover-cec.jpeg'),
+(4, 'Retro Style Platformer', '', '', 'vrvrvr', 'Cloud Climber', 12, 0, 'climb the tower in calm and peaceful environment', 'action', 'vrvrvr', 'vvevr', 'vrr', 'draft', 'Cover-cecec.jpg'),
+(5, 'Open World Classic', '', '', 'cece', 'Albion Online', 12, 0, 'climb the tower in calm and peaceful environment', 'action', 'cececc', '12', 'cfvf', 'draft', 'Cover-cec.jpeg'),
+(6, 'Retro Style Platformer', '', '', 'vrvrvr', 'Cloud Climber', 12, 0, 'climb the tower in calm and peaceful environment', 'action', 'vrvrvr', 'vvevr', 'vrr', 'draft', 'Cover-cecec.jpg'),
+(7, 'Open World Classic', '', '', 'cece', 'Albion Online', 12, 0, 'climb the tower in calm and peaceful environment', 'action', 'cececc', '12', 'cfvf', 'draft', 'Cover-cec.jpeg');
 
 -- --------------------------------------------------------
 
@@ -522,10 +706,7 @@ CREATE TABLE `paidgame` (
 CREATE TABLE `participatecrowdfund` (
   `crowdFundID` int(11) NOT NULL,
   `gamerID` int(11) NOT NULL,
-  `cardNumber` varchar(30) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `cvv` varchar(3) NOT NULL,
-  `expireDate` date NOT NULL
+  `donatedAmount` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -596,8 +777,8 @@ CREATE TABLE `ratesubmission` (
 
 CREATE TABLE `submission` (
   `submissionID` int(11) NOT NULL,
-  `submissionDate` timestamp NOT NULL DEFAULT current_timestamp(),
-  `gameJamID` int(11) NOT NULL
+  `gameJamID` int(11) NOT NULL,
+  `rating` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -615,9 +796,38 @@ CREATE TABLE `usertype` (
   `assetCreatorFlag` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_role`
+--
+
+CREATE TABLE `user_role` (
+  `id` int(11) NOT NULL,
+  `roleType` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user_role`
+--
+
+INSERT INTO `user_role` (`id`, `roleType`) VALUES
+(1, 'admin'),
+(2, 'gamer'),
+(3, 'game developer'),
+(4, 'asset creator'),
+(5, 'gamejam organizer'),
+(6, 'game publisher');
+
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `account`
+--
+ALTER TABLE `account`
+  ADD PRIMARY KEY (`userID`);
 
 --
 -- Indexes for table `addassetsale`
@@ -652,6 +862,18 @@ ALTER TABLE `assetsale`
 ALTER TABLE `cart`
   ADD PRIMARY KEY (`cartID`),
   ADD KEY `gamerID` (`gamerID`);
+
+--
+-- Indexes for table `complaint_reasons_items`
+--
+ALTER TABLE `complaint_reasons_items`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `complaint_reason_jams`
+--
+ALTER TABLE `complaint_reason_jams`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `devlog`
@@ -697,9 +919,22 @@ ALTER TABLE `gig`
   ADD KEY `gameDeveloperID` (`gameDeveloperID`);
 
 --
+-- Indexes for table `joinjam`
+--
+ALTER TABLE `joinjam`
+  ADD KEY `gamerID` (`gamerID`),
+  ADD KEY `gameJamID` (`gameJamID`);
+
+--
 -- Indexes for table `library`
 --
 ALTER TABLE `library`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user_role`
+--
+ALTER TABLE `user_role`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -707,10 +942,28 @@ ALTER TABLE `library`
 --
 
 --
+-- AUTO_INCREMENT for table `account`
+--
+ALTER TABLE `account`
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `complaint_reasons_items`
+--
+ALTER TABLE `complaint_reasons_items`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `complaint_reason_jams`
+--
+ALTER TABLE `complaint_reason_jams`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `devlog`
 --
 ALTER TABLE `devlog`
-  MODIFY `devLogID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `devLogID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `devlog_posttype`
@@ -740,19 +993,25 @@ ALTER TABLE `gamejam`
 -- AUTO_INCREMENT for table `gamer`
 --
 ALTER TABLE `gamer`
-  MODIFY `gamerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `gamerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `gig`
 --
 ALTER TABLE `gig`
-  MODIFY `gigID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `gigID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `library`
 --
 ALTER TABLE `library`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `user_role`
+--
+ALTER TABLE `user_role`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
@@ -763,6 +1022,13 @@ ALTER TABLE `library`
 --
 ALTER TABLE `gig`
   ADD CONSTRAINT `gig_ibfk_1` FOREIGN KEY (`gameDeveloperID`) REFERENCES `gamer` (`gamerID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `joinjam`
+--
+ALTER TABLE `joinjam`
+  ADD CONSTRAINT `joinjam_ibfk_1` FOREIGN KEY (`gamerID`) REFERENCES `gamer` (`gamerID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `joinjam_ibfk_2` FOREIGN KEY (`gameJamID`) REFERENCES `gamejam` (`gameJamID`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
