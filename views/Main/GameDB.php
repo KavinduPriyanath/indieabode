@@ -62,7 +62,7 @@
 			<h1 class="title">Dashboard</h1>
 			
 			<div class="info-data">
-				<div class="card">
+				<div class="card db-card">
 					<div class="total-views">
 						<div class="main-total-view-left">
 							<h3>Registered Users</h3>
@@ -73,7 +73,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="card">
+				<div class="card db-card">
 					<div class="total-views">
 						<div class="main-total-view-left">
 							<h3>Total Transactions</h3>
@@ -84,7 +84,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="card">
+				<div class="card db-card">
 					<div class="total-views">
 						<div class="main-total-view-left">
 							<h3>Total Downloads</h3>

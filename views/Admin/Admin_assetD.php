@@ -71,7 +71,7 @@
 				<li><a href="#" class="active">Dashboard/Asset Dashboard</a></li>
 			</ul> -->
 			<div class="info-data">
-				<div class="card crd-views">
+				<div class="card db-card">
 					<div class="total-views">
 						<div class="main-total-view-left total-games">
 							<h3>Uploaded Assets</h3>
@@ -90,7 +90,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="card crd-dwd">
+				<div class="card db-card">
 					<div class="total-views">
 						<div class="main-total-view-left total-games">
 							<h3>Total Downloads</h3>
@@ -109,7 +109,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="card crd-vw">
+				<div class="card db-card">
 					<div class="total-views">
 						<div class="main-total-view-left">
 							<h3>Total Transactions</h3><br>

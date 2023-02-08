@@ -12,12 +12,12 @@ class Admin_userMg extends Controller
     function index()
     {
         $this->view->users = $this->model->viewUser();
-            if(empty($this->users)){
-                echo "empty";
+            // if(empty($this->users)){
+            //     echo "empty";
 
-            }else{
-                echo "na";
-            }
+            // }else{
+            //     echo "na";
+            // }
         //$this->view->totalDownloads = $this->model->totalDownloads();
 
         // $this->view = $this->model->delete_user($user['id']);
