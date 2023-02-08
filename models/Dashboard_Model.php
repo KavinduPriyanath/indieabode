@@ -60,4 +60,15 @@ class Dashboard_Model extends Model
 
         return $stmt->fetchAll();
     }
+
+    function showAllMyCrowdfundings($id)
+    {
+        $sql = "SELECT * FROM crowdfund WHERE gameDeveloperID='$id'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
 }

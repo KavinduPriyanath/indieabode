@@ -39,6 +39,8 @@ class Dashboard extends Controller
 
     function crowdfundings()
     {
+        $this->view->crowdfundings = $this->model->showAllMyCrowdfundings($_SESSION['id']);
+
         $this->view->render('Dashboard/Dashboard-Crowdfunding');
     }
 

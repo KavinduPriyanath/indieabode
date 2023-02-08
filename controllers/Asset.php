@@ -27,7 +27,13 @@ class Asset extends Controller
 
             $this->view->ssCount = count($this->model->getScreenshots($assetID));
 
-            $this->view->hasClaimed = $this->model->AlreadyClaimed($assetID);
+            $this->view->hasClaimed = $this->model->AlreadyClaimed($assetID, $_SESSION['id']);
+
+            $this->view->hasInCart = $this->model->AlreadyInCart($assetID, $_SESSION['id']);
+
+            $this->view->stats = $this->model->AssetStats($assetID);
+
+            $this->view->popularAssets = $this->model->PopularAssets();
 
             $this->view->render('SingleAsset');
         }
@@ -82,6 +88,7 @@ class Asset extends Controller
 
             $mail->send();
             //header('location:/indieabode/forgotpassword/resetmailsent');
+            header("location:/indieabode/asset?id=" . $_GET['id']);
         } catch (Exception $e) {
             header('location:/indieabode/downloadfailed');
         }
@@ -94,5 +101,22 @@ class Asset extends Controller
         readfile($downloadPath);
 
         $this->model->AddtoLibrary($_GET['id'], $_SESSION['id']);
+    }
+
+    function reviews()
+    {
+        $this->view->asset = $this->model->showSingleAsset($_GET['id']);
+
+        $this->view->render('Reviews/Asset-Reviews');
+    }
+
+    function AddToCart()
+    {
+        $this->model->AddtoCart($_GET['id'], $_SESSION['id']);
+
+        $query = parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
+        parse_str($query, $result);
+
+        header('Location:/indieabode/asset/?' . http_build_query($result));
     }
 }

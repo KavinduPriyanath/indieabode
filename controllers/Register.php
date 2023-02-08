@@ -26,18 +26,40 @@ class Register extends Controller
         $lastname = $_POST['lastname'];
         $avatar = $_POST['avatar'];
         $userRole = $_POST['userrole'];
+        $confirmPassword = $_POST['confirmPassword'];
 
-        //hash password
-        $hasedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        $count = $this->model->checkUser($email);
+        //check password strength
+        $uppercase = preg_match('@[A-Z]@', $password);
+        $lowercase = preg_match('@[a-z]@', $password);
+        $number    = preg_match('@[0-9]@', $password);
+        $specialChars = preg_match('@[^\w]@', $password);
 
-        if (!empty($count)) {
-            header('location:/indieabode/dw');
+        $strongPassword = false;
+
+        if (!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password) < 8) {
+            $strongPassword = false;
         } else {
-            $this->model->insertUser($email, $username, $hasedPassword, $firstname, $lastname, $avatar, $userRole);
 
-            header('location:/indieabode/');
+            $strongPassword = true;
+        }
+
+        if ($password == $confirmPassword && $strongPassword == true) {
+            //hash password
+            $hasedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+
+            $count = $this->model->checkUser($email);
+
+            if (!empty($count)) {
+                header('location:/indieabode/dw');
+            } else {
+                $this->model->insertUser($email, $username, $hasedPassword, $firstname, $lastname, $avatar, $userRole);
+                $this->model->addUserAccount($username);
+                header('location:/indieabode/');
+            }
+        } else {
+            print_r("Passwords do not match!");
         }
     }
 }

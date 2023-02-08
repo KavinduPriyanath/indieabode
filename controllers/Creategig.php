@@ -31,8 +31,8 @@ class Creategig extends Controller
         $expectedCost = $_POST['expected-cost'];
         $visibility = $_POST['gig-visibility'];
         $gigCoverImg = $this->model->uploadCoverImg($gigName);
-        $gigScreenshots = null;
-        $gigTrailer = null;
+        $gigScreenshots = $this->model->uploadScreenshots($gameName);
+        $gigTrailer = $_POST['gig-trailer'];
         $developerID = $_SESSION['id'];
 
         $this->model->addNewGig(

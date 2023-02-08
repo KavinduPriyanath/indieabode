@@ -89,4 +89,6 @@ class Login_Model extends Model
 
         $stmt->execute();
     }
+
 }
+

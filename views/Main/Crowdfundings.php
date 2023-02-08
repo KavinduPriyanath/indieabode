@@ -152,29 +152,31 @@
     <div class="container" id="card-container">
 
 
-        <a href="">
-            <div class="card">
-                <div class="card-image"> <img src="" alt="">
-                </div>
-                <div class="game-intro">
-                    <h3>Game Name</h3>
-                </div>
-                <div class="fund-amount">
-                    <p>122% Funded</p>
-                </div>
-                <div class="dev">
-                    By Prend
-                </div>
-                <div class="last-row">
-                    <div class="deadline">Ends in 3 days</div>
-                    <div class="likes">
-                        <div class="logo-likes"><img src="/indieabode/public/images/devlogs/like.png" alt=""></div>
-                        <div class="like-count">11</div>
+        <?php foreach ($this->crowdfundings as $crowdfunding) { ?>
+            <a href="/indieabode/crowdfund?id=<?= $crowdfunding['crowdFundID']; ?>">
+                <div class="card">
+                    <div class="card-image"> <img src="/indieabode/public/uploads/crowdfunds/covers/<?= $crowdfunding['crowdfundCoverImg'] ?>" alt="">
                     </div>
-                </div>
+                    <div class="game-intro">
+                        <h3><?= $crowdfunding['gameName']; ?></h3>
+                    </div>
+                    <div class="fund-amount">
+                        <p>122% Funded</p>
+                    </div>
+                    <div class="dev">
+                        By <?= $crowdfunding['gameDeveloperName']; ?>
+                    </div>
+                    <div class="last-row">
+                        <div class="deadline">Ends in 3 days</div>
+                        <div class="likes">
+                            <div class="logo-likes"><img src="/indieabode/public/images/devlogs/like.png" alt=""></div>
+                            <div class="like-count">11</div>
+                        </div>
+                    </div>
 
-            </div>
-        </a>
+                </div>
+            </a>
+        <?php } ?>
 
 
 
@@ -193,13 +195,13 @@
         <a href="#"><i class="fa fa-angle-right"></i></a>
     </div>
 
+    <?php
+    include 'includes/footer.php';
+    ?>
 
     <script src="<?php echo BASE_URL; ?>public/js/sidefilter.js"></script>
-    <?php if (isset($_SESSION['id']) && !empty($_SESSION['id'])) { ?>
-        <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
-    <?php } else { ?>
-        <script src="<?php echo BASE_URL; ?>public/js/navbarcopy.js"></script>
-    <?php } ?>
+    <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
+
 
 </body>
 

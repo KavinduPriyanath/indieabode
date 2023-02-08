@@ -26,8 +26,8 @@ class Makedevlog extends Controller
         $description = $_POST['devLog-details'];
         $type = $_POST['type'];
         $visibility = $_POST['dev-visibility'];
-        $devlogImg = null;
         $gameName = $_POST['gname'];
+        $devlogImg = $this->model->uploadCoverImg($gameName);
         $releaseDate = $_POST['rdate'];
 
         $this->model->addNewDevlog(

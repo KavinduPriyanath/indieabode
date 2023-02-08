@@ -20,6 +20,14 @@
     include 'includes/navbar.php';
     ?>
 
+    <h2 id="heading"><?= $this->asset['assetName'] ?></h2>
+
+    <div class="topics">
+        <a href="/indieabode/asset?id=<?= $this->asset['assetID'] ?>">Overview
+        </a>
+        <a href="/indieabode/asset/reviews?id=<?= $this->asset['assetID'] ?>">Reviews</a>
+    </div>
+    <hr id="topic-break">
 
 
     <!--Slideshow and Overview-->
@@ -54,23 +62,20 @@
                     <img src="/indieabode/public/images/games/Filled Star.png" alt="" />
                     <img src="/indieabode/public/images/games/Filled Star.png" alt="" />
                     <img src="/indieabode/public/images/games/Blank Star.png" alt="" />
-                    <p>(246)</p>
+                    <p>(<?= $this->stats['ratingCount']; ?>)</p>
                 </div>
             </div>
 
             <div class="views-downloads">
                 <img src="/indieabode/public/images/games/view.png" alt="" />
-                <p id="views">200</p>
+                <p id="views"><?= $this->stats['views']; ?></p>
                 <img src="/indieabode/public/images/games/download.png" alt="" />
-                <p id="downloads">10</p>
+                <p id="downloads"><?= $this->stats['downloads']; ?></p>
             </div>
 
             <!--Rate & View All-->
 
-            <div class="info-box">
-                <button id="rate-btn" onclick="AddReview()">Rate this Asset</button>
-                <button id="all-btn">View all by <?= $this->assetCreator['username']; ?></button>
-            </div>
+
         </div>
 
         <!--Overview-->
@@ -83,13 +88,17 @@
                 <img src="/indieabode/public/images/games/profile.png" alt="" />
                 <p><?= $this->assetCreator['username']; ?></p>
             </div>
-            <div class="category"><?= $this->asset['assetType']; ?></div>
-            <h1>Free</h1>
+            <div class="price-flex">
+                <div class="category"><?= $this->asset['assetType']; ?></div>
+                <h1><?= $this->asset['assetPrice']; ?></h1>
+            </div>
             <div id="not-claimed">
                 <a href="/indieabode/asset/checkout?id=<?= $this->asset['assetID'] ?>">
                     <div class="buy-btn">Buy Now</div>
                 </a>
-                <div class="buy-btn">Add to Cart</div>
+                <a href="/indieabode/asset/AddToCart?id=<?= $this->asset['assetID'] ?>">
+                    <div class="buy-btn" id="cart-btn">Add to Cart</div>
+                </a>
             </div>
 
             <div id="claimed">
@@ -105,19 +114,19 @@
 
                 <div class="row">
                     <p class="title">Latest Version</p>
-                    <p class="sub-title">3.1</p>
+                    <p class="sub-title"><?= $this->asset['version']; ?></p>
                 </div>
                 <hr />
 
                 <div class="row">
                     <p class="title">File Size</p>
-                    <p class="sub-title">113 MB</p>
+                    <p class="sub-title"><?= $this->asset['fileSize']; ?> MB</p>
                 </div>
                 <hr />
 
                 <div class="row">
                     <p class="title">Extension</p>
-                    <p class="sub-title">.zip</p>
+                    <p class="sub-title">.<?= $this->asset['fileExtension']; ?></p>
                 </div>
                 <hr />
 
@@ -135,101 +144,49 @@
         <?= $this->asset['assetDetails']; ?>
     </div>
 
-    <!--Reviews-->
-    <div class="reviews">
-        <h1>Reviews</h1>
+    <!--See Also -->
+    <div class="more">
+        <h3 id="more-heading">You may also like</h3>
+        <div class="cards-container">
 
-        <div class="review">
-            <div class="left">
-                <img src="/indieabode/public/images/games/profile.png" alt="" />
-                <p class="username">Kavindu&nbsp;Priyanath</p>
-                <p class="assets-count">Assets:&nbsp;27</p>
-                <p class="reviews-count">Reviews:&nbsp;11</p>
-            </div>
-            <div class="right">
-                <div class="rating-stars">
-                    <img src="/indieabode/public/images/games/Filled Star.png" alt="" />
-                    <img src="/indieabode/public/images/games/Filled Star.png" alt="" />
-                    <img src="/indieabode/public/images/games/Filled Star.png" alt="" />
-                    <img src="/indieabode/public/images/games/Filled Star.png" alt="" />
-                    <img src="/indieabode/public/images/games/Blank Star.png" alt="" />
-                    <p>12 Dec 2021</p>
-                </div>
-                <h3 class="review-title">Very Customizable</h3>
-                <p class="review-detail">
-                    Hey! The actual sprite without empty space in the image is about
-                    38x20 pixels, but it depends on the animation as in some theres a
-                    sword and stuff. So because of that I kept the image size as 120x80
-                    pixels for every animation. And the character is centered correctly
-                    to be in the middle/bottom of the whole image.
-                </p>
+            <!--Cards-->
+
+            <div class="bottom-container">
+
+                <?php foreach ($this->popularAssets as $popularAsset) { ?>
+
+
+
+                    <a href="/indieabode/asset?id=<?= $popularAsset['assetID'] ?>">
+                        <div class="popular-card">
+                            <div class="popular-card-img"> <img src="/indieabode/public/uploads/assets/cover/<?= $popularAsset['assetCoverImg'] ?>" alt="">
+
+                                <div class="asset-type"> <?= $popularAsset['assetType'] ?> </div>
+                            </div>
+                            <div class="pgame-intro">
+                                <h3><?= $popularAsset['assetName'] ?></h3>
+                                <p>Free</p>
+                            </div>
+                            <div class="ptagline"><?= $popularAsset['assetTagline'] ?></div>
+                        </div>
+                    </a>
+                <?php } ?>
+
+
             </div>
         </div>
-
-        <div class="review">
-            <div class="left">
-                <img src="/indieabode/public/images/games/profile.png" alt="" />
-                <p class="username">Kavindu&nbsp;Priyanath</p>
-                <p class="assets-count">Assets:&nbsp;27</p>
-                <p class="reviews-count">Reviews:&nbsp;11</p>
-            </div>
-            <div class="right">
-                <div class="rating-stars">
-                    <img src="/indieabode/public/images/games/Filled Star.png" alt="" />
-                    <img src="/indieabode/public/images/games/Filled Star.png" alt="" />
-                    <img src="/indieabode/public/images/games/Filled Star.png" alt="" />
-                    <img src="/indieabode/public/images/games/Filled Star.png" alt="" />
-                    <img src="/indieabode/public/images/games/Blank Star.png" alt="" />
-                    <p>12 Dec 2021</p>
-                </div>
-                <h3 class="review-title">Very Customizable</h3>
-                <p class="review-detail">
-                    Hey! The actual sprite without empty space in the image is about
-                    38x20 pixels, but it depends on the animation as in some theres a
-                    sword and stuff. So because of that I kept the image size as 120x80
-                    pixels for every animation. And the character is centered correctly
-                    to be in the middle/bottom of the whole image.
-                </p>
-            </div>
-        </div>
-
-        <div class="review">
-            <div class="left">
-                <img src="/indieabode/public/images/games/profile.png" alt="" />
-                <p class="username">Kavindu&nbsp;Priyanath</p>
-                <p class="assets-count">Assets:&nbsp;27</p>
-                <p class="reviews-count">Reviews:&nbsp;11</p>
-            </div>
-            <div class="right">
-                <div class="rating-stars">
-                    <img src="/indieabode/public/images/games/Filled Star.png" alt="" />
-                    <img src="/indieabode/public/images/games/Filled Star.png" alt="" />
-                    <img src="/indieabode/public/images/games/Filled Star.png" alt="" />
-                    <img src="/indieabode/public/images/games/Filled Star.png" alt="" />
-                    <img src="/indieabode/public/images/games/Blank Star.png" alt="" />
-                    <p>12 Dec 2021</p>
-                </div>
-                <h3 class="review-title">Very Customizable</h3>
-                <p class="review-detail">
-                    Hey! The actual sprite without empty space in the image is about
-                    38x20 pixels, but it depends on the animation as in some theres a
-                    sword and stuff. So because of that I kept the image size as 120x80
-                    pixels for every animation. And the character is centered correctly
-                    to be in the middle/bottom of the whole image.
-                </p>
-            </div>
-        </div>
-
-
     </div>
+
+    <?php
+    include 'includes/footer.php';
+    ?>
+
 
 
     <script src="<?php echo BASE_URL; ?>public/js/assets.js"></script>
-    <?php if (isset($_SESSION['id']) && !empty($_SESSION['id'])) { ?>
-        <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
-    <?php } else { ?>
-        <script src="<?php echo BASE_URL; ?>public/js/navbarcopy.js"></script>
-    <?php } ?>
+
+    <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
+
 
     <?php if ($this->hasClaimed) { ?>
         <script>
@@ -240,6 +197,16 @@
         <script>
             document.getElementById('not-claimed').style.display = 'block';
             document.getElementById('claimed').style.display = 'none';
+        </script>
+    <?php } ?>
+
+    <?php if ($this->hasInCart) { ?>
+        <script>
+            document.getElementById('cart-btn').innerHTML = "View In Cart";
+        </script>
+    <?php } else { ?>
+        <script>
+            document.getElementById('cart-btn').innerHTML = "Add to Cart";
         </script>
     <?php } ?>
 
