@@ -1,13 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Kreon:wght@300;400;500;600;700&display=swap');
 
-.wrapper {
+.wrapper{
   display: block;
   margin: 50px auto;
   text-align: center;
   position: relative;
-  width: 28%;
-  background-color: #4f7698;
-
+  width: 45%;
+  background: rgb(138, 155, 198, 0.44);
   border-radius: 8px;
 }
 
@@ -18,18 +17,18 @@
   font-family: 'Kreon', serif;
   font-weight: bold;
   margin: 40px 20px;
-  background-color: rgba(138, 155, 198, 0.44);
+  background-color: #84AED4;
   border: none;
   padding: 10px;
   border-radius: 12px;
 }
 
-.form-login-label {
+.form-login-label{
   text-align: left;
   display: block;
-  color: rgb(0, 0, 0);
+  color:white;
   font-size: 22px;
-  margin: 10px 70px 0px 21px;
+  margin: 10px 70px 0px 100px;
 }
 
 #username {
@@ -37,30 +36,15 @@
 }
 
 /*Normal Form Input*/
-form input[type=text],
-input[type=password] {
+form input[type=text], input[type=password] {
   display: inline-block;
   height: 40px;
-  width: 380px;
-  margin: -10px 100px 10px 21px;
+  width: 500px;
+  margin: -10px 100px 10px 100px;
   border-radius: 8px;
   border: none;
   padding: 8px 10px;
   background-color: rgb(115, 170, 193, 0.72);
-}
-
-#userrole {
-  height: 40px;
-  width: 380px;
-  margin: 10px 100px 10px 21px;
-  border-radius: 8px;
-  border: none;
-  padding: 8px 10px;
-  background-color: rgb(115, 170, 193, 0.72);
-  outline: none;
-  font-family: 'Kreon', serif;
-  color: rgba(0, 0, 0, 1);
-  font-size: 17px;
 }
 
 #form ::placeholder {
@@ -69,8 +53,7 @@ input[type=password] {
   font-family: 'Kreon', serif;
 }
 
-#login,
-#register {
+#login, #register {
   color: #0D3860;
   background-color: #7FAFDB;
   width: 200px;
@@ -85,24 +68,23 @@ input[type=password] {
 }
 
 
-.forgot-pw {
-  width: 100%;
-  height: 70px;
+.forgot-pw{
+  width:100%;
+  height:70px;
   font-size: 18px;
-  text-align: center;
+  text-align:center;
   margin-top: 20px;
-  background-color: rgba(138, 155, 198, 0.44);
+  background-color:rgba(138, 155, 198, 0.44);
   padding: 10px;
   border-radius: 0px 0px 8px 8px;
 }
-
-.forgot-pw a {
-  color: #372372;
+.forgot-pw a{
+  color:#372372;
 
 }
 
 .forgot-pw div {
-  color: white;
+  color:white;
 
 }
 
@@ -111,10 +93,10 @@ input[type=password] {
   margin-bottom: 15px;
 }
 
-.full-name input[type=text] {
+.full-name input[type=text]{
   display: inline-block;
   height: 40px;
-  width: 179px;
+  width: 232.5px;
   border-radius: 8px;
   border: none;
   padding: 8px 10px;
@@ -122,11 +104,11 @@ input[type=password] {
 }
 
 .full-name #firstname {
-  margin: 10px 0px 0px 21px;
+  margin: 10px 0px 0px 100px;
 }
 
 .full-name #lastname {
-  margin: 10px 0px 0px 20px;
+  margin: 10px 0px 0px 30px;
 }
 
 form input[type=checkbox] {
@@ -209,38 +191,3 @@ form input[type=checkbox] {
   font-size: 18px;
   color: white;
 }
-
-.container {
-  height: 60px;
-  width: 60px;
-  background-color: rgb(115, 170, 193, 0.72);
-  box-shadow: 0 0 25px rgba(17, 1, 68, 0.08);
-  border-radius: 8px;
-  position: relative;
-  cursor: pointer;
-}
-
-.container img {
-  width: 70%;
-  position: absolute;
-  margin: auto;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  cursor: pointer;
-}
-
-.radio-btn {
-  margin: 0px 40px 0px 0px;
-}
-
-.avatars {
-  margin: 20px 40px;
-  display: flex;
-  justify-content: space-between;
-
-}
-
-
-

@@ -1,6 +1,6 @@
 <?php
 
-class Register extends Controller
+class Admin_addNew extends Controller
 {
 
     function __construct()
@@ -11,25 +11,26 @@ class Register extends Controller
     function index()
     {
         //print_r($_POST);
-        $this->view->render('Register');
+        $this->view->render('/Admin/Admin_addNew');
     }
 
-    function signup()
+    function addAdmin()
     {
         $email = $_POST['email'];
         $password = $_POST['password'];
         $username = $_POST['username'];
         $firstname = $_POST['firstname'];
         $lastname = $_POST['lastname'];
+        $userRole = "Admin";
 
         $count = $this->model->checkUser($email);
 
         if (!empty($count)) {
             header('location:/indieabode/dw');
         } else {
-            $this->model->insertUser($email, $username, $password, $firstname, $lastname);
+            $this->model->insertUser($email, $username, $password, $firstname, $lastname,$userRole);
 
-            header('location:/indieabode/');
+            header('location:/indieabode/GameDB');
         }
     }
 }
