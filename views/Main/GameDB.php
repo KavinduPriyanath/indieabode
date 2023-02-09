@@ -62,7 +62,7 @@
 			<h1 class="title">Dashboard</h1>
 			
 			<div class="info-data">
-				<div class="card">
+				<div class="card db-card">
 					<div class="total-views">
 						<div class="main-total-view-left">
 							<h3>Registered Users</h3>
@@ -73,7 +73,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="card">
+				<div class="card db-card">
 					<div class="total-views">
 						<div class="main-total-view-left">
 							<h3>Total Transactions</h3>
@@ -84,11 +84,11 @@
 						</div>
 					</div>
 				</div>
-				<div class="card">
+				<div class="card db-card">
 					<div class="total-views">
 						<div class="main-total-view-left">
 							<h3>Total Downloads</h3>
-							<h1>135</h1>
+							<h1><?= $this->downloadCount ?></h1>
 						</div>
 						<div class="main-total-view-right">
 							<i class='bx bx-download view-icon'></i>
@@ -117,7 +117,24 @@
 					</div>
 					<div class="popular-cards">
 
-						<div class="popular-game-card">
+						<?php foreach ($this->top_games as $game) { ?>
+							<div class="popular-game-card">
+								<div class="game-cvr-img">
+									<!-- <img src=<?php echo "'".$game['img']."'"; ?>> -->
+									<img src="<?php echo '/indieabode/public/uploads/games/cover/'.$game['img']; ?>">
+								</div>
+
+								<div class="game-name gm-crd">
+									<?php echo $game['name']; ?>
+								</div>
+
+								<div class="game-count gm-crd">
+									<?php echo $game['count']; ?>+
+								</div>
+							</div>
+						<?php } ?>
+
+						<!-- <div class="popular-game-card">
 							<div class="game-cvr-img">
 								<img src="gm-2.jpg">
 							</div>
@@ -157,7 +174,7 @@
 							<div class="game-count gm-crd">
 								250+
 							</div>
-						</div>
+						</div> -->
 
 					</div>
 				</div>

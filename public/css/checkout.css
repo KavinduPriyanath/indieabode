@@ -1,0 +1,17 @@
+.content {
+  display: flex;
+}
+
+.payment-details {
+  display: block;
+  width: 300px;
+  height: 400px;
+  background-color: white;
+}
+
+.order-summary {
+  display: block;
+  width: 300px;
+  height: 400px;
+  background-color: rgb(108, 99, 99);
+}

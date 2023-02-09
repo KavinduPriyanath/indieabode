@@ -25,6 +25,34 @@ class GameDB_Model extends Model
         return $count;
     }
 
+    function downloadCount()
+    {
+        $stmt = $this->db->prepare("SELECT * FROM downloadgame");
+        $stmt->execute();
+
+        $d_game = $stmt->fetchAll();
+
+        $count1 = 0;
+
+        foreach ($d_game as $game) {
+            $count1 += 1;
+        }
+
+        $stmt2 = $this->db->prepare("SELECT * FROM downloadasset");
+        $stmt2->execute();
+
+        $d_asset = $stmt2->fetchAll();
+
+        $count2 = 0;
+
+        foreach ($d_asset as $asset) {
+            $count2 += 1;
+        }
+
+        return $count1 + $count2;
+    }
+
+
     public function getData($tabale_name,$days)
     {
 
@@ -78,5 +106,21 @@ class GameDB_Model extends Model
         return $count;
 
         //add all types of validation testing here
+    }
+
+    function TopGames(){
+      $sql = "SELECT downloadgame.gameID, freegame.gameName as name, COUNT(downloadgame.gameID) as count, freegame.gameCoverImg as img
+      FROM downloadgame
+      LEFT JOIN freegame ON downloadgame.gameID = freegame.gameID
+      GROUP BY downloadgame.gameID, freegame.gameName ORDER BY count DESC LIMIT 3        
+      ";
+      $stmt = $this->db->prepare($sql);
+      $stmt->execute();
+
+      $data = $stmt->fetchAll();
+
+      // print_r($data);
+      return $data;
+
     }
 }

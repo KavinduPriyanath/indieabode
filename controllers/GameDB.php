@@ -12,6 +12,7 @@ class GameDB extends Controller
     function index()
     {
         $this->view->userCount = $this->model->userCount();
+        $this->view->downloadCount = $this->model->downloadCount();
 
         // $this->view->totalDownloads = $this->model->totalDownloads();
 
@@ -24,7 +25,8 @@ class GameDB extends Controller
         //var_dump($downloadgame);
         
 
-        
+        $top_games= $this->model->TopGames();
+        $this->view->top_games = $top_games;
 
         $labels = [];
         $downloadasset_data = [];

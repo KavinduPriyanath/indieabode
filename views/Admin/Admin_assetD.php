@@ -71,7 +71,7 @@
 				<li><a href="#" class="active">Dashboard/Asset Dashboard</a></li>
 			</ul> -->
 			<div class="info-data">
-				<div class="card crd-views">
+				<div class="card db-card">
 					<div class="total-views">
 						<div class="main-total-view-left total-games">
 							<h3>Uploaded Assets</h3>
@@ -81,7 +81,7 @@
 							</div>
 							<div class="paid-download">
 							Paid Assets<br>
-							<h1>15</h1>
+							<h1>0</h1>
 							</div>
 							<!-- <h1>13567</h1> -->
 						</div>
@@ -90,7 +90,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="card crd-dwd">
+				<div class="card db-card">
 					<div class="total-views">
 						<div class="main-total-view-left total-games">
 							<h3>Total Downloads</h3>
@@ -100,7 +100,7 @@
 							</div>
 							<div class="paid-download">
 							Paid Assets<br>
-							<h1>15</h1>
+							<h1>0</h1>
 							</div>
 							<!-- <h1>135</h1> -->
 						</div>
@@ -109,11 +109,11 @@
 						</div>
 					</div>
 				</div>
-				<div class="card crd-vw">
+				<div class="card db-card">
 					<div class="total-views">
 						<div class="main-total-view-left">
 							<h3>Total Transactions</h3><br>
-							<h1>1356700.00</h1>
+							<h1>Rs: 1356700.00</h1>
 						</div>
 						<div class="main-total-view-right">
 						<i class="fa fa-money bx fa-4x" aria-hidden="true"></i>
@@ -268,7 +268,8 @@
 					<?php foreach ($this->top_assets as $asset) { ?>
 						<div class="popular-game-card">
 							<div class="game-cvr-img">
-								<img src=<?php echo "'".$asset['img']."'"; ?>>
+								<!-- <img src=<?php echo "'".$asset['img']."'"; ?>> -->
+								<img src="<?php echo '/indieabode/public/uploads/assets/cover/'.$asset['img']; ?>">
 							</div>
 
 							<div class="game-name gm-crd">

@@ -80,7 +80,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="card">
+				<div class="card db-card">
 					<div class="total-views">
 						<div class="main-total-view-left total-games">
 							<h3>Total Backers</h3>
@@ -91,7 +91,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="card">
+				<div class="card db-card">
 					<div class="total-views">
 						<div class="main-total-view-left">
 							<h3>Total Revenue Collected</h3>
