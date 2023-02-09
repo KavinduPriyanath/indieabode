@@ -22,7 +22,7 @@
 <body>
 	
 	<?php
-    include 'includes/A_navbar.php';
+    include 'includes/navbar.php';
     ?>
     	<!-- SIDEBAR -->
 	<section id="sidebar">
@@ -41,7 +41,7 @@
 		<!-- <a href="#" class="brand"><i class='bx bxs-smile icon'></i>Indie Abode</a> -->
 		<ul class="side-menu">
 			<li class="divider" data-text="main">Main</li>
-			<li><a href="<?php echo BASE_URL; ?>GameDB" class="active"><i class='bx bxs-dashboard icon'></i> Dashboard <i
+			<li><a href="<?php echo BASE_URL; ?>SiteDashboard" class="active"><i class='bx bxs-dashboard icon'></i> Dashboard <i
 						class='bx bx-chevron-right icon-right'></i> </a></li>
 			<!-- <ul class="side-dropdown"> -->
 			<li><a href="<?php echo BASE_URL; ?>Admin_G"><i class='bx bxs-dashboard icon'></i>Game Dashboard</a></li>
@@ -82,7 +82,7 @@
 				</form>
 			</div>
 
-			<div class="filter-roles">
+			<div class="filter-roles user-del-filter">
 				<div class="search-user-type">
 					<button class="<?php echo $this->active == 'all' ? 'btn active' : 'btn'; ?>"   onclick="filterSelection('all')"> Show all Users</button>
 					<a class="<?php echo $this->active == 'gamer' ? 'btn active' : 'btn'; ?>"  href='/indieabode/Admin_userMg/viewFilteredUser/gamer'"> Gamers</a>
@@ -152,7 +152,11 @@
 	</section>
 	<!-- NAVBAR -->
 
+	<?php
+    include 'includes/footer.php';
+    ?>
 
+	<script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
 
 	<script>
 		function filterSelection(filter_text) {
