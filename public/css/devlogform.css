@@ -1,12 +1,3 @@
-body {
-    color: rgb(0, 0, 0);
-
-    /*height: 100vh;*/
-    justify-content: center;
-    align-items:flex-end;
-
-    background:rgb(51,88,121);
-}
 
 .page-tittle{
     margin-left: 300px;

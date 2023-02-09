@@ -26,7 +26,7 @@ class Game_Model extends Model
     {
         $gameDeveloperID = $game['gameDeveloperID'];
 
-        $sql = "SELECT * FROM gamer WHERE gamerID='$gameDeveloperID'";
+        $sql = "SELECT * FROM gamer WHERE gamerID='$gameDeveloperID' LIMIT 1";
 
         $stmt = $this->db->prepare($sql);
 
@@ -53,4 +53,30 @@ class Game_Model extends Model
 
     //     return $screenshots;
     // }
+
+    function getScreenshots($id)
+    {
+        $sql = "SELECT * FROM freegame WHERE gameID='$id' LIMIT 1";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $game = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $ss = $game['gameScreenshots'];
+
+        $screenshots = explode(',', $ss);
+
+        return $screenshots;
+    }
+
+    function PopularGames()
+    {
+        $stmt = $this->db->prepare("SELECT * FROM freegame LIMIT 4");
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
 }

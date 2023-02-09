@@ -16,6 +16,9 @@ body {
     background-size:cover;
     background-attachment: fixed;
     font-family: 'Kreon', serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .navbar {
@@ -46,7 +49,9 @@ body {
     display: flex;
 }
 
-
+.navbar hr{
+    border: 1.5px solid #315168;
+}
 
 .navbar-links a  {
     text-decoration: none;
@@ -54,6 +59,10 @@ body {
     font-size: 20px;
     color: white;
     display: block;
+}
+
+.navbar-links {
+    margin-top: 5px;
 }
 
 .droparrow {
@@ -240,14 +249,14 @@ a:hover .double{
     display: flex;
 }
 
-.pp {
+.pp img{
     display: inline-block;
     width: 25px;
     height: 25px;
     background-color: rgb(185, 175, 175);
     margin-right: 5px;
     border-radius: 10px;
-    background-image: url('public/images/navbar/profile.png');
+    /* background-image: url('public/images/navbar/profile.png'); */
     background-size: cover;
 }
 

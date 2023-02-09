@@ -23,6 +23,11 @@ class Devlog extends Controller
 
             // $this->view->ssCount = count($this->model->getScreenshots($assetID));
 
+            $currentdevlog = $this->model->showSingleDevlog($devlogID);
+
+
+            $this->view->game = $this->model->gameDetails($currentdevlog['gameName']);
+
             $this->view->render('SingleDevlog');
         }
     }

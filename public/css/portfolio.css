@@ -75,7 +75,7 @@ p{
     border-radius: 10px;
 }
 
-.card-image {
+.card-image img {
     background-color: rgb(173, 169, 163);
     height: 150px;
     margin-bottom: 12px;
