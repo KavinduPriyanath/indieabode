@@ -51,7 +51,7 @@ class Admin_G_Model extends Model
 
       $data = $stmt->fetchAll();
 
-
+      // print_r($data);
       return $data;
 
     }

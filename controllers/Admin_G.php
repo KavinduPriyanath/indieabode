@@ -19,6 +19,8 @@ class Admin_G extends Controller
         $this->view->recent_activities = $recent_activities;
         $this->view->top_games = $top_games;
 
+        // echo '/indieabode/public/uploads/games/cover/' .$top_games['img'];
+
 
         // $this->view->userCount = $this->model->userCount();
 

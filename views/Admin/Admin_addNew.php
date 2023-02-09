@@ -12,6 +12,7 @@
         include 'public/css/admin.css';
         include 'public/css/admin_userMg.css';
         include 'public/css/admin_db.css';
+        include 'public/css/login.css';
         // include('public/css/login.css');
         ?>
     </style>
@@ -69,51 +70,39 @@
 
 		<!-- MAIN -->
 		<main>
-        <h1 class="title">User Management</h1>
-
-            <div class="wrapper register-box">
-                <form action="/indieabode/Admin_addNew/addAdmin" method="POST" id="form">
-                    <!--register form-->
-                    <div class="full-name">
-                        <div class="first-name">
-                            <label class="form-login-label" id="firstname">First Name</label>
-                            <input type="text" name="firstname" id="firstname" placeholder="firstname" required />
-                        </div>
-                        <div class="last-name">
-                            <label class="form-login-label" id="lastname">Last Name</label>
-                            <input type="text" name="lastname" id="lastname" placeholder="lastname" required /><br>
-                        </div>
+        <h1 class="title">- User Management -</h1>
+            <div class="register-box addnew-admin-container">
+                <div class="addnew-box">
+                    <div class="addnew-topic">
+                        <h2>Add New Admin</h2>
                     </div>
-                    <label class="form-login-label">Username</label> <br>
-                    <input type="text" name="username" id="user-name" placeholder="username" required /><br>
+
+                    <form action="/indieabode/Admin_addNew/addAdmin" method="POST" id="form">
+                        <!--register form-->
+                        <label class="form-login-label">Username</label> <br>
+                        <input type="text" name="username" id="user-name" placeholder="username" required /><br>
 
 
-                    <label class="form-login-label">Email</label><br>
-                    <input type="text" name="email" id="title" placeholder="email" required /><br>
+                        <label class="form-login-label">Email</label><br>
+                        <input type="text" name="email" id="title" placeholder="email" required /><br>
 
+                        <label class="form-login-label">Password</label><br>
+                        <input type="password" name="password" id="password" placeholder="Password" required /><br>
 
+                        <label class="form-login-label">Confirm Password</label><br>
+                        <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" /><br><br>
 
+                        <button type="submit" name="submit" class="add-new-btn">Add</button><br><br>
 
-                    <label class="form-login-label">Password</label><br>
-                    <input type="password" name="password" id="password" placeholder="Password" required /><br>
+                    </form>
 
+                </div>
 
-
-
-
-                    <label class="form-login-label">Confirm Password</label><br>
-                    <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" /><br><br>
-
-
-
-
-                    <input type="checkbox" name="" id="checkbox" value="" onclick="checkboxClicked()">
-                    <label for="" id="tos">I accept the terms of service </label><br>
-
-                    <button type="submit" name="submit" id="register">Register</button><br><br>
-
-                </form>
-
+                <div class="bg-edit">
+                    <div class="bg-img-addnew">
+                        <img src="/indieabode/public/images/Admin/addnew-bg.jpg">
+                    </div>
+                </div>
             </div>
 		</main>
 		<!-- MAIN -->

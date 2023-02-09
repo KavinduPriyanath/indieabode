@@ -81,7 +81,7 @@
 							</div>
 							<div class="paid-download">
 							Paid Games<br>
-							<h1>15</h1>
+							<h1>0</h1>
 							</div>
 							<!-- <h1>13567</h1> -->
 						</div>
@@ -100,7 +100,7 @@
 							</div>
 							<div class="paid-download">
 							Paid Games<br>
-							<h1>15</h1>
+							<h1>0</h1>
 							</div>
 							<!-- <h1>135</h1> -->
 						</div>
@@ -113,7 +113,7 @@
 					<div class="total-views">
 						<div class="main-total-view-left">
 							<h3>Total Transactions</h3>
-							<h1>1356700.00</h1>
+							<h1>Rs: 1356700.00</h1>
 						</div>
 						<div class="main-total-view-right">
 							<i class='bx bx-money view-icon'></i>
@@ -164,7 +164,8 @@
 					<?php foreach ($this->top_games as $game) { ?>
 						<div class="popular-game-card">
 							<div class="game-cvr-img">
-								<img src=<?php echo "'".$game['img']."'"; ?>>
+								<!-- <img src=<?php echo "'".$game['img']."'"; ?>> -->
+								<img src="<?php echo '/indieabode/public/uploads/games/cover/'.$game['img']; ?>">
 							</div>
 
 							<div class="game-name gm-crd">
