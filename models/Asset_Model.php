@@ -94,10 +94,10 @@ class Asset_Model extends Model
         $stmt->execute(["$ownerID", "$assetID"]);
     }
 
-    function AlreadyClaimed($assetID)
+    function AlreadyClaimed($assetID, $userID)
     {
 
-        $sql = "SELECT * FROM library WHERE itemID='$assetID' LIMIT 1";
+        $sql = "SELECT * FROM library WHERE itemID='$assetID' AND developerID='$userID' LIMIT 1";
 
         $stmt = $this->db->prepare($sql);
 
@@ -110,5 +110,56 @@ class Asset_Model extends Model
         } else {
             return false;
         }
+    }
+
+    function AssetStats($assetID)
+    {
+
+        $sql = "SELECT * FROM asset_stats WHERE assetID='$assetID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $stats = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $stats;
+    }
+
+    function AddtoCart($assetID, $ownerID)
+    {
+
+        $sql = "INSERT INTO cart(userID, itemID) VALUES (?,?)";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute(["$ownerID", "$assetID"]);
+    }
+
+    function AlreadyInCart($assetID, $userID)
+    {
+
+        $sql = "SELECT * FROM cart WHERE itemID='$assetID' AND userID='$userID' LIMIT 1";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $asset = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($asset != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function PopularAssets()
+    {
+        $stmt = $this->db->prepare("SELECT * FROM freeasset LIMIT 4");
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
     }
 }

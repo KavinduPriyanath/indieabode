@@ -28,11 +28,6 @@
                 Create a new project
             </div>
             <hr>
-            <div class="btn-box">
-                <div id="btn"></div>
-                <button type="button" class="toggle-btn" id="game-active" style="background-color:#749ABD;">Game</button>
-                <button type="button" class="toggle-btn" onclick="uploadAsset()">Assets</button>
-            </div><br>
 
             <form action="/indieabode/gameupload/uploadgame" method="POST" id="upload-game-form" class="input-upload-group" enctype="multipart/form-data">
                 <div class="upload-row">
@@ -63,6 +58,20 @@
                             <option value="released" selected>Released</option>
                             <option value="early access">Early Access</option>
                             <option value="upcoming">Upcoming</option>
+                        </select><br><br>
+
+                        <!--Releasing status-->
+                        <label id="" for="">Platform</label><br>
+                        <select id="" name="game-platform">
+                            <option value="Windows" selected>Windows</option>
+                            <option value="MacOS">MacOS</option>
+                            <option value="Linux">Linux</option>
+                        </select><br><br>
+
+                        <label id="" for="">Game Type</label><br>
+                        <select id="" name="game-type">
+                            <option value="Base Game" selected>Base Game</option>
+                            <option value="DLC">DLC</option>
                         </select><br><br>
 
                         <label id="game-details" for="game-details">Details</label><br>
@@ -157,7 +166,7 @@
 
                         <label id="game-screenshots" for="game-screenshots">Screenshots</label><br>
                         <p>These will appear on your game's page. Optional but highly recommended. Upload 3 to 5 for best results</p><br>
-                        <input type="file" id="game-screenshots" name="game-screenshots" accept=".jpg,.jpeg,.png" multiple="multiple"><br><br>
+                        <input type="file" id="game-screenshots" name="game-screenshots[]" accept=".jpg,.jpeg,.png" multiple="multiple"><br><br>
                     </div>
                 </div>
                 <br><br>
@@ -171,11 +180,8 @@
     </div>
 
 
-    <?php if (isset($_SESSION['id']) && !empty($_SESSION['id'])) { ?>
-        <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
-    <?php } else { ?>
-        <script src="<?php echo BASE_URL; ?>public/js/navbarcopy.js"></script>
-    <?php } ?>
+    <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
+
 
 </body>
 

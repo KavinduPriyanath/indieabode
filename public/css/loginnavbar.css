@@ -9,15 +9,22 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #335879;
+    background-image: url('/indieabode/public/images/navbar/bgnew.jpg');
+    background-size:cover;
+    background-attachment: fixed;
     font-family: 'Kreon', serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .navbar {
     display: block;
     height: 70px;
     align-items: center;
-    background-color: #2C4862;
+    background-image: url('/indieabode/public/images/navbar/bg1.jpg');
+    background-size:cover;
+    background-attachment: fixed;
     color: white;
 }
 

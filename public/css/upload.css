@@ -15,7 +15,8 @@
 
 .form-box{
     /*background:rgb(28,4,28);*/
-    background:#95B2C8;
+    background:rgba(149, 178, 200, 0.6);
+
     width:75%;
     height:2200px;
     position:relative;
@@ -24,8 +25,9 @@
     margin-bottom: 0;
     margin-left: 0;
     margin-right: 0;
-    margin: 5% 10% 5% 10%;
+    margin: 40px 100px 20px 185px;
     overflow:hidden;
+    border-radius: 10px;
 }
 
 .upload-topic{
@@ -43,7 +45,7 @@ hr{
     transform: rotate(0.06deg);
     margin-top:1%;
 }
-
+/* 
 .btn-box{
     margin:35px auto;
     position: relative;
@@ -72,7 +74,7 @@ hr{
     border-radius: 7px;
     border-width:2px;
     transition:.5s;
-}
+} */
 
 /* #game-active{
     top:0;
@@ -88,7 +90,7 @@ hr{
 } */
 
 
-#asset-active{
+/* #asset-active{
     top:0;
     right:0;
     position:absolute;
@@ -99,10 +101,10 @@ hr{
     border-radius: 7px;
     border-width:2px;
     transition:.5s;
-}
+} */
 
 .input-upload-group{
-    top:180px;
+    top:80px;
     position:absolute;
     transition:.5s;
 }

@@ -22,13 +22,14 @@ class Gameupload extends Controller
         $gameName = $_POST['game-title'];
         $releaseStatus = $_POST['game-status'];
         $gameDetails = $_POST['game-details'];
-        $gameScreenshots = null;
+        $gameScreenshots = $this->model->uploadScreenshots($gameName);
         $gameTrailor = $_POST['game-illustration-vedio'];
         $gameTagline = $_POST['game-tagline'];
         $gameClassification = $_POST['game-classification'];
         $gameTags = $_POST['game-tags'];
+        $gameType = $_POST['game-type'];
         $gameFeatures = $_POST['game-features'];
-        $gameFile = null;
+        $gameFile = $this->model->uploadGameFile($gameName);
         $gameCoverImg = $this->model->uploadCoverImg($gameName);
         $gameDeveloperID = $_SESSION['id'];
 
@@ -37,13 +38,15 @@ class Gameupload extends Controller
         $minGameMemory = $_POST['min-game-memory'];
         $minGameStorage = $_POST['min-game-storage'];
         $minGameGraphics = $_POST['min-game-graphics'];
-        $minGameOther = $_POST['min-game-other'];
+        // $minGameOther = $_POST['min-game-other'];
         $GameOS = $_POST['game-OS'];
         $GameProcessor = $_POST['game-processor'];
         $GameMemory = $_POST['game-memory'];
         $GameStorage = $_POST['game-storage'];
         $GameGraphics = $_POST['game-graphics'];
         $GameOther = $_POST['game-other'];
+
+        $platform = $_POST['game-platform'];
 
         $this->model->uploadNewGame(
             $gameName,
@@ -63,13 +66,14 @@ class Gameupload extends Controller
             $minGameMemory,
             $minGameStorage,
             $minGameGraphics,
-            $minGameOther,
             $GameOS,
             $GameProcessor,
             $GameMemory,
             $GameStorage,
             $GameGraphics,
-            $GameOther
+            $GameOther,
+            $platform,
+            $gameType
         );
 
         header('location:/indieabode/');
