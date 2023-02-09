@@ -23,9 +23,16 @@ class Login extends Controller
     {
         $user = $this->model->signin();
 
+        $admin = $this->model->IsAdmin();
+
         $this->view->loggedUser = $this->model->signin();
 
-        if (!empty($user) && $user['verified'] == 1) {
+        if (!empty($admin)) {
+            $_SESSION['logged'] = $admin['id'];
+            $_SESSION['username'] = $admin['username'];
+            $_SESSION['userRole'] = "admin";
+            header('location:/indieabode/SiteDashboard');
+        } else if (!empty($user) && $user['verified'] == 1) {
             //$_SESSION['role'] = "Game-Developer";
             $_SESSION['logged'] = $user['gamerID'];
             $_SESSION['username'] = $user['username'];
