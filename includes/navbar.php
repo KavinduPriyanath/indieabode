@@ -455,6 +455,39 @@
                     </div>
                 </div>
             <?php } else if ($_SESSION['userRole'] == "admin") { ?>
+                <div class="navbar-links">
+                    <div class="ul">
+
+
+
+                        <div class="dropdown" id="logged" data-dropdown>
+                            <a href="#" data-dropdown-button>
+                                <div class="pp"><img src="public/images/Admin/admin-1.png" alt=""></div>
+                                <?= $_SESSION['username']; ?>
+                            </a>
+
+                            <div class="dropdown-menu">
+                                <div class="arrow arrow6"></div>
+                                <div class=".ulsub">
+
+
+                                    <a>Settings <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                                    <a href="/indieabode/login/logout">Log&nbsp;Out
+                                        <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="search">
+                            <form action="" class="search-bar">
+                                <input type="text" placeholder="Search Anything..." name="search" />
+                                <button type="submit">
+                                    <img src="public/images/navbar/search.png" alt="" />
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             <?php } ?>
         <?php } else { ?>
             <div class="navbar-links">

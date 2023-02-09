@@ -89,4 +89,21 @@ class Login_Model extends Model
 
         $stmt->execute();
     }
+
+    function IsAdmin()
+    {
+
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+
+        $sql = "SELECT * FROM admin WHERE email = '$email' AND password='$password' LIMIT 1";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $admin = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $admin;
+    }
 }
