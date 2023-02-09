@@ -18,7 +18,7 @@
 <body>
 
 	<?php
-    include 'includes/A_navbar.php';
+    include 'includes/navbar.php';
     ?>
     	<!-- SIDEBAR -->
 	<section id="sidebar">
@@ -37,7 +37,7 @@
 		<!-- <a href="#" class="brand"><i class='bx bxs-smile icon'></i>Indie Abode</a> -->
 		<ul class="side-menu">
 			<li class="divider" data-text="main">Main</li>
-			<li><a href="<?php echo BASE_URL; ?>GameDB" class="active"><i class='bx bxs-dashboard icon'></i> Dashboard <i
+			<li><a href="<?php echo BASE_URL; ?>SiteDashboard" class="active"><i class='bx bxs-dashboard icon'></i> Dashboard <i
 						class='bx bx-chevron-right icon-right'></i> </a></li>
 			<!-- <ul class="side-dropdown"> -->
 			<li><a href="<?php echo BASE_URL; ?>Admin_G"><i class='bx bxs-dashboard icon'></i>Game Dashboard</a></li>
@@ -127,133 +127,78 @@
 								<tr>
 									<td>Kavindu Priyanath</td>
 									<td>Game Developer</td>
-									<td>Created a Gig</td>
+									<td>Created a Devlog</td>
 									<td><span>07.39 a.m</span></td>
 								</tr>
 
 								<tr>
 									<td>Himash Liyanage</td>
-									<td>Game Publisher</td>
-									<td>Ordered a Gig</td>
+									<td>Gamer</td>
+									<td>Viewed a Devlog</td>
 									<td><span>08.23 a.m</span></td>
 								</tr>
 
 								<tr>
 									<td>Yeshan Pasindu</td>
-									<td>Asset Creator</td>
-									<td>Created a Gig</td>
+									<td>Game Developer</td>
+									<td>Created a Devlog</td>
 									<td><span>09.00 a.m</span></td>
 								</tr>
 
 								<tr>
 									<td>Nadee Darshika</td>
-									<td>Game Jam Organizer</td>
-									<td>Ordered a Gig</td>
+									<td>Gamer</td>
+									<td>Viewed a Devlog</td>
 									<td><span>09.12 a.m</span></td>
 								</tr>
 
 								<tr>
 									<td>Prasad Darshana</td>
 									<td>Gamer</td>
-									<td>Ordered a Gig</td>
+									<td>Viewed a Devlog</td>
 									<td><span>09.35 a.m</span></td>
 								</tr>
 
 								<tr>
 									<td>Nethmi Imanya</td>
 									<td>Game Developer</td>
-									<td>Created a Gig</td>
+									<td>Created a Devlog</td>
 									<td><span>12.01 p.m</span></td>
 								</tr>
 
 								<tr>
 									<td>Umasha Kaumadi</td>
 									<td>Gamer</td>
-									<td>Ordered a Gig</td>
+									<td>Viewed a Devlog</td>
 									<td><span>12.30 p.m</span></td>
 								</tr>
 
 								<tr>
 									<td>Kaveesha Gimhani</td>
 									<td>Game Developer</td>
-									<td>Created a Gig</td>
+									<td>Created a Devlog</td>
 									<td><span>3.00 p.m</span></td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
 				</div>
-				<!-- <div class="content-data popular-games">
-					<div class="popular-header">
-						<h2>Most Popular Assets</h2>
-					</div>
-					<div class="popular-cards">
-
-						<div class="popular-game-card">
-							<div class="game-cvr-img">
-								<img src="gm-2.jpg">
-							</div>
-
-							<div class="game-name gm-crd">
-								The spirit and the Mouse
-							</div>
-
-							<div class="game-count gm-crd">
-								250+
-							</div>
-						</div>
-
-						<div class="popular-game-card">
-							<div class="game-cvr-img">
-								<img src="gm-2.jpg">
-							</div>
-
-							<div class="game-name gm-crd">
-								The spirit and the Mouse
-							</div>
-
-							<div class="game-count gm-crd">
-								250+
-							</div>
-						</div>
-
-						<div class="popular-game-card">
-							<div class="game-cvr-img">
-								<img src="gm-2.jpg">
-							</div>
-
-							<div class="game-name gm-crd">
-								The spirit and the Mouse
-							</div>
-
-							<div class="game-count gm-crd">
-								250+
-							</div>
-						</div>
-
-					</div>
-				</div> -->
-
-
-				<!-- <div class="content-data popular-assets">
+				<div class="content-data">
 					<div class="popular-header Game-DB-Graph">
-						<h2>Transaction Graph</h2>
-						<?php
-							$data = array(12, 19, 3, 5, 2, 3);
-							$data_js = json_encode($data);
-							?>
-
-							<script>
-							var data = <?php echo $data_js; ?>;
-							</script>
-
-						<canvas id="myChart"></canvas>
+						<h2>Activity Graph</h2>
+						<div class="graph-img graph-edit">
+                            <img src="/indieabode/public/images/Admin/jam/jam-bg-3.png">
+                        </div>
 					</div>
-				</div> -->
+				</div>
 			</div>
 		</main>
 		<!-- MAIN -->
 	</section>
+
+	<?php
+    include 'includes/footer.php';
+    ?>
 
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 
@@ -293,7 +238,7 @@
 	});
 	</script>
 
-
+	<script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
     <script src="<?php echo BASE_URL; ?>public/js/admin.js"></script>
     <!-- <?php if (isset($_SESSION['id']) && !empty($_SESSION['id'])) { ?>
         <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>

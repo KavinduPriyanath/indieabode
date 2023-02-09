@@ -20,7 +20,6 @@
 	<?php
     include 'includes/navbar.php';
     ?>
-
     	<!-- SIDEBAR -->
 	<section id="sidebar">
 
@@ -35,7 +34,6 @@
 				</div>
 			</div>
 		</div>
-
 		<!-- <a href="#" class="brand"><i class='bx bxs-smile icon'></i>Indie Abode</a> -->
 		<ul class="side-menu">
 			<li class="divider" data-text="main">Main</li>
@@ -67,16 +65,16 @@
 		
 		<!-- MAIN -->
 		<main>
-			<h1 class="title">Gigs Dashboard</h1>
+			<h1 class="title">Game Jam Dashboard</h1>
 			<!-- <ul class="breadcrumbs">
-				<li><a href="#" class="active">Dashboard/Gigs Dashboard</a></li>
+				<li><a href="#" class="active">Dashboard/Devlogs Dashboard</a></li>
 			</ul> -->
 			<div class="info-data">
 				<div class="card db-card">
 					<div class="total-views">
 						<div class="main-total-view-left total-games">
-							<h3>Created Gigs</h3>
-							<h1>135</h1>
+							<h3>On going Jams</h3>
+							<h1>5</h1>
 						</div>
 						<div class="main-total-view-right">
 							<i class='bx bx-upload view-icon'></i>
@@ -86,7 +84,7 @@
 				<div class="card db-card">
 					<div class="total-views">
 						<div class="main-total-view-left total-games">
-							<h3>Accepted Publishers</h3>
+							<h3>Finished Jams</h3>
 							<h1>15</h1>
 						</div>
 						<div class="main-total-view-right">
@@ -97,8 +95,8 @@
 				<div class="card db-card">
 					<div class="total-views">
 						<div class="main-total-view-left">
-							<h3>Total Transactions</h3>
-							<h1>1356700.00</h1>
+							<h3>Upcoming Jams</h3>
+							<h1>2</h1>
 						</div>
 						<div class="main-total-view-right">
 							<i class='bx bx-money view-icon'></i>
@@ -108,7 +106,7 @@
 				</div>
 			</div>
 			<div class="data">
-				<div class="content-data active-user">
+            <div class="content-data active-user">
 					<div class="recentOrders">
 						<div class="cardHeader">
 							<h2>Recent Activities</h2>
@@ -121,74 +119,168 @@
 									<td>Name</td>
 									<td>User Role</td>
 									<td>Task</td>
-									<td>Time</td>
+									<!-- <td>Time</td> -->
 								</tr>
 							</thead>
 
 							<tbody>
-								<tr>
+								<!-- <tr>
 									<td>Kavindu Priyanath</td>
-									<td>Game Developer</td>
-									<td>Created a Gig</td>
-									<td><span>07.39 a.m</span></td>
-								</tr>
-
+									<td>Game Jam Organizer</td>
+									<td>Organized a Jam</td>
+									
+								</tr> -->
+<!-- 
 								<tr>
 									<td>Himash Liyanage</td>
-									<td>Game Publisher</td>
-									<td>Ordered a Gig</td>
-									<td><span>08.23 a.m</span></td>
+									<td>Game Developer</td>
+									<td>Joined a jam</td>
+									
 								</tr>
 
 								<tr>
 									<td>Yeshan Pasindu</td>
-									<td>Game Developer</td>
-									<td>Created a Gig</td>
-									<td><span>09.00 a.m</span></td>
-								</tr>
+									<td>Game Jam Organizer</td>
+									<td>Organized a Jam</td>
+									
+								</tr> -->
 
 								<tr>
 									<td>Nadee Darshika</td>
-									<td>Game Publisher</td>
-									<td>Ordered a Gig</td>
-									<td><span>09.12 a.m</span></td>
+									<td>Game Developer</td>
+									<td>Joined a jam</td>
+									<!-- <td><span>09.12 a.m</span></td> -->
 								</tr>
 
 								<tr>
 									<td>Prasad Darshana</td>
-									<td>Game Publisher</td>
-									<td>Ordered a Gig</td>
-									<td><span>09.35 a.m</span></td>
+									<td>Game Developer</td>
+									<td>Joined a jam</td>
+									<!-- <td><span>09.35 a.m</span></td> -->
 								</tr>
 
 								<tr>
 									<td>Nethmi Imanya</td>
-									<td>Game Developer</td>
-									<td>Created a Gig</td>
-									<td><span>12.01 p.m</span></td>
+									<td>Game Jam Organizer</td>
+									<td>Organized a Jam</td>
+									<!-- <td><span>12.01 p.m</span></td> -->
 								</tr>
 
 								<tr>
 									<td>Umasha Kaumadi</td>
-									<td>Game Publisher</td>
-									<td>Ordered a Gig</td>
-									<td><span>12.30 p.m</span></td>
+									<td>Game Developer</td>
+									<td>Joined a jam</td>
+									<!-- <td><span>12.30 p.m</span></td> -->
 								</tr>
 
 								<tr>
 									<td>Kaveesha Gimhani</td>
-									<td>Game Developer</td>
-									<td>Created a Gig</td>
-									<td><span>3.00 p.m</span></td>
+									<td>Game Jam Organizer</td>
+									<td>Organized a Jam</td>
+									<!-- <td><span>3.00 p.m</span></td> -->
 								</tr>
 							</tbody>
 						</table>
 					</div>
 				</div>
-				<div class="content-data">
+				<div class="content-data popular-games">
+					<div class="popular-header">
+						<h2>Most Popular Assets</h2>
+					</div>
+					<!-- <div class="popular-cards">
+
+						<div class="popular-game-card">
+							<div class="game-cvr-img">
+								<img src="gm-2.jpg">
+							</div>
+
+							<div class="game-name gm-crd">
+								The spirit and the Mouse
+							</div>
+
+							<div class="game-count gm-crd">
+								250+
+							</div>
+						</div>
+
+						<div class="popular-game-card">
+							<div class="game-cvr-img">
+								<img src="gm-2.jpg">
+							</div>
+
+							<div class="game-name gm-crd">
+								The spirit and the Mouse
+							</div>
+
+							<div class="game-count gm-crd">
+								250+
+							</div>
+						</div>
+
+						<div class="popular-game-card">
+							<div class="game-cvr-img">
+								<img src="gm-2.jpg">
+							</div>
+
+							<div class="game-name gm-crd">
+								The spirit and the Mouse
+							</div>
+
+							<div class="game-count gm-crd">
+								250+
+							</div>
+						</div>
+
+					</div> -->
+					<div class="popular-cards">
+                        <div class="popular-game-card">
+                            <div class="game-cvr-img">
+                                <img src="/indieabode/public/images/Admin/jam/jam-1.jpg">
+                            </div>
+
+                            <div class="game-name gm-crd">
+                                The spirit and the Mouse
+                            </div>
+
+                            <div class="game-count gm-crd">
+                                250+
+                            </div>
+                        </div>
+                        <div class="popular-game-card">
+                            <div class="game-cvr-img">
+                                <img src="/indieabode/public/images/Admin/jam/jam-2.jpg">
+                            </div>
+
+                            <div class="game-name gm-crd">
+                                The spirit and the Mouse
+                            </div>
+
+                            <div class="game-count gm-crd">
+                                250+
+                            </div>
+                        </div>
+                        <div class="popular-game-card">
+                            <div class="game-cvr-img">
+                                <img src="/indieabode/public/images/Admin/jam/jam-3.png">
+                            </div>
+
+                            <div class="game-name gm-crd">
+                                The spirit and the Mouse
+                            </div>
+
+                            <div class="game-count gm-crd">
+                                250+
+                            </div>
+                        </div>
+						
+
+					</div>
+				</div>
+
+                <div class="content-data">
 					<div class="popular-header Game-DB-Graph">
 						<h2>Activity Graph</h2>
-						<div class="graph-img graph-edit">
+						<div class="graph-img">
                             <img src="/indieabode/public/images/Admin/jam/jam-bg-3.png">
                         </div>
 					</div>

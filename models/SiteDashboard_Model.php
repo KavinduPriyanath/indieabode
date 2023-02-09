@@ -123,4 +123,20 @@ class SiteDashboard_Model extends Model
     // print_r($data);
     return $data;
   }
+
+  function TopAssets(){
+    $sql = "SELECT downloadasset.assetID, freeasset.assetName as name, COUNT(downloadasset.assetID) as count, freeasset.assetCoverImg as img
+    FROM downloadasset
+    LEFT JOIN freeasset ON downloadasset.assetID = freeasset.assetID
+    GROUP BY downloadasset.assetID, freeasset.assetName ORDER BY count DESC LIMIT 3        
+    ";
+    $stmt = $this->db->prepare($sql);
+    $stmt->execute();
+
+    $data = $stmt->fetchAll();
+
+
+    return $data;
+
+  }
 }

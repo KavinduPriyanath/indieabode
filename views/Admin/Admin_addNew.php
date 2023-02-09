@@ -12,7 +12,7 @@
         include 'public/css/admin.css';
         include 'public/css/admin_userMg.css';
         include 'public/css/admin_db.css';
-        include 'public/css/login.css';
+        // include 'public/css/login.css';
         // include('public/css/login.css');
         ?>
     </style>
@@ -41,7 +41,7 @@
 
         <ul class="side-menu">
 			<li class="divider" data-text="main">Main</li>
-			<li><a href="<?php echo BASE_URL; ?>GameDB" class="active"><i class='bx bxs-dashboard icon'></i> Dashboard <i
+			<li><a href="<?php echo BASE_URL; ?>SiteDashboard" class="active"><i class='bx bxs-dashboard icon'></i> Dashboard <i
 						class='bx bx-chevron-right icon-right'></i> </a></li>
 			<!-- <ul class="side-dropdown"> -->
 			<li><a href="<?php echo BASE_URL; ?>Admin_G"><i class='bx bxs-dashboard icon'></i>Game Dashboard</a></li>
@@ -109,8 +109,7 @@
 	</section>
 	<!-- NAVBAR -->
 
-
-
+    <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
     <script src="<?php echo BASE_URL; ?>public/js/admin.js"></script>
     <script src="<?php echo BASE_URL; ?>public/js/admin_userMg.js"></script>
     <?php if (isset($_SESSION['id']) && !empty($_SESSION['id'])) { ?>
