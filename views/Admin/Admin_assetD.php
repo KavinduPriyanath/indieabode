@@ -2,35 +2,35 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Indieabode</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Indieabode</title>
 
-    <style>
-        <?php
-        include 'public/css/admin.css';
+	<style>
+		<?php
+		include 'public/css/admin.css';
 		include 'public/css/admin_db.css';
-        ?>
-    </style>
+		?>
+	</style>
 </head>
 
 <body>
 
 	<?php
-    include 'includes/A_navbar.php';
-    ?>
+	include 'includes/A_navbar.php';
+	?>
 
-    	<!-- SIDEBAR -->
+	<!-- SIDEBAR -->
 	<section id="sidebar">
 		<div class="admin-card">
 			<div class="profile-picture">
-				<img src="/indieabode/public/images/Admin/admin-1.png" alt="user-image" class="rounded-circle"/>
+				<img src="/indieabode/public/images/Admin/admin-1.png" alt="user-image" class="rounded-circle" />
 			</div>
 			<div class="user-details">
 				<div class="user-role">Admin</div>
 				<div class="email-address">
-				<div class="box">admin@gmail.com</div>
+					<div class="box">admin@gmail.com</div>
 				</div>
 			</div>
 		</div>
@@ -38,8 +38,7 @@
 		<!-- <a href="#" class="brand"><i class='bx bxs-smile icon'></i>Indie Abode</a> -->
 		<ul class="side-menu">
 			<li class="divider" data-text="main">Main</li>
-			<li><a href="<?php echo BASE_URL; ?>GameDB" class="active"><i class='bx bxs-dashboard icon'></i> Dashboard <i
-						class='bx bx-chevron-right icon-right'></i> </a></li>
+			<li><a href="<?php echo BASE_URL; ?>SiteDashboard" class="active"><i class='bx bxs-dashboard icon'></i> Dashboard <i class='bx bx-chevron-right icon-right'></i> </a></li>
 			<!-- <ul class="side-dropdown"> -->
 			<li><a href="<?php echo BASE_URL; ?>Admin_G"><i class='bx bxs-dashboard icon'></i>Game Dashboard</a></li>
 			<li><a href="<?php echo BASE_URL; ?>Admin_assetD"><i class='bx bxs-dashboard icon'></i>Asset Dashboard</a></li>
@@ -63,7 +62,7 @@
 
 	<!-- NAVBAR -->
 	<section id="content">
-		
+
 		<!-- MAIN -->
 		<main>
 			<h1 class="title">Asset Dashboard</h1>
@@ -76,12 +75,12 @@
 						<div class="main-total-view-left total-games">
 							<h3>Uploaded Assets</h3>
 							<div class="free-download">
-							Free Assets<br>
-							<h1>135</h1>
+								Free Assets<br>
+								<h1>135</h1>
 							</div>
 							<div class="paid-download">
-							Paid Assets<br>
-							<h1>0</h1>
+								Paid Assets<br>
+								<h1>0</h1>
 							</div>
 							<!-- <h1>13567</h1> -->
 						</div>
@@ -95,17 +94,17 @@
 						<div class="main-total-view-left total-games">
 							<h3>Total Downloads</h3>
 							<div class="free-download">
-							Free Assets<br>
-							<h1>135</h1>
+								Free Assets<br>
+								<h1>135</h1>
 							</div>
 							<div class="paid-download">
-							Paid Assets<br>
-							<h1>0</h1>
+								Paid Assets<br>
+								<h1>0</h1>
 							</div>
 							<!-- <h1>135</h1> -->
 						</div>
 						<div class="main-total-view-right">
-						<i class="fa fa-download bx fa-4x" aria-hidden="true"></i>
+							<i class="fa fa-download bx fa-4x" aria-hidden="true"></i>
 						</div>
 					</div>
 				</div>
@@ -116,7 +115,7 @@
 							<h1>Rs: 1356700.00</h1>
 						</div>
 						<div class="main-total-view-right">
-						<i class="fa fa-money bx fa-4x" aria-hidden="true"></i>
+							<i class="fa fa-money bx fa-4x" aria-hidden="true"></i>
 						</div>
 					</div>
 
@@ -199,17 +198,17 @@
 							</tbody> -->
 
 							<tbody>
-							<?php foreach ($this->recent_activities as $user) { ?>
-								<tr>
-									<td>
-									<?php echo $user['name']; ?>
-									</td>
-									<td><?php echo $user['description']; ?></td>
-									<td><?php echo $user['assetName']; ?></td>
-									<td><?php echo $user['created_at']; ?></td>
-									
-								</tr>
-                  			  <?php } ?>						
+								<?php foreach ($this->recent_activities as $user) { ?>
+									<tr>
+										<td>
+											<?php echo $user['name']; ?>
+										</td>
+										<td><?php echo $user['description']; ?></td>
+										<td><?php echo $user['assetName']; ?></td>
+										<td><?php echo $user['created_at']; ?></td>
+
+									</tr>
+								<?php } ?>
 							</tbody>
 
 						</table>
@@ -265,23 +264,23 @@
 
 					</div> -->
 					<div class="popular-cards">
-					<?php foreach ($this->top_assets as $asset) { ?>
-						<div class="popular-game-card">
-							<div class="game-cvr-img">
-								<!-- <img src=<?php echo "'".$asset['img']."'"; ?>> -->
-								<img src="<?php echo '/indieabode/public/uploads/assets/cover/'.$asset['img']; ?>">
-							</div>
+						<?php foreach ($this->top_assets as $asset) { ?>
+							<div class="popular-game-card">
+								<div class="game-cvr-img">
+									<!-- <img src=<?php echo "'" . $asset['img'] . "'"; ?>> -->
+									<img src="<?php echo '/indieabode/public/uploads/assets/cover/' . $asset['img']; ?>">
+								</div>
 
-							<div class="game-name gm-crd">
-								<?php echo $asset['name']; ?>
-							</div>
+								<div class="game-name gm-crd">
+									<?php echo $asset['name']; ?>
+								</div>
 
-							<div class="game-count gm-crd">
-								<?php echo $asset['count']; ?>+
+								<div class="game-count gm-crd">
+									<?php echo $asset['count']; ?>+
+								</div>
 							</div>
-						</div>
-					<?php } ?>
-						
+						<?php } ?>
+
 
 					</div>
 				</div>
@@ -291,13 +290,13 @@
 					<div class="popular-header Game-DB-Graph">
 						<h2>Transaction Graph</h2>
 						<?php
-							$data = array(12, 19, 3, 5, 2, 3);
-							$data_js = json_encode($data);
-							?>
+						$data = array(12, 19, 3, 5, 2, 3);
+						$data_js = json_encode($data);
+						?>
 
-							<script>
+						<script>
 							var data = <?php echo $data_js; ?>;
-							</script>
+						</script>
 
 						<canvas id="myChart"></canvas>
 						<!-- <canvas id="myChart" style="display: block; width: 500px; height: 450px;" width="553" height="276" class="chartjs-render-monitor"></canvas> -->
@@ -311,44 +310,43 @@
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 
 	<script>
-	var ctx = document.getElementById('myChart').getContext('2d');
-	var myChart = new Chart(ctx, {
-		type: 'line',
-		data: {
-			labels: <?php echo json_encode($this->labels); ?>,
-			datasets: [
-			{
-				label: 'Downloaded Assests',
-				data: <?php echo json_encode($this->downloadasset_data); ?>,
-				borderColor: 'rgba(75, 192, 192, 1)',
-				backgroundColor: 'rgba(75, 192, 192, 0.2)',
-				fill: false
-			}
-			// {
-			// 	label: 'Downloaded Games',
-			// 	data: <?php echo json_encode($this->downloadgame_data); ?>,
-			// 	borderColor: 'rgba(0, 0, 0, 1)',
-			// 	backgroundColor: 'rgba(0, 0, 0, 0.2)',
-			// 	fill: false
-			// }
-			
-			]
-		},
-		options: {
-			scales: {
-				yAxes: [{
-					ticks: {
-						beginAtZero: true
+		var ctx = document.getElementById('myChart').getContext('2d');
+		var myChart = new Chart(ctx, {
+			type: 'line',
+			data: {
+				labels: <?php echo json_encode($this->labels); ?>,
+				datasets: [{
+						label: 'Downloaded Assests',
+						data: <?php echo json_encode($this->downloadasset_data); ?>,
+						borderColor: 'rgba(75, 192, 192, 1)',
+						backgroundColor: 'rgba(75, 192, 192, 0.2)',
+						fill: false
 					}
-				}]
+					// {
+					// 	label: 'Downloaded Games',
+					// 	data: <?php echo json_encode($this->downloadgame_data); ?>,
+					// 	borderColor: 'rgba(0, 0, 0, 1)',
+					// 	backgroundColor: 'rgba(0, 0, 0, 0.2)',
+					// 	fill: false
+					// }
+
+				]
+			},
+			options: {
+				scales: {
+					yAxes: [{
+						ticks: {
+							beginAtZero: true
+						}
+					}]
+				}
 			}
-		}
-	});
+		});
 	</script>
 
 
-    <script src="<?php echo BASE_URL; ?>public/js/admin.js"></script>
-    <!-- <?php if (isset($_SESSION['id']) && !empty($_SESSION['id'])) { ?>
+	<script src="<?php echo BASE_URL; ?>public/js/admin.js"></script>
+	<!-- <?php if (isset($_SESSION['id']) && !empty($_SESSION['id'])) { ?>
         <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
     <?php } else { ?>
         <script src="<?php echo BASE_URL; ?>public/js/navbarcopy.js"></script>

@@ -49,6 +49,9 @@
         </div>
     </div>
 
+    <?php
+    include 'includes/footer.php';
+    ?>
 
     <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
 
