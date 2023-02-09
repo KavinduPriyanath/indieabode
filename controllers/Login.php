@@ -54,7 +54,7 @@ class Login extends Controller
             try {
                 $mail = new PHPMailer(true);
 
-                //$mail->SMTPDebug = SMTP::DEBUG_SERVER;
+                $mail->SMTPDebug = SMTP::DEBUG_SERVER;
 
                 $mail->isSMTP();
                 $mail->SMTPAuth = true;
@@ -115,7 +115,9 @@ class Login extends Controller
             $this->model->ActivateAccount($_SESSION['id']);
             header('location:/indieabode/');
         } else {
-            header('location:/indieabode/aa');
+            print_r($this->model->OTPValidation($first, $second, $third, $fourth, $fifth, $_SESSION['id']));
+            print_r($first . $second . $third . $fourth . $fifth);
+            //header('location:/indieabode/aa');
         }
     }
 }
