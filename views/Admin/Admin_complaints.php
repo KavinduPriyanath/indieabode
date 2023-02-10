@@ -23,9 +23,11 @@
 <body>
 
 	<?php
-	include 'includes/A_navbar.php';
-	?>
-	<!-- SIDEBAR -->
+
+    include 'includes/navbar.php';
+    ?>
+    	<!-- SIDEBAR -->
+
 	<section id="sidebar">
 		<div class="admin-card">
 			<div class="profile-picture">
@@ -41,7 +43,10 @@
 		<!-- <a href="#" class="brand"><i class='bx bxs-smile icon'></i>Indie Abode</a> -->
 		<ul class="side-menu">
 			<li class="divider" data-text="main">Main</li>
-			<li><a href="<?php echo BASE_URL; ?>SiteDashboard" class="active"><i class='bx bxs-dashboard icon'></i> Dashboard <i class='bx bx-chevron-right icon-right'></i> </a></li>
+
+			<li><a href="<?php echo BASE_URL; ?>SiteDashboard" class="active"><i class='bx bxs-dashboard icon'></i> Dashboard <i
+						class='bx bx-chevron-right icon-right'></i> </a></li>
+
 			<!-- <ul class="side-dropdown"> -->
 			<li><a href="<?php echo BASE_URL; ?>Admin_G"><i class='bx bxs-dashboard icon'></i>Game Dashboard</a></li>
 			<li><a href="<?php echo BASE_URL; ?>Admin_assetD"><i class='bx bxs-dashboard icon'></i>Asset Dashboard</a></li>
@@ -81,6 +86,16 @@
 				</form>
 			</div> -->
 
+			<div class="search-user">
+				<h2>Username/email</h2>
+				<form action="#">
+					<div class="user-mg-search">
+						<input type="text" placeholder="Search...">
+						<i class='fa fa-search icon search-role'></i>
+					</div>
+				</form>
+			</div>
+
 			<div class="search-user-type">
 				<button class="<?php echo $this->active == 'all' ? 'btn active' : 'btn'; ?>" onclick="filterSelection('all')"> Show all Complaints</button>
 				<a class="<?php echo $this->active == 'gamer' ? 'btn active' : 'btn'; ?>" href='/indieabode/Admin_userMg/viewFilteredUser/gamer'"> Games</a>
@@ -109,69 +124,59 @@
 
 
 			<section class="table__body">
-				<table>
-					<thead>
-						<tr>
-							<th> Id</th>
-							<th> Username</th>
-							<th> User Role</th>
-							<th> Description</th>
-							<!-- <th> View</th> -->
-							<!-- <th> Remove</th> -->
-						</tr>
-					</thead>
-					<tbody>
 
-						<!-- <?php foreach ($this->users as $user) { ?>
+            <table>
+                <thead>
+                    <tr>
+                        <th> Id</th>
+                        <th> Reason</th>
+                        <th> Description</th>
+                        <th> Type</th>
+                        <!-- <th> View</th> -->
+                        <!-- <th> Remove</th> -->
+                    </tr>
+                </thead>
+                <tbody>
+
                         <tr>
-                            <td>
-								<?php echo $user['gamerID']; ?>
-							</td>
-                            <td><?php echo $user['username']; ?></td>
-                            <td><?php echo $user['userRole']; ?></td>
-                            <td><?php echo $user['email']; ?></td>
-                            <td>
-							<form action="/indieabode/Admin_userMg/deleteUser/<?php echo $user['gamerID']; ?>" method="post"> 
-          							<input type="submit" name="delete_user" value="Delete">
-								</form>
-                            </td>
+                            <td>12</td>
+                            <td>Broken-Doesn't run,download or crashes</td>
+                            <td>Downloaded game doesn't work</td>
+                            <td>Game</td>
                         </tr>
-                    <?php } ?> -->
-					</tbody>
-				</table>
-			</section>
+                        <tr>
+                            <td>16</td>
+                            <td>Offensive Material</td>
+                            <td>none</td>
+                            <td>Asset</td>
+                        </tr>
+                        <tr>
+                            <td>22</td>
+                            <td>Miscategorized</td>
+                            <td>Jam has an incorrect tags</td>
+                            <td>Game Jam</td>
+                        </tr>
+                        <tr>
+                            <td>33</td>
+                            <td>Spam</td>
+                            <td>none</td>
+                            <td>Gig</td>
+                        </tr>
+
+                </tbody>
+            </table>
+        </section>
+
 
 		</main>
 		<!-- MAIN -->
 	</section>
 	<!-- NAVBAR -->
 
-
-
-	<!-- <script>
-		function filterSelection(filter_text) {
-		// var x, i;
-		// x = document.getElementsByClassName("filterDiv");
-		// if (c == "all") c = "";
-		// for (i = 0; i < x.length; i++) {
-		//   w3RemoveClass(x[i], "show");
-		//   if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
-		// }
-
-		console.log(filter_text)
-
-		if (filter_text==="all"){
-			window.location.href = '/indieabode/Admin_userMg'
-		}
-
-		else{
-			window.location.href = '/indieabode/Admin_userMg/viewFilteredUser/'+ filter_text
-		}
-
-		
-
-		}
-	</script> -->
+	<?php
+    include 'includes/footer.php';
+    ?>
+	<script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
 
 
 </body>

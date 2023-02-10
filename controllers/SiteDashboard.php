@@ -28,6 +28,9 @@ class SiteDashboard extends Controller
         $top_games = $this->model->TopGames();
         $this->view->top_games = $top_games;
 
+        $top_assets= $this->model->TopAssets();
+        $this->view->top_assets = $top_assets;
+
         $labels = [];
         $downloadasset_data = [];
         foreach ($downloadasset as $row) {

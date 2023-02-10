@@ -114,3 +114,28 @@
 .fa{
   color:#37647b;
 }
+
+/* .graph-img{
+  background-image:url("/indieabode/public/images/Admin/addnew-bg.jpg");
+} */
+
+.graph-img img{
+  width:fit-content;
+}
+
+.graph-img{
+  margin-top: 34%;
+}
+
+.user-del-filter{
+  gap: 15%;
+}
+
+.graph-edit{
+  margin-top: 17%;
+  margin-left: 12%;
+}
+
+.nav-bar{
+  gap: 40%;
+}

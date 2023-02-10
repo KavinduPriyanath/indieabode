@@ -18,7 +18,7 @@
 <body>
 
     <?php
-    include 'includes/A_navbar.php';
+    include 'includes/navbar.php';
     ?>
 
     <div class="body-container">
@@ -237,7 +237,9 @@
         </div>
     </div>
 
-
+    <?php
+    include 'includes/footer.php';
+    ?>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 
     <script>

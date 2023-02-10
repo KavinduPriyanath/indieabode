@@ -137,97 +137,32 @@
 								</div>
 							</div>
 						<?php } ?>
-
-						<!-- <div class="popular-game-card">
-							<div class="game-cvr-img">
-								<img src="gm-2.jpg">
-							</div>
-
-							<div class="game-name gm-crd">
-								The spirit and the Mouse
-							</div>
-
-							<div class="game-count gm-crd">
-								250+
-							</div>
-						</div>
-
-						<div class="popular-game-card">
-							<div class="game-cvr-img">
-								<img src="gm-2.jpg">
-							</div>
-
-							<div class="game-name gm-crd">
-								The spirit and the Mouse
-							</div>
-
-							<div class="game-count gm-crd">
-								250+
-							</div>
-						</div>
-
-						<div class="popular-game-card">
-							<div class="game-cvr-img">
-								<img src="gm-2.jpg">
-							</div>
-
-							<div class="game-name gm-crd">
-								The spirit and the Mouse
-							</div>
-
-							<div class="game-count gm-crd">
-								250+
-							</div>
-						</div> -->
-
 					</div>
 				</div>
 
-
-				<div class="content-data popular-assets">
+				<div class="content-data popular-games">
 					<div class="popular-header">
 						<h2>Most Popular Assets</h2>
 					</div>
-					<div class="popular-asset-card">
-						<div class="asset-cvr-img">
-							<img src="gm-2.jpg">
-						</div>
+					<div class="popular-cards">
+					<?php foreach ($this->top_assets as $asset) { ?>
+						<div class="popular-game-card">
+							<div class="game-cvr-img">
+								<!-- <img src=<?php echo "'".$asset['img']."'"; ?>> -->
+								<img src="<?php echo '/indieabode/public/uploads/assets/cover/'.$asset['img']; ?>">
+							</div>
 
-						<div class="asset-name gm-crd">
-							The spirit and the Mouse
-						</div>
+							<div class="game-name gm-crd">
+								<?php echo $asset['name']; ?>
+							</div>
 
-						<div class="asset-count ast-crd">
-							250+
+							<div class="game-count gm-crd">
+								<?php echo $asset['count']; ?>+
+							</div>
 						</div>
-					</div>
+					<?php } ?>
+						
 
-					<div class="popular-asset-card">
-						<div class="asset-cvr-img">
-							<img src="gm-2.jpg">
-						</div>
-
-						<div class="asset-name gm-crd">
-							The spirit and the Mouse
-						</div>
-
-						<div class="asset-count ast-crd">
-							250+
-						</div>
-					</div>
-
-					<div class="popular-asset-card">
-						<div class="asset-cvr-img">
-							<img src="gm-2.jpg">
-						</div>
-
-						<div class="asset-name gm-crd">
-							The spirit and the Mouse
-						</div>
-
-						<div class="asset-count ast-crd">
-							250+
-						</div>
 					</div>
 				</div>
 			</div>
@@ -235,6 +170,10 @@
 		<!-- MAIN -->
 	</section>
 	<!-- NAVBAR -->
+
+	<?php
+    include 'includes/footer.php';
+    ?>
 
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 

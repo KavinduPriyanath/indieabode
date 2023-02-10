@@ -12,7 +12,7 @@
         include 'public/css/admin.css';
         include 'public/css/admin_userMg.css';
         include 'public/css/admin_db.css';
-        include 'public/css/login.css';
+        // include 'public/css/login.css';
         // include('public/css/login.css');
         ?>
     </style>
@@ -40,28 +40,31 @@
         </div>
 
         <ul class="side-menu">
-            <li class="divider" data-text="main">Main</li>
-            <li><a href="<?php echo BASE_URL; ?>SiteDashboard" class="active"><i class='bx bxs-dashboard icon'></i> Dashboard <i class='bx bx-chevron-right icon-right'></i> </a></li>
-            <!-- <ul class="side-dropdown"> -->
-            <li><a href="<?php echo BASE_URL; ?>Admin_G"><i class='bx bxs-dashboard icon'></i>Game Dashboard</a></li>
-            <li><a href="<?php echo BASE_URL; ?>Admin_assetD"><i class='bx bxs-dashboard icon'></i>Asset Dashboard</a></li>
-            <li><a href="<?php echo BASE_URL; ?>Admin_GigD"><i class='bx bxs-dashboard icon'></i>Gigs Dashboard</a></li>
-            <li><a href="<?php echo BASE_URL; ?>Admin_crowdfundD"><i class='bx bxs-dashboard icon'></i>Crowdfund Dashboard</a></li>
-            <li><a href="<?php echo BASE_URL; ?>Admin_devlogsD"><i class='bx bxs-dashboard icon'></i>Devlogs Dashboard</a></li>
-            <li><a href="<?php echo BASE_URL; ?>Admin_gameJamD"><i class='bx bxs-dashboard icon'></i>Game Jam Dashboard</a></li>
-            <!-- </ul> -->
-            <li>
-                <a href="<?php echo BASE_URL; ?>Admin_complaints"><i class='bx bxs-message-square-error icon'></i> Complaints </a>
-            </li>
 
-            <li class="divider" data-text="Settings">Settings</li>
-            <li><a href="<?php echo BASE_URL; ?>Admin_addNew"><i class='bx bx-user-plus icon'></i> Add new admin</a></li>
-            <li>
-                <a href="<?php echo BASE_URL; ?>Admin_userMg"><i class='bx bxs-trash icon'></i> Remove user</a>
-            </li>
-        </ul>
-    </section>
-    <!-- SIDEBAR -->
+			<li class="divider" data-text="main">Main</li>
+			<li><a href="<?php echo BASE_URL; ?>SiteDashboard" class="active"><i class='bx bxs-dashboard icon'></i> Dashboard <i
+						class='bx bx-chevron-right icon-right'></i> </a></li>
+			<!-- <ul class="side-dropdown"> -->
+			<li><a href="<?php echo BASE_URL; ?>Admin_G"><i class='bx bxs-dashboard icon'></i>Game Dashboard</a></li>
+			<li><a href="<?php echo BASE_URL; ?>Admin_assetD"><i class='bx bxs-dashboard icon'></i>Asset Dashboard</a></li>
+			<li><a href="<?php echo BASE_URL; ?>Admin_GigD"><i class='bx bxs-dashboard icon'></i>Gigs Dashboard</a></li>
+			<li><a href="<?php echo BASE_URL; ?>Admin_crowdfundD"><i class='bx bxs-dashboard icon'></i>Crowdfund Dashboard</a></li>
+			<li><a href="<?php echo BASE_URL; ?>Admin_devlogsD"><i class='bx bxs-dashboard icon'></i>Devlogs Dashboard</a></li>
+			<li><a href="<?php echo BASE_URL; ?>Admin_gameJamD"><i class='bx bxs-dashboard icon'></i>Game Jam Dashboard</a></li>
+			<!-- </ul> -->
+			<li>
+				<a href="<?php echo BASE_URL; ?>Admin_complaints"><i class='bx bxs-message-square-error icon'></i> Complaints </a>
+			</li>
+
+			<li class="divider" data-text="Settings">Settings</li>
+			<li><a href="<?php echo BASE_URL; ?>Admin_addNew"><i class='bx bx-user-plus icon'></i> Add new admin</a></li>
+			<li>
+				<a href="<?php echo BASE_URL; ?>Admin_userMg"><i class='bx bxs-trash icon'></i> Remove user</a>
+			</li>
+		</ul>
+	</section>
+	<!-- SIDEBAR -->
+
 
     <!-- NAVBAR -->
     <section id="content">
@@ -108,8 +111,7 @@
     </section>
     <!-- NAVBAR -->
 
-
-
+    <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
     <script src="<?php echo BASE_URL; ?>public/js/admin.js"></script>
     <script src="<?php echo BASE_URL; ?>public/js/admin_userMg.js"></script>
     <?php if (isset($_SESSION['id']) && !empty($_SESSION['id'])) { ?>

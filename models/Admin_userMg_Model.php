@@ -13,7 +13,7 @@ class Admin_userMg_Model extends Model
         
 
         if ($filter_text==""){
-            $sql = "SELECT * FROM `gamer` WHERE accountStatus=0";
+            $sql = "SELECT * FROM `gamer` WHERE accountStatus=1";
         }
 
         else{
@@ -34,7 +34,7 @@ class Admin_userMg_Model extends Model
     
 
     function delete_user($user_id){
-        $sql = "UPDATE gamer SET accountStatus=1 WHERE gamerID = ".$user_id;
+        $sql = "UPDATE gamer SET accountStatus=0 WHERE gamerID = ".$user_id;
 
         $stmt = $this->db->prepare($sql);
 
