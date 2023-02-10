@@ -164,7 +164,6 @@
             <a href="/indieabode/jam?id=<?= $jam['gameJamID'] ?>">
                 <div class="card">
 
-                    <!--<div class="first-row">-->
                     <div class="jam-name">
                         <h3><?= $jam['jamTitle'] ?></h3>
                     </div>
@@ -195,27 +194,28 @@
                 </div>
             </a>
         <?php } ?>
+    </div>
 
-        <!--Pagination-->
+    <!--Pagination-->
 
-        <div class="pagination">
-            <a href="#"><i class="fa fa-angle-left"></i></a>
-            <a href="#" class="active">1</a>
-            <a href="#">2</a>
-            <a href="#">3</a>
-            <a href="#">4</a>
-            <a href="#">5</a>
-            <a href="#">6</a>
-            <a href="#"><i class="fa fa-angle-right"></i></a>
-        </div>
+    <div class="pagination">
+        <a href="#"><i class="fa fa-angle-left"></i></a>
+        <a href="#" class="active">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">5</a>
+        <a href="#">6</a>
+        <a href="#"><i class="fa fa-angle-right"></i></a>
+    </div>
 
 
-        <?php
-        include 'includes/footer.php';
-        ?>
+    <?php
+    include 'includes/footer.php';
+    ?>
 
-        <script src="<?php echo BASE_URL; ?>public/js/sidefilter.js"></script>
-        <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
+    <script src="<?php echo BASE_URL; ?>public/js/sidefilter.js"></script>
+    <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
 
 
 </body>

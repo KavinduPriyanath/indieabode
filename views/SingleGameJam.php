@@ -148,7 +148,7 @@ include 'includes/navbar.php';
 
 
 
-
+    <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
 
     <?php if (isset($_SESSION['id']) && !empty($_SESSION['id'])) { ?>
         <script src="../src/js/navbar.js"></script>
