@@ -39,7 +39,7 @@ class Login extends Controller
             $_SESSION['id'] = $user['gamerID'];
             $_SESSION['avatar'] = $user['avatar'];
             $_SESSION['userRole'] = $user['userRole'];
-            header('location:/indieabode/');
+            header('location:/indieabode/games');
         } else if (!empty($user) && $user['verified'] == 0) {
             $_SESSION['username'] = $user['username'];
             $_SESSION['email'] = $user['email'];
@@ -94,7 +94,7 @@ class Login extends Controller
     function logout()
     {
         session_destroy();
-        header('location:/indieabode/');
+        header('location:/indieabode/games');
     }
 
     function activation()
@@ -113,7 +113,7 @@ class Login extends Controller
         if ($this->model->OTPValidation($first, $second, $third, $fourth, $fifth, $_SESSION['id'])) {
             $_SESSION['logged'] = $_SESSION['id'];
             $this->model->ActivateAccount($_SESSION['id']);
-            header('location:/indieabode/');
+            header('location:/indieabode/games');
         } else {
             print_r($this->model->OTPValidation($first, $second, $third, $fourth, $fifth, $_SESSION['id']));
             print_r($first . $second . $third . $fourth . $fifth);

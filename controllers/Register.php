@@ -53,7 +53,7 @@ class Register extends Controller
             } else {
                 $this->model->insertUser($email, $username, $hasedPassword, $firstname, $lastname, $avatar, $userRole);
                 $this->model->addUserAccount($username);
-                header('location:/indieabode/');
+                header('location:/indieabode/games');
             }
         } else {
             print_r("Passwords do not match!");

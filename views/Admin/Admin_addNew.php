@@ -24,22 +24,23 @@
     include 'includes/A_navbar.php';
     ?>
 
-    	<!-- SIDEBAR -->
-	<section id="sidebar">
+    <!-- SIDEBAR -->
+    <section id="sidebar">
 
         <div class="admin-card">
-			<div class="profile-picture">
-				<img src="/indieabode/public/images/Admin/admin-1.png" alt="user-image" class="rounded-circle"/>
-			</div>
-			<div class="user-details">
-				<div class="user-role">Admin</div>
-				<div class="email-address">
-				<div class="box">admin@gmail.com</div>
-				</div>
-			</div>
-		</div>
+            <div class="profile-picture">
+                <img src="/indieabode/public/images/Admin/admin-1.png" alt="user-image" class="rounded-circle" />
+            </div>
+            <div class="user-details">
+                <div class="user-role">Admin</div>
+                <div class="email-address">
+                    <div class="box">admin@gmail.com</div>
+                </div>
+            </div>
+        </div>
 
         <ul class="side-menu">
+
 			<li class="divider" data-text="main">Main</li>
 			<li><a href="<?php echo BASE_URL; ?>SiteDashboard" class="active"><i class='bx bxs-dashboard icon'></i> Dashboard <i
 						class='bx bx-chevron-right icon-right'></i> </a></li>
@@ -64,13 +65,14 @@
 	</section>
 	<!-- SIDEBAR -->
 
+
     <!-- NAVBAR -->
-	<section id="content">
+    <section id="content">
 
 
-		<!-- MAIN -->
-		<main>
-        <h1 class="title">- User Management -</h1>
+        <!-- MAIN -->
+        <main>
+            <h1 class="title">- User Management -</h1>
             <div class="register-box addnew-admin-container">
                 <div class="addnew-box">
                     <div class="addnew-topic">
@@ -104,10 +106,10 @@
                     </div>
                 </div>
             </div>
-		</main>
-		<!-- MAIN -->
-	</section>
-	<!-- NAVBAR -->
+        </main>
+        <!-- MAIN -->
+    </section>
+    <!-- NAVBAR -->
 
     <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
     <script src="<?php echo BASE_URL; ?>public/js/admin.js"></script>

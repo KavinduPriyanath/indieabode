@@ -41,20 +41,19 @@
                     <!-- <a href="#" class="brand"><i class='bx bxs-smile icon'></i>Indie Abode</a> -->
                     <div class="card">
                         <div class="profile-picture">
-                            <img src="/indieabode/public/images/Admin/admin-1.png" alt="user-image" class="rounded-circle"/>
+                            <img src="/indieabode/public/images/Admin/admin-1.png" alt="user-image" class="rounded-circle" />
                         </div>
                         <div class="user-details">
                             <div class="user-role">Admin</div>
                             <div class="email-address">
-                            <div class="box">admin@gmail.com</div>
+                                <div class="box">admin@gmail.com</div>
                             </div>
                         </div>
                     </div>
 
                     <ul class="side-menu">
                         <li class="divider" data-text="main">Main</li>
-                        <li><a href="<?php echo BASE_URL; ?>GameDB" class="active"><i class='bx bxs-dashboard icon'></i> Dashboard <i
-                                    class='bx bx-chevron-right icon-right'></i> </a></li>
+                        <li><a href="<?php echo BASE_URL; ?>SiteDashboard" class="active"><i class='bx bxs-dashboard icon'></i> Dashboard <i class='bx bx-chevron-right icon-right'></i> </a></li>
                         <!-- <ul class="side-dropdown"> -->
                         <li><a href="<?php echo BASE_URL; ?>Admin_G"><i class='bx bxs-dashboard icon'></i>Game Dashboard</a></li>
                         <li><a href="<?php echo BASE_URL; ?>Admin_assetD"><i class='bx bxs-dashboard icon'></i>Asset Dashboard</a></li>
@@ -122,13 +121,13 @@
                         <div class="content-data active-user">
                             <div class="recentOrders">
                                 <?php
-                                    $data = array(12, 19, 3, 5, 2, 3);
-                                    $data_js = json_encode($data);
-                                    ?>
+                                $data = array(12, 19, 3, 5, 2, 3);
+                                $data_js = json_encode($data);
+                                ?>
 
-                                    <script>
+                                <script>
                                     var data = <?php echo $data_js; ?>;
-                                    </script>
+                                </script>
 
                                 <canvas id="myChart"></canvas>
                             </div>
@@ -233,7 +232,7 @@
                         </div>
                     </div>
                 </main>
-            <!-- MAIN -->
+                <!-- MAIN -->
             </section>
         </div>
     </div>
@@ -243,40 +242,40 @@
     ?>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 
-	<script>
-	var ctx = document.getElementById('myChart').getContext('2d');
-	var myChart = new Chart(ctx, {
-		type: 'line',
-		data: {
-			labels: <?php echo json_encode($this->labels); ?>,
-			datasets: [{
-				label: 'Downloaded Assests',
-				data: <?php echo json_encode($this->downloadasset_data); ?>,
-				borderColor: 'rgba(75, 192, 192, 1)',
-				backgroundColor: 'rgba(75, 192, 192, 0.2)',
-				fill: false
-			},
-			{
-				label: 'Downloaded Games',
-				data: <?php echo json_encode($this->downloadgame_data); ?>,
-				borderColor: 'rgba(0, 0, 0, 1)',
-				backgroundColor: 'rgba(0, 0, 0, 0.2)',
-				fill: false
-			}
-			
-			]
-		},
-		options: {
-			scales: {
-				yAxes: [{
-					ticks: {
-						beginAtZero: true
-					}
-				}]
-			}
-		}
-	});
-	</script>
+    <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: <?php echo json_encode($this->labels); ?>,
+                datasets: [{
+                        label: 'Downloaded Assests',
+                        data: <?php echo json_encode($this->downloadasset_data); ?>,
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        fill: false
+                    },
+                    {
+                        label: 'Downloaded Games',
+                        data: <?php echo json_encode($this->downloadgame_data); ?>,
+                        borderColor: 'rgba(0, 0, 0, 1)',
+                        backgroundColor: 'rgba(0, 0, 0, 0.2)',
+                        fill: false
+                    }
+
+                ]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
 
 
 
