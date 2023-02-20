@@ -42,9 +42,26 @@ class Games_Model extends Model
         return $stmt->fetchAll();
     }
 
-    function totalGamesPageCount()
+    function totalGamesPageCount($gameClassification)
     {
-        $stmt = $this->db->prepare("SELECT count(gameID) AS id FROM freegame");
+
+        if ($gameClassification == 'action') {
+            $sql = "SELECT count(gameID) AS id FROM freegame WHERE gameClassification='action'";
+        } else if ($gameClassification == 'adventure') {
+            $sql = "SELECT count(gameID) AS id FROM freegame WHERE gameClassification='adventure'";
+        } else if ($gameClassification == 'rpg') {
+            $sql = "SELECT count(gameID) AS id FROM freegame WHERE gameClassification='rpg'";
+        } else if ($gameClassification == 'racing') {
+            $sql = "SELECT count(gameID) AS id FROM freegame WHERE gameClassification='racing'";
+        } else if ($gameClassification == 'simulation') {
+            $sql = "SELECT count(gameID) AS id FROM freegame WHERE gameClassification='simulation'";
+        } else if ($gameClassification == 'strategy') {
+            $sql = "SELECT count(gameID) AS id FROM freegame WHERE gameClassification='strategy'";
+        } else {
+            $sql = "SELECT count(gameID) AS id FROM freegame";
+        }
+
+        $stmt = $this->db->prepare($sql);
 
         $stmt->execute();
 
