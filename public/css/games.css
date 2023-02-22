@@ -9,7 +9,7 @@
 
 
 .side-nav {
-    height: 100%;
+    height: 130%;
     width: 250px;
     position: absolute;
     z-index: 1;
@@ -18,7 +18,7 @@
     /* background-color: lightgray; */
     opacity: 0.9;
     overflow-x: hidden;
-    overflow-y: hidden;
+    overflow-y:hidden;
     padding-top: 15px;
     transition: 0.3s;
 }
@@ -30,6 +30,23 @@
     color: rgb(23, 20, 46);
     display: block;
     transition: 0.3s;
+}
+
+#filter-button {
+    position: relative;
+    left: 15px;
+    right: 3px;
+    display: block;
+    margin: 10px 22px 7px 12px;
+    text-align: center;
+    padding: 4px;
+    font-weight: bold;
+    font-size: 19px;
+    color: #132759;
+    border-radius: 8px;
+    background-color: rgba(169, 232, 240, 0.7);
+    font-family: 'Kreon', serif;
+    cursor: pointer;
 }
 
 .type-filter {
@@ -69,6 +86,10 @@ input[type="radio"] {
     cursor: pointer;
 }
 
+.trigger span {
+    margin-left: 100px;
+}
+
 .sort {
     display: inline-block;
     font-size: 18px;
@@ -94,6 +115,20 @@ input[type="radio"] {
 .upper-break {
     display: flex;
     justify-content: space-between;
+}
+
+.left-btn {
+    display: flex;
+}
+
+.filter-on-text {
+    font-size: 17px;
+    /* padding: 10px 20px 0px 15px; */
+    margin: 25px 0px 0px 75px;
+}
+
+.filter-on-text i{
+    cursor: pointer;
 }
 
 #topic-break {

@@ -72,7 +72,25 @@
                         <select id="" name="game-type">
                             <option value="Base Game" selected>Base Game</option>
                             <option value="DLC">DLC</option>
+                            <option value="Prologue">Prologue</option>
+                            <option value="Demo">Demo</option>
                         </select><br><br>
+
+                        <label id="game-price" for="game-price">Pricing</label><br><br>
+                        <div class="price">
+                            <div class="price-free">
+                                <input type="radio" id="game-free" name="game-price" value="free" checked>
+                                <label for="game-free">Free</label>
+                            </div>
+                            <div class="price-paid">
+                                <input type="radio" id="game-paid" name="game-price" value="paid">
+                                <label for="game-paid">Paid</label>
+                            </div>
+                        </div>
+                        <p id="p">Minimum Price - Set to $0 for free games</p>
+                        <input type="text" id="game-price-val" name="game-price-val" value="$0.00" /><br><br>
+
+
 
                         <label id="game-details" for="game-details">Details</label><br>
                         <p id="p">This will be the content of your game page</p><br>
@@ -82,16 +100,8 @@
                         <p id="p">Keywords that someone would search to find your game</p><br>
                         <input type="text" id="game-tags" name="game-tags" /> <br><br>
 
-                        <!--
-                    <label id="game-price" for="game-price">Pricing</label><br><br>
-                    <input type="radio" id="game-free" name="game-price" value="free" checked>
-                    <label for="game-free">Free</label><br>
-                    <input type="radio" id="game-paid" name="game-price" value="paid">
-                    <label for="game-paid">Paid</label><br>
-                    <p id="p">Minimum Price - Set to $0 for free games</p>
-                    <input type="text" id="game-price-val" name="game-price-val" /><br><br>
 
--->
+
                         <label id="game-features" for="game-features">Features</label><br>
                         <p id="p">Special features your game has that players would prefer</p><br>
                         <input type="text" id="game-features" name="game-features" /> <br><br>
@@ -185,6 +195,7 @@
 
 
     <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
+
 
 
 </body>
