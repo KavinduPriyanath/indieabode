@@ -18,7 +18,7 @@
     background:rgba(149, 178, 200, 0.6);
 
     width:75%;
-    height:2200px;
+    height:2300px;
     position:relative;
     padding:10px;
     margin-top: 0;
@@ -263,5 +263,14 @@ select option{
     border-radius: 7px;
     height: 30px;
     padding: 4px;
+  }
+
+
+  .price {
+    display: flex;
+  }
+
+  .price .price-paid {
+    margin-left: 200px;
   }
   
