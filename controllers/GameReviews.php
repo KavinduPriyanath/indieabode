@@ -1,51 +1,31 @@
 <?php
 
-class Game extends Controller
+class GameReviews extends Controller
 {
 
     function __construct()
     {
         parent::__construct();
         session_start();
+        // session_destroy();
     }
 
     function index()
     {
-        if (isset($_GET['id'])) {
-            $gameID = $_GET['id'];
-
-
-            $this->view->game = $this->model->showSingleGame($gameID);
-
-            $this->view->gameDeveloper = $this->model->getGameDeveloper($this->model->showSingleGame($gameID));
-
-            $this->view->screenshots = $this->model->getScreenshots($gameID);
-
-            $this->view->ssCount = count($this->model->getScreenshots($gameID));
-
-            $this->view->popularGames = $this->model->PopularGames();
-
-            $this->view->reportReasons = $this->model->ComplaintReasons();
-
-            $this->view->render('SingleGame');
-        }
-    }
-
-    function reviews()
-    {
-        $this->view->game = $this->model->showSingleGame($_GET['id']);
-
         if (isset($_POST['rating_data'])) {
 
             $data = array(
                 ':review' => $_POST['review'],
-                ':rating' => $_POST['rating_data']
+                ':rating' => $_POST['rating_data'],
+                ':gameID' => $_GET['id'],
+                ':userID' => $_SESSION['id']
             );
 
             $this->model->Reviews($data);
 
             echo "Your Review & Rating Successfully Submitted";
         }
+
 
         if (isset($_POST["action"])) {
 
@@ -59,7 +39,9 @@ class Game extends Controller
             $total_user_rating = 0;
             $review_content = array();
 
-            $result = $this->model->FetchReviews();
+            $gameId = $_GET['id'];
+
+            $result = $this->model->FetchReviews($gameId);
 
             foreach ($result as $row) {
                 $review_content[] = array(
@@ -71,19 +53,19 @@ class Game extends Controller
                     $five_star_review++;
                 }
 
-                if ($row["rating"] == '5') {
+                if ($row["rating"] == '4') {
                     $four_star_review++;
                 }
 
-                if ($row["rating"] == '5') {
+                if ($row["rating"] == '3') {
                     $three_star_review++;
                 }
 
-                if ($row["rating"] == '5') {
+                if ($row["rating"] == '2') {
                     $two_star_review++;
                 }
 
-                if ($row["rating"] == '5') {
+                if ($row["rating"] == '1') {
                     $one_star_review++;
                 }
 
@@ -107,7 +89,5 @@ class Game extends Controller
 
             echo json_encode($output);
         }
-
-        $this->view->render('Reviews/Game-Reviews');
     }
 }
