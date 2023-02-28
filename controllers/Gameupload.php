@@ -48,6 +48,14 @@ class Gameupload extends Controller
 
         $platform = $_POST['game-platform'];
 
+        if ($_POST['game-price'] == "Free") {
+            $gamePrice = 0.00;
+        } else if ($_POST['game-price'] == "PWYW") {
+            $gamePrice = $_POST['game-pwyw-default'];
+        } else if ($_POST['game-price'] == "Paid") {
+            $gamePrice = $_POST['game-price-paid'];
+        }
+
         $this->model->uploadNewGame(
             $gameName,
             $releaseStatus,
@@ -73,7 +81,8 @@ class Gameupload extends Controller
             $GameGraphics,
             $GameOther,
             $platform,
-            $gameType
+            $gameType,
+            $gamePrice
         );
 
         header('location:/indieabode/');

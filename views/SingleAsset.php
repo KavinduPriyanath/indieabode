@@ -96,7 +96,7 @@
                 <a href="/indieabode/asset/checkout?id=<?= $this->asset['assetID'] ?>">
                     <div class="buy-btn">Buy Now</div>
                 </a>
-                <a href="/indieabode/asset/AddToCart?id=<?= $this->asset['assetID'] ?>">
+                <a href="/indieabode/asset/AddToCart?id=<?= $this->asset['assetID'] ?>" id="cart-link">
                     <div class="buy-btn" id="cart-btn">Add to Cart</div>
                 </a>
             </div>
@@ -203,10 +203,12 @@
     <?php if ($this->hasInCart) { ?>
         <script>
             document.getElementById('cart-btn').innerHTML = "View In Cart";
+            document.getElementById('cart-link').href = "/indieabode/cart";
         </script>
     <?php } else { ?>
         <script>
             document.getElementById('cart-btn').innerHTML = "Add to Cart";
+            document.getElementById('cart-link').href = "/indieabode/asset/AddToCart?id=<?= $this->asset['assetID'] ?>";
         </script>
     <?php } ?>
 

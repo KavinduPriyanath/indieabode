@@ -270,7 +270,11 @@ select option{
     display: flex;
   }
 
-  .price .price-paid {
-    margin-left: 200px;
+  .price-pwyw{
+    margin-left: 100px;
+  }
+
+  .price-paid  {
+    margin-left: 100px;
   }
   

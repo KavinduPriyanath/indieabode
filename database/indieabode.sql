@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 22, 2023 at 05:11 AM
+-- Generation Time: Feb 28, 2023 at 09:12 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -49,8 +49,8 @@ INSERT INTO `account` (`userID`, `profilePhoto`, `location`, `tagline`, `socialL
 (46, '', '', '', '', '', '', '', '0000-00-00', '', '0000-00-00'),
 (47, '', '', '', '', '', '', '', '0000-00-00', '', '0000-00-00'),
 (48, '', '', '', '', '', '', '', '0000-00-00', '', '0000-00-00'),
-(49, '', '', '', '', '', '', '', '0000-00-00', '', '0000-00-00'),
-(51, '', '', '', '', '', '', '', '0000-00-00', '', '0000-00-00');
+(51, '', '', '', '', '', '', '', '0000-00-00', '', '0000-00-00'),
+(52, '', '', '', '', '', '', '', '0000-00-00', '', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -72,8 +72,8 @@ INSERT INTO `activation_keys` (`id`, `userID`, `activationCode`) VALUES
 (2, 46, '93213'),
 (3, 47, '60865'),
 (4, 48, '67170'),
-(5, 49, '55873'),
-(11, 51, '31055');
+(11, 51, '31055'),
+(12, 52, '57168');
 
 -- --------------------------------------------------------
 
@@ -185,7 +185,10 @@ INSERT INTO `cart` (`id`, `userID`, `itemID`) VALUES
 (2, '31', '2'),
 (3, '31', '1'),
 (4, '31', '1'),
-(5, '37', '2');
+(5, '37', '2'),
+(6, '46', '12'),
+(7, '46', '12'),
+(8, '46', '14');
 
 -- --------------------------------------------------------
 
@@ -505,7 +508,9 @@ INSERT INTO `freegame` (`gameID`, `gameName`, `releaseStatus`, `gameDetails`, `g
 (140, 'Monster Hunter Rise', 'released', '<h3>ABOUT THIS GAME</h3>\r\n<br>\r\n<p>Rise to the challenge and join the hunt! In Monster Hunter Rise, the latest installment in the award-winning and top-selling Monster Hunter series, you’ll become a hunter, explore brand new maps and use a variety of weapons to take down fearsome monsters as part of an all-new storyline. The PC release also comes packed with a number of additional visual and performance enhancing optimizations.</p>\r\n<br>\r\n<h3>\r\nFerocious monsters with unique ecologies</h3>\r\n<p>\r\nHunt down a plethora of monsters with distinct behaviors and deadly ferocity. From classic returning monsters to all-new creatures inspired by Japanese folklore, including the flagship wyvern Magnamalo, you’ll need to think on your feet and master their unique tendencies if you hope to reap any of the rewards!</p>\r\n\r\n', 'SS-Monster Hunter Rise-0.jpg,SS-Monster Hunter Rise-1.jpg,SS-Monster Hunter Rise-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'Rise to the challenge and join the hunt! In Monster Hunter Rise', 'strategy', 'monster hunter, rpg, singlepla', 'singleplayer', 'Windows', 'Base Game', 'Game-Monster Hunter Rise.zip', 0, 'Cover-Monster Hunter Rise.png', 46, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', '', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '', '0000-00-00 00:00:00'),
 (141, 'Final Fantasy VII', 'early access', '<h3>ABOUT THIS GAME</h3>\r\n<p>CRISIS CORE –FINAL FANTASY VII– REUNION is the HD remaster version of the smash hit prequel to FINAL FANTASY VII</p>\r\n<br>\r\n<p>In addition to all graphics being remastered in HD, fully voiced dialogue and new soundtrack arrangements make for a dynamic new retelling of a beloved classic.\r\n\r\nCRISIS CORE –FINAL FANTASY VII– REUNION follows the story of Zack Fair, a young warrior admired by the boy destined to save the world, trusted by men renowned as heroes of legend, and loved by the girl who holds the fate of the planet in her hands. The tale of Zack\'s dreams and honor—the legacy that connects him to Cloud—is revealed in full in this grand saga that has broken the limits of an HD remaster.</p>\r\n<br>\r\n<h3>New Features</h3>\r\n<p>All graphics fully remastered in HD, bringing the game to the latest console generation- Renewed 3D models, including characters and backgrounds, enriching the visual experience\r\n- Improved battle system providing a vastly smoother gameplay experience\r\n- Fully voiced dialogue in both English and Japanese\r\n- A newly arranged soundtrack from the original composer, Takeharu Ishimoto</p>', 'SS-Final Fantasy VII-0.jpg,SS-Final Fantasy VII-1.jpg,SS-Final Fantasy VII-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'Remaster of CRISIS CORE featuring updated graphics, combats', 'RPG', 'final fantasy', 'singleplayer', 'Windows', 'Base Game', 'Game-Final Fantasy VII.zip', 0, 'Cover-Final Fantasy VII.jpg', 46, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '', '0000-00-00 00:00:00'),
 (142, 'Albion Online', 'released', '<h3>ABOUT THIS GAME </h3>\r\n<p> \r\nAlbion Online is a sandbox MMORPG set in an open medieval fantasy world. The game features a player-driven economy where nearly every item is player-crafted. Combine armor pieces and weapons suited to your playstyle in a unique, classless \"you are what you wear\" system. Explore the world, take on other adventurers in thrilling battles, conquer territories, and build a home.\r\n</p>\r\n<br>\r\n<h3>Key Features</h3>\r\n<p>From basic tools and clothes to mighty armors and powerful weapons – nearly every item in the game is crafted by players, in player-constructed buildings, from resources gathered by players. Buy, sell, and trade with other players at local marketplaces all across the world of Albion. Craft rare and powerful items, then sell them to the highest bidder and grow your fortune.</p>\r\n<br>\r\n<p>\r\nIn Albion Online\'s classless combat system, you are what you wear. The weapons and armor you use define your skills, and switching playstyles is as easy as switching gear. Test out new equipment anytime and change up your weapons, armor, and mounts to suit any situation. Hone your character’s skills by crafting new items, or by simply using your favorite equipment.</p>\r\n<br>\r\n', 'SS-Albion Online-0.jpg,SS-Albion Online-1.jpg,SS-Albion Online-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'Free medieval fantasy MMORPG, set in a medieval world', 'adventure', 'albion, albion online, online', 'multiplayer', 'Windows', 'Base Game', 'Game-Albion Online.zip', 0, 'Cover-Albion Online.jpg', 46, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '', '0000-00-00 00:00:00'),
-(143, 'Scarlet Nexus', 'released', '<h3>ABOUT THIS GAME</h3>\r\n<p>In the far distant future, a psionic hormone was discovered in the human brain, granting people extra-sensory powers and changed the world as we knew it. As humanity entered this new era, deranged mutants known as Others began to descend from the sky with a hunger for human brains. Highly resistant to conventional attack methods, extreme measures needed to be taken to battle the overwhelming threat and preserve humanity. Those with acute extra-sensory abilities, known as psionics, were our only chance to fight the onslaught from above. Since then, psionics have been scouted for their talents and recruited to the Other Suppression Force (OSF), humanity’s last line of defense.\r\n</p>\r\n<br>\r\n<p>Featuring a dual story, begin your adventure with either Yuito Sumeragi, an energetic recruit from a prestigious political family or Kasane Randall, the mysterious scout whose power and skill has gained great notoriety among the OSF. As their different experiences interweave with each other, it is only then that you will reveal the full story and unlock all the mysteries of a Brain Punk future caught between technology and psychic abilities in SCARLET NEXUS.\r\n</p>\r\n<br>\r\n<p>Kinetic Psychic Combat – Using psycho-kinetic abilities, the world around you becomes your greatest weapon. Lift, break and throw pieces of your environment to build your attack combos and lay waste to your enemies.\r\n\r\nExterminate the Others – Deranged mutants that descended from the sky, highly resistant to conventional attack methods and defenses. Tormented by the constant pain of their mutation, they seek brains of living organisms to calm their madness.\r\n\r\nDiscover a Brain Punk future – Explore and protect a futuristic Japanese landscape that combines inspirations from classic anime and western science fiction.\r\n\r\nA Dual Story Experience – Dive into a complex story of bonds, courage and heroism, crafted by minds behind the iconic Tales of Vesperia.</p>', 'SS-Scarlet Nexus-0.jpg,SS-Scarlet Nexus-1.jpg,SS-Scarlet Nexus-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'Elite psionics each armed with a talent in psychokinesis', 'RPG', 'scarlet, nexus, rpg', 'co-op', 'Windows', 'Base Game', 'Game-Scarlet Nexus.zip', 0, 'Cover-Scarlet Nexus.jpg', 49, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '', '0000-00-00 00:00:00');
+(143, 'Scarlet Nexus', 'released', '<h3>ABOUT THIS GAME</h3>\r\n<p>In the far distant future, a psionic hormone was discovered in the human brain, granting people extra-sensory powers and changed the world as we knew it. As humanity entered this new era, deranged mutants known as Others began to descend from the sky with a hunger for human brains. Highly resistant to conventional attack methods, extreme measures needed to be taken to battle the overwhelming threat and preserve humanity. Those with acute extra-sensory abilities, known as psionics, were our only chance to fight the onslaught from above. Since then, psionics have been scouted for their talents and recruited to the Other Suppression Force (OSF), humanity’s last line of defense.\r\n</p>\r\n<br>\r\n<p>Featuring a dual story, begin your adventure with either Yuito Sumeragi, an energetic recruit from a prestigious political family or Kasane Randall, the mysterious scout whose power and skill has gained great notoriety among the OSF. As their different experiences interweave with each other, it is only then that you will reveal the full story and unlock all the mysteries of a Brain Punk future caught between technology and psychic abilities in SCARLET NEXUS.\r\n</p>\r\n<br>\r\n<p>Kinetic Psychic Combat – Using psycho-kinetic abilities, the world around you becomes your greatest weapon. Lift, break and throw pieces of your environment to build your attack combos and lay waste to your enemies.\r\n\r\nExterminate the Others – Deranged mutants that descended from the sky, highly resistant to conventional attack methods and defenses. Tormented by the constant pain of their mutation, they seek brains of living organisms to calm their madness.\r\n\r\nDiscover a Brain Punk future – Explore and protect a futuristic Japanese landscape that combines inspirations from classic anime and western science fiction.\r\n\r\nA Dual Story Experience – Dive into a complex story of bonds, courage and heroism, crafted by minds behind the iconic Tales of Vesperia.</p>', 'SS-Scarlet Nexus-0.jpg,SS-Scarlet Nexus-1.jpg,SS-Scarlet Nexus-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'Elite psionics each armed with a talent in psychokinesis', 'RPG', 'scarlet, nexus, rpg', 'co-op', 'Windows', 'Base Game', 'Game-Scarlet Nexus.zip', 0, 'Cover-Scarlet Nexus.jpg', 49, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '', '0000-00-00 00:00:00'),
+(144, 'Albion Online 2', 'early access', 'eergregergregrgr', 'SS-Albion Online 2-0.jpg,SS-Albion Online 2-1.jpg,SS-Albion Online 2-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'follows a stray cat who falls into a walled city populated by robots, ', 'RPG', 'gregerg', 'Co-op', 'MacOS', 'Demo', 'Game-Albion Online 2.zip', 0, 'Cover-Albion Online 2.jpg', 46, 'windows 7', 'rg', 'juyju', 'grg', 'mx330', 'jyuju', 'windows 10', 'grgg', 'jyu', 'rgr', 'mx1650', '0', '0000-00-00 00:00:00'),
+(145, 'Albion Online 3', 'early access', 'fef', '', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'follows a stray cat who falls into a walled city populated by robots, ', 'simulation', 'grgrg', 'fef', 'MacOS', 'DLC', 'Game-Albion Online 3.zip', 0, 'Cover-Albion Online 3.jpg', 46, 'g', 'rg', 'juyju', 'grg', 'grgrg', 'rg', 'yj', 'r', 'grgrg', 'grg', 'uyjuyj', '$2.00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -598,8 +603,8 @@ INSERT INTO `gamer` (`gamerID`, `email`, `password`, `accountStatus`, `avatar`, 
 (46, '7prend@gmail.com', '$2y$10$GoMCtUazYGp/cxGTPBklXe42cuR7vcZ3K4puVwUov6xozVMjZ3umG', 1, 'avatar1.png', 'game developer', 'Beidou', 'Kavindu', 'Priyanath', '2023-02-09 07:45:17', '2023-02-09 07:45:17', 1, ''),
 (47, 'ypasindu11@gmail.com', '$2y$10$X6vRwMBT21PqzM57sr3fPeBK7gXyaUYiRYWEioYg/La9Sb4iPvI5.', 1, 'avatar3.png', 'asset creator', 'YPasi', 'Yeshan', 'pasindu', '2023-02-09 10:08:12', '2023-02-09 10:08:12', 1, ''),
 (48, 'nadeedarshika1999@gmail.com', '$2y$10$IwPRWNFoePVsvPrzle.DyO9.8MxiOC1PAM/qVuwmJnIXE7UkRp/SS', 1, 'avatar3.png', 'asset creator', 'Nadee', 'Nadee', 'Dharshi', '2023-02-09 14:57:04', '2023-02-09 14:57:04', 0, ''),
-(49, 'kimalrasanka321@gmail.com', '$2y$10$vbHs/lmWGyF7iCc.VpHW6OnD2FZbT/TvoD5QSCuDTZYsrFE2gBmzK', 1, 'avatar4.png', 'game developer', 'KRDA', 'Kimal', 'Rasanka', '2023-02-09 16:25:51', '2023-02-09 16:25:51', 1, ''),
-(51, 'kavindupriyanath@gmail.com', '$2y$10$oOiRY55.Uo1h95KzjQwcFu5RSuZ0QmafaVvAfbN03lFvdE0B6xQDq', 1, 'avatar4.png', 'game developer', 'kavi', 'kavindu', 'priyanath', '2023-02-21 15:13:19', '2023-02-21 15:13:19', 1, '');
+(51, 'kavindupriyanath@gmail.com', '$2y$10$oOiRY55.Uo1h95KzjQwcFu5RSuZ0QmafaVvAfbN03lFvdE0B6xQDq', 1, 'avatar4.png', 'game developer', 'kavi', 'kavindu', 'priyanath', '2023-02-21 15:13:19', '2023-02-21 15:13:19', 1, ''),
+(52, 'kimalrasanka321@gmail.com', '$2y$10$3moxbOLzKlvkAKVnCHLxS.atHdVSAWsJrqyIA/Ki9LXWrFaZKT4Mu', 1, 'avatar2.png', 'gamer', 'KRDA', 'kimal', 'xsx', '2023-02-28 06:45:33', '2023-02-28 06:45:33', 1, '');
 
 -- --------------------------------------------------------
 
@@ -666,6 +671,32 @@ INSERT INTO `games_filters` (`id`, `type`, `filter`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `game_reviews`
+--
+
+CREATE TABLE `game_reviews` (
+  `id` int(11) NOT NULL,
+  `rating` int(11) NOT NULL,
+  `reviewTopic` varchar(100) NOT NULL,
+  `review` varchar(255) NOT NULL,
+  `created_date` date NOT NULL DEFAULT current_timestamp(),
+  `userID` int(11) NOT NULL,
+  `gameID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `game_reviews`
+--
+
+INSERT INTO `game_reviews` (`id`, `rating`, `reviewTopic`, `review`, `created_date`, `userID`, `gameID`) VALUES
+(49, 4, '', 'ddwd', '2023-02-28', 52, 89),
+(50, 2, '', 'dwdw', '2023-02-28', 52, 89),
+(51, 5, '', 'fefef', '2023-02-28', 52, 89),
+(52, 5, '', 'fefevbf', '2023-02-28', 52, 89);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `game_specifications`
 --
 
@@ -713,13 +744,10 @@ CREATE TABLE `gig` (
 --
 
 INSERT INTO `gig` (`gigID`, `gigName`, `gigTrailor`, `gigScreenshot`, `gigDetails`, `game`, `gameDeveloperID`, `gamePublisherID`, `gigTagline`, `currentStage`, `plannedReleaseDate`, `estimatedShare`, `expectedCost`, `visibility`, `gigCoverImg`) VALUES
-(11, 'Open World Classic', 'https://www.indiegala.com/login', 'SS-Scarlet Nexus-0.jpg,SS-Scarlet Nexus-1.png,SS-Scarlet Nexus-2.jpg', 'dwdwdd', 'Scarlet Nexus', 49, 0, 'I am developing an open world game with extreme high movements', 'RPG', '21/02/2024', '50%', '$10000', 'draft', 'Cover-Open World Classic.jpg'),
 (12, 'Local Bus Simulator', 'https://www.indiegala.com/login', 'SS-Naruto Shippuden-0.jpg,SS-Naruto Shippuden-1.jpg,SS-Naruto Shippuden-2.jpg', 'cscsc', 'Naruto Shippuden', 46, 0, 'Bus simulator game consisting with customizable local buses ', 'adventure', '21/02/2024', '12%', '$1000', 'draft', 'Cover-Local Bus Simulator.jpg'),
 (13, 'Indie Desert FPS ', 'https://www.indiegala.com/login', 'SS-Stray-0.jpg,SS-Stray-1.jpg,SS-Stray-2.jpg,SS-Stray-3.jpg', 'fefeff', 'Stray', 46, 0, 'Surviving an endless desert after being stranded by you know', 'action', '21/02/2024', '12%', '$1000', 'draft', 'Cover-Indie Desert FPS .jpg'),
-(14, 'Open World Classic', 'https://www.indiegala.com/login', 'SS-Scarlet Nexus-0.jpg,SS-Scarlet Nexus-1.png,SS-Scarlet Nexus-2.jpg', 'dwdwdd', 'Scarlet Nexus', 49, 0, 'I am developing an open world game with extreme high movements', 'RPG', '21/02/2024', '50%', '$10000', 'draft', 'Cover-Open World Classic.jpg'),
 (15, 'Local Bus Simulator', 'https://www.indiegala.com/login', 'SS-Naruto Shippuden-0.jpg,SS-Naruto Shippuden-1.jpg,SS-Naruto Shippuden-2.jpg', 'cscsc', 'Naruto Shippuden', 46, 0, 'Bus simulator game consisting with customizable local buses ', 'adventure', '21/02/2024', '12%', '$1000', 'draft', 'Cover-Local Bus Simulator.jpg'),
 (16, 'Indie Desert FPS ', 'https://www.indiegala.com/login', 'SS-Stray-0.jpg,SS-Stray-1.jpg,SS-Stray-2.jpg,SS-Stray-3.jpg', 'fefeff', 'Stray', 46, 0, 'Surviving an endless desert after being stranded by you know', 'action', '21/02/2024', '12%', '$1000', 'draft', 'Cover-Indie Desert FPS .jpg'),
-(17, 'Open World Classic', 'https://www.indiegala.com/login', 'SS-Scarlet Nexus-0.jpg,SS-Scarlet Nexus-1.png,SS-Scarlet Nexus-2.jpg', 'dwdwdd', 'Scarlet Nexus', 49, 0, 'I am developing an open world game with extreme high movements', 'RPG', '21/02/2024', '50%', '$10000', 'draft', 'Cover-Open World Classic.jpg'),
 (18, 'Local Bus Simulator', 'https://www.indiegala.com/login', 'SS-Naruto Shippuden-0.jpg,SS-Naruto Shippuden-1.jpg,SS-Naruto Shippuden-2.jpg', 'cscsc', 'Naruto Shippuden', 46, 0, 'Bus simulator game consisting with customizable local buses ', 'adventure', '21/02/2024', '12%', '$1000', 'draft', 'Cover-Local Bus Simulator.jpg'),
 (19, 'Indie Desert FPS ', 'https://www.indiegala.com/login', 'SS-Stray-0.jpg,SS-Stray-1.jpg,SS-Stray-2.jpg,SS-Stray-3.jpg', 'fefeff', 'Stray', 46, 0, 'Surviving an endless desert after being stranded by you know', 'action', '21/02/2024', '12%', '$1000', 'draft', 'Cover-Indie Desert FPS .jpg');
 
@@ -779,7 +807,8 @@ INSERT INTO `library` (`id`, `developerID`, `itemID`) VALUES
 (10, '39', '2'),
 (13, '39', '1'),
 (16, '46', '9'),
-(17, '', '10');
+(17, '', '10'),
+(18, '46', '10');
 
 -- --------------------------------------------------------
 
@@ -1098,6 +1127,14 @@ ALTER TABLE `games_filters`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `game_reviews`
+--
+ALTER TABLE `game_reviews`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `userID` (`userID`),
+  ADD KEY `gameID` (`gameID`);
+
+--
 -- Indexes for table `gig`
 --
 ALTER TABLE `gig`
@@ -1131,13 +1168,13 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `activation_keys`
 --
 ALTER TABLE `activation_keys`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `admin`
@@ -1149,7 +1186,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `complaint_reasons_items`
@@ -1191,7 +1228,7 @@ ALTER TABLE `freeasset`
 -- AUTO_INCREMENT for table `freegame`
 --
 ALTER TABLE `freegame`
-  MODIFY `gameID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=144;
+  MODIFY `gameID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=146;
 
 --
 -- AUTO_INCREMENT for table `gamejam`
@@ -1203,7 +1240,7 @@ ALTER TABLE `gamejam`
 -- AUTO_INCREMENT for table `gamer`
 --
 ALTER TABLE `gamer`
-  MODIFY `gamerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `gamerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `games_cart`
@@ -1218,6 +1255,12 @@ ALTER TABLE `games_filters`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
+-- AUTO_INCREMENT for table `game_reviews`
+--
+ALTER TABLE `game_reviews`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+
+--
 -- AUTO_INCREMENT for table `gig`
 --
 ALTER TABLE `gig`
@@ -1227,7 +1270,7 @@ ALTER TABLE `gig`
 -- AUTO_INCREMENT for table `library`
 --
 ALTER TABLE `library`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `user_role`
@@ -1262,6 +1305,13 @@ ALTER TABLE `asset_stats`
 --
 ALTER TABLE `games_cart`
   ADD CONSTRAINT `games_cart_ibfk_1` FOREIGN KEY (`gamerID`) REFERENCES `gamer` (`gamerID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `game_reviews`
+--
+ALTER TABLE `game_reviews`
+  ADD CONSTRAINT `game_reviews_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `gamer` (`gamerID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `game_reviews_ibfk_2` FOREIGN KEY (`gameID`) REFERENCES `freegame` (`gameID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `gig`
