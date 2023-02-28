@@ -39,13 +39,15 @@ class Login extends Controller
             $_SESSION['id'] = $user['gamerID'];
             $_SESSION['avatar'] = $user['avatar'];
             $_SESSION['userRole'] = $user['userRole'];
-            header('location:/indieabode/games');
+            $_SESSION['status'] = "Welcome Back!";
+            header('location:/indieabode/');
         } else if (!empty($user) && $user['verified'] == 0) {
             $_SESSION['username'] = $user['username'];
             $_SESSION['email'] = $user['email'];
             $_SESSION['id'] = $user['gamerID'];
             $_SESSION['avatar'] = $user['avatar'];
             $_SESSION['userRole'] = $user['userRole'];
+            $_SESSION['status'] = "Account Verification Successful!";
 
             $userEmail = $_SESSION['email'];
             $userName = $_SESSION['username'];
