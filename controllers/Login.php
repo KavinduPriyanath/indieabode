@@ -39,6 +39,7 @@ class Login extends Controller
             $_SESSION['id'] = $user['gamerID'];
             $_SESSION['avatar'] = $user['avatar'];
             $_SESSION['userRole'] = $user['userRole'];
+            $_SESSION['status'] = "Welcome Back!";
             header('location:/indieabode/');
         } else if (!empty($user) && $user['verified'] == 0) {
             $_SESSION['username'] = $user['username'];
@@ -46,6 +47,7 @@ class Login extends Controller
             $_SESSION['id'] = $user['gamerID'];
             $_SESSION['avatar'] = $user['avatar'];
             $_SESSION['userRole'] = $user['userRole'];
+            $_SESSION['status'] = "Account Verification Successful!";
 
             $userEmail = $_SESSION['email'];
             $userName = $_SESSION['username'];
@@ -54,7 +56,7 @@ class Login extends Controller
             try {
                 $mail = new PHPMailer(true);
 
-                //$mail->SMTPDebug = SMTP::DEBUG_SERVER;
+                $mail->SMTPDebug = SMTP::DEBUG_SERVER;
 
                 $mail->isSMTP();
                 $mail->SMTPAuth = true;
@@ -94,7 +96,7 @@ class Login extends Controller
     function logout()
     {
         session_destroy();
-        header('location:/indieabode/');
+        header('location:/indieabode/games');
     }
 
     function activation()
@@ -113,9 +115,11 @@ class Login extends Controller
         if ($this->model->OTPValidation($first, $second, $third, $fourth, $fifth, $_SESSION['id'])) {
             $_SESSION['logged'] = $_SESSION['id'];
             $this->model->ActivateAccount($_SESSION['id']);
-            header('location:/indieabode/');
+            header('location:/indieabode/games');
         } else {
-            header('location:/indieabode/aa');
+            print_r($this->model->OTPValidation($first, $second, $third, $fourth, $fifth, $_SESSION['id']));
+            print_r($first . $second . $third . $fourth . $fifth);
+            //header('location:/indieabode/aa');
         }
     }
 }

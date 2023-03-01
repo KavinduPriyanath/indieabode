@@ -79,4 +79,34 @@ class Game_Model extends Model
 
         return $stmt->fetchAll();
     }
+
+    function ComplaintReasons()
+    {
+
+        $stmt = $this->db->prepare("SELECT * FROM complaint_reasons_items");
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+
+    function Reviews($data)
+    {
+
+        $sql = "INSERT INTO game_reviews(rating, review) VALUES (:rating, :review)";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute($data);
+    }
+
+    function FetchReviews()
+    {
+
+        $stmt = $this->db->prepare("SELECT * FROM game_reviews ORDER BY id DESC");
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
 }

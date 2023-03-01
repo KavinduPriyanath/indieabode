@@ -2,46 +2,51 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Indieabode</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Indieabode</title>
 
-    <style>
+	<style>
 		body {
-	background-image:url("<?php echo BASE_URL?>public/images/background/1.jpg");
+			background-image: url("<?php echo BASE_URL ?>public/images/background/1.jpg");
 		}
-        <?php
-        include 'public/css/admin.css';
-        include 'public/css/admin_userMg.css';
+
+		<?php
+		include 'public/css/admin.css';
+		include 'public/css/admin_userMg.css';
 		include 'public/css/admin_db.css';
-        ?>
-    </style>
+		?>
+	</style>
 </head>
 
 <body>
-	
+
 	<?php
+
     include 'includes/navbar.php';
     ?>
     	<!-- SIDEBAR -->
+
 	<section id="sidebar">
 		<div class="admin-card">
 			<div class="profile-picture">
-				<img src="/indieabode/public/images/Admin/admin-1.png" alt="user-image" class="rounded-circle"/>
+				<img src="/indieabode/public/images/Admin/admin-1.png" alt="user-image" class="rounded-circle" />
 			</div>
 			<div class="user-details">
 				<div class="user-role">Admin</div>
 				<div class="email-address">
-				<div class="box">admin@gmail.com</div>
+					<div class="box">admin@gmail.com</div>
 				</div>
 			</div>
 		</div>
 		<!-- <a href="#" class="brand"><i class='bx bxs-smile icon'></i>Indie Abode</a> -->
 		<ul class="side-menu">
 			<li class="divider" data-text="main">Main</li>
+
 			<li><a href="<?php echo BASE_URL; ?>SiteDashboard" class="active"><i class='bx bxs-dashboard icon'></i> Dashboard <i
 						class='bx bx-chevron-right icon-right'></i> </a></li>
+
 			<!-- <ul class="side-dropdown"> -->
 			<li><a href="<?php echo BASE_URL; ?>Admin_G"><i class='bx bxs-dashboard icon'></i>Game Dashboard</a></li>
 			<li><a href="<?php echo BASE_URL; ?>Admin_assetD"><i class='bx bxs-dashboard icon'></i>Asset Dashboard</a></li>
@@ -63,7 +68,7 @@
 	</section>
 	<!-- SIDEBAR -->
 
-    <!-- NAVBAR -->
+	<!-- NAVBAR -->
 	<section id="content">
 
 
@@ -92,13 +97,13 @@
 			</div>
 
 			<div class="search-user-type">
-				<button class="<?php echo $this->active == 'all' ? 'btn active' : 'btn'; ?>"   onclick="filterSelection('all')"> Show all Complaints</button>
-				<a class="<?php echo $this->active == 'gamer' ? 'btn active' : 'btn'; ?>"  href='/indieabode/Admin_userMg/viewFilteredUser/gamer'"> Games</a>
-				<button class="<?php echo $this->active == 'game_developer' ? 'btn active' : 'btn'; ?>"  onclick="filterSelection('game_developer')">Assets</button>
-				<button class="<?php echo $this->active == 'game_publisher' ? 'btn active' : 'btn'; ?>"  onclick="filterSelection('game_publisher')"> Game Jams</button>
-				<button class="<?php echo $this->active == 'assets_creator' ? 'btn active' : 'btn'; ?>"  onclick="filterSelection('assets_creator')">Gigs</button>
-				<button class="<?php echo $this->active == 'gamejam_organizer' ? 'btn active' : 'btn'; ?>"  onclick="filterSelection('gamejam_organizer')">Crowdfunds</button>
-				<button class="<?php echo $this->active == 'gamejam_organizer' ? 'btn active' : 'btn'; ?>"  onclick="filterSelection('gamejam_organizer')">Devlogs</button>
+				<button class="<?php echo $this->active == 'all' ? 'btn active' : 'btn'; ?>" onclick="filterSelection('all')"> Show all Complaints</button>
+				<a class="<?php echo $this->active == 'gamer' ? 'btn active' : 'btn'; ?>" href='/indieabode/Admin_userMg/viewFilteredUser/gamer'"> Games</a>
+				<button class=" <?php echo $this->active == 'game_developer' ? 'btn active' : 'btn'; ?>" onclick="filterSelection('game_developer')">Assets</button>
+					<button class="<?php echo $this->active == 'game_publisher' ? 'btn active' : 'btn'; ?>" onclick="filterSelection('game_publisher')"> Game Jams</button>
+					<button class="<?php echo $this->active == 'assets_creator' ? 'btn active' : 'btn'; ?>" onclick="filterSelection('assets_creator')">Gigs</button>
+					<button class="<?php echo $this->active == 'gamejam_organizer' ? 'btn active' : 'btn'; ?>" onclick="filterSelection('gamejam_organizer')">Crowdfunds</button>
+					<button class="<?php echo $this->active == 'gamejam_organizer' ? 'btn active' : 'btn'; ?>" onclick="filterSelection('gamejam_organizer')">Devlogs</button>
 			</div>
 			<!--
 			<div class="container">
@@ -119,6 +124,7 @@
 
 
 			<section class="table__body">
+
             <table>
                 <thead>
                     <tr>
@@ -131,6 +137,7 @@
                     </tr>
                 </thead>
                 <tbody>
+
                         <tr>
                             <td>12</td>
                             <td>Broken-Doesn't run,download or crashes</td>
@@ -155,9 +162,11 @@
                             <td>none</td>
                             <td>Gig</td>
                         </tr>
+
                 </tbody>
             </table>
         </section>
+
 
 		</main>
 		<!-- MAIN -->

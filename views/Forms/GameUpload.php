@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <title>Indieabode</title>
 
     <style>
@@ -72,7 +73,41 @@
                         <select id="" name="game-type">
                             <option value="Base Game" selected>Base Game</option>
                             <option value="DLC">DLC</option>
+                            <option value="Prologue">Prologue</option>
+                            <option value="Demo">Demo</option>
                         </select><br><br>
+
+                        <label id="game-price" for="game-price">Pricing</label><br><br>
+                        <div class="price">
+                            <div class="price-free">
+                                <input type="radio" id="game-free" name="game-price" value="Free" checked>
+                                <label for="game-free">Free</label>
+                            </div>
+                            <div class="price-pwyw">
+                                <input type="radio" id="game-pwyw" name="game-price" value="PWYW">
+                                <label for="game-pwyw">Donate</label>
+                            </div>
+                            <div class="price-paid">
+                                <input type="radio" id="game-paid" name="game-price" value="Paid">
+                                <label for="game-paid">Paid</label>
+                            </div>
+                        </div>
+                        <div id="free-game-price-box">
+                            <p id="p">This game will be available for free</p>
+                        </div>
+                        <div id="pwyw-game-price-box" style="display: none">
+                            <p id="p">Someone downloading your game will be asked for a donation before getting access. They can skip to download for free.</p>
+                            <br>
+                            <p>Suggested donation — Default donation amount</p>
+                            <input type="text" id="game-price-val" name="game-pwyw-default" value="$2.00" />
+                        </div>
+                        <div id="paid-game-price-box" style="display: none">
+                            <p id="p">Set a price you need</p>
+                            <input type="text" id="game-price-val" name="game-price-paid" />
+                        </div>
+                        <br><br>
+
+
 
                         <label id="game-details" for="game-details">Details</label><br>
                         <p id="p">This will be the content of your game page</p><br>
@@ -82,16 +117,8 @@
                         <p id="p">Keywords that someone would search to find your game</p><br>
                         <input type="text" id="game-tags" name="game-tags" /> <br><br>
 
-                        <!--
-                    <label id="game-price" for="game-price">Pricing</label><br><br>
-                    <input type="radio" id="game-free" name="game-price" value="free" checked>
-                    <label for="game-free">Free</label><br>
-                    <input type="radio" id="game-paid" name="game-price" value="paid">
-                    <label for="game-paid">Paid</label><br>
-                    <p id="p">Minimum Price - Set to $0 for free games</p>
-                    <input type="text" id="game-price-val" name="game-price-val" /><br><br>
 
--->
+
                         <label id="game-features" for="game-features">Features</label><br>
                         <p id="p">Special features your game has that players would prefer</p><br>
                         <input type="text" id="game-features" name="game-features" /> <br><br>
@@ -179,8 +206,33 @@
         </div>
     </div>
 
+    <?php
+    include 'includes/footer.php';
+    ?>
+
 
     <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
+
+    <script>
+        $(function() {
+            $('input[name="game-price"]').on("click", function() {
+                if ($(this).val() == "Free") {
+                    $("#free-game-price-box").show();
+                    $("#paid-game-price-box").hide();
+                    $("#pwyw-game-price-box").hide();
+                } else if ($(this).val() == "Paid") {
+                    $("#paid-game-price-box").show();
+                    $("#free-game-price-box").hide();
+                    $("#pwyw-game-price-box").hide();
+                } else if ($(this).val() == "PWYW") {
+                    $("#pwyw-game-price-box").show();
+                    $("#free-game-price-box").hide();
+                    $("#paid-game-price-box").hide();
+                }
+            });
+        });
+    </script>
+
 
 
 </body>

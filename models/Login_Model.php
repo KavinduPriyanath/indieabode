@@ -51,7 +51,7 @@ class Login_Model extends Model
 
         $otpCode = rand(10000, 99999);
 
-        $sql = "INSERT INTO activation_keys VALUES (?,?)";
+        $sql = "INSERT INTO activation_keys(userID, activationCode) VALUES (?,?)";
 
         $stmt = $this->db->prepare($sql);
 
@@ -72,6 +72,8 @@ class Login_Model extends Model
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         $activationKey = $user['activationCode'];
+
+        print_r($activationKey);
 
         if ($activationKey[0] == $first && $activationKey[1] == $second && $activationKey[2] == $third && $activationKey[3] == $fourth && $activationKey[4] == $fifth) {
             return true;

@@ -10,12 +10,15 @@
     <style>
         <?php
         include 'public/css/admin.css';
+
 		include 'public/css/admin_db.css';
+
         ?>
     </style>
 </head>
 
 <body>
+
 
 	<?php
     include 'includes/navbar.php';
@@ -125,12 +128,15 @@
 
 							<tbody>
 								<!-- <tr>
+
 									<td>Kavindu Priyanath</td>
 									<td>Game Jam Organizer</td>
 									<td>Organized a Jam</td>
 									
 								</tr> -->
+
 <!-- 
+
 								<tr>
 									<td>Himash Liyanage</td>
 									<td>Game Developer</td>
@@ -144,6 +150,7 @@
 									<td>Organized a Jam</td>
 									
 								</tr> -->
+
 
 								<tr>
 									<td>Nadee Darshika</td>
@@ -189,6 +196,7 @@
 					</div>
 					<!-- <div class="popular-cards">
 
+
 						<div class="popular-game-card">
 							<div class="game-cvr-img">
 								<img src="gm-2.jpg">
@@ -232,6 +240,7 @@
 						</div>
 
 					</div> -->
+
 					<div class="popular-cards">
                         <div class="popular-game-card">
                             <div class="game-cvr-img">
@@ -272,6 +281,7 @@
                                 250+
                             </div>
                         </div>
+
 						
 
 					</div>
@@ -333,12 +343,9 @@
 	</script>
 
 	<script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
+
     <script src="<?php echo BASE_URL; ?>public/js/admin.js"></script>
-    <!-- <?php if (isset($_SESSION['id']) && !empty($_SESSION['id'])) { ?>
-        <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
-    <?php } else { ?>
-        <script src="<?php echo BASE_URL; ?>public/js/navbarcopy.js"></script>
-    <?php } ?> -->
+
 
 </body>
 

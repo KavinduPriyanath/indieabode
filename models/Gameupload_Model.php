@@ -34,7 +34,8 @@ class Gameupload_Model extends Model
         $GameGraphics,
         $GameOther,
         $platform,
-        $gameType
+        $gameType,
+        $gamePrice
     ) {
         $sql = "INSERT INTO freegame (gameName, releaseStatus, 
         gameDetails, 
@@ -57,7 +58,7 @@ class Gameupload_Model extends Model
         recommendMemory, 
         recommendStorage, 
         recommendGraphics, 
-        other, platform, gameType) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        other, platform, gameType, gamePrice) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         $stmt = $this->db->prepare($sql);
 
@@ -86,7 +87,8 @@ class Gameupload_Model extends Model
             "$GameGraphics",
             "$GameOther",
             "$platform",
-            "$gameType"
+            "$gameType",
+            "$gamePrice"
         ]);
     }
 

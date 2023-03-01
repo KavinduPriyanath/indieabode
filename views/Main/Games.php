@@ -26,121 +26,108 @@
         <h1>-<?= $this->title ?>-</h1>
     </div>
 
-
     <!-- Filters-->
 
     <div class="side-nav" id="side-menu">
-        <p>Platform</p>
+        <form action="" method="GET">
+            <p>Platform</p>
 
-        <div class="type-filter">
-            <div class="elements">
-                <input type="checkbox" name="" id="Windows" class="checkbox" />
-                <label for="Windows">Windows</label>
+            <div class="type-filter">
+
+                <?php foreach ($this->platformFilters as $platformFilter) { ?>
+                    <div class="elements">
+                        <input type="checkbox" name="platforms[]" id="Windows" class="checkbox" value="<?= $platformFilter['filter']; ?>" <?php if (in_array($platformFilter['filter'], $this->platformsChecked)) {
+                                                                                                                                                echo "checked";
+                                                                                                                                            } ?> />
+                        <label for="Windows"><?= $platformFilter['filter']; ?></label>
+                    </div>
+                <?php } ?>
+
             </div>
 
-            <div class="elements">
-                <input type="checkbox" name="" id="Mac" class="checkbox" />
-                <label for="Mac">Mac</label>
+            <p>Price</p>
+
+            <div class="type-filter">
+                <div class="elements">
+                    <input type="radio" name="" id="Released" class="checkbox" />
+                    <label for="Released">Free</label>
+                </div>
+
+                <div class="elements">
+                    <input type="radio" name="" id="Early" class="checkbox" />
+                    <label for="Early">5 or less</label>
+                </div>
+
+                <div class="elements">
+                    <input type="radio" name="" id="Upcoming" class="checkbox" />
+                    <label for="Upcoming">10 or less</label>
+                </div>
             </div>
 
-            <div class="elements">
-                <input type="checkbox" name="" id="Linux" class="checkbox" />
-                <label for="Linux">Linux</label>
+            <p>Release Status</p>
+
+            <div class="type-filter">
+
+                <?php foreach ($this->releaseFilters as $releaseFilter) { ?>
+                    <div class="elements">
+                        <input type="checkbox" name="releasestatus[]" id="Released" class="checkbox" value="<?= $releaseFilter['filter']; ?>" <?php if (in_array($releaseFilter['filter'], $this->releaseStatusChecked)) {
+                                                                                                                                                    echo "checked";
+                                                                                                                                                } ?> />
+                        <label for="Released"><?= $releaseFilter['filter']; ?></label>
+                    </div>
+                <?php } ?>
+
             </div>
 
-            <div class="elements">
-                <input type="checkbox" name="" id="Android" class="checkbox" />
-                <label for="Android">Android</label>
+            <p>Type</p>
+
+            <div class="type-filter">
+
+                <?php foreach ($this->typeFilters as $typeFilter) { ?>
+                    <div class="elements">
+                        <input type="checkbox" name="gametypes[]" id="Released" class="checkbox" value="<?= $typeFilter['filter']; ?>" <?php if (in_array($typeFilter['filter'], $this->typesChecked)) {
+                                                                                                                                            echo "checked";
+                                                                                                                                        } ?> />
+                        <label for="Released"><?= $typeFilter['filter']; ?></label>
+                    </div>
+                <?php } ?>
+
+
+
             </div>
 
-            <div class="elements">
-                <input type="checkbox" name="" id="Web" class="checkbox" />
-                <label for="Webx">Web</label>
+
+
+            <p>Features</p>
+
+            <div class="type-filter">
+
+                <?php foreach ($this->featureFilters as $featureFilter) { ?>
+                    <div class="elements">
+                        <input type="checkbox" name="features[]" id="Released" class="checkbox" value="<?= $featureFilter['filter']; ?>" <?php if (in_array($featureFilter['filter'], $this->featuresChecked)) {
+                                                                                                                                                echo "checked";
+                                                                                                                                            } ?> />
+                        <label for="Released"><?= $featureFilter['filter']; ?></label>
+                    </div>
+                <?php } ?>
+
+
+
             </div>
-        </div>
-
-        <p>Price</p>
-
-        <div class="type-filter">
-            <div class="elements">
-                <input type="radio" name="" id="Released" class="checkbox" />
-                <label for="Released">Free</label>
-            </div>
-
-            <div class="elements">
-                <input type="radio" name="" id="Early" class="checkbox" />
-                <label for="Early">5 or less</label>
-            </div>
-
-            <div class="elements">
-                <input type="radio" name="" id="Upcoming" class="checkbox" />
-                <label for="Upcoming">10 or less</label>
-            </div>
-        </div>
-
-        <p>Release Status</p>
-
-        <div class="type-filter">
-            <div class="elements">
-                <input type="checkbox" name="released" id="Released" class="checkbox" />
-                <label for="Released">Released</label>
-            </div>
-
-            <div class="elements">
-                <input type="checkbox" name="early" id="Early" class="checkbox" />
-                <label for="Early">Early Access</label>
-            </div>
-
-            <div class="elements">
-                <input type="checkbox" name="upcoming" id="Upcoming" class="checkbox" />
-                <label for="Upcoming">Upcoming</label>
-            </div>
-        </div>
-
-        <p>Features</p>
-
-        <div class="type-filter">
-            <div class="elements">
-                <input type="checkbox" name="" id="Released" class="checkbox" />
-                <label for="Released">Single Player</label>
-            </div>
-
-            <div class="elements">
-                <input type="checkbox" name="" id="Early" class="checkbox" />
-                <label for="Early">Multi-Player</label>
-            </div>
-
-            <div class="elements">
-                <input type="checkbox" name="" id="Upcoming" class="checkbox" />
-                <label for="Upcoming">Co-op</label>
-            </div>
-
-            <div class="elements">
-                <input type="checkbox" name="" id="Upcoming" class="checkbox" />
-                <label for="Upcoming">Puzzle</label>
-            </div>
-
-            <div class="elements">
-                <input type="checkbox" name="" id="Upcoming" class="checkbox" />
-                <label for="Upcoming">Achievements</label>
-            </div>
-
-            <div class="elements">
-                <input type="checkbox" name="" id="Upcoming" class="checkbox" />
-                <label for="Upcoming">Leaderboard</label>
-            </div>
-
-            <div class="elements">
-                <input type="checkbox" name="" id="Upcoming" class="checkbox" />
-                <label for="Upcoming">Prologues</label>
-            </div>
-        </div>
+            <button type="submit" id="filter-button">Apply</button>
+        </form>
     </div>
     <div class="upper-break">
-        <div class="trigger" onclick="openSideMenu()">
-            <i class="fa fa-angle-double-right" id="filter-off"></i>
-            <i class="fa fa-angle-double-left" id="filter-on"></i> filters
+        <div class="left-btn">
+            <div class="trigger" onclick="openSideMenu()">
+                <i class="fa fa-angle-double-right" id="filter-off"></i>
+                <i class="fa fa-angle-double-left" id="filter-on"></i> filters
+            </div>
+            <div class="filter-on-text" id="applied">
+                <span><?= $this->totalSelectedFilters; ?> applied <a href="<?php echo BASE_URL; ?>games"><i class="fa fa-times-circle-o"></i></a></span>
+            </div>
         </div>
+
         <div class="sort" id="sort">
             <img src="/indieabode/public/images/games/sort.png" alt="" /> sort by: <span>Release Date</span>
 
@@ -178,7 +165,11 @@
             <a href="/indieabode/games?page=<?= $i; ?>" class="active"><?= $i ?></a>
         <?php endfor; ?>
 
-        <a href="/indieabode/games?page=<?= $this->nextPage; ?>" id="next"><i class="fa fa-angle-right"></i></a>
+        <?php if (!isset($_GET['classification'])) { ?>
+            <a href="/indieabode/games?page=<?= $this->nextPage; ?>" id="next"><i class="fa fa-angle-right"></i></a>
+        <?php } else { ?>
+            <a href="/indieabode/games?classification=<?= $_GET['classification']; ?>&page=<?= $this->nextPage; ?>" id="next"><i class="fa fa-angle-right"></i></a>
+        <?php } ?>
     </div>
 
     <?php
@@ -196,6 +187,10 @@
         <?php } else if ($_GET['page'] == $this->gamesPagesCount) { ?>
             document.getElementById("next").style.pointerEvents = "none";
         <?php  } ?>
+
+        <?php if ($this->totalSelectedFilters == 0) { ?>
+            document.getElementById("applied").style.display = "none";
+        <?php } ?>
     </script>
 
 </body>

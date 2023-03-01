@@ -10,7 +10,7 @@
     <style>
         <?php
         include 'public/css/game.css';
-        ?>
+        ?><?php include 'public/css/reportModal.css'; ?>
     </style>
 </head>
 
@@ -112,7 +112,9 @@
                 <p class="sub-title"><?= $this->game['releaseStatus']; ?></p>
             </div>
             <hr />
+            <button data-modal-target="#modal">Report</button>
         </div>
+
     </div>
     </div>
 
@@ -225,6 +227,51 @@
     </div>
 
 
+    <div class="report-modal">
+        <div class="modal" id="modal">
+            <div class="modal-header">
+                <div class="title">Report page "Game Name"</div>
+                <button data-close-button class="close-button">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="report-heading">
+                    Please complete this form if you need to contact the itch.io
+                    moderation team about the content of this page. Your report may be
+                    shared with the creator of the page if necessary.
+                </div>
+                <div class="report-form">
+                    <form action="" method="post">
+                        <h3>Reasons</h3>
+
+                        <div class="reasons">
+
+                            <?php foreach ($this->reportReasons as $reportReason) { ?>
+                                <div class="reason">
+                                    <input type="radio" name="reasons" id="" />
+                                    <label for=""><?= $reportReason['reason']; ?></label>
+                                </div>
+                            <?php } ?>
+
+                        </div>
+
+                        <h3>Descrption</h3>
+                        <textarea name="" id="" cols="30" rows="10"></textarea>
+
+                        <p>
+                            <span>Your email</span>— If your report needs a reply we'll use it
+                            to communicate with you
+                        </p>
+                        <input type="text" />
+                        <br />
+                        <button type="submit">Submit Report</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="overlay"></div>
+    </div>
+
+
     <?php
     include 'includes/footer.php';
     ?>
@@ -232,6 +279,8 @@
     <script src="<?php echo BASE_URL; ?>public/js/assets.js"></script>
 
     <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
+
+    <script src="<?php echo BASE_URL; ?>public/js/reportModal.js"></script>
 
 
     <script>
