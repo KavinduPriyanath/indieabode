@@ -12,7 +12,7 @@ class GameReviews_Model extends Model
     function Reviews($data)
     {
 
-        $sql = "INSERT INTO game_reviews(rating, review, userID, gameID) VALUES (:rating, :review, :userID, :gameID)";
+        $sql = "INSERT INTO game_reviews(rating, review, userID, gameID, reviewTopic, recommendation) VALUES (:rating, :review, :userID, :gameID, :topic, :recommendation)";
 
         $stmt = $this->db->prepare($sql);
 

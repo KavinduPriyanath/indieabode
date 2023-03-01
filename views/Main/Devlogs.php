@@ -82,11 +82,11 @@
                         <div class="images">
                             <div class="like-image">
                                 <div class="like-logo"><img src="/indieabode/public/images/devlogs/like.png" alt="" /></div>
-                                <div class="like-count">12</div>
+                                <div class="like-count"><?= $devlog['likeCount'] ?></div>
                             </div>
                             <div class="comment-image">
                                 <div class="cmt-logo"><img src="/indieabode/public/images/devlogs/comment.png" alt="" /></div>
-                                <div class="cmt-count">2</div>
+                                <div class="cmt-count"><?= $devlog['commentCount'] ?></div>
 
                             </div>
                         </div>

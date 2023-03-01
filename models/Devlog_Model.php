@@ -67,4 +67,22 @@ class Devlog_Model extends Model
 
         return $game;
     }
+
+    function AlreadyLiked($userID, $devlogID)
+    {
+
+        $sql = "SELECT * FROM devlog_likes WHERE devlogID='$devlogID' AND userID='$userID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $result = $stmt->fetchAll();
+
+        if (count($result) != 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

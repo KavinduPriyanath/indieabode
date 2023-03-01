@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 28, 2023 at 09:12 AM
+-- Generation Time: Mar 01, 2023 at 06:23 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -50,7 +50,8 @@ INSERT INTO `account` (`userID`, `profilePhoto`, `location`, `tagline`, `socialL
 (47, '', '', '', '', '', '', '', '0000-00-00', '', '0000-00-00'),
 (48, '', '', '', '', '', '', '', '0000-00-00', '', '0000-00-00'),
 (51, '', '', '', '', '', '', '', '0000-00-00', '', '0000-00-00'),
-(52, '', '', '', '', '', '', '', '0000-00-00', '', '0000-00-00');
+(52, '', '', '', '', '', '', '', '0000-00-00', '', '0000-00-00'),
+(53, '', '', '', '', '', '', '', '0000-00-00', '', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -73,7 +74,8 @@ INSERT INTO `activation_keys` (`id`, `userID`, `activationCode`) VALUES
 (3, 47, '60865'),
 (4, 48, '67170'),
 (11, 51, '31055'),
-(12, 52, '57168');
+(12, 52, '57168'),
+(13, 53, '60090');
 
 -- --------------------------------------------------------
 
@@ -320,9 +322,77 @@ CREATE TABLE `devlog` (
 --
 
 INSERT INTO `devlog` (`publishDate`, `description`, `name`, `Tagline`, `Type`, `Visibility`, `devlogImg`, `gameName`, `devLogID`, `ReleaseDate`, `likeCount`, `commentCount`) VALUES
-('2023-02-09 17:38:43', 'rthgrththrth', 'Finishing Utility Inventory', 'Bonjour! This is a post about me finally finishing the Utiltiy ', 'Game Design', 'draft', 'SS-Albion Online.png', 'Albion Online', 28, '2020-12-29', 0, 0),
+('2023-02-09 17:38:43', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis hendrerit neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum pharetra sem. Vestibulum eu est urna. Cras non ipsum non massa sodales condimentum quis eu risus. Praesent volutpat lorem a dolor tristique luctus eget sed elit. Ut facilisis faucibus justo tincidunt eleifend. Curabitur ultrices sapien id lorem posuere, vitae mattis nisi faucibus. Aliquam congue lorem sit amet velit lobortis, non venenatis massa feugiat. Aenean ut vehicula nibh, sed vehicula lacus. Praesent eu eros id leo maximus rhoncus eget eget risus. Curabitur vitae faucibus ligula, ac tincidunt dui. Sed diam massa, euismod sit amet augue a, pharetra egestas augue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\r\n\r\nIn hendrerit magna a dui tincidunt porta. Curabitur suscipit ex consectetur mauris ullamcorper rutrum. Mauris feugiat aliquet tristique. Curabitur egestas suscipit iaculis. Quisque tristique posuere augue, ac aliquet nisi vestibulum id. Curabitur efficitur nibh eu ipsum venenatis, et ornare tellus pellentesque. Nullam mollis lacus in nibh vestibulum, nec dignissim justo tristique. In congue dolor suscipit, eleifend leo et, commodo purus. Curabitur gravida risus et leo porttitor facilisis ut vestibulum ex. Donec enim tortor, commodo facilisis vestibulum non, viverra sed augue. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean ultricies metus vitae lobortis fermentum. Maecenas vulputate ante a sollicitudin congue. Duis purus erat, finibus eget magna sit amet, porta pharetra massa.\r\n\r\nVestibulum eleifend imperdiet felis sit amet placerat. Nulla auctor pretium turpis, quis porttitor lacus tempor vitae. Vestibulum semper non enim at dignissim. Mauris consequat elit ac purus congue iaculis. Aenean ac nibh a dolor efficitur fermentum. Mauris a porttitor lorem, ac gravida tellus. Cras iaculis malesuada mollis.', 'Finishing Utility Inventory', 'Bonjour! This is a post about me finally finishing the Utiltiy ', 'Game Design', 'draft', 'SS-Albion Online.png', 'Albion Online', 28, '2020-12-29', 0, 1),
 ('2023-02-09 17:41:03', 'fefef', 'How to Build a Mansion', 'Showing steps of using tiles to build a mansion in the city ', 'Tutorial', '', 'SS-Scarlet Nexus.png', 'Scarlet Nexus', 29, '2020-12-26', 0, 0),
-('2023-02-09 17:43:00', 'dwfwf', 'Level Editor Tutorial', 'Optimized level editor is available to players for free with extensions', 'Game Design', 'draft', 'SS-Final Fantasy VII.jpg', 'Final Fantasy VII', 30, '2020-11-29', 0, 0);
+('2023-02-09 17:43:00', 'dwfwf', 'Level Editor Tutorial', 'Optimized level editor is available to players for free with extensions', 'Game Design', 'draft', 'SS-Final Fantasy VII.jpg', 'Final Fantasy VII', 30, '2020-11-29', 1, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `devlog_comments`
+--
+
+CREATE TABLE `devlog_comments` (
+  `id` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
+  `comment` varchar(255) NOT NULL,
+  `devlogID` int(11) NOT NULL,
+  `createdAt` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `devlog_comments`
+--
+
+INSERT INTO `devlog_comments` (`id`, `userID`, `comment`, `devlogID`, `createdAt`) VALUES
+(22, 46, 'dwdw', 28, '2023-03-01');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `devlog_comments_replies`
+--
+
+CREATE TABLE `devlog_comments_replies` (
+  `id` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
+  `commentID` int(11) NOT NULL,
+  `replyMsg` varchar(255) NOT NULL,
+  `created_at` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `devlog_comments_replies`
+--
+
+INSERT INTO `devlog_comments_replies` (`id`, `userID`, `commentID`, `replyMsg`, `created_at`) VALUES
+(20, 52, 3, 'er', '2023-03-01'),
+(21, 52, 3, '23', '2023-03-01'),
+(22, 52, 8, '1', '2023-03-01'),
+(23, 52, 8, '2', '2023-03-01'),
+(24, 52, 8, '3', '2023-03-01'),
+(30, 46, 20, '@KRDA ddwd', '2023-03-01'),
+(31, 46, 20, '@KRDA dwdwdd', '2023-03-01'),
+(32, 46, 3, '@KRDA dwdwd', '2023-03-01');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `devlog_likes`
+--
+
+CREATE TABLE `devlog_likes` (
+  `id` int(11) NOT NULL,
+  `devlogID` int(11) NOT NULL,
+  `userID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `devlog_likes`
+--
+
+INSERT INTO `devlog_likes` (`id`, `devlogID`, `userID`) VALUES
+(9, 30, 46);
 
 -- --------------------------------------------------------
 
@@ -604,7 +674,8 @@ INSERT INTO `gamer` (`gamerID`, `email`, `password`, `accountStatus`, `avatar`, 
 (47, 'ypasindu11@gmail.com', '$2y$10$X6vRwMBT21PqzM57sr3fPeBK7gXyaUYiRYWEioYg/La9Sb4iPvI5.', 1, 'avatar3.png', 'asset creator', 'YPasi', 'Yeshan', 'pasindu', '2023-02-09 10:08:12', '2023-02-09 10:08:12', 1, ''),
 (48, 'nadeedarshika1999@gmail.com', '$2y$10$IwPRWNFoePVsvPrzle.DyO9.8MxiOC1PAM/qVuwmJnIXE7UkRp/SS', 1, 'avatar3.png', 'asset creator', 'Nadee', 'Nadee', 'Dharshi', '2023-02-09 14:57:04', '2023-02-09 14:57:04', 0, ''),
 (51, 'kavindupriyanath@gmail.com', '$2y$10$oOiRY55.Uo1h95KzjQwcFu5RSuZ0QmafaVvAfbN03lFvdE0B6xQDq', 1, 'avatar4.png', 'game developer', 'kavi', 'kavindu', 'priyanath', '2023-02-21 15:13:19', '2023-02-21 15:13:19', 1, ''),
-(52, 'kimalrasanka321@gmail.com', '$2y$10$3moxbOLzKlvkAKVnCHLxS.atHdVSAWsJrqyIA/Ki9LXWrFaZKT4Mu', 1, 'avatar2.png', 'gamer', 'KRDA', 'kimal', 'xsx', '2023-02-28 06:45:33', '2023-02-28 06:45:33', 1, '');
+(52, 'kimalrasanka321@gmail.com', '$2y$10$3moxbOLzKlvkAKVnCHLxS.atHdVSAWsJrqyIA/Ki9LXWrFaZKT4Mu', 1, 'avatar2.png', 'gamer', 'KRDA', 'kimal', 'xsx', '2023-02-28 06:45:33', '2023-02-28 06:45:33', 1, ''),
+(53, 'klhimashanupama@gmail.com', '$2y$10$B.F4OXoJEJIWcmHKvofCRuCN8FooMdd3u8jDIn8BhvsJVPaQs0VD6', 1, 'avatar4.png', 'gamer', 'Hima', 'Himash', 'Anu', '2023-02-28 16:24:11', '2023-02-28 16:24:11', 1, '');
 
 -- --------------------------------------------------------
 
@@ -681,18 +752,22 @@ CREATE TABLE `game_reviews` (
   `review` varchar(255) NOT NULL,
   `created_date` date NOT NULL DEFAULT current_timestamp(),
   `userID` int(11) NOT NULL,
-  `gameID` int(11) NOT NULL
+  `gameID` int(11) NOT NULL,
+  `recommendation` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `game_reviews`
 --
 
-INSERT INTO `game_reviews` (`id`, `rating`, `reviewTopic`, `review`, `created_date`, `userID`, `gameID`) VALUES
-(49, 4, '', 'ddwd', '2023-02-28', 52, 89),
-(50, 2, '', 'dwdw', '2023-02-28', 52, 89),
-(51, 5, '', 'fefef', '2023-02-28', 52, 89),
-(52, 5, '', 'fefevbf', '2023-02-28', 52, 89);
+INSERT INTO `game_reviews` (`id`, `rating`, `reviewTopic`, `review`, `created_date`, `userID`, `gameID`, `recommendation`) VALUES
+(49, 4, '', 'ddwd', '2023-02-28', 52, 89, ''),
+(53, 4, '', 'jytjtjyt', '2023-02-28', 52, 89, ''),
+(54, 2, '', 'jytjtjyt', '2023-02-28', 52, 89, ''),
+(55, 3, 'ddwdwd', 'geegg', '2023-03-01', 53, 93, ''),
+(56, 1, 'dwdwd', 'ddwd', '2023-03-01', 53, 93, 'No'),
+(57, 3, 'dwdwd', 'ddwddwdwd', '2023-03-01', 53, 93, 'Yes'),
+(58, 4, 'rgrg', 'rgregreg', '2023-03-01', 52, 89, 'Yes');
 
 -- --------------------------------------------------------
 
@@ -1084,6 +1159,28 @@ ALTER TABLE `devlog`
   ADD PRIMARY KEY (`devLogID`);
 
 --
+-- Indexes for table `devlog_comments`
+--
+ALTER TABLE `devlog_comments`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `userID` (`userID`),
+  ADD KEY `devlogID` (`devlogID`);
+
+--
+-- Indexes for table `devlog_comments_replies`
+--
+ALTER TABLE `devlog_comments_replies`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `userID` (`userID`),
+  ADD KEY `commentID` (`commentID`);
+
+--
+-- Indexes for table `devlog_likes`
+--
+ALTER TABLE `devlog_likes`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `devlog_posttype`
 --
 ALTER TABLE `devlog_posttype`
@@ -1168,13 +1265,13 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `activation_keys`
 --
 ALTER TABLE `activation_keys`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `admin`
@@ -1213,6 +1310,24 @@ ALTER TABLE `devlog`
   MODIFY `devLogID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
+-- AUTO_INCREMENT for table `devlog_comments`
+--
+ALTER TABLE `devlog_comments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT for table `devlog_comments_replies`
+--
+ALTER TABLE `devlog_comments_replies`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+
+--
+-- AUTO_INCREMENT for table `devlog_likes`
+--
+ALTER TABLE `devlog_likes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
 -- AUTO_INCREMENT for table `devlog_posttype`
 --
 ALTER TABLE `devlog_posttype`
@@ -1240,7 +1355,7 @@ ALTER TABLE `gamejam`
 -- AUTO_INCREMENT for table `gamer`
 --
 ALTER TABLE `gamer`
-  MODIFY `gamerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `gamerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `games_cart`
@@ -1258,7 +1373,7 @@ ALTER TABLE `games_filters`
 -- AUTO_INCREMENT for table `game_reviews`
 --
 ALTER TABLE `game_reviews`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT for table `gig`
@@ -1299,6 +1414,13 @@ ALTER TABLE `activation_keys`
 --
 ALTER TABLE `asset_stats`
   ADD CONSTRAINT `asset_stats_ibfk_1` FOREIGN KEY (`assetID`) REFERENCES `freeasset` (`assetID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `devlog_comments`
+--
+ALTER TABLE `devlog_comments`
+  ADD CONSTRAINT `devlog_comments_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `gamer` (`gamerID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `devlog_comments_ibfk_2` FOREIGN KEY (`devlogID`) REFERENCES `devlog` (`devLogID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `games_cart`
