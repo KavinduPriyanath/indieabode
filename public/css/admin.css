@@ -137,25 +137,28 @@ li {
 }
 #sidebar .side-menu a {
 	display: flex;
-	align-items: center;
-	font-size:.9em;
-	color: #47667a;
-	padding: 12px 16px 12px 0;
-	transition: all .3s ease;
-	border-radius: 10px;
-	margin: 2px 0;
-	white-space: nowrap;
-	font-weight: 800;
+    align-items: center;
+    font-size: .9em;
+    color: #c8e0e4;
+    padding: 12px 16px 12px 0;
+    transition: all .3s ease;
+    border-radius: 10px;
+    margin: 2px 0;
+    white-space: nowrap;
+    font-weight: 800;
+    background-color: #3c687a;
+    border-radius: 8px;
+    margin-bottom: 6%;
 }
 #sidebar .side-menu > li > a:hover {
-	background:#acc4d4;
+	background:#667a83;
 }
 #sidebar .side-menu > li > a.active .icon-right {
 	transform: rotateZ(90deg);
 }
 #sidebar .side-menu > li > a.active,
 #sidebar .side-menu > li > a.active:hover {
-    color: #47667a;
+    color: #c8e0e4;
 }
 #sidebar .divider {
 	font-size: 13px;

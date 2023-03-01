@@ -201,7 +201,7 @@
 
 
                         <div class="join-jam-report report-all">
-                        <table>
+                            <table>
                                 <div class="table-topic">Joined Jams</div>
                                 <div class="list-items">
                                     <ul>
@@ -265,17 +265,338 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="gig-report report-all">
 
+                        <div class="gig-report report-all">
+                            <table>
+                                <div class="table-topic">Created Gigs</div>
+                                <div class="list-items">
+                                    <ul>
+                                        <li><span class="circle green"></span>Ordered</li>
+                                        <li><span class="circle yellow"></span>Not Ordered</li>
+                                        <!-- <li><span class="circle blue"></span>Organized Crowdfund</li> -->
+                                    </ul>
+                                </div>
+                                <thead>
+                                    <tr>
+                                        <th> Cover Image</th>
+                                        <th> Game Name</th>     <!-- include release date -->
+                                        <th> Estimated Share</th>
+                                        <th> Ordered Publisher</th>     <!-- if ordered username/ email -->
+                                        <th> Expected Cost </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><img src="/indieabode/public/images/Admin/jam/jam-1.jpg"></td>
+                                        <td>
+                                            <b>Albion Online</b><br>
+                                            <span class="release-date">2022-12-05 11:09:02</span><br>
+                                            <span class="circle green"></span>
+                                            <span class="circle yellow"></span>
+                                        </td>
+                                        
+                                        <td>10%</td>
+                                        <td id="ordered-publisher">
+                                            <b>Kavindu Priyanath</b><br>
+                                            <span class="pub-email">kavindupriyanath@gmail.com</span>
+                                        </td>
+                                        <td>$500</td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="/indieabode/public/images/Admin/jam/jam-1.jpg"></td>
+                                        <td>
+                                            <b>Albion Online</b><br>
+                                            <span class="release-date">2022-12-05 11:09:02</span><br>
+                                            <span class="circle green"></span>
+                                            <span class="circle yellow"></span>
+                                        </td>
+                                        
+                                        <td>10%</td>
+                                        <td id="ordered-publisher">
+                                            <b>Kavindu Priyanath</b><br>
+                                            <span class="pub-email">kavindupriyanath@gmail.com</span>
+                                        </td>
+                                        <td>$500</td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="/indieabode/public/images/Admin/jam/jam-1.jpg"></td>
+                                        <td>
+                                            <b>Albion Online</b><br>
+                                            <span class="release-date">2022-12-05 11:09:02</span><br>
+                                            <span class="circle green"></span>
+                                            <span class="circle yellow"></span>
+                                        </td>
+                                        
+                                        <td>10%</td>
+                                        <td id="ordered-publisher">
+                                            <b>Kavindu Priyanath</b><br>
+                                            <span class="pub-email">kavindupriyanath@gmail.com</span>
+                                        </td>
+                                        <td>$500</td>
+                                    </tr>
+                                    
+
+                                    <tfoot>
+                                        <tr id="total-price">
+                                        <td colspan="4">Total Revenue</td>
+                                        <td>3</td>
+                                        </tr>
+                                    </tfoot>
+                                </tbody>
+                            </table>
                         </div>
                         <div class="devlog-report report-all">
+                            <table>
+                                <div class="table-topic">Made Devlogs</div>
+                                <div class="list-items">
+                                    <ul>
+                                        <li><span class="circle green"></span>Upcoming</li>
+                                        <li><span class="circle yellow"></span>Updated</li>
+                                    </ul>
+                                </div>
+                                <thead>
+                                    <tr>
+                                        <th> Cover Image</th>
+                                        <th> Game Name</th>     <!-- include  date -->
+                                        <th> Total Views</th>
+                                        <th> Total Likes</th>     <!-- if ordered username/ email -->
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><img src="/indieabode/public/images/Admin/jam/jam-1.jpg"></td>
+                                        <td>
+                                            <b>Albion Online</b><br>
+                                            <span class="release-date">2022-12-05 11:09:02</span><br>
+                                            <span class="circle green"></span>
+                                            <span class="circle yellow"></span>
+                                        </td>
+                                        
+                                        <td>101</td>
+                                        <td>89</td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td><img src="/indieabode/public/images/Admin/jam/jam-1.jpg"></td>
+                                        <td>
+                                            <b>Albion Online</b><br>
+                                            <span class="release-date">2022-12-05 11:09:02</span><br>
+                                            <span class="circle green"></span>
+                                            <span class="circle yellow"></span>
+                                        </td>
+                                        
+                                        <td>101</td>
+                                        <td>89</td>
+                                    </tr>
 
+                                    <tr>
+                                        <td><img src="/indieabode/public/images/Admin/jam/jam-1.jpg"></td>
+                                        <td>
+                                            <b>Albion Online</b><br>
+                                            <span class="release-date">2022-12-05 11:09:02</span><br>
+                                            <span class="circle green"></span>
+                                            <span class="circle yellow"></span>
+                                        </td>
+                                        
+                                        <td>101</td>
+                                        <td>89</td>
+                                    </tr>
+                                    
+
+                                    <!-- <tfoot>
+                                        <tr id="total-price">
+                                        <td colspan="4">Total Revenue</td>
+                                        <td>3</td>
+                                        </tr>
+                                    </tfoot> -->
+                                </tbody>
+                            </table>
                         </div>
+
                         <div class="crowdfund-report report-all">
+                            <table>
+                                <div class="table-topic">Organized Crowdfunds</div>
+                                <div class="list-items">
+                                    <ul>
+                                        <li><span class="circle green"></span>Expired</li>
+                                        <li><span class="circle yellow"></span>Not Expired</li>
+                                    </ul>
+                                </div>
+                                <thead>
+                                    <tr>
+                                        <th> Cover Image</th>
+                                        <th> Game Name</th>     <!-- include expire date -->
+                                        <th> Total Backers</th>
+                                        <th> Total Revenues </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><img src="/indieabode/public/images/Admin/jam/jam-1.jpg"></td>
+                                        <td>
+                                            <b>Albion Online</b><br>
+                                            <!-- <span class="release-date exp-date-cwd">expires on<br>2022-12-05 11:09:02</span><br> -->
+                                            <span class="circle green"></span>
+                                            <span class="circle yellow"></span>
+                                        </td>
+                                        
+                                        <td>10</td>
+                                        <td>$800</td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="/indieabode/public/images/Admin/jam/jam-1.jpg"></td>
+                                        <td>
+                                            <b>Albion Online</b><br>
+                                            <!-- <span class="release-date exp-date-cwd">expires on<br>2022-12-05 11:09:02</span><br> -->
+                                            <span class="circle green"></span>
+                                            <span class="circle yellow"></span>
+                                        </td>
+                                        
+                                        <td>10</td>
+                                        <td>$800</td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="/indieabode/public/images/Admin/jam/jam-1.jpg"></td>
+                                        <td>
+                                            <b>Albion Online</b><br>
+                                            <!-- <span class="release-date exp-date-cwd">expires on<br>2022-12-05 11:09:02</span><br> -->
+                                            <span class="circle green"></span>
+                                            <span class="circle yellow"></span>
+                                        </td>
+                                        
+                                        <td>10</td>
+                                        <td>$800</td>
+                                    </tr>
 
+                                    <tfoot>
+                                        <tr id="total-price">
+                                        <td colspan="3">Total Revenue</td>
+                                        <td>$24000</td>
+                                        </tr>
+                                    </tfoot>
+                                </tbody>
+                            </table>
                         </div>
-                        <div class="other-report report-all">
 
+                        <div class="dw-asset-report report-all">
+                            <table>
+                                <div class="table-topic">Downloaded Assets</div>
+                                <!-- <div class="list-items">
+                                    <ul>
+                                        <li><span class="circle green"></span>Created a gig</li>
+                                        <li><span class="circle yellow"></span>Made a devlog</li>
+                                        <li><span class="circle blue"></span>Organized Crowdfund</li>
+                                    </ul>
+                                </div> -->
+                                <thead>
+                                    <tr>
+                                        <th> Cover Image</th>
+                                        <th> Asset Name</th>
+                                        <th> Downloaded date</th>
+                                        <th> Price </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><img src="/indieabode/public/images/Admin/jam/jam-1.jpg"></td>
+                                        <td>
+                                            <b>Albion Online</b><br>
+                                            <span>Free</span><br>
+                                        </td>
+                                        <td>2022-12-05 11:09:02</td>
+                                        <td> $240.00 </td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="/indieabode/public/images/Admin/jam/jam-1.jpg"></td>
+                                        <td>
+                                            <b>Albion Online</b><br>
+                                            <span>Free</span><br>
+                                        </td>
+                                        <td>2022-12-05 11:09:02</td>
+                                        <td> $240.00 </td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="/indieabode/public/images/Admin/jam/jam-1.jpg"></td>
+                                        <td>
+                                            <b>Albion Online</b><br>
+                                            <span>Free</span><br>
+                                        </td>
+                                        <td>2022-12-05 11:09:02</td>
+                                        <td> $240.00 </td>
+                                    </tr>
+                                    
+                                
+
+                                    <tfoot>
+                                        <tr id="total-price">
+                                        <td colspan="3">Total Expenditure</td>
+                                        <td>$1500.00</td>
+                                        </tr>
+                                    </tfoot>
+                                </tbody>
+                            </table>          
+                        </div>
+
+                        <div class="report-items report-all">
+                            <table>
+                                <div class="table-topic">Reported Complaints</div>
+                                <div class="list-items">
+                                    <ul>
+                                        <li><span class="circle green"></span>Has Responded</li>
+                                        <li><span class="circle yellow"></span>Not Responded</li>
+                                    </ul>
+                                </div>
+                                <thead>
+                                    <tr>
+                                        <th> Cover Image</th>
+                                        <th> Asset Name</th>  <!--asset creator username -->
+                                        <th> Reported Date</th>
+                                        <th> Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><img src="/indieabode/public/images/Admin/jam/jam-1.jpg"></td>
+                                        <td>
+                                            <b>Albion Online</b><br>
+                                            <span>Himash Liyanage</span><br>
+                                            <span class="circle green"></span>
+                                            <span class="circle yellow"></span>
+                                        </td>
+                                        <td>2022-12-05 11:09:02</td>
+                                        <td> unsupported format</td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="/indieabode/public/images/Admin/jam/jam-1.jpg"></td>
+                                        <td>
+                                            <b>Albion Online</b><br>
+                                            <span>Himash Liyanage</span><br>
+                                            <span class="circle green"></span>
+                                            <span class="circle yellow"></span>
+                                        </td>
+                                        <td>2022-12-05 11:09:02</td>
+                                        <td> unsupported format</td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="/indieabode/public/images/Admin/jam/jam-1.jpg"></td>
+                                        <td>
+                                            <b>Albion Online</b><br>
+                                            <span>Himash Liyanage</span><br>
+                                            <span class="circle green"></span>
+                                            <span class="circle yellow"></span>
+                                        </td>
+                                        <td>2022-12-05 11:09:02</td>
+                                        <td> unsupported format</td>
+                                    </tr>
+
+                                    <!-- <tfoot>
+                                        <tr id="total-price">
+                                        <td colspan="3">Total Expenditure</td>
+                                        <td>$1500.00</td>
+                                        </tr>
+                                    </tfoot> -->
+                                </tbody>
+                            </table> 
                         </div>
                     </div>
                 </div>

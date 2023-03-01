@@ -316,3 +316,12 @@ td .circle {
 .admin-footer{
   z-index:99;
 }
+
+.release-date, .pub-email{
+  color: #667a84;
+  font-weight: 800;
+}
+
+.exp-date-cwd{
+  color:red;
+}
