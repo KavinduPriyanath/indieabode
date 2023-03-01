@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <div class="navbar">
+    <div class="navbar admin-navbar">
         <div class="logo"><a href="/indieabode">IndieAbode</a></div>
         <a href="#" class="toggle-button">
             <span class="bar"></span>

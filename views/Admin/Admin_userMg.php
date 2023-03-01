@@ -44,12 +44,12 @@
 			<li><a href="<?php echo BASE_URL; ?>SiteDashboard" class="active"><i class='bx bxs-dashboard icon'></i> Dashboard <i
 						class='bx bx-chevron-right icon-right'></i> </a></li>
 			<!-- <ul class="side-dropdown"> -->
-			<li><a href="<?php echo BASE_URL; ?>Admin_G"><i class='bx bxs-dashboard icon'></i>Game Dashboard</a></li>
+			<!-- <li><a href="<?php echo BASE_URL; ?>Admin_G"><i class='bx bxs-dashboard icon'></i>Game Dashboard</a></li>
 			<li><a href="<?php echo BASE_URL; ?>Admin_assetD"><i class='bx bxs-dashboard icon'></i>Asset Dashboard</a></li>
 			<li><a href="<?php echo BASE_URL; ?>Admin_GigD"><i class='bx bxs-dashboard icon'></i>Gigs Dashboard</a></li>
 			<li><a href="<?php echo BASE_URL; ?>Admin_crowdfundD"><i class='bx bxs-dashboard icon'></i>Crowdfund Dashboard</a></li>
 			<li><a href="<?php echo BASE_URL; ?>Admin_devlogsD"><i class='bx bxs-dashboard icon'></i>Devlogs Dashboard</a></li>
-			<li><a href="<?php echo BASE_URL; ?>Admin_gameJamD"><i class='bx bxs-dashboard icon'></i>Game Jam Dashboard</a></li>
+			<li><a href="<?php echo BASE_URL; ?>Admin_gameJamD"><i class='bx bxs-dashboard icon'></i>Game Jam Dashboard</a></li> -->
 			<!-- </ul> -->
 			<li>
 				<a href="<?php echo BASE_URL; ?>Admin_complaints"><i class='bx bxs-message-square-error icon'></i> Complaints </a>
@@ -77,7 +77,7 @@
 				<form action="#">
 					<div class="user-mg-search">
 						<input type="text" placeholder="Search...">
-						<i class='fa fa-search icon search-role'></i>
+						<!-- <i class='fa fa-search icon search-role'></i> -->
 					</div>
 				</form>
 			</div>
@@ -123,6 +123,7 @@
                         <th> User Role</th>
                         <th> Email</th>
                         <!-- <th> View</th> -->
+						<th> Download </th>
                         <th> Block</th>
                     </tr>
                 </thead>
@@ -136,8 +137,13 @@
                             <td><?php echo $user['username']; ?></td>
                             <td><?php echo $user['userRole']; ?></td>
                             <td><?php echo $user['email']; ?></td>
+							<td>
+								<form action="/indieabode/Admin_userMg/downloadUser/<?php echo $user['gamerID']; ?>" method="post"> 
+          							<input type="submit" name="download_user" value="download" class="download-user-btn">
+								</form>
+							</td>
                             <td>
-							<form action="/indieabode/Admin_userMg/deleteUser/<?php echo $user['gamerID']; ?>" method="post"> 
+								<form action="/indieabode/Admin_userMg/deleteUser/<?php echo $user['gamerID']; ?>" method="post"> 
           							<input type="submit" name="delete_user" value="Block" class="del-user-btn">
 								</form>
                             </td>
@@ -150,6 +156,7 @@
 		</main>
 		<!-- MAIN -->
 	</section>
+	
 	<!-- NAVBAR -->
 
 	<?php
