@@ -325,3 +325,8 @@ td .circle {
 .exp-date-cwd{
   color:red;
 }
+
+.report-all span{
+  color: #37647b;
+  font-size: .85em;
+}
