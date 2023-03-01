@@ -17,8 +17,10 @@ class GameReviews extends Controller
             $data = array(
                 ':review' => $_POST['review'],
                 ':rating' => $_POST['rating_data'],
+                ':topic' => $_POST['topic'],
                 ':gameID' => $_GET['id'],
-                ':userID' => $_SESSION['id']
+                ':userID' => $_SESSION['id'],
+                ':recommendation' => $_POST['recommendation']
             );
 
             $this->model->Reviews($data);

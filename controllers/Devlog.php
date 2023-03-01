@@ -14,6 +14,8 @@ class Devlog extends Controller
         if (isset($_GET['id'])) {
             $devlogID = $_GET['id'];
 
+            $likedorNot = $this->model->AlreadyLiked($_SESSION['id'], $_GET['id']);
+            $this->view->likesStatus = ($likedorNot == true) ? "liked" : "disliked";
 
             $this->view->devlog = $this->model->showSingleDevlog($devlogID);
 

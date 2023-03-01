@@ -96,7 +96,7 @@
                 <?php } else if (isset($_SESSION['logged']) && $_SESSION['userRole'] != "gamer") { ?>
                     <button data-modal-target="#modal-incorrectRole">Add Review</button>
                 <?php } else { ?>
-                    <button data-modal-target="#modal-signin">Add Review</button>
+                    <div class="text"><a href="/indieabode/login">Log in with indieabode</a> to leave a review</div>
                 <?php } ?>
             </div>
         </div>
@@ -171,8 +171,8 @@
                     <textarea name="review" id="review" cols="30" rows="7"></textarea>
 
                     <h4>Do you recommend this game?</h4>
-                    <input type="radio" name="recommendation" id=""> Yes
-                    <input type="radio" name="recommendation" id=""> No
+                    <input type="radio" name="recommendation" id="" value="Yes"> Yes
+                    <input type="radio" name="recommendation" id="" value="No"> No
                     <br />
                     <button type="submit" id="save-review">Post Review</button>
 
@@ -201,24 +201,6 @@
         <div id="overlay"></div>
     </div>
 
-    <div class="signin-modal">
-        <div class="modal" id="modal-signin">
-            <div class="modal-header">
-                <div class="title">Rate & Review "<?= $this->game['gameName'] ?>"</div>
-                <button data-close-button class="close-button">&times;</button>
-            </div>
-            <div class="modal-body">
-
-                <div class="report-heading">
-                    Sign-in First
-
-
-                </div>
-
-            </div>
-        </div>
-        <div id="overlay"></div>
-    </div>
 
     <script src="<?php echo BASE_URL; ?>public/js/assets.js"></script>
     <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
@@ -301,13 +283,17 @@
             $('#save-review').click(function() {
 
                 var review = $('#review').val();
+                var topic = $('#topic').val();
+                var recommendation = $("input[name='recommendation']:checked").val();
 
                 $.ajax({
                     url: "/indieabode/gameReviews?id=<?= $this->game['gameID'] ?>",
                     method: "POST",
                     data: {
                         rating_data: rating_data,
-                        review: review
+                        review: review,
+                        topic: topic,
+                        recommendation: recommendation
                     },
                     success: function(data) {
                         $('#modal').removeClass("active");
