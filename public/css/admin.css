@@ -146,12 +146,12 @@ li {
     margin: 2px 0;
     white-space: nowrap;
     font-weight: 800;
-    background-color: #3c687a;
+    background-color: #657983;
     border-radius: 8px;
     margin-bottom: 6%;
 }
 #sidebar .side-menu > li > a:hover {
-	background:#667a83;
+	background:#3c687a;
 }
 #sidebar .side-menu > li > a.active .icon-right {
 	transform: rotateZ(90deg);

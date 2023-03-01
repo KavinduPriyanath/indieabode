@@ -12,6 +12,6 @@ class Admin_report extends Controller
     function index()
     {
 
-        $this->view->render('Admin/Admin_report');
+        $this->view->render('Admin/reports/Admin_report');
     }
 }
