@@ -70,6 +70,11 @@
 
     <section id="content">
 
+        <div class="report-header-all">
+            <h1>INDIE ABODE</h1><br>
+            <i>Game Publishing Platform</i><br>
+            <span>Report on 2022-12-05 </span>
+        </div>
 
 		<!-- MAIN -->
 		<main class="report-main">

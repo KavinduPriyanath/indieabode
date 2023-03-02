@@ -33,15 +33,22 @@ class Admin_userMg extends Controller
 
     public function viewFilteredUser($filter_text){
 
-        echo $filter_text;
-        $this->view->users = $this->model->viewUser($filter_text);
-        if(empty($this->users)){
-            echo "empty";
+        
 
-        }else{
-            echo "na";
-        }
-        $this->view->active=$filter_text;
+        if($filter_text=="gd")
+            $usertype = "game developer";
+        if($filter_text=="gp")
+            $usertype = "game publisher";
+        if($filter_text=="go")
+            $usertype = "gamejam organizer";
+        if($filter_text=="gamer")
+            $usertype = "gamer";
+        if($filter_text=="ac")
+            $usertype = "asset creator";
+        
+        $this->view->users = $this->model->viewUser($usertype);
+
+        $this->view->active=$usertype;
         $this->view->render('Admin/Admin_userMg');
     }
 
