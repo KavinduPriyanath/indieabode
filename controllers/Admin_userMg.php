@@ -34,14 +34,21 @@ class Admin_userMg extends Controller
     public function viewFilteredUser($filter_text){
 
         
-        $this->view->users = $this->model->viewUser($filter_text);
-        if(empty($this->users)){
-            echo "empty";
 
-        }else{
-            echo "na";
-        }
-        $this->view->active=$filter_text;
+        if($filter_text=="gd")
+            $usertype = "game developer";
+        if($filter_text=="gp")
+            $usertype = "game publisher";
+        if($filter_text=="go")
+            $usertype = "gamejam organizer";
+        if($filter_text=="gamer")
+            $usertype = "gamer";
+        if($filter_text=="ac")
+            $usertype = "asset creator";
+        
+        $this->view->users = $this->model->viewUser($usertype);
+
+        $this->view->active=$usertype;
         $this->view->render('Admin/Admin_userMg');
     }
 
@@ -55,6 +62,34 @@ class Admin_userMg extends Controller
                 echo "ba";
                }
             
+
+    }
+    public function downloadUser($userid){
+        
+     
+            //    $this->view->user = $this->model->download_user($userid);
+            //    if($this->view){
+            //      echo" wade hari";
+            //    }else{
+            //     echo "ba";
+            //    }
+        $user = $this->model->download_user($userid);
+            
+        if($user['userRole']=="game developer"){
+            $this->view->render('Admin/reports/Admin_report');
+        }
+        if($user['userRole']=="gamer"){
+            $this->view->render('Admin/reports/Admin_gamer_report');
+        }
+        if($user['userRole']=="gamejam organizer"){
+            $this->view->render('Admin/reports/Admin_jamOrganizer_report');
+        }
+        if($user['userRole']=="asset creator"){
+            $this->view->render('Admin/reports/Admin_assetCreator_report');
+        }
+        if($user['userRole']=="game publisher"){
+            $this->view->render('Admin/reports/Admin_gamePublisher_report');
+        }
 
     }
     // if(isset($_POST['delete_user'])){

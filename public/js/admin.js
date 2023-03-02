@@ -132,3 +132,21 @@ window.addEventListener('click', function (e) {
 		}
 	})
 })
+
+
+
+const prevBtn = document.querySelector('.prev-btn');
+const nextBtn = document.querySelector('.next-btn');
+const title = document.querySelector('.calendar-title');
+const tbody = document.querySelector('.calendar-table tbody');
+
+let date = new Date(); // set the initial date to today
+let year = date.getFullYear();
+let month = date.getMonth();
+
+function renderCalendar() {
+  // clear the calendar table
+  tbody.innerHTML = '';
+
+  // set the
+}
