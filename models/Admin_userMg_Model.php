@@ -45,4 +45,23 @@ class Admin_userMg_Model extends Model
             return false;
         }
     }
+
+    function download_user($user_id){
+        $sql = "SELECT * FROM gamer WHERE gamerID = ".$user_id;
+
+        $stmt = $this->db->prepare($sql);
+
+        // if($stmt->execute()){
+        //     return true;
+
+        // }else{
+        //     return false;
+        // }
+
+        $stmt->execute();
+
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $user;
+    }
 }

@@ -33,7 +33,7 @@ class Admin_userMg extends Controller
 
     public function viewFilteredUser($filter_text){
 
-        
+        echo $filter_text;
         $this->view->users = $this->model->viewUser($filter_text);
         if(empty($this->users)){
             echo "empty";
@@ -55,6 +55,34 @@ class Admin_userMg extends Controller
                 echo "ba";
                }
             
+
+    }
+    public function downloadUser($userid){
+        
+     
+            //    $this->view->user = $this->model->download_user($userid);
+            //    if($this->view){
+            //      echo" wade hari";
+            //    }else{
+            //     echo "ba";
+            //    }
+        $user = $this->model->download_user($userid);
+            
+        if($user['userRole']=="game developer"){
+            $this->view->render('Admin/reports/Admin_report');
+        }
+        if($user['userRole']=="gamer"){
+            $this->view->render('Admin/reports/Admin_gamer_report');
+        }
+        if($user['userRole']=="gamejam organizer"){
+            $this->view->render('Admin/reports/Admin_jamOrganizer_report');
+        }
+        if($user['userRole']=="asset creator"){
+            $this->view->render('Admin/reports/Admin_assetCreator_report');
+        }
+        if($user['userRole']=="game publisher"){
+            $this->view->render('Admin/reports/Admin_gamePublisher_report');
+        }
 
     }
     // if(isset($_POST['delete_user'])){

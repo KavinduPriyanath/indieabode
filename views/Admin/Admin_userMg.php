@@ -91,10 +91,10 @@
 				<div class="search-user-type">
 					<button class="<?php echo $this->active == 'all' ? 'btn active' : 'btn'; ?>" onclick="filterSelection('all')"> Show all Users</button>
 					<a class="<?php echo $this->active == 'gamer' ? 'btn active' : 'btn'; ?>" href='/indieabode/Admin_userMg/viewFilteredUser/gamer'"> Gamers</a>
-					<button class=" <?php echo $this->active == 'game developer' ? 'btn active' : 'btn'; ?>" onclick="filterSelection('game_developer')"> Game Developers</button>
-						<button class="<?php echo $this->active == 'game publisher' ? 'btn active' : 'btn'; ?>" onclick="filterSelection('game_publisher')"> Game Publishers</button>
-						<button class="<?php echo $this->active == 'assets creator' ? 'btn active' : 'btn'; ?>" onclick="filterSelection('assets_creator')"> Asset Creators</button>
-						<button class="<?php echo $this->active == 'gamejam organizer' ? 'btn active' : 'btn'; ?>" onclick="filterSelection('gamejam_organizer')"> Game Jam Organizers</button>
+					<button class=" <?php echo $this->active == 'game developer' ? 'btn active' : 'btn'; ?>" onclick="filterSelection('game developer')"> Game Developers</button>
+						<button class="<?php echo $this->active == 'game publisher' ? 'btn active' : 'btn'; ?>" onclick="filterSelection('game publisher')"> Game Publishers</button>
+						<button class="<?php echo $this->active == 'assets creator' ? 'btn active' : 'btn'; ?>" onclick="filterSelection('assets creator')"> Asset Creators</button>
+						<button class="<?php echo $this->active == 'gamejam organizer' ? 'btn active' : 'btn'; ?>" onclick="filterSelection('gamejam organizer')"> Game Jam Organizers</button>
 				</div>
 				<div class="blocked-users">
 					<button class="#" onclick="filterSelection('')">Blocked Users</button>
