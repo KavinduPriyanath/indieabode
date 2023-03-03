@@ -107,36 +107,6 @@
         <h3>Ratings</h3>
 
         <div id="review_content"></div>
-        <!-- <div class="review">
-            <div class="left">
-                <img src="/indieabode/public/images/games/profile.png" alt="" />
-                <p class="username">Kavindu&nbsp;Priyanath</p>
-                <p class="assets-count">Assets:&nbsp;27</p>
-                <p class="reviews-count">Reviews:&nbsp;11</p>
-            </div>
-            <div class="right">
-                <div class="rating-stars">
-                    <img src="/indieabode/public/images/games/Filled Star.png" alt="" />
-                    <img src="/indieabode/public/images/games/Filled Star.png" alt="" />
-                    <img src="/indieabode/public/images/games/Filled Star.png" alt="" />
-                    <img src="/indieabode/public/images/games/Filled Star.png" alt="" />
-                    <img src="/indieabode/public/images/games/Blank Star.png" alt="" />
-                    <p>12 Dec 2021</p>
-                </div>
-                <h3 class="review-title">Very Customizable</h3>
-                <p class="review-detail">
-                    Hey! The actual sprite without empty space in the image is about
-                    38x20 pixels, but it depends on the animation as in some theres a
-                    sword and stuff. So because of that I kept the image size as 120x80
-                    pixels for every animation. And the character is centered correctly
-                    to be in the middle/bottom of the whole image.
-                </p>
-                <div class="like-buttons">
-                    <img src="/indieabode/public/images/games/like.png" alt="" />
-                    <img src="/indieabode/public/images/games/dislike.png" alt="" />
-                </div>
-            </div>
-        </div> -->
 
 
     </div>
@@ -204,45 +174,8 @@
 
     <script src="<?php echo BASE_URL; ?>public/js/assets.js"></script>
     <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
+    <script src="<?php echo BASE_URL; ?>public/js/game-review.js"></script>
 
-    <script>
-        const openModalButtons = document.querySelectorAll("[data-modal-target]");
-        const closeModalButtons = document.querySelectorAll("[data-close-button]");
-        const overlay = document.getElementById("overlay");
-
-        openModalButtons.forEach((button) => {
-            button.addEventListener("click", () => {
-                const modal = document.querySelector(button.dataset.modalTarget);
-                openModal(modal);
-            });
-        });
-
-        overlay.addEventListener("click", () => {
-            const modals = document.querySelectorAll(".modal.active");
-            modals.forEach((modal) => {
-                closeModal(modal);
-            });
-        });
-
-        closeModalButtons.forEach((button) => {
-            button.addEventListener("click", () => {
-                const modal = button.closest(".modal");
-                closeModal(modal);
-            });
-        });
-
-        function openModal(modal) {
-            if (modal == null) return;
-            modal.classList.add("active");
-            overlay.classList.add("active");
-        }
-
-        function closeModal(modal) {
-            if (modal == null) return;
-            modal.classList.remove("active");
-            overlay.classList.remove("active");
-        }
-    </script>
 
     <script>
         $(document).ready(function() {
@@ -357,13 +290,19 @@
 
 
                                 html += '<div class="review">';
-                                html += '<div class="left">';
+                                html += '<div class="leftr">';
+                                html += '<div class="left-icon">';
                                 html += '<img src="/indieabode/public/images/games/profile.png" alt="" />';
+                                html += '</div>';
+                                html += '<div class="left-name">';
                                 html += '<p class="username">Kavindu&nbsp;Priyanath</p>';
-                                html += '<p class="assets-count">Assets:&nbsp;27</p>';
+                                html += '<p class="assets-count">114 games in account</p>';
                                 html += '<p class="reviews-count">Reviews:&nbsp;11</p>';
                                 html += '</div>';
+                                html += '</div>';
                                 html += '<div class="right">';
+                                html += '<div class="recommendation">';
+                                html += '</div>';
                                 html += '<div class="rating-stars">';
 
                                 for (var star = 1; star <= 5; star++) {
@@ -374,18 +313,16 @@
                                     } else {
                                         class_name = 'unchecked';
                                     }
-
-                                    html += '<i class="fas fa-star ' + class_name + ' mr-1"></i>';
                                     html += '<i class="fa fa-star ' + class_name + ' "></i>';
                                 }
 
                                 html += '<p>12 Dec 2021</p>';
                                 html += '</div>';
-                                html += '<h3 class="review-title">Very Customizable</h3>';
+                                html += '<h3 class="review-title">' + data.review_data[count].reviewTopic + '</h3>';
                                 html += '<p class="review-detail">' + data.review_data[count].review + '</p>';
                                 html += '<div class="like-buttons">';
-                                html += '<img src="/indieabode/public/images/games/like.png" alt="" />';
-                                html += '<img src="/indieabode/public/images/games/dislike.png" alt="" />';
+                                html += '<i class="fa fa-thumbs-up"></i>';
+                                html += '<i class="fa fa-thumbs-down"></i>';
                                 html += '</div>';
                                 html += '</div>';
                                 html += '</div>';

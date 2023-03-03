@@ -34,3 +34,17 @@
     height: 10px;
     background-color: rgb(191, 194, 54);
 }
+
+.like-buttons{
+    margin: 8px 0px;
+}
+
+.like-buttons i{
+    margin-right: 8px;
+    font-size: 30px;
+
+}
+
+.recommendation {
+    display: flex;
+}
