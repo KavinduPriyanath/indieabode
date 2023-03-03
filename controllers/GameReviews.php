@@ -48,7 +48,8 @@ class GameReviews extends Controller
             foreach ($result as $row) {
                 $review_content[] = array(
                     'review' => $row['review'],
-                    'rating' => $row['rating']
+                    'rating' => $row['rating'],
+                    'reviewTopic' => $row['reviewTopic']
                 );
 
                 if ($row["rating"] == '5') {
