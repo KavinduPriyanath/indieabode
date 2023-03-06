@@ -14,17 +14,3 @@ document.addEventListener("mouseover", (e) => {
     dropdown.classList.remove("active");
   });
 });
-
-//display user profile if logged
-// let islogged = true;
-
-// const notloggedMenu = document.getElementById("not-logged");
-// const loggedMenu = document.getElementById("logged");
-
-// if (islogged) {
-//   notloggedMenu.style.display = "none";
-//   loggedMenu.style.display = "block";
-// } else {
-//   loggedMenu.style.display = "none";
-//   notloggedMenu.style.display = "block";
-// }
