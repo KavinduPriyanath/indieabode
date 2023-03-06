@@ -197,7 +197,7 @@
                     },
                     success: function(response) {
                         $('comment-container').html("");
-                        // console.log(response);
+                        console.log(response);
 
                         $.each(response, function(key, value) {
 
