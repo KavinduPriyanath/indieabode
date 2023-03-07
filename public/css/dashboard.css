@@ -50,7 +50,7 @@
 
 .content-row {
     display: block;
-    height: 600px;
+    background-color: rgba(168, 202, 231, 0.688);
 }
 
 .game-card {
