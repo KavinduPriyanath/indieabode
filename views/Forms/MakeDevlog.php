@@ -67,7 +67,7 @@
                         <!-- <input type="text" name="gname" placeholder="Game name" required> -->
                         <select id="type" name="gname" required>
                             <?php foreach ($this->games as $game) { ?>
-                                <option value="<?= $game['gameName'] ?>"><?= $game['gameName'] ?></option>
+                                <option value="<?= $game['gameID'] ?>"><?= $game['gameName'] ?></option>
                             <?php } ?>
 
                         </select>

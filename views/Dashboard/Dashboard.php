@@ -52,7 +52,7 @@
                         <div class="details">
                             <div class="game-name"><?= $game['gameName'] ?></div>
                             <div class="game-stat-tabs">
-                                <a href="">Edit</a>
+                                <a href="/indieabode/dashboard/edit?id=<?= $game['gameID']; ?>">Edit</a>
                                 <a href="">Analytics</a>
                                 <a href="">Devlogs</a>
                                 <a href="">Publishers</a>
@@ -92,10 +92,6 @@
 
     <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
 
-
-
 </body>
-
-
 
 </html>
