@@ -22,42 +22,10 @@ class Devlog_Model extends Model
         return $devlog;
     }
 
-    // function getGameDeveloper($game)
-    // {
-    //     $gameDeveloperID = $game['gameDeveloperID'];
-
-    //     $sql = "SELECT * FROM gamer WHERE gamerID='$gameDeveloperID'";
-
-    //     $stmt = $this->db->prepare($sql);
-
-    //     $stmt->execute();
-
-    //     $gameDeveloper = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    //     return $gameDeveloper;
-    // }
-
-    // function getScreenshots($id)
-    // {
-    //     $sql = "SELECT * FROM freeasset WHERE assetID='$id' LIMIT 1";
-
-    //     $stmt = $this->db->prepare($sql);
-
-    //     $stmt->execute();
-
-    //     $asset = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    //     $ss = $asset['assetScreenshots'];
-
-    //     $screenshots = explode(',', $ss);
-
-    //     return $screenshots;
-    // }
-
-    function gameDetails($gameName)
+    function gameDetails($gameId)
     {
 
-        $sql = "SELECT * FROM freegame WHERE gameName='$gameName'";
+        $sql = "SELECT * FROM freegame WHERE gameID='$gameId'";
 
         $stmt = $this->db->prepare($sql);
 
@@ -84,5 +52,19 @@ class Devlog_Model extends Model
         } else {
             return false;
         }
+    }
+
+    function GetGame($gameID)
+    {
+
+        $sql = "SELECT * FROM freegame WHERE gameID='$gameID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $game = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $game;
     }
 }
