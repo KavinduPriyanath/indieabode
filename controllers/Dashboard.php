@@ -200,4 +200,79 @@ class Dashboard extends Controller
 
         header('location:/indieabode/');
     }
+
+    function publishers()
+    {
+        $this->view->gig = $this->model->ThisGamesGigs($_GET['id']);
+
+        $this->view->game = $this->model->GetGameDetails($_GET['id']);
+
+        $this->view->render('Dashboard/GameDashboards/Publishers');
+    }
+
+    function editgig()
+    {
+        $this->view->games = $this->model->showAllMyGames($_SESSION['id']);
+
+        $this->view->game = $this->model->GetGameDetails($_GET['gameid']);
+
+        $this->view->gig = $this->model->GetGigDetails($_GET['gigid']);
+
+        $this->view->render('Dashboard/GameDashboards/EditGig');
+    }
+
+    function editExistingGig()
+    {
+
+        $gigID = $_GET['id'];
+        $gigName = $_POST['gig-title'];
+        $tagline = $_POST['gig-tagline'];
+        $description = $_POST['gig-details'];
+        $gameName = $_POST['game-name'];
+        $currentStage = $_POST['current-stage'];
+        $plannedReleaseDate = $_POST['planned-release'];
+        $estimatedShare = $_POST['est-share'];
+        $expectedCost = $_POST['expected-cost'];
+        $visibility = $_POST['gig-visibility'];
+        $gigCoverImg = $this->model->uploadCoverImg($gigName);
+        $gigScreenshots = $this->model->uploadScreenshots($gameName);
+        $gigTrailer = $_POST['gig-trailer'];
+        $developerID = $_SESSION['id'];
+
+        $this->model->EditExistingGig(
+            $gigID,
+            $gigName,
+            $tagline,
+            $description,
+            $gameName,
+            $currentStage,
+            $plannedReleaseDate,
+            $estimatedShare,
+            $expectedCost,
+            $visibility,
+            $gigCoverImg,
+            $gigScreenshots,
+            $gigTrailer,
+            $developerID
+        );
+
+        header('location:/indieabode/');
+    }
+
+    function gameanalytics()
+    {
+        $gameStats = $this->model->GetGameStats($_GET['id']);
+
+        $downloads = [];
+
+        foreach ($gameStats as $gameStat) {
+            array_push($downloads, $gameStat['downloads']);
+        }
+
+        $this->view->alldownloads = $downloads;
+
+        $this->view->game = $this->model->GetGameDetails($_GET['id']);
+
+        $this->view->render('Dashboard/GameDashboards/Analytics');
+    }
 }

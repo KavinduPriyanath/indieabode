@@ -48,7 +48,7 @@
                 </div>
             </div>
             <div class="card">
-                <div class="game-name"><?= $this->devlog['gameName']; ?></div>
+                <div class="game-name"><?= $this->game['gameName']; ?></div>
                 <div class="second-rows">
                     <div class="game-type">Base Game</div>
                     <div class="price">Free</div>

@@ -215,4 +215,84 @@ class Dashboard_Model extends Model
 
         $stmt->execute();
     }
+
+    public function ThisGamesGigs($gameID)
+    {
+
+        $sql = "SELECT * FROM gig WHERE game='$gameID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $gig = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $gig;
+    }
+
+    public function EditExistingGig(
+        $gigId,
+        $gigName,
+        $tagline,
+        $description,
+        $gameName,
+        $currentStage,
+        $plannedReleaseDate,
+        $estimatedShare,
+        $expectedCost,
+        $visibility,
+        $gigCoverImg,
+        $gigScreenshots,
+        $gigTrailer,
+        $developerID
+    ) {
+        $sql = "INSERT INTO gig (gigName, gigTagline, gigDetails, game, currentStage, 
+        plannedReleaseDate, estimatedShare, expectedCost, visibility, gigCoverImg, 
+        gigScreenshot, gigTrailor, gameDeveloperID) VALUES 
+        (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute([
+            "$gigName",
+            "$tagline",
+            "$description",
+            "$gameName",
+            "$currentStage",
+            "$plannedReleaseDate",
+            "$estimatedShare",
+            "$expectedCost",
+            "$visibility",
+            "$gigCoverImg",
+            "$gigScreenshots",
+            "$gigTrailer",
+            "$developerID"
+        ]);
+    }
+
+    function GetGigDetails($gigID)
+    {
+
+        $sql = "SELECT * FROM gig where gigID='$gigID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $gig = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $gig;
+    }
+
+    function GetGameStats($gameID)
+    {
+
+        $sql = "SELECT * FROM game_stats_history WHERE gameID='$gameID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
 }
