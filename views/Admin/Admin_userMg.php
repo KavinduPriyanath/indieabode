@@ -127,7 +127,7 @@
                         <th> Username</th>
                         <th> User Role</th>
                         <th> Email</th>
-                        <!-- <th> View</th> -->
+                        <th> View</th>
 						<th> Download </th>
                         <th> Block</th>
                     </tr>
@@ -144,7 +144,7 @@
                             <td><?php echo $user['email']; ?></td>
 							<td>
 								<form action="/indieabode/Admin_userMg/viewUser/<?php echo $user['gamerID']; ?>" method="post"> 
-          							<input type="submit" name="view_user" value="view" class="view-user-btn">
+          							<input type="submit" name="view_user" value="view" class="download-user-btn">
 								</form>
 							</td>
 							<td>

@@ -1,7 +1,5 @@
 <?php
 
-require_once('includes/tcpdf/tcpdf.php');
-
 class Admin_userMg extends Controller
 {
 
@@ -69,13 +67,10 @@ class Admin_userMg extends Controller
     public function viewUser($userid){
         
      
-            //    $this->view->user = $this->model->download_user($userid);
-            //    if($this->view){
-            //      echo" wade hari";
-            //    }else{
-            //     echo "ba";
-            //    }
         $user = $this->model->download_user($userid);
+
+        $totalPrice = $this->model->assetPrice(2);
+        print('totalprice'.$totalPrice);
             
         if($user['userRole']=="game developer"){
             $this->view->render('Admin/reports/Admin_report');
@@ -87,6 +82,9 @@ class Admin_userMg extends Controller
             $this->view->render('Admin/reports/Admin_jamOrganizer_report');
         }
         if($user['userRole']=="asset creator"){
+            $ac_user = $this->model->assetCreator($userid);
+
+            print_r($ac_user);
             $this->view->render('Admin/reports/Admin_assetCreator_report');
         }
         if($user['userRole']=="game publisher"){
@@ -112,6 +110,12 @@ class Admin_userMg extends Controller
         //Asset Creator's report generate
         if($user['userRole']=="asset creator"){
 
+            $ac_user = $this->model->assetCreator($userid);
+
+            print_r($ac_user);
+
+            require_once('includes/tcpdf/tcpdf.php');
+
             ob_start();
             $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
@@ -134,62 +138,91 @@ class Admin_userMg extends Controller
                 $pdf->setLanguageArray($l);
             }
 
-            $pdf->SetFont('times', 'BI', 12);
+            $pdf->SetFont('times', 'BI', 14);
 
             // add a page
             $pdf->AddPage();
 
-            $pdf->Cell(0, 10, 'My Document Title', 0, 1, 'C');
+            $pdf->Cell(0, 10, 'INDIE ABODE', 0, 1, 'C');
+            $pdf->Cell(0, 10, 'Game Publishing Platform', 0, 1, 'C');
+            $pdf->Cell(0, 10, 'Asset Creator\'s Report', 0, 1, 'C');
 
             $pdf->SetFont('helvetica', '', 12);
-            $pdf->MultiCell(0, 10, 'This is my paragraph of text. It can span multiple lines and will automatically wrap to fit within the page margins.', 0, 'J', false);
 
-            $pdf->SetFont('helvetica', '', 12);
-            $pdf->SetFillColor(255, 255, 255);
-            $pdf->Cell(60, 10, 'Column 1', 1, 0, 'C', 1);
-            $pdf->Cell(60, 10, 'Column 2', 1, 0, 'C', 1);
-            $pdf->Cell(60, 10, 'Column 3', 1, 1, 'C', 1);
-            $pdf->SetFont('helvetica', '', 10);
-            for ($i = 1; $i <= 10; $i++) {
-                $pdf->Cell(60, 10, 'Row ' . $i . ', Column 1', 1, 0, 'L', 1);
-                $pdf->Cell(60, 10, 'Row ' . $i . ', Column 2', 1, 0, 'L', 1);
-                $pdf->Cell(60, 10, 'Row ' . $i . ', Column 3', 1, 1, 'L', 1);
-            }
-
-            // set some text to print
-            $txt = <<<EOD
-            INDIE ABODE 
-            Asset Creator  Report<br>
-
-            EOD;
+            $pdf->Ln(4);
+            // $name = $user['firstName'].' '.$user['lastName'];
+            $name = 'Name: ' . $user['firstName'] . ' ' . $user['lastName'];
+            // $accountStatus = ($user['accountStatus'] == 1) ? "Active" : "Blocked";
+            $currentDateTime = date('Y-m-d H:i:s');
+            // $pdf->Rect(10, 60, 70, 20, 'D');
+            $pdf->MultiCell(0, 10, $name, 0, 'L', false);
+            $pdf->MultiCell(0, 10, 'Account Status: Active', 0, 'L', false);
+            $pdf->MultiCell(0, 10, 'Date: '.$currentDateTime, 0, 'L', false);
 
             // add a table
-            $header = array('Name', 'Age', 'Country');
-            $data = array(
-                array('John Doe', '35', 'USA'),
-                array('Jane Smith', '27', 'Canada'),
-                array('Bob Johnson', '42', 'Australia')
-            );
+            $header = array('Cover Image', 'Asset Name', 'Price','Uploaded Date', 'Downloads','Earnings');
             $pdf->Ln(10); // add some vertical spacing before the table
-            $pdf->SetFont('times', '', 10);
+            $pdf->SetFont('times', '', 14);
             $pdf->SetFillColor(240, 240, 240); // set background color for header row
             $pdf->SetTextColor(0); // set text color for header row
             $pdf->SetDrawColor(255, 255, 255); // set border color for all cells
             $pdf->Cell(30, 7, $header[0], 1, 0, 'C', 1);
             $pdf->Cell(30, 7, $header[1], 1, 0, 'C', 1);
-            $pdf->Cell(30, 7, $header[2], 1, 1, 'C', 1);
+            $pdf->Cell(30, 7, $header[2], 1, 0, 'C', 1);
+            $pdf->Cell(30, 7, $header[3], 1, 0, 'C', 1);
+            $pdf->Cell(30, 7, $header[4], 1, 0, 'C', 1);
+            $pdf->Cell(30, 7, $header[5], 1, 1, 'C', 1);
             $pdf->SetFillColor(255, 255, 255); // set background color for data rows
             $pdf->SetTextColor(0); // set text color for data rows
-            $pdf->SetFont('times', '', 8);
-            foreach ($data as $row) {
-                $pdf->Cell(30, 6, $row[0], 1, 0, 'C', 1);
-                $pdf->Cell(30, 6, $row[1], 1, 0, 'C', 1);
-                $pdf->Cell(30, 6, $row[2], 1, 1, 'C', 1);
+            $pdf->SetFont('times', '', 12);
+            $totalEarnings = 0;
+            foreach ($ac_user as $user) {
+
+                $pdf->Cell(30, 6, 'hi', 1, 0, 'C', 1);
+                $pdf->Cell(30, 6, $user['assetName'], 1, 0, 'C', 1);
+                if($user['assetPrice']=='')
+                    $pdf->Cell(30, 6, 'Free', 1, 0, 'C', 1);
+                else
+                    $pdf->Cell(30, 6, $user['assetPrice'], 1, 0, 'C', 1);
+                $pdf->Cell(30, 6, $user['created_at'], 1, 0, 'C', 1);
+
+                $downloads = $this->model->downloadAssets($user['assetID']);
+
+                print_r($downloads);
+                if($downloads != 0)
+                    $pdf->Cell(30, 6, $downloads, 1, 0, 'C', 1);
+                else
+                    $pdf->Cell(30, 6, 0, 1, 0, 'C', 1);
+
+                $totalPrice = $this->model->assetPrice($user['assetID']);
+                $totalEarnings = $totalEarnings + $totalPrice;
+                $pdf->Cell(30, 6, '$'.$totalPrice, 1, 1, 'C', 1);
+
             }    
-            
+
+            $pdf->Ln(10);
+            // $pdf->Cell(0, 10, 'Total Earnings: $'.$totalEarnings, 0, 1, 'C');
+
+            $pdf->SetFont('helvetica', 'B', 12);
+            $pdf->Cell(0, 10, 'Total Earnings:     $'.$totalEarnings, 0, 1, 'C');
+            $pdf->Ln(2); // move down by 2 units
+            $pdf->SetLineWidth(0.5); // set line width to 0.5 units
+            $pdf->Line(50, $pdf->GetY(), $pdf->GetPageWidth() - 50, $pdf->GetY()); // draw first line
+            $pdf->Ln(2); // move down by 2 units again
+            $pdf->Line(50, $pdf->GetY(), $pdf->GetPageWidth() - 50, $pdf->GetY()); // draw second line
+
+
+            // $signature = 'John Doe';
+            // $date = date('F j, Y');
+
+            // $pdf->SetY(-30);
+            // $pdf->SetFont('helvetica', 'B', 12);
+            // $pdf->Cell(0, 10, 'Signature: '.$signature, 0, 1, 'L');
+            // $pdf->Cell(0, 10, 'Date: '.$date, 0, 1, 'R');
+            // $pdf->Line(10, $pdf->GetY(), 200, $pdf->GetY());
+
             // print a block of text using Write()
             $pdf->Write(0, $txt, '', 0, 'C', true, 0, false, false, 0);
-
 
             
             // ---------------------------------------------------------
@@ -197,7 +230,7 @@ class Admin_userMg extends Controller
             ob_clean();
             ob_flush();
             //Close and output PDF document
-            $pdf->Output('example_003.pdf', 'I');
+            $pdf->Output('Assetcreator.pdf', 'D');
 
             ob_end_flush();
             ob_end_clean();
