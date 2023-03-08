@@ -143,6 +143,11 @@
                             <td><?php echo $user['userRole']; ?></td>
                             <td><?php echo $user['email']; ?></td>
 							<td>
+								<form action="/indieabode/Admin_userMg/viewUser/<?php echo $user['gamerID']; ?>" method="post"> 
+          							<input type="submit" name="view_user" value="view" class="view-user-btn">
+								</form>
+							</td>
+							<td>
 								<form action="/indieabode/Admin_userMg/downloadUser/<?php echo $user['gamerID']; ?>" method="post"> 
           							<input type="submit" name="download_user" value="download" class="download-user-btn">
 								</form>

@@ -8,9 +8,9 @@
     <title>Indieabode</title>
 
     <style>
-		body {
+		/* body {
 	background-image:url("<?php echo BASE_URL?>public/images/background/1.jpg");
-		}
+		} */
         <?php
         include 'public/css/admin.css';
         include 'public/css/admin_userMg.css';
@@ -89,18 +89,21 @@
                         <div class="report-dw">
                             <div class="view-summary">
                                 <input type="submit" name="view-sum" value="View Summary" class="view-sum-btn">
+                                <!-- <button id="print-btn">Print</button> -->
+                                <!-- <a href="" id="print-btn">Print</a> -->
+                                <!-- <form action="/indieabode/Admin_assetCreator/downloadPDF/<?php echo $user['gamerID']; ?>" method="post"> 
+          							<input type="submit" name="download_PDF" value="Block" class="dw-pdf-btn" id="print-btn">
+								</form> -->
+                                <!-- <a href="/indieabode/Admin_assetCreator_report/downloadPDF">Download PDF</a> -->
                             </div>
 
                             <div class="report-print">
-                                <input type="submit" name="print-r" value="Print" class="print-r">
+                                <!-- <input type="submit" name="print-r" value="Print" class="print-r"> -->
+                                <a href="/indieabode/Admin_assetCreator_report/downloadPDF">Download PDF</a>
                             </div>
                         </div>
 
                     </div>
-<!-- 
-                    <div class="report-input">
-
-                    </div> -->
 
                     <div class="report-details">
                         <div class="upload-game-report report-all">
@@ -188,23 +191,27 @@
 
 	<script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
 
-	<script>
-		function filterSelection(filter_text) {
+	<!-- <script>
+		// function filterSelection(filter_text) {
 
-		console.log(filter_text)
+		// console.log(filter_text)
 
-		if (filter_text==="all"){
-			window.location.href = '/indieabode/Admin_userMg'
-		}
+		// if (filter_text==="all"){
+		// 	window.location.href = '/indieabode/Admin_userMg'
+		// }
 
-		else{
-			window.location.href = '/indieabode/Admin_userMg/viewFilteredUser/'+ filter_text
-		}
+		// else{
+		// 	window.location.href = '/indieabode/Admin_userMg/viewFilteredUser/'+ filter_text
+		// }
 
 		
 
-		}
-	</script>
+		// }
+
+        $('#print-btn').click(function() {
+        window.print();
+        });
+	</script> -->
 
 
 </body>
