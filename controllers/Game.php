@@ -123,9 +123,11 @@ class Game extends Controller
         $this->view->render('Reviews/Game-Reviews');
     }
 
-      function download()
+    function download()
     {
         $downloadingDev = $this->model->currentUser($_SESSION['id']);
+
+        $this->model->updateGameDownloadStat($_GET['id'], date("Y-m-d"));
 
         $developerEmail = $downloadingDev['email'];
 
@@ -170,7 +172,7 @@ class Game extends Controller
         } catch (Exception $e) {
             $query = parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
             parse_str($query, $result);
-            header('location:/indieabode/game?' .http_build_query($result) );
+            header('location:/indieabode/game?' . http_build_query($result));
         }
 
         header('Cache-Control: public');
@@ -179,10 +181,6 @@ class Game extends Controller
         header("Content-Transfer-Encoding: utf-8");
         header("Content-Disposition: attachment; filename=$gameFileName");
         readfile($downloadPath);
-
-        
-
-        
     }
 
     function checkoutfree()
@@ -191,21 +189,21 @@ class Game extends Controller
         $this->view->render('Checkouts/GameCheckout');
     }
 
-    
+
     function report()
     {
         $reason = $_POST['reason'];
         $des = $_POST['Rdes'];
         $email = $_POST['email'];
         $id = $_SESSION['id'];
-        
-        $this->model->reportSubmit($reason, $des,$id, $email);
+
+        $this->model->reportSubmit($reason, $des, $id, $email);
 
         $query = parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
         parse_str($query, $result);
-        header('location:/indieabode/game?' .http_build_query($result) );
+        header('location:/indieabode/game?' . http_build_query($result));
     }
-    
+
     function AddToCart()
     {
         $this->model->AddtoCart($_GET['id'], $_SESSION['id']);
