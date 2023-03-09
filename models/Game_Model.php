@@ -110,7 +110,7 @@ class Game_Model extends Model
         return $stmt->fetchAll();
     }
 
-    
+
     function report()
     {
         $sql1 = "SELECT * FROM complaint_reasons_items";
@@ -156,10 +156,10 @@ class Game_Model extends Model
         //add all types of validation testing here
     }
 
-    
-    public function AddtoCart($itemID,$gamerID)
+
+    public function AddtoCart($itemID, $gamerID)
     {
-       
+
         // $itemID = 57;
 
 
@@ -169,9 +169,7 @@ class Game_Model extends Model
 
         $stmt = $this->db->prepare($sql);
 
-        $stmt->execute(["$itemID","$gamerID"]);
-
-        
+        $stmt->execute(["$itemID", "$gamerID"]);
     }
     function AlreadyInCart($gameID, $userID)
     {
@@ -266,13 +264,54 @@ class Game_Model extends Model
         return $developer;
     }
 
-    function reportSubmit($reason, $des,$id, $email)
+    function reportSubmit($reason, $des, $id, $email)
     {
         $sql = "INSERT INTO complaint (reason,description,gamerID,email) VALUES (?,?,?,?)";
 
         $stmt = $this->db->prepare($sql);
 
-        $stmt->execute(["$reason","$des","$id","$email"]);
+        $stmt->execute(["$reason", "$des", "$id", "$email"]);
         // $stmt->execute(["df","gyujg","tujf","jfj"]);
+    }
+
+    function updateGameDownloadStat($gameID, $todayDate)
+    {
+
+        $sql = "SELECT * FROM game_stats_history WHERE gameID='$gameID' AND created_at='$todayDate'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $record = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (empty($record)) {
+            $insertSQL = "INSERT INTO game_stats_history (gameID, views, downloads, ratings, reviews, created_at) VALUES ('$gameID', 0, 1, 0, 0, '$todayDate')";
+
+            $insertStmt = $this->db->prepare($insertSQL);
+
+            $insertStmt->execute();
+        } else {
+
+            $viewCount = $record['views'];
+
+            $downloadCount = $record['downloads'] + 1;
+
+            $ratingsCount = $record['ratings'];
+
+            $reviewCount = $record['reviews'];
+
+            $updateSQL = "UPDATE game_stats_history 
+            SET gameID='$gameID', 
+            views='$viewCount', 
+            downloads='$downloadCount', 
+            ratings = '$ratingsCount',
+            reviews = '$reviewCount',
+            created_at = '$todayDate' WHERE gameID = '$gameID' AND created_at='$todayDate'";
+
+            $updateStmt = $this->db->prepare($updateSQL);
+
+            $updateStmt->execute();
+        }
     }
 }

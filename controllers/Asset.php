@@ -43,12 +43,14 @@ class Asset extends Controller
     {
         $this->view->asset = $this->model->showSingleAsset($_GET['id']);
 
-        $this->view->render('Checkout');
+        $this->view->render('Checkouts/AssetCheckout');
     }
 
     function download()
     {
         $downloadingDev = $this->model->currentUser($_SESSION['id']);
+
+        $this->model->updateAssetDownloadStat($_GET['id'], date("Y-m-d"));
 
         $developerEmail = $downloadingDev['email'];
 
@@ -87,6 +89,9 @@ class Asset extends Controller
             $mail->Body = $email_template;
 
             $mail->send();
+
+
+            $this->model->AddtoLibrary($_GET['id'], $_SESSION['id']);
             //header('location:/indieabode/forgotpassword/resetmailsent');
             header("location:/indieabode/asset?id=" . $_GET['id']);
         } catch (Exception $e) {
@@ -101,8 +106,6 @@ class Asset extends Controller
         header("Content-Transfer-Encoding: utf-8");
         header("Content-Disposition: attachment; filename=$assetFileName");
         readfile($downloadPath);
-
-        $this->model->AddtoLibrary($_GET['id'], $_SESSION['id']);
     }
 
     function reviews()

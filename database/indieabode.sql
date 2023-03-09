@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 08, 2023 at 04:49 PM
+-- Generation Time: Mar 09, 2023 at 07:21 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -164,7 +164,31 @@ CREATE TABLE `asset_stats` (
 
 INSERT INTO `asset_stats` (`assetID`, `downloads`, `views`, `ratings`, `ratingCount`) VALUES
 (9, 0, 0, 0, 0),
-(10, 0, 0, 0, 0);
+(10, 0, 0, 0, 0),
+(17, 0, 0, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `asset_stats_history`
+--
+
+CREATE TABLE `asset_stats_history` (
+  `id` int(11) NOT NULL,
+  `assetID` int(11) NOT NULL,
+  `views` int(11) NOT NULL,
+  `downloads` int(11) NOT NULL,
+  `ratings` int(11) NOT NULL,
+  `reviews` int(11) NOT NULL,
+  `created_at` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `asset_stats_history`
+--
+
+INSERT INTO `asset_stats_history` (`id`, `assetID`, `views`, `downloads`, `ratings`, `reviews`, `created_at`) VALUES
+(1, 17, 0, 2, 0, 0, '2023-03-09');
 
 -- --------------------------------------------------------
 
@@ -187,11 +211,8 @@ INSERT INTO `cart` (`id`, `userID`, `itemID`) VALUES
 (2, '31', '2'),
 (3, '31', '1'),
 (4, '31', '1'),
-(5, '37', '2'),
-(6, '46', '12'),
-(7, '46', '12'),
-(8, '46', '14'),
-(9, '46', '16');
+(12, '51', '10'),
+(13, '51', '9');
 
 -- --------------------------------------------------------
 
@@ -484,7 +505,8 @@ CREATE TABLE `freeasset` (
 
 INSERT INTO `freeasset` (`assetID`, `assetName`, `assetGenre`, `assetPrice`, `version`, `assetDetails`, `assetScreenshots`, `assetTitle`, `assetTagline`, `assetClassification`, `assetReleaseStatus`, `assetTags`, `assetFile`, `assetLicense`, `assetCoverImg`, `assetVisibility`, `assetVideoURL`, `assetType`, `assetStyle`, `assetCreatorID`, `fileSize`, `fileExtension`, `created_at`) VALUES
 (9, 'Sprout Lands', '', '', '', '', 'SS-Sprout Lands-0.png,SS-Sprout Lands-1.png', '', 'Cute pixel pastel farming asset pack for free', '2d', 'released', 'pixel art, sprout la', 'asset-Sprout Lands.zip', 'proprietary', 'Cover-Sprout Lands.png', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'sprite', 'pixelart', 47, '', '', '0000-00-00 00:00:00'),
-(10, 'Cozy People', '', '', '', '', 'SS-Cozy People-0.png,SS-Cozy People-1.png', '', 'Animated characters, hairstyles and clothes!', '3d', 'released', 'food, sprites, icons', 'asset-Cozy People.zip', 'open-source', 'Cover-Cozy People.png', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'sprite', 'pixelart', 47, '', '', '0000-00-00 00:00:00');
+(10, 'Cozy People', '', '', '', '', 'SS-Cozy People-0.png,SS-Cozy People-1.png', '', 'Animated characters, hairstyles and clothes!', '3d', 'released', 'food, sprites, icons', 'asset-Cozy People.zip', 'open-source', 'Cover-Cozy People.png', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'sprite', 'pixelart', 47, '', '', '0000-00-00 00:00:00'),
+(17, 'New Asset', '', '', '', '', 'SS-New Asset-0.jpg,SS-New Asset-1.png', '', 'Buy this one ASAP', '2d', 'released', 'feff', 'asset-New Asset.zip', 'proprietary', 'Cover-New Asset.png', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'skybox', '16bit', 47, '', '', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -816,9 +838,9 @@ CREATE TABLE `game_stats_history` (
 INSERT INTO `game_stats_history` (`id`, `gameID`, `views`, `downloads`, `ratings`, `reviews`, `created_at`) VALUES
 (1, 89, 2, 1, 4, 1, '2023-03-07'),
 (2, 89, 4, 2, 5, 4, '2023-03-08'),
-(3, 89, 7, 2, 2, 1, '2023-03-09'),
-(4, 89, 13, 7, 5, 1, '2023-03-10'),
-(5, 89, 4, 1, 5, 4, '2023-03-11');
+(7, 101, 0, 3, 0, 0, '2023-03-09'),
+(8, 90, 0, 1, 0, 0, '2023-03-09'),
+(9, 105, 0, 2, 0, 0, '2023-03-09');
 
 -- --------------------------------------------------------
 
@@ -841,16 +863,17 @@ CREATE TABLE `gig` (
   `estimatedShare` varchar(50) NOT NULL,
   `expectedCost` varchar(30) NOT NULL,
   `visibility` varchar(10) NOT NULL,
-  `gigCoverImg` varchar(100) NOT NULL
+  `gigCoverImg` varchar(100) NOT NULL,
+  `orderedDate` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `gig`
 --
 
-INSERT INTO `gig` (`gigID`, `gigName`, `gigTrailor`, `gigScreenshot`, `gigDetails`, `game`, `gameDeveloperID`, `gamePublisherID`, `gigTagline`, `currentStage`, `plannedReleaseDate`, `estimatedShare`, `expectedCost`, `visibility`, `gigCoverImg`) VALUES
-(12, 'Local Bus Simulator', 'https://www.indiegala.com/login', 'SS-Naruto Shippuden-0.jpg,SS-Naruto Shippuden-1.jpg,SS-Naruto Shippuden-2.jpg', 'cscsc', '89', 46, 0, 'Bus simulator game consisting with customizable local buses ', 'adventure', '21/02/2024', '12%', '$1000', 'draft', 'Cover-Local Bus Simulator.jpg'),
-(13, 'Indie Desert FPS ', 'https://www.indiegala.com/login', 'SS-Stray-0.jpg,SS-Stray-1.jpg,SS-Stray-2.jpg,SS-Stray-3.jpg', 'fefeff', '93', 46, 0, 'Surviving an endless desert after being stranded by you know', 'action', '21/02/2024', '12%', '$1000', 'draft', 'Cover-Indie Desert FPS .jpg');
+INSERT INTO `gig` (`gigID`, `gigName`, `gigTrailor`, `gigScreenshot`, `gigDetails`, `game`, `gameDeveloperID`, `gamePublisherID`, `gigTagline`, `currentStage`, `plannedReleaseDate`, `estimatedShare`, `expectedCost`, `visibility`, `gigCoverImg`, `orderedDate`) VALUES
+(12, 'Local Bus Simulator', 'https://www.indiegala.com/login', 'SS-Naruto Shippuden-0.jpg,SS-Naruto Shippuden-1.jpg,SS-Naruto Shippuden-2.jpg', 'cscsc', '89', 46, 0, 'Bus simulator game consisting with customizable local buses ', 'adventure', '21/02/2024', '12%', '$1000', 'draft', 'Cover-Local Bus Simulator.jpg', NULL),
+(13, 'Indie Desert FPS ', 'https://www.indiegala.com/login', 'SS-Stray-0.jpg,SS-Stray-1.jpg,SS-Stray-2.jpg,SS-Stray-3.jpg', 'fefeff', '93', 46, 0, 'Surviving an endless desert after being stranded by you know', 'action', '21/02/2024', '12%', '$1000', 'draft', 'Cover-Indie Desert FPS .jpg', NULL);
 
 -- --------------------------------------------------------
 
@@ -902,12 +925,19 @@ CREATE TABLE `library` (
 --
 
 INSERT INTO `library` (`id`, `developerID`, `itemID`) VALUES
-(3, '12', '1'),
-(8, '30', '1'),
-(9, '30', '2'),
-(10, '39', '2'),
-(16, '46', '9'),
-(20, '46', '10');
+(24, '46', '9'),
+(28, '46', '90'),
+(29, '46', '92'),
+(30, '46', '96'),
+(31, '46', '101'),
+(32, '51', '101'),
+(33, '51', '101'),
+(34, '51', '90'),
+(35, '46', '105'),
+(36, '51', '105'),
+(37, '46', '10'),
+(38, '46', '17'),
+(39, '51', '17');
 
 -- --------------------------------------------------------
 
@@ -1154,6 +1184,12 @@ ALTER TABLE `asset_stats`
   ADD PRIMARY KEY (`assetID`);
 
 --
+-- Indexes for table `asset_stats_history`
+--
+ALTER TABLE `asset_stats_history`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `cart`
 --
 ALTER TABLE `cart`
@@ -1317,10 +1353,16 @@ ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `asset_stats_history`
+--
+ALTER TABLE `asset_stats_history`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `complaint_reasons_items`
@@ -1374,7 +1416,7 @@ ALTER TABLE `devlog_posttype`
 -- AUTO_INCREMENT for table `freeasset`
 --
 ALTER TABLE `freeasset`
-  MODIFY `assetID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `assetID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `freegame`
@@ -1416,7 +1458,7 @@ ALTER TABLE `game_reviews`
 -- AUTO_INCREMENT for table `game_stats_history`
 --
 ALTER TABLE `game_stats_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `gig`
@@ -1428,7 +1470,7 @@ ALTER TABLE `gig`
 -- AUTO_INCREMENT for table `library`
 --
 ALTER TABLE `library`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `submission`
