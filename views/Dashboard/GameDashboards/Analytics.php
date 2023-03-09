@@ -59,11 +59,12 @@
 
     <script>
         //setup block
-        var downloads = <?= json_encode($this->alldownloads); ?>
+        var downloads = <?= json_encode($this->alldownloads); ?>;
+        var labelDates = <?= json_encode($this->labelDates); ?>;
 
         console.log(downloads);
         const data = {
-            labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+            labels: labelDates,
             datasets: [{
                 label: "# of Votes",
                 data: downloads,

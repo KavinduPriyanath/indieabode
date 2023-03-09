@@ -264,12 +264,15 @@ class Dashboard extends Controller
         $gameStats = $this->model->GetGameStats($_GET['id']);
 
         $downloads = [];
+        $dates = [];
 
         foreach ($gameStats as $gameStat) {
             array_push($downloads, $gameStat['downloads']);
+            array_push($dates, $gameStat['created_at']);
         }
 
         $this->view->alldownloads = $downloads;
+        $this->view->labelDates = $dates;
 
         $this->view->game = $this->model->GetGameDetails($_GET['id']);
 
