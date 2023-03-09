@@ -93,6 +93,8 @@ class Asset extends Controller
             header('location:/indieabode/downloadfailed');
         }
 
+
+
         header('Cache-Control: public');
         header('Content-Description: File Transfer');
         header('Content-Type: application/zip');
@@ -117,6 +119,6 @@ class Asset extends Controller
         $query = parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
         parse_str($query, $result);
 
-        header('Location:/indieabode/asset/?' . http_build_query($result));
+        header('Location:/indieabode/asset?' . http_build_query($result));
     }
 }

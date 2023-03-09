@@ -183,7 +183,7 @@
 
 
 
-    <script src="<?php echo BASE_URL; ?>public/js/assets.js"></script>
+    <script src="<?php echo BASE_URL; ?>public/js/asset.js"></script>
 
     <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
 
