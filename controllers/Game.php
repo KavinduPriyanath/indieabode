@@ -1,5 +1,11 @@
 <?php
 
+require "includes/PHPMailer/vendor/autoload.php";
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+
+
 class Game extends Controller
 {
 
@@ -26,6 +32,12 @@ class Game extends Controller
             $this->view->popularGames = $this->model->PopularGames();
 
             $this->view->reportReasons = $this->model->ComplaintReasons();
+
+            $this->view->hasInCart = $this->model->AlreadyInCart($gameID, $_SESSION['id']);
+
+            $this->view->hasClaimed = $this->model->AlreadyClaimed($gameID, $_SESSION['id']);
+
+            $this->view->Isfree = $this->model->free($gameID,);
 
             $this->view->render('SingleGame');
         }
@@ -109,5 +121,98 @@ class Game extends Controller
         }
 
         $this->view->render('Reviews/Game-Reviews');
+    }
+
+      function download()
+    {
+        $downloadingDev = $this->model->currentUser($_SESSION['id']);
+
+        $developerEmail = $downloadingDev['email'];
+
+        $gameFileName = $this->model->downloadFile($_GET['id']);
+
+        $gameFilePath = 'public/uploads/games/file/';
+
+        $downloadPath = $gameFilePath . $gameFileName;
+
+        //sending an email receipt
+        try {
+            $mail = new PHPMailer(true);
+
+            $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+
+            $mail->isSMTP();
+            $mail->SMTPAuth = true;
+
+            $mail->Host = "smtp.gmail.com";
+            $mail->SMTPSecure = "tls";
+            $mail->Port = 587;
+
+            $mail->Username = "tech2019man@gmail.com";
+            $mail->Password = "qohvqzbaieleualv";
+
+            $mail->setFrom("tech2019man@gmail.com", "Indieabode");
+            $mail->addAddress($developerEmail);
+
+            $email_template = '
+                <h2>Hello</h2>
+                <p>You have purchased this game</p>
+            ';
+
+            $mail->isHTML(true);
+            $mail->Subject = "New game";
+            $mail->Body = $email_template;
+
+            $mail->send();
+            //header('location:/indieabode/forgotpassword/resetmailsent');
+
+            $this->model->AddtoLibrary($_GET['id'], $_SESSION['id']);
+        } catch (Exception $e) {
+            $query = parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
+            parse_str($query, $result);
+            header('location:/indieabode/game?' .http_build_query($result) );
+        }
+
+        header('Cache-Control: public');
+        header('Content-Description: File Transfer');
+        header('Content-Type: application/zip');
+        header("Content-Transfer-Encoding: utf-8");
+        header("Content-Disposition: attachment; filename=$gameFileName");
+        readfile($downloadPath);
+
+        
+
+        
+    }
+
+    function checkoutfree()
+    {
+        $this->view->check = $this->model->showSingleGame($_GET['id']);
+        $this->view->render('Checkouts/GameCheckout');
+    }
+
+    
+    function report()
+    {
+        $reason = $_POST['reason'];
+        $des = $_POST['Rdes'];
+        $email = $_POST['email'];
+        $id = $_SESSION['id'];
+        
+        $this->model->reportSubmit($reason, $des,$id, $email);
+
+        $query = parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
+        parse_str($query, $result);
+        header('location:/indieabode/game?' .http_build_query($result) );
+    }
+    
+    function AddToCart()
+    {
+        $this->model->AddtoCart($_GET['id'], $_SESSION['id']);
+
+        $query = parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
+        parse_str($query, $result);
+
+        header('Location:/indieabode/game/?' . http_build_query($result));
     }
 }
