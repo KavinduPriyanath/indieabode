@@ -78,8 +78,37 @@
         <div class="card">
             <div class="card-image game" style="background-image: url('<?php echo '/indieabode/public/uploads/games/cover/' . $this->game['gameCoverImg']; ?>')"></div>
             <h3>Free</h3>
-            <div class="buy-btn" onclick="ButtonClick()">Buy Now</div>
-            <div class="buy-btn" onclick="ButtonClick()">Add to Cart</div>
+            <div class="cartbutton">
+               
+
+                <?php if ($this->hasInCart) { ?>
+                
+                <a href="/indieabode/cart" style="text-decoration: none;">
+                        <div class="buy-btn" id="cart-btn">View In Cart</div>
+                    </a>
+                <?php } else { ?>
+                
+                <a href="/indieabode/game/addToCart?id=<?= $this->game['gameID'] ?> "style="text-decoration: none;">
+                        <div class="buy-btn" id="cart-btn">Add to cart</div>
+                    </a>
+                <?php } ?>
+            </div>
+
+            <?php if ($this->hasClaimed) { ?>
+                <a href="/indieabode/library" style="text-decoration: none;">
+                    <div class="buy-btn" id="buy-btn">In Library</div>
+                </a>
+            <?php } else { ?>
+                <?php if ($this->Isfree) { ?>
+                    <a href="/indieabode/game/checkoutfree?id=<?= $this->game['gameID'] ?>" style="text-decoration: none;">
+                        <div class="buy-btn" id="buy-btn">Free Download</div>
+                    </a>
+                <?php } else { ?>
+                    <a href="/indieabode/CheckoutSingle?id=<?= $this->game['gameID'] ?>" style="text-decoration: none;">
+                                <div class="buy-btnr" id="buy-btn">Buy Now</div>
+                            </a>
+                <?php } ?>
+            <?php } ?>
 
             <div class="row">
                 <p class="title">Release Date</p>
@@ -285,7 +314,11 @@
 
     <script>
         function ButtonClick() {
-            alert("Cant perform this action as a gamedeveloper");
+            <?php if(isset($_SESSION['logged']) && $_SESSION['role'] != "gamer") {?>
+                alert("This action can only be performed as a gamer");
+            <?php } else if (!isset($_SESSION['logged'])) { ?>
+                alert("You should be logged in first.");
+                <?php } ?>
         }
     </script>
 
