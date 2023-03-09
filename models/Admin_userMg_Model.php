@@ -65,4 +65,72 @@ class Admin_userMg_Model extends Model
 
         return $user;
     }
+
+
+    //Report for asset creator
+    function assetCreator($user_id){
+
+        
+        $sql = "SELECT * FROM freeasset WHERE assetCreatorID = ".$user_id;
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $user;
+    }
+
+    function downloadAssets($assetID){
+        $sql = "SELECT COUNT(*) AS total FROM downloadasset WHERE assetID = ".$assetID;
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $downloads = $row['total'];
+
+        print_r($row);
+
+        return $downloads;
+    }
+
+    function assetPrice($assetID){
+
+        //count total downloads of the specific asset 
+        $sql = "SELECT COUNT(*) AS total FROM downloadasset WHERE assetID = ".$assetID;
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $downloads = $row['total'];
+
+
+        // get the price of the specific asset
+        $getprice = "SELECT assetPrice FROM freeasset WHERE assetID = ".$assetID;
+
+        $stmt1 = $this->db->prepare($getprice);
+
+        $stmt1->execute();
+
+        $assetP = $stmt1->fetch(PDO::FETCH_ASSOC);
+
+        $unitPrice = $assetP['assetPrice'];
+
+        //calculate total earning
+        if($downloads == 0 || $unitPrice == 0)
+            $totalPrice = 0;
+        else
+            $totalPrice = $downloads * $unitPrice;
+
+        return $totalPrice;
+
+    }
+
 }
