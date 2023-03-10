@@ -93,7 +93,7 @@ class Admin_userMg_Model extends Model
 
         $downloads = $row['total'];
 
-        print_r($row);
+        // print_r($row);
 
         return $downloads;
     }
@@ -133,4 +133,19 @@ class Admin_userMg_Model extends Model
 
     }
 
+
+    //Report for Game Publisher
+    function gamePublisher($user_id){
+
+        
+        $sql = "SELECT * FROM gig WHERE gamePublisherID = ".$user_id;
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $user;
+    }
 }
