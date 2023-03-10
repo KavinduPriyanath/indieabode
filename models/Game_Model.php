@@ -264,14 +264,13 @@ class Game_Model extends Model
         return $developer;
     }
 
-    function reportSubmit($reason, $des, $id, $email)
+    function reportSubmit($reason, $description, $id, $type)
     {
-        $sql = "INSERT INTO complaint (reason,description,gamerID,email) VALUES (?,?,?,?)";
+        $sql = "INSERT INTO complaint (reason,description,gamerID,type) VALUES (?,?,?,?)";
 
         $stmt = $this->db->prepare($sql);
 
-        $stmt->execute(["$reason", "$des", "$id", "$email"]);
-        // $stmt->execute(["df","gyujg","tujf","jfj"]);
+        $stmt->execute(["$reason", "$description", "$id", "$type"]);
     }
 
     function updateGameDownloadStat($gameID, $todayDate)
