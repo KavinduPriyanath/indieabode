@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <title>Indieabode</title>
 
     <style>
@@ -79,16 +80,16 @@
             <div class="card-image game" style="background-image: url('<?php echo '/indieabode/public/uploads/games/cover/' . $this->game['gameCoverImg']; ?>')"></div>
             <h3>Free</h3>
             <div class="cartbutton">
-               
+
 
                 <?php if ($this->hasInCart) { ?>
-                
-                <a href="/indieabode/cart" style="text-decoration: none;">
+
+                    <a href="/indieabode/cart" style="text-decoration: none;">
                         <div class="buy-btn" id="cart-btn">View In Cart</div>
                     </a>
                 <?php } else { ?>
-                
-                <a href="/indieabode/game/addToCart?id=<?= $this->game['gameID'] ?> "style="text-decoration: none;">
+
+                    <a href="/indieabode/game/addToCart?id=<?= $this->game['gameID'] ?> " style="text-decoration: none;">
                         <div class="buy-btn" id="cart-btn">Add to cart</div>
                     </a>
                 <?php } ?>
@@ -105,8 +106,8 @@
                     </a>
                 <?php } else { ?>
                     <a href="/indieabode/CheckoutSingle?id=<?= $this->game['gameID'] ?>" style="text-decoration: none;">
-                                <div class="buy-btnr" id="buy-btn">Buy Now</div>
-                            </a>
+                        <div class="buy-btnr" id="buy-btn">Buy Now</div>
+                    </a>
                 <?php } ?>
             <?php } ?>
 
@@ -269,31 +270,24 @@
                     shared with the creator of the page if necessary.
                 </div>
                 <div class="report-form">
-                    <form action="" method="post">
-                        <h3>Reasons</h3>
+                    <h3>Reasons</h3>
 
-                        <div class="reasons">
+                    <div class="reasons">
 
-                            <?php foreach ($this->reportReasons as $reportReason) { ?>
-                                <div class="reason">
-                                    <input type="radio" name="reasons" id="" />
-                                    <label for=""><?= $reportReason['reason']; ?></label>
-                                </div>
-                            <?php } ?>
+                        <?php foreach ($this->reportReasons as $reportReason) { ?>
+                            <div class="reason">
+                                <input type="radio" name="reasons" id="" value="<?= $reportReason['reason']; ?>" />
+                                <label for=""><?= $reportReason['reason']; ?></label>
+                            </div>
+                        <?php } ?>
 
-                        </div>
+                    </div>
 
-                        <h3>Descrption</h3>
-                        <textarea name="" id="" cols="30" rows="10"></textarea>
+                    <h3>Descrption</h3>
+                    <textarea name="" id="description" cols="30" rows="10"></textarea>
 
-                        <p>
-                            <span>Your email</span>— If your report needs a reply we'll use it
-                            to communicate with you
-                        </p>
-                        <input type="text" />
-                        <br />
-                        <button type="submit">Submit Report</button>
-                    </form>
+                    <br />
+                    <button type="submit" id="report-submit">Submit Report</button>
                 </div>
             </div>
         </div>
@@ -305,7 +299,7 @@
     include 'includes/footer.php';
     ?>
 
-    <script src="<?php echo BASE_URL; ?>public/js/assets.js"></script>
+    <script src="<?php echo BASE_URL; ?>public/js/asset.js"></script>
 
     <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
 
@@ -314,12 +308,45 @@
 
     <script>
         function ButtonClick() {
-            <?php if(isset($_SESSION['logged']) && $_SESSION['role'] != "gamer") {?>
+            <?php if (isset($_SESSION['logged']) && $_SESSION['userRole'] != "gamer") { ?>
                 alert("This action can only be performed as a gamer");
             <?php } else if (!isset($_SESSION['logged'])) { ?>
                 alert("You should be logged in first.");
-                <?php } ?>
+            <?php } ?>
         }
+    </script>
+
+    <script>
+        $(document).ready(function() {
+
+            $('#report-submit').click(function() {
+
+                console.log("Button Clicked");
+
+                var description = $('#description').val();
+                var reason = $("input[name='reasons']:checked").val();
+
+                var data = {
+                    'description': description,
+                    'reason': reason,
+                    'report_submit': true,
+                };
+
+                $.ajax({
+                    url: "/indieabode/game/report?id=<?= $this->game['gameID']; ?>",
+                    method: "POST",
+                    data: data,
+                    success: function(response) {
+                        $('#modal').removeClass("active");
+                        $('#overlay').removeClass("active");
+
+                        // alert(response);
+                    }
+                })
+
+            });
+
+        });
     </script>
 
 </body>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 09, 2023 at 07:21 PM
+-- Generation Time: Mar 10, 2023 at 04:58 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -224,8 +224,17 @@ CREATE TABLE `complaint` (
   `complaintID` int(11) NOT NULL,
   `reason` varchar(40) NOT NULL,
   `description` text NOT NULL,
-  `gamerID` int(11) NOT NULL
+  `gamerID` int(11) NOT NULL,
+  `type` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `complaint`
+--
+
+INSERT INTO `complaint` (`complaintID`, `reason`, `description`, `gamerID`, `type`) VALUES
+(2, 'Spam', 'Not Cheerful as it claims', 46, 'Game'),
+(3, 'Spam', 'I made the same game', 46, 'Game');
 
 -- --------------------------------------------------------
 
@@ -725,6 +734,14 @@ CREATE TABLE `games_cart` (
   `itemID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `games_cart`
+--
+
+INSERT INTO `games_cart` (`id`, `gamerID`, `itemID`) VALUES
+(1, 52, 96),
+(2, 46, 91);
+
 -- --------------------------------------------------------
 
 --
@@ -1196,6 +1213,12 @@ ALTER TABLE `cart`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `complaint`
+--
+ALTER TABLE `complaint`
+  ADD PRIMARY KEY (`complaintID`);
+
+--
 -- Indexes for table `complaint_reasons_items`
 --
 ALTER TABLE `complaint_reasons_items`
@@ -1365,6 +1388,12 @@ ALTER TABLE `cart`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
+-- AUTO_INCREMENT for table `complaint`
+--
+ALTER TABLE `complaint`
+  MODIFY `complaintID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `complaint_reasons_items`
 --
 ALTER TABLE `complaint_reasons_items`
@@ -1440,7 +1469,7 @@ ALTER TABLE `gamer`
 -- AUTO_INCREMENT for table `games_cart`
 --
 ALTER TABLE `games_cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `games_filters`

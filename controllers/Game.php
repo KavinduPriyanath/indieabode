@@ -192,16 +192,28 @@ class Game extends Controller
 
     function report()
     {
-        $reason = $_POST['reason'];
-        $des = $_POST['Rdes'];
-        $email = $_POST['email'];
-        $id = $_SESSION['id'];
+        // $reason = $_POST['reason'];
+        // $des = $_POST['Rdes'];
+        // $email = $_POST['email'];
+        // $id = $_SESSION['id'];
 
-        $this->model->reportSubmit($reason, $des, $id, $email);
+        // $this->model->reportSubmit($reason, $des, $id, $email);
 
-        $query = parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
-        parse_str($query, $result);
-        header('location:/indieabode/game?' . http_build_query($result));
+        // $query = parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
+        // parse_str($query, $result);
+        // header('location:/indieabode/game?' . http_build_query($result));
+
+        if (isset($_POST['report_submit'])) {
+
+            $reason = $_POST['reason'];
+            $description = $_POST['description'];
+            $type = "Game";
+            $gamerID = $_SESSION['id'];
+
+            $this->model->reportSubmit($reason, $description, $gamerID, $type);
+        }
+
+        // echo "Successful";
     }
 
     function AddToCart()
