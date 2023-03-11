@@ -34,6 +34,7 @@ class Login extends Controller
             header('location:/indieabode/SiteDashboard');
         } else if (!empty($user) && $user['verified'] == 1) {
             //$_SESSION['role'] = "Game-Developer";
+            $_SESSION['session'] = rand(10, 100);
             $_SESSION['logged'] = $user['gamerID'];
             $_SESSION['username'] = $user['username'];
             $_SESSION['id'] = $user['gamerID'];

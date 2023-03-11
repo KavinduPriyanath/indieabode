@@ -21,6 +21,9 @@
     include 'includes/navbar.php';
     ?>
 
+    <?php echo $_SESSION['session']; ?>
+    <?php print_r($_SERVER['REMOTE_ADDR']); ?>
+
 
     <?php if (isset($_SESSION['status'])) { ?>
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 10, 2023 at 04:58 PM
+-- Generation Time: Mar 11, 2023 at 02:56 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -787,6 +787,34 @@ INSERT INTO `games_filters` (`id`, `type`, `filter`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `games_view_tracker`
+--
+
+CREATE TABLE `games_view_tracker` (
+  `id` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
+  `sessionID` int(11) NOT NULL,
+  `gameID` int(11) NOT NULL,
+  `viewed_date` date DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `games_view_tracker`
+--
+
+INSERT INTO `games_view_tracker` (`id`, `userID`, `sessionID`, `gameID`, `viewed_date`) VALUES
+(10, 46, 83, 90, '2023-03-11'),
+(11, 46, 83, 91, '2023-03-11'),
+(12, 46, 83, 96, '2023-03-11'),
+(13, 51, 30, 90, '2023-03-11'),
+(14, 0, 0, 90, '2023-03-11'),
+(15, 46, 76, 90, '2023-03-11'),
+(16, 46, 76, 92, '2023-03-11'),
+(17, 46, 76, 96, '2023-03-11');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `game_reviews`
 --
 
@@ -857,7 +885,11 @@ INSERT INTO `game_stats_history` (`id`, `gameID`, `views`, `downloads`, `ratings
 (2, 89, 4, 2, 5, 4, '2023-03-08'),
 (7, 101, 0, 3, 0, 0, '2023-03-09'),
 (8, 90, 0, 1, 0, 0, '2023-03-09'),
-(9, 105, 0, 2, 0, 0, '2023-03-09');
+(9, 105, 0, 2, 0, 0, '2023-03-09'),
+(13, 90, 4, 2, 0, 0, '2023-03-11'),
+(14, 91, 1, 0, 0, 0, '2023-03-11'),
+(15, 96, 2, 1, 0, 0, '2023-03-11'),
+(16, 92, 1, 1, 0, 0, '2023-03-11');
 
 -- --------------------------------------------------------
 
@@ -942,19 +974,8 @@ CREATE TABLE `library` (
 --
 
 INSERT INTO `library` (`id`, `developerID`, `itemID`) VALUES
-(24, '46', '9'),
-(28, '46', '90'),
-(29, '46', '92'),
-(30, '46', '96'),
-(31, '46', '101'),
-(32, '51', '101'),
-(33, '51', '101'),
-(34, '51', '90'),
-(35, '46', '105'),
-(36, '51', '105'),
-(37, '46', '10'),
-(38, '46', '17'),
-(39, '51', '17');
+(41, '46', '92'),
+(42, '46', '96');
 
 -- --------------------------------------------------------
 
@@ -1308,6 +1329,12 @@ ALTER TABLE `games_filters`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `games_view_tracker`
+--
+ALTER TABLE `games_view_tracker`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `game_reviews`
 --
 ALTER TABLE `game_reviews`
@@ -1478,6 +1505,12 @@ ALTER TABLE `games_filters`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
+-- AUTO_INCREMENT for table `games_view_tracker`
+--
+ALTER TABLE `games_view_tracker`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
 -- AUTO_INCREMENT for table `game_reviews`
 --
 ALTER TABLE `game_reviews`
@@ -1487,7 +1520,7 @@ ALTER TABLE `game_reviews`
 -- AUTO_INCREMENT for table `game_stats_history`
 --
 ALTER TABLE `game_stats_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `gig`
@@ -1499,7 +1532,7 @@ ALTER TABLE `gig`
 -- AUTO_INCREMENT for table `library`
 --
 ALTER TABLE `library`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `submission`

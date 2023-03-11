@@ -37,7 +37,13 @@ class Game extends Controller
 
             $this->view->hasClaimed = $this->model->AlreadyClaimed($gameID, $_SESSION['id']);
 
-            $this->view->Isfree = $this->model->free($gameID,);
+            $this->view->Isfree = $this->model->free($gameID);
+
+            $ViewTracker = $this->model->GameViewTracker($_SESSION['id'], $_SESSION['session'], $gameID);
+
+            if ($ViewTracker) {
+                $this->model->updateGameViewStat($_GET['id'], date("Y-m-d"));
+            }
 
             $this->view->render('SingleGame');
         }
