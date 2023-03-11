@@ -82,7 +82,7 @@
                 <div class="report-container">
                     <div class="reprot-header">
                         <div class="report-name">
-                            Prasad Darshana (Assets Creator)<br>
+                            <?php echo $user['username'] ?>(Assets Creator)<br>
                             <span class="user-mail-r">test@gmail.com</span>
                         </div>
 
