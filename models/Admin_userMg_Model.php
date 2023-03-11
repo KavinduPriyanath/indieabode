@@ -148,4 +148,90 @@ class Admin_userMg_Model extends Model
 
         return $user;
     }
+
+     //Report for Game Jam Organizer
+    function JamOrganizer($user_id){
+
+        
+        $sql = "SELECT * FROM gamejam WHERE jamHostID = ".$user_id;
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $user;
+    }
+
+    function getTotalSubmissions($jamID){
+        $sql = "SELECT COUNT(*) AS total FROM submission WHERE gameJamID = ".$jamID;
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $submissions = $row['total'];
+
+        // print_r($row);
+
+        return $submissions;
+    }
+
+    // function getFirstPlace($jamID){
+    //     $sql = "SELECT submissionID  FROM submission WHERE gameJamID = ".$jamID." ORDER BY rating DESC LIMIT 1";
+
+        
+    //     $stmt = $this->db->prepare($sql);
+
+    //     $stmt->execute();
+
+    //     $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    //     $firstSubmission = $row['submissionID'];
+
+    //     $sql1 = "SELECT * FROM freegame WHERE gameID = ".$firstSubmission;
+
+    //     // print_r($row);
+
+    //     $stmt = $this->db->prepare($sql1);
+
+    //     $stmt->execute();
+
+    //     $submission = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    //     return $submission;  
+    // }
+    function getFirstPlace($jamID){
+        if ($jamID === null) {
+            return null;
+        }
+    
+        $sql = "SELECT submissionID FROM submission WHERE gameJamID = ".$jamID." ORDER BY rating ASC LIMIT 1";
+    
+        $stmt = $this->db->prepare($sql);
+    
+        $stmt->execute();
+    
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        if (!$row) {
+            return null;
+        }
+    
+        $firstSubmission = $row['submissionID'];
+    
+        $sql1 = "SELECT * FROM freegame WHERE gameID = ".$firstSubmission;
+    
+        $stmt = $this->db->prepare($sql1);
+    
+        $stmt->execute();
+    
+        $submission = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+        print_r($submission);
+        return $submission;  
+    }
+    
+    
 }
