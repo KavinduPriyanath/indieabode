@@ -313,4 +313,74 @@ class Game_Model extends Model
             $updateStmt->execute();
         }
     }
+
+    function GameViewTracker($userID, $session, $gameID)
+    {
+
+        $sql = "SELECT * FROM games_view_tracker WHERE gameID='$gameID' AND userID='$userID' AND sessionID='$session'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $gameView = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (empty($gameView)) {
+            $viewSQL = "INSERT INTO games_view_tracker(userID, sessionID, gameID) VALUES ('$userID', '$session', '$gameID')";
+
+            $viewStmt = $this->db->prepare($viewSQL);
+
+            $viewStmt->execute();
+            return true;
+        } else if (!empty($gameView)) {
+            return false;
+        }
+    }
+
+    // Used to update views count for each game on a single day
+    function updateGameViewStat($gameID, $todayDate)
+    {
+        // This block of code checks whether the current game we are viewing has a record made in the game_stats_history table
+        // If someone had viewed the game or downloaded the game today there should be a record there.
+
+        $sql = "SELECT * FROM game_stats_history WHERE gameID='$gameID' AND created_at='$todayDate'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $record = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (empty($record)) {
+            //If such record do not exist then a record should have been made regarding this game and today's date
+
+            $insertSQL = "INSERT INTO game_stats_history (gameID, views, downloads, ratings, reviews, created_at) VALUES ('$gameID', 1, 0, 0, 0, '$todayDate')";
+
+            $insertStmt = $this->db->prepare($insertSQL);
+
+            $insertStmt->execute();
+        } else {
+            //If such record already exist then only the view attribute of that column should be updated by incrementing one
+
+            $viewCount = $record['views'] + 1;
+
+            $downloadCount = $record['downloads'];
+
+            $ratingsCount = $record['ratings'];
+
+            $reviewCount = $record['reviews'];
+
+            $updateSQL = "UPDATE game_stats_history 
+            SET gameID='$gameID', 
+            views='$viewCount', 
+            downloads='$downloadCount', 
+            ratings = '$ratingsCount',
+            reviews = '$reviewCount',
+            created_at = '$todayDate' WHERE gameID = '$gameID' AND created_at='$todayDate'";
+
+            $updateStmt = $this->db->prepare($updateSQL);
+
+            $updateStmt->execute();
+        }
+    }
 }

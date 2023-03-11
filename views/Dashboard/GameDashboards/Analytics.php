@@ -42,6 +42,10 @@
                 <canvas id="myChart"></canvas>
             </div>
 
+            <div style="width: 600px; height: 600px">
+                <canvas id="myViewChart"></canvas>
+            </div>
+
 
         </div>
     </div>
@@ -91,6 +95,8 @@
             config
         );
     </script>
+
+
 
 </body>
 
