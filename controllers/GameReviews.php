@@ -12,18 +12,34 @@ class GameReviews extends Controller
 
     function index()
     {
+
         if (isset($_POST['rating_data'])) {
 
-            $data = array(
-                ':review' => $_POST['review'],
-                ':rating' => $_POST['rating_data'],
-                ':topic' => $_POST['topic'],
-                ':gameID' => $_GET['id'],
-                ':userID' => $_SESSION['id'],
-                ':recommendation' => $_POST['recommendation']
-            );
+            // $data = array(
+            //     ':review' => $_POST['review'],
+            //     ':rating' => $_POST['rating_data'],
+            //     ':topic' => $_POST['topic'],
+            //     ':gameID' => $_GET['id'],
+            //     ':userID' => $_SESSION['id'],
+            //     ':recommendation' => $_POST['recommendation']
+            // );
 
-            $this->model->Reviews($data);
+            $review = $_POST['review'];
+            $rating = $_POST['rating_data'];
+            $topic = $_POST['topic'];
+            $gameID = $_GET['id'];
+            $userID = $_SESSION['id'];
+            $recommendation = $_POST['recommendation'];
+
+            $oldRating = $_POST['rating'];
+
+            if ($rating == 0) {
+                $ratedCount = $oldRating;
+            } else {
+                $ratedCount = $rating;
+            }
+
+            $this->model->Reviews($review, $ratedCount, $topic, $gameID, $userID, $recommendation);
 
             echo "Your Review & Rating Successfully Submitted";
         }
@@ -79,6 +95,12 @@ class GameReviews extends Controller
 
             $average_rating = $total_user_rating / $total_review;
 
+            $thisUserHasReviewed = $this->model->HasReviewedThisGame($_SESSION['id'], $_GET['id']);
+
+            $thisUserReview = $this->model->HisThisGameReview($_SESSION['id'], $_GET['id']);
+
+            $reviewerInfo = $this->model->ReviewerInfo($_SESSION['id']);
+
             $output = array(
                 'average_rating'    =>    number_format($average_rating, 1),
                 'total_review'        =>    $total_review,
@@ -87,10 +109,30 @@ class GameReviews extends Controller
                 'three_star_review'    =>    $three_star_review,
                 'two_star_review'    =>    $two_star_review,
                 'one_star_review'    =>    $one_star_review,
-                'review_data'        =>    $review_content
+                'review_data'        =>    $review_content,
+                'has_reviewed' => $thisUserHasReviewed,
+                'thisUserReviewTopic'   => $thisUserReview['reviewTopic'],
+                'thisUserReviewContent' => $thisUserReview['review'],
+                'thisUserReviewRecommendation' => $thisUserReview['recommendation'],
+                'thisUserReviewAverageRating' => number_format($thisUserReview['rating'], 1),
+                'username'  => $reviewerInfo[0],
             );
 
             echo json_encode($output);
         }
+    }
+
+    function DeleteReview()
+    {
+
+        $reviewerID = $_SESSION['id'];
+        $gameID = $_GET['id'];
+
+        $this->model->DeleteReview($reviewerID, $gameID);
+
+        $query = parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
+        parse_str($query, $result);
+
+        header('Location:/indieabode/game/reviews?' . http_build_query($result));
     }
 }

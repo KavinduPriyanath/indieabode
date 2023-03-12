@@ -92,7 +92,7 @@
             <div class="column-three">
                 <div class="write-text">Write Review Here</div>
                 <?php if (isset($_SESSION['logged']) && $_SESSION['userRole'] == "gamer") { ?>
-                    <button data-modal-target="#modal">Add Review</button>
+                    <button data-modal-target="#modal" id="review-btn" class="UnReviewed">Add Review</button>
                 <?php } else if (isset($_SESSION['logged']) && $_SESSION['userRole'] != "gamer") { ?>
                     <button data-modal-target="#modal-incorrectRole">Add Review</button>
                 <?php } else { ?>
@@ -140,11 +140,22 @@
                     <h3>Your Review</h3>
                     <textarea name="review" id="review" cols="30" rows="7"></textarea>
 
+                    <input type="hidden" name="rating" id="ratingCount">
+
                     <h4>Do you recommend this game?</h4>
-                    <input type="radio" name="recommendation" id="" value="Yes"> Yes
-                    <input type="radio" name="recommendation" id="" value="No"> No
+                    <input type="radio" name="recommendation" id="Yes" value="Yes"> Yes
+                    <input type="radio" name="recommendation" id="No" value="No"> No
                     <br />
-                    <button type="submit" id="save-review">Post Review</button>
+                    <div class="modal-bottom">
+                        <div class="modal-submit">
+                            <button type="submit" id="save-review" class="save-review">Post Review</button>
+                        </div>
+                        <div class="modal-delete">
+                            <a href="" id="delete-review" onclick="DeleteConfirmation()">
+                                Delete Rating & Review
+                            </a>
+                        </div>
+                    </div>
 
                 </div>
             </div>
@@ -172,12 +183,25 @@
     </div>
 
 
+
+
     <script src="<?php echo BASE_URL; ?>public/js/assets.js"></script>
     <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
     <script src="<?php echo BASE_URL; ?>public/js/game-review.js"></script>
 
 
     <script>
+        function DeleteConfirmation() {
+            let message = "Are you sure you want to delete your rating & review?";
+            let redirect = document.getElementById("delete-review");
+
+            if (confirm(message) == true) {
+                redirect.href = "/indieabode/gameReviews/DeleteReview?id=<?= $this->game['gameID'] ?>";
+            } else {
+                //nothin happens
+            }
+        }
+
         $(document).ready(function() {
             var rating_data = 0;
 
@@ -218,6 +242,7 @@
                 var review = $('#review').val();
                 var topic = $('#topic').val();
                 var recommendation = $("input[name='recommendation']:checked").val();
+                var rating = $('#ratingCount').val();
 
                 $.ajax({
                     url: "/indieabode/gameReviews?id=<?= $this->game['gameID'] ?>",
@@ -226,17 +251,20 @@
                         rating_data: rating_data,
                         review: review,
                         topic: topic,
-                        recommendation: recommendation
+                        recommendation: recommendation,
+                        rating: rating
                     },
                     success: function(data) {
                         $('#modal').removeClass("active");
                         $('#overlay').removeClass("active");
+                        $('#review-btn').html('Edit Review');
 
                         load_rating_data();
                     }
                 })
 
             });
+
 
             load_rating_data();
 
@@ -251,6 +279,39 @@
                     success: function(data) {
                         $('#average_rating').text(data.average_rating);
                         $('#total_review').text(data.total_review);
+
+                        if (data.has_reviewed) {
+                            $('#review-btn').html('Edit Review');
+                            $('#review-btn').addClass("Reviewed");
+                            $('#review-btn').removeClass('UnReviewed');
+                            $('#topic').val(data.thisUserReviewTopic);
+                            $('#review').val(data.thisUserReviewContent);
+                            $('#ratingCount').val(data.thisUserReviewAverageRating);
+                            if (data.thisUserReviewRecommendation == "Yes") {
+                                $("#Yes").prop("checked", true);
+                            } else if (data.thisUserReviewRecommendation == "No") {
+                                $("#No").prop("checked", true);
+                            }
+
+                            $('.modal-delete').css("display", "block");
+
+
+                        } else {
+                            $('#review-btn').html('Add Review');
+                            $('#review-btn').removeClass('Reviewed');
+                            $('#review-btn').addClass('UnReviewed');
+                            $('.modal-delete').css("display", "none");
+                        }
+
+                        var count_submitted_star = 0;
+
+                        $('.submit_star').each(function() {
+                            count_submitted_star++;
+                            if (Math.ceil(data.thisUserReviewAverageRating) >= count_submitted_star) {
+                                $(this).addClass('checked');
+                                $(this).removeClass('unchecked');
+                            }
+                        });
 
                         var count_star = 0;
 
@@ -295,7 +356,7 @@
                                 html += '<img src="/indieabode/public/images/games/profile.png" alt="" />';
                                 html += '</div>';
                                 html += '<div class="left-name">';
-                                html += '<p class="username">Kavindu&nbsp;Priyanath</p>';
+                                html += '<p class="username">' + data.username + '</p>';
                                 html += '<p class="assets-count">114 games in account</p>';
                                 html += '<p class="reviews-count">Reviews:&nbsp;11</p>';
                                 html += '</div>';
