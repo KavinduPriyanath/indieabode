@@ -34,7 +34,6 @@
     <hr id="topic-break">
 
     <div class="review-header">
-        <div class="review-title">Game Name</div>
         <div class="review-body">
             <div class="column-one">
                 <div class="total-rating"><span id="average_rating">0.0</span> / 5</div>
@@ -81,7 +80,7 @@
                     <div class="rate-count">(<span id="total_two_star_review"></span>)</div>
                 </div>
                 <div class="review-progress">
-                    <div class="rate-number">1</div>
+                    <div class="rate-number">1&nbsp;</div>
                     <i class="fa fa-star checked"></i>
                     <div class="progress-bar-border">
                         <div class="progress-bar" id="one_star_progress"></div>
@@ -103,8 +102,9 @@
     </div>
 
     <!--Reviews-->
+    <hr id="topic-break">
     <div class="reviews">
-        <h3>Ratings</h3>
+        <h3>Ratings & Reviews</h3>
 
         <div id="review_content"></div>
 
@@ -182,6 +182,10 @@
         <div id="overlay"></div>
     </div>
 
+
+    <?php
+    include 'includes/footer.php';
+    ?>
 
 
 
