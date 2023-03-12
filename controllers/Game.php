@@ -53,6 +53,8 @@ class Game extends Controller
     {
         $this->view->game = $this->model->showSingleGame($_GET['id']);
 
+        // $this->view->hasReviewed = $this->model->HasReviewedThisGame($_SESSION['id'], $_GET['id']);
+
         if (isset($_POST['rating_data'])) {
 
             $data = array(
