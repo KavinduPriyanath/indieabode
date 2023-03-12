@@ -34,7 +34,7 @@ class Dashboard_Model extends Model
         $myGameNames = [];
 
         foreach ($myGames as $myGame) {
-            array_push($myGameNames, $myGame['gameName']);
+            array_push($myGameNames, $myGame['gameID']);
         }
 
         // return $myGameNames;
@@ -63,7 +63,7 @@ class Dashboard_Model extends Model
 
     function showAllMyCrowdfundings($id)
     {
-        $sql = "SELECT * FROM crowdfund WHERE gameDeveloperID='$id'";
+        $sql = "SELECT * FROM crowdfund WHERE gameDeveloperName='$id'";
 
         $stmt = $this->db->prepare($sql);
 

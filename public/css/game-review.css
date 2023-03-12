@@ -7,32 +7,53 @@
 }
 
 .review-body {
+    margin-top: 30px;
+    margin-bottom: 20px;
     display: flex;
     justify-content: center;
 }
 
 .column-one{
-    margin-right: 100px;
+    margin-top: 20px;
+    margin-right: 150px;
 }
 
 .column-two {
-    margin-right: 100px;
+    margin-right: 150px;
+}
+
+.column-three {
+    margin-top: 20px;
 }
 
 .review-progress {
     display: flex;
 }
 
+.rate-number {
+    font-size: 19px;
+    margin: 2px 5px;
+}
+.review-progress i {
+    margin-top: 2px;
+    font-size: 24px;
+    margin-right: 5px;
+}
+
 .progress-bar-border {
-    width: 150px;
-    height: 10px;
-    background-color: rgb(190, 181, 181);
+    margin-right: 6px;
+    margin-top: 7px;
+    width: 180px;
+    height: 12px;
+    background-color: rgb(195, 228, 239);
+    border-radius: 8px;
 }
 
 .progress-bar {
-    width: 100%;
-    height: 10px;
-    background-color: rgb(191, 194, 54);
+    width: 0%;
+    height: 100%;
+    background-color: rgb(231, 234, 9);
+    border-radius: 8px;
 }
 
 .like-buttons{
@@ -48,3 +69,8 @@
 .recommendation {
     display: flex;
 }
+
+.reviews {
+    margin-top: 25px;
+}
+
