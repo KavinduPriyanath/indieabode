@@ -21,40 +21,44 @@
     ?>
 
     <div class="user-detail-container">
-        <div class="user-detail-container-item">
-            <img src="../images/portfolio/profile-pic.png" id="profile-pic">
+        <div class="left-container">
+            <div class="user-detail-container-item">
+                <!-- <img src="" id="profile-pic"> -->
+            </div>
+
+            <div class="name-role">
+                <h1 id="user-name"><?= $this->developerDetails['username']; ?></h1>
+                <h4 id="user-role"><?= $this->developerDetails['userRole']; ?></h4>
+            </div>
         </div>
 
-        <div class="name-role">
-            <h1 id="user-name"><?= $this->additionalDeveloperDetails['fullName']; ?></h1>
-            <h4 id="user-role"><?= $this->developerDetails['userRole']; ?></h4>
-        </div>
 
-        <div class="user-detail-container-item" id="user-follow-detail">
-            <div class="user-follow-count-container">
-                <div class="user-follow-post">
-                    <!--post counting-->
-                    <p><?= count($this->games); ?></p>
-                    <p>Posts</p>
-                </div>
-                <div class="user-follow-follower">
-                    <!--follower counting-->
-                    <p>134</p>
-                    <p>Followers</p>
-                </div>
-                <div class="user-follow-following">
-                    <!--following counting-->
-                    <p>13</p>
-                    <p>Following</p>
-                </div>
+        <div class="user-follow-count-container">
+            <div class="user-follow-post">
+                <!--post counting-->
+                <p class="value"><?= count($this->games); ?></p>
+                <p>Posts</p>
+            </div>
+            <div class="user-follow-follower">
+                <!--follower counting-->
+                <p class="value">134</p>
+                <p>Followers</p>
+            </div>
+            <div class="user-follow-following">
+                <!--following counting-->
+                <p class="value">13</p>
+                <p>Following</p>
             </div>
         </div>
     </div>
+
 
     <div class="portfolio-container-2">
         <p><?= $this->additionalDeveloperDetails['tagline']; ?>
         </p>
     </div>
+
+    <hr id="topic-break">
 
     <div class="container" id="card-container">
 
@@ -77,8 +81,14 @@
 
 
 
+    </div>
 
-        <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
+
+    <?php
+    include 'includes/footer.php';
+    ?>
+
+    <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
 
 
 </body>
