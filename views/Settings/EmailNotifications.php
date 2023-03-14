@@ -80,51 +80,39 @@
                 <div class="topics">Misc</div>
             </div>
             <div class="content-body">
-                <h2>Portfolio</h2>
+                <h2>Email Notifications</h2>
                 <form action="" method="post">
-                    <div class="labels"><span>Display Name</span> - Used to show on your portfolio page, leave blank to default to username</div>
-                    <input type="text">
 
-                    <div class="labels"><span>Display Image</span> - Shown next to your name on portfolio page (square dimensions)</div>
-                    <div class="display-image">
-                        <div class="image-box"></div>
-                        <div class="image-buttons"></div>
-                    </div>
+                    <div class="header">Configure how Indieabode is allowed to notify you here. You'll automatically receive an email with a digest of your unread notifications. Configure which ones will be sent to your inbox.</div>
 
-                    <div class="labels"><span>Website</span> - Optional URL to be shown on your portfolio page</div>
-                    <input type="text">
-
-                    <div class="labels"><span>Twitter</span> - Twitter account to show on your portfolio</div>
-                    <input type="text">
-
-                    <div class="labels"><span>LinkedIn</span> - LinkedIn account to show on your portfolio</div>
-                    <input type="text">
-
-                    <div class="labels"><span>Location</span> - The country you currently reside in</div>
-                    <input type="text">
-
-                    <div class="labels"><span>Telephone Number</span> - Your phone number</div>
-                    <input type="text">
-
-                    <div class="labels"><span>Showcase</span> - What you need to highlight?</div>
-
-                    <div class="labels"><span>Introduction</span> - The content for your portfolio page</div>
-                    <textarea name="" id="" cols="30" rows="10"></textarea>
-
-                    <div class="labels"><span>Content</span> - What should be shown to your portfolio viewers?</div>
+                    <div class="labels"><span>Sends an email when...</span></div>
                     <div class="key-points">
                         <div class="key-point">
-                            <input type="checkbox" name="point1" id="point1"> <label for="point1">Show only the items listed in my Showcase</label>
+                            <input type="checkbox" name="point1" id="point1"> <label for="point1">Someone purchase a game that I published</label>
                         </div>
                         <div class="key-point">
-                            <input type="checkbox" name="point2" id="point2"> <label for="point2">Display my location, and phone number</label>
+                            <input type="checkbox" name="point2" id="point2"> <label for="point2">Someone orders a gig that I created</label>
                         </div>
                         <div class="key-point">
-                            <input type="checkbox" name="point3" id="point3"> <label for="point3">Allow ads to display on my page</label>
+                            <input type="checkbox" name="point3" id="point3"> <label for="point3">Someone donates a crowdfund that I launched</label>
+                        </div>
+                        <div class="key-point">
+                            <input type="checkbox" name="point4" id="point4"> <label for="point4">People interact with my devlog posts</label>
+                        </div>
+                        <div class="key-point">
+                            <input type="checkbox" name="point5" id="point5"> <label for="point5">When I purchased some asset</label>
+                        </div>
+                        <div class="key-point">
+                            <input type="checkbox" name="point5" id="point6"> <label for="point6">My jam submissions get comments</label>
                         </div>
                     </div>
 
-
+                    <div class="labels"><span>Don't want any emails?</span></div>
+                    <div class="key-points">
+                        <div class="key-point">
+                            <input type="checkbox" name="point1" id="pointX"> <label for="pointX">Never send any email to me</label>
+                        </div>
+                    </div>
                     <button type="submit" class="save">Save</button>
                 </form>
             </div>

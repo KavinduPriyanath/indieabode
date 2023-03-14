@@ -46,4 +46,16 @@ class Settings extends Controller
 
         $this->view->render('Settings/TwoFactorAuth');
     }
+
+    function revenueshare()
+    {
+
+        $this->view->render('Settings/RevenueShare');
+    }
+
+    function emailNotifications()
+    {
+
+        $this->view->render('Settings/EmailNotifications');
+    }
 }
