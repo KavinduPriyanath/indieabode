@@ -101,7 +101,164 @@ class Admin_userMg extends Controller
             $this->view->render('Admin/reports/Admin_gamer_report');
         }
         if($user['userRole']=="gamejam organizer"){
-            $this->view->render('Admin/reports/Admin_jamOrganizer_report');
+
+
+            $gj_user = $this->model->jamOrganizer($userid);
+
+            // print_r($ac_user);
+
+            require_once('includes/tcpdf/tcpdf.php');
+
+            ob_start();
+            $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+
+            // set default monospaced font
+            $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+
+            // set margins
+            $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+
+             // set auto page breaks
+            $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+
+             // Disable header and footer
+            $pdf->setPrintHeader(false);
+            $pdf->setPrintFooter(false);
+
+            // set some language-dependent strings (optional)
+            if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
+                require_once(dirname(__FILE__).'/lang/eng.php');
+                $pdf->setLanguageArray($l);
+            }
+
+            $pdf->SetFont('times', 'BI', 14);
+
+            // add a page
+            $pdf->AddPage();
+
+            $pdf->Cell(0, 10, 'INDIE ABODE', 0, 1, 'C');
+            $pdf->Cell(0, 10, 'Game Publishing Platform', 0, 1, 'C');
+            $pdf->Cell(0, 10, 'Game Jam Organizer\'s Report', 0, 1, 'C');
+
+            $pdf->SetFont('helvetica', '', 12);
+
+            $pdf->Ln(4);
+            // $name = $user['firstName'].' '.$user['lastName'];
+            $name = 'Name: ' . $user['firstName'] . ' ' . $user['lastName'];
+            // $accountStatus = ($user['accountStatus'] == 1) ? "Active" : "Blocked";
+            $currentDateTime = date('Y-m-d H:i:s');
+            // $pdf->Rect(10, 60, 70, 20, 'D');
+            $pdf->MultiCell(0, 10, $name, 0, 'L', false);
+            $pdf->MultiCell(0, 10, 'Account Status: Active', 0, 'L', false);
+            $pdf->MultiCell(0, 10, 'Date: '.$currentDateTime, 0, 'L', false);
+
+            $pdf->SetFont('helvetica', 'BU', 12);
+            $pdf->Ln(6);
+            $pdf->MultiCell(0, 10, 'Hosted Jams', 0, 'L', false);
+
+            // add a table
+            $header = array('Jam Title', 'Jam Status','Count', 'First Place');
+            $pdf->Ln(10); // add some vertical spacing before the table
+            $pdf->SetFont('times', '', 14);
+            $pdf->SetFillColor(240, 240, 240); // set background color for header row
+            $pdf->SetTextColor(0); // set text color for header row
+            $pdf->SetDrawColor(255, 255, 255); // set border color for all cells
+            $pdf->Cell(40, 7, $header[0], 1, 0, 'C', 1);
+            $pdf->Cell(50, 7, $header[1], 1, 0, 'C', 1);
+            $pdf->Cell(20, 7, $header[2], 1, 0, 'C', 1);
+            $pdf->Cell(70, 7, $header[3], 1, 1, 'C', 1);
+            $pdf->SetFillColor(255, 255, 255); // set background color for data rows
+            $pdf->SetTextColor(0); // set text color for data rows
+            $pdf->SetFont('times', '', 12);
+            $count = 0;
+            foreach ($gj_user as $host) {
+
+                $count = $count + 1;
+                $pdf->Cell(40, 6, $host['jamTitle'], 1, 0, 'C', 1);
+
+                // $currentDateTime = new DateTime(); // Current date and time
+                $submissionStartDate = new DateTime($host['submissionStartDate']);
+                $submissionEndDate = new DateTime($host['submissionEndDate']);
+                $votingEndDate = new DateTime($host['votingEndDate']);
+               // $givenDateTime = new DateTime('2023-04-01 10:30:00'); // Given date and time
+
+               if($submissionStartDate < $currentDateTime) // jam started
+               {
+                    if($submissionEndDate < $currentDateTime) // jam submission ended
+                    {
+                        if($votingEndDate < $currentDateTime) // voting ended
+                        {
+                            $pdf->Cell(50, 6,'Game Jam Has Totally Ended.', 1, 0, 'C', 1);
+                        }else 
+                        {
+                            $pdf->Cell(50, 6,'Voting is ongoing', 1, 0, 'C', 1);
+                            // $pdf->Cell(80, 6,'Voting is ongoing(end on '.$votingEndDate->format('Y-m-d H:i:s'), 1, 0, 'C', 1);
+                        }
+                    }
+                    else
+                    {
+                        $pdf->Cell(50, 6,'Jam is ongoing', 1, 0, 'C', 1);
+                        //$pdf->Cell(80, 6,'Jam is ongoing(end on '.$submissionEndDate->format('Y-m-d H:i:s'), 1, 0, 'C', 1);
+                    }
+               }else
+               {
+                    $pdf->Cell(50, 6, 'Jam not yet started', 1, 0, 'C', 1);
+                    // $pdf->Cell(80, 6, 'Jam not yet started(starts on '.$submissionStartDate->format('Y-m-d H:i:s'), 1, 0, 'C', 1);
+               }
+
+
+                $totalSubmissions = $this->model->getTotalSubmissions($host['gameJamID']);
+                // if($totalSubmissions != 0){
+                //     $pdf->Cell(20, 6, $totalSubmissions, 1, 0, 'C', 1);
+                // }
+                // else
+                    $pdf->Cell(20, 6, $totalSubmissions, 1, 0, 'C', 1);
+
+
+                
+                $rankFirst = $this->model->getFirstPlace($host['gameJamID']);
+                $pdf->Cell(70, 6,$rankFirst['gameName'], 1, 1, 'C', 1);
+
+            }    
+
+            $pdf->Ln(10);
+            // $pdf->Cell(0, 10, 'Total Earnings: $'.$totalEarnings, 0, 1, 'C');
+
+            $pdf->SetFont('helvetica', 'B', 12);
+            $pdf->Cell(0, 10, 'Total Hosted Jams: '.$count, 0, 1, 'C');
+            $pdf->Ln(2); // move down by 2 units
+            $pdf->SetLineWidth(0.5); // set line width to 0.5 units
+            $pdf->Line(50, $pdf->GetY(), $pdf->GetPageWidth() - 50, $pdf->GetY()); // draw first line
+            $pdf->Ln(2); // move down by 2 units again
+            $pdf->Line(50, $pdf->GetY(), $pdf->GetPageWidth() - 50, $pdf->GetY()); // draw second line
+
+
+            // $signature = 'John Doe';
+            // $date = date('F j, Y');
+
+            // $pdf->SetY(-30);
+            // $pdf->SetFont('helvetica', 'B', 12);
+            // $pdf->Cell(0, 10, 'Signature: '.$signature, 0, 1, 'L');
+            // $pdf->Cell(0, 10, 'Date: '.$date, 0, 1, 'R');
+            // $pdf->Line(10, $pdf->GetY(), 200, $pdf->GetY());
+
+            // print a block of text using Write()
+            $pdf->Write(0, $txt, '', 0, 'C', true, 0, false, false, 0);
+
+            
+            // ---------------------------------------------------------
+
+            ob_clean();
+            ob_flush();
+            //Close and output PDF document
+            $pdf->Output('Assetcreator.pdf', 'D');
+
+            ob_end_flush();
+            ob_end_clean();
+
+
+
+            // $this->view->render('Admin/reports/Admin_jamOrganizer_report');
         }
 
 
@@ -244,7 +401,7 @@ class Admin_userMg extends Controller
         }
 
 
-        
+        //Game Publisher's report genr
         if($user['userRole']=="game publisher"){
 
             $gp_user = $this->model->gamePublisher($userid);
@@ -365,7 +522,7 @@ class Admin_userMg extends Controller
 
 
 
-            $this->view->render('Admin/reports/Admin_gamePublisher_report');
+            // $this->view->render('Admin/reports/Admin_gamePublisher_report');
 
             //$this->view->render('Admin/reports/Admin_assetCreator_report');
         }
