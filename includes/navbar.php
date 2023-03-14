@@ -119,7 +119,7 @@
 
                                     <hr />
 
-                                    <a href="/indieabode/user/settings">Settings <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                                    <a href="/indieabode/settings/profile">Settings <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                     <a href="/indieabode/login/logout">Log&nbsp;Out
                                         <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                 </div>
