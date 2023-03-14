@@ -61,7 +61,7 @@
                     <a href="">
                         <div class="sub-topics">Tax Information</div>
                     </a>
-                    <a href="">
+                    <a href="/indieabode/settings/revenueshare">
                         <div class="sub-topics">Revenue Sharing</div>
                     </a>
                     <a href="">
@@ -70,8 +70,12 @@
                 </div>
                 <div class="category">
                     <div class="topics">Contact</div>
-                    <div class="sub-topics">Email Notifications</div>
-                    <div class="sub-topics">Website Support</div>
+                    <a href="/indieabode/settings/emailNotifications">
+                        <div class="sub-topics">Email Notifications</div>
+                    </a>
+                    <a href="">
+                        <div class="sub-topics">Website Support</div>
+                    </a>
                 </div>
                 <div class="topics">Misc</div>
             </div>
