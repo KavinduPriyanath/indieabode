@@ -76,63 +76,51 @@
                 <div class="topics">Misc</div>
             </div>
             <div class="content-body">
-                <h2>Profile</h2>
+                <h2>Portfolio</h2>
                 <form action="" method="post">
-                    <div class="labels"><span>Username</span> - Used to show with your products and you activities</div>
+                    <div class="labels"><span>Display Name</span> - Used to show on your portfolio page, leave blank to default to username</div>
                     <input type="text">
 
-                    <div class="labels"><span>Avatar</span> - Shown along with your username on website</div>
-                    <div class="avatars">
-
-                        <div class="container">
-                            <input type="radio" id="avatar1" name="avatar" class="radio-btn" value="avatar1.png" />
-                            <label for="avatar1">
-                                <img src="/indieabode/public/images/avatars/avatar1.png" />
-                            </label>
-                        </div>
-                        <div class="container">
-                            <input type="radio" id="avatar2" name="avatar" class="radio-btn" value="avatar2.png" checked />
-                            <label for="avatar2">
-                                <img src="/indieabode/public/images/avatars/avatar2.png" />
-                            </label>
-                        </div>
-                        <div class="container">
-                            <input type="radio" id="avatar3" name="avatar" class="radio-btn" value="avatar3.png" />
-                            <label for="avatar3">
-                                <img src="/indieabode/public/images/avatars/avatar3.png" />
-                            </label>
-                        </div>
-                        <div class="container">
-                            <input type="radio" id="avatar4" name="avatar" class="radio-btn" value="avatar4.png" />
-                            <label for="avatar4">
-                                <img src="/indieabode/public/images/avatars/avatar4.png" />
-                            </label>
-                        </div>
-
+                    <div class="labels"><span>Display Image</span> - Shown next to your name on portfolio page (square dimensions)</div>
+                    <div class="display-image">
+                        <div class="image-box"></div>
+                        <div class="image-buttons"></div>
                     </div>
 
-                    <div class="labels"><span>Account Type</span> - How will you use your account</div>
-                    <select name="" id="" disabled>
-                        <option value="">Game Developer</option>
-                    </select>
+                    <div class="labels"><span>Website</span> - Optional URL to be shown on your portfolio page</div>
+                    <input type="text">
 
-                    <div class="labels"><span>Language</span> - Language of Indieabode user interface</div>
-                    <select name="" id="">
-                        <option value="">English</option>
-                    </select>
+                    <div class="labels"><span>Twitter</span> - Twitter account to show on your portfolio</div>
+                    <input type="text">
 
-                    <div class="labels"><span>Content</span> - How content of Indieabode is shown to you</div>
+                    <div class="labels"><span>LinkedIn</span> - LinkedIn account to show on your portfolio</div>
+                    <input type="text">
+
+                    <div class="labels"><span>Location</span> - The country you currently reside in</div>
+                    <input type="text">
+
+                    <div class="labels"><span>Telephone Number</span> - Your phone number</div>
+                    <input type="text">
+
+                    <div class="labels"><span>Showcase</span> - What you need to highlight?</div>
+
+                    <div class="labels"><span>Introduction</span> - The content for your portfolio page</div>
+                    <textarea name="" id="" cols="30" rows="10"></textarea>
+
+                    <div class="labels"><span>Content</span> - What should be shown to your portfolio viewers?</div>
                     <div class="key-points">
                         <div class="key-point">
-                            <input type="checkbox" name="point1" id="point1"> <label for="point1">Show content marked as adult in search</label>
+                            <input type="checkbox" name="point1" id="point1"> <label for="point1">Show only the items listed in my Showcase</label>
                         </div>
                         <div class="key-point">
-                            <input type="checkbox" name="point2" id="point2"> <label for="point2">Show warnings when redirecting to pages containing blood, gore and sexual content</label>
+                            <input type="checkbox" name="point2" id="point2"> <label for="point2">Display my location, and phone number</label>
                         </div>
                         <div class="key-point">
-                            <input type="checkbox" name="point3" id="point3"> <label for="point3">Open every link on a new tab</label>
+                            <input type="checkbox" name="point3" id="point3"> <label for="point3">Allow ads to display on my page</label>
                         </div>
                     </div>
+
+
                     <button type="submit" class="save">Save</button>
                 </form>
             </div>
