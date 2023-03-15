@@ -12,7 +12,9 @@ class Library extends Controller
     function index()
     {
 
-        $this->view->myAssets = $this->model->showMyLibrary($_SESSION['id']);
+        $this->view->myAssets = $this->model->showMyAssetLibrary($_SESSION['id']);
+
+        $this->view->myGames = $this->model->showMyGameLibrary($_SESSION['id']);
 
         $this->view->render('Library');
     }

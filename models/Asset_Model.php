@@ -87,7 +87,7 @@ class Asset_Model extends Model
     function AddtoLibrary($assetID, $ownerID)
     {
 
-        $sql = "INSERT INTO library(developerID, itemID) VALUES (?,?)";
+        $sql = "INSERT INTO asset_library(developerID, assetID) VALUES (?,?)";
 
         $stmt = $this->db->prepare($sql);
 
@@ -97,7 +97,7 @@ class Asset_Model extends Model
     function AlreadyClaimed($assetID, $userID)
     {
 
-        $sql = "SELECT * FROM library WHERE itemID='$assetID' AND developerID='$userID' LIMIT 1";
+        $sql = "SELECT * FROM asset_library WHERE assetID='$assetID' AND developerID='$userID' LIMIT 1";
 
         $stmt = $this->db->prepare($sql);
 

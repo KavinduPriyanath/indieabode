@@ -192,7 +192,7 @@ class Game_Model extends Model
     function AddtoLibrary($gameID, $gamerID)
     {
 
-        $sql = "INSERT INTO library(developerID, itemID) VALUES (?,?)";
+        $sql = "INSERT INTO game_library(gamerID, gameID) VALUES (?,?)";
 
         $stmt = $this->db->prepare($sql);
 
@@ -202,7 +202,7 @@ class Game_Model extends Model
     function AlreadyClaimed($gameID, $userID)
     {
 
-        $sql = "SELECT * FROM library WHERE itemID='$gameID' AND developerID='$userID' LIMIT 1";
+        $sql = "SELECT * FROM game_library WHERE gameID='$gameID' AND gamerID='$userID' LIMIT 1";
 
         $stmt = $this->db->prepare($sql);
 
