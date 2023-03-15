@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 11, 2023 at 02:56 PM
+-- Generation Time: Mar 15, 2023 at 11:26 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -147,6 +147,27 @@ CREATE TABLE `assetsale` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `asset_library`
+--
+
+CREATE TABLE `asset_library` (
+  `id` int(11) NOT NULL,
+  `assetID` int(11) NOT NULL,
+  `developerID` int(11) NOT NULL,
+  `createdAt` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `asset_library`
+--
+
+INSERT INTO `asset_library` (`id`, `assetID`, `developerID`, `createdAt`) VALUES
+(1, 10, 46, '2023-03-15'),
+(2, 9, 46, '2023-03-15');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `asset_stats`
 --
 
@@ -188,7 +209,10 @@ CREATE TABLE `asset_stats_history` (
 --
 
 INSERT INTO `asset_stats_history` (`id`, `assetID`, `views`, `downloads`, `ratings`, `reviews`, `created_at`) VALUES
-(1, 17, 0, 2, 0, 0, '2023-03-09');
+(1, 17, 0, 2, 0, 0, '2023-03-09'),
+(2, 10, 0, 1, 0, 0, '2023-03-14'),
+(3, 10, 0, 1, 0, 0, '2023-03-15'),
+(4, 9, 0, 1, 0, 0, '2023-03-15');
 
 -- --------------------------------------------------------
 
@@ -212,7 +236,8 @@ INSERT INTO `cart` (`id`, `userID`, `itemID`) VALUES
 (3, '31', '1'),
 (4, '31', '1'),
 (12, '51', '10'),
-(13, '51', '9');
+(13, '51', '9'),
+(14, '46', '9');
 
 -- --------------------------------------------------------
 
@@ -356,7 +381,8 @@ INSERT INTO `devlog` (`publishDate`, `description`, `name`, `Tagline`, `Type`, `
 ('2023-02-09 17:38:43', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis hendrerit neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum pharetra sem. Vestibulum eu est urna. Cras non ipsum non massa sodales condimentum quis eu risus. Praesent volutpat lorem a dolor tristique luctus eget sed elit. Ut facilisis faucibus justo tincidunt eleifend. Curabitur ultrices sapien id lorem posuere, vitae mattis nisi faucibus. Aliquam congue lorem sit amet velit lobortis, non venenatis massa feugiat. Aenean ut vehicula nibh, sed vehicula lacus. Praesent eu eros id leo maximus rhoncus eget eget risus. Curabitur vitae faucibus ligula, ac tincidunt dui. Sed diam massa, euismod sit amet augue a, pharetra egestas augue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\r\n\r\nIn hendrerit magna a dui tincidunt porta. Curabitur suscipit ex consectetur mauris ullamcorper rutrum. Mauris feugiat aliquet tristique. Curabitur egestas suscipit iaculis. Quisque tristique posuere augue, ac aliquet nisi vestibulum id. Curabitur efficitur nibh eu ipsum venenatis, et ornare tellus pellentesque. Nullam mollis lacus in nibh vestibulum, nec dignissim justo tristique. In congue dolor suscipit, eleifend leo et, commodo purus. Curabitur gravida risus et leo porttitor facilisis ut vestibulum ex. Donec enim tortor, commodo facilisis vestibulum non, viverra sed augue. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean ultricies metus vitae lobortis fermentum. Maecenas vulputate ante a sollicitudin congue. Duis purus erat, finibus eget magna sit amet, porta pharetra massa.\r\n\r\nVestibulum eleifend imperdiet felis sit amet placerat. Nulla auctor pretium turpis, quis porttitor lacus tempor vitae. Vestibulum semper non enim at dignissim. Mauris consequat elit ac purus congue iaculis. Aenean ac nibh a dolor efficitur fermentum. Mauris a porttitor lorem, ac gravida tellus. Cras iaculis malesuada mollis.', 'Finishing Utility Inventory', 'Bonjour! This is a post about me finally finishing the Utiltiy ', 'Game Design', 'draft', 'SS-Albion Online.png', '89', 28, '2020-12-29', 1, 2),
 ('2023-02-09 17:41:03', '', 'How to Build a Mansion', 'Showing steps of using tiles to build a mansion in the city ', 'Game Design', 'draft', '', '93', 29, '2020-12-26', 0, 0),
 ('2023-02-09 17:43:00', 'dwfwf', 'Level Editor Tutorial', 'Optimized level editor is available to players for free with extensions', 'Game Design', 'draft', 'SS-Final Fantasy VII.jpg', '93', 30, '2020-11-29', 1, 0),
-('2023-03-07 12:55:38', 'dwdw', 'dwd', 'ddwd', 'Tutorial', 'draft', 'SS-89.png', '89', 31, '0000-00-00', 0, 0);
+('2023-03-07 12:55:38', 'dwdw', 'dwd', 'ddwd', 'Tutorial', 'draft', 'SS-89.png', '89', 31, '0000-00-00', 1, 0),
+('2023-03-12 18:12:11', 'ththt', 'tthht', 'hth', 'Tutorial', 'draft', 'SS-89.png', '89', 34, '0000-00-00', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -428,7 +454,8 @@ CREATE TABLE `devlog_likes` (
 
 INSERT INTO `devlog_likes` (`id`, `devlogID`, `userID`) VALUES
 (9, 30, 46),
-(11, 28, 46);
+(11, 28, 46),
+(12, 31, 46);
 
 -- --------------------------------------------------------
 
@@ -611,7 +638,9 @@ INSERT INTO `freegame` (`gameID`, `gameName`, `releaseStatus`, `gameDetails`, `g
 (142, 'Albion Online', 'released', '<h3>ABOUT THIS GAME </h3>\r\n<p> \r\nAlbion Online is a sandbox MMORPG set in an open medieval fantasy world. The game features a player-driven economy where nearly every item is player-crafted. Combine armor pieces and weapons suited to your playstyle in a unique, classless \"you are what you wear\" system. Explore the world, take on other adventurers in thrilling battles, conquer territories, and build a home.\r\n</p>\r\n<br>\r\n<h3>Key Features</h3>\r\n<p>From basic tools and clothes to mighty armors and powerful weapons – nearly every item in the game is crafted by players, in player-constructed buildings, from resources gathered by players. Buy, sell, and trade with other players at local marketplaces all across the world of Albion. Craft rare and powerful items, then sell them to the highest bidder and grow your fortune.</p>\r\n<br>\r\n<p>\r\nIn Albion Online\'s classless combat system, you are what you wear. The weapons and armor you use define your skills, and switching playstyles is as easy as switching gear. Test out new equipment anytime and change up your weapons, armor, and mounts to suit any situation. Hone your character’s skills by crafting new items, or by simply using your favorite equipment.</p>\r\n<br>\r\n', 'SS-Albion Online-0.jpg,SS-Albion Online-1.jpg,SS-Albion Online-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'Free medieval fantasy MMORPG, set in a medieval world', 'adventure', 'albion, albion online, online', 'multiplayer', 'Windows', 'Base Game', 'Game-Albion Online.zip', 0, 'Cover-Albion Online.jpg', 46, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '', '0000-00-00 00:00:00'),
 (143, 'Scarlet Nexus', 'released', '<h3>ABOUT THIS GAME</h3>\r\n<p>In the far distant future, a psionic hormone was discovered in the human brain, granting people extra-sensory powers and changed the world as we knew it. As humanity entered this new era, deranged mutants known as Others began to descend from the sky with a hunger for human brains. Highly resistant to conventional attack methods, extreme measures needed to be taken to battle the overwhelming threat and preserve humanity. Those with acute extra-sensory abilities, known as psionics, were our only chance to fight the onslaught from above. Since then, psionics have been scouted for their talents and recruited to the Other Suppression Force (OSF), humanity’s last line of defense.\r\n</p>\r\n<br>\r\n<p>Featuring a dual story, begin your adventure with either Yuito Sumeragi, an energetic recruit from a prestigious political family or Kasane Randall, the mysterious scout whose power and skill has gained great notoriety among the OSF. As their different experiences interweave with each other, it is only then that you will reveal the full story and unlock all the mysteries of a Brain Punk future caught between technology and psychic abilities in SCARLET NEXUS.\r\n</p>\r\n<br>\r\n<p>Kinetic Psychic Combat – Using psycho-kinetic abilities, the world around you becomes your greatest weapon. Lift, break and throw pieces of your environment to build your attack combos and lay waste to your enemies.\r\n\r\nExterminate the Others – Deranged mutants that descended from the sky, highly resistant to conventional attack methods and defenses. Tormented by the constant pain of their mutation, they seek brains of living organisms to calm their madness.\r\n\r\nDiscover a Brain Punk future – Explore and protect a futuristic Japanese landscape that combines inspirations from classic anime and western science fiction.\r\n\r\nA Dual Story Experience – Dive into a complex story of bonds, courage and heroism, crafted by minds behind the iconic Tales of Vesperia.</p>', 'SS-Scarlet Nexus-0.jpg,SS-Scarlet Nexus-1.jpg,SS-Scarlet Nexus-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'Elite psionics each armed with a talent in psychokinesis', 'RPG', 'scarlet, nexus, rpg', 'co-op', 'Windows', 'Base Game', 'Game-Scarlet Nexus.zip', 0, 'Cover-Scarlet Nexus.jpg', 49, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '', '0000-00-00 00:00:00'),
 (144, 'Albion Online 2', 'early access', 'eergregergregrgr', 'SS-Albion Online 2-0.jpg,SS-Albion Online 2-1.jpg,SS-Albion Online 2-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'follows a stray cat who falls into a walled city populated by robots, ', 'RPG', 'gregerg', 'Co-op', 'MacOS', 'Demo', 'Game-Albion Online 2.zip', 0, 'Cover-Albion Online 2.jpg', 46, 'windows 7', 'rg', 'juyju', 'grg', 'mx330', 'jyuju', 'windows 10', 'grgg', 'jyu', 'rgr', 'mx1650', '0', '0000-00-00 00:00:00'),
-(145, 'Albion Online 3', 'early access', 'fef', '', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'follows a stray cat who falls into a walled city populated by robots, ', 'simulation', 'grgrg', 'fef', 'MacOS', 'DLC', 'Game-Albion Online 3.zip', 0, 'Cover-Albion Online 3.jpg', 46, 'g', 'rg', 'juyju', 'grg', 'grgrg', 'rg', 'yj', 'r', 'grgrg', 'grg', 'uyjuyj', '$2.00', '0000-00-00 00:00:00');
+(145, 'Albion Online 3', 'early access', 'fef', '', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'follows a stray cat who falls into a walled city populated by robots, ', 'simulation', 'grgrg', 'fef', 'MacOS', 'DLC', 'Game-Albion Online 3.zip', 0, 'Cover-Albion Online 3.jpg', 46, 'g', 'rg', 'juyju', 'grg', 'grgrg', 'rg', 'yj', 'r', 'grgrg', 'grg', 'uyjuyj', '$2.00', '0000-00-00 00:00:00'),
+(146, '', 'released', '', '', '', '', 'action', '', '', 'Windows', 'Base Game', '', 0, '', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '0000-00-00 00:00:00'),
+(147, '', 'released', '\r\n', '', '', '', 'action', '', '', 'Windows', 'Base Game', '', 0, '', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -740,7 +769,8 @@ CREATE TABLE `games_cart` (
 
 INSERT INTO `games_cart` (`id`, `gamerID`, `itemID`) VALUES
 (1, 52, 96),
-(2, 46, 91);
+(2, 46, 91),
+(3, 52, 101);
 
 -- --------------------------------------------------------
 
@@ -810,7 +840,64 @@ INSERT INTO `games_view_tracker` (`id`, `userID`, `sessionID`, `gameID`, `viewed
 (14, 0, 0, 90, '2023-03-11'),
 (15, 46, 76, 90, '2023-03-11'),
 (16, 46, 76, 92, '2023-03-11'),
-(17, 46, 76, 96, '2023-03-11');
+(17, 46, 76, 96, '2023-03-11'),
+(18, 46, 12, 96, '2023-03-11'),
+(19, 46, 12, 90, '2023-03-11'),
+(20, 46, 12, 89, '2023-03-11'),
+(21, 52, 96, 96, '2023-03-12'),
+(22, 53, 58, 96, '2023-03-12'),
+(23, 53, 58, 91, '2023-03-12'),
+(24, 53, 45, 91, '2023-03-12'),
+(25, 53, 45, 96, '2023-03-12'),
+(26, 53, 45, 90, '2023-03-12'),
+(27, 53, 18, 96, '2023-03-12'),
+(28, 53, 18, 92, '2023-03-12'),
+(29, 53, 32, 96, '2023-03-12'),
+(30, 53, 32, 91, '2023-03-12'),
+(31, 53, 32, 92, '2023-03-12'),
+(32, 0, 0, 92, '2023-03-12'),
+(33, 0, 0, 96, '2023-03-12'),
+(34, 0, 0, 91, '2023-03-12'),
+(35, 53, 62, 91, '2023-03-12'),
+(36, 53, 62, 92, '2023-03-12'),
+(37, 46, 80, 92, '2023-03-12'),
+(38, 53, 94, 92, '2023-03-12'),
+(39, 46, 86, 108, '2023-03-13'),
+(40, 0, 0, 108, '2023-03-13'),
+(41, 46, 39, 96, '2023-03-13'),
+(42, 46, 39, 107, '2023-03-13'),
+(43, 46, 39, 115, '2023-03-13'),
+(44, 46, 39, 114, '2023-03-13'),
+(45, 46, 39, 117, '2023-03-13'),
+(46, 46, 39, 106, '2023-03-13'),
+(47, 53, 83, 95, '2023-03-13'),
+(48, 46, 84, 91, '2023-03-14'),
+(49, 52, 83, 91, '2023-03-15'),
+(50, 52, 83, 96, '2023-03-15'),
+(51, 52, 83, 103, '2023-03-15'),
+(52, 52, 83, 107, '2023-03-15'),
+(53, 52, 83, 101, '2023-03-15');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `game_library`
+--
+
+CREATE TABLE `game_library` (
+  `id` int(11) NOT NULL,
+  `gameID` int(11) NOT NULL,
+  `gamerID` int(11) NOT NULL,
+  `createdAt` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `game_library`
+--
+
+INSERT INTO `game_library` (`id`, `gameID`, `gamerID`, `createdAt`) VALUES
+(1, 107, 52, '2023-03-15'),
+(2, 96, 52, '2023-03-15');
 
 -- --------------------------------------------------------
 
@@ -837,7 +924,8 @@ INSERT INTO `game_reviews` (`id`, `rating`, `reviewTopic`, `review`, `created_da
 (49, 4, 'This is Great', 'ddwd', '2023-02-28', 52, 89, ''),
 (53, 4, 'This is Gr', 'I kindly wish to raise your awareness to people trying to cheat you out of your steam points: The following comment is copy and paste from a lot of reviews on steam. People do that to trick you into giving you steam points (the steam currency) by', '2023-02-28', 52, 89, ''),
 (54, 2, 'This is Great', 'jytjtjyt', '2023-02-28', 52, 89, ''),
-(55, 3, 'ddwdwd', 'geegg', '2023-03-01', 53, 93, '');
+(55, 3, 'ddwdwd', 'geegg', '2023-03-01', 53, 93, ''),
+(79, 3, 'jyj', 'jyjyjj', '2023-03-12', 53, 92, 'No');
 
 -- --------------------------------------------------------
 
@@ -886,10 +974,30 @@ INSERT INTO `game_stats_history` (`id`, `gameID`, `views`, `downloads`, `ratings
 (7, 101, 0, 3, 0, 0, '2023-03-09'),
 (8, 90, 0, 1, 0, 0, '2023-03-09'),
 (9, 105, 0, 2, 0, 0, '2023-03-09'),
-(13, 90, 4, 2, 0, 0, '2023-03-11'),
+(13, 90, 5, 2, 0, 0, '2023-03-11'),
 (14, 91, 1, 0, 0, 0, '2023-03-11'),
-(15, 96, 2, 1, 0, 0, '2023-03-11'),
-(16, 92, 1, 1, 0, 0, '2023-03-11');
+(15, 96, 3, 1, 0, 0, '2023-03-11'),
+(16, 92, 1, 1, 0, 0, '2023-03-11'),
+(17, 89, 1, 0, 0, 0, '2023-03-11'),
+(18, 96, 6, 0, 0, 0, '2023-03-12'),
+(19, 91, 5, 0, 0, 0, '2023-03-12'),
+(20, 90, 1, 0, 0, 0, '2023-03-12'),
+(21, 92, 6, 1, 0, 0, '2023-03-12'),
+(22, 108, 1, 0, 0, 0, '2023-03-12'),
+(23, 108, 1, 0, 0, 0, '2023-03-13'),
+(24, 96, 1, 0, 0, 0, '2023-03-13'),
+(25, 107, 1, 0, 0, 0, '2023-03-13'),
+(26, 115, 1, 0, 0, 0, '2023-03-13'),
+(27, 114, 1, 0, 0, 0, '2023-03-13'),
+(28, 117, 1, 0, 0, 0, '2023-03-13'),
+(29, 106, 1, 0, 0, 0, '2023-03-13'),
+(30, 95, 1, 0, 0, 0, '2023-03-13'),
+(31, 91, 1, 1, 0, 0, '2023-03-14'),
+(32, 91, 1, 0, 0, 0, '2023-03-15'),
+(33, 96, 1, 3, 0, 0, '2023-03-15'),
+(34, 103, 1, 1, 0, 0, '2023-03-15'),
+(35, 107, 1, 2, 0, 0, '2023-03-15'),
+(36, 101, 1, 0, 0, 0, '2023-03-15');
 
 -- --------------------------------------------------------
 
@@ -975,7 +1083,11 @@ CREATE TABLE `library` (
 
 INSERT INTO `library` (`id`, `developerID`, `itemID`) VALUES
 (41, '46', '92'),
-(42, '46', '96');
+(42, '46', '96'),
+(43, '53', '92'),
+(44, '46', '91'),
+(45, '46', '10'),
+(46, '52', '96');
 
 -- --------------------------------------------------------
 
@@ -1216,6 +1328,12 @@ ALTER TABLE `assetsale`
   ADD PRIMARY KEY (`assetSaleID`);
 
 --
+-- Indexes for table `asset_library`
+--
+ALTER TABLE `asset_library`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `asset_stats`
 --
 ALTER TABLE `asset_stats`
@@ -1335,6 +1453,12 @@ ALTER TABLE `games_view_tracker`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `game_library`
+--
+ALTER TABLE `game_library`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `game_reviews`
 --
 ALTER TABLE `game_reviews`
@@ -1403,16 +1527,22 @@ ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `asset_library`
+--
+ALTER TABLE `asset_library`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `asset_stats_history`
 --
 ALTER TABLE `asset_stats_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `complaint`
@@ -1442,7 +1572,7 @@ ALTER TABLE `crowdfund`
 -- AUTO_INCREMENT for table `devlog`
 --
 ALTER TABLE `devlog`
-  MODIFY `devLogID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `devLogID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `devlog_comments`
@@ -1460,7 +1590,7 @@ ALTER TABLE `devlog_comments_replies`
 -- AUTO_INCREMENT for table `devlog_likes`
 --
 ALTER TABLE `devlog_likes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `devlog_posttype`
@@ -1478,7 +1608,7 @@ ALTER TABLE `freeasset`
 -- AUTO_INCREMENT for table `freegame`
 --
 ALTER TABLE `freegame`
-  MODIFY `gameID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=146;
+  MODIFY `gameID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
 
 --
 -- AUTO_INCREMENT for table `gamejam`
@@ -1496,7 +1626,7 @@ ALTER TABLE `gamer`
 -- AUTO_INCREMENT for table `games_cart`
 --
 ALTER TABLE `games_cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `games_filters`
@@ -1508,19 +1638,25 @@ ALTER TABLE `games_filters`
 -- AUTO_INCREMENT for table `games_view_tracker`
 --
 ALTER TABLE `games_view_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+
+--
+-- AUTO_INCREMENT for table `game_library`
+--
+ALTER TABLE `game_library`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `game_reviews`
 --
 ALTER TABLE `game_reviews`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 --
 -- AUTO_INCREMENT for table `game_stats_history`
 --
 ALTER TABLE `game_stats_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `gig`
@@ -1532,7 +1668,7 @@ ALTER TABLE `gig`
 -- AUTO_INCREMENT for table `library`
 --
 ALTER TABLE `library`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `submission`

@@ -176,12 +176,14 @@ class Game extends Controller
             $mail->send();
             //header('location:/indieabode/forgotpassword/resetmailsent');
 
-            $this->model->AddtoLibrary($_GET['id'], $_SESSION['id']);
+
         } catch (Exception $e) {
             $query = parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
             parse_str($query, $result);
             header('location:/indieabode/game?' . http_build_query($result));
         }
+
+        $this->model->AddtoLibrary($_GET['id'], $_SESSION['id']);
 
         header('Cache-Control: public');
         header('Content-Description: File Transfer');
