@@ -22,39 +22,43 @@
     ?>
 
     <div class="checkout-container">
-        <h1>Checkout</h1>
+        <h2>Checkout</h2>
 
         <div class="content">
             <div class="payment-details">
                 <hr />
                 <div class="heading">Payment Method</div>
-                <div class="card-header">
-                    <div class="card-logo">
-                        <img src="/indieabode/public/images/checkout/card-logo.png" alt="" />
-                    </div>
-                    <div class="card-name">Credit Card</div>
-                </div>
-                <div class="card-details">
-                    <div class="title">Card Details</div>
-                    <hr />
-                    <br />
-                    <form action="" method="post">
-                        <label for="card-name">Card Name</label><br />
-                        <input type="text" id="card-name" name="card-number" class="creditCardText" />
-
-                        <div class="second-input-row">
-                            <div class="input">
-                                <label for="ex-date">Expiration Date</label>
-                                <input type="text" id="ex-date" name="expire-date" />
-                            </div>
-
-                            <div class="input">
-                                <label for="cvv">CVV</label>
-                                <input type="text" />
-                            </div>
+                <div class="payment-content">
+                    <div class="card-header">
+                        <div class="card-logo">
+                            <img src="/indieabode/public/images/checkout/card-logo.png" alt="" />
                         </div>
-                        <input type="checkbox" name="" id="" /><label for="">Save my payment information so checkout is easy next time</label>
-                    </form>
+                        <div class="card-name">Credit Card</div>
+                    </div>
+                    <div class="card-details">
+                        <div class="title">Card Details</div>
+                        <hr />
+                        <br />
+                        <form action="" method="post">
+                            <div class="card-name">
+                                <label for="card-name">Card Name</label><br />
+                                <input type="text" id="card-name" name="card-number" class="creditCardText" />
+                            </div>
+
+                            <div class="second-input-row">
+                                <div class="input">
+                                    <label for="ex-date">Expiration Date</label>
+                                    <input type="text" id="ex-date" name="expire-date" />
+                                </div>
+
+                                <div class="input">
+                                    <label for="cvv">CVV</label>
+                                    <input type="text" />
+                                </div>
+                            </div>
+                            <input type="checkbox" name="" id="" /><label for="">Save my payment information so checkout is easy next time</label>
+                        </form>
+                    </div>
                 </div>
             </div>
             <div class="order-summary">
@@ -63,7 +67,7 @@
                     <div class="card">
                         <div class="card-image"><img src="/indieabode/public/uploads/assets/cover/<?= $this->asset['assetCoverImg'] ?>" alt="" /></div>
                         <div class="card-details">
-                            <p><?= $this->asset['assetName']; ?></p>
+                            <p id="itemName"><?= $this->asset['assetName']; ?></p>
                             <p>Developer Name</p>
                         </div>
                     </div>
@@ -83,6 +87,11 @@
                         <div class="value">$19.99</div>
                     </div>
                 </div>
+                <div class="help">
+                    <div class="need-help">Need Help?</div>
+                    <div class="contact">Contact Us</div>
+                </div>
+                <hr id="btn-break">
                 <a href="/indieabode/asset/download?id=<?= $this->asset['assetID'] ?>">
                     <div class="order-button">Place Order</div>
                 </a>
