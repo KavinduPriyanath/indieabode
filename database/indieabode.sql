@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 15, 2023 at 11:26 AM
+-- Generation Time: Mar 16, 2023 at 09:13 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -147,6 +147,27 @@ CREATE TABLE `assetsale` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `asset_cart`
+--
+
+CREATE TABLE `asset_cart` (
+  `id` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
+  `assetID` int(11) NOT NULL,
+  `addedDate` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `asset_cart`
+--
+
+INSERT INTO `asset_cart` (`id`, `userID`, `assetID`, `addedDate`) VALUES
+(4, 46, 17, '2023-03-16'),
+(7, 46, 9, '2023-03-16');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `asset_library`
 --
 
@@ -162,8 +183,7 @@ CREATE TABLE `asset_library` (
 --
 
 INSERT INTO `asset_library` (`id`, `assetID`, `developerID`, `createdAt`) VALUES
-(1, 10, 46, '2023-03-15'),
-(2, 9, 46, '2023-03-15');
+(1, 10, 46, '2023-03-15');
 
 -- --------------------------------------------------------
 
@@ -542,7 +562,7 @@ CREATE TABLE `freeasset` (
 INSERT INTO `freeasset` (`assetID`, `assetName`, `assetGenre`, `assetPrice`, `version`, `assetDetails`, `assetScreenshots`, `assetTitle`, `assetTagline`, `assetClassification`, `assetReleaseStatus`, `assetTags`, `assetFile`, `assetLicense`, `assetCoverImg`, `assetVisibility`, `assetVideoURL`, `assetType`, `assetStyle`, `assetCreatorID`, `fileSize`, `fileExtension`, `created_at`) VALUES
 (9, 'Sprout Lands', '', '', '', '', 'SS-Sprout Lands-0.png,SS-Sprout Lands-1.png', '', 'Cute pixel pastel farming asset pack for free', '2d', 'released', 'pixel art, sprout la', 'asset-Sprout Lands.zip', 'proprietary', 'Cover-Sprout Lands.png', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'sprite', 'pixelart', 47, '', '', '0000-00-00 00:00:00'),
 (10, 'Cozy People', '', '', '', '', 'SS-Cozy People-0.png,SS-Cozy People-1.png', '', 'Animated characters, hairstyles and clothes!', '3d', 'released', 'food, sprites, icons', 'asset-Cozy People.zip', 'open-source', 'Cover-Cozy People.png', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'sprite', 'pixelart', 47, '', '', '0000-00-00 00:00:00'),
-(17, 'New Asset', '', '', '', '', 'SS-New Asset-0.jpg,SS-New Asset-1.png', '', 'Buy this one ASAP', '2d', 'released', 'feff', 'asset-New Asset.zip', 'proprietary', 'Cover-New Asset.png', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'skybox', '16bit', 47, '', '', '0000-00-00 00:00:00');
+(17, 'New Asset', '', '0.00', '', '', 'SS-New Asset-0.jpg,SS-New Asset-1.png', '', 'Buy this one ASAP', '2d', 'released', 'feff', 'asset-New Asset.zip', 'proprietary', 'Cover-New Asset.png', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'skybox', '16bit', 47, '', '', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -876,7 +896,29 @@ INSERT INTO `games_view_tracker` (`id`, `userID`, `sessionID`, `gameID`, `viewed
 (50, 52, 83, 96, '2023-03-15'),
 (51, 52, 83, 103, '2023-03-15'),
 (52, 52, 83, 107, '2023-03-15'),
-(53, 52, 83, 101, '2023-03-15');
+(53, 52, 83, 101, '2023-03-15'),
+(54, 46, 44, 91, '2023-03-15'),
+(55, 46, 44, 90, '2023-03-15'),
+(56, 46, 44, 96, '2023-03-15'),
+(57, 52, 80, 90, '2023-03-16'),
+(58, 52, 80, 91, '2023-03-16'),
+(59, 52, 80, 92, '2023-03-16'),
+(60, 52, 80, 95, '2023-03-16'),
+(61, 52, 38, 90, '2023-03-16'),
+(62, 52, 38, 96, '2023-03-16');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `game_cart`
+--
+
+CREATE TABLE `game_cart` (
+  `id` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
+  `gameID` int(11) NOT NULL,
+  `addedDate` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -993,11 +1035,17 @@ INSERT INTO `game_stats_history` (`id`, `gameID`, `views`, `downloads`, `ratings
 (29, 106, 1, 0, 0, 0, '2023-03-13'),
 (30, 95, 1, 0, 0, 0, '2023-03-13'),
 (31, 91, 1, 1, 0, 0, '2023-03-14'),
-(32, 91, 1, 0, 0, 0, '2023-03-15'),
-(33, 96, 1, 3, 0, 0, '2023-03-15'),
+(32, 91, 2, 0, 0, 0, '2023-03-15'),
+(33, 96, 2, 3, 0, 0, '2023-03-15'),
 (34, 103, 1, 1, 0, 0, '2023-03-15'),
 (35, 107, 1, 2, 0, 0, '2023-03-15'),
-(36, 101, 1, 0, 0, 0, '2023-03-15');
+(36, 101, 1, 0, 0, 0, '2023-03-15'),
+(37, 90, 1, 0, 0, 0, '2023-03-15'),
+(38, 90, 2, 0, 0, 0, '2023-03-16'),
+(39, 91, 1, 0, 0, 0, '2023-03-16'),
+(40, 92, 1, 0, 0, 0, '2023-03-16'),
+(41, 95, 1, 0, 0, 0, '2023-03-16'),
+(42, 96, 1, 0, 0, 0, '2023-03-16');
 
 -- --------------------------------------------------------
 
@@ -1328,6 +1376,12 @@ ALTER TABLE `assetsale`
   ADD PRIMARY KEY (`assetSaleID`);
 
 --
+-- Indexes for table `asset_cart`
+--
+ALTER TABLE `asset_cart`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `asset_library`
 --
 ALTER TABLE `asset_library`
@@ -1453,6 +1507,12 @@ ALTER TABLE `games_view_tracker`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `game_cart`
+--
+ALTER TABLE `game_cart`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `game_library`
 --
 ALTER TABLE `game_library`
@@ -1525,6 +1585,12 @@ ALTER TABLE `activation_keys`
 --
 ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `asset_cart`
+--
+ALTER TABLE `asset_cart`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `asset_library`
@@ -1638,7 +1704,13 @@ ALTER TABLE `games_filters`
 -- AUTO_INCREMENT for table `games_view_tracker`
 --
 ALTER TABLE `games_view_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+
+--
+-- AUTO_INCREMENT for table `game_cart`
+--
+ALTER TABLE `game_cart`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `game_library`
@@ -1656,7 +1728,7 @@ ALTER TABLE `game_reviews`
 -- AUTO_INCREMENT for table `game_stats_history`
 --
 ALTER TABLE `game_stats_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `gig`
