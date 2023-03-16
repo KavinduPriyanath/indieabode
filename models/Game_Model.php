@@ -165,7 +165,7 @@ class Game_Model extends Model
 
 
 
-        $sql = "INSERT INTO games_cart (itemID,gamerID) VALUES (?,?)";
+        $sql = "INSERT INTO game_cart (gameID,userID) VALUES (?,?)";
 
         $stmt = $this->db->prepare($sql);
 
@@ -174,7 +174,7 @@ class Game_Model extends Model
     function AlreadyInCart($gameID, $userID)
     {
 
-        $sql = "SELECT * FROM games_cart WHERE itemID='$gameID' AND gamerID='$userID' LIMIT 1";
+        $sql = "SELECT * FROM game_cart WHERE gameID='$gameID' AND userID='$userID' LIMIT 1";
 
         $stmt = $this->db->prepare($sql);
 

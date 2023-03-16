@@ -90,7 +90,11 @@
             </div>
             <div class="price-flex">
                 <div class="category"><?= $this->asset['assetType']; ?></div>
-                <h1><?= $this->asset['assetPrice']; ?></h1>
+                <?php if ($this->asset['assetPrice'] == "0.00") { ?>
+                    <h1>FREE</h1>
+                <?php } else { ?>
+                    <h1><?= $this->asset['assetPrice']; ?></h1>
+                <?php } ?>
             </div>
             <div id="not-claimed">
                 <a href="/indieabode/asset/checkout?id=<?= $this->asset['assetID'] ?>">

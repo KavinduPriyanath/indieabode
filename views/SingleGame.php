@@ -79,21 +79,7 @@
         <div class="card">
             <div class="card-image game" style="background-image: url('<?php echo '/indieabode/public/uploads/games/cover/' . $this->game['gameCoverImg']; ?>')"></div>
             <h3>Free</h3>
-            <div class="cartbutton">
 
-
-                <?php if ($this->hasInCart) { ?>
-
-                    <a href="/indieabode/cart" style="text-decoration: none;">
-                        <div class="buy-btn" id="cart-btn">View In Cart</div>
-                    </a>
-                <?php } else { ?>
-
-                    <a href="/indieabode/game/addToCart?id=<?= $this->game['gameID'] ?> " style="text-decoration: none;">
-                        <div class="buy-btn" id="cart-btn">Add to cart</div>
-                    </a>
-                <?php } ?>
-            </div>
 
             <?php if ($this->hasClaimed) { ?>
                 <a href="/indieabode/library" style="text-decoration: none;">
@@ -110,6 +96,22 @@
                     </a>
                 <?php } ?>
             <?php } ?>
+
+            <div class="cartbutton">
+
+
+                <?php if ($this->hasInCart) { ?>
+
+                    <a href="/indieabode/cart" style="text-decoration: none;">
+                        <div class="buy-btn" id="cart-btn">View In Cart</div>
+                    </a>
+                <?php } else { ?>
+
+                    <a href="/indieabode/game/addToCart?id=<?= $this->game['gameID'] ?> " style="text-decoration: none;">
+                        <div class="buy-btn" id="cart-btn">Add to cart</div>
+                    </a>
+                <?php } ?>
+            </div>
 
             <div class="row">
                 <p class="title">Release Date</p>

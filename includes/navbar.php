@@ -179,6 +179,19 @@
                         </div>
 
                         <div class="dropdown" data-dropdown>
+                            <a href="" data-dropdown-button>Play<i class="fa fa-angle-down droparrow"></i></a>
+
+                            <div class="dropdown-menu">
+                                <div class="arrow arrow3"></div>
+                                <div class=".ulsub">
+                                    <a href="">Reward Fight <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                                    <a href="<?php echo BASE_URL; ?>jams-calender">Jam&nbsp;Calender
+                                        <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="dropdown" data-dropdown>
                             <a href="#" data-dropdown-button>Community<i class="fa fa-angle-down droparrow"></i></a>
 
                             <div class="dropdown-menu">

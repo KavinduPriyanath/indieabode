@@ -129,7 +129,7 @@ class Asset_Model extends Model
     function AddtoCart($assetID, $ownerID)
     {
 
-        $sql = "INSERT INTO cart(userID, itemID) VALUES (?,?)";
+        $sql = "INSERT INTO asset_cart(userID, assetID) VALUES (?,?)";
 
         $stmt = $this->db->prepare($sql);
 
@@ -139,7 +139,7 @@ class Asset_Model extends Model
     function AlreadyInCart($assetID, $userID)
     {
 
-        $sql = "SELECT * FROM cart WHERE itemID='$assetID' AND userID='$userID' LIMIT 1";
+        $sql = "SELECT * FROM asset_cart WHERE assetID='$assetID' AND userID='$userID' LIMIT 1";
 
         $stmt = $this->db->prepare($sql);
 
