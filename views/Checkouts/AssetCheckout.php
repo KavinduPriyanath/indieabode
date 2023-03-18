@@ -92,9 +92,9 @@
                     <div class="contact">Contact Us</div>
                 </div>
                 <hr id="btn-break">
-                <a href="/indieabode/asset/download?id=<?= $this->asset['assetID'] ?>">
-                    <div class="order-button">Place Order</div>
-                </a>
+                <!-- <a href="/indieabode/asset/download?id=<?= $this->asset['assetID'] ?>"> -->
+                <div class="order-button" onclick="Test(<?= $this->asset['assetID'] ?>)">Place Order</div>
+                <!-- </a> -->
             </div>
         </div>
 
@@ -105,6 +105,7 @@
     ?>
 
     <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
+    <script type="text/javascript" src="https://www.payhere.lk/lib/payhere.js"></script>
 
     <script>
         document
@@ -116,6 +117,87 @@
                 }
                 this.value = foo;
             });
+    </script>
+
+    <script>
+        function Test(id) {
+
+            var x = new XMLHttpRequest();
+            x.onreadystatechange = function() {
+
+                if (x.readyState == 4) {
+
+                    var text = x.responseText;
+
+                    if (text == "2") {
+                        alert("Product Not found");
+                    } else {
+                        alert(text);
+
+                        var obj = JSON.parse(text);
+
+                        //payment gateway goes here
+
+                        // Payment completed. It can be a successful failure.
+                        payhere.onCompleted = function onCompleted(orderId) {
+                            // console.log("Payment completed. OrderID:" + orderId);
+                            alert("Payment Completed");
+                            // Note: validate the payment and show success or failure page to the customer
+                        };
+
+                        // Payment window closed
+                        payhere.onDismissed = function onDismissed() {
+                            // Note: Prompt user to pay again or show an error page
+                            alert("Payment dismissed");
+                        };
+
+                        // Error occurred
+                        payhere.onError = function onError(error) {
+                            // Note: show an error page
+                            // console.log("Error:" + error);
+                            alert("Invalid Details");
+                        };
+
+                        // Put the payment variables here
+                        var payment = {
+                            "sandbox": true,
+                            "merchant_id": "1222729", // Replace your Merchant ID
+                            "return_url": "http://localhost/indieabode/assets", // Important
+                            "cancel_url": "http://localhost/indieabode/assets", // Important
+                            "notify_url": "http://sample.com/notify",
+                            "order_id": obj['order_id'],
+                            "items": "Door bell wireles",
+                            "amount": obj['amount'],
+                            "currency": obj['currency'],
+                            "hash": obj['hash'], // *Replace with generated hash retrieved from backend
+                            "first_name": "Saman",
+                            "last_name": "Perera",
+                            "email": "samanp@gmail.com",
+                            "phone": "0771234567",
+                            "address": "No.1, Galle Road",
+                            "city": "Colombo",
+                            "country": "Sri Lanka",
+                            "delivery_address": "No. 46, Galle road, Kalutara South",
+                            "delivery_city": "Kalutara",
+                            "delivery_country": "Sri Lanka",
+                            "custom_1": "",
+                            "custom_2": ""
+                        };
+
+                        // Show the payhere.js popup, when "PayHere Pay" is clicked
+                        // document.getElementById('payhere-payment').onclick = function(e) {
+                        payhere.startPayment(payment);
+                        // };
+                    }
+
+                }
+
+            };
+
+            x.open("GET", "/indieabode/paymentTest?id=" + id, true);
+            x.send();
+
+        }
     </script>
 
 </body>
