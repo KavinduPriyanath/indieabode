@@ -70,7 +70,6 @@
                 </div>
                 <div class="category">
                     <div class="topics">Contact</div>
-
                     <a href="/indieabode/settings/emailNotifications">
                         <div class="sub-topics">Email Notifications</div>
                     </a>
@@ -81,26 +80,37 @@
                 <div class="topics">Misc</div>
             </div>
             <div class="content-body">
-                <h2>Primary Email</h2>
-                <div class="header">Your primary email address: kavindupriyanath@gmail.com</div><br>
-                <div class="header">Your primary email is where Indieabode will send any notifications to you.</div><br>
-                <div class="header">When you change your email address you must verify it to access any games you have purchased. You will be mailed the verification instructions. For security reasons you must also provide your current password to make any changes to your email address.</div>
-                <form action="" method="post">
-                    <div class="labels"><span>New Email Address</span></div>
-                    <input type="text" placeholder="Required">
-                    <div class="labels"><span>Current Password</span></div>
-                    <input type="text" placeholder="Required">
+                <h2>Billing Address</h2>
+
+                <div class="header">This may help our payment processors to identify you when you make your online transactions through our website. Also supports to prevent fraud and identity theft</div><br>
+                <div class="header">You can set your billing address here so it's pre-filled out when you make any purchases that require it.</div>
+                <form action="/indieabode/settings/addBillingAddressData" method="POST">
+                    <div class="labels"><span>Full Name</span></div>
+                    <input type="text" placeholder="Required" name="fullName" value="<?= $this->userBilling['fullName']; ?>">
+
+                    <div class="labels"><span>Street Line 1</span></div>
+                    <input type="text" placeholder="Required" name="street1" value="<?= $this->userBilling['streetLine1']; ?>">
+
+                    <div class="labels"><span>Street Line 2</span></div>
+                    <input type="text" placeholder="Optional" name="street2" value="<?= $this->userBilling['streetLine2']; ?>">
+
+                    <div class="labels"><span>City</span></div>
+                    <input type="text" placeholder="Required" name="city" value="<?= $this->userBilling['city']; ?>">
+
+                    <div class="labels"><span>Province/State</span></div>
+                    <input type="text" placeholder="Optional" name="province" value="<?= $this->userBilling['province']; ?>">
+
+                    <div class="labels"><span>Zip/Postal Code</span></div>
+                    <input type="text" placeholder="Required" name="postalCode" value="<?= $this->userBilling['zipCode']; ?>">
 
 
-                    <button type="submit" class="save">Update</button>
-                </form>
-                <h2>Additional Emails</h2>
-                <div class="header">You can link additional email addresses to your itch.io account in order to get access to anything purchased under those email addresses.</div>
-                <form action="" method="post">
-                    <div class="labels"><span>Additional Email Address</span></div>
-                    <input type="text" placeholder="Required">
+                    <div class="labels"><span>Country</span></div>
+                    <select name="country" id="">
+                        <option value="Sri Lanka">Sri Lanka</option>
+                        <option value="Singapore">Singapore</option>
+                    </select>
 
-                    <button type="submit" class="save">Add Email</button>
+                    <button type="submit" class="save" name="save">Save</button>
                 </form>
             </div>
         </div>

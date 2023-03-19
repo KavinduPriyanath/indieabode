@@ -52,7 +52,7 @@
                     <a href="">
                         <div class="sub-topics">Credit Cards</div>
                     </a>
-                    <a href="">
+                    <a href="/indieabode/settings/billingAddress">
                         <div class="sub-topics">Billing Address</div>
                     </a>
                     <a href="">
