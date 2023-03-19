@@ -52,7 +52,7 @@
                     <a href="">
                         <div class="sub-topics">Credit Cards</div>
                     </a>
-                    <a href="">
+                    <a href="/indieabode/settings/billingAddress">
                         <div class="sub-topics">Billing Address</div>
                     </a>
                     <a href="">
@@ -63,6 +63,9 @@
                     </a>
                     <a href="/indieabode/settings/revenueshare">
                         <div class="sub-topics">Revenue Sharing</div>
+                    </a>
+                    <a href="/indieabode/settings/paymentprocessors">
+                        <div class="sub-topics">Payment Processors</div>
                     </a>
                     <a href="">
                         <div class="sub-topics">Support Email</div>

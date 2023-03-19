@@ -83,14 +83,38 @@
                 <div class="topics">Misc</div>
             </div>
             <div class="content-body">
-                <h2>Two-Factor Authentication</h2>
-                <div class="header">Two-factor authentication is an additional layer of security for your account to help prevent unauthorized access if your password is ever stolen.</div><br>
-                <div class="header">Status:Off</div>
-                <form action="" method="post">
+                <h2>Billing Address</h2>
 
-                    <button type="submit" class="save">Configure two-factor authentication</button>
+                <div class="header">This may help our payment processors to identify you when you make your online transactions through our website. Also supports to prevent fraud and identity theft</div><br>
+                <div class="header">You can set your billing address here so it's pre-filled out when you make any purchases that require it.</div>
+                <form action="/indieabode/settings/addBillingAddressData" method="POST">
+                    <div class="labels"><span>Full Name</span></div>
+                    <input type="text" placeholder="Required" name="fullName" value="<?= $this->userBilling['fullName']; ?>">
+
+                    <div class="labels"><span>Street Line 1</span></div>
+                    <input type="text" placeholder="Required" name="street1" value="<?= $this->userBilling['streetLine1']; ?>">
+
+                    <div class="labels"><span>Street Line 2</span></div>
+                    <input type="text" placeholder="Optional" name="street2" value="<?= $this->userBilling['streetLine2']; ?>">
+
+                    <div class="labels"><span>City</span></div>
+                    <input type="text" placeholder="Required" name="city" value="<?= $this->userBilling['city']; ?>">
+
+                    <div class="labels"><span>Province/State</span></div>
+                    <input type="text" placeholder="Optional" name="province" value="<?= $this->userBilling['province']; ?>">
+
+                    <div class="labels"><span>Zip/Postal Code</span></div>
+                    <input type="text" placeholder="Required" name="postalCode" value="<?= $this->userBilling['zipCode']; ?>">
+
+
+                    <div class="labels"><span>Country</span></div>
+                    <select name="country" id="">
+                        <option value="Sri Lanka">Sri Lanka</option>
+                        <option value="Singapore">Singapore</option>
+                    </select>
+
+                    <button type="submit" class="save" name="save">Save</button>
                 </form>
-
             </div>
         </div>
     </div>

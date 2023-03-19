@@ -9,9 +9,33 @@ class PaymentTest_Model extends Model
     }
 
 
-    function findAsset($asseID)
+    function findAsset($assetID)
     {
-        $stmt = $this->db->prepare("SELECT * FROM freeasset WHERE assetID='$asseID' LIMIT 1");
+        $stmt = $this->db->prepare("SELECT * FROM freeasset WHERE assetID='$assetID' LIMIT 1");
+
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    function getUserBillingInfo($userID)
+    {
+
+        $sql = "SELECT * FROM billing_addresses WHERE userID='$userID' LIMIT 1";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    function getUserDetails($userID)
+    {
+
+        $sql = "SELECT * FROM gamer WHERE gamerID='$userID' LIMIT 1";
+
+        $stmt = $this->db->prepare($sql);
 
         $stmt->execute();
 

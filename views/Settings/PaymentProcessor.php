@@ -83,13 +83,9 @@
                 <div class="topics">Misc</div>
             </div>
             <div class="content-body">
-                <h2>Two-Factor Authentication</h2>
-                <div class="header">Two-factor authentication is an additional layer of security for your account to help prevent unauthorized access if your password is ever stolen.</div><br>
-                <div class="header">Status:Off</div>
-                <form action="" method="post">
+                <h2>Payment Processors</h2>
+                <div class="header">grgr</div><br>
 
-                    <button type="submit" class="save">Configure two-factor authentication</button>
-                </form>
 
             </div>
         </div>
