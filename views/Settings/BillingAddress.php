@@ -64,6 +64,9 @@
                     <a href="/indieabode/settings/revenueshare">
                         <div class="sub-topics">Revenue Sharing</div>
                     </a>
+                    <a href="/indieabode/settings/paymentprocessors">
+                        <div class="sub-topics">Payment Processors</div>
+                    </a>
                     <a href="">
                         <div class="sub-topics">Support Email</div>
                     </a>

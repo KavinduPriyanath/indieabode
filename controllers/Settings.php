@@ -59,6 +59,12 @@ class Settings extends Controller
         $this->view->render('Settings/EmailNotifications');
     }
 
+    function paymentprocessors()
+    {
+
+        $this->view->render('Settings/PaymentProcessor');
+    }
+
     function billingAddress()
     {
 

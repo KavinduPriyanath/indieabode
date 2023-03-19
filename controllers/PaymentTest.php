@@ -11,9 +11,13 @@ class PaymentTest extends Controller
 
     function index()
     {
-        $asseID = $_GET['id'];
+        $assetID = $_GET['id'];
 
-        $asset = $this->model->findAsset($asseID);
+        $asset = $this->model->findAsset($assetID);
+
+        $userBillingInfo = $this->model->getUserBillingInfo($_SESSION['id']);
+
+        $userDetails = $this->model->getUserDetails($_SESSION['id']);
 
 
 
@@ -26,6 +30,15 @@ class PaymentTest extends Controller
         $order_id = uniqid();
         $merchant_secret = "MjczNjU0OTYzMzM3NDA3NzYzMjczNzEyMjI2MjM4MTQ3MjE2OTkxMg==";
         $currency = "USD";
+
+        //more information
+        $address = $userBillingInfo['streetLine1'];
+        $city = $userBillingInfo['city'];
+        $country = $userBillingInfo['country'];
+        $firstName = $userDetails['firstName'];
+        $lastName = $userDetails['lastName'];
+        $email = $userDetails['email'];
+
 
         $hash = strtoupper(
             md5(
@@ -44,6 +57,13 @@ class PaymentTest extends Controller
         $array['order_id'] = $order_id;
         $array['currency'] = $currency;
         $array['hash'] = $hash;
+
+        $array['address'] = $address;
+        $array['city'] = $city;
+        $array['country'] = $country;
+        $array['firstName'] = $firstName;
+        $array['lastName'] = $lastName;
+        $array['email'] = $email;
 
         $jsonObj = json_encode($array);
 
