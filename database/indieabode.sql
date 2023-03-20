@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 19, 2023 at 06:38 PM
+-- Generation Time: Mar 20, 2023 at 10:29 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -175,7 +175,31 @@ CREATE TABLE `asset_library` (
 --
 
 INSERT INTO `asset_library` (`id`, `assetID`, `developerID`, `createdAt`) VALUES
-(1, 10, 46, '2023-03-15');
+(1, 10, 46, '2023-03-15'),
+(15, 17, 46, '2023-03-20');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `asset_purchases`
+--
+
+CREATE TABLE `asset_purchases` (
+  `id` int(11) NOT NULL,
+  `assetID` int(11) NOT NULL,
+  `buyerID` int(11) NOT NULL,
+  `orderID` varchar(250) NOT NULL,
+  `purchasedPrice` double NOT NULL,
+  `purchasedData` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `asset_purchases`
+--
+
+INSERT INTO `asset_purchases` (`id`, `assetID`, `buyerID`, `orderID`, `purchasedPrice`, `purchasedData`) VALUES
+(18, 17, 46, '6418200e3e141', 30, '2023-03-20'),
+(19, 17, 46, '641825ffad068', 30, '2023-03-20');
 
 -- --------------------------------------------------------
 
@@ -580,7 +604,7 @@ CREATE TABLE `freeasset` (
 INSERT INTO `freeasset` (`assetID`, `assetName`, `assetGenre`, `assetPrice`, `version`, `assetDetails`, `assetScreenshots`, `assetTitle`, `assetTagline`, `assetClassification`, `assetReleaseStatus`, `assetTags`, `assetFile`, `assetLicense`, `assetCoverImg`, `assetVisibility`, `assetVideoURL`, `assetType`, `assetStyle`, `assetCreatorID`, `fileSize`, `fileExtension`, `created_at`) VALUES
 (9, 'Sprout Lands', '', '', '', '', 'SS-Sprout Lands-0.png,SS-Sprout Lands-1.png', '', 'Cute pixel pastel farming asset pack for free', '2d', 'released', 'pixel art, sprout la', 'asset-Sprout Lands.zip', 'proprietary', 'Cover-Sprout Lands.png', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'sprite', 'pixelart', 47, '', '', '0000-00-00 00:00:00'),
 (10, 'Cozy People', '', '', '', '', 'SS-Cozy People-0.png,SS-Cozy People-1.png', '', 'Animated characters, hairstyles and clothes!', '3d', 'released', 'food, sprites, icons', 'asset-Cozy People.zip', 'open-source', 'Cover-Cozy People.png', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'sprite', 'pixelart', 47, '', '', '0000-00-00 00:00:00'),
-(17, 'New Asset', '', '1.00', '', '', 'SS-New Asset-0.jpg,SS-New Asset-1.png', '', 'Buy this one ASAP', '2d', 'released', 'feff', 'asset-New Asset.zip', 'proprietary', 'Cover-New Asset.png', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'skybox', '16bit', 47, '', '', '0000-00-00 00:00:00');
+(17, 'New Asset', '', '30.00', '', '', 'SS-New Asset-0.jpg,SS-New Asset-1.png', '', 'Buy this one ASAP', '2d', 'released', 'feff', 'asset-New Asset.zip', 'proprietary', 'Cover-New Asset.png', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'skybox', '16bit', 47, '', '', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -1408,6 +1432,12 @@ ALTER TABLE `asset_library`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `asset_purchases`
+--
+ALTER TABLE `asset_purchases`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `asset_stats`
 --
 ALTER TABLE `asset_stats`
@@ -1622,7 +1652,13 @@ ALTER TABLE `asset_cart`
 -- AUTO_INCREMENT for table `asset_library`
 --
 ALTER TABLE `asset_library`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `asset_purchases`
+--
+ALTER TABLE `asset_purchases`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `asset_stats_history`

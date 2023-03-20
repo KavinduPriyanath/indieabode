@@ -68,7 +68,7 @@
     font-size: 17px;
     color: #475872;
     margin-bottom: 7px;
-    text-align: justify;
+    text-align: left;
 }
 
 /* .card a {
@@ -94,11 +94,11 @@
 }
 
 .library-left {
-    width: 175px;
+    width: 177px;
 }
 
 .library-right {
-    width: 107.5px;
+    width: 105.5px;
 }
 
 /* Dropdown */
@@ -124,6 +124,7 @@
     /* top: 50px; */
     position: relative;
     display: inline-block;
+    
   }
   
   .dropdown-content {
@@ -135,7 +136,6 @@
     background-attachment: fixed;
     width: 250.5px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
   }
   
   .dropdown-content a {

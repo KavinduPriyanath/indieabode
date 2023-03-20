@@ -106,7 +106,9 @@
             </div>
 
             <div id="claimed">
-                <div class="buy-btn">In Library</div>
+                <a href="/indieabode/library">
+                    <div class="buy-btn">In Library</div>
+                </a>
             </div>
 
             <div class="details">
@@ -181,6 +183,9 @@
         </div>
     </div>
 
+
+
+
     <?php
     include 'includes/footer.php';
     ?>
@@ -190,6 +195,8 @@
     <script src="<?php echo BASE_URL; ?>public/js/asset.js"></script>
 
     <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
+
+
 
 
     <?php if ($this->hasClaimed) { ?>

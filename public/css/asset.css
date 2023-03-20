@@ -371,7 +371,7 @@ input[type=submit]:hover {
 }
 
 
-#not-claimed a{
+#not-claimed a, #claimed a{
     text-decoration: none;
 }
 
@@ -470,3 +470,4 @@ input[type=submit]:hover {
 .more {
     margin-bottom: 40px;
 }
+

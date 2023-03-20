@@ -132,23 +132,27 @@
                     if (text == "2") {
                         alert("Product Not found");
                     } else {
-                        alert(text);
+                        //alert(text);
 
                         var obj = JSON.parse(text);
+
+                        var buyerID = <?= $_SESSION['id']; ?>;
 
                         //payment gateway goes here
 
                         // Payment completed. It can be a successful failure.
                         payhere.onCompleted = function onCompleted(orderId) {
                             // console.log("Payment completed. OrderID:" + orderId);
-                            alert("Payment Completed");
+                            // alert("Payment Completed");
                             // Note: validate the payment and show success or failure page to the customer
+                            // window.location = "/indieabode/paymentTest/purchaseSuccessful?id=" + id;
+                            AssetPurchaseSuccessful(id, obj['amount'], obj['order_id']);
                         };
 
                         // Payment window closed
                         payhere.onDismissed = function onDismissed() {
                             // Note: Prompt user to pay again or show an error page
-                            alert("Payment dismissed");
+                            //alert("Payment dismissed");
                         };
 
                         // Error occurred
@@ -164,7 +168,7 @@
                             "merchant_id": "1222729", // Replace your Merchant ID
                             "return_url": "http://localhost/indieabode/assets", // Important
                             "cancel_url": "http://localhost/indieabode/assets", // Important
-                            "notify_url": "http://sample.com/notify",
+                            "notify_url": "",
                             "order_id": obj['order_id'],
                             "items": "Door bell wireles",
                             "amount": obj['amount'],
@@ -194,8 +198,42 @@
 
             };
 
-            x.open("GET", "/indieabode/paymentTest?id=" + id, true);
+            x.open("GET", "/indieabode/asset/buyAsset?id=" + id, true);
             x.send();
+
+        }
+
+        function AssetPurchaseSuccessful(assetID, amount, orderId) {
+
+            var f = new FormData();
+
+            f.append("orderID", orderId);
+            f.append("assetID", amount);
+
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.onreadystatechange = function() {
+
+                if (xhr.readyState == 4) {
+                    var t = xhr.responseText;
+
+
+                    if (t == "2") {
+                        alert(t);
+                    } else {
+                        window.location = "/indieabode/asset/thankyou?id=" + assetID;
+                    }
+
+                }
+
+            }
+
+            xhr.open("POST", "/indieabode/asset/purchaseSuccessful?id=" + assetID, true);
+            xhr.send(f);
+
+            // window.location = "/indieabode/paymentTest/purchaseSuccessful?id=" + assetID;
+
 
         }
     </script>
