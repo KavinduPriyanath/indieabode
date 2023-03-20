@@ -206,7 +206,21 @@
 
                     <label id="game-screenshots" for="game-screenshots">Screenshots</label><br>
                     <p>These will appear on your game's page. Optional but highly recommended. Upload 3 to 5 for best results</p><br>
-                    <input type="file" id="game-screenshots" name="game-screenshots[]" accept=".jpg,.jpeg,.png" multiple="multiple"><br><br>
+                    <!-- <input type="file" id="game-screenshots" name="game-screenshots[]" accept=".jpg,.jpeg,.png" multiple="multiple"><br><br> -->
+
+
+                    <div class="screenshot-container">
+
+                        <div id="screenshots"></div>
+                        <p id="num-of-files">No Files Chosen</p>
+                        <input type="file" id="file-input" accept="image/png, image/jpeg" onchange="preview()" multiple>
+                        <label for="file-input">
+                            Add Screenshots
+                        </label>
+
+                    </div>
+
+
                 </div>
             </div>
             <br><br>
@@ -261,6 +275,35 @@
 
             uploadLabel.innerText = "Replace Photo";
             //fileName.textContent = uploadButton.files[0].name;
+        }
+    </script>
+
+    <script>
+        let fileInput = document.getElementById("file-input");
+        let imageContainer = document.getElementById("screenshots");
+        let numOfFiles = document.getElementById("num-of-files");
+
+        function preview() {
+            imageContainer.innerHTML = "";
+            numOfFiles.textContent = `${fileInput.files.length} Files Selected`;
+            numOfFiles.style.display = "block";
+            imageContainer.style.display = "block";
+
+            for (i of fileInput.files) {
+                let reader = new FileReader();
+                let figure = document.createElement("figure");
+                // let figCap = document.createElement("figcaption");
+                // figCap.innerText = i.name;
+                // figure.appendChild(figCap);
+                reader.onload = () => {
+                    let img = document.createElement("img");
+                    img.setAttribute("src", reader.result);
+                    // figure.insertBefore(img, figCap);
+                    figure.appendChild(img);
+                }
+                imageContainer.appendChild(figure);
+                reader.readAsDataURL(i);
+            }
         }
     </script>
 
