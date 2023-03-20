@@ -181,8 +181,21 @@
                 <div class="upload-col">
 
                     <label id="game-upload-cover-img" for="game-upload-cover-img">Upload Cover Image</label><br>
-                    <p>Used when we link your game with other parts of the site</p><br>
-                    <input type="file" id="game-upload-cover-img" name="game-upload-cover-img" accept=".jpg,.jpeg,.png"><br><br>
+                    <p>Used when we link your game with other parts of the site</p>
+                    <!-- <input type="file" id="game-upload-cover-img" name="game-upload-cover-img" accept=".jpg,.jpeg,.png"><br><br> -->
+
+                    <div class="image-upload-box">
+                        <figure class="image-container">
+                            <img id="chosen-image">
+                        </figure>
+
+                        <input type="file" id="upload-button" name="game-upload-cover-img" accept=".jpg,.jpeg,.png">
+                        <label for="upload-button" id="upload-label">
+                            Upload Photo
+                        </label>
+                    </div>
+
+                    <br>
 
                     <label id="game-illustration-vedio" for="game-illustration-vedio">Game Illustration Video</label><br>
                     <p>Add the link to your Youtube video</p><br>
@@ -193,7 +206,21 @@
 
                     <label id="game-screenshots" for="game-screenshots">Screenshots</label><br>
                     <p>These will appear on your game's page. Optional but highly recommended. Upload 3 to 5 for best results</p><br>
-                    <input type="file" id="game-screenshots" name="game-screenshots[]" accept=".jpg,.jpeg,.png" multiple="multiple"><br><br>
+                    <!-- <input type="file" id="game-screenshots" name="game-screenshots[]" accept=".jpg,.jpeg,.png" multiple="multiple"><br><br> -->
+
+
+                    <div class="screenshot-container">
+
+                        <div id="screenshots"></div>
+                        <p id="num-of-files">No Files Chosen</p>
+                        <input type="file" id="file-input" accept="image/png, image/jpeg" onchange="preview()" multiple>
+                        <label for="file-input">
+                            Add Screenshots
+                        </label>
+
+                    </div>
+
+
                 </div>
             </div>
             <br><br>
@@ -231,6 +258,53 @@
                 }
             });
         });
+    </script>
+
+    <script>
+        let uploadButton = document.getElementById("upload-button");
+        let chosenImage = document.getElementById("chosen-image");
+        let uploadLabel = document.getElementById("upload-label");
+
+        uploadButton.onchange = () => {
+            let reader = new FileReader();
+            reader.readAsDataURL(uploadButton.files[0]);
+            reader.onload = () => {
+                chosenImage.setAttribute("src", reader.result);
+            }
+            console.log(reader);
+
+            uploadLabel.innerText = "Replace Photo";
+            //fileName.textContent = uploadButton.files[0].name;
+        }
+    </script>
+
+    <script>
+        let fileInput = document.getElementById("file-input");
+        let imageContainer = document.getElementById("screenshots");
+        let numOfFiles = document.getElementById("num-of-files");
+
+        function preview() {
+            imageContainer.innerHTML = "";
+            numOfFiles.textContent = `${fileInput.files.length} Files Selected`;
+            numOfFiles.style.display = "block";
+            imageContainer.style.display = "block";
+
+            for (i of fileInput.files) {
+                let reader = new FileReader();
+                let figure = document.createElement("figure");
+                // let figCap = document.createElement("figcaption");
+                // figCap.innerText = i.name;
+                // figure.appendChild(figCap);
+                reader.onload = () => {
+                    let img = document.createElement("img");
+                    img.setAttribute("src", reader.result);
+                    // figure.insertBefore(img, figCap);
+                    figure.appendChild(img);
+                }
+                imageContainer.appendChild(figure);
+                reader.readAsDataURL(i);
+            }
+        }
     </script>
 
 

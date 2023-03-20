@@ -26,7 +26,7 @@
         <div class="content">
             <div class="cart-items">
                 <hr>
-                <?php if (isset($_SESSION['logged']) && $_SESSION['userRole'] == "game developer") { ?>
+                <?php if (isset($_SESSION['logged']) && ($_SESSION['userRole'] == "game developer" || $_SESSION['userRole'] == "asset creator")) { ?>
                     <?php foreach ($this->myAssets as $myAsset) { ?>
                         <div class="cart-item">
                             <div class="cart-left">

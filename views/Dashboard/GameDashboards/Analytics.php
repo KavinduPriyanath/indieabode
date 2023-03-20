@@ -29,7 +29,7 @@
         <div class="tabs-row">
             <a href="/indieabode/dashboard/edit?id=<?= $this->game['gameID']; ?>">Edit Game</a>
             <a href="/indieabode/dashboard/devlogs">Analytics</a>
-            <a href="/indieabode/dashboard/gamedevlogs?gameid=<?= $this->game['gameID']; ?>">Devlogs</a>
+            <a href="/indieabode/dashboard/gamedevlogs?id=<?= $this->game['gameID']; ?>">Devlogs</a>
             <a href="/indieabode/dashboard/publishers?id=<?= $this->game['gameID']; ?>">Publishers</a>
             <a href="/indieabode/dashboard/sales">Crowdfundings</a>
             <a href="/indieabode/dashboard/gamejams">Metadata</a>

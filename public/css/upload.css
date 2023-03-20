@@ -278,3 +278,88 @@ select option{
     margin-left: 100px;
   }
   
+/* Cover Image Preview */
+.image-container{
+    width: 395.5px;
+    height: 210px;
+    margin: 0px;
+    border: 2px solid #1E3455;
+    background: transparent;
+    outline: none;
+    border-radius: 4px;
+    background-size: cover;
+    position: relative;
+}
+
+.image-container img{
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.image-upload-box input[type="file"]{
+    display: none;
+}
+
+.image-upload-box label{
+    display: inline-block;
+    position: relative;
+    background-color: #A5B9BD;
+    color: #132759;
+    font-size: 18px;
+    text-align: center;
+    width: 130px;
+    padding: 15px 0px;
+    border-radius: 8px;
+    margin: 8px 0px;
+    cursor: pointer;
+}
+
+.screenshot-container input[type="file"]{
+    display: none;
+}
+
+.screenshot-container label{
+    display: inline-block;
+    position: relative;
+    background-color: #A5B9BD;
+    color: #132759;
+    font-size: 18px;
+    text-align: center;
+    width: 130px;
+    padding: 15px 0px;
+    border-radius: 8px;
+    margin: 0px 0px;
+    cursor: pointer;
+}
+.screenshot-container p{
+    text-align: left;
+    margin: 20px 0 30px 0;
+}
+#screenshots{
+    display: none;
+    width: 450px;
+    position: relative;
+    padding: 20px 75px;
+    /* margin: auto; */
+    /* display: block; */
+    background-color: rgb(73, 97, 126);
+}
+
+.screenshot-container figure{
+    width: 300px;
+    height: 172px;
+    margin-bottom: 8px;
+}
+
+.screenshot-container img{
+    width: 100%;
+    height: 100%;
+}
+
+.screenshot-container #num-of-files {
+    display: none;
+}
