@@ -278,3 +278,43 @@ select option{
     margin-left: 100px;
   }
   
+/* Cover Image Preview */
+.image-container{
+    width: 395.5px;
+    height: 210px;
+    margin: 0px;
+    border: 2px solid #1E3455;
+    background: transparent;
+    outline: none;
+    border-radius: 4px;
+    background-size: cover;
+    position: relative;
+}
+
+.image-container img{
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.image-upload-box input[type="file"]{
+    display: none;
+}
+
+.image-upload-box label{
+    display: inline-block;
+    position: relative;
+    background-color: #A5B9BD;
+    color: #132759;
+    font-size: 18px;
+    text-align: center;
+    width: 130px;
+    padding: 15px 0px;
+    border-radius: 8px;
+    /* margin: auto; */
+    margin: 8px 0px;
+    cursor: pointer;
+}
