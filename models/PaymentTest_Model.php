@@ -41,4 +41,14 @@ class PaymentTest_Model extends Model
 
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+    function SuccessfulAssetPurchase($assetID, $userID, $paidPrice, $orderID)
+    {
+
+        $sql = "INSERT INTO asset_purchases(assetID, buyerID, purchasedPrice, orderID) VALUES ('$assetID', '$userID', '$paidPrice', '$orderID')";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+    }
 }
