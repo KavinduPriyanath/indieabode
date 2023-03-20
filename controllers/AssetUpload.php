@@ -36,9 +36,17 @@ class AssetUpload extends Controller
         $assetCoverImg = $this->model->uploadCoverImg($assetName);
         $assetScreenshots = $this->model->uploadScreenshots($assetName);
 
+        if ($_POST['asset-price'] == "Free") {
+            $assetPrice = 0.00;
+        } else if ($_POST['asset-price'] == "PWYW") {
+            $assetPrice = trim($_POST['asset-pwyw-default'], "$");
+        } else if ($_POST['asset-price'] == "Paid") {
+            $assetPrice = $_POST['asset-price-paid'];
+        }
+
         $this->model->uploadNewAsset(
             $assetName,
-            //$assetPricing
+            $assetPrice,
             $assetDetails,
             $assetTagline,
             $foreignKey,

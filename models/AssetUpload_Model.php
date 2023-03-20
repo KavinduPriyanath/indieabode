@@ -11,6 +11,7 @@ class AssetUpload_Model extends Model
 
     public function uploadNewAsset(
         $assetName,
+        $assetPrice,
         $assetDetails,
         $assetTagline,
         $foreignKey,
@@ -28,6 +29,7 @@ class AssetUpload_Model extends Model
 
     ) {
         $sql = "INSERT INTO freeasset (assetName,
+        assetPrice,
         assetDetails, 
         assetTagline, 
         assetCreatorID, 
@@ -42,12 +44,13 @@ class AssetUpload_Model extends Model
         assetFile, 
         assetCoverImg, 
         assetScreenshots
-) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         $stmt = $this->db->prepare($sql);
 
         $stmt->execute([
             "$assetName",
+            "$assetPrice",
             "$assetDetails",
 
             "$assetTagline",

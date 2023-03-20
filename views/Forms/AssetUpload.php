@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <title>Indieabode</title>
 
     <style>
@@ -129,17 +130,52 @@ include 'includes/navbar.php';
 
                     <br><br>
 
+
+
+                    <label id="asset-price" for="asset-price">Pricing</label><br><br>
+                    <div class="price">
+                        <div class="price-free">
+                            <input type="radio" id="asset-free" name="asset-price" value="Free" checked>
+                            <label for="asset-free">Free</label>
+                        </div>
+                        <div class="price-pwyw">
+                            <input type="radio" id="asset-pwyw" name="asset-price" value="PWYW">
+                            <label for="asset-pwyw">Donate</label>
+                        </div>
+                        <div class="price-paid">
+                            <input type="radio" id="asset-paid" name="asset-price" value="Paid">
+                            <label for="asset-paid">Paid</label>
+                        </div>
+                    </div>
+                    <div id="free-asset-price-box">
+                        <p id="p">This asset will be available for free</p>
+                    </div>
+                    <div id="pwyw-asset-price-box" style="display: none">
+                        <p id="p">Someone downloading your asset will be asked for a donation before getting access. They can skip to download for free.</p>
+                        <br>
+                        <p>Suggested donation — Default donation amount</p>
+                        <input type="text" id="asset-price-val" name="asset-pwyw-default" value="$2.00" />
+                    </div>
+                    <div id="paid-asset-price-box" style="display: none">
+                        <p id="p">Set a price you need</p>
+                        <input type="text" id="asset-price-val" name="asset-price-paid" />
+                    </div>
+                    <br><br>
+
+
+
+
+
+
+
+
+
+
                     <label id="asset-tags" for="asset-tags">Tags</label><br>
                     <p id="p">Keywords that someone would search to find your assets</p><br>
                     <input type="text" id="asset-tags" name="asset-tags" /> <br><br>
 
-                    <label id="asset-price" for="asset-price">Pricing</label><br>
-                    <input type="radio" id="asset-free" name="asset-price" value="free" checked>
-                    <label for="asset-free">Free</label><br>
-                    <input type="radio" id="asset-paid" name="asset-price" value="paid">
-                    <label for="asset-paid">Paid</label><br>
-                    <p id="p">Minimum Price - Set to $0 for free assets</p>
-                    <input type="text" id="asset-price-val" name="asset-price-val" /><br><br>
+
 
                     <label id="upload-asset" for="upload-asset">Upload Assets</label><br>
                     <input type="file" id="upload-asset" name="upload-asset"><br><br>
@@ -207,6 +243,25 @@ include 'includes/navbar.php';
 
 
 
+<script>
+    $(function() {
+        $('input[name="asset-price"]').on("click", function() {
+            if ($(this).val() == "Free") {
+                $("#free-asset-price-box").show();
+                $("#paid-asset-price-box").hide();
+                $("#pwyw-asset-price-box").hide();
+            } else if ($(this).val() == "Paid") {
+                $("#paid-asset-price-box").show();
+                $("#free-asset-price-box").hide();
+                $("#pwyw-asset-price-box").hide();
+            } else if ($(this).val() == "PWYW") {
+                $("#pwyw-asset-price-box").show();
+                $("#free-asset-price-box").hide();
+                $("#paid-asset-price-box").hide();
+            }
+        });
+    });
+</script>
 
 
 
