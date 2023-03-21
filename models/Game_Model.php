@@ -171,6 +171,7 @@ class Game_Model extends Model
 
         $stmt->execute(["$itemID", "$gamerID"]);
     }
+
     function AlreadyInCart($gameID, $userID)
     {
 
@@ -382,5 +383,40 @@ class Game_Model extends Model
 
             $updateStmt->execute();
         }
+    }
+
+
+    function getUserBillingInfo($userID)
+    {
+
+        $sql = "SELECT * FROM billing_addresses WHERE userID='$userID' LIMIT 1";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    function getUserDetails($userID)
+    {
+
+        $sql = "SELECT * FROM gamer WHERE gamerID='$userID' LIMIT 1";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    function SuccessfulGamePurchase($gameID, $userID, $paidPrice, $orderID)
+    {
+
+        $sql = "INSERT INTO game_purchases(gameID, buyerID, purchasedPrice, orderID) VALUES ('$gameID', '$userID', '$paidPrice', '$orderID')";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
     }
 }

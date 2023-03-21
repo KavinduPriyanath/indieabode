@@ -193,10 +193,135 @@ class Game extends Controller
         readfile($downloadPath);
     }
 
-    function checkoutfree()
+    function checkout()
     {
-        $this->view->check = $this->model->showSingleGame($_GET['id']);
-        $this->view->render('Checkouts/GameCheckout');
+        $this->view->game = $this->model->showSingleGame($_GET['id']);
+        $this->view->render('Checkouts/AssetCheckout');
+    }
+
+
+    function buyGame()
+    {
+
+        $gameID = $_GET['id'];
+
+        $game = $this->model->showSingleGame($gameID);
+
+        $userBillingInfo = $this->model->getUserBillingInfo($_SESSION['id']);
+
+        $userDetails = $this->model->getUserDetails($_SESSION['id']);
+
+
+
+        // if (empty($asseID)) {
+        //     echo "2";
+        // }
+
+        // $amount = $asset['assetPrice'];
+        $amount = 30.00;
+        $merchant_id = "1222729";
+        $order_id = uniqid();
+        $merchant_secret = "MjczNjU0OTYzMzM3NDA3NzYzMjczNzEyMjI2MjM4MTQ3MjE2OTkxMg==";
+        $currency = "LKR";
+
+        //more information
+        $address = $userBillingInfo['streetLine1'];
+        $city = $userBillingInfo['city'];
+        $country = $userBillingInfo['country'];
+        $firstName = $userDetails['firstName'];
+        $lastName = $userDetails['lastName'];
+        $email = $userDetails['email'];
+
+
+        $hash = strtoupper(
+            md5(
+                $merchant_id .
+                    $order_id .
+                    number_format($amount, 2, '.', '') .
+                    $currency .
+                    strtoupper(md5($merchant_secret))
+            )
+        );
+
+        $array = [];
+
+        $array['amount'] = $amount;
+        $array['merchant_id'] = $merchant_id;
+        $array['order_id'] = $order_id;
+        $array['currency'] = $currency;
+        $array['hash'] = $hash;
+
+        $array['address'] = $address;
+        $array['city'] = $city;
+        $array['country'] = $country;
+        $array['firstName'] = $firstName;
+        $array['lastName'] = $lastName;
+        $array['email'] = $email;
+
+        $jsonObj = json_encode($array);
+
+        echo $jsonObj;
+    }
+
+    function purchaseSuccessful()
+    {
+
+        $orderId = $_POST['orderID'];
+        $amount = $_POST['assetID'];
+
+        $downloadingDev = $this->model->currentUser($_SESSION['id']);
+
+        $developerEmail = $downloadingDev['email'];
+
+        $this->model->SuccessfulGamePurchase($_GET['id'], $_SESSION['id'], $amount, $orderId);
+
+        $this->model->AddtoLibrary($_GET['id'], $_SESSION['id']);
+
+        //sending an email receipt
+        try {
+            $mail = new PHPMailer(true);
+
+            $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+
+            $mail->isSMTP();
+            $mail->SMTPAuth = true;
+
+            $mail->Host = "smtp.gmail.com";
+            $mail->SMTPSecure = "tls";
+            $mail->Port = 587;
+
+            $mail->Username = "tech2019man@gmail.com";
+            $mail->Password = "qohvqzbaieleualv";
+
+            $mail->setFrom("tech2019man@gmail.com", "Indieabode");
+            $mail->addAddress($developerEmail);
+
+            $email_template = '
+                <h2>Hello</h2>
+                <p>You have purchased this game</p>
+            ';
+
+            $mail->isHTML(true);
+            $mail->Subject = "New Asset";
+            $mail->Body = $email_template;
+
+            $mail->send();
+
+
+            //$this->model->AddtoLibrary($_GET['id'], $_SESSION['id']);
+            //header('location:/indieabode/forgotpassword/resetmailsent');
+            //header("location:/indieabode/asset?id=" . $_GET['id']);
+        } catch (Exception $e) {
+            header('location:/indieabode/downloadfailed');
+            // echo "1";
+        }
+    }
+
+    function thankyou()
+    {
+
+
+        $this->view->render('ThankYou/AssetPurchase');
     }
 
 

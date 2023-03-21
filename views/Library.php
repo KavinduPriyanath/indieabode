@@ -50,10 +50,10 @@
                                         <a href="#">Download</a>
                                     </div>
                                     <div class="options">
-                                        <a href="#">Go to Store Page</a>
+                                        <a href="/indieabode/asset?id=<?= $myAsset['assetID']; ?>">Go to Store Page</a>
                                     </div>
                                     <div class="options">
-                                        <a href="#">View Reviews</a>
+                                        <a href="/indieabode/asset/reviews?id=<?= $myAsset['assetID']; ?>">View Reviews</a>
                                     </div>
                                     <div class="options">
                                         <a href="#">Hide Asset</a>
@@ -89,10 +89,10 @@
                                         <a href="#">Download</a>
                                     </div>
                                     <div class="options">
-                                        <a href="#">Go to Store Page</a>
+                                        <a href="/indieabode/game?id=<?= $myGame['gameID']; ?>">Go to Store Page</a>
                                     </div>
                                     <div class="options">
-                                        <a href="#">View Reviews</a>
+                                        <a href="/indieabode/game/reviews?id=<?= $myGame['gameID']; ?>">View Reviews</a>
                                     </div>
                                     <div class="options">
                                         <a href="#">Hide Game</a>

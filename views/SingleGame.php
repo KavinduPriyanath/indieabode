@@ -86,15 +86,10 @@
                     <div class="buy-btn" id="buy-btn">In Library</div>
                 </a>
             <?php } else { ?>
-                <?php if ($this->Isfree) { ?>
-                    <a href="/indieabode/game/checkoutfree?id=<?= $this->game['gameID'] ?>" style="text-decoration: none;">
-                        <div class="buy-btn" id="buy-btn">Free Download</div>
-                    </a>
-                <?php } else { ?>
-                    <a href="/indieabode/CheckoutSingle?id=<?= $this->game['gameID'] ?>" style="text-decoration: none;">
-                        <div class="buy-btnr" id="buy-btn">Buy Now</div>
-                    </a>
-                <?php } ?>
+                <a href="/indieabode/game/checkout?id=<?= $this->game['gameID'] ?>" style="text-decoration: none;">
+                    <div class="buy-btn" id="buy-btn">Buy Now</div>
+                </a>
+
             <?php } ?>
 
             <div class="cartbutton">
