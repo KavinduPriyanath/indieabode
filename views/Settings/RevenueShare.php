@@ -107,6 +107,8 @@
 
                     <button type="submit" class="save">Save Revenue Split</button>
                 </form>
+
+                <div class="header">You can calculate how much money you can earn from a single unit once all the tax fees and platform charges are charged</div>
             </div>
         </div>
     </div>

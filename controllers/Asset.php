@@ -63,7 +63,8 @@ class Asset extends Controller
         //     echo "2";
         // }
 
-        $amount = $asset['assetPrice'];
+        // $amount = $asset['assetPrice'];
+        $amount = 30.00;
         $merchant_id = "1222729";
         $order_id = uniqid();
         $merchant_secret = "MjczNjU0OTYzMzM3NDA3NzYzMjczNzEyMjI2MjM4MTQ3MjE2OTkxMg==";
