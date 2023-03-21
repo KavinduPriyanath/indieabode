@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Indieabode</title>
 
     <style>
@@ -39,8 +40,8 @@
 
 
                 <div class="navigation">
-                    <i class="fas fa-chevron-left prev-btn"></i>
-                    <i class="fas fa-chevron-right next-btn"></i>
+                    <i class="fa fa-chevron-left prev-btn"></i>
+                    <i class="fa fa-chevron-right next-btn"></i>
                 </div>
                 <div class="navigation-visibility">
                     <div class="slide-icon active"></div>
