@@ -29,7 +29,7 @@
 
             <form action="/indieabode/creategig/makeNewGig" method="POST" id="upload-game-form" class="input-upload-group" enctype="multipart/form-data">
                 <div class="upload-row">
-                    <div class="upload-col">
+                    <div class="upload-col-left">
                         <label id="gig-title" for="gig-title">Gig Title</label><br />
                         <input type="text" name="gig-title" id="gig-title" /><br /><br />
 
@@ -59,7 +59,7 @@
 
                         <!--Releasing status-->
                         <label id="planned-release" for="planned-release">Planned Release Date</label><br />
-                        <input type="text" name="planned-release" id="planned-release" placeholder="21/03/2024" required />
+                        <input type="date" name="planned-release" id="planned-release" required />
                         <br />
                         <label id="gig-details" for="gig-details">Details</label><br />
                         <p id="p">This will be the content of your gig page</p>
@@ -94,7 +94,7 @@
                         </div>
                     </div>
 
-                    <div class="upload-col">
+                    <div class="upload-col-right">
                         <label id="game-upload-cover-img" for="game-upload-cover-img">Upload Cover Image</label><br />
                         <p>Used when we link your game with other parts of the site</p>
                         <br />
