@@ -203,8 +203,19 @@
                     <p>Add the link to your Youtube video</p>
                     <input type="url" id="game-illustration-vedio" name="game-illustration-vedio" placeholder="eg: https://www.youtube.com/"><br><br>
 
-                    <label id="upload-game" for="upload-game">Upload Game</label><br>
-                    <input type="file" id="upload-game" name="upload-game"><br><br>
+                    <div class="game-upload-box">
+                        <label>Upload Game</label><br>
+                        <!-- <input type="file" id="upload-game" name="upload-game">  -->
+                        <input type="file" id="upload-game" name="upload-game" accept=".zip">
+                        <label for="upload-game" id="upload-label">
+                            Upload Game File
+                        </label>
+                        <div class="progress-bar">
+                            <progress value="0" max="100"></progress>
+                        </div>
+
+                    </div>
+                    <br>
 
                     <label id="game-screenshots" for="game-screenshots">Screenshots</label><br>
                     <p>These will appear on your game's page. Optional but highly recommended. Upload 3 to 5 for best results</p><br>
@@ -215,7 +226,7 @@
 
                         <div id="screenshots"></div>
                         <p id="num-of-files">No Files Chosen</p>
-                        <input type="file" id="file-input" accept="image/png, image/jpeg" onchange="preview()" multiple>
+                        <input type="file" id="file-input" accept="image/png, image/jpeg" onchange="preview()" name="game-screenshots[]" multiple>
                         <label for="file-input">
                             Add Screenshots
                         </label>
@@ -275,6 +286,30 @@
 
             uploadLabel.innerText = "Replace Photo";
             //fileName.textContent = uploadButton.files[0].name;
+
+        }
+    </script>
+
+
+    <script>
+        let uploadButtongame = document.getElementById("upload-game");
+
+        uploadButtongame.onchange = () => {
+
+            let file = uploadButtongame.files[0];
+            console.log(file);
+
+            let formdata = new FormData();
+            formdata.append("file", file);
+
+            let http = new XMLHttpRequest();
+            http.upload.addEventListener("progress", function(event) {
+                let percent = (event.loaded / event.total) * 100;
+                document.querySelector("progress").value = Math.round(percent);
+            });
+
+            http.open("POST", "/indieabode/gameupload/file");
+            http.send(formdata);
         }
     </script>
 

@@ -265,6 +265,7 @@ select option{
     cursor: pointer;
 }
 
+/* screenshots preview */
 .screenshot-container input[type="file"]{
     display: none;
 }
@@ -313,3 +314,51 @@ select option{
 .screenshot-container #num-of-files {
     display: none;
 }
+
+/* File upload preview */
+.game-upload-box input[type="file"]{
+    display: none;
+}
+
+.game-upload-box #upload-label{
+    display: inline-block;
+    position: relative;
+    background-color: #A5B9BD;
+    color: #132759;
+    font-size: 18px;
+    text-align: center;
+    width: 170px;
+    padding: 15px 0px;
+    border-radius: 8px;
+    margin: 8px 0px;
+    cursor: pointer;
+}
+
+.progress-bar progress[value] {
+    -webkit-appearance: none;
+   appearance: none;
+    width: 250px;
+    height: 25px;
+}
+
+.progress-bar progress[value]::-webkit-progress-bar {
+    background-color: #708add;
+    border-radius: 3px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+}
+
+.progress-bar progress[value]::-webkit-progress-value {
+    background-image:
+         -webkit-linear-gradient(-45deg, 
+                                 transparent 33%, rgba(0, 0, 0, .1) 33%, 
+                                 rgba(0,0, 0, .1) 66%, transparent 66%),
+         -webkit-linear-gradient(top, 
+                                 rgba(255, 255, 255, .25), 
+                                 rgba(0, 0, 0, .25)),
+         -webkit-linear-gradient(left, rgb(112, 188, 213), rgb(67, 80, 201));
+  
+      border-radius: 3px; 
+      background-size: 35px 20px, 100% 100%, 100% 100%;
+}
+
+  
