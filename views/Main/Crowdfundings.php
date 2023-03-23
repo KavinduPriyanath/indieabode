@@ -155,7 +155,7 @@
         <?php foreach ($this->crowdfundings as $crowdfunding) { ?>
             <a href="/indieabode/crowdfund?id=<?= $crowdfunding['crowdFundID']; ?>">
                 <div class="card">
-                    <div class="card-image"> <img src="/indieabode/public/uploads/crowdfunds/covers/<?= $crowdfunding['crowdfundCoverImg'] ?>" alt="">
+                    <div class="card-image"> <img src="/indieabode/public/uploads/crowdfundings/cover/<?= $crowdfunding['crowdfundCoverImg'] ?>" alt="">
                     </div>
                     <div class="game-intro">
                         <h3><?= $crowdfunding['gameName']; ?></h3>
