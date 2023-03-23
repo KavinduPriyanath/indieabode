@@ -19,9 +19,9 @@ class Crowdfund extends Controller
 
             // $this->view->gameDeveloper = $this->model->getGameDeveloper($this->model->showSingleGame($gameID));
 
-            // $this->view->screenshots = $this->model->getScreenshots($gameID);
+            $this->view->screenshots = $this->model->getScreenshots($crowdfundID);
 
-            // $this->view->ssCount = count($this->model->getScreenshots($gameID));
+            $this->view->ssCount = count($this->model->getScreenshots($crowdfundID));
 
             $this->view->render('SingleCrowdfunding');
         }

@@ -39,20 +39,20 @@ class Crowdfund_Model extends Model
 
 
 
-    // function getScreenshots($id)
-    // {
-    //     $sql = "SELECT * FROM gig WHERE gigID='$id' LIMIT 1";
+    function getScreenshots($id)
+    {
+        $sql = "SELECT * FROM crowdfund WHERE crowdFundID='$id' LIMIT 1";
 
-    //     $stmt = $this->db->prepare($sql);
+        $stmt = $this->db->prepare($sql);
 
-    //     $stmt->execute();
+        $stmt->execute();
 
-    //     $game = $stmt->fetch(PDO::FETCH_ASSOC);
+        $game = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    //     $ss = $game['gigScreenshot'];
+        $ss = $game['crowdfundSS'];
 
-    //     $screenshots = explode(',', $ss);
+        $screenshots = explode(',', $ss);
 
-    //     return $screenshots;
-    // }
+        return $screenshots;
+    }
 }
