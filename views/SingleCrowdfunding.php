@@ -6,11 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.6/css/line.css">
     <title>Indieabode</title>
     <style>
         <?php
         include 'public/css/crowdfund.css';
-        ?>
+        ?><?php include 'public/css/shareModal.css'; ?>
     </style>
 </head>
 
@@ -69,7 +71,7 @@
             <div class="days-caption">days to go</div>
 
             <br>
-            <div class="btn">Share</div>
+            <div class="btn" data-modal-target="#modal">Share</div>
             <div class="btn">Back this Game</div>
             <div class="semibtnbox">
                 <div class="semi-btn">Remind Me<i class="fa fa-bookmark-o"></i></div>
@@ -103,6 +105,36 @@
         </div>
     </div>
 
+    <!-- Share Modal -->
+    <div class="share-modal">
+        <div class="modal" id="modal">
+            <div class="modal-header">
+                <div class="title">Help by sharing</div>
+                <button data-close-button class="close-button">&times;</button>
+            </div>
+
+            <div class="content">
+                <p>Fundraisers shared on social networks raise up to 5x more.</p>
+                <hr>
+                <p>Share this link via</p>
+                <ul class="icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-telegram-plane"></i></a>
+                </ul>
+                <p>Or copy link</p>
+                <div class="field">
+                    <i class="url-icon uil uil-link"></i>
+                    <input type="text" readonly value=" http://localhost/indieabode/crowdfund?id=<?= $this->crowdfund['crowdFundID']; ?>" id="copytext">
+                    <button id="copy">Copy</button>
+                </div>
+            </div>
+        </div>
+        <div id="overlay"></div>
+    </div>
+
     <?php
     include 'includes/footer.php';
     ?>
@@ -112,6 +144,27 @@
 
     <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
 
+    <script src="<?php echo BASE_URL; ?>public/js/reportModal.js"></script>
+
+
+    <script>
+        let field = document.querySelector(".field");
+        let input = document.getElementById('copytext');
+        let copy = document.getElementById('copy');
+
+        copy.onclick = () => {
+            input.select(); //select input value
+            if (document.execCommand("copy")) { //if the selected text copy
+                field.classList.add("active");
+                copy.innerText = "Copied";
+                setTimeout(() => {
+                    window.getSelection().removeAllRanges(); //remove selection from document
+                    field.classList.remove("active");
+                    copy.innerText = "Copy";
+                }, 3000);
+            }
+        }
+    </script>
 
 </body>
 
