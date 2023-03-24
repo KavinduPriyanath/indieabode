@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 21, 2023 at 12:39 PM
+-- Generation Time: Mar 24, 2023 at 10:47 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -156,6 +156,13 @@ CREATE TABLE `asset_cart` (
   `assetID` int(11) NOT NULL,
   `addedDate` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `asset_cart`
+--
+
+INSERT INTO `asset_cart` (`id`, `userID`, `assetID`, `addedDate`) VALUES
+(11, 46, 9, '2023-03-22');
 
 -- --------------------------------------------------------
 
@@ -419,7 +426,39 @@ CREATE TABLE `crowdfund` (
 --
 
 INSERT INTO `crowdfund` (`crowdFundID`, `currentAmount`, `deadline`, `expectedAmount`, `gameDeveloperName`, `gameName`, `title`, `tagline`, `backers`, `details`, `visibility`, `crowdfundCoverImg`, `crowdfundSS`, `crowdfundTrailer`) VALUES
-(1, 0, '0000-00-00', 0, '12', 'Albion Online', 'ergrgrtg', 'dwd', 0, 'dwdwd', 'draft', 'Cover-Albion Online.jpg', 'SS-Albion Online-0.png,SS-Albion Online-1.png', 'https://itch.io/jam/my-first-game-jam-winter-2023');
+(1, 0, '0000-00-00', 0, '12', 'Albion Online', 'ergrgrtg', 'dwd', 0, 'dwdwd', 'draft', 'Cover-Albion Online.jpg', 'SS-Albion Online-0.png,SS-Albion Online-1.png', 'https://itch.io/jam/my-first-game-jam-winter-2023'),
+(2, 0, '0000-00-00', 0, 'Beidou', 'Scarlet Nexus', 'ergrgrtg', 'gtgrtgrttrht', 0, 'hthth', 'draft', 'Cover-Scarlet Nexus.png', 'SS-Scarlet Nexus-0.jpg,SS-Scarlet Nexus-1.jpg,SS-Scarlet Nexus-2.jpg', 'https://itch.io/jam/my-first-game-jam-winter-2023'),
+(3, 0, '0000-00-00', 0, 'Beidou', 'Naruto Shippuden', 'ergrgrtgfef', 'ffef', 0, 'fefef', 'draft', 'Cover-Naruto Shippuden.jpg', 'SS-Naruto Shippuden-0.jpg,SS-Naruto Shippuden-1.jpg,SS-Naruto Shippuden-2.jpg', 'https://itch.io/jam/my-first-game-jam-winter-2023'),
+(4, 0, '0000-00-00', 0, 'Beidou', 'Albion Online 2', 'ergrgrtgd wdw', 'httrh', 0, 'fefe', 'draft', 'Cover-Albion Online 2.png', 'SS-Albion Online 2-0.jpg,SS-Albion Online 2-1.jpg', 'https://itch.io/jam/my-first-game-jam-winter-2023'),
+(5, 0, '0000-00-00', 0, 'Beidou', 'Albion Online', 'ergrgrtgffe', 'gtgrtgrttrht', 0, 'fefef', 'draft', 'Cover-Albion Online.png', 'SS-Albion Online-0.jpg,SS-Albion Online-1.jpg,SS-Albion Online-2.jpg', 'https://itch.io/jam/my-first-game-jam-winter-2023');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `crowdfund_donations`
+--
+
+CREATE TABLE `crowdfund_donations` (
+  `id` int(11) NOT NULL,
+  `crowdfundID` int(11) NOT NULL,
+  `donorID` int(11) NOT NULL,
+  `donationAmount` double NOT NULL,
+  `orderID` varchar(255) NOT NULL,
+  `donatedDate` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `crowdfund_donations`
+--
+
+INSERT INTO `crowdfund_donations` (`id`, `crowdfundID`, `donorID`, `donationAmount`, `orderID`, `donatedDate`) VALUES
+(1, 5, 46, 30, '641', '2023-03-24 13:13:39'),
+(2, 5, 46, 30, '641d56d7a2d61', '2023-03-24 13:23:15'),
+(3, 5, 46, 30, '641d573b5ae9d', '2023-03-24 13:24:58'),
+(4, 5, 46, 30, '641d577695806', '2023-03-24 13:25:55'),
+(5, 5, 46, 30, '641d57a3203e2', '2023-03-24 13:26:35'),
+(6, 4, 51, 30, '641d714f9c04d', '2023-03-24 15:16:17'),
+(7, 5, 51, 30, '641d717c219cb', '2023-03-24 15:16:55');
 
 -- --------------------------------------------------------
 
@@ -449,7 +488,7 @@ CREATE TABLE `devlog` (
 INSERT INTO `devlog` (`publishDate`, `description`, `name`, `Tagline`, `Type`, `Visibility`, `devlogImg`, `gameName`, `devLogID`, `ReleaseDate`, `likeCount`, `commentCount`) VALUES
 ('2023-02-09 17:38:43', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis hendrerit neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum pharetra sem. Vestibulum eu est urna. Cras non ipsum non massa sodales condimentum quis eu risus. Praesent volutpat lorem a dolor tristique luctus eget sed elit. Ut facilisis faucibus justo tincidunt eleifend. Curabitur ultrices sapien id lorem posuere, vitae mattis nisi faucibus. Aliquam congue lorem sit amet velit lobortis, non venenatis massa feugiat. Aenean ut vehicula nibh, sed vehicula lacus. Praesent eu eros id leo maximus rhoncus eget eget risus. Curabitur vitae faucibus ligula, ac tincidunt dui. Sed diam massa, euismod sit amet augue a, pharetra egestas augue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\r\n\r\nIn hendrerit magna a dui tincidunt porta. Curabitur suscipit ex consectetur mauris ullamcorper rutrum. Mauris feugiat aliquet tristique. Curabitur egestas suscipit iaculis. Quisque tristique posuere augue, ac aliquet nisi vestibulum id. Curabitur efficitur nibh eu ipsum venenatis, et ornare tellus pellentesque. Nullam mollis lacus in nibh vestibulum, nec dignissim justo tristique. In congue dolor suscipit, eleifend leo et, commodo purus. Curabitur gravida risus et leo porttitor facilisis ut vestibulum ex. Donec enim tortor, commodo facilisis vestibulum non, viverra sed augue. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean ultricies metus vitae lobortis fermentum. Maecenas vulputate ante a sollicitudin congue. Duis purus erat, finibus eget magna sit amet, porta pharetra massa.\r\n\r\nVestibulum eleifend imperdiet felis sit amet placerat. Nulla auctor pretium turpis, quis porttitor lacus tempor vitae. Vestibulum semper non enim at dignissim. Mauris consequat elit ac purus congue iaculis. Aenean ac nibh a dolor efficitur fermentum. Mauris a porttitor lorem, ac gravida tellus. Cras iaculis malesuada mollis.', 'Finishing Utility Inventory', 'Bonjour! This is a post about me finally finishing the Utiltiy ', 'Game Design', 'draft', 'SS-Albion Online.png', '89', 28, '2020-12-29', 1, 2),
 ('2023-02-09 17:41:03', '', 'How to Build a Mansion', 'Showing steps of using tiles to build a mansion in the city ', 'Game Design', 'draft', '', '93', 29, '2020-12-26', 0, 0),
-('2023-02-09 17:43:00', 'dwfwf', 'Level Editor Tutorial', 'Optimized level editor is available to players for free with extensions', 'Game Design', 'draft', 'SS-Final Fantasy VII.jpg', '93', 30, '2020-11-29', 1, 0),
+('2023-02-09 17:43:00', 'dwfwf', 'Level Editor Tutorial', 'Optimized level editor is available to players for free with extensions', 'Game Design', 'draft', 'SS-Final Fantasy VII.jpg', '93', 30, '2020-11-29', 1, 1),
 ('2023-03-07 12:55:38', 'dwdw', 'dwd', 'ddwd', 'Tutorial', 'draft', 'SS-89.png', '89', 31, '0000-00-00', 1, 0),
 ('2023-03-12 18:12:11', 'ththt', 'tthht', 'hth', 'Tutorial', 'draft', 'SS-89.png', '89', 34, '0000-00-00', 0, 0);
 
@@ -473,7 +512,8 @@ CREATE TABLE `devlog_comments` (
 
 INSERT INTO `devlog_comments` (`id`, `userID`, `comment`, `devlogID`, `createdAt`) VALUES
 (22, 46, 'dwdw', 28, '2023-03-01'),
-(23, 46, 'dwd\n', 28, '2023-03-08');
+(23, 46, 'dwd\n', 28, '2023-03-08'),
+(24, 46, 'gi\n', 30, '2023-03-22');
 
 -- --------------------------------------------------------
 
@@ -714,7 +754,12 @@ INSERT INTO `freegame` (`gameID`, `gameName`, `releaseStatus`, `gameDetails`, `g
 (145, 'Albion Online 3', 'early access', 'fef', '', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'follows a stray cat who falls into a walled city populated by robots, ', 'simulation', 'grgrg', 'fef', 'MacOS', 'DLC', 'Game-Albion Online 3.zip', 0, 'Cover-Albion Online 3.jpg', 46, 'g', 'rg', 'juyju', 'grg', 'grgrg', 'rg', 'yj', 'r', 'grgrg', 'grg', 'uyjuyj', '$2.00', '0000-00-00 00:00:00'),
 (146, '', 'released', '', '', '', '', 'action', '', '', 'Windows', 'Base Game', '', 0, '', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '0000-00-00 00:00:00'),
 (147, '', 'released', '\r\n', '', '', '', 'action', '', '', 'Windows', 'Base Game', '', 0, '', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '0000-00-00 00:00:00'),
-(148, 'gergg', 'early access', 'grgrt', 'SS-gergg-0.jpg,SS-gergg-1.jpg,SS-gergg-2.png', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'follows a stray cat who falls into a walled city populated by robots, ', 'simulation', 'hthrth', 'thrthth', 'MacOS', 'DLC', 'Game-gergg.zip', 0, 'Cover-gergg.jpg', 46, 'a', 'Intel Core I3', '4 GB', 'rg', 'gr', 'grg', 'regrg', 'Intel Core I5', '8 GB', 'juyju', 'eg', '0', '0000-00-00 00:00:00');
+(148, 'gergg', 'early access', 'grgrt', 'SS-gergg-0.jpg,SS-gergg-1.jpg,SS-gergg-2.png', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'follows a stray cat who falls into a walled city populated by robots, ', 'simulation', 'hthrth', 'thrthth', 'MacOS', 'DLC', 'Game-gergg.zip', 0, 'Cover-gergg.jpg', 46, 'a', 'Intel Core I3', '4 GB', 'rg', 'gr', 'grg', 'regrg', 'Intel Core I5', '8 GB', 'juyju', 'eg', '0', '0000-00-00 00:00:00'),
+(149, 'Albion Online', 'released', 'rbr', 'SS-Albion Online-0.jpg,SS-Albion Online-1.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'follows a stray cat who falls into a walled city populated by robots, ', 'simulation', 'ntn', 'ntnt', 'Windows', 'Base Game', '', 0, '', 46, 'ntn', 'ntn', 'n', 'nn', 'nnn', 'nn', 'ntn', 'ntn', 'ntn', 'nn', 'nnn', '0', '0000-00-00 00:00:00'),
+(150, 'Albion Online', 'released', 'fef', 'SS-Albion Online-0.jpg,SS-Albion Online-1.jpg,SS-Albion Online-2.jpg', '', 'follows a stray cat who falls into a walled city populated by robots, ', 'action', 'fef', 'fef', 'Windows', 'Base Game', '', 0, '', 46, 'fef', 'ffe', 'ff', 'ffef', 'fefe', 'fefef', 'fef', 'ff', 'ff', 'fefef', 'ffefef', '0', '0000-00-00 00:00:00'),
+(151, 'dwd', 'released', 'grg', 'SS-dwd-0.jpg,SS-dwd-1.jpg,SS-dwd-2.jpg', '', 'follows a stray cat who falls into a walled city populated by robots, ', 'action', 'rgrg', 'grgrg', 'Windows', 'Base Game', '', 0, '', 46, 'rgrg', 'rgrg', 'grgrg', 'grgr', 'grg', 'ggrg', 'grg', 'rgrg', 'grgr', 'grgrg', 'grg', '0', '0000-00-00 00:00:00'),
+(152, 'New fe', 'released', 'fef', 'SS-New fe-0.jpg,SS-New fe-1.png', '', 'follows a stray cat who falls into a walled city populated by robots, ', 'action', 'grgrg', 'grgrg', 'Windows', 'Base Game', '', 0, 'Cover-New fe.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '0000-00-00 00:00:00'),
+(153, 'Albion Online 3', 'released', 'grgr', 'SS-Albion Online 3-0.jpg,SS-Albion Online 3-1.jpg,SS-Albion Online 3-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'follows a stray cat who falls into a walled city populated by robots, ', 'action', 'grgr', 'grgr', 'Windows', 'Base Game', 'Game-Albion Online 3.zip', 0, 'Cover-Albion Online 3.png', 46, 'grg', 'grgrg', 'grg', 'grgg', 'grgrg', 'grgrg', 'grgr', 'grg', 'grg', 'grg', 'grgrg', '0', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -972,7 +1017,17 @@ INSERT INTO `games_view_tracker` (`id`, `userID`, `sessionID`, `gameID`, `viewed
 (72, 52, 86, 102, '2023-03-21'),
 (73, 52, 86, 105, '2023-03-21'),
 (74, 52, 27, 106, '2023-03-21'),
-(75, 52, 81, 106, '2023-03-21');
+(75, 52, 81, 106, '2023-03-21'),
+(76, 46, 91, 91, '2023-03-21'),
+(77, 46, 89, 149, '2023-03-22'),
+(78, 46, 89, 151, '2023-03-22'),
+(79, 46, 89, 152, '2023-03-22'),
+(80, 46, 89, 153, '2023-03-22'),
+(81, 46, 81, 92, '2023-03-22'),
+(82, 46, 81, 95, '2023-03-22'),
+(83, 46, 56, 91, '2023-03-22'),
+(84, 46, 40, 91, '2023-03-23'),
+(85, 46, 34, 90, '2023-03-23');
 
 -- --------------------------------------------------------
 
@@ -1140,13 +1195,22 @@ INSERT INTO `game_stats_history` (`id`, `gameID`, `views`, `downloads`, `ratings
 (44, 91, 1, 0, 0, 0, '2023-03-20'),
 (45, 148, 1, 0, 0, 0, '2023-03-20'),
 (46, 107, 2, 0, 0, 0, '2023-03-21'),
-(47, 91, 1, 0, 0, 0, '2023-03-21'),
+(47, 91, 2, 0, 0, 0, '2023-03-21'),
 (48, 92, 1, 0, 0, 0, '2023-03-21'),
 (49, 96, 1, 0, 0, 0, '2023-03-21'),
 (50, 114, 1, 0, 0, 0, '2023-03-21'),
 (51, 102, 1, 0, 0, 0, '2023-03-21'),
 (52, 105, 1, 0, 0, 0, '2023-03-21'),
-(53, 106, 2, 0, 0, 0, '2023-03-21');
+(53, 106, 2, 0, 0, 0, '2023-03-21'),
+(54, 149, 1, 0, 0, 0, '2023-03-22'),
+(55, 151, 1, 0, 0, 0, '2023-03-22'),
+(56, 152, 1, 0, 0, 0, '2023-03-22'),
+(57, 153, 1, 0, 0, 0, '2023-03-22'),
+(58, 92, 1, 0, 0, 0, '2023-03-22'),
+(59, 95, 1, 0, 0, 0, '2023-03-22'),
+(60, 91, 1, 0, 0, 0, '2023-03-22'),
+(61, 91, 1, 0, 0, 0, '2023-03-23'),
+(62, 90, 1, 0, 0, 0, '2023-03-23');
 
 -- --------------------------------------------------------
 
@@ -1179,7 +1243,9 @@ CREATE TABLE `gig` (
 
 INSERT INTO `gig` (`gigID`, `gigName`, `gigTrailor`, `gigScreenshot`, `gigDetails`, `game`, `gameDeveloperID`, `gamePublisherID`, `gigTagline`, `currentStage`, `plannedReleaseDate`, `estimatedShare`, `expectedCost`, `visibility`, `gigCoverImg`, `orderedDate`) VALUES
 (12, 'Local Bus Simulator', 'https://www.indiegala.com/login', 'SS-Naruto Shippuden-0.jpg,SS-Naruto Shippuden-1.jpg,SS-Naruto Shippuden-2.jpg', 'cscsc', '89', 46, 0, 'Bus simulator game consisting with customizable local buses ', 'adventure', '21/02/2024', '12%', '$1000', 'draft', 'Cover-Local Bus Simulator.jpg', NULL),
-(13, 'Indie Desert FPS ', 'https://www.indiegala.com/login', 'SS-Stray-0.jpg,SS-Stray-1.jpg,SS-Stray-2.jpg,SS-Stray-3.jpg', 'fefeff', '93', 46, 0, 'Surviving an endless desert after being stranded by you know', 'action', '21/02/2024', '12%', '$1000', 'draft', 'Cover-Indie Desert FPS .jpg', NULL);
+(13, 'Indie Desert FPS ', 'https://www.indiegala.com/login', 'SS-Stray-0.jpg,SS-Stray-1.jpg,SS-Stray-2.jpg,SS-Stray-3.jpg', 'fefeff', '93', 46, 0, 'Surviving an endless desert after being stranded by you know', 'action', '21/02/2024', '12%', '$1000', 'draft', 'Cover-Indie Desert FPS .jpg', NULL),
+(20, 'New Gig', 'https://www.indiegala.com/login', 'SS-96-0.jpg,SS-96-1.jpg,SS-96-2.jpg', 'egrgr', '96', 46, 0, 'I am developing an open world game with extreme high movements', 'RPG', '21/02/2024', '12%', '$1000', 'draft', 'Cover-New Gig.png', NULL),
+(21, 'Screenshot Test', 'https://www.indiegala.com/login', 'SS-96-0.jpg,SS-96-1.jpg,SS-96-2.jpg', 'fefefef', '96', 46, 0, 'I am developing an open world game with extreme high movements', 'action', '21/02/2024', '12%', '$1000', 'draft', 'Cover-Screenshot Test.jpg', NULL);
 
 -- --------------------------------------------------------
 
@@ -1543,6 +1609,12 @@ ALTER TABLE `crowdfund`
   ADD PRIMARY KEY (`crowdFundID`);
 
 --
+-- Indexes for table `crowdfund_donations`
+--
+ALTER TABLE `crowdfund_donations`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `devlog`
 --
 ALTER TABLE `devlog`
@@ -1709,7 +1781,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `asset_cart`
 --
 ALTER TABLE `asset_cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `asset_library`
@@ -1763,7 +1835,13 @@ ALTER TABLE `complaint_reason_jams`
 -- AUTO_INCREMENT for table `crowdfund`
 --
 ALTER TABLE `crowdfund`
-  MODIFY `crowdFundID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `crowdFundID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `crowdfund_donations`
+--
+ALTER TABLE `crowdfund_donations`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `devlog`
@@ -1775,7 +1853,7 @@ ALTER TABLE `devlog`
 -- AUTO_INCREMENT for table `devlog_comments`
 --
 ALTER TABLE `devlog_comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `devlog_comments_replies`
@@ -1805,7 +1883,7 @@ ALTER TABLE `freeasset`
 -- AUTO_INCREMENT for table `freegame`
 --
 ALTER TABLE `freegame`
-  MODIFY `gameID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=149;
+  MODIFY `gameID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=154;
 
 --
 -- AUTO_INCREMENT for table `gamejam`
@@ -1835,7 +1913,7 @@ ALTER TABLE `games_filters`
 -- AUTO_INCREMENT for table `games_view_tracker`
 --
 ALTER TABLE `games_view_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
 
 --
 -- AUTO_INCREMENT for table `game_cart`
@@ -1865,13 +1943,13 @@ ALTER TABLE `game_reviews`
 -- AUTO_INCREMENT for table `game_stats_history`
 --
 ALTER TABLE `game_stats_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT for table `gig`
 --
 ALTER TABLE `gig`
-  MODIFY `gigID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `gigID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `library`

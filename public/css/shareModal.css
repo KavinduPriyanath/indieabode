@@ -194,3 +194,21 @@
 .field button:hover{
   background: #8d39fa;
 }
+
+
+/* donation modal */
+.donation-presets {
+  display: flex;
+  justify-content: center;
+
+}
+
+.donation-presets .preset{
+  margin-right: 8px;
+  background-color: rgb(105, 116, 214);
+}
+
+.donate-btn {
+  display: block;
+  margin: 10px 14px;
+}

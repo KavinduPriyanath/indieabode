@@ -72,7 +72,7 @@
 
             <br>
             <div class="btn" data-modal-target="#modal">Share</div>
-            <div class="btn">Back this Game</div>
+            <div class="btn" data-modal-target="#donation-modal">Back this Game</div>
             <div class="semibtnbox">
                 <div class="semi-btn">Remind Me<i class="fa fa-bookmark-o"></i></div>
                 <div class="semi-btn">Notify me on Launch<i class="fa fa-bell-o"></i></div>
@@ -87,21 +87,21 @@
         <div class="details"><?= $this->crowdfund['details']; ?></div>
         <div class="backer-details">
             <h3>Backers</h3>
-            <div class="backer-info">
-                <div class="row-one">
-                    <div class="backer-pp"><img src="" alt=""></div>
-                    <div class="right-side">
-                        <div class="backer-name">Kavindu Priyanath</div>
-                        <div class="row-two">
-                            <div class="backed-amount">$10</div>
-                            <div class="backed-date"><i class="fa fa-circle"></i>10 days ago</div>
+            <?php foreach ($this->backers as $backer) { ?>
+                <div class="backer-info">
+                    <div class="row-one">
+                        <div class="backer-pp"><img src="public/images/avatars/<?= $backer['avatar'] ?>" alt=""></div>
+                        <div class="right-side">
+                            <div class="backer-name"><?= $backer['username']; ?></div>
+                            <div class="row-two">
+                                <div class="backed-amount">$<?= $backer['donationAmount']; ?></div>
+                                <div class="backed-date"><i class="fa fa-circle"></i>10 days ago</div>
+                            </div>
                         </div>
+
                     </div>
-
                 </div>
-
-
-            </div>
+            <?php } ?>
         </div>
     </div>
 
@@ -135,6 +135,43 @@
         <div id="overlay"></div>
     </div>
 
+
+    <!-- Donation Modal -->
+    <div class="share-modal">
+        <div class="modal" id="donation-modal">
+            <div class="modal-header">
+                <div class="title">Make a Donation</div>
+                <button data-close-button class="close-button">&times;</button>
+            </div>
+
+            <div class="content">
+                <p>Support "game name" to "crowdfund goal - develop"</p>
+                <input type="text" name="donation-amount" id="donation-amount">
+                <div class="donation-presets">
+                    <div class="preset" id="two" onclick="Donation('2.00')">
+                        $2.00
+                    </div>
+                    <div class="preset" id="five" onclick="Donation('5.00')">
+                        $5.00
+                    </div>
+                    <div class="preset" id="ten" onclick="Donation('10.00')">
+                        $10.00
+                    </div>
+                    <div class="preset" id="fifty" onclick="Donation('50.00')">
+                        $50.00
+                    </div>
+                    <div class="preset" id="hundred" onclick="Donation('100.00')">
+                        $100.00
+                    </div>
+                </div>
+                <div class="donate-btn" onclick="MakeADonation(<?= $this->crowdfund['crowdFundID'] ?>, document.getElementById('donation-amount').value)">
+                    Donate
+                </div>
+            </div>
+        </div>
+        <div id="overlay"></div>
+    </div>
+
     <?php
     include 'includes/footer.php';
     ?>
@@ -145,6 +182,8 @@
     <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
 
     <script src="<?php echo BASE_URL; ?>public/js/reportModal.js"></script>
+
+    <script type="text/javascript" src="https://www.payhere.lk/lib/payhere.js"></script>
 
 
     <script>
@@ -163,6 +202,136 @@
                     copy.innerText = "Copy";
                 }, 3000);
             }
+        }
+    </script>
+
+
+    <script>
+        const inputField = document.getElementById("donation-amount");
+
+        function Donation(amount) {
+            inputField.value = amount;
+        }
+    </script>
+
+
+    <script>
+        function MakeADonation(id, donationAmount) {
+
+            var f = new FormData();
+
+            f.append("donationAmount", donationAmount);
+
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+
+                if (xhr.readyState == 3) {
+                    //console.log("processing");
+                } else if (xhr.readyState == 4) {
+
+                    var text = xhr.responseText;
+
+                    var obj = JSON.parse(text);
+
+                    //payment gateway goes here
+
+                    // Payment completed. It can be a successful failure.
+                    payhere.onCompleted = function onCompleted(orderId) {
+                        // console.log("Payment completed. OrderID:" + orderId);
+                        // alert("Payment Completed");
+                        // Note: validate the payment and show success or failure page to the customer
+                        // window.location = "/indieabode/paymentTest/purchaseSuccessful?id=" + id;
+                        DonationSuccessful(id, obj['amount'], obj['order_id']);
+                    };
+
+                    // Payment window closed
+                    payhere.onDismissed = function onDismissed() {
+                        // Note: Prompt user to pay again or show an error page
+                        alert("Payment dismissed");
+                    };
+
+                    // Error occurred
+                    payhere.onError = function onError(error) {
+                        // Note: show an error page
+                        // console.log("Error:" + error);
+                        alert("Invalid Details");
+                    };
+
+                    // Put the payment variables here
+                    var payment = {
+                        "sandbox": true,
+                        "merchant_id": "1222729", // Replace your Merchant ID
+                        "return_url": "http://localhost/indieabode/assets", // Important
+                        "cancel_url": "http://localhost/indieabode/assets", // Important
+                        "notify_url": "",
+                        "order_id": obj['order_id'],
+                        "items": "Door bell wireles",
+                        "amount": obj['amount'],
+                        "currency": obj['currency'],
+                        "hash": obj['hash'], // *Replace with generated hash retrieved from backend
+                        "first_name": obj['firstName'],
+                        "last_name": obj['lastName'],
+                        "email": obj['email'],
+                        "phone": "0771234567",
+                        "address": obj['address'],
+                        "city": obj['city'],
+                        "country": obj['country'],
+                        "delivery_address": "No. 46, Galle road, Kalutara South",
+                        "delivery_city": "Kalutara",
+                        "delivery_country": "Sri Lanka",
+                        "custom_1": "",
+                        "custom_2": ""
+                    };
+
+                    // Show the payhere.js popup, when "PayHere Pay" is clicked
+                    // document.getElementById('payhere-payment').onclick = function(e) {
+                    payhere.startPayment(payment);
+                    // };
+                }
+
+            }
+
+
+            xhr.open("POST", "/indieabode/crowdfund/donation?id=" + id, true);
+            xhr.send(f);
+
+        }
+
+
+        function DonationSuccessful(crowdfundID, amount, orderId) {
+
+            var f = new FormData();
+
+            f.append("orderID", orderId);
+            f.append("amount", amount);
+
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.onreadystatechange = function() {
+
+                if (xhr.readyState == 1) {
+                    console.log("waiting");
+                } else if (xhr.readyState == 4) {
+                    var t = xhr.responseText;
+
+
+                    if (t == "2") {
+                        alert(t);
+                    } else {
+                        window.location = "/indieabode/crowdfund?id=" + crowdfundID;
+                    }
+
+                }
+
+            }
+
+            xhr.open("POST", "/indieabode/crowdfund/donationsuccessful?id=" + crowdfundID, true);
+            xhr.send(f);
+
+            // window.location = "/indieabode/paymentTest/purchaseSuccessful?id=" + assetID;
+
+
         }
     </script>
 
