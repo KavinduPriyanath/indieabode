@@ -238,4 +238,25 @@ form input[type=checkbox] {
   justify-content: space-between;
 }
 
+#password-field {
+  position: relative;
+}
+
+.password-field {
+  position: relative;
+}
+
+.field i {
+  position: absolute;
+  right: 31px;
+  top: 52px;
+  color: #374d6f;
+  cursor: pointer;
+  /* transform: translateY(-50%); */
+}
+
+.field i.active::before {
+  color: #333;
+  content: "\f070";
+}
 
