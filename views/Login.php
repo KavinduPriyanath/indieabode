@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Indieabode</title>
 
     <style>
@@ -26,10 +27,16 @@
             <a href="/indieabode/register"><button type="button" class="toggle-btn">Register</button></a>
         </div>
         <form action="/indieabode/login/signin" method="POST" id="form">
-            <label class="form-login-label" id="username">Email or Username</label><br>
-            <input type="text" placeholder="email" name="email"><br>
-            <label class="form-login-label">Password</label><br>
-            <input type="password" placeholder="Password" name="password"><br>
+            <div class="field">
+                <label class="form-login-label" id="username">Email or Username</label><br>
+                <input type="text" placeholder="email" name="email"><br>
+            </div>
+            <div class="field" id="password-field">
+                <label class="form-login-label">Password</label><br>
+                <input type="password" placeholder="Password" name="password" id="password">
+                <i class="fa fa-eye" id="eye"></i><br>
+            </div>
+
 
             <!-- checkbox -->
             <div class="check-bar">
@@ -67,6 +74,21 @@
     <?php
     include 'includes/footer.php';
     ?>
+
+    <script>
+        let passwordField = document.getElementById("password");
+        let toggleIcon = document.getElementById("eye");
+
+        toggleIcon.onclick = () => {
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                toggleIcon.classList.add("active");
+            } else {
+                passwordField.type = "password";
+                toggleIcon.classList.remove("active");
+            }
+        }
+    </script>
 
 </body>
 

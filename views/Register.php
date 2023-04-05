@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Indieabode</title>
 
     <style>
@@ -84,16 +85,23 @@
 
 
 
+            <div class="field password-field">
+                <label class="form-login-label">Password</label><br>
+                <input type="password" name="password" id="password" placeholder="Password" class="password" required />
+                <i class="fa fa-eye" id="eye"></i><br>
+            </div>
 
-            <label class="form-login-label">Password</label><br>
-            <input type="password" name="password" id="password" placeholder="Password" required /><br>
+
+
+            <div class="field password-field">
+                <label class="form-login-label">Confirm Password</label><br>
+                <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" class="password" />
+                <i class="fa fa-eye" id="confirm-eye"></i><br><br>
+
+            </div>
 
 
 
-
-
-            <label class="form-login-label">Confirm Password</label><br>
-            <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" /><br><br>
 
 
 
@@ -110,6 +118,34 @@
     <?php
     include 'includes/footer.php';
     ?>
+
+
+    <script>
+        let passwordField = document.getElementById("password")
+        let confirmPasswordField = document.getElementById("confirmPassword");
+        let toggleIcon = document.getElementById("eye");
+        let confirmToggleIcon = document.getElementById("confirm-eye");
+
+        toggleIcon.onclick = () => {
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                toggleIcon.classList.add("active");
+            } else {
+                passwordField.type = "password";
+                toggleIcon.classList.remove("active");
+            }
+        }
+
+        confirmToggleIcon.onclick = () => {
+            if (confirmPasswordField.type === "password") {
+                confirmPasswordField.type = "text";
+                confirmToggleIcon.classList.add("active");
+            } else {
+                confirmPasswordField.type = "password";
+                confirmToggleIcon.classList.remove("active");
+            }
+        }
+    </script>
 
 </body>
 
