@@ -399,11 +399,6 @@
                             <div class="dropdown-menu">
                                 <div class="arrow arrow1"></div>
                                 <div class=".ulsub">
-                                    <a href="<?php echo BASE_URL; ?>gigs">Gigs <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                                    <a href="<?php echo BASE_URL; ?>devlogs">Devlogs <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                                    <a href="<?php echo BASE_URL; ?>crowdfundings">Crowdfundings
-                                        <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                                    <hr />
                                     <a href="<?php echo BASE_URL; ?>games?classification=action">Action <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                     <a href="<?php echo BASE_URL; ?>games?classification=adventure">Adventure <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                     <a href="<?php echo BASE_URL; ?>games?classification=rpg">RPG <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
@@ -412,6 +407,36 @@
                                     <a href="<?php echo BASE_URL; ?>games?classification=strategy">Strategy <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                     <hr />
                                     <a href="<?php echo BASE_URL; ?>games">Browse&nbsp;all&nbsp;games
+                                        <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="dropdown" data-dropdown>
+                            <a href="<?php echo BASE_URL; ?>gigs" data-dropdown-button>Gigs<i class="fa fa-angle-down droparrow"></i></a>
+
+                            <div class="dropdown-menu">
+                                <div class="arrow gigsarrow"></div>
+                                <div class=".ulsub">
+                                    <a href="<?php echo BASE_URL; ?>requests">Requests <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                                    <a href="<?php echo BASE_URL; ?>archieve">Archieve <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                                    <hr />
+                                    <a href="<?php echo BASE_URL; ?>gigs">Browse&nbsp;all&nbsp;gigs
+                                        <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="dropdown" data-dropdown>
+                            <a href="<?php echo BASE_URL; ?>gigs" data-dropdown-button>Advertisements<i class="fa fa-angle-down droparrow"></i></a>
+
+                            <div class="dropdown-menu">
+                                <div class="arrow gigsarrow"></div>
+                                <div class=".ulsub">
+                                    <a href="<?php echo BASE_URL; ?>requests">Requests <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                                    <a href="<?php echo BASE_URL; ?>archieve">Archieve <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                                    <hr />
+                                    <a href="<?php echo BASE_URL; ?>gigs">Browse&nbsp;all&nbsp;gigs
                                         <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                 </div>
                             </div>
@@ -440,14 +465,8 @@
                             <div class="dropdown-menu">
                                 <div class="arrow arrow6"></div>
                                 <div class=".ulsub">
-                                    <a href="<?php echo BASE_URL; ?>library">Library <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                                    <a href="<?php echo BASE_URL; ?>cart">Cart <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-
-                                    <hr />
 
                                     <a href="/indieabode/dashboard">Dashboard <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                                    <a href="/indieabode/gameupload">Upload&nbsp;project
-                                        <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                     <a href="/indieabode/portfolio">Portfolio <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
 
                                     <hr />

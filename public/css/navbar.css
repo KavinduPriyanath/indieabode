@@ -245,6 +245,11 @@ a:hover .double{
     top: -10px;
 }
 
+.gigsarrow {
+    left: 54px;
+    top: -10px;
+}
+
 #logged a{
     display: flex;
 }
