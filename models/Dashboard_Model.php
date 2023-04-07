@@ -61,6 +61,18 @@ class Dashboard_Model extends Model
         return $stmt->fetchAll();
     }
 
+    function showAllMyGigRequests($devId)
+    {
+
+        $sql = "SELECT * FROM requestedgigs INNER JOIN gig ON requestedgigs.gigID = gig.gigID WHERE developerID='$devId'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+
     function showAllMyCrowdfundings($id)
     {
         $sql = "SELECT * FROM crowdfund WHERE gameDeveloperName='$id'";

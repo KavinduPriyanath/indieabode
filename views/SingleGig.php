@@ -96,7 +96,19 @@
                 </div>
                 <hr />
             </div>
-            <div class="order-button" onclick="ButtonClick()">Request Order</div>
+            <?php if ($_SESSION['logged'] && $_SESSION['userRole'] == 'game publisher') { ?>
+                <?php if ($this->hasRequested) { ?>
+                    <div id="view-button">
+                        <a href="/indieabode/gig/viewgig?id=<?= $this->gig['gigID']; ?>&token=<?= $this->gig['gigID'] . $_SESSION['id'] ?>">
+                            <div class="view-button">View Request</div>
+                        </a>
+                    </div>
+                <?php } else { ?>
+                    <div class="request-button" id="request-button" onclick="RequestOrder(<?= $_GET['id'] ?>)">Request Order</div>
+                <?php } ?>
+            <?php } else if ($_SESSION['logged'] && $_SESSION['userRole'] == 'game developer') { ?>
+                <div class="share-button">Share</div>
+            <?php } ?>
         </div>
     </div>
 
@@ -106,7 +118,7 @@
             <h2>About Developer</h2>
             <div class="dev-profile">
                 <div class="image">
-                    <img src="/images/profile.png" alt="" />
+                    <img src="" alt="" />
                 </div>
                 <div class="dev-name">
                     <h4>Kavindu Priyanath</h4>
@@ -129,6 +141,7 @@
         </div>
     </div>
 
+
     <?php
     include 'includes/footer.php';
     ?>
@@ -141,6 +154,31 @@
     <script>
         function ButtonClick() {
             alert("Cant perform this action as a gamedeveloper");
+        }
+
+
+        function RequestOrder(gigID) {
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.onreadystatechange = function() {
+
+                if (xhr.readyState == 4) {
+                    var t = xhr.responseText;
+
+                    if (t == "2") {
+                        alert(t);
+                    } else {
+                        // $('.request-button').hide();
+                        document.getElementById('request-button').style.display = "none";
+                    }
+
+                }
+
+            }
+
+            xhr.open("GET", "/indieabode/gig/gigrequest?id=" + gigID, true);
+            xhr.send();
         }
     </script>
 

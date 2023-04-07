@@ -22,6 +22,8 @@ class Dashboard extends Controller
     {
         $this->view->gigs = $this->model->showAllMyGigs($_SESSION['id']);
 
+        $this->view->ongoingrequests = $this->model->showAllMyGigRequests($_SESSION['id']);
+
         $this->view->render('Dashboard/Dashboard-Gigs');
     }
 

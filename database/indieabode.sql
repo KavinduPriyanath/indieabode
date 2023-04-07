@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 24, 2023 at 10:47 AM
+-- Generation Time: Apr 07, 2023 at 03:37 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -51,7 +51,8 @@ INSERT INTO `account` (`userID`, `profilePhoto`, `location`, `tagline`, `socialL
 (48, '', '', '', '', '', '', '', '0000-00-00', '', '0000-00-00'),
 (51, '', '', '', '', '', '', '', '0000-00-00', '', '0000-00-00'),
 (52, '', '', '', '', '', '', '', '0000-00-00', '', '0000-00-00'),
-(53, '', '', '', '', '', '', '', '0000-00-00', '', '0000-00-00');
+(53, '', '', '', '', '', '', '', '0000-00-00', '', '0000-00-00'),
+(54, '', '', '', '', '', '', '', '0000-00-00', '', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -314,6 +315,19 @@ INSERT INTO `cart` (`id`, `userID`, `itemID`) VALUES
 (12, '51', '10'),
 (13, '51', '9'),
 (14, '46', '9');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `chat`
+--
+
+CREATE TABLE `chat` (
+  `msgID` int(11) NOT NULL,
+  `senderID` int(11) NOT NULL,
+  `receiverID` int(11) NOT NULL,
+  `msg` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -759,7 +773,8 @@ INSERT INTO `freegame` (`gameID`, `gameName`, `releaseStatus`, `gameDetails`, `g
 (150, 'Albion Online', 'released', 'fef', 'SS-Albion Online-0.jpg,SS-Albion Online-1.jpg,SS-Albion Online-2.jpg', '', 'follows a stray cat who falls into a walled city populated by robots, ', 'action', 'fef', 'fef', 'Windows', 'Base Game', '', 0, '', 46, 'fef', 'ffe', 'ff', 'ffef', 'fefe', 'fefef', 'fef', 'ff', 'ff', 'fefef', 'ffefef', '0', '0000-00-00 00:00:00'),
 (151, 'dwd', 'released', 'grg', 'SS-dwd-0.jpg,SS-dwd-1.jpg,SS-dwd-2.jpg', '', 'follows a stray cat who falls into a walled city populated by robots, ', 'action', 'rgrg', 'grgrg', 'Windows', 'Base Game', '', 0, '', 46, 'rgrg', 'rgrg', 'grgrg', 'grgr', 'grg', 'ggrg', 'grg', 'rgrg', 'grgr', 'grgrg', 'grg', '0', '0000-00-00 00:00:00'),
 (152, 'New fe', 'released', 'fef', 'SS-New fe-0.jpg,SS-New fe-1.png', '', 'follows a stray cat who falls into a walled city populated by robots, ', 'action', 'grgrg', 'grgrg', 'Windows', 'Base Game', '', 0, 'Cover-New fe.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '0000-00-00 00:00:00'),
-(153, 'Albion Online 3', 'released', 'grgr', 'SS-Albion Online 3-0.jpg,SS-Albion Online 3-1.jpg,SS-Albion Online 3-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'follows a stray cat who falls into a walled city populated by robots, ', 'action', 'grgr', 'grgr', 'Windows', 'Base Game', 'Game-Albion Online 3.zip', 0, 'Cover-Albion Online 3.png', 46, 'grg', 'grgrg', 'grg', 'grgg', 'grgrg', 'grgrg', 'grgr', 'grg', 'grg', 'grg', 'grgrg', '0', '0000-00-00 00:00:00');
+(153, 'Albion Online 3', 'released', 'grgr', 'SS-Albion Online 3-0.jpg,SS-Albion Online 3-1.jpg,SS-Albion Online 3-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'follows a stray cat who falls into a walled city populated by robots, ', 'action', 'grgr', 'grgr', 'Windows', 'Base Game', 'Game-Albion Online 3.zip', 0, 'Cover-Albion Online 3.png', 46, 'grg', 'grgrg', 'grg', 'grgg', 'grgrg', 'grgrg', 'grgr', 'grg', 'grg', 'grg', 'grgrg', '0', '0000-00-00 00:00:00'),
+(154, 'test game', 'released', 'fefefef', 'SS-test game-0.jpg,SS-test game-1.png,SS-test game-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'follows a stray cat who falls into a walled city populated by robots, ', 'RPG', 'jyjyuj', 'rgrg', 'Windows', 'Base Game', 'Game-test game.zip', 0, 'Cover-test game.png', 46, 'grg', 'ggrgrg', 'grg', 'grg', 'grgrg', 'grgrg', 'grg', 'ggr', 'grg', 'grg', 'ggrg', '$2.00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -850,11 +865,12 @@ CREATE TABLE `gamer` (
 
 INSERT INTO `gamer` (`gamerID`, `email`, `password`, `accountStatus`, `avatar`, `userRole`, `username`, `firstName`, `lastName`, `loginDate`, `logoutTime`, `verified`, `token`) VALUES
 (46, '7prend@gmail.com', '$2y$10$GoMCtUazYGp/cxGTPBklXe42cuR7vcZ3K4puVwUov6xozVMjZ3umG', 1, 'avatar1.png', 'game developer', 'Beidou', 'Kavindu', 'Priyanath', '2023-02-09 07:45:17', '2023-02-09 07:45:17', 1, ''),
-(47, 'ypasindu11@gmail.com', '$2y$10$X6vRwMBT21PqzM57sr3fPeBK7gXyaUYiRYWEioYg/La9Sb4iPvI5.', 1, 'avatar3.png', 'asset creator', 'YPasi', 'Yeshan', 'pasindu', '2023-02-09 10:08:12', '2023-02-09 10:08:12', 1, ''),
+(47, 'ypasindu11@gmail.com', '$2y$10$X6vRwMBT21PqzM57sr3fPeBK7gXyaUYiRYWEioYg/La9Sb4iPvI5.', 1, 'avatar3.png', 'game publisher', 'YPasi', 'Yeshan', 'pasindu', '2023-02-09 10:08:12', '2023-02-09 10:08:12', 1, ''),
 (48, 'nadeedarshika1999@gmail.com', '$2y$10$IwPRWNFoePVsvPrzle.DyO9.8MxiOC1PAM/qVuwmJnIXE7UkRp/SS', 1, 'avatar3.png', 'asset creator', 'Nadee', 'Nadee', 'Dharshi', '2023-02-09 14:57:04', '2023-02-09 14:57:04', 0, ''),
 (51, 'kavindupriyanath@gmail.com', '$2y$10$oOiRY55.Uo1h95KzjQwcFu5RSuZ0QmafaVvAfbN03lFvdE0B6xQDq', 1, 'avatar4.png', 'game developer', 'kavi', 'kavindu', 'priyanath', '2023-02-21 15:13:19', '2023-02-21 15:13:19', 1, ''),
 (52, 'kimalrasanka321@gmail.com', '$2y$10$3moxbOLzKlvkAKVnCHLxS.atHdVSAWsJrqyIA/Ki9LXWrFaZKT4Mu', 1, 'avatar2.png', 'gamer', 'KRDA', 'kimal', 'xsx', '2023-02-28 06:45:33', '2023-02-28 06:45:33', 1, ''),
-(53, 'klhimashanupama@gmail.com', '$2y$10$B.F4OXoJEJIWcmHKvofCRuCN8FooMdd3u8jDIn8BhvsJVPaQs0VD6', 1, 'avatar4.png', 'gamer', 'Hima', 'Himash', 'Anu', '2023-02-28 16:24:11', '2023-02-28 16:24:11', 1, '');
+(53, 'klhimashanupama@gmail.com', '$2y$10$B.F4OXoJEJIWcmHKvofCRuCN8FooMdd3u8jDIn8BhvsJVPaQs0VD6', 1, 'avatar4.png', 'gamer', 'Hima', 'Himash', 'Anu', '2023-02-28 16:24:11', '2023-02-28 16:24:11', 1, ''),
+(54, '7prend@gmail.comff', '$2y$10$u8n2DPXA/qwzizOv.wPhY.QH7XOAnQeN584JpMsNLknDP7zR/WOKe', 1, 'avatar1.png', 'asset creator', 'grgrg', 'fef', 'fef', '2023-04-04 17:06:44', '2023-04-04 17:06:44', 0, '');
 
 -- --------------------------------------------------------
 
@@ -1027,7 +1043,11 @@ INSERT INTO `games_view_tracker` (`id`, `userID`, `sessionID`, `gameID`, `viewed
 (82, 46, 81, 95, '2023-03-22'),
 (83, 46, 56, 91, '2023-03-22'),
 (84, 46, 40, 91, '2023-03-23'),
-(85, 46, 34, 90, '2023-03-23');
+(85, 46, 34, 90, '2023-03-23'),
+(86, 46, 32, 154, '2023-04-02'),
+(87, 0, 0, 104, '2023-04-02'),
+(88, 46, 72, 90, '2023-04-07'),
+(89, 46, 72, 96, '2023-04-07');
 
 -- --------------------------------------------------------
 
@@ -1210,7 +1230,11 @@ INSERT INTO `game_stats_history` (`id`, `gameID`, `views`, `downloads`, `ratings
 (59, 95, 1, 0, 0, 0, '2023-03-22'),
 (60, 91, 1, 0, 0, 0, '2023-03-22'),
 (61, 91, 1, 0, 0, 0, '2023-03-23'),
-(62, 90, 1, 0, 0, 0, '2023-03-23');
+(62, 90, 1, 0, 0, 0, '2023-03-23'),
+(63, 154, 1, 0, 0, 0, '2023-04-02'),
+(64, 104, 1, 0, 0, 0, '2023-04-02'),
+(65, 90, 1, 0, 0, 0, '2023-04-07'),
+(66, 96, 1, 0, 0, 0, '2023-04-07');
 
 -- --------------------------------------------------------
 
@@ -1224,7 +1248,7 @@ CREATE TABLE `gig` (
   `gigTrailor` varchar(255) NOT NULL,
   `gigScreenshot` varchar(255) NOT NULL,
   `gigDetails` text NOT NULL,
-  `game` varchar(50) NOT NULL,
+  `game` int(11) NOT NULL,
   `gameDeveloperID` int(11) NOT NULL,
   `gamePublisherID` int(11) NOT NULL,
   `gigTagline` varchar(140) NOT NULL,
@@ -1242,10 +1266,48 @@ CREATE TABLE `gig` (
 --
 
 INSERT INTO `gig` (`gigID`, `gigName`, `gigTrailor`, `gigScreenshot`, `gigDetails`, `game`, `gameDeveloperID`, `gamePublisherID`, `gigTagline`, `currentStage`, `plannedReleaseDate`, `estimatedShare`, `expectedCost`, `visibility`, `gigCoverImg`, `orderedDate`) VALUES
-(12, 'Local Bus Simulator', 'https://www.indiegala.com/login', 'SS-Naruto Shippuden-0.jpg,SS-Naruto Shippuden-1.jpg,SS-Naruto Shippuden-2.jpg', 'cscsc', '89', 46, 0, 'Bus simulator game consisting with customizable local buses ', 'adventure', '21/02/2024', '12%', '$1000', 'draft', 'Cover-Local Bus Simulator.jpg', NULL),
-(13, 'Indie Desert FPS ', 'https://www.indiegala.com/login', 'SS-Stray-0.jpg,SS-Stray-1.jpg,SS-Stray-2.jpg,SS-Stray-3.jpg', 'fefeff', '93', 46, 0, 'Surviving an endless desert after being stranded by you know', 'action', '21/02/2024', '12%', '$1000', 'draft', 'Cover-Indie Desert FPS .jpg', NULL),
-(20, 'New Gig', 'https://www.indiegala.com/login', 'SS-96-0.jpg,SS-96-1.jpg,SS-96-2.jpg', 'egrgr', '96', 46, 0, 'I am developing an open world game with extreme high movements', 'RPG', '21/02/2024', '12%', '$1000', 'draft', 'Cover-New Gig.png', NULL),
-(21, 'Screenshot Test', 'https://www.indiegala.com/login', 'SS-96-0.jpg,SS-96-1.jpg,SS-96-2.jpg', 'fefefef', '96', 46, 0, 'I am developing an open world game with extreme high movements', 'action', '21/02/2024', '12%', '$1000', 'draft', 'Cover-Screenshot Test.jpg', NULL);
+(12, 'Local Bus Simulator', 'https://www.indiegala.com/login', 'SS-Naruto Shippuden-0.jpg,SS-Naruto Shippuden-1.jpg,SS-Naruto Shippuden-2.jpg', 'cscsc', 89, 46, 0, 'Bus simulator game consisting with customizable local buses ', 'adventure', '21/02/2024', '12%', '$1000', 'draft', 'Cover-Local Bus Simulator.jpg', NULL),
+(13, 'Indie Desert FPS ', 'https://www.indiegala.com/login', 'SS-Stray-0.jpg,SS-Stray-1.jpg,SS-Stray-2.jpg,SS-Stray-3.jpg', 'fefeff', 93, 51, 0, 'Surviving an endless desert after being stranded by you know', 'action', '21/02/2024', '12%', '$1000', 'draft', 'Cover-Indie Desert FPS .jpg', NULL),
+(20, 'New Gig', 'https://www.indiegala.com/login', 'SS-96-0.jpg,SS-96-1.jpg,SS-96-2.jpg', 'egrgr', 96, 46, 0, 'I am developing an open world game with extreme high movements', 'RPG', '21/02/2024', '12%', '$1000', 'draft', 'Cover-New Gig.png', NULL),
+(21, 'Screenshot Test', 'https://www.indiegala.com/login', 'SS-96-0.jpg,SS-96-1.jpg,SS-96-2.jpg', 'fefefef', 96, 46, 0, 'I am developing an open world game with extreme high movements', 'action', '21/02/2024', '12%', '$1000', 'draft', 'Cover-Screenshot Test.jpg', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gigmessages`
+--
+
+CREATE TABLE `gigmessages` (
+  `msgID` int(11) NOT NULL,
+  `senderID` int(11) NOT NULL,
+  `receiverID` int(11) NOT NULL,
+  `message` varchar(255) NOT NULL,
+  `gigID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `gigmessages`
+--
+
+INSERT INTO `gigmessages` (`msgID`, `senderID`, `receiverID`, `message`, `gigID`) VALUES
+(1, 46, 100, 'qwe', 21),
+(2, 46, 100, 'dd', 21),
+(3, 46, 100, 'f', 21),
+(4, 47, 100, 'qw', 21),
+(5, 47, 46, 'hello', 21),
+(6, 46, 47, 'good morning', 21),
+(7, 47, 46, 'yeah you too', 21),
+(8, 46, 47, 'so whats up', 21),
+(9, 47, 46, 'yo', 21),
+(10, 47, 51, 'hi kavindu', 13),
+(11, 47, 51, 'i am interested in your game mentioned in the gig', 13),
+(12, 47, 51, 'wanna talk about it more?', 13),
+(13, 46, 47, 'easy', 21),
+(14, 46, 47, 'fefefef', 21),
+(15, 47, 46, 'yes', 21),
+(16, 47, 46, 'yu can say so', 21),
+(17, 47, 46, 'surew', 21),
+(18, 47, 46, 'for what', 21);
 
 -- --------------------------------------------------------
 
@@ -1440,6 +1502,29 @@ CREATE TABLE `ratesubmission` (
   `submissionID` int(11) NOT NULL,
   `rating` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `requestedgigs`
+--
+
+CREATE TABLE `requestedgigs` (
+  `id` int(11) NOT NULL,
+  `gigID` int(11) NOT NULL,
+  `developerID` int(11) NOT NULL,
+  `publisherID` int(11) NOT NULL,
+  `gigToken` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `requestedgigs`
+--
+
+INSERT INTO `requestedgigs` (`id`, `gigID`, `developerID`, `publisherID`, `gigToken`) VALUES
+(39, 21, 46, 47, '2147'),
+(40, 20, 46, 47, '2047'),
+(41, 13, 51, 47, '1347');
 
 -- --------------------------------------------------------
 
@@ -1728,7 +1813,14 @@ ALTER TABLE `game_stats_history`
 --
 ALTER TABLE `gig`
   ADD PRIMARY KEY (`gigID`),
-  ADD KEY `gameDeveloperID` (`gameDeveloperID`);
+  ADD KEY `gameDeveloperID` (`gameDeveloperID`),
+  ADD KEY `game` (`game`);
+
+--
+-- Indexes for table `gigmessages`
+--
+ALTER TABLE `gigmessages`
+  ADD PRIMARY KEY (`msgID`);
 
 --
 -- Indexes for table `joinjam_gamedevs`
@@ -1742,6 +1834,13 @@ ALTER TABLE `joinjam_gamedevs`
 --
 ALTER TABLE `library`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `requestedgigs`
+--
+ALTER TABLE `requestedgigs`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `gigID` (`gigID`);
 
 --
 -- Indexes for table `submission`
@@ -1763,7 +1862,7 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `activation_keys`
@@ -1883,7 +1982,7 @@ ALTER TABLE `freeasset`
 -- AUTO_INCREMENT for table `freegame`
 --
 ALTER TABLE `freegame`
-  MODIFY `gameID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=154;
+  MODIFY `gameID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=155;
 
 --
 -- AUTO_INCREMENT for table `gamejam`
@@ -1895,7 +1994,7 @@ ALTER TABLE `gamejam`
 -- AUTO_INCREMENT for table `gamer`
 --
 ALTER TABLE `gamer`
-  MODIFY `gamerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `gamerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `games_cart`
@@ -1913,7 +2012,7 @@ ALTER TABLE `games_filters`
 -- AUTO_INCREMENT for table `games_view_tracker`
 --
 ALTER TABLE `games_view_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 
 --
 -- AUTO_INCREMENT for table `game_cart`
@@ -1943,7 +2042,7 @@ ALTER TABLE `game_reviews`
 -- AUTO_INCREMENT for table `game_stats_history`
 --
 ALTER TABLE `game_stats_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT for table `gig`
@@ -1952,10 +2051,22 @@ ALTER TABLE `gig`
   MODIFY `gigID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
+-- AUTO_INCREMENT for table `gigmessages`
+--
+ALTER TABLE `gigmessages`
+  MODIFY `msgID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
 -- AUTO_INCREMENT for table `library`
 --
 ALTER TABLE `library`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+
+--
+-- AUTO_INCREMENT for table `requestedgigs`
+--
+ALTER TABLE `requestedgigs`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `submission`
@@ -2015,7 +2126,8 @@ ALTER TABLE `game_reviews`
 -- Constraints for table `gig`
 --
 ALTER TABLE `gig`
-  ADD CONSTRAINT `gig_ibfk_1` FOREIGN KEY (`gameDeveloperID`) REFERENCES `gamer` (`gamerID`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `gig_ibfk_1` FOREIGN KEY (`gameDeveloperID`) REFERENCES `gamer` (`gamerID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `gig_ibfk_2` FOREIGN KEY (`game`) REFERENCES `freegame` (`gameID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `joinjam_gamedevs`
@@ -2023,6 +2135,12 @@ ALTER TABLE `gig`
 ALTER TABLE `joinjam_gamedevs`
   ADD CONSTRAINT `joinjam_gamedevs_ibfk_1` FOREIGN KEY (`gamerID`) REFERENCES `gamer` (`gamerID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `joinjam_gamedevs_ibfk_2` FOREIGN KEY (`gameJamID`) REFERENCES `gamejam` (`gameJamID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `requestedgigs`
+--
+ALTER TABLE `requestedgigs`
+  ADD CONSTRAINT `requestedgigs_ibfk_1` FOREIGN KEY (`gigID`) REFERENCES `gig` (`gigID`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

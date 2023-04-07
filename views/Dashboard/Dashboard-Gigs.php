@@ -89,6 +89,32 @@
                 <?php } ?>
             </div>
 
+            <h3>Ongoing Requests</h3>
+
+            <div class="ongoing-requests-cards">
+                <?php foreach ($this->ongoingrequests as $ongoingrequest) { ?>
+                    <div class="game-card">
+                        <div class="left-col">
+                            <div class="icon"><img src="/indieabode/public/uploads/gigs/cover/<?= $ongoingrequest['gigCoverImg'] ?>" alt=""></div>
+                            <div class="details">
+                                <a href="/indieabode/gig/viewgig?id=<?= $ongoingrequest['gigID'] ?>&token=<?= $ongoingrequest['gigToken'] ?>">
+                                    <div class="devlog-name"><?= $ongoingrequest['gigName']; ?></div>
+                                </a>
+                                <div class="game-name">
+                                    <?= $ongoingrequest['game']; ?>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="right-col">
+                        </div>
+                        <div class="edit-btn">
+                            Edit
+                        </div>
+                    </div>
+                <?php } ?>
+            </div>
+
         </div>
     </div>
 
