@@ -23,6 +23,12 @@ class Game extends Controller
 
             $this->view->game = $this->model->showSingleGame($gameID);
 
+            $thisGame = $this->model->showSingleGame($gameID);
+
+            $platforms = $thisGame['platform'];
+
+            $this->view->platforms = explode(',', $platforms);
+
             $this->view->gameDeveloper = $this->model->getGameDeveloper($this->model->showSingleGame($gameID));
 
             $this->view->screenshots = $this->model->getScreenshots($gameID);
