@@ -68,7 +68,7 @@ form input[type=text], input[type=password] {
   font-family: 'Kreon', serif;
 }
 
-#login, #register {
+#login, .register {
   color: #0D3860;
   background-color: #7FAFDB;
   width: 200px;
@@ -80,6 +80,11 @@ form input[type=text], input[type=password] {
   font-size: 25px;
   font-family: 'Kreon', serif;
   font-weight: bold;
+}
+
+.register {
+  margin-left: 110px;
+  cursor: pointer;
 }
 
 
@@ -258,5 +263,31 @@ form input[type=checkbox] {
 .field i.active::before {
   color: #333;
   content: "\f070";
+}
+
+.error-msg {
+  background-color: rgb(225, 132, 132);
+  display: block;
+  margin: 0px 21px;
+}
+
+.full-name-errors {
+  position: relative;
+  display: block;
+
+}
+
+.full-name-errors #firstname-check{
+  position: absolute;
+  display: block;
+  width: 179px;
+}
+
+.full-name-errors #lastname-check  {
+  position: absolute;
+  left: 200px;
+  display: block;
+  width: 179px;
+  
 }
 
