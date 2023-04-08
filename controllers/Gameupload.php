@@ -26,7 +26,7 @@ class Gameupload extends Controller
         $gameTrailor = $_POST['game-illustration-vedio'];
         $gameTagline = $_POST['game-tagline'];
         $gameClassification = $_POST['game-classification'];
-        $gameTags = $_POST['game-tags'];
+
         $gameType = $_POST['game-type'];
         $gameFeatures = $_POST['game-features'];
         $gameFile = $this->model->uploadGameFile($gameName);
@@ -45,6 +45,8 @@ class Gameupload extends Controller
         $GameStorage = $_POST['game-storage'];
         $GameGraphics = $_POST['game-graphics'];
         $GameOther = $_POST['game-other'];
+
+        $gameTags = $_POST['game-tags'];
 
         $platform = $_POST['platform'];
 
