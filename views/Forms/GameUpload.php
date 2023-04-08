@@ -74,11 +74,34 @@
                             <!--Releasing status-->
                             <div class="platform-div">
                                 <label id="" for="">Platform</label><br>
-                                <select id="" name="game-platform">
+                                <!-- <select id="" name="game-platform">
                                     <option value="Windows" selected>Windows</option>
                                     <option value="MacOS">MacOS</option>
                                     <option value="Linux">Linux</option>
-                                </select><br><br>
+                                </select><br><br> -->
+                                <div class="platform-checkboxes">
+                                    <div class="platform">
+                                        <input type="checkbox" name="platform[]" value="Windows">
+                                        <label for="windows">Windows</label>
+                                    </div>
+                                    <div class="platform">
+                                        <input type="checkbox" name="platform[]" value="MacOS">
+                                        <label for="windows">MacOS</label>
+                                    </div>
+                                    <div class="platform">
+                                        <input type="checkbox" name="platform[]" value="Linux">
+                                        <label for="windows">Linux</label>
+                                    </div>
+                                    <div class="platform">
+                                        <input type="checkbox" name="platform[]" value="Android">
+                                        <label for="windows">Android</label>
+                                    </div>
+                                    <div class="platform">
+                                        <input type="checkbox" name="platform[]" value="iOS">
+                                        <label for="windows">iOS</label>
+                                    </div>
+                                </div>
+                                <br>
                             </div>
 
                             <div class="game-type-div">
@@ -145,48 +168,59 @@
                                 <input type="text" id="game-features" name="game-features" /> <br><br>
                             </div>
 
-                            <div class="specification-div">
-                                <label>Game Specification</label><br><br>
-                                <div class="game-spec-type">
-                                    <p class="game-spec-item">Minimum</p>
-                                    <p class="game-spec-item">Recommended</p><br><br>
-                                </div>
-                                <div class="game-spec-type">
-                                    <div class="game-spec-item-details">
+
+                            <div class="accordion">
+                                <div class="contentBox" id="collapse" onclick="Accordion()">
+                                    <div class="label">Game Specifications</div>
+                                    <div class="content">
+                                        <div class="specification-div">
+                                            <!-- <label>Game Specification</label><br><br> -->
+                                            <div class="platform-name">Windows</div>
+                                            <div class="game-spec-type">
+                                                <p class="game-spec-item">Minimum</p>
+                                                <p class="game-spec-item">Recommended</p><br>
+                                            </div>
+                                            <div class="game-spec-type">
+                                                <div class="game-spec-item-details">
 
 
-                                        <label id="min-game-OS" for="min-game-OS">OS</label><br>
-                                        <input type="text" name="min-game-OS" id="min-game-OS" placeholder="Windows 10" /><br><br>
-                                        <label id="min-game-processor" for="min-game-processor">Processor</label><br>
-                                        <input type="text" name="min-game-processor" id="min-game-processor" placeholder="Intel Core I5" /><br><br>
-                                        <label id="min-game-memory" for=" min-game-memory">Memory</label><br>
-                                        <input type="text" name="min-game-memory" id="min-game-memory" placeholder="8 GB" /><br><br>
-                                        <label id="min-game-storage" for="min-game-storage">Storage</label><br>
-                                        <input type="text" name="min-game-storage" id="min-game-storage" placeholder="14 GB" /><br><br>
-                                        <label id="min-game-graphics" for="min-game-graphics">Graphics</label><br>
-                                        <input type="text" name="min-game-graphics" id="min-game-graphics" placeholder="NVIDIA GeForce 1660" /><br><br>
-                                        <label id="min-game-other" for="min-game-other">Other</label><br>
-                                        <input type="text" name="min-game-other" id="min-game-other" placeholder="English Language Support" /><br><br>
+                                                    <label id="min-game-OS" for="min-game-OS">OS</label><br>
+                                                    <input type="text" name="min-game-OS" id="min-game-OS" placeholder="Windows 10" /><br><br>
+                                                    <label id="min-game-processor" for="min-game-processor">Processor</label><br>
+                                                    <input type="text" name="min-game-processor" id="min-game-processor" placeholder="Intel Core I5" /><br><br>
+                                                    <label id="min-game-memory" for=" min-game-memory">Memory</label><br>
+                                                    <input type="text" name="min-game-memory" id="min-game-memory" placeholder="8 GB" /><br><br>
+                                                    <label id="min-game-storage" for="min-game-storage">Storage</label><br>
+                                                    <input type="text" name="min-game-storage" id="min-game-storage" placeholder="14 GB" /><br><br>
+                                                    <label id="min-game-graphics" for="min-game-graphics">Graphics</label><br>
+                                                    <input type="text" name="min-game-graphics" id="min-game-graphics" placeholder="NVIDIA GeForce 1660" /><br><br>
+                                                    <label id="min-game-other" for="min-game-other">Other</label><br>
+                                                    <input type="text" name="min-game-other" id="min-game-other" placeholder="English Language Support" /><br><br>
 
-                                    </div>
-                                    <div class="game-spec-item-details">
+                                                </div>
+                                                <div class="game-spec-item-details">
 
-                                        <label id="game-OS" for="game-OS">OS</label><br>
-                                        <input type="text" name="game-OS" id="game-OS" placeholder="Windows 10" /><br><br>
-                                        <label id="game-processor" for="game-processor">Processor</label><br>
-                                        <input type="text" name="game-processor" id="game-processor" placeholder="Intel Core I5" /><br><br>
-                                        <label id="game-memory" for="game-memory">Memory</label><br>
-                                        <input type="text" name="game-memory" id="game-memory" placeholder="8 GB" /><br><br>
-                                        <label id="game-storage" for="game-storage">Storage</label><br>
-                                        <input type="text" name="game-storage" id="game-storage" placeholder="14 GB" /><br><br>
-                                        <label id="game-graphics" for="game-graphics">Graphics</label><br>
-                                        <input type="text" name="game-graphics" id="game-graphics" placeholder="NVIDIA GeForce 1660" /><br><br>
-                                        <label id="game-other" for="game-other">Other</label><br>
-                                        <input type="text" name="game-other" id="game-other" placeholder="English Language Support" /><br><br>
+                                                    <label id="game-OS" for="game-OS">OS</label><br>
+                                                    <input type="text" name="game-OS" id="game-OS" placeholder="Windows 10" /><br><br>
+                                                    <label id="game-processor" for="game-processor">Processor</label><br>
+                                                    <input type="text" name="game-processor" id="game-processor" placeholder="Intel Core I5" /><br><br>
+                                                    <label id="game-memory" for="game-memory">Memory</label><br>
+                                                    <input type="text" name="game-memory" id="game-memory" placeholder="8 GB" /><br><br>
+                                                    <label id="game-storage" for="game-storage">Storage</label><br>
+                                                    <input type="text" name="game-storage" id="game-storage" placeholder="14 GB" /><br><br>
+                                                    <label id="game-graphics" for="game-graphics">Graphics</label><br>
+                                                    <input type="text" name="game-graphics" id="game-graphics" placeholder="NVIDIA GeForce 1660" /><br><br>
+                                                    <label id="game-other" for="game-other">Other</label><br>
+                                                    <input type="text" name="game-other" id="game-other" placeholder="English Language Support" /><br><br>
 
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+
+
 
                             <div class="visibility-div">
                                 <label id="game-visibility" for="game-visibility">Visibility</label>
@@ -286,6 +320,12 @@
 
 
     <script src=" <?php echo BASE_URL; ?>public/js/navbar.js">
+    </script>
+
+    <script>
+        function Accordion() {
+            document.getElementById('collapse').classList.toggle('active');
+        }
     </script>
 
     <script>
