@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 07, 2023 at 03:37 PM
+-- Generation Time: Apr 08, 2023 at 08:14 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -52,7 +52,7 @@ INSERT INTO `account` (`userID`, `profilePhoto`, `location`, `tagline`, `socialL
 (51, '', '', '', '', '', '', '', '0000-00-00', '', '0000-00-00'),
 (52, '', '', '', '', '', '', '', '0000-00-00', '', '0000-00-00'),
 (53, '', '', '', '', '', '', '', '0000-00-00', '', '0000-00-00'),
-(54, '', '', '', '', '', '', '', '0000-00-00', '', '0000-00-00');
+(78, '', '', '', '', '', '', '', '0000-00-00', '', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -76,7 +76,8 @@ INSERT INTO `activation_keys` (`id`, `userID`, `activationCode`) VALUES
 (4, 48, '67170'),
 (11, 51, '31055'),
 (12, 52, '57168'),
-(13, 53, '60090');
+(13, 53, '60090'),
+(14, 78, '84140');
 
 -- --------------------------------------------------------
 
@@ -870,7 +871,7 @@ INSERT INTO `gamer` (`gamerID`, `email`, `password`, `accountStatus`, `avatar`, 
 (51, 'kavindupriyanath@gmail.com', '$2y$10$oOiRY55.Uo1h95KzjQwcFu5RSuZ0QmafaVvAfbN03lFvdE0B6xQDq', 1, 'avatar4.png', 'game developer', 'kavi', 'kavindu', 'priyanath', '2023-02-21 15:13:19', '2023-02-21 15:13:19', 1, ''),
 (52, 'kimalrasanka321@gmail.com', '$2y$10$3moxbOLzKlvkAKVnCHLxS.atHdVSAWsJrqyIA/Ki9LXWrFaZKT4Mu', 1, 'avatar2.png', 'gamer', 'KRDA', 'kimal', 'xsx', '2023-02-28 06:45:33', '2023-02-28 06:45:33', 1, ''),
 (53, 'klhimashanupama@gmail.com', '$2y$10$B.F4OXoJEJIWcmHKvofCRuCN8FooMdd3u8jDIn8BhvsJVPaQs0VD6', 1, 'avatar4.png', 'gamer', 'Hima', 'Himash', 'Anu', '2023-02-28 16:24:11', '2023-02-28 16:24:11', 1, ''),
-(54, '7prend@gmail.comff', '$2y$10$u8n2DPXA/qwzizOv.wPhY.QH7XOAnQeN584JpMsNLknDP7zR/WOKe', 1, 'avatar1.png', 'asset creator', 'grgrg', 'fef', 'fef', '2023-04-04 17:06:44', '2023-04-04 17:06:44', 0, '');
+(78, 'akiladharmadasa1.1@gmail.com', '$2y$10$GPdfkGBN0VVqHsFnd5swGu.TgeDM.rixafWAHmLmhsSvvLcRqZG1e', 1, 'avatar2.png', 'gamer', 'akilaks', 'akila', 'gona', '2023-04-08 06:10:47', '2023-04-08 06:10:47', 1, '');
 
 -- --------------------------------------------------------
 
@@ -1862,13 +1863,13 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT for table `activation_keys`
 --
 ALTER TABLE `activation_keys`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `admin`
@@ -1994,7 +1995,7 @@ ALTER TABLE `gamejam`
 -- AUTO_INCREMENT for table `gamer`
 --
 ALTER TABLE `gamer`
-  MODIFY `gamerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `gamerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT for table `games_cart`
