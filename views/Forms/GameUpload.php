@@ -191,7 +191,8 @@
                                     </div>
 
                                     <!--Content-->
-                                    <div class="content" contenteditable="true"></div>
+                                    <div class="game-content" contenteditable="true"></div>
+                                    <input type="hidden" name="description" id="description">
                                 </div>
                             </div>
 
@@ -361,6 +362,17 @@
 
 
     <script src=" <?php echo BASE_URL; ?>public/js/navbar.js">
+    </script>
+    <script src=" <?php echo BASE_URL; ?>public/js/richtext.js"> </script>
+
+    <script>
+        $(document).ready(function() {
+            $(".game-content").click(function() {
+                let text = $(".game-content").html();
+                $('#description').val(text);
+
+            });
+        });
     </script>
 
     <script>

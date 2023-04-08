@@ -21,7 +21,7 @@ class Gameupload extends Controller
 
         $gameName = $_POST['game-title'];
         $releaseStatus = $_POST['game-status'];
-        $gameDetails = $_POST['game-details'];
+        $gameDetails = $_POST['description'];
         $gameScreenshots = $this->model->uploadScreenshots($gameName);
         $gameTrailor = $_POST['game-illustration-vedio'];
         $gameTagline = $_POST['game-tagline'];
@@ -96,15 +96,15 @@ class Gameupload extends Controller
         header('location:/indieabode/');
     }
 
-    function file()
-    {
-        if (isset($_FILES)) {
-            $temp_file = $_FILES['file']['tmp_name'];
-            $uploads_folder = "uploads/{$_FILES['file']['name']}";
-            $upload = move_uploaded_file($temp_file, $uploads_folder);
-            if ($upload == true) {
-                echo $_FILES['file']['name'];
-            }
-        }
-    }
+    // function file()
+    // {
+    //     if (isset($_FILES)) {
+    //         $temp_file = $_FILES['file']['tmp_name'];
+    //         $uploads_folder = "uploads/{$_FILES['file']['name']}";
+    //         $upload = move_uploaded_file($temp_file, $uploads_folder);
+    //         if ($upload == true) {
+    //             echo $_FILES['file']['name'];
+    //         }
+    //     }
+    // }
 }
