@@ -170,8 +170,8 @@
 
 
                             <div class="accordion">
-                                <div class="contentBox" id="collapse" onclick="Accordion()">
-                                    <div class="label">Game Specifications</div>
+                                <div class="contentBox" id="collapse">
+                                    <div class="label" onclick="Accordion()">Game Specifications</div>
                                     <div class="content">
                                         <div class="specification-div">
                                             <!-- <label>Game Specification</label><br><br> -->
