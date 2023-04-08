@@ -151,7 +151,48 @@
                             <div class="details-div">
                                 <label id="game-details" for="game-details">Details</label>
                                 <p id="p">This will be the content of your game page</p>
-                                <textarea id="game-details" name="game-details" rows="9" cols="50"></textarea><br><br>
+                                <!-- <textarea id="game-details" name="game-details" rows="9" cols="50"></textarea><br><br> -->
+
+                                <div class="main-content">
+                                    <div class="text-editor-header">
+                                        <button type="button" class="btn" data-element="bold">
+                                            <i class="fa fa-bold"></i>
+                                        </button>
+                                        <button type="button" class="btn" data-element="italic">
+                                            <i class="fa fa-italic"></i>
+                                        </button>
+                                        <button type="button" class="btn" data-element="underline">
+                                            <i class="fa fa-underline"></i>
+                                        </button>
+                                        <button type="button" class="btn" data-element="insertUnorderedList">
+                                            <i class="fa fa-list-ul"></i>
+                                        </button>
+                                        <button type="button" class="btn" data-element="insertOrderedList">
+                                            <i class="fa fa-list-ol"></i>
+                                        </button>
+                                        <button type="button" class="btn" data-element="createLink">
+                                            <i class="fa fa-link"></i>
+                                        </button>
+                                        <button type="button" class="btn" data-element="justifyLeft">
+                                            <i class="fa fa-align-left"></i>
+                                        </button>
+                                        <button type="button" class="btn" data-element="justifyCenter">
+                                            <i class="fa fa-align-center"></i>
+                                        </button>
+                                        <button type="button" class="btn" data-element="justifyRight">
+                                            <i class="fa fa-align-right"></i>
+                                        </button>
+                                        <button type="button" class="btn" data-element="justifyFull">
+                                            <i class="fa fa-align-justify"></i>
+                                        </button>
+                                        <button type="button" class="btn" data-element="insertImage">
+                                            <i class="fa fa-image"></i>
+                                        </button>
+                                    </div>
+
+                                    <!--Content-->
+                                    <div class="content" contenteditable="true"></div>
+                                </div>
                             </div>
 
                             <div class="tags-div">
