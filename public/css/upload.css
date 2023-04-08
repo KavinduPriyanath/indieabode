@@ -153,7 +153,7 @@ select option{
 
 
 .game-spec-type{
-    margin:0 0 0 0;
+    margin:0 0 8px 0;
     display:flex;
     justify-content: space-evenly;   
 }
@@ -172,31 +172,7 @@ select option{
     width:100%;
 }
 
-/* Redactor Box */
 
-.main-content {
-    width: 425.4px;
-    border: 2px solid;
-    
-}
-
-.text-editor-header {
-    background-color: rgb(162, 198, 213);
-    padding: 5px;
-}
-
-.text-editor-header .rbtn {
-    margin-right: 5px;
-    background-color: rgb(156, 185, 196);
-    padding: 2px;
-}
-
-.content-box {
-    min-height: 250px;
-    border-top: 0.7px solid;
-    padding: 15px;
-
-}
 
 .errors-display {
     font-size: 17px;
@@ -363,5 +339,114 @@ select option{
       border-radius: 3px; 
       background-size: 35px 20px, 100% 100%, 100% 100%;
 }
+
+
+/* Accordion */
+.accordion {
+    width: 470px;
+    margin: 0px 175px 40px 0px;
+  }
+  
+  .accordion .contentBox {
+    position: relative;
+  }
+  
+  .accordion .contentBox .label {
+    position:relative;
+    width: 470px;
+    padding: 10px;
+    background-color: lightblue;
+    color: black;
+    cursor: pointer;
+    font-size: 21px;
+    font-weight: bold;
+  }
+  
+  .accordion .contentBox .label::before {
+    content: '+';
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    font-size: 20px;
+  }
+  
+  .accordion .contentBox .content{
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    transition: 1.2s;
+    background-color: #87a3bd;
+  }
+
+  .accordion .contentBox.active .content {
+    height: 650px;
+  }
+
+  .platform-name {
+    display: block;
+    padding: 10px 10px;
+    height: 40px;
+    background-color: #749ABD;
+    margin-bottom: 8px;
+  }
+
+
+
+input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+}
+
+.platform-checkboxes {
+    margin-top: 7px;
+    width: 470px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.platform-checkboxes label {
+    font-size: 16px;
+    font-weight: normal;
+    margin-right: 10px;
+}
+
+
+
+/* Redactor Box */
+
+.main-content {
+    width: 425.4px;
+    border: 2px solid;
+    
+}
+
+.text-editor-header {
+    background-color: rgb(162, 198, 213);
+    padding: 5px;
+}
+
+/* .text-editor-header .btn {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    margin-right: 5px;
+    cursor: pointer;
+} */
+
+.content {
+    min-height: 200px;
+    border: 1px solid rgb(153, 143, 143);
+    border-top: 0px;
+    padding: 20px;
+}
+
+.text-editor-header .rbtn {
+    margin-right: 5px;
+    background-color: rgb(156, 185, 196);
+    padding: 2px;
+}
+
+
 
   

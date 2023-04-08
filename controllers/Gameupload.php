@@ -46,7 +46,15 @@ class Gameupload extends Controller
         $GameGraphics = $_POST['game-graphics'];
         $GameOther = $_POST['game-other'];
 
-        $platform = $_POST['game-platform'];
+        $platform = $_POST['platform'];
+
+        $platformsCount = count($platform);
+        $platforms = [];
+        for ($i = 0; $i < $platformsCount; $i++) {
+            array_push($platforms, $platform[$i]);
+        }
+
+        $chosenPlatforms = implode(',', $platforms);
 
         if ($_POST['game-price'] == "Free") {
             $gamePrice = 0.00;
@@ -80,7 +88,7 @@ class Gameupload extends Controller
             $GameStorage,
             $GameGraphics,
             $GameOther,
-            $platform,
+            $chosenPlatforms,
             $gameType,
             $gamePrice
         );

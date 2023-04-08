@@ -130,7 +130,13 @@
 
             <div class="row">
                 <p class="title">Platform</p>
-                <p class="sub-title"><?= $this->game['platform']; ?></p>
+                <p class="sub-title">
+                <div class="platform-icons">
+                    <?php foreach ($this->platforms as $platform) { ?>
+                        <div class="icon"><img src="/indieabode/public/images/platforms/<?= $platform ?>.png" alt=""></div>
+                    <?php } ?>
+                </div>
+                </p>
             </div>
             <hr />
 
