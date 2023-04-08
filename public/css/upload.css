@@ -233,12 +233,12 @@ select option{
 .image-upload-box label{
     display: inline-block;
     position: relative;
-    background-color: #A5B9BD;
+    background-color: #a2deea;
     color: #132759;
-    font-size: 18px;
+    font-size: 17px;
     text-align: center;
     width: 130px;
-    padding: 15px 0px;
+    padding: 7px 0px;
     border-radius: 8px;
     margin: 8px 0px;
     cursor: pointer;
@@ -252,12 +252,12 @@ select option{
 .screenshot-container label{
     display: inline-block;
     position: relative;
-    background-color: #A5B9BD;
+    background-color: #a2deea;
     color: #132759;
-    font-size: 18px;
+    font-size: 17px;
     text-align: center;
     width: 130px;
-    padding: 15px 0px;
+    padding: 7px 0px;
     border-radius: 8px;
     margin: 0px 0px;
     cursor: pointer;
@@ -303,11 +303,12 @@ select option{
     display: inline-block;
     position: relative;
     background-color: #A5B9BD;
+    background-color: #a2deea;
     color: #132759;
-    font-size: 18px;
+    font-size: 17px;
     text-align: center;
-    width: 170px;
-    padding: 15px 0px;
+    width: 130px;
+    padding: 7px 0px;
     border-radius: 8px;
     margin: 8px 0px;
     cursor: pointer;
@@ -379,6 +380,7 @@ select option{
     background-color: #87a3bd;
   }
 
+
   .accordion .contentBox.active .content {
     height: 650px;
   }
@@ -416,7 +418,7 @@ input[type="checkbox"] {
 /* Redactor Box */
 
 .main-content {
-    width: 425.4px;
+    width: 470px;
     border: 2px solid;
     
 }
@@ -434,7 +436,7 @@ input[type="checkbox"] {
     cursor: pointer;
 } */
 
-.content {
+.game-content {
     min-height: 200px;
     border: 1px solid rgb(153, 143, 143);
     border-top: 0px;
@@ -447,6 +449,93 @@ input[type="checkbox"] {
     padding: 2px;
 }
 
+/* Tags Input */
 
+.tags-wrapper{
+    width: 470px;
+    border-radius: 10px;
+    /* padding: 18px 25px 20px; */
+}
+.tags-wrapper :where(.title, li, li i, .tags-details){
+    display: flex;
+    align-items: center;
+}
+.title img{
+    max-width: 21px;
+}
+.title h2{
+    font-size: 21px;
+    font-weight: 600;
+    margin-left: 8px;
+}
+.tags-wrapper .tags-content{
+    margin: 4px 0 0px;
+}
+.tags-content p{
+    font-size: 15px;
+}
+.tags-content ul{
+    width: 470px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 7px;
+    margin: 12px 0;
+    border-radius: 5px;
+    border: 1px solid #a6a6a6;
+
+    padding: 10px 0;
+    margin: 5px 0;
+    border: 2px solid #1E3455;
+    background: transparent;
+    outline: none;
+    border-radius: 4px;
+}
+.tags-content ul  li{
+    color: #333;
+    margin: 4px 3px;
+    list-style: none;
+    border-radius: 5px;
+    background: #9bc4d3;
+    padding: 5px 8px 5px 10px;
+    border: 1px solid #282b3f;
+}
+.tags-content ul li i{
+    height: 20px;
+    width: 20px;
+    color: #808080;
+    margin-left: 8px;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 50%;
+    background: #dfdfdf;
+    justify-content: center;
+}
+.tags-content ul input{
+    flex: 1;
+    padding: 5px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+
+    
+}
+.tags-wrapper .tags-details{
+    display: flex;
+    justify-content: space-between;
+}
+.tags-details .remove-btn{
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 9px 15px;
+    border-radius: 5px;
+    background: #5372F0;
+    transition: background 0.3s ease;
+}
+.tags-details .remove-btn:hover{
+    background: #2c52ed;
+}
 
   

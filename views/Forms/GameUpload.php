@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/thinline.css" />
     <title>Indieabode</title>
 
     <style>
@@ -74,6 +75,7 @@
                             <!--Releasing status-->
                             <div class="platform-div">
                                 <label id="" for="">Platform</label><br>
+                                <p>Select for what platforms your game is designed to be played</p>
                                 <!-- <select id="" name="game-platform">
                                     <option value="Windows" selected>Windows</option>
                                     <option value="MacOS">MacOS</option>
@@ -191,15 +193,33 @@
                                     </div>
 
                                     <!--Content-->
-                                    <div class="content" contenteditable="true"></div>
+                                    <div class="game-content" contenteditable="true"></div>
+                                    <input type="hidden" name="description" id="description">
                                 </div>
                             </div>
+                            <br>
 
                             <div class="tags-div">
                                 <label id="game-tags" for="game-tags">Tags</label>
                                 <p id="p">Keywords that someone would search to find your game</p>
-                                <input type="text" id="game-tags" name="game-tags" /> <br><br>
+                                <!-- <input type="text" id="game-tags" name="game-tags" /> <br><br> -->
+
+                                <div class="tags-wrapper">
+                                    <input type="hidden" name="game-tags" value="" id="gametagss">
+                                    <div class="tags-content">
+                                        <p>Press enter or add a comma after each tag</p>
+                                        <ul>
+                                            <input type="text" spellcheck="false" id="tags" />
+                                        </ul>
+                                    </div>
+                                    <div class="tags-details">
+                                        <p><span>10</span> tags are remaining</p>
+                                        <div class="remove-btn">Remove All</div>
+                                    </div>
+                                </div><br>
                             </div>
+
+
 
 
 
@@ -207,6 +227,13 @@
                                 <label id="game-features" for="game-features">Features</label>
                                 <p id="p">Special features your game has that players would prefer</p>
                                 <input type="text" id="game-features" name="game-features" /> <br><br>
+                            </div>
+
+
+                            <div class="trailer-div">
+                                <label id="game-illustration-vedio" for="game-illustration-vedio">Trailer Video</label><br>
+                                <p>Add the link to your Youtube video</p>
+                                <input type="url" id="game-illustration-vedio" name="game-illustration-vedio" placeholder="eg: https://www.youtube.com/"><br><br>
                             </div>
 
 
@@ -300,12 +327,6 @@
 
                             <br>
 
-                            <div class="trailer-div">
-                                <label id="game-illustration-vedio" for="game-illustration-vedio">Game Illustration Video</label><br>
-                                <p>Add the link to your Youtube video</p>
-                                <input type="url" id="game-illustration-vedio" name="game-illustration-vedio" placeholder="eg: https://www.youtube.com/"><br><br>
-                            </div>
-
                             <div class="gamefile-div">
                                 <div class="game-upload-box">
                                     <label>Upload Game</label><br>
@@ -361,6 +382,30 @@
 
 
     <script src=" <?php echo BASE_URL; ?>public/js/navbar.js">
+    </script>
+    <script src=" <?php echo BASE_URL; ?>public/js/richtext.js"> </script>
+    <script src=" <?php echo BASE_URL; ?>public/js/tags.js"> </script>
+
+
+    <script>
+        $(document).ready(function() {
+            $(".game-content").click(function() {
+                let text = $(".game-content").html();
+                $('#description').val(text);
+
+            });
+        });
+    </script>
+
+    <script>
+        $(window).ready(function() {
+            $("#tags").on("keypress", function(event) {
+                var keyPressed = event.keyCode || event.which;
+                if (keyPressed === 13) {
+                    event.preventDefault();
+                }
+            });
+        });
     </script>
 
     <script>
