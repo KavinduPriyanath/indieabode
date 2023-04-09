@@ -12,6 +12,7 @@ class Gameupload extends Controller
     function index()
     {
 
+        $this->view->features = $this->model->FeatureTypes();
 
         $this->view->render('Forms/GameUpload');
     }
@@ -28,7 +29,7 @@ class Gameupload extends Controller
         $gameClassification = $_POST['game-classification'];
 
         $gameType = $_POST['game-type'];
-        $gameFeatures = $_POST['game-features'];
+        // $gameFeatures = $_POST['game-features'];
         $gameFile = $this->model->uploadGameFile($gameName);
         $gameCoverImg = $this->model->uploadCoverImg($gameName);
         $gameDeveloperID = $_SESSION['id'];
@@ -48,6 +49,7 @@ class Gameupload extends Controller
 
         $gameTags = $_POST['game-tags'];
 
+        //getting platforms selected by the developer
         $platform = $_POST['platform'];
 
         $platformsCount = count($platform);
@@ -57,6 +59,17 @@ class Gameupload extends Controller
         }
 
         $chosenPlatforms = implode(',', $platforms);
+
+        //getting features selected by the developer
+        $feature = $_POST['game-features'];
+
+        $featuresCount = count($feature);
+        $features = [];
+        for ($i = 0; $i < $featuresCount; $i++) {
+            array_push($features, $feature[$i]);
+        }
+
+        $gameFeatures = implode(',', $features);
 
         if ($_POST['game-price'] == "Free") {
             $gamePrice = 0.00;

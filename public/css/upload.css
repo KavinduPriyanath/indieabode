@@ -407,10 +407,31 @@ input[type="checkbox"] {
     justify-content: space-between;
 }
 
-.platform-checkboxes label {
+.platform-checkboxes .platform {
+    padding: 0px 0px 0px 4px;
+    display: inline-block;
+    background-color: rgba(136, 200, 231, 0.482);
+    border-radius: 3px;
+    border: 1px solid rgb(124, 141, 250);
+}
+
+.platform-checkboxes label, .feature-checkboxes label {
     font-size: 16px;
     font-weight: normal;
     margin-right: 10px;
+}
+
+.feature-checkboxes .feature{
+    padding: 0px 0px 0px 4px;
+    display: inline-block;
+    background-color: rgba(136, 200, 231, 0.482);
+    margin: 4px 0px;
+    border-radius: 3px;
+    border: 1px solid rgb(124, 141, 250);
+}
+
+.feature-checkboxes {
+    /* display: flex; */
 }
 
 

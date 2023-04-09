@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 08, 2023 at 08:14 AM
+-- Generation Time: Apr 09, 2023 at 04:31 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -158,13 +158,6 @@ CREATE TABLE `asset_cart` (
   `assetID` int(11) NOT NULL,
   `addedDate` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `asset_cart`
---
-
-INSERT INTO `asset_cart` (`id`, `userID`, `assetID`, `addedDate`) VALUES
-(11, 46, 9, '2023-03-22');
 
 -- --------------------------------------------------------
 
@@ -775,7 +768,33 @@ INSERT INTO `freegame` (`gameID`, `gameName`, `releaseStatus`, `gameDetails`, `g
 (151, 'dwd', 'released', 'grg', 'SS-dwd-0.jpg,SS-dwd-1.jpg,SS-dwd-2.jpg', '', 'follows a stray cat who falls into a walled city populated by robots, ', 'action', 'rgrg', 'grgrg', 'Windows', 'Base Game', '', 0, '', 46, 'rgrg', 'rgrg', 'grgrg', 'grgr', 'grg', 'ggrg', 'grg', 'rgrg', 'grgr', 'grgrg', 'grg', '0', '0000-00-00 00:00:00'),
 (152, 'New fe', 'released', 'fef', 'SS-New fe-0.jpg,SS-New fe-1.png', '', 'follows a stray cat who falls into a walled city populated by robots, ', 'action', 'grgrg', 'grgrg', 'Windows', 'Base Game', '', 0, 'Cover-New fe.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '0000-00-00 00:00:00'),
 (153, 'Albion Online 3', 'released', 'grgr', 'SS-Albion Online 3-0.jpg,SS-Albion Online 3-1.jpg,SS-Albion Online 3-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'follows a stray cat who falls into a walled city populated by robots, ', 'action', 'grgr', 'grgr', 'Windows', 'Base Game', 'Game-Albion Online 3.zip', 0, 'Cover-Albion Online 3.png', 46, 'grg', 'grgrg', 'grg', 'grgg', 'grgrg', 'grgrg', 'grgr', 'grg', 'grg', 'grg', 'grgrg', '0', '0000-00-00 00:00:00'),
-(154, 'test game', 'released', 'fefefef', 'SS-test game-0.jpg,SS-test game-1.png,SS-test game-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'follows a stray cat who falls into a walled city populated by robots, ', 'RPG', 'jyjyuj', 'rgrg', 'Windows', 'Base Game', 'Game-test game.zip', 0, 'Cover-test game.png', 46, 'grg', 'ggrgrg', 'grg', 'grg', 'grgrg', 'grgrg', 'grg', 'ggr', 'grg', 'grg', 'ggrg', '$2.00', '0000-00-00 00:00:00');
+(154, 'test game', 'released', 'fefefef', 'SS-test game-0.jpg,SS-test game-1.png,SS-test game-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'follows a stray cat who falls into a walled city populated by robots, ', 'RPG', 'jyjyuj', 'rgrg', 'Windows', 'Base Game', 'Game-test game.zip', 0, 'Cover-test game.png', 46, 'grg', 'ggrgrg', 'grg', 'grg', 'grgrg', 'grgrg', 'grg', 'ggr', 'grg', 'grg', 'ggrg', '$2.00', '0000-00-00 00:00:00'),
+(155, 'dwd', 'released', 'fef', 'SS-dwd-0.png,SS-dwd-1.png,SS-dwd-2.png', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'follows a stray cat who falls into a walled city populated by robots, ', 'action', 'fef', 'feff', 'Array', 'Base Game', 'Game-dwd.zip', 0, 'Cover-dwd.png', 46, 'fef', 'fef', 'fef', 'grg', 'grg', 'fef', 'f', 'ef', 'fef', 'grg', 'grg', '0', '0000-00-00 00:00:00'),
+(156, 'Albion Onlinesdfsfe', 'released', 'fef', 'SS-Albion Onlinesdfsfe-0.png,SS-Albion Onlinesdfsfe-1.png', '', 'follows a stray cat who falls into a walled city populated by robots, ', 'action', 'fef', 'fef', 'Windows,MacOS', 'DLC', 'Game-Albion Onlinesdfsfe.zip', 0, 'Cover-Albion Onlinesdfsfe.png', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '0000-00-00 00:00:00'),
+(157, 'Albion Onlineffeff', 'released', '', 'SS-Albion Onlineffeff-0.png,SS-Albion Onlineffeff-1.png', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'Download this ASAP', 'action', 'fef', 'fef', 'Windows,Linux', 'Base Game', 'Game-Albion Onlineffeff.zip', 0, 'Cover-Albion Onlineffeff.png', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '0000-00-00 00:00:00'),
+(158, 'Albionddwd Online', 'released', '', 'SS-Albionddwd Online-0.png,SS-Albionddwd Online-1.png', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'follows a stray cat who falls into a walled city populated by robots, ', 'action', 'fefef', 'fefeff', 'Windows,MacOS', 'Base Game', 'Game-Albionddwd Online.zip', 0, 'Cover-Albionddwd Online.png', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '0000-00-00 00:00:00'),
+(159, 'fefeffOnline', 'released', 'hello <b>world </b>grg<div style=\"text-align: center;\">grg</div><div style=\"text-align: left;\">grg</div>', 'SS-fefeffOnline-0.png,SS-fefeffOnline-1.png', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'follows a stray cat who falls into a walled city populated by robots, ', 'action', 'fef', 'feff', 'Windows,MacOS', 'Base Game', 'Game-fefeffOnline.zip', 0, 'Cover-fefeffOnline.png', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '0000-00-00 00:00:00'),
+(160, 'Albiwddnline', 'released', '\n                                        <div class=\"specification-div\">\n                                            <!-- <label>Game Specification</label><br><br> -->\n                                            <div class=\"platform-name\">Windows</div>\n                                            <div class=\"game-spec-type\">\n                                                <p class=\"game-spec-item\">Minimum</p>\n                                                <p class=\"game-spec-item\">Recommended</p><br>\n                                            </div>\n                                            <div class=\"game-spec-type\">\n                                                <div class=\"game-spec-item-details\">\n\n\n                                                    <label id=\"min-game-OS\" for=\"min-game-OS\">OS</label><br>\n                                                    <input type=\"text\" name=\"min-game-OS\" id=\"min-game-OS\" placeholder=\"Windows 10\"><br><br>\n                                                    <label id=\"min-game-processor\" for=\"min-game-processor\">Processor</label><br>\n                                                    <input type=\"text\" name=\"min-game-processor\" id=\"min-game-processor\" placeholder=\"Intel Core I5\"><br><br>\n                                                    <label id=\"min-game-memory\" for=\" min-game-memory\">Memory</label><br>\n                                                    <input type=\"text\" name=\"min-game-memory\" id=\"min-game-memory\" placeholder=\"8 GB\"><br><br>\n                                                    <label id=\"min-game-storage\" for=\"min-game-storage\">Storage</label><br>\n                                                    <input type=\"text\" name=\"min-game-storage\" id=\"min-game-storage\" placeholder=\"14 GB\"><br><br>\n                                                    <label id=\"min-game-graphics\" for=\"min-game-graphics\">Graphics</label><br>\n                                                    <input type=\"text\" name=\"min-game-graphics\" id=\"min-game-graphics\" placeholder=\"NVIDIA GeForce 1660\"><br><br>\n                                                    <label id=\"min-game-other\" for=\"min-game-other\">Other</label><br>\n                                                    <input type=\"text\" name=\"min-game-other\" id=\"min-game-other\" placeholder=\"English Language Support\"><br><br>\n\n                                                </div>\n                                                <div class=\"game-spec-item-details\">\n\n                                                    <label id=\"game-OS\" for=\"game-OS\">OS</label><br>\n                                                    <input type=\"text\" name=\"game-OS\" id=\"game-OS\" placeholder=\"Windows 10\"><br><br>\n                                                    <label id=\"game-processor\" for=\"game-processor\">Processor</label><br>\n                                                    <input type=\"text\" name=\"game-processor\" id=\"game-processor\" placeholder=\"Intel Core I5\"><br><br>\n                                                    <label id=\"game-memory\" for=\"game-memory\">Memory</label><br>\n                                                    <input type=\"text\" name=\"game-memory\" id=\"game-memory\" placeholder=\"8 GB\"><br><br>\n                                                    <label id=\"game-storage\" for=\"game-storage\">Storage</label><br>\n                                                    <input type=\"text\" name=\"game-storage\" id=\"game-storage\" placeholder=\"14 GB\"><br><br>\n                                                    <label id=\"game-graphics\" for=\"game-graphics\">Graphics</label><br>\n                                                    <input type=\"text\" name=\"game-graphics\" id=\"game-graphics\" placeholder=\"NVIDIA GeForce 1660\"><br><br>\n                                                    <label id=\"game-other\" for=\"game-other\">Other</label><br>\n                                                    <input type=\"text\" name=\"game-other\" id=\"game-other\" placeholder=\"English Language Support\"><br><br>\n\n                                                </div>\n                                            </div>\n                                        </div>\n                                    ', 'SS-Albiwddnline-0.png,SS-Albiwddnline-1.png', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'follows a stray cat who falls into a walled city populated by robots, ', 'action', 'fefe', 'fefef', 'MacOS', 'Base Game', 'Game-Albiwddnline.zip', 0, 'Cover-Albiwddnline.png', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '0000-00-00 00:00:00'),
+(161, 'Newdsset', 'released', 'ddf<b>dwdd </b>dwdwd&nbsp;<div style=\"text-align: center;\">ffff</div><div style=\"text-align: center;\"><br></div>', 'SS-Newdsset-0.png,SS-Newdsset-1.png', '', 'follows a stray cat who falls into a walled city populated by robots, ', 'action', 'dd', 'efefe', 'MacOS', 'Base Game', 'Game-Newdsset.zip', 0, 'Cover-Newdsset.png', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '0000-00-00 00:00:00'),
+(162, 'Albiodwdfline', 'released', 'feff <b>fefef&nbsp;</b>', 'SS-Albiodwdfline-0.png,SS-Albiodwdfline-1.png', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'follows a stray cat who falls into a walled city populated by robots, ', 'action', 'egeg', 'gegeg', 'Windows', 'Base Game', '', 0, 'Cover-Albiodwdfline.png', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '0000-00-00 00:00:00'),
+(163, 'Apex Legends', 'released', '<b>Apex Legends </b>is a free to play fps multiplayer with high paced movements and weapon handling and super powers along with <u>10&nbsp;</u>&nbsp;+ new agents.<div><br></div><div><b>Basic Info</b></div><div><b><br></b></div>', 'SS-Apex Legends-0.jpg,SS-Apex Legends-1.jpg,SS-Apex Legends-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'follows a stray cat who falls into a walled city populated by robots, ', 'action', 'genshin', 'fef', 'Windows,Android', 'Base Game', 'Game-Apex Legends.zip', 0, 'Cover-Apex Legends.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '0000-00-00 00:00:00'),
+(164, 'Valorant', 'released', 'This game is called <b>Valorant</b>', 'SS-Valorant-0.jpg,SS-Valorant-1.jpg,SS-Valorant-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'follows a stray cat who falls into a walled city populated by robots, ', 'RPG', '', 'singleplayer', 'Windows,iOS', 'Base Game', 'Game-Valorant.zip', 0, 'Cover-Valorant.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '2', '0000-00-00 00:00:00'),
+(165, '', 'released', 'dwwff fff<b>&nbsp;feggrgg egge</b><div><b><br></b></div><div>fefef<u>fefeffefef</u></div>', 'SS--0.jpg,SS--1.jpg,SS--2.jpg', '', '', 'action', '', '', 'MacOS', 'Base Game', 'Game-.zip', 0, 'Cover-.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '0000-00-00 00:00:00'),
+(166, 'fef', 'released', '', 'SS-fef-0.jpg,SS-fef-1.jpg', '', 'follows a stray cat who falls into a walled city populated by robots, ', 'action', '', '', 'MacOS', 'Base Game', 'Game-fef.zip', 0, 'Cover-fef.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '0000-00-00 00:00:00'),
+(167, '', 'released', 'grgregr<div><br></div><div>trh</div><div><br></div><div>t</div><div>hthth</div><div><br></div><div style=\"text-align: center;\">htht</div>', 'SS--0.jpg,SS--1.jpg', '', '', 'action', '', '', 'Windows', 'Base Game', 'Game-.zip', 0, 'Cover-.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '0000-00-00 00:00:00'),
+(168, 'fefefef', 'released', '', 'SS-fefefef-0.jpg,SS-fefefef-1.jpg', '', 'follows a stray cat who falls into a walled city populated by robots, ', 'action', 'Array', '', 'Windows', 'Base Game', 'Game-fefefef.zip', 0, 'Cover-fefefef.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '0000-00-00 00:00:00'),
+(169, 'grgrg', 'released', '', 'SS-grgrg-0.jpg,SS-grgrg-1.jpg', '', 'follows a stray cat who falls into a walled city populated by robots, ', 'action', '', '', 'Windows', 'Base Game', 'Game-grgrg.zip', 0, 'Cover-grgrg.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '0000-00-00 00:00:00'),
+(170, 'fef', 'released', '', 'SS-fef-0.jpg,SS-fef-1.jpg', '', 'follows a stray cat who falls into a walled city populated by robots, ', 'action', 'Array', '', 'MacOS', 'Base Game', 'Game-fef.zip', 0, 'Cover-fef.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '0000-00-00 00:00:00'),
+(171, 'fef', 'released', '', 'SS-fef-0.jpg', '', 'climb the tower in calm and peaceful environment', 'action', 'Array', '', 'Windows', 'Base Game', 'Game-fef.zip', 0, 'Cover-fef.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '0000-00-00 00:00:00'),
+(172, 'fefef', 'released', '', 'SS-fefef-0.jpg,SS-fefef-1.jpg', '', 'follows a stray cat who falls into a walled city populated by robots', 'action', '1', '', 'MacOS', 'Base Game', 'Game-fefef.zip', 0, 'Cover-fefef.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '0000-00-00 00:00:00'),
+(173, 'fefe', 'released', '', 'SS-fefe-0.jpg,SS-fefe-1.jpg', '', 'follows a stray cat who falls into a walled city populated by robots, ', 'action', '', '', 'Linux', 'Base Game', 'Game-fefe.zip', 0, 'Cover-fefe.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '0000-00-00 00:00:00'),
+(174, 'fefe', 'released', '', 'SS-fefe-0.jpg,SS-fefe-1.jpg', '', 'follows a stray cat who falls into a walled city populated by robots, ', 'action', '1', '', 'MacOS', 'Base Game', 'Game-fefe.zip', 0, 'Cover-fefe.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '0000-00-00 00:00:00'),
+(175, 'Albion Onlinefef', 'released', '', 'SS-Albion Onlinefef-0.jpg,SS-Albion Onlinefef-1.jpg', '', 'follows a stray cat who falls into a walled city populated by robots, ', 'action', '1', '', 'Windows', 'Base Game', 'Game-Albion Onlinefef.zip', 0, 'Cover-Albion Onlinefef.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '0000-00-00 00:00:00'),
+(176, 'Albion Onlinefefefeg', 'released', '', 'SS-Albion Onlinefefefeg-0.jpg,SS-Albion Onlinefefefeg-1.jpg,SS-Albion Onlinefefefeg-2.jpg', '', 'climb the tower in calm and peaceful environment', 'action', 'Array', '', 'MacOS', 'Base Game', 'Game-Albion Onlinefefefeg.zip', 0, 'Cover-Albion Onlinefefefeg.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '0000-00-00 00:00:00'),
+(177, 'ffef', 'released', '', 'SS-ffef-0.jpg,SS-ffef-1.jpg', '', 'climb the tower in calm and peaceful environment', 'action', 'coding,feff ,fefe,ww', '', 'Linux', 'Base Game', 'Game-ffef.zip', 0, 'Cover-ffef.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '0000-00-00 00:00:00'),
+(178, 'Newww aGame', 'released', '', 'SS-Newww aGame-0.jpg,SS-Newww aGame-1.jpg,SS-Newww aGame-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'follows a stray cat who falls into a walled city populated by robots, ', 'action', 'coding,efe,dwf,afegf', 'fefe', 'Windows,Linux,iOS', 'Base Game', 'Game-Newww aGame.zip', 0, 'Cover-Newww aGame.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '0000-00-00 00:00:00'),
+(179, 'Albion Online Prime', 'released', 'fefeg grgrgg&nbsp; <b>&nbsp;grgrgg&nbsp;</b>&nbsp;grggr<div><br></div><div style=\"text-align: center;\"><u>grgr</u></div><div style=\"text-align: center;\">htrhtrttrhtr</div>', 'SS-Albion Online Prime-0.jpg,SS-Albion Online Prime-1.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'follows a stray cat who falls into a walled city populated by robots, ', 'action', 'nice,work', 'singleplayer', 'Windows,MacOS', 'DLC', 'Game-Albion Online Prime.zip', 0, 'Cover-Albion Online Prime.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '0000-00-00 00:00:00'),
+(180, 'fefeffOnline', 'released', 'grgrgrg <b>grgrgg&nbsp;</b>', 'SS-fefeffOnline-0.jpg,SS-fefeffOnline-1.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'follows a stray cat who falls into a walled city populated by robots, ', 'racing', 'coding,grg,gr', 'Single Player,Online Co-op', 'Windows', 'Base Game', 'Game-fefeffOnline.zip', 0, 'Cover-fefeffOnline.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '4', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -871,7 +890,7 @@ INSERT INTO `gamer` (`gamerID`, `email`, `password`, `accountStatus`, `avatar`, 
 (51, 'kavindupriyanath@gmail.com', '$2y$10$oOiRY55.Uo1h95KzjQwcFu5RSuZ0QmafaVvAfbN03lFvdE0B6xQDq', 1, 'avatar4.png', 'game developer', 'kavi', 'kavindu', 'priyanath', '2023-02-21 15:13:19', '2023-02-21 15:13:19', 1, ''),
 (52, 'kimalrasanka321@gmail.com', '$2y$10$3moxbOLzKlvkAKVnCHLxS.atHdVSAWsJrqyIA/Ki9LXWrFaZKT4Mu', 1, 'avatar2.png', 'gamer', 'KRDA', 'kimal', 'xsx', '2023-02-28 06:45:33', '2023-02-28 06:45:33', 1, ''),
 (53, 'klhimashanupama@gmail.com', '$2y$10$B.F4OXoJEJIWcmHKvofCRuCN8FooMdd3u8jDIn8BhvsJVPaQs0VD6', 1, 'avatar4.png', 'gamer', 'Hima', 'Himash', 'Anu', '2023-02-28 16:24:11', '2023-02-28 16:24:11', 1, ''),
-(78, 'akiladharmadasa1.1@gmail.com', '$2y$10$GPdfkGBN0VVqHsFnd5swGu.TgeDM.rixafWAHmLmhsSvvLcRqZG1e', 1, 'avatar2.png', 'gamer', 'akilaks', 'akila', 'gona', '2023-04-08 06:10:47', '2023-04-08 06:10:47', 1, '');
+(78, 'akiladharmadasa1.1@gmail.com', '$2y$10$GPdfkGBN0VVqHsFnd5swGu.TgeDM.rixafWAHmLmhsSvvLcRqZG1e', 1, 'avatar2.png', 'asset creator', 'akilaks', 'akila', 'gona', '2023-04-08 06:10:47', '2023-04-08 06:10:47', 1, '');
 
 -- --------------------------------------------------------
 
@@ -948,7 +967,11 @@ INSERT INTO `games_filters` (`id`, `type`, `filter`) VALUES
 (22, 'classification', 'RPG'),
 (23, 'classification', 'Racing'),
 (24, 'classification', 'Simulation'),
-(25, 'classification', 'Strategy');
+(25, 'classification', 'Strategy'),
+(26, 'features', 'Online Co-op'),
+(27, 'features', 'Multiplayer Co-op'),
+(28, 'features', 'MMO'),
+(29, 'features', 'Split-Screen');
 
 -- --------------------------------------------------------
 
@@ -1048,7 +1071,25 @@ INSERT INTO `games_view_tracker` (`id`, `userID`, `sessionID`, `gameID`, `viewed
 (86, 46, 32, 154, '2023-04-02'),
 (87, 0, 0, 104, '2023-04-02'),
 (88, 46, 72, 90, '2023-04-07'),
-(89, 46, 72, 96, '2023-04-07');
+(89, 46, 72, 96, '2023-04-07'),
+(90, 46, 69, 156, '2023-04-08'),
+(91, 46, 69, 90, '2023-04-08'),
+(92, 46, 69, 148, '2023-04-08'),
+(93, 46, 69, 145, '2023-04-08'),
+(94, 46, 69, 144, '2023-04-08'),
+(95, 46, 69, 92, '2023-04-08'),
+(96, 46, 69, 96, '2023-04-08'),
+(97, 46, 69, 91, '2023-04-08'),
+(98, 46, 69, 162, '2023-04-08'),
+(99, 46, 69, 161, '2023-04-08'),
+(100, 46, 69, 163, '2023-04-08'),
+(101, 46, 23, 164, '2023-04-08'),
+(102, 46, 23, 165, '2023-04-08'),
+(103, 46, 23, 166, '2023-04-08'),
+(104, 46, 23, 167, '2023-04-08'),
+(105, 46, 23, 179, '2023-04-09'),
+(106, 46, 97, 180, '2023-04-09'),
+(107, 46, 97, 91, '2023-04-09');
 
 -- --------------------------------------------------------
 
@@ -1235,7 +1276,25 @@ INSERT INTO `game_stats_history` (`id`, `gameID`, `views`, `downloads`, `ratings
 (63, 154, 1, 0, 0, 0, '2023-04-02'),
 (64, 104, 1, 0, 0, 0, '2023-04-02'),
 (65, 90, 1, 0, 0, 0, '2023-04-07'),
-(66, 96, 1, 0, 0, 0, '2023-04-07');
+(66, 96, 1, 0, 0, 0, '2023-04-07'),
+(67, 156, 1, 0, 0, 0, '2023-04-08'),
+(68, 90, 1, 0, 0, 0, '2023-04-08'),
+(69, 148, 1, 0, 0, 0, '2023-04-08'),
+(70, 145, 1, 0, 0, 0, '2023-04-08'),
+(71, 144, 1, 0, 0, 0, '2023-04-08'),
+(72, 92, 1, 0, 0, 0, '2023-04-08'),
+(73, 96, 1, 0, 0, 0, '2023-04-08'),
+(74, 91, 1, 0, 0, 0, '2023-04-08'),
+(75, 162, 1, 0, 0, 0, '2023-04-08'),
+(76, 161, 1, 0, 0, 0, '2023-04-08'),
+(77, 163, 1, 0, 0, 0, '2023-04-08'),
+(78, 164, 1, 0, 0, 0, '2023-04-08'),
+(79, 165, 1, 0, 0, 0, '2023-04-08'),
+(80, 166, 1, 0, 0, 0, '2023-04-08'),
+(81, 167, 1, 0, 0, 0, '2023-04-08'),
+(82, 179, 1, 0, 0, 0, '2023-04-08'),
+(83, 180, 1, 0, 0, 0, '2023-04-09'),
+(84, 91, 1, 0, 0, 0, '2023-04-09');
 
 -- --------------------------------------------------------
 
@@ -1983,7 +2042,7 @@ ALTER TABLE `freeasset`
 -- AUTO_INCREMENT for table `freegame`
 --
 ALTER TABLE `freegame`
-  MODIFY `gameID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=155;
+  MODIFY `gameID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=181;
 
 --
 -- AUTO_INCREMENT for table `gamejam`
@@ -2007,13 +2066,13 @@ ALTER TABLE `games_cart`
 -- AUTO_INCREMENT for table `games_filters`
 --
 ALTER TABLE `games_filters`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `games_view_tracker`
 --
 ALTER TABLE `games_view_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
 
 --
 -- AUTO_INCREMENT for table `game_cart`
@@ -2043,7 +2102,7 @@ ALTER TABLE `game_reviews`
 -- AUTO_INCREMENT for table `game_stats_history`
 --
 ALTER TABLE `game_stats_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 
 --
 -- AUTO_INCREMENT for table `gig`

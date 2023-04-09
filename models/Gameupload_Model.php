@@ -158,4 +158,16 @@ class Gameupload_Model extends Model
 
         return $new_game_file_name;
     }
+
+    function FeatureTypes()
+    {
+
+        $sql = "SELECT * FROM games_filters WHERE type='features'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
 }
