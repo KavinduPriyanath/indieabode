@@ -83,24 +83,24 @@
                                 </select><br><br> -->
                                 <div class="platform-checkboxes">
                                     <div class="platform">
-                                        <input type="checkbox" name="platform[]" value="Windows">
+                                        <input type="checkbox" name="platform[]" value="Windows" id="windows">
                                         <label for="windows">Windows</label>
                                     </div>
                                     <div class="platform">
-                                        <input type="checkbox" name="platform[]" value="MacOS">
-                                        <label for="windows">MacOS</label>
+                                        <input type="checkbox" name="platform[]" value="MacOS" id="macOS">
+                                        <label for="macOS">MacOS</label>
                                     </div>
                                     <div class="platform">
-                                        <input type="checkbox" name="platform[]" value="Linux">
-                                        <label for="windows">Linux</label>
+                                        <input type="checkbox" name="platform[]" value="Linux" id="linux">
+                                        <label for="linux">Linux</label>
                                     </div>
                                     <div class="platform">
-                                        <input type="checkbox" name="platform[]" value="Android">
-                                        <label for="windows">Android</label>
+                                        <input type="checkbox" name="platform[]" value="Android" id="android">
+                                        <label for="android">Android</label>
                                     </div>
                                     <div class="platform">
-                                        <input type="checkbox" name="platform[]" value="iOS">
-                                        <label for="windows">iOS</label>
+                                        <input type="checkbox" name="platform[]" value="iOS" id="ios">
+                                        <label for="ios">iOS</label>
                                     </div>
                                 </div>
                                 <br>
@@ -226,7 +226,17 @@
                             <div class="features-div">
                                 <label id="game-features" for="game-features">Features</label>
                                 <p id="p">Special features your game has that players would prefer</p>
-                                <input type="text" id="game-features" name="game-features" /> <br><br>
+                                <!-- <input type="text" id="game-features" name="game-features" /> <br><br> -->
+                                <div class="feature-checkboxes">
+                                    <?php foreach ($this->features as $feature) { ?>
+                                        <div class="feature">
+                                            <input type="checkbox" name="game-features[]" value="<?= $feature['filter'] ?>" id="<?= $feature['filter'] ?>">
+                                            <label for="<?= $feature['filter'] ?>"><?= $feature['filter'] ?></label>
+                                        </div>
+                                    <?php } ?>
+
+                                </div>
+                                <br>
                             </div>
 
 
