@@ -457,7 +457,7 @@ input[type="checkbox"] {
     cursor: pointer;
 } */
 
-.game-content {
+.game-content, .gig-content {
     min-height: 200px;
     border: 1px solid rgb(153, 143, 143);
     border-top: 0px;
