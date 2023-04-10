@@ -25,6 +25,8 @@ class Library extends Controller
 
         $this->model->updateGameDownloadStat($_GET['id'], date("Y-m-d"));
 
+        $this->model->updateGameDownloads($_GET['id']);
+
         $gameFilePath = 'public/uploads/games/file/';
 
         $downloadPath = $gameFilePath . $gameFileName;

@@ -619,3 +619,38 @@ td{
     position: absolute;
     object-fit: cover;
 }
+
+.game-details {
+    display: flex;
+}
+
+.right-details {
+    width: 350px;
+    margin: 10px 0px 0px 30px;
+    /* background-color: #234752; */
+}
+
+.button-div {
+    display: flex;
+}
+
+#report-btn, #share-btn {
+    position: relative;
+    display: block;
+    width: 170px;
+    margin: 10px 10px 7px 0px;
+    text-align: center;
+    padding: 6px 14px;
+    font-weight: bold;
+    font-size: 17px;
+    color: #0d162c;
+    border-radius: 6px;
+    border: 1px solid black;
+    background-color: transparent;
+}
+
+#report-btn i, #share-btn i {
+    margin-right: 5px;
+    color: #000000b1;
+    font-weight: bold;
+}
