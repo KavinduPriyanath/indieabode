@@ -6,12 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <title>Indieabode</title>
 
     <style>
         <?php
         include 'public/css/game.css';
-        ?><?php include 'public/css/reportModal.css'; ?>
+        ?><?php include 'public/css/reportModal.css'; ?><?php include 'public/css/shareModal.css'; ?>
     </style>
 </head>
 
@@ -145,7 +147,6 @@
                 <p class="sub-title"><?= $this->game['releaseStatus']; ?></p>
             </div>
             <hr />
-            <button data-modal-target="#modal">Report</button>
         </div>
 
     </div>
@@ -154,82 +155,90 @@
     <!--Description-->
 
     <div class="game-details">
-
-    </div>
-
-    <div class="description">
-        <p>
-            <?= $this->game['gameDetails']; ?>
-        </p>
-    </div>
-
-
-
-    <!--Reviews-->
-    <div class="reviews">
-
-        <div class="game-specification">
-            <h3>Specifications</h3>
-            <div class="game-spec-details">
-                <h3><?= $this->game['platform']; ?></h3>
-                <hr>
-
-                <table>
-                    <tr>
-                        <th>Minimum</th>
-                        <th>Recommended</th>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p>OS</p><?= $this->game['minOS']; ?>
-                        </td>
-                        <td>
-                            <p>OS</p><?= $this->game['recommendOS']; ?>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p>Processor</p><?= $this->game['minProcessor']; ?>
-                        </td>
-                        <td>
-                            <p>Processor</p><?= $this->game['recommendProcessor']; ?>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p>Memory</p><?= $this->game['minMemory']; ?>
-                        </td>
-                        <td>
-                            <p>Memory</p><?= $this->game['recommendMemory']; ?>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p>Storage</p><?= $this->game['minStorage']; ?>
-                        </td>
-                        <td>
-                            <p>Storage</p><?= $this->game['recommendStorage']; ?>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p>Graphics</p><?= $this->game['minGraphics']; ?>
-                        </td>
-                        <td>
-                            <p>Graphics</p><?= $this->game['recommendGraphics']; ?>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p>Other</p><?= $this->game['other']; ?>
-                        </td>
-                    </tr>
-                </table>
-
+        <div class="left-details">
+            <div class="description">
+                <p>
+                    <?= $this->game['gameDetails']; ?>
+                </p>
             </div>
 
+
+
+            <!--Reviews-->
+            <div class="reviews">
+
+                <div class="game-specification">
+                    <h3>Specifications</h3>
+                    <div class="game-spec-details">
+                        <h3><?= $this->game['platform']; ?></h3>
+                        <hr>
+
+                        <table>
+                            <tr>
+                                <th>Minimum</th>
+                                <th>Recommended</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>OS</p><?= $this->game['minOS']; ?>
+                                </td>
+                                <td>
+                                    <p>OS</p><?= $this->game['recommendOS']; ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>Processor</p><?= $this->game['minProcessor']; ?>
+                                </td>
+                                <td>
+                                    <p>Processor</p><?= $this->game['recommendProcessor']; ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>Memory</p><?= $this->game['minMemory']; ?>
+                                </td>
+                                <td>
+                                    <p>Memory</p><?= $this->game['recommendMemory']; ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>Storage</p><?= $this->game['minStorage']; ?>
+                                </td>
+                                <td>
+                                    <p>Storage</p><?= $this->game['recommendStorage']; ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>Graphics</p><?= $this->game['minGraphics']; ?>
+                                </td>
+                                <td>
+                                    <p>Graphics</p><?= $this->game['recommendGraphics']; ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>Other</p><?= $this->game['other']; ?>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="right-details">
+            <div class="button-div">
+                <button data-modal-target="#share-modal" id="share-btn"><i class="fa fa-share-alt"></i>Share</button>
+                <button data-modal-target="#modal" id="report-btn"><i class="fa fa-flag"></i>Report</button>
+            </div>
         </div>
     </div>
+
+
 
     <!--See Also -->
     <div class="more">
@@ -291,6 +300,36 @@
 
                     <br />
                     <button type="submit" id="report-submit">Submit Report</button>
+                </div>
+            </div>
+        </div>
+        <div id="overlay"></div>
+    </div>
+
+    <!-- Share Modal -->
+    <div class="share-modal">
+        <div class="modal" id="share-modal">
+            <div class="modal-header">
+                <div class="title">Help by sharing</div>
+                <button data-close-button class="close-button">&times;</button>
+            </div>
+
+            <div class="content">
+                <p>Shared this game with your friends.</p>
+                <hr>
+                <p>Share this link via</p>
+                <ul class="icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-telegram-plane"></i></a>
+                </ul>
+                <p>Or copy link</p>
+                <div class="field">
+                    <i class="url-icon uil uil-link"></i>
+                    <input type="text" readonly value=" http://localhost/indieabode/game?id=<?= $this->game['gameID'] ?>" id="copytext">
+                    <button id="copy">Copy</button>
                 </div>
             </div>
         </div>
