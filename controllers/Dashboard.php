@@ -15,6 +15,20 @@ class Dashboard extends Controller
 
         $this->view->games = $this->model->showAllMyGames($currentUser);
 
+        $totalViews = 0;
+        $totalDownloads = 0;
+        $totalRevenue = 0;
+
+        foreach ($this->model->showAllMyGames($currentUser) as $game) {
+            $totalViews = $totalViews + $game['views'];
+            $totalDownloads = $totalDownloads + $game['downloads'];
+            $totalRevenue = $totalRevenue + $game['revenue'];
+        }
+
+        $this->view->totalViews = $totalViews;
+        $this->view->totalDownloads = $totalDownloads;
+        $this->view->totalRevenue = $totalRevenue;
+
         $this->view->render('Dashboard/Dashboard');
     }
 

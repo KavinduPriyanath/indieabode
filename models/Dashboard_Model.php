@@ -11,7 +11,9 @@ class Dashboard_Model extends Model
 
     function showAllMyGames($id)
     {
-        $sql = "SELECT * FROM freegame WHERE gameDeveloperID='$id'";
+        $sql = "SELECT freegame.gameID, freegame.gameName, freegame.gameCoverImg, 
+                game_stats.views, game_stats.downloads, game_stats.ratings, game_stats.revenue FROM freegame 
+                INNER JOIN game_stats ON freegame.gameID = game_stats.gameID WHERE gameDeveloperID='$id'";
 
         $stmt = $this->db->prepare($sql);
 

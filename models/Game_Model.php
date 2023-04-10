@@ -385,6 +385,30 @@ class Game_Model extends Model
         }
     }
 
+    function updateGameViews($gameID)
+    {
+
+        $sql = "SELECT * FROM game_stats_history WHERE gameID='$gameID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $gameViews = $stmt->fetchAll();
+
+        $totalViews = 0;
+
+        foreach ($gameViews as $gameView) {
+            $totalViews = $totalViews + $gameView['views'];
+        }
+
+        $updateSQL = "UPDATE game_stats SET views='$totalViews' WHERE gameID='$gameID'";
+
+        $stmt = $this->db->prepare($updateSQL);
+
+        $stmt->execute();
+    }
+
 
     function getUserBillingInfo($userID)
     {
