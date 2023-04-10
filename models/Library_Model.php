@@ -100,6 +100,30 @@ class Library_Model extends Model
         }
     }
 
+    function updateGameDownloads($gameID)
+    {
+
+        $sql = "SELECT * FROM game_stats_history WHERE gameID='$gameID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $gameDownloads = $stmt->fetchAll();
+
+        $totalDownloads = 0;
+
+        foreach ($gameDownloads as $gameDownload) {
+            $totalDownloads = $totalDownloads + $gameDownload['downloads'];
+        }
+
+        $updateSQL = "UPDATE game_stats SET downloads='$totalDownloads' WHERE gameID='$gameID'";
+
+        $stmt = $this->db->prepare($updateSQL);
+
+        $stmt->execute();
+    }
+
     function downloadAssetFile($id)
     {
 
