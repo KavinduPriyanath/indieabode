@@ -103,6 +103,9 @@ class Crowdfund_Model extends Model
         $stmt = $this->db->prepare($sql);
 
         $stmt->execute();
+
+        //update backers count
+
     }
 
     function AllBackers($crowdfundId)
