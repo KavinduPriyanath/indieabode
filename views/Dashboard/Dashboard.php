@@ -27,15 +27,15 @@
             <div class="dev-main-stat">
 
                 <div id="views">
-                    <div class="count">10</div>
+                    <div class="count"><?= $this->totalViews ?></div>
                     <div class="label">views</div>
                 </div>
                 <div id="downloads">
-                    <div class="count">2</div>
+                    <div class="count"><?= $this->totalDownloads ?></div>
                     <div class="label">downloads</div>
                 </div>
                 <div id="revenue">
-                    <div class="count">8</div>
+                    <div class="count"><?= $this->totalRevenue ?></div>
                     <div class="label">revenue</div>
                 </div>
             </div>
@@ -73,19 +73,19 @@
 
                     <div class="right-col">
                         <div class="views">
-                            <div class="count">10</div>
+                            <div class="count"><?= $game['views'] ?></div>
                             <div class="label">views</div>
                         </div>
                         <div class="downloads">
-                            <div class="count">2</div>
+                            <div class="count"><?= $game['downloads'] ?></div>
                             <div class="label">downloads</div>
                         </div>
                         <div class="ratings">
-                            <div class="count">8</div>
+                            <div class="count"><?= $game['ratings'] ?></div>
                             <div class="label">ratings</div>
                         </div>
                         <div class="revenue">
-                            <div class="count">$0</div>
+                            <div class="count">$<?= $game['revenue'] ?></div>
                             <div class="label">revenue</div>
                         </div>
                     </div>

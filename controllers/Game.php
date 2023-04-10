@@ -49,6 +49,7 @@ class Game extends Controller
 
             if ($ViewTracker) {
                 $this->model->updateGameViewStat($_GET['id'], date("Y-m-d"));
+                $this->model->updateGameViews($_GET['id']);
             }
 
             $this->view->render('SingleGame');
