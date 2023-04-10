@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 10, 2023 at 01:26 PM
+-- Generation Time: Apr 10, 2023 at 08:44 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -158,6 +158,13 @@ CREATE TABLE `asset_cart` (
   `assetID` int(11) NOT NULL,
   `addedDate` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `asset_cart`
+--
+
+INSERT INTO `asset_cart` (`id`, `userID`, `assetID`, `addedDate`) VALUES
+(12, 46, 9, '2023-04-10');
 
 -- --------------------------------------------------------
 
@@ -780,9 +787,9 @@ CREATE TABLE `gamejam` (
 INSERT INTO `gamejam` (`gameJamID`, `submissionStartDate`, `submissionEndDate`, `jamContent`, `votingEndDate`, `jamTitle`, `jamTagline`, `jamType`, `jamCriteria`, `jamVisibility`, `maxParticipants`, `canJoinAfterStarted`, `jamHostID`, `jamVoters`, `jamTwitter`, `jamCoverImg`) VALUES
 (53, '2022-12-01 16:55:00', '2022-12-08 16:55:00', ' This is an online game jam, so anyone, from anywhere, aged 13 or older can enter the jam. (Those younger can take part, as long as a parent or guardian uploads the game).\r\n\r\nYou can work alone or in teams. There is no limit on the number of people per team and people can be in multiple teams.', '2022-12-15 16:55:00', 'GMTK GameJam', '48 hour game development marathon', 'Non-Ranked', 'Creativity', 'Public', 0, 1, 12, 'Public', '#gmtk', 'Cover-GMTK GameJam.jpg'),
 (55, '2023-01-02 12:00:00', '2023-01-03 12:00:00', ' Genshin Impact takes place in the fantasy world of Teyvat, home to seven nations, each of which is tied to a different element and ', '2023-01-04 12:00:00', 'GameJam', 'This is a gamejam', 'Non-Ranked', 'Creativity', 'Draft', 40, 1, 12, 'Public', '#brackeys', 'Cover-GameJam.jpg'),
-(56, '2023-12-01 16:55:00', '2023-12-08 16:55:00', ' majhcdsjc vmnb', '0000-00-00 00:00:00', 'majbhdhjsa', 'grg', 'Ranked', 'mdhcbgd', 'Draft', 67, 1, 16, 'Public', 'mhcbds', 'Cover-majbhdhjsa.jpg'),
-(57, '2022-12-01 16:55:00', '2022-12-08 16:55:00', ' This is an online game jam, so anyone, from anywhere, aged 13 or older can enter the jam. (Those younger can take part, as long as a parent or guardian uploads the game).\r\n\r\nYou can work alone or in teams. There is no limit on the number of people per team and people can be in multiple teams.', '2022-12-15 16:55:00', 'GMTK GameJam', '48 hour game development marathon', 'Non-Ranked', 'Creativity', 'Public', 0, 1, 12, 'Public', '#gmtk', 'Cover-GMTK GameJam.jpg'),
-(58, '2023-01-02 12:00:00', '2023-01-03 12:00:00', ' Genshin Impact takes place in the fantasy world of Teyvat, home to seven nations, each of which is tied to a different element and ', '2023-01-04 12:00:00', 'GameJam', 'This is a gamejam', 'Non-Ranked', 'Creativity', 'Draft', 40, 1, 12, 'Public', '#brackeys', 'Cover-GameJam.jpg'),
+(56, '2023-04-12 16:55:00', '2023-12-08 16:55:00', ' majhcdsjc vmnb', '0000-00-00 00:00:00', 'majbhdhjsa', 'grg', 'Ranked', 'mdhcbgd', 'Draft', 67, 1, 16, 'Public', 'mhcbds', 'Cover-majbhdhjsa.jpg'),
+(57, '2022-12-01 16:55:00', '2022-12-08 16:55:00', ' This is an online game jam, so anyone, from anywhere, aged 13 or older can enter the jam. (Those younger can take part, as long as a parent or guardian uploads the game).\r\n\r\nYou can work alone or in teams. There is no limit on the number of people per team and people can be in multiple teams.', '2023-12-14 16:55:00', 'GMTK GameJam', '48 hour game development marathon', 'Non-Ranked', 'Creativity', 'Public', 0, 1, 12, 'Public', '#gmtk', 'Cover-GMTK GameJam.jpg'),
+(58, '2023-01-02 12:00:00', '2023-05-16 00:00:00', ' Genshin Impact takes place in the fantasy world of Teyvat, home to seven nations, each of which is tied to a different element and ', '2023-01-04 12:00:00', 'GameJam', 'This is a gamejam', 'Non-Ranked', 'Creativity', 'Draft', 40, 1, 12, 'Public', '#brackeys', 'Cover-GameJam.jpg'),
 (59, '2023-12-01 16:55:00', '2023-12-08 16:55:00', ' majhcdsjc vmnb', '0000-00-00 00:00:00', 'majbhdhjsa', 'grg', 'Ranked', 'mdhcbgd', 'Draft', 67, 1, 16, 'Public', 'mhcbds', 'Cover-majbhdhjsa.jpg'),
 (60, '2023-01-02 12:00:00', '2023-01-03 12:00:00', ' Genshin Impact takes place in the fantasy world of Teyvat, home to seven nations, each of which is tied to a different element and ', '2023-01-04 12:00:00', 'GameJam', 'This is a gamejam', 'Non-Ranked', 'Creativity', 'Draft', 40, 1, 12, 'Public', '#brackeys', 'Cover-GameJam.jpg'),
 (61, '2023-12-01 16:55:00', '2023-12-08 16:55:00', ' majhcdsjc vmnb', '0000-00-00 00:00:00', 'majbhdhjsa', 'grg', 'Ranked', 'mdhcbgd', 'Draft', 67, 1, 16, 'Public', 'mhcbds', 'Cover-majbhdhjsa.jpg');
@@ -820,7 +827,7 @@ INSERT INTO `gamer` (`gamerID`, `email`, `password`, `accountStatus`, `avatar`, 
 (51, 'kavindupriyanath@gmail.com', '$2y$10$oOiRY55.Uo1h95KzjQwcFu5RSuZ0QmafaVvAfbN03lFvdE0B6xQDq', 1, 'avatar4.png', 'game developer', 'kavi', 'kavindu', 'priyanath', '2023-02-21 15:13:19', '2023-02-21 15:13:19', 1, ''),
 (52, 'kimalrasanka321@gmail.com', '$2y$10$3moxbOLzKlvkAKVnCHLxS.atHdVSAWsJrqyIA/Ki9LXWrFaZKT4Mu', 1, 'avatar2.png', 'gamer', 'KRDA', 'kimal', 'xsx', '2023-02-28 06:45:33', '2023-02-28 06:45:33', 1, ''),
 (53, 'klhimashanupama@gmail.com', '$2y$10$B.F4OXoJEJIWcmHKvofCRuCN8FooMdd3u8jDIn8BhvsJVPaQs0VD6', 1, 'avatar4.png', 'gamer', 'Hima', 'Himash', 'Anu', '2023-02-28 16:24:11', '2023-02-28 16:24:11', 1, ''),
-(78, 'akiladharmadasa1.1@gmail.com', '$2y$10$GPdfkGBN0VVqHsFnd5swGu.TgeDM.rixafWAHmLmhsSvvLcRqZG1e', 1, 'avatar2.png', 'asset creator', 'akilaks', 'akila', 'gona', '2023-04-08 06:10:47', '2023-04-08 06:10:47', 1, '');
+(78, 'akiladharmadasa1.1@gmail.com', '$2y$10$GPdfkGBN0VVqHsFnd5swGu.TgeDM.rixafWAHmLmhsSvvLcRqZG1e', 1, 'avatar2.png', 'gamejam organizer', 'akilaks', 'akila', 'gona', '2023-04-08 06:10:47', '2023-04-08 06:10:47', 1, '');
 
 -- --------------------------------------------------------
 
@@ -1039,7 +1046,44 @@ INSERT INTO `games_view_tracker` (`id`, `userID`, `sessionID`, `gameID`, `viewed
 (124, 46, 63, 96, '2023-04-10'),
 (125, 52, 55, 92, '2023-04-10'),
 (126, 52, 55, 90, '2023-04-10'),
-(127, 52, 55, 95, '2023-04-10');
+(127, 52, 55, 95, '2023-04-10'),
+(128, 52, 60, 96, '2023-04-10'),
+(129, 52, 60, 91, '2023-04-10'),
+(130, 52, 60, 92, '2023-04-10'),
+(131, 52, 60, 95, '2023-04-10'),
+(132, 52, 42, 95, '2023-04-10'),
+(133, 52, 95, 90, '2023-04-10'),
+(134, 52, 95, 89, '2023-04-10'),
+(135, 52, 95, 96, '2023-04-10'),
+(136, 52, 95, 92, '2023-04-10'),
+(137, 52, 95, 93, '2023-04-10'),
+(138, 53, 12, 89, '2023-04-10'),
+(139, 53, 12, 92, '2023-04-10'),
+(140, 53, 12, 96, '2023-04-10'),
+(141, 53, 12, 93, '2023-04-10'),
+(142, 53, 17, 89, '2023-04-10'),
+(143, 53, 17, 91, '2023-04-10'),
+(144, 53, 17, 96, '2023-04-10'),
+(145, 53, 17, 90, '2023-04-10'),
+(146, 52, 88, 95, '2023-04-10'),
+(147, 52, 25, 96, '2023-04-10'),
+(148, 52, 25, 95, '2023-04-10'),
+(149, 52, 25, 93, '2023-04-10'),
+(150, 53, 31, 93, '2023-04-10'),
+(151, 53, 31, 95, '2023-04-10'),
+(152, 53, 31, 96, '2023-04-10'),
+(153, 53, 31, 90, '2023-04-10'),
+(154, 53, 31, 92, '2023-04-10'),
+(155, 53, 31, 91, '2023-04-10'),
+(156, 46, 53, 93, '2023-04-10'),
+(157, 46, 53, 92, '2023-04-10'),
+(158, 52, 65, 92, '2023-04-10'),
+(159, 53, 51, 92, '2023-04-10'),
+(160, 53, 51, 96, '2023-04-10'),
+(161, 53, 51, 95, '2023-04-10'),
+(162, 46, 33, 92, '2023-04-10'),
+(163, 46, 68, 96, '2023-04-10'),
+(164, 51, 79, 91, '2023-04-10');
 
 -- --------------------------------------------------------
 
@@ -1074,7 +1118,8 @@ CREATE TABLE `game_library` (
 INSERT INTO `game_library` (`id`, `gameID`, `gamerID`, `createdAt`) VALUES
 (1, 107, 52, '2023-03-15'),
 (2, 96, 52, '2023-03-15'),
-(3, 106, 52, '2023-03-21');
+(3, 106, 52, '2023-03-21'),
+(4, 95, 52, '2023-04-10');
 
 -- --------------------------------------------------------
 
@@ -1096,7 +1141,8 @@ CREATE TABLE `game_purchases` (
 --
 
 INSERT INTO `game_purchases` (`id`, `gameID`, `buyerID`, `orderID`, `purchasedPrice`, `purchasedDate`) VALUES
-(1, 106, 52, '641996fdad338', 30, '2023-03-21');
+(1, 106, 52, '641996fdad338', 30, '2023-03-21'),
+(2, 95, 52, '6433f938442db', 30, '2023-04-10');
 
 -- --------------------------------------------------------
 
@@ -1124,7 +1170,10 @@ INSERT INTO `game_reviews` (`id`, `rating`, `reviewTopic`, `review`, `created_da
 (53, 4, 'This is Gr', 'I kindly wish to raise your awareness to people trying to cheat you out of your steam points: The following comment is copy and paste from a lot of reviews on steam. People do that to trick you into giving you steam points (the steam currency) by', '2023-02-28', 52, 89, ''),
 (54, 2, 'This is Great', 'jytjtjyt', '2023-02-28', 52, 89, ''),
 (55, 3, 'ddwdwd', 'geegg', '2023-03-01', 53, 93, ''),
-(79, 3, 'jyj', 'jyjyjj', '2023-03-12', 53, 92, 'No');
+(81, 2, 'grgr', 'ghthtfefhh', '2023-04-10', 52, 93, 'Yes'),
+(83, 4, 'fefe', 'fefefef', '2023-04-10', 52, 96, 'Yes'),
+(84, 2, 'grgr', 'ggrg', '2023-04-10', 52, 95, 'Yes'),
+(86, 1, 'grg', 'hjjj', '2023-04-10', 53, 96, 'No');
 
 -- --------------------------------------------------------
 
@@ -1167,13 +1216,13 @@ CREATE TABLE `game_stats` (
 --
 
 INSERT INTO `game_stats` (`id`, `gameID`, `views`, `downloads`, `ratings`, `revenue`) VALUES
-(1, 96, 22, 0, 0, 0),
-(2, 89, 8, 0, 0, 0),
-(3, 90, 16, 0, 0, 0),
-(4, 91, 19, 0, 0, 0),
-(5, 92, 13, 0, 0, 0),
-(6, 93, 1, 0, 0, 0),
-(7, 95, 5, 0, 0, 0);
+(1, 96, 30, 8, 1, 0),
+(2, 89, 11, 0, 0, 0),
+(3, 90, 19, 0, 0, 0),
+(4, 91, 23, 0, 0, 0),
+(5, 92, 21, 0, 0, 0),
+(6, 93, 6, 0, 0, 0),
+(7, 95, 11, 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -1273,16 +1322,16 @@ INSERT INTO `game_stats_history` (`id`, `gameID`, `views`, `downloads`, `ratings
 (82, 179, 1, 0, 0, 0, '2023-04-08'),
 (83, 180, 1, 0, 0, 0, '2023-04-09'),
 (84, 91, 1, 0, 0, 0, '2023-04-09'),
-(85, 96, 6, 0, 0, 0, '2023-04-10'),
-(86, 91, 2, 0, 0, 0, '2023-04-10'),
-(87, 90, 3, 0, 0, 0, '2023-04-10'),
+(85, 96, 14, 4, 0, 0, '2023-04-10'),
+(86, 91, 6, 0, 0, 0, '2023-04-10'),
+(87, 90, 6, 0, 0, 0, '2023-04-10'),
 (88, 104, 1, 0, 0, 0, '2023-04-10'),
 (89, 110, 1, 0, 0, 0, '2023-04-10'),
 (90, 115, 1, 0, 0, 0, '2023-04-10'),
-(91, 93, 1, 0, 0, 0, '2023-04-10'),
-(92, 92, 2, 0, 0, 0, '2023-04-10'),
-(93, 89, 1, 0, 0, 0, '2023-04-10'),
-(94, 95, 2, 0, 0, 0, '2023-04-10');
+(91, 93, 6, 0, 0, 0, '2023-04-10'),
+(92, 92, 10, 0, 0, 0, '2023-04-10'),
+(93, 89, 4, 0, 0, 0, '2023-04-10'),
+(94, 95, 8, 1, 0, 0, '2023-04-10');
 
 -- --------------------------------------------------------
 
@@ -1379,6 +1428,19 @@ CREATE TABLE `joinjam_gamedevs` (
   `gamerID` int(11) NOT NULL,
   `gameJamID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `joinjam_gamedevs`
+--
+
+INSERT INTO `joinjam_gamedevs` (`gamerID`, `gameJamID`) VALUES
+(52, 57),
+(52, 57),
+(52, 57),
+(52, 57),
+(52, 57),
+(52, 57),
+(46, 58);
 
 -- --------------------------------------------------------
 
@@ -1585,8 +1647,16 @@ CREATE TABLE `submission` (
   `id` int(11) NOT NULL,
   `submissionID` int(11) NOT NULL,
   `gameJamID` int(11) NOT NULL,
-  `rating` varchar(15) NOT NULL
+  `rating` varchar(15) NOT NULL,
+  `gamerID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `submission`
+--
+
+INSERT INTO `submission` (`id`, `submissionID`, `gameJamID`, `rating`, `gamerID`) VALUES
+(1, 93, 58, '', 46);
 
 -- --------------------------------------------------------
 
@@ -1936,7 +2006,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `asset_cart`
 --
 ALTER TABLE `asset_cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `asset_library`
@@ -2068,7 +2138,7 @@ ALTER TABLE `games_filters`
 -- AUTO_INCREMENT for table `games_view_tracker`
 --
 ALTER TABLE `games_view_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=165;
 
 --
 -- AUTO_INCREMENT for table `game_cart`
@@ -2080,19 +2150,19 @@ ALTER TABLE `game_cart`
 -- AUTO_INCREMENT for table `game_library`
 --
 ALTER TABLE `game_library`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `game_purchases`
 --
 ALTER TABLE `game_purchases`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `game_reviews`
 --
 ALTER TABLE `game_reviews`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
 -- AUTO_INCREMENT for table `game_stats`
@@ -2134,7 +2204,7 @@ ALTER TABLE `requestedgigs`
 -- AUTO_INCREMENT for table `submission`
 --
 ALTER TABLE `submission`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user_role`
