@@ -47,7 +47,7 @@
                                 <button class="dropbtn"><i class="fa fa-angle-down"></i></button>
                                 <div class="dropdown-content">
                                     <div class="options">
-                                        <a href="#">Download</a>
+                                        <a href="/indieabode/library/downloadAsset?id=<?= $myAsset['assetID']; ?>">Download</a>
                                     </div>
                                     <div class="options">
                                         <a href="/indieabode/asset?id=<?= $myAsset['assetID']; ?>">Go to Store Page</a>
@@ -86,7 +86,7 @@
                                 <button class="dropbtn"><i class="fa fa-angle-down"></i></button>
                                 <div class="dropdown-content">
                                     <div class="options">
-                                        <a href="#">Download</a>
+                                        <a href="/indieabode/library/downloadGame?id=<?= $myGame['gameID']; ?>">Download</a>
                                     </div>
                                     <div class="options">
                                         <a href="/indieabode/game?id=<?= $myGame['gameID']; ?>">Go to Store Page</a>
