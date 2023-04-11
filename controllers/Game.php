@@ -200,6 +200,40 @@ class Game extends Controller
         readfile($downloadPath);
     }
 
+    function addtoLibrary()
+    {
+        if ($_POST['add_to_library'] == true) {
+            $gameID = $_POST['gameID'];
+
+            $gamerID = $_SESSION['id'];
+
+            $this->model->AddtoLibrary($gameID, $gamerID);
+
+            echo "1";
+        }
+    }
+
+    function downloadGame()
+    {
+
+        $gameFileName = $this->model->downloadGameFile($_GET['id']);
+
+        $this->model->updateGameDownloadStat($_GET['id'], date("Y-m-d"));
+
+        $this->model->updateGameDownloads($_GET['id']);
+
+        $gameFilePath = 'public/uploads/games/file/';
+
+        $downloadPath = $gameFilePath . $gameFileName;
+
+        header('Cache-Control: public');
+        header('Content-Description: File Transfer');
+        header('Content-Type: application/zip');
+        header("Content-Transfer-Encoding: utf-8");
+        header("Content-Disposition: attachment; filename=$gameFileName");
+        readfile($downloadPath);
+    }
+
     function checkout()
     {
         $this->view->game = $this->model->showSingleGame($_GET['id']);
@@ -360,11 +394,21 @@ class Game extends Controller
 
     function AddToCart()
     {
-        $this->model->AddtoCart($_GET['id'], $_SESSION['id']);
 
-        $query = parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
-        parse_str($query, $result);
+        if ($_POST['add_to_cart'] == true) {
 
-        header('Location:/indieabode/game/?' . http_build_query($result));
+            $gameID = $_POST['gameID'];
+
+            $this->model->AddtoCart($gameID, $_SESSION['id']);
+
+            echo "1";
+        }
+
+
+
+        // $query = parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
+        // parse_str($query, $result);
+
+        // header('Location:/indieabode/game/?' . http_build_query($result));
     }
 }

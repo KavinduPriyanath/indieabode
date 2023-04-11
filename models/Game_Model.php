@@ -445,4 +445,46 @@ class Game_Model extends Model
 
         $stmt->execute();
     }
+
+
+    function downloadGameFile($id)
+    {
+
+        $sql = "SELECT * FROM freegame WHERE gameID='$id'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $game = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $gameFile = $game['gameFile'];
+
+        return $gameFile;
+    }
+
+
+    function updateGameDownloads($gameID)
+    {
+
+        $sql = "SELECT * FROM game_stats_history WHERE gameID='$gameID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $gameDownloads = $stmt->fetchAll();
+
+        $totalDownloads = 0;
+
+        foreach ($gameDownloads as $gameDownload) {
+            $totalDownloads = $totalDownloads + $gameDownload['downloads'];
+        }
+
+        $updateSQL = "UPDATE game_stats SET downloads='$totalDownloads' WHERE gameID='$gameID'";
+
+        $stmt = $this->db->prepare($updateSQL);
+
+        $stmt->execute();
+    }
 }
