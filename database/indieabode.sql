@@ -3,7 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
+
 -- Generation Time: Apr 11, 2023 at 11:33 AM
+
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -1084,6 +1086,7 @@ INSERT INTO `games_view_tracker` (`id`, `userID`, `sessionID`, `gameID`, `viewed
 (161, 53, 51, 95, '2023-04-10'),
 (162, 46, 33, 92, '2023-04-10'),
 (163, 46, 68, 96, '2023-04-10'),
+
 (164, 51, 79, 91, '2023-04-10'),
 (165, 46, 37, 96, '2023-04-11'),
 (166, 46, 37, 91, '2023-04-11'),
@@ -1094,6 +1097,7 @@ INSERT INTO `games_view_tracker` (`id`, `userID`, `sessionID`, `gameID`, `viewed
 (171, 0, 0, 93, '2023-04-11'),
 (172, 46, 24, 181, '2023-04-11'),
 (173, 46, 24, 182, '2023-04-11');
+
 
 -- --------------------------------------------------------
 
@@ -1226,6 +1230,7 @@ CREATE TABLE `game_stats` (
 --
 
 INSERT INTO `game_stats` (`id`, `gameID`, `views`, `downloads`, `ratings`, `revenue`) VALUES
+
 (1, 96, 31, 8, 1, 0),
 (2, 89, 11, 0, 0, 0),
 (3, 90, 20, 0, 0, 0),
@@ -1233,6 +1238,7 @@ INSERT INTO `game_stats` (`id`, `gameID`, `views`, `downloads`, `ratings`, `reve
 (5, 92, 22, 0, 0, 0),
 (6, 93, 8, 0, 0, 0),
 (7, 95, 12, 1, 1, 0);
+
 
 -- --------------------------------------------------------
 
@@ -1341,6 +1347,7 @@ INSERT INTO `game_stats_history` (`id`, `gameID`, `views`, `downloads`, `ratings
 (91, 93, 6, 0, 0, 0, '2023-04-10'),
 (92, 92, 10, 0, 0, 0, '2023-04-10'),
 (93, 89, 4, 0, 0, 0, '2023-04-10'),
+
 (94, 95, 8, 1, 0, 0, '2023-04-10'),
 (95, 96, 1, 0, 0, 0, '2023-04-11'),
 (96, 91, 1, 0, 0, 0, '2023-04-11'),
@@ -1350,6 +1357,7 @@ INSERT INTO `game_stats_history` (`id`, `gameID`, `views`, `downloads`, `ratings
 (100, 95, 1, 0, 0, 0, '2023-04-11'),
 (101, 181, 1, 0, 0, 0, '2023-04-11'),
 (102, 182, 1, 0, 0, 0, '2023-04-11');
+
 
 -- --------------------------------------------------------
 
@@ -2156,7 +2164,9 @@ ALTER TABLE `games_filters`
 -- AUTO_INCREMENT for table `games_view_tracker`
 --
 ALTER TABLE `games_view_tracker`
+
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=174;
+
 
 --
 -- AUTO_INCREMENT for table `game_cart`
