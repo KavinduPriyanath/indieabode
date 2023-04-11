@@ -200,6 +200,39 @@ class Game extends Controller
         readfile($downloadPath);
     }
 
+    function addtoLibrary()
+    {
+        if ($_POST['add_to_library'] == true) {
+            $gameID = $_POST['gameID'];
+
+            $gamerID = $_SESSION['id'];
+
+            $this->model->AddtoLibrary($gameID, $gamerID);
+
+            echo "1";
+        }
+    }
+
+    function downloadGame()
+    {
+        $gameFileName = $this->model->downloadGameFile($_GET['id']);
+
+        $this->model->updateGameDownloadStat($_GET['id'], date("Y-m-d"));
+
+        $this->model->updateGameDownloads($_GET['id']);
+
+        $gameFilePath = 'public/uploads/games/file/';
+
+        $downloadPath = $gameFilePath . $gameFileName;
+
+        header('Cache-Control: public');
+        header('Content-Description: File Transfer');
+        header('Content-Type: application/zip');
+        header("Content-Transfer-Encoding: utf-8");
+        header("Content-Disposition: attachment; filename=$gameFileName");
+        readfile($downloadPath);
+    }
+
     function checkout()
     {
         $this->view->game = $this->model->showSingleGame($_GET['id']);

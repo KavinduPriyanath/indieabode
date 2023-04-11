@@ -23,6 +23,8 @@
     include 'includes/navbar.php';
     ?>
 
+    <div class="flashMessage" id="flashMessage"></div>
+
     <h2 id="heading"><?= $this->game['gameName'] ?></h2>
 
     <div class="topics">
@@ -169,8 +171,12 @@
 
 
                 <?php if ($this->hasClaimed) { ?>
-                    <a href="/indieabode/library" style="text-decoration: none;">
-                        <div class="buy-btn" id="buy-btn">In Library</div>
+                    <a href="/indieabode/game/downloadGame?id=<?= $this->game['gameID'] ?>" style="text-decoration: none;">
+                        <div class="buy-btn" id="buy-btn">Download</div>
+                    </a>
+                <?php } else if (!$this->hasClaimed && $this->game['gamePrice'] == "0") { ?>
+                    <a href="/indieabode/game/downloadGame?id=<?= $this->game['gameID'] ?>" style="text-decoration: none;">
+                        <div class="buy-btn" id="buy-btn">Download</div>
                     </a>
                 <?php } else { ?>
                     <a href="/indieabode/game/checkout?id=<?= $this->game['gameID'] ?>" style="text-decoration: none;">
@@ -181,18 +187,30 @@
 
                 <div class="cartbutton">
 
+                    <?php if (!$this->hasClaimed && $this->game['gamePrice'] != "0") { ?>
 
-                    <?php if ($this->hasInCart) { ?>
+                        <?php if ($this->hasInCart) { ?>
 
-                        <a href="/indieabode/cart" style="text-decoration: none;">
-                            <div class="buy-btn" id="cart-btn">View In Cart</div>
-                        </a>
-                    <?php } else { ?>
+                            <a href="/indieabode/cart" style="text-decoration: none;">
+                                <div class="buy-btn" id="cart-btn">View In Cart</div>
+                            </a>
+                        <?php } else { ?>
 
-                        <a href="/indieabode/game/addToCart?id=<?= $this->game['gameID'] ?> " style="text-decoration: none;">
-                            <div class="buy-btn" id="cart-btn">Add to cart</div>
+                            <a href="/indieabode/game/addToCart?id=<?= $this->game['gameID'] ?> " style="text-decoration: none;">
+                                <div class="buy-btn" id="cart-btn">Add to cart</div>
+                            </a>
+                        <?php } ?>
+
+                    <?php } else if (!$this->hasClaimed && $this->game['gamePrice'] == "0") { ?>
+
+                        <div class="buy-btn" id="add-to-library">Add to Library</div>
+
+                    <?php } else if ($this->hasClaimed) { ?>
+                        <a href="/indieabode/library" style="text-decoration: none;">
+                            <div class="buy-btn" id="cart-btn">In Library</div>
                         </a>
                     <?php } ?>
+
                 </div>
 
                 <div class="row">
@@ -397,6 +415,43 @@
                         $('#modal').removeClass("active");
                         $('#overlay').removeClass("active");
 
+                        // alert(response);
+                    }
+                })
+
+            });
+
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+
+            $('#add-to-library').click(function() {
+
+                let gameID = <?= $this->game['gameID']; ?>;
+
+                var data = {
+                    'gameID': gameID,
+                    'add_to_library': true,
+                };
+
+                $.ajax({
+                    url: "/indieabode/game/addtoLibrary",
+                    method: "POST",
+                    data: data,
+                    success: function(response) {
+
+                        if (response == "1") {
+
+                            $("#flashMessage").html('Added to the Library')
+                            $("#flashMessage").fadeIn(1000);
+
+                            setTimeout(function() {
+                                $("#flashMessage").fadeOut("slow");
+                            }, 4000);
+
+                        }
                         // alert(response);
                     }
                 })

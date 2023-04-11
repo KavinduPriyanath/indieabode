@@ -669,3 +669,19 @@ td{
     color: #000000b1;
     font-weight: bold;
 }
+
+.flashMessage {
+    position: fixed;
+    z-index: 100;
+    top: 0px;
+    left: 50%;
+    background-color: #73c3e3;
+    color: black;
+    text-shadow: 1px 1px 1px #248ab2;
+    border-radius: 0 0 5px 5px;
+    padding: 8px 16px;
+    padding-top: 15px;
+    font-size: 18px;
+    box-shadow: 0 1px 4px rgb(0 0 0 / 60%);
+    display: none;
+}
