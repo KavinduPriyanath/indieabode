@@ -322,7 +322,7 @@
                             <div class="dropdown-menu">
                                 <div class="arrow arrow3"></div>
                                 <div class=".ulsub">
-                                    <a href="<?php echo BASE_URL; ?>jams">Join Jams <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                                    <a href="<?php echo BASE_URL; ?>gameJamForm">Host Jams <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                     <a href="<?php echo BASE_URL; ?>jams-calender">Jam&nbsp;Calender
                                         <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                 </div>
@@ -352,15 +352,10 @@
                             <div class="dropdown-menu">
                                 <div class="arrow arrow6"></div>
                                 <div class=".ulsub">
-                                    <a href="<?php echo BASE_URL; ?>library">Library <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                                    <a href="<?php echo BASE_URL; ?>cart">Cart <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-
-                                    <hr />
-
                                     <a href="/indieabode/dashboard">Dashboard <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                                    <a href="/indieabode/gameupload">Upload&nbsp;project
+                                    <a href="/indieabode/gameJamForm">Host&nbsp;New&nbsp;Jam
                                         <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                                    <a href="/indieabode/portfolio">Portfolio <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+
 
                                     <hr />
 
