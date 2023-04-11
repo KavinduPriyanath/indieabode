@@ -100,7 +100,7 @@
 
                         <div class="dropdown" id="logged" data-dropdown>
                             <a href="#" data-dropdown-button>
-                                <div class="pp"><img src="public/images/avatars/<?= $_SESSION['avatar'] ?>" alt=""></div>
+                                <div class="pp"><img src="<?php echo BASE_URL; ?>public/images/avatars/<?= $_SESSION['avatar'] ?>" alt=""></div>
                                 <?= $_SESSION['username']; ?>
                             </a>
 
@@ -207,7 +207,7 @@
 
                         <div class="dropdown" id="logged" data-dropdown>
                             <a href="#" data-dropdown-button>
-                                <div class="pp"><img src="public/images/avatars/<?= $_SESSION['avatar'] ?>" alt=""></div>
+                                <div class="pp"><img src="<?php echo BASE_URL; ?>public/images/avatars/<?= $_SESSION['avatar'] ?>" alt=""></div>
                                 <?= $_SESSION['username']; ?>
                             </a>
 
@@ -275,7 +275,7 @@
 
                         <div class="dropdown" id="logged" data-dropdown>
                             <a href="#" data-dropdown-button>
-                                <div class="pp"><img src="public/images/avatars/<?= $_SESSION['avatar'] ?>" alt=""></div>
+                                <div class="pp"><img src="<?php echo BASE_URL; ?>public/images/avatars/<?= $_SESSION['avatar'] ?>" alt=""></div>
                                 <?= $_SESSION['username']; ?>
                             </a>
 
@@ -345,7 +345,7 @@
 
                         <div class="dropdown" id="logged" data-dropdown>
                             <a href="#" data-dropdown-button>
-                                <div class="pp"><img src="public/images/avatars/<?= $_SESSION['avatar'] ?>" alt=""></div>
+                                <div class="pp"><img src="<?php echo BASE_URL; ?>public/images/avatars/<?= $_SESSION['avatar'] ?>" alt=""></div>
                                 <?= $_SESSION['username']; ?>
                             </a>
 
@@ -449,7 +449,7 @@
 
                         <div class="dropdown" id="logged" data-dropdown>
                             <a href="#" data-dropdown-button>
-                                <div class="pp"><img src="public/images/avatars/<?= $_SESSION['avatar'] ?>" alt=""></div>
+                                <div class="pp"><img src="<?php echo BASE_URL; ?>public/images/avatars/<?= $_SESSION['avatar'] ?>" alt=""></div>
                                 <?= $_SESSION['username']; ?>
                             </a>
 
