@@ -55,8 +55,28 @@ class Settings extends Controller
 
     function portfolio()
     {
+        $this->view->portfolioInfo = $this->model->currentUserPortfolio($_SESSION['id']);
 
         $this->view->render('Settings/PortfolioSettings');
+    }
+
+    function updatePortfolioInfo()
+    {
+
+        if ($_POST['save'] == true) {
+
+            $userID = $_SESSION['id'];
+            $displayName = $_POST['displayName'];
+            $displayImg = $this->model->uploadPortfolioImg($displayName);
+            $website = $_POST['website'];
+            $twitter = $_POST['twitter'];
+            $linkedin = $_POST['linkedin'];
+            $location = $_POST['location'];
+            $phoneNumber = $_POST['phoneNumber'];
+            $description = $_POST['description'];
+
+            $this->model->updateCurrentUserPortfolio($userID, $displayName, $displayImg, $description, $website, $twitter, $linkedin, $location, $phoneNumber);
+        }
     }
 
     function password()

@@ -22,6 +22,7 @@
     ?>
 
 
+    <div class="flashMessage" id="flashMessage">Profile Updated</div>
 
     <div class="settings-content">
         <div class="top-row">
@@ -84,35 +85,85 @@
             </div>
             <div class="content-body">
                 <h2>Portfolio</h2>
-                <form action="" method="post">
+                <form id="portfoliodata" action="" method="post" enctype="multipart/form-data">
                     <div class="labels"><span>Display Name</span> - Used to show on your portfolio page, leave blank to default to username</div>
-                    <input type="text">
+                    <input type="text" id="displayName" value="<?= $this->portfolioInfo['displayName']; ?>">
 
                     <div class="labels"><span>Display Image</span> - Shown next to your name on portfolio page (square dimensions)</div>
                     <div class="display-image">
-                        <div class="image-box"></div>
-                        <div class="image-buttons"></div>
+                        <div class="image-box">
+                            <img id="chosen-image" src="public/uploads/portfolio/<?= $this->portfolioInfo['profilePhoto']; ?>">
+                        </div>
+                        <div class="image-buttons">
+                            <input type="file" id="upload-button" name="portfolio-img" accept=".jpg,.jpeg,.png">
+                            <label for="upload-button" id="upload-label">
+                                Upload Photo
+                            </label>
+
+                            <div id="removeBtn">Remove Photo</div>
+                        </div>
                     </div>
 
                     <div class="labels"><span>Website</span> - Optional URL to be shown on your portfolio page</div>
-                    <input type="text">
+                    <input type="text" id="website" value="<?= $this->portfolioInfo['website']; ?>">
 
                     <div class="labels"><span>Twitter</span> - Twitter account to show on your portfolio</div>
-                    <input type="text">
+                    <input type="text" id="twitter" value="<?= $this->portfolioInfo['twitter']; ?>">
 
                     <div class="labels"><span>LinkedIn</span> - LinkedIn account to show on your portfolio</div>
-                    <input type="text">
+                    <input type="text" id="linkedin" value="<?= $this->portfolioInfo['linkedin']; ?>">
 
                     <div class="labels"><span>Location</span> - The country you currently reside in</div>
-                    <input type="text">
+                    <input type="text" id="location" value="<?= $this->portfolioInfo['location']; ?>">
 
                     <div class="labels"><span>Telephone Number</span> - Your phone number</div>
-                    <input type="text">
+                    <input type="text" id="phonenumber" value="<?= $this->portfolioInfo['phoneNumber']; ?>">
 
                     <div class="labels"><span>Showcase</span> - What you need to highlight?</div>
 
                     <div class="labels"><span>Introduction</span> - The content for your portfolio page</div>
-                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                    <!-- <textarea name="" id="" cols="30" rows="10"></textarea> -->
+                    <div class="main-content">
+                        <div class="text-editor-header">
+                            <button type="button" class="btn" data-element="bold">
+                                <i class="fa fa-bold"></i>
+                            </button>
+                            <button type="button" class="btn" data-element="italic">
+                                <i class="fa fa-italic"></i>
+                            </button>
+                            <button type="button" class="btn" data-element="underline">
+                                <i class="fa fa-underline"></i>
+                            </button>
+                            <button type="button" class="btn" data-element="insertUnorderedList">
+                                <i class="fa fa-list-ul"></i>
+                            </button>
+                            <button type="button" class="btn" data-element="insertOrderedList">
+                                <i class="fa fa-list-ol"></i>
+                            </button>
+                            <button type="button" class="btn" data-element="createLink">
+                                <i class="fa fa-link"></i>
+                            </button>
+                            <button type="button" class="btn" data-element="justifyLeft">
+                                <i class="fa fa-align-left"></i>
+                            </button>
+                            <button type="button" class="btn" data-element="justifyCenter">
+                                <i class="fa fa-align-center"></i>
+                            </button>
+                            <button type="button" class="btn" data-element="justifyRight">
+                                <i class="fa fa-align-right"></i>
+                            </button>
+                            <button type="button" class="btn" data-element="justifyFull">
+                                <i class="fa fa-align-justify"></i>
+                            </button>
+                            <button type="button" class="btn" data-element="insertImage">
+                                <i class="fa fa-image"></i>
+                            </button>
+                        </div>
+
+                        <!--Content-->
+                        <div class="game-content" contenteditable="true"></div>
+                        <input type="hidden" name="description" id="description">
+                    </div>
 
                     <div class="labels"><span>Content</span> - What should be shown to your portfolio viewers?</div>
                     <div class="key-points">
@@ -128,7 +179,8 @@
                     </div>
 
 
-                    <button type="submit" class="save">Save</button>
+                    <!-- <button type="submit" class="save">Save</button> -->
+                    <div id="saveBtn">Save</div>
                 </form>
             </div>
         </div>
@@ -144,7 +196,90 @@
 
 
     <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
+    <script src=" <?php echo BASE_URL; ?>public/js/richtext.js"> </script>
 
+    <script>
+        let uploadButton = document.getElementById("upload-button");
+        let chosenImage = document.getElementById("chosen-image");
+        let uploadLabel = document.getElementById("upload-label");
+
+        let removeBtn = document.getElementById("removeBtn");
+
+        uploadButton.onchange = () => {
+            let reader = new FileReader();
+            reader.readAsDataURL(uploadButton.files[0]);
+            reader.onload = () => {
+                chosenImage.setAttribute("src", reader.result);
+            }
+            console.log(reader);
+
+            uploadLabel.innerText = "Replace Photo";
+            //fileName.textContent = uploadButton.files[0].name;
+
+        }
+
+        removeBtn.onclick = () => {
+            chosenImage.setAttribute("src", "");
+
+        }
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $(".game-content").click(function() {
+                let text = $(".game-content").html();
+                $('#description').val(text);
+
+            });
+        });
+    </script>
+
+
+    <script>
+        $(document).ready(function() {
+
+            $("#saveBtn").click(function(e) {
+
+                let displayName = $("#displayName").val();
+                let displayImg = null;
+                let website = $("#website").val();
+                let twitter = $("#twitter").val();
+                let linkedin = $("#linkedin").val();
+                let location = $("#location").val();
+                let phoneNumber = $("#phonenumber").val();
+                let description = $("#description").val();
+
+                var data = {
+                    displayName: displayName,
+                    website: website,
+                    description: description,
+                    twitter: twitter,
+                    linkedin: linkedin,
+                    location: location,
+                    phoneNumber: phoneNumber,
+                    save: true
+                };
+
+                $.ajax({
+                    type: "POST",
+                    url: "/indieabode/settings/updatePortfolioInfo",
+                    data: data,
+                    success: function(response) {
+                        // alert("Changes Saved");
+
+                        $("#flashMessage").fadeIn(500);
+
+                        setTimeout(function() {
+                            $("#flashMessage").fadeOut("slow");
+                        }, 2000);
+
+                    },
+                });
+
+            });
+
+        });
+    </script>
 
 </body>
 
