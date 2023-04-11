@@ -38,122 +38,210 @@
     <div class="container">
         <!--Slideshow-->
 
-        <div class="carousel" data-carousel>
-            <button class="carousel-button prev" data-carousel-button="prev">
-                &#8656;
-            </button>
-            <button class="carousel-button next" data-carousel-button="next">
-                &#8658;
-            </button>
-            <ul data-slides>
-                <li class="slide" data-active>
-                    <img src="/indieabode/public/uploads/games/ss/<?= $this->screenshots[0]; ?>" alt="Nature Image #1" />
-                </li>
-                <?php for ($i = 1; $i < $this->ssCount; $i++) { ?>
-                    <li class="slide">
-                        <img src="/indieabode/public/uploads/games/ss/<?= $this->screenshots[$i]; ?>" alt="Nature Image #2" />
+        <div class="leftside-container">
+            <div class="carousel" data-carousel>
+                <button class="carousel-button prev" data-carousel-button="prev">
+                    &#8656;
+                </button>
+                <button class="carousel-button next" data-carousel-button="next">
+                    &#8658;
+                </button>
+                <ul data-slides>
+                    <li class="slide" data-active>
+                        <img src="/indieabode/public/uploads/games/ss/<?= $this->screenshots[0]; ?>" alt="Nature Image #1" />
                     </li>
-                <?php } ?>
-            </ul>
+                    <?php for ($i = 1; $i < $this->ssCount; $i++) { ?>
+                        <li class="slide">
+                            <img src="/indieabode/public/uploads/games/ss/<?= $this->screenshots[$i]; ?>" alt="Nature Image #2" />
+                        </li>
+                    <?php } ?>
+                </ul>
 
 
-            <div class="tagline">
-                <p>
-                    <?= $this->game['gameTagline']; ?>
-                </p>
+                <div class="tagline">
+                    <p>
+                        <?= $this->game['gameTagline']; ?>
+                    </p>
+                </div>
+
+                <div class="genre-feature">
+                    <div class="genre">
+                        Genre<br>
+                        <p><?= $this->game['gameClassification']; ?></p>
+                    </div>
+                    <div class="feature">
+                        Feature<br>
+                        <p><?= $this->game['gameFeatures']; ?></p>
+                    </div>
+                </div>
             </div>
 
-            <div class="genre-feature">
-                <div class="genre">
-                    Genre<br>
-                    <p><?= $this->game['gameClassification']; ?></p>
+            <div class="left-details">
+                <div class="description">
+                    <p>
+                        <?= $this->game['gameDetails']; ?>
+                    </p>
                 </div>
-                <div class="feature">
-                    Feature<br>
-                    <p><?= $this->game['gameFeatures']; ?></p>
+
+
+
+                <!--Reviews-->
+                <div class="reviews">
+
+                    <div class="game-specification">
+                        <h3>Specifications</h3>
+                        <div class="game-spec-details">
+                            <h3><?= $this->game['platform']; ?></h3>
+                            <hr>
+
+                            <table>
+                                <tr>
+                                    <th>Minimum</th>
+                                    <th>Recommended</th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>OS</p><?= $this->game['minOS']; ?>
+                                    </td>
+                                    <td>
+                                        <p>OS</p><?= $this->game['recommendOS']; ?>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>Processor</p><?= $this->game['minProcessor']; ?>
+                                    </td>
+                                    <td>
+                                        <p>Processor</p><?= $this->game['recommendProcessor']; ?>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>Memory</p><?= $this->game['minMemory']; ?>
+                                    </td>
+                                    <td>
+                                        <p>Memory</p><?= $this->game['recommendMemory']; ?>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>Storage</p><?= $this->game['minStorage']; ?>
+                                    </td>
+                                    <td>
+                                        <p>Storage</p><?= $this->game['recommendStorage']; ?>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>Graphics</p><?= $this->game['minGraphics']; ?>
+                                    </td>
+                                    <td>
+                                        <p>Graphics</p><?= $this->game['recommendGraphics']; ?>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>Other</p><?= $this->game['other']; ?>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
+
 
 
         <!--Overview-->
-
-        <div class="card">
-            <div class="card-image game" style="background-image: url('<?php echo '/indieabode/public/uploads/games/cover/' . $this->game['gameCoverImg']; ?>')"></div>
-            <h3 id="gametype"><?= $this->game['gameType']; ?></h3>
-            <?php if ($this->game['gamePrice'] == 0) { ?>
-                <h3 id="price">FREE</h3>
-            <?php } else { ?>
-                <h3 id="price">$<?= $this->game['gamePrice']; ?></h3>
-            <?php } ?>
-
-
-
-            <?php if ($this->hasClaimed) { ?>
-                <a href="/indieabode/library" style="text-decoration: none;">
-                    <div class="buy-btn" id="buy-btn">In Library</div>
-                </a>
-            <?php } else { ?>
-                <a href="/indieabode/game/checkout?id=<?= $this->game['gameID'] ?>" style="text-decoration: none;">
-                    <div class="buy-btn" id="buy-btn">Buy Now</div>
-                </a>
-
-            <?php } ?>
-
-            <div class="cartbutton">
+        <div class="rightside-container">
+            <div class="card">
+                <div class="card-image game" style="background-image: url('<?php echo '/indieabode/public/uploads/games/cover/' . $this->game['gameCoverImg']; ?>')"></div>
+                <h3 id="gametype"><?= $this->game['gameType']; ?></h3>
+                <?php if ($this->game['gamePrice'] == 0) { ?>
+                    <h3 id="price">FREE</h3>
+                <?php } else { ?>
+                    <h3 id="price">$<?= $this->game['gamePrice']; ?></h3>
+                <?php } ?>
 
 
-                <?php if ($this->hasInCart) { ?>
 
-                    <a href="/indieabode/cart" style="text-decoration: none;">
-                        <div class="buy-btn" id="cart-btn">View In Cart</div>
+                <?php if ($this->hasClaimed) { ?>
+                    <a href="/indieabode/library" style="text-decoration: none;">
+                        <div class="buy-btn" id="buy-btn">In Library</div>
                     </a>
                 <?php } else { ?>
-
-                    <a href="/indieabode/game/addToCart?id=<?= $this->game['gameID'] ?> " style="text-decoration: none;">
-                        <div class="buy-btn" id="cart-btn">Add to cart</div>
+                    <a href="/indieabode/game/checkout?id=<?= $this->game['gameID'] ?>" style="text-decoration: none;">
+                        <div class="buy-btn" id="buy-btn">Buy Now</div>
                     </a>
+
                 <?php } ?>
-            </div>
 
-            <div class="row">
-                <p class="title">Release Date</p>
-                <p class="sub-title">5 Nov 2021</p>
-            </div>
-            <hr />
+                <div class="cartbutton">
 
-            <div class="row">
-                <p class="title">Developer</p>
-                <a href="/indieabode/portfolio?profile=<?= $this->gameDeveloper['username']; ?>">
-                    <p class="sub-title"><?= $this->gameDeveloper['username']; ?></p>
-                </a>
-            </div>
-            <hr />
 
-            <div class="row">
-                <p class="title">Publisher</p>
-                <p class="sub-title">miHiYo Studios</p>
-            </div>
-            <hr />
+                    <?php if ($this->hasInCart) { ?>
 
-            <div class="row">
-                <p class="title">Platform</p>
-                <p class="sub-title">
-                <div class="platform-icons">
-                    <?php foreach ($this->platforms as $platform) { ?>
-                        <div class="icon"><img src="/indieabode/public/images/platforms/<?= $platform ?>.png" alt=""></div>
+                        <a href="/indieabode/cart" style="text-decoration: none;">
+                            <div class="buy-btn" id="cart-btn">View In Cart</div>
+                        </a>
+                    <?php } else { ?>
+
+                        <a href="/indieabode/game/addToCart?id=<?= $this->game['gameID'] ?> " style="text-decoration: none;">
+                            <div class="buy-btn" id="cart-btn">Add to cart</div>
+                        </a>
                     <?php } ?>
                 </div>
-                </p>
-            </div>
-            <hr />
 
-            <div class="row">
-                <p class="title">Game Status</p>
-                <p class="sub-title"><?= $this->game['releaseStatus']; ?></p>
+                <div class="row">
+                    <p class="title">Release Date</p>
+                    <p class="sub-title">5 Nov 2021</p>
+                </div>
+                <hr />
+
+                <div class="row">
+                    <p class="title">Developer</p>
+                    <a href="/indieabode/portfolio?profile=<?= $this->gameDeveloper['username']; ?>">
+                        <p class="sub-title"><?= $this->gameDeveloper['username']; ?></p>
+                    </a>
+                </div>
+                <hr />
+
+                <div class="row">
+                    <p class="title">Publisher</p>
+                    <p class="sub-title">miHiYo Studios</p>
+                </div>
+                <hr />
+
+                <div class="row">
+                    <p class="title">Platform</p>
+                    <p class="sub-title">
+                    <div class="platform-icons">
+                        <?php foreach ($this->platforms as $platform) { ?>
+                            <div class="icon"><img src="/indieabode/public/images/platforms/<?= $platform ?>.png" alt=""></div>
+                        <?php } ?>
+                    </div>
+                    </p>
+                </div>
+                <hr />
+
+                <div class="row">
+                    <p class="title">Game Status</p>
+                    <p class="sub-title"><?= $this->game['releaseStatus']; ?></p>
+                </div>
+                <hr />
             </div>
-            <hr />
+
+            <div class="right-details">
+                <div class="button-div">
+                    <button data-modal-target="#share-modal" id="share-btn"><i class="fa fa-share-alt"></i>Share</button>
+                    <button data-modal-target="#modal" id="report-btn"><i class="fa fa-flag"></i>Report</button>
+                </div>
+            </div>
         </div>
+
 
     </div>
     </div>
@@ -161,87 +249,8 @@
     <!--Description-->
 
     <div class="game-details">
-        <div class="left-details">
-            <div class="description">
-                <p>
-                    <?= $this->game['gameDetails']; ?>
-                </p>
-            </div>
 
 
-
-            <!--Reviews-->
-            <div class="reviews">
-
-                <div class="game-specification">
-                    <h3>Specifications</h3>
-                    <div class="game-spec-details">
-                        <h3><?= $this->game['platform']; ?></h3>
-                        <hr>
-
-                        <table>
-                            <tr>
-                                <th>Minimum</th>
-                                <th>Recommended</th>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>OS</p><?= $this->game['minOS']; ?>
-                                </td>
-                                <td>
-                                    <p>OS</p><?= $this->game['recommendOS']; ?>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>Processor</p><?= $this->game['minProcessor']; ?>
-                                </td>
-                                <td>
-                                    <p>Processor</p><?= $this->game['recommendProcessor']; ?>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>Memory</p><?= $this->game['minMemory']; ?>
-                                </td>
-                                <td>
-                                    <p>Memory</p><?= $this->game['recommendMemory']; ?>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>Storage</p><?= $this->game['minStorage']; ?>
-                                </td>
-                                <td>
-                                    <p>Storage</p><?= $this->game['recommendStorage']; ?>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>Graphics</p><?= $this->game['minGraphics']; ?>
-                                </td>
-                                <td>
-                                    <p>Graphics</p><?= $this->game['recommendGraphics']; ?>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>Other</p><?= $this->game['other']; ?>
-                                </td>
-                            </tr>
-                        </table>
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <div class="right-details">
-            <div class="button-div">
-                <button data-modal-target="#share-modal" id="share-btn"><i class="fa fa-share-alt"></i>Share</button>
-                <button data-modal-target="#modal" id="report-btn"><i class="fa fa-flag"></i>Report</button>
-            </div>
-        </div>
     </div>
 
 
