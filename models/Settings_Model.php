@@ -8,6 +8,40 @@ class Settings_Model extends Model
         parent::__construct();
     }
 
+    function UserInfo($userID)
+    {
+
+        $sql = "SELECT * FROM gamer WHERE gamerID='$userID' LIMIT 1";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    function UpdateUserInfo($userID, $username, $avatar)
+    {
+
+        $sql = "UPDATE gamer SET username='$username', avatar='$avatar' WHERE gamerID='$userID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+    }
+
+    function ExistingUsernameCheck($username, $userID)
+    {
+
+        $sql = "SELECT * FROM gamer WHERE username='$username' AND gamerID != '$userID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
     function currentUserBilling($userID)
     {
 
@@ -50,7 +84,7 @@ class Settings_Model extends Model
                     city = '$city',
                     province = '$province', 
                     zipCode = '$postalCode', 
-                    country = '$country'";
+                    country = '$country' WHERE userID='$userID'";
 
             $updatestmt = $this->db->prepare($updateSQL);
 
