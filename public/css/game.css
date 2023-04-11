@@ -84,7 +84,7 @@
   }
 
   .card {
-    background-color:rgba(14, 22, 29, 0.741);
+    /* background-color:rgba(158, 170, 230, 0.974); */
     position: relative;
     width: 350px;
     margin: 5px 180px 10px 10px;
@@ -112,9 +112,10 @@
     color:#274F60;
 }
 
-.card h3 {
+.card #price {
     margin: 4px 10px 10px;
-    color:#8BB4DA;
+    color:#1b3956;
+    font-size: 22px;
 }
 
 .buy-btn {
@@ -139,7 +140,7 @@
     justify-content: space-between;
     margin: 3px 8px 0px 12px;
     font-size: 21px;
-    color:#6DA0C6;
+    color:#1a3347;
     position: relative;
 }
 
@@ -148,12 +149,22 @@
 }
 
 .sub-title {
-    color: #6DA0C6;
+    color: #25435b;
 }
 
 .card hr {
     margin: 2px 12px;
-    border: 2px solid #618D9F;
+    border: 2px solid #395b69;
+}
+
+#gametype {
+    font-size: 18px;
+    padding: 3px 4px;
+    display: inline-block;
+    border-radius: 6px;
+    background-color: #6289AC;
+    margin: 4px 10px 10px;
+    color:#1b3956;
 }
 
 
@@ -238,6 +249,10 @@
     text-align: justify;
     margin-top:60%;
     color:#FFFFFF;
+}
+
+.left-details {
+    margin-top: 180px;
 }
 
 .genre-feature{

@@ -19,8 +19,38 @@ class Settings extends Controller
 
     function profile()
     {
+        $this->view->user = $this->model->UserInfo($_SESSION['id']);
 
         $this->view->render('Settings/Profile');
+    }
+
+    function updateProfileInfo()
+    {
+        if ($_POST['save'] == true) {
+            $userID = $_SESSION['id'];
+            $username = $_POST['username'];
+            $avatar = $_POST['avatar'];
+
+            $this->model->UpdateUserInfo($userID, $username, $avatar);
+        }
+
+
+        // header('location:/indieabode/settings/profile');
+    }
+
+    function existingUsernameCheck()
+    {
+
+        $username = $_POST['username'];
+
+        $username = $this->model->ExistingUsernameCheck($username, $_SESSION['id']);
+
+        if (!empty($username)) {
+            //username already exists
+            echo "1";
+        } else {
+            echo "2";
+        }
     }
 
     function portfolio()
@@ -68,7 +98,7 @@ class Settings extends Controller
     function billingAddress()
     {
 
-        $userBillingAddresses = $this->view->userBilling = $this->model->currentUserBilling($_SESSION['id']);
+        $userBillingAddresses = $this->model->currentUserBilling($_SESSION['id']);
 
         if (!empty($userBillingAddresses)) {
             $this->view->userBilling = $userBillingAddresses;
