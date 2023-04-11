@@ -168,9 +168,16 @@
                     <h3 id="price">$<?= $this->game['gamePrice']; ?></h3>
                 <?php } ?>
 
+                <div class="buy-btn" id="download-btn">Download</div>
+                <div class="buy-btn" id="buy-btn">Buy Now</div>
+
+                <div class="buy-btn" id="add-cart-btn">Add to Cart</div>
+                <div class="buy-btn" id="view-cart-btn">View Cart</div>
+                <div class="buy-btn" id="add-to-library">Add to Library</div>
+                <div class="buy-btn" id="view-library">In Library</div>
 
 
-                <?php if ($this->hasClaimed) { ?>
+                <!-- <?php if ($this->hasClaimed) { ?>
                     <a href="/indieabode/game/downloadGame?id=<?= $this->game['gameID'] ?>" style="text-decoration: none;">
                         <div class="buy-btn" id="buy-btn">Download</div>
                     </a>
@@ -183,11 +190,11 @@
                         <div class="buy-btn" id="buy-btn">Buy Now</div>
                     </a>
 
-                <?php } ?>
+                <?php } ?> -->
 
                 <div class="cartbutton">
 
-                    <?php if (!$this->hasClaimed && $this->game['gamePrice'] != "0") { ?>
+                    <!-- <?php if (!$this->hasClaimed && $this->game['gamePrice'] != "0") { ?>
 
                         <?php if ($this->hasInCart) { ?>
 
@@ -209,7 +216,7 @@
                         <a href="/indieabode/library" style="text-decoration: none;">
                             <div class="buy-btn" id="cart-btn">In Library</div>
                         </a>
-                    <?php } ?>
+                    <?php } ?> -->
 
                 </div>
 
@@ -427,6 +434,72 @@
     <script>
         $(document).ready(function() {
 
+
+            //show download button for free games and buy now button for paid games
+            <?php if (!$this->hasClaimed) { ?>
+                <?php if ($this->game['gamePrice'] == "0") { ?>
+                    $('#download-btn').show();
+                    $('#buy-btn').hide();
+                <?php } else if ($this->game['gamePrice'] != "0") { ?>
+                    $('#download-btn').hide();
+                    $('#buy-btn').show();
+                <?php } ?>
+            <?php } else if ($this->hasClaimed && $this->game['gamePrice'] != "0") { ?>
+                $('#download-btn').show();
+                $('#buy-btn').hide();
+            <?php } ?>
+
+            //download buttons for free games
+            <?php if ($this->game['gamePrice'] == "0") { ?>
+                $('#download-btn').show();
+                $('#buy-btn').hide();
+            <?php } ?>
+
+            //download buttons for paid games
+            <?php if ($this->game['gamePrice'] != "0") { ?>
+                <?php if ($this->hasClaimed) { ?>
+                    $('#download-btn').show();
+                    $('#buy-btn').hide();
+                <?php } else if (!$this->hasClaimed) { ?>
+                    $('#download-btn').hide();
+                    $('#buy-btn').show();
+                <?php } ?>
+            <?php } ?>
+
+            //show library and cart buttons for free games
+            <?php if ($this->game['gamePrice'] == "0") { ?>
+                $('#add-cart-btn').hide();
+                $('#view-cart-btn').hide();
+                <?php if ($this->hasClaimed) { ?>
+                    $('#add-to-library').hide();
+                    $('#view-library').show();
+                <?php } else if (!$this->hasClaimed) { ?>
+                    $('#add-to-library').show();
+                    $('#view-library').hide();
+                <?php } ?>
+            <?php } ?>
+
+            //show library and cart buttons for free games
+            <?php if ($this->game['gamePrice'] != "0") { ?>
+                <?php if ($this->hasClaimed) { ?>
+                    $('#add-to-library').hide();
+                    $('#view-library').show();
+                    $('#add-cart-btn').hide();
+                    $('#view-cart-btn').hide();
+                <?php } else if (!$this->hasClaimed && $this->hasInCart) { ?>
+                    $('#add-to-library').hide();
+                    $('#view-library').hide();
+                    $('#add-cart-btn').hide();
+                    $('#view-cart-btn').show();
+                <?php } else if (!$this->hasClaimed && !$this->hasInCart) { ?>
+                    $('#add-to-library').hide();
+                    $('#view-library').hide();
+                    $('#add-cart-btn').show();
+                    $('#view-cart-btn').hide();
+                <?php } ?>
+            <?php } ?>
+
+
             $('#add-to-library').click(function() {
 
                 let gameID = <?= $this->game['gameID']; ?>;
@@ -444,6 +517,9 @@
 
                         if (response == "1") {
 
+                            $('#add-to-library').hide();
+                            $('#view-library').show();
+
                             $("#flashMessage").html('Added to the Library')
                             $("#flashMessage").fadeIn(1000);
 
@@ -455,6 +531,71 @@
                         // alert(response);
                     }
                 })
+
+            });
+
+            $('#view-library').click(function() {
+
+                window.location.href = "/indieabode/library";
+
+            });
+
+            $('#add-cart-btn').click(function() {
+
+                let gameID = <?= $this->game['gameID']; ?>;
+
+                var data = {
+                    'gameID': gameID,
+                    'add_to_cart': true,
+                };
+
+                $.ajax({
+                    url: "/indieabode/game/AddToCart",
+                    method: "POST",
+                    data: data,
+                    success: function(response) {
+
+                        if (response == "1") {
+
+                            $('#add-cart-btn').hide();
+                            $('#view-cart-btn').show();
+
+                            $("#flashMessage").html('Added to the Cart')
+                            $("#flashMessage").fadeIn(1000);
+
+                            setTimeout(function() {
+                                $("#flashMessage").fadeOut("slow");
+                            }, 4000);
+
+                        }
+                    }
+                })
+
+            });
+
+            $('#view-cart-btn').click(function() {
+
+                window.location.href = "/indieabode/cart";
+
+            });
+
+            $('#buy-btn').click(function() {
+
+                window.location.href = "/indieabode/game/checkout?id=<?= $this->game['gameID'] ?>";
+
+            });
+
+            $('#download-btn').click(function() {
+
+                window.location.href = "/indieabode/game/downloadGame?id=<?= $this->game['gameID'] ?>";
+
+
+                $("#flashMessage").html('Thanks for downloading');
+                $("#flashMessage").fadeIn(1000);
+
+                setTimeout(function() {
+                    $("#flashMessage").fadeOut("slow");
+                }, 4000);
 
             });
 

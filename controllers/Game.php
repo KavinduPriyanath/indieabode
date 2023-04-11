@@ -215,6 +215,7 @@ class Game extends Controller
 
     function downloadGame()
     {
+
         $gameFileName = $this->model->downloadGameFile($_GET['id']);
 
         $this->model->updateGameDownloadStat($_GET['id'], date("Y-m-d"));
@@ -393,11 +394,21 @@ class Game extends Controller
 
     function AddToCart()
     {
-        $this->model->AddtoCart($_GET['id'], $_SESSION['id']);
 
-        $query = parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
-        parse_str($query, $result);
+        if ($_POST['add_to_cart'] == true) {
 
-        header('Location:/indieabode/game/?' . http_build_query($result));
+            $gameID = $_POST['gameID'];
+
+            $this->model->AddtoCart($gameID, $_SESSION['id']);
+
+            echo "1";
+        }
+
+
+
+        // $query = parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
+        // parse_str($query, $result);
+
+        // header('Location:/indieabode/game/?' . http_build_query($result));
     }
 }
