@@ -80,7 +80,13 @@
 
         <div class="card">
             <div class="card-image game" style="background-image: url('<?php echo '/indieabode/public/uploads/games/cover/' . $this->game['gameCoverImg']; ?>')"></div>
-            <h3>Free</h3>
+            <h3 id="gametype"><?= $this->game['gameType']; ?></h3>
+            <?php if ($this->game['gamePrice'] == 0) { ?>
+                <h3 id="price">FREE</h3>
+            <?php } else { ?>
+                <h3 id="price">$<?= $this->game['gamePrice']; ?></h3>
+            <?php } ?>
+
 
 
             <?php if ($this->hasClaimed) { ?>
