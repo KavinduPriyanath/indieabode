@@ -121,4 +121,47 @@ class Crowdfund_Model extends Model
 
         return $backers;
     }
+
+    function CrowdfundViewTracker($userID, $session, $crowdfundID)
+    {
+
+        $sql = "SELECT * FROM crowdfund_view_tracker WHERE crowdfundID='$crowdfundID' AND userID='$userID' AND sessionID='$session'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $crowdfundView = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (empty($crowdfundView)) {
+            $viewSQL = "INSERT INTO crowdfund_view_tracker(userID, sessionID, crowdfundID) VALUES ('$userID', '$session', '$crowdfundID')";
+
+            $viewStmt = $this->db->prepare($viewSQL);
+
+            $viewStmt->execute();
+            return true;
+        } else if (!empty($crowdfundID)) {
+            return false;
+        }
+    }
+
+    function UpdateCrowdfundViews($crowdfundID)
+    {
+
+        $sql = "SELECT * FROM crowdfund WHERE crowdfundID='$crowdfundID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $gig = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $viewCount = $gig['viewCount'] + 1;
+
+        $updateSQL = "UPDATE crowdfund SET viewCount='$viewCount' WHERE crowdfundID='$crowdfundID'";
+
+        $updateStmt = $this->db->prepare($updateSQL);
+
+        $updateStmt->execute();
+    }
 }

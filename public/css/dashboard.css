@@ -127,6 +127,10 @@
     width: 300px;
 }
 
+.all-crowdfund-cards .right-col {
+    width: 300px;
+}
+
 .right-col {
   margin-top: 18px;
   margin-right: 22px;
@@ -174,6 +178,10 @@
   margin-right: 5px;
 }
 
+#crowdfundingbtn {
+  width: 235px;
+}
+
 #devlog-btn {
   text-decoration: none;
 }
@@ -204,6 +212,6 @@
   margin-right: 40px;
 }
 
-.ongoing-requests-cards, .ordered-gigs-cards {
+.ongoing-requests-cards, .ordered-gigs-cards, .expired-crowdfund-cards, .cancelled-crowdfund-cards {
   display: none;
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 12, 2023 at 06:34 AM
+-- Generation Time: Apr 12, 2023 at 09:41 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -423,7 +423,7 @@ CREATE TABLE `crowdfund` (
   `currentAmount` float NOT NULL,
   `deadline` date NOT NULL,
   `expectedAmount` float NOT NULL,
-  `gameDeveloperName` varchar(50) NOT NULL,
+  `gameDeveloperName` int(11) NOT NULL,
   `gameName` varchar(30) NOT NULL,
   `title` varchar(50) NOT NULL,
   `tagline` varchar(255) NOT NULL,
@@ -432,21 +432,23 @@ CREATE TABLE `crowdfund` (
   `visibility` varchar(10) NOT NULL,
   `crowdfundCoverImg` varchar(255) NOT NULL,
   `crowdfundSS` varchar(255) NOT NULL,
-  `crowdfundTrailer` varchar(255) NOT NULL
+  `crowdfundTrailer` varchar(255) NOT NULL,
+  `viewCount` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `crowdfund`
 --
 
-INSERT INTO `crowdfund` (`crowdFundID`, `currentAmount`, `deadline`, `expectedAmount`, `gameDeveloperName`, `gameName`, `title`, `tagline`, `backers`, `details`, `visibility`, `crowdfundCoverImg`, `crowdfundSS`, `crowdfundTrailer`) VALUES
-(1, 0, '0000-00-00', 0, '12', 'Albion Online', 'ergrgrtg', 'dwd', 0, 'dwdwd', 'draft', 'Cover-Albion Online.jpg', 'SS-Albion Online-0.png,SS-Albion Online-1.png', 'https://itch.io/jam/my-first-game-jam-winter-2023'),
-(2, 0, '0000-00-00', 0, 'Beidou', 'Scarlet Nexus', 'ergrgrtg', 'gtgrtgrttrht', 0, 'hthth', 'draft', 'Cover-Scarlet Nexus.png', 'SS-Scarlet Nexus-0.jpg,SS-Scarlet Nexus-1.jpg,SS-Scarlet Nexus-2.jpg', 'https://itch.io/jam/my-first-game-jam-winter-2023'),
-(3, 0, '0000-00-00', 0, 'Beidou', 'Naruto Shippuden', 'ergrgrtgfef', 'ffef', 0, 'fefef', 'draft', 'Cover-Naruto Shippuden.jpg', 'SS-Naruto Shippuden-0.jpg,SS-Naruto Shippuden-1.jpg,SS-Naruto Shippuden-2.jpg', 'https://itch.io/jam/my-first-game-jam-winter-2023'),
-(4, 0, '0000-00-00', 0, 'Beidou', 'Albion Online 2', 'ergrgrtgd wdw', 'httrh', 0, 'fefe', 'draft', 'Cover-Albion Online 2.png', 'SS-Albion Online 2-0.jpg,SS-Albion Online 2-1.jpg', 'https://itch.io/jam/my-first-game-jam-winter-2023'),
-(5, 0, '0000-00-00', 0, 'Beidou', 'Albion Online', 'ergrgrtgffe', 'gtgrtgrttrht', 0, 'fefef', 'draft', 'Cover-Albion Online.png', 'SS-Albion Online-0.jpg,SS-Albion Online-1.jpg,SS-Albion Online-2.jpg', 'https://itch.io/jam/my-first-game-jam-winter-2023'),
-(6, 0, '2023-04-13', 0, 'Beidou', 'Monster Hunter Rise', 'new crowdfunding', 'gtgrtgrttrht', 0, '', 'draft', 'Cover-Monster Hunter Rise.jpg', 'SS-Monster Hunter Rise-0.jpg,SS-Monster Hunter Rise-1.jpg', 'https://itch.io/jam/my-first-game-jam-winter-2023'),
-(7, 0, '2023-04-28', 233, 'Beidou', 'Albion Online 3', 'grgrgg', 'grgrg', 0, 'grgg<div style=\"text-align: center;\">ggrghh</div><div style=\"text-align: center;\"><br></div>', 'draft', 'Cover-Albion Online 3.jpg', 'SS-Albion Online 3-0.jpg,SS-Albion Online 3-1.jpg', 'https://itch.io/jam/my-first-game-jam-winter-2023');
+INSERT INTO `crowdfund` (`crowdFundID`, `currentAmount`, `deadline`, `expectedAmount`, `gameDeveloperName`, `gameName`, `title`, `tagline`, `backers`, `details`, `visibility`, `crowdfundCoverImg`, `crowdfundSS`, `crowdfundTrailer`, `viewCount`) VALUES
+(1, 0, '0000-00-00', 0, 12, 'Albion Online', 'ergrgrtg', 'dwd', 0, 'dwdwd', 'draft', 'Cover-Albion Online.jpg', 'SS-Albion Online-0.png,SS-Albion Online-1.png', 'https://itch.io/jam/my-first-game-jam-winter-2023', 1),
+(2, 0, '0000-00-00', 0, 0, 'Scarlet Nexus', 'ergrgrtg', 'gtgrtgrttrht', 0, 'hthth', 'draft', 'Cover-Scarlet Nexus.png', 'SS-Scarlet Nexus-0.jpg,SS-Scarlet Nexus-1.jpg,SS-Scarlet Nexus-2.jpg', 'https://itch.io/jam/my-first-game-jam-winter-2023', 0),
+(3, 0, '0000-00-00', 0, 0, 'Naruto Shippuden', 'ergrgrtgfef', 'ffef', 0, 'fefef', 'draft', 'Cover-Naruto Shippuden.jpg', 'SS-Naruto Shippuden-0.jpg,SS-Naruto Shippuden-1.jpg,SS-Naruto Shippuden-2.jpg', 'https://itch.io/jam/my-first-game-jam-winter-2023', 0),
+(4, 0, '0000-00-00', 0, 0, 'Albion Online 2', 'ergrgrtgd wdw', 'httrh', 0, 'fefe', 'draft', 'Cover-Albion Online 2.png', 'SS-Albion Online 2-0.jpg,SS-Albion Online 2-1.jpg', 'https://itch.io/jam/my-first-game-jam-winter-2023', 0),
+(5, 0, '0000-00-00', 0, 0, 'Albion Online', 'ergrgrtgffe', 'gtgrtgrttrht', 0, 'fefef', 'draft', 'Cover-Albion Online.png', 'SS-Albion Online-0.jpg,SS-Albion Online-1.jpg,SS-Albion Online-2.jpg', 'https://itch.io/jam/my-first-game-jam-winter-2023', 0),
+(6, 0, '2023-04-13', 0, 0, 'Monster Hunter Rise', 'new crowdfunding', 'gtgrtgrttrht', 0, '', 'draft', 'Cover-Monster Hunter Rise.jpg', 'SS-Monster Hunter Rise-0.jpg,SS-Monster Hunter Rise-1.jpg', 'https://itch.io/jam/my-first-game-jam-winter-2023', 0),
+(7, 0, '2023-04-28', 233, 0, 'Albion Online 3', 'grgrgg', 'grgrg', 0, 'grgg<div style=\"text-align: center;\">ggrghh</div><div style=\"text-align: center;\"><br></div>', 'draft', 'Cover-Albion Online 3.jpg', 'SS-Albion Online 3-0.jpg,SS-Albion Online 3-1.jpg', 'https://itch.io/jam/my-first-game-jam-winter-2023', 0),
+(8, 0, '2023-04-21', 0, 46, 'Scarlet Nexus', 'fefefg', 'gtgrtgrttrht', 0, 'egeg <b>gegeg </b>gegegg<div style=\"text-align: center;\">fefe</div>', 'draft', 'Cover-Scarlet Nexus.jpg', 'SS-Scarlet Nexus-0.jpg,SS-Scarlet Nexus-1.jpg', 'https://itch.io/jam/my-first-game-jam-winter-2023', 2);
 
 -- --------------------------------------------------------
 
@@ -476,6 +478,29 @@ INSERT INTO `crowdfund_donations` (`id`, `crowdfundID`, `donorID`, `donationAmou
 (6, 4, 51, 30, '641d714f9c04d', '2023-03-24 15:16:17'),
 (7, 5, 51, 30, '641d717c219cb', '2023-03-24 15:16:55'),
 (8, 5, 46, 30, '6433a6896a058', '2023-04-10 11:38:52');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `crowdfund_view_tracker`
+--
+
+CREATE TABLE `crowdfund_view_tracker` (
+  `id` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
+  `sessionID` int(11) NOT NULL,
+  `crowdfundID` int(11) NOT NULL,
+  `viewedDate` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `crowdfund_view_tracker`
+--
+
+INSERT INTO `crowdfund_view_tracker` (`id`, `userID`, `sessionID`, `crowdfundID`, `viewedDate`) VALUES
+(1, 46, 77, 1, '2023-04-12'),
+(2, 46, 77, 8, '2023-04-12'),
+(3, 51, 90, 8, '2023-04-12');
 
 -- --------------------------------------------------------
 
@@ -1147,7 +1172,9 @@ INSERT INTO `games_view_tracker` (`id`, `userID`, `sessionID`, `gameID`, `viewed
 (200, 52, 34, 182, '2023-04-11'),
 (201, 52, 34, 93, '2023-04-11'),
 (202, 46, 77, 92, '2023-04-12'),
-(203, 46, 77, 95, '2023-04-12');
+(203, 46, 77, 95, '2023-04-12'),
+(204, 46, 77, 91, '2023-04-12'),
+(205, 46, 77, 93, '2023-04-12');
 
 -- --------------------------------------------------------
 
@@ -1296,9 +1323,9 @@ INSERT INTO `game_stats` (`id`, `gameID`, `views`, `downloads`, `ratings`, `reve
 (1, 96, 34, 9, 1, 0),
 (2, 89, 13, 0, 0, 0),
 (3, 90, 23, 0, 0, 0),
-(4, 91, 29, 11, 0, 0),
+(4, 91, 30, 11, 0, 0),
 (5, 92, 29, 4, 0, 0),
-(6, 93, 12, 1, 0, 0),
+(6, 93, 13, 1, 0, 0),
 (7, 95, 16, 1, 1, 0);
 
 -- --------------------------------------------------------
@@ -1419,7 +1446,9 @@ INSERT INTO `game_stats_history` (`id`, `gameID`, `views`, `downloads`, `ratings
 (102, 182, 2, 1, 0, 0, '2023-04-11'),
 (103, 89, 2, 0, 0, 0, '2023-04-11'),
 (104, 92, 1, 0, 0, 0, '2023-04-12'),
-(105, 95, 1, 0, 0, 0, '2023-04-12');
+(105, 95, 1, 0, 0, 0, '2023-04-12'),
+(106, 91, 1, 0, 0, 0, '2023-04-12'),
+(107, 93, 1, 0, 0, 0, '2023-04-12');
 
 -- --------------------------------------------------------
 
@@ -1443,18 +1472,20 @@ CREATE TABLE `gig` (
   `expectedCost` varchar(30) NOT NULL,
   `visibility` varchar(10) NOT NULL,
   `gigCoverImg` varchar(100) NOT NULL,
-  `orderedDate` date DEFAULT NULL
+  `orderedDate` date DEFAULT NULL,
+  `viewCount` int(11) NOT NULL DEFAULT 0,
+  `requests` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `gig`
 --
 
-INSERT INTO `gig` (`gigID`, `gigName`, `gigTrailor`, `gigScreenshot`, `gigDetails`, `game`, `gameDeveloperID`, `gamePublisherID`, `gigTagline`, `currentStage`, `plannedReleaseDate`, `estimatedShare`, `expectedCost`, `visibility`, `gigCoverImg`, `orderedDate`) VALUES
-(12, 'Local Bus Simulator', 'https://www.indiegala.com/login', 'SS-Naruto Shippuden-0.jpg,SS-Naruto Shippuden-1.jpg,SS-Naruto Shippuden-2.jpg', 'cscsc', 89, 46, 0, 'Bus simulator game consisting with customizable local buses ', 'adventure', '21/02/2024', '12%', '$1000', 'draft', 'Cover-Local Bus Simulator.jpg', NULL),
-(13, 'Indie Desert FPS ', 'https://www.indiegala.com/login', 'SS-Stray-0.jpg,SS-Stray-1.jpg,SS-Stray-2.jpg,SS-Stray-3.jpg', 'fefeff', 93, 51, 0, 'Surviving an endless desert after being stranded by you know', 'action', '21/02/2024', '12%', '$1000', 'draft', 'Cover-Indie Desert FPS .jpg', NULL),
-(20, 'New Gig', 'https://www.indiegala.com/login', 'SS-96-0.jpg,SS-96-1.jpg,SS-96-2.jpg', 'egrgr', 96, 46, 0, 'I am developing an open world game with extreme high movements', 'RPG', '21/02/2024', '12%', '$1000', 'draft', 'Cover-New Gig.png', NULL),
-(21, 'Screenshot Test', 'https://www.indiegala.com/login', 'SS-96-0.jpg,SS-96-1.jpg,SS-96-2.jpg', 'fefefef', 96, 46, 0, 'I am developing an open world game with extreme high movements', 'action', '21/02/2024', '12%', '$1000', 'draft', 'Cover-Screenshot Test.jpg', NULL);
+INSERT INTO `gig` (`gigID`, `gigName`, `gigTrailor`, `gigScreenshot`, `gigDetails`, `game`, `gameDeveloperID`, `gamePublisherID`, `gigTagline`, `currentStage`, `plannedReleaseDate`, `estimatedShare`, `expectedCost`, `visibility`, `gigCoverImg`, `orderedDate`, `viewCount`, `requests`) VALUES
+(12, 'Local Bus Simulator', 'https://www.indiegala.com/login', 'SS-Naruto Shippuden-0.jpg,SS-Naruto Shippuden-1.jpg,SS-Naruto Shippuden-2.jpg', 'cscsc', 89, 46, 0, 'Bus simulator game consisting with customizable local buses ', 'adventure', '21/02/2024', '12%', '$1000', 'draft', 'Cover-Local Bus Simulator.jpg', NULL, 1, 0),
+(13, 'Indie Desert FPS ', 'https://www.indiegala.com/login', 'SS-Stray-0.jpg,SS-Stray-1.jpg,SS-Stray-2.jpg,SS-Stray-3.jpg', 'fefeff', 93, 51, 0, 'Surviving an endless desert after being stranded by you know', 'action', '21/02/2024', '12%', '$1000', 'draft', 'Cover-Indie Desert FPS .jpg', NULL, 0, 0),
+(20, 'New Gig', 'https://www.indiegala.com/login', 'SS-96-0.jpg,SS-96-1.jpg,SS-96-2.jpg', 'egrgr', 96, 46, 0, 'I am developing an open world game with extreme high movements', 'RPG', '21/02/2024', '12%', '$1000', 'draft', 'Cover-New Gig.png', NULL, 0, 0),
+(21, 'Screenshot Test', 'https://www.indiegala.com/login', 'SS-96-0.jpg,SS-96-1.jpg,SS-96-2.jpg', 'fefefef', 96, 46, 0, 'I am developing an open world game with extreme high movements', 'action', '21/02/2024', '12%', '$1000', 'draft', 'Cover-Screenshot Test.jpg', NULL, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -1494,6 +1525,27 @@ INSERT INTO `gigmessages` (`msgID`, `senderID`, `receiverID`, `message`, `gigID`
 (17, 47, 46, 'surew', 21),
 (18, 47, 46, 'for what', 21),
 (19, 47, 46, 'hiii', 23);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gigs_views_tracker`
+--
+
+CREATE TABLE `gigs_views_tracker` (
+  `id` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
+  `sessionID` int(11) NOT NULL,
+  `gigID` int(11) NOT NULL,
+  `viewedDate` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `gigs_views_tracker`
+--
+
+INSERT INTO `gigs_views_tracker` (`id`, `userID`, `sessionID`, `gigID`, `viewedDate`) VALUES
+(1, 46, 77, 12, '2023-04-12');
 
 -- --------------------------------------------------------
 
@@ -1907,6 +1959,12 @@ ALTER TABLE `crowdfund_donations`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `crowdfund_view_tracker`
+--
+ALTER TABLE `crowdfund_view_tracker`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `devlog`
 --
 ALTER TABLE `devlog`
@@ -2043,6 +2101,12 @@ ALTER TABLE `gigmessages`
   ADD PRIMARY KEY (`msgID`);
 
 --
+-- Indexes for table `gigs_views_tracker`
+--
+ALTER TABLE `gigs_views_tracker`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `joinjam_gamedevs`
 --
 ALTER TABLE `joinjam_gamedevs`
@@ -2154,13 +2218,19 @@ ALTER TABLE `complaint_reason_jams`
 -- AUTO_INCREMENT for table `crowdfund`
 --
 ALTER TABLE `crowdfund`
-  MODIFY `crowdFundID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `crowdFundID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `crowdfund_donations`
 --
 ALTER TABLE `crowdfund_donations`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `crowdfund_view_tracker`
+--
+ALTER TABLE `crowdfund_view_tracker`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `devlog`
@@ -2238,7 +2308,7 @@ ALTER TABLE `games_filters`
 -- AUTO_INCREMENT for table `games_view_tracker`
 --
 ALTER TABLE `games_view_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=204;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=206;
 
 --
 -- AUTO_INCREMENT for table `game_cart`
@@ -2274,7 +2344,7 @@ ALTER TABLE `game_stats`
 -- AUTO_INCREMENT for table `game_stats_history`
 --
 ALTER TABLE `game_stats_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
 
 --
 -- AUTO_INCREMENT for table `gig`
@@ -2287,6 +2357,12 @@ ALTER TABLE `gig`
 --
 ALTER TABLE `gigmessages`
   MODIFY `msgID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT for table `gigs_views_tracker`
+--
+ALTER TABLE `gigs_views_tracker`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `library`
