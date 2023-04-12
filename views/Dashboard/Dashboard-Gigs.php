@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <title>Indieabode</title>
 
     <style>
@@ -25,9 +26,18 @@
         <div class="top-row">
             <div class="heading">Developer Dashboard</div>
             <div class="dev-main-stat">
-                <div id="views">views</div>
-                <div id="downloads">downloads</div>
-                <div id="revenue">revenue</div>
+                <div id="views">
+                    <div class="count">0</div>
+                    <div class="label">views</div>
+                </div>
+                <div id="downloads">
+                    <div class="count">0</div>
+                    <div class="label">downloads</div>
+                </div>
+                <div id="revenue">
+                    <div class="count">0</div>
+                    <div class="label">revenue</div>
+                </div>
             </div>
         </div>
         <div class="tabs-row">
@@ -53,13 +63,22 @@
                 </div>
             </a>
 
-            <h3>Published Gigs</h3>
+            <div class="gig-tabs">
+                <div class="topic" id="all">All</div>
 
-            <div class="devlog-cards">
+                <div class="topic" id="requests">Requests</div>
+
+                <div class="topic" id="accepted">Accepted</div>
+            </div>
+
+            <hr id="tabs-break">
+
+            <div class="devlog-cards all-gigs-cards">
+                <h3>Published Gigs</h3>
                 <?php foreach ($this->gigs as $gig) { ?>
                     <div class="game-card">
                         <div class="left-col">
-                            <div class="icon"><img src="/indieabode/public/uploads/games/cover/<?= $devlog['devlogImg'] ?>" alt=""></div>
+                            <div class="icon"><img src="/indieabode/public/uploads/gigs/cover/<?= $gig['gigCoverImg'] ?>" alt=""></div>
                             <div class="details">
                                 <div class="devlog-name"><?= $gig['gigName']; ?></div>
                                 <div class="game-name">
@@ -70,12 +89,12 @@
 
                         <div class="right-col">
                             <div class="views">
-                                <div class="count">10</div>
+                                <div class="count"><?= $gig['viewCount']; ?></div>
                                 <div class="label">views</div>
                             </div>
                             <div class="downloads">
-                                <div class="count">2</div>
-                                <div class="label">likes</div>
+                                <div class="count"><?= $gig['requests']; ?></div>
+                                <div class="label">requests</div>
                             </div>
                             <div class="ratings">
                                 <div class="count">8</div>
@@ -89,9 +108,10 @@
                 <?php } ?>
             </div>
 
-            <h3>Ongoing Requests</h3>
+
 
             <div class="ongoing-requests-cards">
+                <h3>Ongoing Requests</h3>
                 <?php foreach ($this->ongoingrequests as $ongoingrequest) { ?>
                     <div class="game-card">
                         <div class="left-col">
@@ -115,6 +135,11 @@
                 <?php } ?>
             </div>
 
+
+            <div class="ordered-gigs-cards">
+                <h3>Ordered Gigs</h3>
+            </div>
+
         </div>
     </div>
 
@@ -125,6 +150,32 @@
 
     <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
 
+    <script>
+        $(document).ready(function() {
+
+            $('#all').click(function() {
+
+                $('.all-gigs-cards').show();
+                $('.ongoing-requests-cards').hide();
+                $('.ordered-gigs-cards').hide();
+            });
+
+            $('#requests').click(function() {
+
+                $('.all-gigs-cards').hide();
+                $('.ongoing-requests-cards').show();
+                $('.ordered-gigs-cards').hide();
+            });
+
+            $('#accepted').click(function() {
+
+                $('.all-gigs-cards').hide();
+                $('.ongoing-requests-cards').hide();
+                $('.ordered-gigs-cards').show();
+            });
+
+        });
+    </script>
 
 
 </body>

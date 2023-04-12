@@ -120,4 +120,47 @@ class Gig_Model extends Model
 
         return $stmt->fetchAll();
     }
+
+    function GigViewTracker($userID, $session, $gigID)
+    {
+
+        $sql = "SELECT * FROM gigs_views_tracker WHERE gigID='$gigID' AND userID='$userID' AND sessionID='$session'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $gameView = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (empty($gameView)) {
+            $viewSQL = "INSERT INTO gigs_views_tracker(userID, sessionID, gigID) VALUES ('$userID', '$session', '$gigID')";
+
+            $viewStmt = $this->db->prepare($viewSQL);
+
+            $viewStmt->execute();
+            return true;
+        } else if (!empty($gameView)) {
+            return false;
+        }
+    }
+
+    function UpdateGigViews($gigID)
+    {
+
+        $sql = "SELECT * FROM gig WHERE gigID='$gigID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $gig = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $viewCount = $gig['viewCount'] + 1;
+
+        $updateSQL = "UPDATE gig SET viewCount='$viewCount' WHERE gigID='$gigID'";
+
+        $updateStmt = $this->db->prepare($updateSQL);
+
+        $updateStmt->execute();
+    }
 }

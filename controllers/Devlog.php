@@ -25,6 +25,12 @@ class Devlog extends Controller
 
             // $this->view->ssCount = count($this->model->getScreenshots($assetID));
 
+            $viewTracker = $this->model->DevlogViewTracker($_SESSION['id'], $_SESSION['session'], $devlogID);
+
+            if ($viewTracker) {
+                $this->model->UpdateDevlogViews($devlogID);
+            }
+
             $gameId = $this->model->showSingleDevlog($devlogID)['gameName'];
 
             $this->view->game = $this->model->GetGame($gameId);
