@@ -63,6 +63,10 @@
   border-radius: 0px 0px 7px 7px;
 }
 
+.content-row h3 {
+  margin: 20px 120px 10px;
+}
+
 .game-card {
   margin: 10px 120px;
   display: flex;
@@ -183,4 +187,23 @@
 
 #gig-btn {
   text-decoration: none;
+}
+
+.gig-tabs {
+  margin: 20px 120px 6px;
+  font-size: 19px;
+  display: flex;
+}
+
+#tabs-break {
+  margin: 0px 120px;
+  border: 1px solid rgb(96, 175, 212);
+}
+
+.gig-tabs .topic {
+  margin-right: 40px;
+}
+
+.ongoing-requests-cards, .ordered-gigs-cards {
+  display: none;
 }

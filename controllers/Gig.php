@@ -25,6 +25,12 @@ class Gig extends Controller
 
             $this->view->hasRequested = $this->model->HasRequested($gigID, $_SESSION['id']);
 
+            $viewTracker = $this->model->GigViewTracker($_SESSION['id'], $_SESSION['session'], $_GET['id']);
+
+            if ($viewTracker) {
+                $this->model->UpdateGigViews($_GET['id']);
+            }
+
             $this->view->render('SingleGig');
         }
     }

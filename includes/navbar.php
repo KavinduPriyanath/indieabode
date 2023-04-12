@@ -132,7 +132,7 @@
                                                                                                         echo $_GET['q'];
                                                                                                     }  ?>" />
                                 <button type="submit">
-                                    <img src="public/images/navbar/search.png" alt="" />
+                                    <img src="<?php echo BASE_URL; ?>public/images/navbar/search.png" alt="" />
                                 </button>
                             </form>
                         </div>
@@ -228,7 +228,7 @@
                             <form action="" class="search-bar">
                                 <input type="text" placeholder="Search Anything..." name="search" />
                                 <button type="submit">
-                                    <img src="public/images/navbar/search.png" alt="" />
+                                    <img src="<?php echo BASE_URL; ?>public/images/navbar/search.png" alt="" />
                                 </button>
                             </form>
                         </div>
