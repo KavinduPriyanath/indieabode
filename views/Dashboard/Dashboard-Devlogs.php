@@ -59,7 +59,7 @@
                 <?php foreach ($this->devlogs as $devlog) { ?>
                     <div class="game-card">
                         <div class="left-col">
-                            <div class="icon"><img src="/indieabode/public/uploads/games/cover/<?= $devlog['devlogImg'] ?>" alt=""></div>
+                            <div class="icon"><img src="/indieabode/public/uploads/devlogs/<?= $devlog['devlogImg'] ?>" alt=""></div>
                             <div class="details">
                                 <div class="devlog-name"><?= $devlog['name']; ?></div>
                                 <div class="game-name">
@@ -70,20 +70,22 @@
 
                         <div class="right-col">
                             <div class="views">
-                                <div class="count">10</div>
+                                <div class="count"><?= $devlog['viewCount'] ?></div>
                                 <div class="label">views</div>
                             </div>
                             <div class="downloads">
-                                <div class="count">2</div>
+                                <div class="count"><?= $devlog['likeCount'] ?></div>
                                 <div class="label">likes</div>
                             </div>
                             <div class="ratings">
-                                <div class="count">8</div>
+                                <div class="count"><?= $devlog['commentCount'] ?></div>
                                 <div class="label">comments</div>
                             </div>
                         </div>
                         <div class="edit-btn">
-                            Edit
+                            <a href="">
+                                Edit
+                            </a>
                         </div>
                     </div>
                 <?php } ?>

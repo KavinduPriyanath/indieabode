@@ -3,9 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
-
--- Generation Time: Apr 11, 2023 at 11:33 AM
-
+-- Generation Time: Apr 12, 2023 at 06:34 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -497,22 +495,23 @@ CREATE TABLE `devlog` (
   `devLogID` int(11) NOT NULL,
   `CreatedDate` datetime DEFAULT current_timestamp(),
   `likeCount` int(11) NOT NULL DEFAULT 0,
-  `commentCount` int(11) NOT NULL DEFAULT 0
+  `commentCount` int(11) NOT NULL DEFAULT 0,
+  `viewCount` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `devlog`
 --
 
-INSERT INTO `devlog` (`publishDate`, `description`, `name`, `Tagline`, `Type`, `Visibility`, `devlogImg`, `gameName`, `devLogID`, `CreatedDate`, `likeCount`, `commentCount`) VALUES
-('2023-02-09 17:38:43', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis hendrerit neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum pharetra sem. Vestibulum eu est urna. Cras non ipsum non massa sodales condimentum quis eu risus. Praesent volutpat lorem a dolor tristique luctus eget sed elit. Ut facilisis faucibus justo tincidunt eleifend. Curabitur ultrices sapien id lorem posuere, vitae mattis nisi faucibus. Aliquam congue lorem sit amet velit lobortis, non venenatis massa feugiat. Aenean ut vehicula nibh, sed vehicula lacus. Praesent eu eros id leo maximus rhoncus eget eget risus. Curabitur vitae faucibus ligula, ac tincidunt dui. Sed diam massa, euismod sit amet augue a, pharetra egestas augue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\r\n\r\nIn hendrerit magna a dui tincidunt porta. Curabitur suscipit ex consectetur mauris ullamcorper rutrum. Mauris feugiat aliquet tristique. Curabitur egestas suscipit iaculis. Quisque tristique posuere augue, ac aliquet nisi vestibulum id. Curabitur efficitur nibh eu ipsum venenatis, et ornare tellus pellentesque. Nullam mollis lacus in nibh vestibulum, nec dignissim justo tristique. In congue dolor suscipit, eleifend leo et, commodo purus. Curabitur gravida risus et leo porttitor facilisis ut vestibulum ex. Donec enim tortor, commodo facilisis vestibulum non, viverra sed augue. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean ultricies metus vitae lobortis fermentum. Maecenas vulputate ante a sollicitudin congue. Duis purus erat, finibus eget magna sit amet, porta pharetra massa.\r\n\r\nVestibulum eleifend imperdiet felis sit amet placerat. Nulla auctor pretium turpis, quis porttitor lacus tempor vitae. Vestibulum semper non enim at dignissim. Mauris consequat elit ac purus congue iaculis. Aenean ac nibh a dolor efficitur fermentum. Mauris a porttitor lorem, ac gravida tellus. Cras iaculis malesuada mollis.', 'Finishing Utility Inventory', 'Bonjour! This is a post about me finally finishing the Utiltiy ', 'Game Design', 'draft', 'SS-Albion Online.png', '89', 28, '2020-12-29 00:00:00', 1, 2),
-('2023-02-09 17:41:03', '', 'How to Build a Mansion', 'Showing steps of using tiles to build a mansion in the city ', 'Game Design', 'draft', '', '93', 29, '2020-12-26 00:00:00', 0, 0),
-('2023-02-09 17:43:00', 'dwfwf', 'Level Editor Tutorial', 'Optimized level editor is available to players for free with extensions', 'Game Design', 'draft', 'SS-Final Fantasy VII.jpg', '93', 30, '2020-11-29 00:00:00', 1, 1),
-('2023-03-07 12:55:38', 'dwdw', 'dwd', 'ddwd', 'Tutorial', 'draft', 'SS-89.png', '89', 31, '0000-00-00 00:00:00', 1, 0),
-('2023-03-12 18:12:11', 'ththt', 'tthht', 'hth', 'Tutorial', 'draft', 'SS-89.png', '89', 34, '0000-00-00 00:00:00', 0, 0),
-('2023-04-10 04:44:15', '', 'New Devlog', 'Hi all i have returned with a polished new devlog', 'Tutorial', 'draft', '', '95', 35, '0000-00-00 00:00:00', 0, 0),
-('2023-04-10 04:50:44', 'grgrg&nbsp;<div><div style=\"text-align: center;\">grgrgrgrgrgrg</div><div style=\"text-align: center;\"><br></div><div>grrgrg<b>grggrggrg grgrgeeg</b></div></div>', 'fefefg', 'ggrgrggg', 'Major Update', 'draft', 'SS-89.jpg', '89', 36, '0000-00-00 00:00:00', 1, 1),
-('2023-04-10 04:56:25', 'hththh<div>h</div><div>thththh</div><div><br></div><div style=\"text-align: center;\">htht</div>', 'grgrgr', 'hththth', 'Game Design', 'draft', 'SS-141.jpg', '141', 37, NULL, 1, 0);
+INSERT INTO `devlog` (`publishDate`, `description`, `name`, `Tagline`, `Type`, `Visibility`, `devlogImg`, `gameName`, `devLogID`, `CreatedDate`, `likeCount`, `commentCount`, `viewCount`) VALUES
+('2023-02-09 17:38:43', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis hendrerit neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum pharetra sem. Vestibulum eu est urna. Cras non ipsum non massa sodales condimentum quis eu risus. Praesent volutpat lorem a dolor tristique luctus eget sed elit. Ut facilisis faucibus justo tincidunt eleifend. Curabitur ultrices sapien id lorem posuere, vitae mattis nisi faucibus. Aliquam congue lorem sit amet velit lobortis, non venenatis massa feugiat. Aenean ut vehicula nibh, sed vehicula lacus. Praesent eu eros id leo maximus rhoncus eget eget risus. Curabitur vitae faucibus ligula, ac tincidunt dui. Sed diam massa, euismod sit amet augue a, pharetra egestas augue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\r\n\r\nIn hendrerit magna a dui tincidunt porta. Curabitur suscipit ex consectetur mauris ullamcorper rutrum. Mauris feugiat aliquet tristique. Curabitur egestas suscipit iaculis. Quisque tristique posuere augue, ac aliquet nisi vestibulum id. Curabitur efficitur nibh eu ipsum venenatis, et ornare tellus pellentesque. Nullam mollis lacus in nibh vestibulum, nec dignissim justo tristique. In congue dolor suscipit, eleifend leo et, commodo purus. Curabitur gravida risus et leo porttitor facilisis ut vestibulum ex. Donec enim tortor, commodo facilisis vestibulum non, viverra sed augue. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean ultricies metus vitae lobortis fermentum. Maecenas vulputate ante a sollicitudin congue. Duis purus erat, finibus eget magna sit amet, porta pharetra massa.\r\n\r\nVestibulum eleifend imperdiet felis sit amet placerat. Nulla auctor pretium turpis, quis porttitor lacus tempor vitae. Vestibulum semper non enim at dignissim. Mauris consequat elit ac purus congue iaculis. Aenean ac nibh a dolor efficitur fermentum. Mauris a porttitor lorem, ac gravida tellus. Cras iaculis malesuada mollis.', 'Finishing Utility Inventory', 'Bonjour! This is a post about me finally finishing the Utiltiy ', 'Game Design', 'draft', 'SS-Albion Online.png', '89', 28, '2020-12-29 00:00:00', 1, 2, 0),
+('2023-02-09 17:41:03', '', 'How to Build a Mansion', 'Showing steps of using tiles to build a mansion in the city ', 'Game Design', 'draft', '', '93', 29, '2020-12-26 00:00:00', 0, 0, 0),
+('2023-02-09 17:43:00', 'dwfwf', 'Level Editor Tutorial', 'Optimized level editor is available to players for free with extensions', 'Game Design', 'draft', 'SS-Final Fantasy VII.jpg', '93', 30, '2020-11-29 00:00:00', 1, 1, 1),
+('2023-03-07 12:55:38', 'dwdw', 'dwd', 'ddwd', 'Tutorial', 'draft', 'SS-89.png', '89', 31, '0000-00-00 00:00:00', 1, 0, 0),
+('2023-03-12 18:12:11', 'ththt', 'tthht', 'hth', 'Tutorial', 'draft', 'SS-89.png', '89', 34, '0000-00-00 00:00:00', 0, 0, 0),
+('2023-04-10 04:44:15', '', 'New Devlog', 'Hi all i have returned with a polished new devlog', 'Tutorial', 'draft', '', '95', 35, '0000-00-00 00:00:00', 0, 0, 0),
+('2023-04-10 04:50:44', 'grgrg&nbsp;<div><div style=\"text-align: center;\">grgrgrgrgrgrg</div><div style=\"text-align: center;\"><br></div><div>grrgrg<b>grggrggrg grgrgeeg</b></div></div>', 'fefefg', 'ggrgrggg', 'Major Update', 'draft', 'SS-89.jpg', '89', 36, '0000-00-00 00:00:00', 1, 1, 0),
+('2023-04-10 04:56:25', 'hththh<div>h</div><div>thththh</div><div><br></div><div style=\"text-align: center;\">htht</div>', 'grgrgr', 'hththth', 'Game Design', 'draft', 'SS-141.jpg', '141', 37, NULL, 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -613,6 +612,29 @@ INSERT INTO `devlog_posttype` (`id`, `postType`) VALUES
 (3, 'Game Design'),
 (4, 'Tutorial'),
 (5, 'Marketing');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `devlog_view_tracker`
+--
+
+CREATE TABLE `devlog_view_tracker` (
+  `id` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
+  `sessionID` int(11) NOT NULL,
+  `devlogID` int(11) NOT NULL,
+  `viewedDate` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `devlog_view_tracker`
+--
+
+INSERT INTO `devlog_view_tracker` (`id`, `userID`, `sessionID`, `devlogID`, `viewedDate`) VALUES
+(1, 46, 10, 28, '2023-04-12'),
+(2, 51, 19, 28, '2023-04-12'),
+(3, 46, 77, 30, '2023-04-12');
 
 -- --------------------------------------------------------
 
@@ -728,7 +750,7 @@ CREATE TABLE `freegame` (
 INSERT INTO `freegame` (`gameID`, `gameName`, `releaseStatus`, `gameDetails`, `gameScreenshots`, `gameTrailor`, `gameTagline`, `gameClassification`, `gameTags`, `gameFeatures`, `platform`, `gameType`, `gameFile`, `gameVisibility`, `gameCoverImg`, `gameDeveloperID`, `minOS`, `minProcessor`, `minMemory`, `minStorage`, `minGraphics`, `other`, `recommendOS`, `recommendProcessor`, `recommendMemory`, `recommendStorage`, `recommendGraphics`, `gamePrice`, `created_at`) VALUES
 (89, 'Albion Online Z1', 'Upcoming', '', '', '', 'Free medieval fantasy MMORPG, set in a medieval world', 'Action', '', '', 'Linux', 'Base Game', '', 0, '', 46, '', '', '', '', '', '', '', '', '', '', '', '2', '0000-00-00 00:00:00'),
 (90, 'Stray', 'Upcoming', '<h3>ABOUT THIS GAME</h3>\r\n<br>\r\n<p>Lost, alone and separated from family, a stray cat must untangle an ancient mystery to escape a long-forgotten city.\r\n\r\nStray is a third-person cat adventure game set amidst the detailed, neon-lit alleys of a decaying cybercity and the murky environments of its seedy underbelly. Roam surroundings high and low, defend against unforeseen threats and solve the mysteries of this unwelcoming place inhabited by curious droids and dangerous creatures.\r\n\r\nSee the world through the eyes of a cat and interact with the environment in playful ways. Be stealthy, nimble, silly, and sometimes as annoying as possible with the strange inhabitants of this mysterious world.\r\n\r\nAlong the way, the cat befriends a small flying drone, known only as B-12. With the help of this newfound companion, the duo must find a way out.\r\n\r\nStray is developed by BlueTwelve Studio, a small team from the south of France mostly made up of cats and a handful of humans.<p>', 'SS-Stray-0.jpg,SS-Stray-1.jpg,SS-Stray-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'follows a stray cat who falls into a walled city populated by robots', 'action', 'stray, cat, 3d', 'Puzzle', 'Linux', 'DLC', 'Game-Stray.zip', 0, 'Cover-Stray.jpg', 49, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'Extra Content', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '3.99', '0000-00-00 00:00:00'),
-(91, 'Scarlet Nexus', 'Upcoming', '<h3>ABOUT THIS GAME</h3>\r\n<p>In the far distant future, a psionic hormone was discovered in the human brain, granting people extra-sensory powers and changed the world as we knew it. As humanity entered this new era, deranged mutants known as Others began to descend from the sky with a hunger for human brains. Highly resistant to conventional attack methods, extreme measures needed to be taken to battle the overwhelming threat and preserve humanity. Those with acute extra-sensory abilities, known as psionics, were our only chance to fight the onslaught from above. Since then, psionics have been scouted for their talents and recruited to the Other Suppression Force (OSF), humanity’s last line of defense.\r\n</p>\r\n<br>\r\n<p>Featuring a dual story, begin your adventure with either Yuito Sumeragi, an energetic recruit from a prestigious political family or Kasane Randall, the mysterious scout whose power and skill has gained great notoriety among the OSF. As their different experiences interweave with each other, it is only then that you will reveal the full story and unlock all the mysteries of a Brain Punk future caught between technology and psychic abilities in SCARLET NEXUS.\r\n</p>\r\n<br>\r\n<p>Kinetic Psychic Combat – Using psycho-kinetic abilities, the world around you becomes your greatest weapon. Lift, break and throw pieces of your environment to build your attack combos and lay waste to your enemies.\r\n\r\nExterminate the Others – Deranged mutants that descended from the sky, highly resistant to conventional attack methods and defenses. Tormented by the constant pain of their mutation, they seek brains of living organisms to calm their madness.\r\n\r\nDiscover a Brain Punk future – Explore and protect a futuristic Japanese landscape that combines inspirations from classic anime and western science fiction.\r\n\r\nA Dual Story Experience – Dive into a complex story of bonds, courage and heroism, crafted by minds behind the iconic Tales of Vesperia.</p>', 'SS-Scarlet Nexus-0.jpg,SS-Scarlet Nexus-1.jpg,SS-Scarlet Nexus-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'Elite psionics each armed with a talent in psychokinesis', 'RPG', 'scarlet, nexus, rpg', 'Leaderboard', 'Linux', 'DLC', 'Game-Scarlet Nexus.zip', 0, 'Cover-Scarlet Nexus.jpg', 49, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '0', '0000-00-00 00:00:00'),
+(91, 'Scarlet Nexus', 'Upcoming', '<h3>ABOUT THIS GAME</h3>\r\n<p>In the far distant future, a psionic hormone was discovered in the human brain, granting people extra-sensory powers and changed the world as we knew it. As humanity entered this new era, deranged mutants known as Others began to descend from the sky with a hunger for human brains. Highly resistant to conventional attack methods, extreme measures needed to be taken to battle the overwhelming threat and preserve humanity. Those with acute extra-sensory abilities, known as psionics, were our only chance to fight the onslaught from above. Since then, psionics have been scouted for their talents and recruited to the Other Suppression Force (OSF), humanity’s last line of defense.\r\n</p>\r\n<br>\r\n<p>Featuring a dual story, begin your adventure with either Yuito Sumeragi, an energetic recruit from a prestigious political family or Kasane Randall, the mysterious scout whose power and skill has gained great notoriety among the OSF. As their different experiences interweave with each other, it is only then that you will reveal the full story and unlock all the mysteries of a Brain Punk future caught between technology and psychic abilities in SCARLET NEXUS.\r\n</p>\r\n<br>\r\n<p>Kinetic Psychic Combat – Using psycho-kinetic abilities, the world around you becomes your greatest weapon. Lift, break and throw pieces of your environment to build your attack combos and lay waste to your enemies.\r\n\r\nExterminate the Others – Deranged mutants that descended from the sky, highly resistant to conventional attack methods and defenses. Tormented by the constant pain of their mutation, they seek brains of living organisms to calm their madness.\r\n\r\nDiscover a Brain Punk future – Explore and protect a futuristic Japanese landscape that combines inspirations from classic anime and western science fiction.\r\n\r\nA Dual Story Experience – Dive into a complex story of bonds, courage and heroism, crafted by minds behind the iconic Tales of Vesperia.</p>', 'SS-Scarlet Nexus-0.jpg,SS-Scarlet Nexus-1.jpg,SS-Scarlet Nexus-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'Elite psionics each armed with a talent in psychokinesis', 'RPG', 'scarlet, nexus, rpg', 'Leaderboard', 'Linux', 'DLC', 'Game-Scarlet Nexus.zip', 0, 'Cover-Scarlet Nexus.jpg', 46, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '0', '0000-00-00 00:00:00'),
 (92, 'Naruto Shippuden', 'released', '<h3>ABOUT THIS GAME</h3>\r\n<br>\r\n<p>The latest opus in the acclaimed STORM series is taking you on a colourful and breathtaking ride. Take advantage of the totally revamped battle system and prepare to dive into the most epic fights you’ve ever seen in the NARUTO SHIPPUDEN: Ultimate Ninja STORM series!</p>\r\n<br>\r\n<p>\r\nPrepare for the most awaited STORM game ever created!</p>\r\n\r\n', 'SS-Naruto Shippuden-0.jpg,SS-Naruto Shippuden-1.jpg,SS-Naruto Shippuden-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'The latest opus in the acclaimed STORM series is taking you ', 'action', 'naruto, anime, shippuden', 'singleplayer', 'Windows', 'Base Game', 'Game-Naruto Shippuden.zip', 0, 'Cover-Naruto Shippuden.jpg', 49, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '7.99', '0000-00-00 00:00:00'),
 (93, 'Monster Hunter Rise', 'Released', '<h3>ABOUT THIS GAME</h3>\r\n<br>\r\n<p>Rise to the challenge and join the hunt! In Monster Hunter Rise, the latest installment in the award-winning and top-selling Monster Hunter series, you’ll become a hunter, explore brand new maps and use a variety of weapons to take down fearsome monsters as part of an all-new storyline. The PC release also comes packed with a number of additional visual and performance enhancing optimizations.</p>\r\n<br>\r\n<h3>\r\nFerocious monsters with unique ecologies</h3>\r\n<p>\r\nHunt down a plethora of monsters with distinct behaviors and deadly ferocity. From classic returning monsters to all-new creatures inspired by Japanese folklore, including the flagship wyvern Magnamalo, you’ll need to think on your feet and master their unique tendencies if you hope to reap any of the rewards!</p>\r\n\r\n', 'SS-Monster Hunter Rise-0.jpg,SS-Monster Hunter Rise-1.jpg,SS-Monster Hunter Rise-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'Rise to the challenge and join the hunt! In Monster Hunter Rise', 'Strategy', 'monster hunter, rpg, singlepla', 'singleplayer', 'Windows', 'Base Game', 'Game-Monster Hunter Rise.zip', 0, 'Cover-Monster Hunter Rise.png', 46, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', '', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '4', '0000-00-00 00:00:00'),
 (95, 'Naruto Shippuden', 'released', '<h3>ABOUT THIS GAME</h3>\r\n<br>\r\n<p>The latest opus in the acclaimed STORM series is taking you on a colourful and breathtaking ride. Take advantage of the totally revamped battle system and prepare to dive into the most epic fights you’ve ever seen in the NARUTO SHIPPUDEN: Ultimate Ninja STORM series!</p>\r\n<br>\r\n<p>\r\nPrepare for the most awaited STORM game ever created!</p>\r\n\r\n', 'SS-Naruto Shippuden-0.jpg,SS-Naruto Shippuden-1.jpg,SS-Naruto Shippuden-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'The latest opus in the acclaimed STORM series is taking you ', 'action', 'naruto, anime, shippuden', 'singleplayer', 'Windows', 'Base Game', 'Game-Naruto Shippuden.zip', 0, 'Cover-Naruto Shippuden.jpg', 46, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '0', '0000-00-00 00:00:00'),
@@ -1086,7 +1108,6 @@ INSERT INTO `games_view_tracker` (`id`, `userID`, `sessionID`, `gameID`, `viewed
 (161, 53, 51, 95, '2023-04-10'),
 (162, 46, 33, 92, '2023-04-10'),
 (163, 46, 68, 96, '2023-04-10'),
-
 (164, 51, 79, 91, '2023-04-10'),
 (165, 46, 37, 96, '2023-04-11'),
 (166, 46, 37, 91, '2023-04-11'),
@@ -1096,8 +1117,37 @@ INSERT INTO `games_view_tracker` (`id`, `userID`, `sessionID`, `gameID`, `viewed
 (170, 46, 37, 95, '2023-04-11'),
 (171, 0, 0, 93, '2023-04-11'),
 (172, 46, 24, 181, '2023-04-11'),
-(173, 46, 24, 182, '2023-04-11');
-
+(173, 46, 24, 182, '2023-04-11'),
+(174, 46, 50, 92, '2023-04-11'),
+(175, 52, 19, 96, '2023-04-11'),
+(176, 52, 19, 93, '2023-04-11'),
+(177, 52, 19, 89, '2023-04-11'),
+(178, 52, 19, 90, '2023-04-11'),
+(179, 52, 19, 91, '2023-04-11'),
+(180, 52, 19, 95, '2023-04-11'),
+(181, 52, 19, 92, '2023-04-11'),
+(182, 46, 93, 92, '2023-04-11'),
+(183, 46, 93, 91, '2023-04-11'),
+(184, 52, 72, 95, '2023-04-11'),
+(185, 52, 72, 92, '2023-04-11'),
+(186, 52, 72, 93, '2023-04-11'),
+(187, 52, 72, 96, '2023-04-11'),
+(188, 52, 72, 90, '2023-04-11'),
+(189, 52, 72, 91, '2023-04-11'),
+(190, 46, 62, 92, '2023-04-11'),
+(191, 46, 62, 91, '2023-04-11'),
+(192, 46, 62, 93, '2023-04-11'),
+(193, 52, 34, 91, '2023-04-11'),
+(194, 52, 34, 90, '2023-04-11'),
+(195, 52, 34, 89, '2023-04-11'),
+(196, 52, 34, 92, '2023-04-11'),
+(197, 52, 34, 95, '2023-04-11'),
+(198, 52, 34, 96, '2023-04-11'),
+(199, 52, 34, 181, '2023-04-11'),
+(200, 52, 34, 182, '2023-04-11'),
+(201, 52, 34, 93, '2023-04-11'),
+(202, 46, 77, 92, '2023-04-12'),
+(203, 46, 77, 95, '2023-04-12');
 
 -- --------------------------------------------------------
 
@@ -1111,6 +1161,14 @@ CREATE TABLE `game_cart` (
   `gameID` int(11) NOT NULL,
   `addedDate` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `game_cart`
+--
+
+INSERT INTO `game_cart` (`id`, `userID`, `gameID`, `addedDate`) VALUES
+(11, 46, 92, '2023-04-11'),
+(13, 52, 92, '2023-04-11');
 
 -- --------------------------------------------------------
 
@@ -1133,7 +1191,11 @@ INSERT INTO `game_library` (`id`, `gameID`, `gamerID`, `createdAt`) VALUES
 (1, 107, 52, '2023-03-15'),
 (2, 96, 52, '2023-03-15'),
 (3, 106, 52, '2023-03-21'),
-(4, 95, 52, '2023-04-10');
+(4, 95, 52, '2023-04-10'),
+(9, 93, 52, '2023-04-11'),
+(15, 182, 52, '2023-04-11'),
+(16, 91, 52, '2023-04-11'),
+(17, 92, 52, '2023-04-11');
 
 -- --------------------------------------------------------
 
@@ -1156,7 +1218,8 @@ CREATE TABLE `game_purchases` (
 
 INSERT INTO `game_purchases` (`id`, `gameID`, `buyerID`, `orderID`, `purchasedPrice`, `purchasedDate`) VALUES
 (1, 106, 52, '641996fdad338', 30, '2023-03-21'),
-(2, 95, 52, '6433f938442db', 30, '2023-04-10');
+(2, 95, 52, '6433f938442db', 30, '2023-04-10'),
+(3, 92, 52, '64358669b14e9', 30, '2023-04-11');
 
 -- --------------------------------------------------------
 
@@ -1230,15 +1293,13 @@ CREATE TABLE `game_stats` (
 --
 
 INSERT INTO `game_stats` (`id`, `gameID`, `views`, `downloads`, `ratings`, `revenue`) VALUES
-
-(1, 96, 31, 8, 1, 0),
-(2, 89, 11, 0, 0, 0),
-(3, 90, 20, 0, 0, 0),
-(4, 91, 24, 0, 0, 0),
-(5, 92, 22, 0, 0, 0),
-(6, 93, 8, 0, 0, 0),
-(7, 95, 12, 1, 1, 0);
-
+(1, 96, 34, 9, 1, 0),
+(2, 89, 13, 0, 0, 0),
+(3, 90, 23, 0, 0, 0),
+(4, 91, 29, 11, 0, 0),
+(5, 92, 29, 4, 0, 0),
+(6, 93, 12, 1, 0, 0),
+(7, 95, 16, 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -1347,17 +1408,18 @@ INSERT INTO `game_stats_history` (`id`, `gameID`, `views`, `downloads`, `ratings
 (91, 93, 6, 0, 0, 0, '2023-04-10'),
 (92, 92, 10, 0, 0, 0, '2023-04-10'),
 (93, 89, 4, 0, 0, 0, '2023-04-10'),
-
 (94, 95, 8, 1, 0, 0, '2023-04-10'),
-(95, 96, 1, 0, 0, 0, '2023-04-11'),
-(96, 91, 1, 0, 0, 0, '2023-04-11'),
-(97, 93, 2, 0, 0, 0, '2023-04-11'),
-(98, 90, 1, 0, 0, 0, '2023-04-11'),
-(99, 92, 1, 0, 0, 0, '2023-04-11'),
-(100, 95, 1, 0, 0, 0, '2023-04-11'),
-(101, 181, 1, 0, 0, 0, '2023-04-11'),
-(102, 182, 1, 0, 0, 0, '2023-04-11');
-
+(95, 96, 4, 1, 0, 0, '2023-04-11'),
+(96, 91, 6, 10, 0, 0, '2023-04-11'),
+(97, 93, 6, 1, 0, 0, '2023-04-11'),
+(98, 90, 4, 0, 0, 0, '2023-04-11'),
+(99, 92, 7, 2, 0, 0, '2023-04-11'),
+(100, 95, 4, 0, 0, 0, '2023-04-11'),
+(101, 181, 2, 0, 0, 0, '2023-04-11'),
+(102, 182, 2, 1, 0, 0, '2023-04-11'),
+(103, 89, 2, 0, 0, 0, '2023-04-11'),
+(104, 92, 1, 0, 0, 0, '2023-04-12'),
+(105, 95, 1, 0, 0, 0, '2023-04-12');
 
 -- --------------------------------------------------------
 
@@ -1879,6 +1941,12 @@ ALTER TABLE `devlog_posttype`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `devlog_view_tracker`
+--
+ALTER TABLE `devlog_view_tracker`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `freeasset`
 --
 ALTER TABLE `freeasset`
@@ -2125,6 +2193,12 @@ ALTER TABLE `devlog_posttype`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `devlog_view_tracker`
+--
+ALTER TABLE `devlog_view_tracker`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `freeasset`
 --
 ALTER TABLE `freeasset`
@@ -2164,27 +2238,25 @@ ALTER TABLE `games_filters`
 -- AUTO_INCREMENT for table `games_view_tracker`
 --
 ALTER TABLE `games_view_tracker`
-
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=174;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=204;
 
 --
 -- AUTO_INCREMENT for table `game_cart`
 --
 ALTER TABLE `game_cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `game_library`
 --
 ALTER TABLE `game_library`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `game_purchases`
 --
 ALTER TABLE `game_purchases`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `game_reviews`
@@ -2202,7 +2274,7 @@ ALTER TABLE `game_stats`
 -- AUTO_INCREMENT for table `game_stats_history`
 --
 ALTER TABLE `game_stats_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
 
 --
 -- AUTO_INCREMENT for table `gig`
