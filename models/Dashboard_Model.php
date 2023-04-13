@@ -60,7 +60,9 @@ class Dashboard_Model extends Model
 
         $stmt->execute();
 
-        return $stmt->fetchAll();
+        $gigs = $stmt->fetchAll();
+
+        return $gigs;
     }
 
     function showAllMyGigRequests($devId)
@@ -302,6 +304,18 @@ class Dashboard_Model extends Model
     {
 
         $sql = "SELECT * FROM game_stats_history WHERE gameID='$gameID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+
+    function FeatureTypes()
+    {
+
+        $sql = "SELECT * FROM games_filters WHERE type='features'";
 
         $stmt = $this->db->prepare($sql);
 

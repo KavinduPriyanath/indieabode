@@ -86,7 +86,25 @@ class Dashboard extends Controller
 
         $this->view->gameTypes = $this->model->GetDropdowns('gametype');
 
+        $this->view->features = $this->model->FeatureTypes();
+
         $this->view->game = $this->model->GetGameDetails($_GET['id']);
+
+        $game = $this->model->GetGameDetails($_GET['id']);
+
+        if ($game['gamePrice'] == "0") {
+            $this->view->gamePrice = "Free";
+        } else if ($game['gamePrice'] != "0") {
+            $this->view->gamePrice = "Paid";
+        }
+
+        $this->view->platforms = explode(",", $game['platform']);
+
+        $this->view->selectedFeatures = explode(",", $game['gameFeatures']);
+
+        $this->view->gameTags = explode(",", $game['gameTags']);
+
+        $this->view->gameScreenshots = explode(",", $game['gameScreenshots']);
 
         $this->view->render('Dashboard/GameDashboards/Edit');
     }
