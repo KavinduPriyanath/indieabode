@@ -95,7 +95,8 @@
                             <img id="chosen-image" src="public/uploads/portfolio/<?= $this->portfolioInfo['profilePhoto']; ?>">
                         </div>
                         <div class="image-buttons">
-                            <input type="file" id="upload-button" name="portfolio-img" accept=".jpg,.jpeg,.png" value="<?= $this->portfolioInfo['profilePhoto']; ?>">
+                            <input type="file" id="upload-button" name="portfolio-img" accept=".jpg,.jpeg,.png">
+                            <input type="hidden" id="old-portfolio-img" name="old-portfolio-img" value="<?= $this->portfolioInfo['profilePhoto']; ?>">
                             <label for="upload-button" id="upload-label">
                                 Upload Photo
                             </label>
@@ -238,10 +239,24 @@
     <script>
         $(document).ready(function() {
 
+            var fileName = null;
+
+            $('input[type="file"]').change(function(e) {
+                fileName = e.target.files[0].name;
+            });
+
             $("#saveBtn").click(function(e) {
 
+                let imageName = null;
                 let displayName = $("#displayName").val();
-                let displayImg = null;
+
+                if (fileName == null) {
+                    imageName = $('#old-portfolio-img').val();
+                } else {
+                    imageName = fileName;
+                }
+
+                let displayImgName = imageName;
                 let website = $("#website").val();
                 let twitter = $("#twitter").val();
                 let linkedin = $("#linkedin").val();
@@ -251,6 +266,7 @@
 
                 var data = {
                     displayName: displayName,
+                    imgName: displayImgName,
                     website: website,
                     description: description,
                     twitter: twitter,
