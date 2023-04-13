@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 12, 2023 at 09:41 AM
+-- Generation Time: Apr 13, 2023 at 08:07 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -44,7 +44,7 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`userID`, `profilePhoto`, `location`, `phoneNumber`, `displayName`, `twitter`, `linkedin`, `introduction`, `website`) VALUES
-(46, '', 'hrtht', '4543334', 'kavindu11', 'rththt', 'hrtht', 'dwdw <b>dwdwd&nbsp;</b>', 'thhwwww'),
+(46, '', 'hrtht', '4543334', 'kavindu', 'rththt', 'hrtht', '', 'thhwwww'),
 (47, '', '', '', '', '', '', '', ''),
 (48, '', '', '', '', '', '', '', ''),
 (51, '', '', '', 'oh my god', '', '', '', ''),
@@ -448,7 +448,8 @@ INSERT INTO `crowdfund` (`crowdFundID`, `currentAmount`, `deadline`, `expectedAm
 (5, 0, '0000-00-00', 0, 0, 'Albion Online', 'ergrgrtgffe', 'gtgrtgrttrht', 0, 'fefef', 'draft', 'Cover-Albion Online.png', 'SS-Albion Online-0.jpg,SS-Albion Online-1.jpg,SS-Albion Online-2.jpg', 'https://itch.io/jam/my-first-game-jam-winter-2023', 0),
 (6, 0, '2023-04-13', 0, 0, 'Monster Hunter Rise', 'new crowdfunding', 'gtgrtgrttrht', 0, '', 'draft', 'Cover-Monster Hunter Rise.jpg', 'SS-Monster Hunter Rise-0.jpg,SS-Monster Hunter Rise-1.jpg', 'https://itch.io/jam/my-first-game-jam-winter-2023', 0),
 (7, 0, '2023-04-28', 233, 0, 'Albion Online 3', 'grgrgg', 'grgrg', 0, 'grgg<div style=\"text-align: center;\">ggrghh</div><div style=\"text-align: center;\"><br></div>', 'draft', 'Cover-Albion Online 3.jpg', 'SS-Albion Online 3-0.jpg,SS-Albion Online 3-1.jpg', 'https://itch.io/jam/my-first-game-jam-winter-2023', 0),
-(8, 0, '2023-04-21', 0, 46, 'Scarlet Nexus', 'fefefg', 'gtgrtgrttrht', 0, 'egeg <b>gegeg </b>gegegg<div style=\"text-align: center;\">fefe</div>', 'draft', 'Cover-Scarlet Nexus.jpg', 'SS-Scarlet Nexus-0.jpg,SS-Scarlet Nexus-1.jpg', 'https://itch.io/jam/my-first-game-jam-winter-2023', 2);
+(8, 0, '2023-04-21', 0, 46, 'Scarlet Nexus', 'fefefg', 'gtgrtgrttrht', 0, 'egeg <b>gegeg </b>gegegg<div style=\"text-align: center;\">fefe</div>', 'draft', 'Cover-Scarlet Nexus.jpg', 'SS-Scarlet Nexus-0.jpg,SS-Scarlet Nexus-1.jpg', 'https://itch.io/jam/my-first-game-jam-winter-2023', 2),
+(9, 0, '2023-04-26', 0, 46, '96', 'ergregr', 'gtgrtgrttrht', 0, '<div style=\"text-align: center;\">gergreg&nbsp;</div><div style=\"text-align: center;\">rgreg</div>', 'draft', 'Cover-96.jpg', 'SS-96-0.jpg,SS-96-1.jpg', 'https://itch.io/jam/my-first-game-jam-winter-2023', 1);
 
 -- --------------------------------------------------------
 
@@ -500,7 +501,8 @@ CREATE TABLE `crowdfund_view_tracker` (
 INSERT INTO `crowdfund_view_tracker` (`id`, `userID`, `sessionID`, `crowdfundID`, `viewedDate`) VALUES
 (1, 46, 77, 1, '2023-04-12'),
 (2, 46, 77, 8, '2023-04-12'),
-(3, 51, 90, 8, '2023-04-12');
+(3, 51, 90, 8, '2023-04-12'),
+(4, 46, 74, 9, '2023-04-13');
 
 -- --------------------------------------------------------
 
@@ -775,12 +777,12 @@ CREATE TABLE `freegame` (
 INSERT INTO `freegame` (`gameID`, `gameName`, `releaseStatus`, `gameDetails`, `gameScreenshots`, `gameTrailor`, `gameTagline`, `gameClassification`, `gameTags`, `gameFeatures`, `platform`, `gameType`, `gameFile`, `gameVisibility`, `gameCoverImg`, `gameDeveloperID`, `minOS`, `minProcessor`, `minMemory`, `minStorage`, `minGraphics`, `other`, `recommendOS`, `recommendProcessor`, `recommendMemory`, `recommendStorage`, `recommendGraphics`, `gamePrice`, `created_at`) VALUES
 (89, 'Albion Online Z1', 'Upcoming', '', '', '', 'Free medieval fantasy MMORPG, set in a medieval world', 'Action', '', '', 'Linux', 'Base Game', '', 0, '', 46, '', '', '', '', '', '', '', '', '', '', '', '2', '0000-00-00 00:00:00'),
 (90, 'Stray', 'Upcoming', '<h3>ABOUT THIS GAME</h3>\r\n<br>\r\n<p>Lost, alone and separated from family, a stray cat must untangle an ancient mystery to escape a long-forgotten city.\r\n\r\nStray is a third-person cat adventure game set amidst the detailed, neon-lit alleys of a decaying cybercity and the murky environments of its seedy underbelly. Roam surroundings high and low, defend against unforeseen threats and solve the mysteries of this unwelcoming place inhabited by curious droids and dangerous creatures.\r\n\r\nSee the world through the eyes of a cat and interact with the environment in playful ways. Be stealthy, nimble, silly, and sometimes as annoying as possible with the strange inhabitants of this mysterious world.\r\n\r\nAlong the way, the cat befriends a small flying drone, known only as B-12. With the help of this newfound companion, the duo must find a way out.\r\n\r\nStray is developed by BlueTwelve Studio, a small team from the south of France mostly made up of cats and a handful of humans.<p>', 'SS-Stray-0.jpg,SS-Stray-1.jpg,SS-Stray-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'follows a stray cat who falls into a walled city populated by robots', 'action', 'stray, cat, 3d', 'Puzzle', 'Linux', 'DLC', 'Game-Stray.zip', 0, 'Cover-Stray.jpg', 49, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'Extra Content', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '3.99', '0000-00-00 00:00:00'),
-(91, 'Scarlet Nexus', 'Upcoming', '<h3>ABOUT THIS GAME</h3>\r\n<p>In the far distant future, a psionic hormone was discovered in the human brain, granting people extra-sensory powers and changed the world as we knew it. As humanity entered this new era, deranged mutants known as Others began to descend from the sky with a hunger for human brains. Highly resistant to conventional attack methods, extreme measures needed to be taken to battle the overwhelming threat and preserve humanity. Those with acute extra-sensory abilities, known as psionics, were our only chance to fight the onslaught from above. Since then, psionics have been scouted for their talents and recruited to the Other Suppression Force (OSF), humanity’s last line of defense.\r\n</p>\r\n<br>\r\n<p>Featuring a dual story, begin your adventure with either Yuito Sumeragi, an energetic recruit from a prestigious political family or Kasane Randall, the mysterious scout whose power and skill has gained great notoriety among the OSF. As their different experiences interweave with each other, it is only then that you will reveal the full story and unlock all the mysteries of a Brain Punk future caught between technology and psychic abilities in SCARLET NEXUS.\r\n</p>\r\n<br>\r\n<p>Kinetic Psychic Combat – Using psycho-kinetic abilities, the world around you becomes your greatest weapon. Lift, break and throw pieces of your environment to build your attack combos and lay waste to your enemies.\r\n\r\nExterminate the Others – Deranged mutants that descended from the sky, highly resistant to conventional attack methods and defenses. Tormented by the constant pain of their mutation, they seek brains of living organisms to calm their madness.\r\n\r\nDiscover a Brain Punk future – Explore and protect a futuristic Japanese landscape that combines inspirations from classic anime and western science fiction.\r\n\r\nA Dual Story Experience – Dive into a complex story of bonds, courage and heroism, crafted by minds behind the iconic Tales of Vesperia.</p>', 'SS-Scarlet Nexus-0.jpg,SS-Scarlet Nexus-1.jpg,SS-Scarlet Nexus-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'Elite psionics each armed with a talent in psychokinesis', 'RPG', 'scarlet, nexus, rpg', 'Leaderboard', 'Linux', 'DLC', 'Game-Scarlet Nexus.zip', 0, 'Cover-Scarlet Nexus.jpg', 46, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '0', '0000-00-00 00:00:00'),
-(92, 'Naruto Shippuden', 'released', '<h3>ABOUT THIS GAME</h3>\r\n<br>\r\n<p>The latest opus in the acclaimed STORM series is taking you on a colourful and breathtaking ride. Take advantage of the totally revamped battle system and prepare to dive into the most epic fights you’ve ever seen in the NARUTO SHIPPUDEN: Ultimate Ninja STORM series!</p>\r\n<br>\r\n<p>\r\nPrepare for the most awaited STORM game ever created!</p>\r\n\r\n', 'SS-Naruto Shippuden-0.jpg,SS-Naruto Shippuden-1.jpg,SS-Naruto Shippuden-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'The latest opus in the acclaimed STORM series is taking you ', 'action', 'naruto, anime, shippuden', 'singleplayer', 'Windows', 'Base Game', 'Game-Naruto Shippuden.zip', 0, 'Cover-Naruto Shippuden.jpg', 49, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '7.99', '0000-00-00 00:00:00'),
-(93, 'Monster Hunter Rise', 'Released', '<h3>ABOUT THIS GAME</h3>\r\n<br>\r\n<p>Rise to the challenge and join the hunt! In Monster Hunter Rise, the latest installment in the award-winning and top-selling Monster Hunter series, you’ll become a hunter, explore brand new maps and use a variety of weapons to take down fearsome monsters as part of an all-new storyline. The PC release also comes packed with a number of additional visual and performance enhancing optimizations.</p>\r\n<br>\r\n<h3>\r\nFerocious monsters with unique ecologies</h3>\r\n<p>\r\nHunt down a plethora of monsters with distinct behaviors and deadly ferocity. From classic returning monsters to all-new creatures inspired by Japanese folklore, including the flagship wyvern Magnamalo, you’ll need to think on your feet and master their unique tendencies if you hope to reap any of the rewards!</p>\r\n\r\n', 'SS-Monster Hunter Rise-0.jpg,SS-Monster Hunter Rise-1.jpg,SS-Monster Hunter Rise-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'Rise to the challenge and join the hunt! In Monster Hunter Rise', 'Strategy', 'monster hunter, rpg, singlepla', 'singleplayer', 'Windows', 'Base Game', 'Game-Monster Hunter Rise.zip', 0, 'Cover-Monster Hunter Rise.png', 46, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', '', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '4', '0000-00-00 00:00:00'),
-(95, 'Naruto Shippuden', 'released', '<h3>ABOUT THIS GAME</h3>\r\n<br>\r\n<p>The latest opus in the acclaimed STORM series is taking you on a colourful and breathtaking ride. Take advantage of the totally revamped battle system and prepare to dive into the most epic fights you’ve ever seen in the NARUTO SHIPPUDEN: Ultimate Ninja STORM series!</p>\r\n<br>\r\n<p>\r\nPrepare for the most awaited STORM game ever created!</p>\r\n\r\n', 'SS-Naruto Shippuden-0.jpg,SS-Naruto Shippuden-1.jpg,SS-Naruto Shippuden-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'The latest opus in the acclaimed STORM series is taking you ', 'action', 'naruto, anime, shippuden', 'singleplayer', 'Windows', 'Base Game', 'Game-Naruto Shippuden.zip', 0, 'Cover-Naruto Shippuden.jpg', 46, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '0', '0000-00-00 00:00:00'),
-(96, 'Final Fantasy VII', 'early access', '<h3>ABOUT THIS GAME</h3>\r\n<p>CRISIS CORE –FINAL FANTASY VII– REUNION is the HD remaster version of the smash hit prequel to FINAL FANTASY VII</p>\r\n<br>\r\n<p>In addition to all graphics being remastered in HD, fully voiced dialogue and new soundtrack arrangements make for a dynamic new retelling of a beloved classic.\r\n\r\nCRISIS CORE –FINAL FANTASY VII– REUNION follows the story of Zack Fair, a young warrior admired by the boy destined to save the world, trusted by men renowned as heroes of legend, and loved by the girl who holds the fate of the planet in her hands. The tale of Zack\'s dreams and honor—the legacy that connects him to Cloud—is revealed in full in this grand saga that has broken the limits of an HD remaster.</p>\r\n<br>\r\n<h3>New Features</h3>\r\n<p>All graphics fully remastered in HD, bringing the game to the latest console generation- Renewed 3D models, including characters and backgrounds, enriching the visual experience\r\n- Improved battle system providing a vastly smoother gameplay experience\r\n- Fully voiced dialogue in both English and Japanese\r\n- A newly arranged soundtrack from the original composer, Takeharu Ishimoto</p>', 'SS-Final Fantasy VII-0.jpg,SS-Final Fantasy VII-1.jpg,SS-Final Fantasy VII-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'Remaster of CRISIS CORE featuring updated graphics, combats', 'RPG', 'final fantasy', 'singleplayer', 'Windows', 'Base Game', 'Game-Final Fantasy VII.zip', 0, 'Cover-Final Fantasy VII.jpg', 46, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '1.99', '0000-00-00 00:00:00'),
-(181, 'grgr', 'released', '', 'SS-grgr-0.jpg,SS-grgr-1.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'follows a stray cat who falls into a walled city populated by robots, ', 'action', 'game,grgre', 'Single Player', 'Windows', 'Base Game', 'Game-grgr.zip', 0, 'Cover-grgr.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '0000-00-00 00:00:00'),
+(91, 'Scarlet Nexus', 'Upcoming', '<h3>ABOUT THIS GAME</h3>\r\n<p>In the far distant future, a psionic hormone was discovered in the human brain, granting people extra-sensory powers and changed the world as we knew it. As humanity entered this new era, deranged mutants known as Others began to descend from the sky with a hunger for human brains. Highly resistant to conventional attack methods, extreme measures needed to be taken to battle the overwhelming threat and preserve humanity. Those with acute extra-sensory abilities, known as psionics, were our only chance to fight the onslaught from above. Since then, psionics have been scouted for their talents and recruited to the Other Suppression Force (OSF), humanity’s last line of defense.\r\n</p>\r\n<br>\r\n<p>Featuring a dual story, begin your adventure with either Yuito Sumeragi, an energetic recruit from a prestigious political family or Kasane Randall, the mysterious scout whose power and skill has gained great notoriety among the OSF. As their different experiences interweave with each other, it is only then that you will reveal the full story and unlock all the mysteries of a Brain Punk future caught between technology and psychic abilities in SCARLET NEXUS.\r\n</p>\r\n<br>\r\n<p>Kinetic Psychic Combat – Using psycho-kinetic abilities, the world around you becomes your greatest weapon. Lift, break and throw pieces of your environment to build your attack combos and lay waste to your enemies.\r\n\r\nExterminate the Others – Deranged mutants that descended from the sky, highly resistant to conventional attack methods and defenses. Tormented by the constant pain of their mutation, they seek brains of living organisms to calm their madness.\r\n\r\nDiscover a Brain Punk future – Explore and protect a futuristic Japanese landscape that combines inspirations from classic anime and western science fiction.\r\n\r\nA Dual Story Experience – Dive into a complex story of bonds, courage and heroism, crafted by minds behind the iconic Tales of Vesperia.</p>', 'SS-Scarlet Nexus-0.jpg,SS-Scarlet Nexus-1.jpg,SS-Scarlet Nexus-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'Elite psionics each armed with a talent in psychokinesis', 'RPG', 'scarlet, nexus, rpg', 'Leaderboard', 'Windows,Linux', 'DLC', 'Game-Scarlet Nexus.zip', 0, 'Cover-Scarlet Nexus.jpg', 46, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '0', '0000-00-00 00:00:00'),
+(92, 'Naruto Shippuden', 'released', '<h3>ABOUT THIS GAME</h3>\r\n<br>\r\n<p>The latest opus in the acclaimed STORM series is taking you on a colourful and breathtaking ride. Take advantage of the totally revamped battle system and prepare to dive into the most epic fights you’ve ever seen in the NARUTO SHIPPUDEN: Ultimate Ninja STORM series!</p>\r\n<br>\r\n<p>\r\nPrepare for the most awaited STORM game ever created!</p>\r\n\r\n', 'SS-Naruto Shippuden-0.jpg,SS-Naruto Shippuden-1.jpg,SS-Naruto Shippuden-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'The latest opus in the acclaimed STORM series is taking you ', 'action', 'naruto, anime, shippuden', 'Multi-Player', 'Windows', 'Base Game', 'Game-Naruto Shippuden.zip', 0, 'Cover-Naruto Shippuden.jpg', 49, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '7.99', '0000-00-00 00:00:00'),
+(93, 'Monster Hunter Rise', 'Released', '<h3>ABOUT THIS GAME</h3>\r\n<br>\r\n<p>Rise to the challenge and join the hunt! In Monster Hunter Rise, the latest installment in the award-winning and top-selling Monster Hunter series, you’ll become a hunter, explore brand new maps and use a variety of weapons to take down fearsome monsters as part of an all-new storyline. The PC release also comes packed with a number of additional visual and performance enhancing optimizations.</p>\r\n<br>\r\n<h3>\r\nFerocious monsters with unique ecologies</h3>\r\n<p>\r\nHunt down a plethora of monsters with distinct behaviors and deadly ferocity. From classic returning monsters to all-new creatures inspired by Japanese folklore, including the flagship wyvern Magnamalo, you’ll need to think on your feet and master their unique tendencies if you hope to reap any of the rewards!</p>\r\n\r\n', 'SS-Monster Hunter Rise-0.jpg,SS-Monster Hunter Rise-1.jpg,SS-Monster Hunter Rise-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'Rise to the challenge and join the hunt! In Monster Hunter Rise', 'Strategy', 'monster hunter, rpg, singlepla', 'Single-Player', 'Windows', 'Base Game', 'Game-Monster Hunter Rise.zip', 0, 'Cover-Monster Hunter Rise.png', 46, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', '', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '4', '0000-00-00 00:00:00'),
+(95, 'Naruto Shippuden', 'released', '<h3>ABOUT THIS GAME</h3>\r\n<br>\r\n<p>The latest opus in the acclaimed STORM series is taking you on a colourful and breathtaking ride. Take advantage of the totally revamped battle system and prepare to dive into the most epic fights you’ve ever seen in the NARUTO SHIPPUDEN: Ultimate Ninja STORM series!</p>\r\n<br>\r\n<p>\r\nPrepare for the most awaited STORM game ever created!</p>\r\n\r\n', 'SS-Naruto Shippuden-0.jpg,SS-Naruto Shippuden-1.jpg,SS-Naruto Shippuden-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'The latest opus in the acclaimed STORM series is taking you ', 'action', 'naruto, anime, shippuden', 'Multi-Player,Single-Player', 'Windows', 'Base Game', 'Game-Naruto Shippuden.zip', 0, 'Cover-Naruto Shippuden.jpg', 46, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '0', '0000-00-00 00:00:00'),
+(96, 'Final Fantasy V', 'Upcoming', 'f<div><u>fefef</u>ffe<div>g</div><div>rgrg</div><div>g</div><div>g</div><div><u>grgrg</u></div></div>', 'SS-Final Fantasy V-0.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'Remaster of CRISIS CORE featuring updated graphics, combats', 'Strategy', ',grgrg,hth,ff', 'Single-Player,Achievements', 'Windows,Linux', 'DLC', 'Game-Final Fantasy V.zip', 0, 'Cover-Final Fantasy V.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '0000-00-00 00:00:00'),
+(181, 'grgr', 'released', '', 'SS-grgr-0.jpg,SS-grgr-1.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'follows a stray cat who falls into a walled city populated by robots, ', 'action', 'game,grgre', 'Multi Player', 'Windows', 'Base Game', 'Game-grgr.zip', 0, 'Cover-grgr.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '0000-00-00 00:00:00'),
 (182, 'greg', 'released', 'rhrhr <b>hrhrhrh&nbsp;</b>', 'SS-greg-0.jpg,SS-greg-1.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'follows a stray cat who falls into a walled city populated by robots, ', 'action', 'game,rhreh', 'Single Player', 'Windows', 'Base Game', 'Game-greg.zip', 0, 'Cover-greg.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
@@ -939,8 +941,8 @@ INSERT INTO `games_filters` (`id`, `type`, `filter`) VALUES
 (6, 'releaseStatus', 'Released'),
 (7, 'releaseStatus', 'Early Access'),
 (8, 'releaseStatus', 'Upcoming'),
-(9, 'features', 'Single Player'),
-(10, 'features', 'Multi Player'),
+(9, 'features', 'Single-Player'),
+(10, 'features', 'Multi-Player'),
 (11, 'features', 'Co-op'),
 (12, 'features', 'Puzzle'),
 (13, 'features', 'Achievements'),
@@ -955,7 +957,7 @@ INSERT INTO `games_filters` (`id`, `type`, `filter`) VALUES
 (23, 'classification', 'Racing'),
 (24, 'classification', 'Simulation'),
 (25, 'classification', 'Strategy'),
-(26, 'features', 'Online Co-op'),
+(26, 'features', 'Online-Co-op'),
 (27, 'features', 'Multiplayer Co-op'),
 (28, 'features', 'MMO'),
 (29, 'features', 'Split-Screen');
@@ -1174,7 +1176,10 @@ INSERT INTO `games_view_tracker` (`id`, `userID`, `sessionID`, `gameID`, `viewed
 (202, 46, 77, 92, '2023-04-12'),
 (203, 46, 77, 95, '2023-04-12'),
 (204, 46, 77, 91, '2023-04-12'),
-(205, 46, 77, 93, '2023-04-12');
+(205, 46, 77, 93, '2023-04-12'),
+(206, 46, 71, 96, '2023-04-13'),
+(207, 46, 17, 96, '2023-04-13'),
+(208, 46, 96, 96, '2023-04-13');
 
 -- --------------------------------------------------------
 
@@ -1320,7 +1325,7 @@ CREATE TABLE `game_stats` (
 --
 
 INSERT INTO `game_stats` (`id`, `gameID`, `views`, `downloads`, `ratings`, `revenue`) VALUES
-(1, 96, 34, 9, 1, 0),
+(1, 96, 37, 10, 1, 0),
 (2, 89, 13, 0, 0, 0),
 (3, 90, 23, 0, 0, 0),
 (4, 91, 30, 11, 0, 0),
@@ -1448,7 +1453,8 @@ INSERT INTO `game_stats_history` (`id`, `gameID`, `views`, `downloads`, `ratings
 (104, 92, 1, 0, 0, 0, '2023-04-12'),
 (105, 95, 1, 0, 0, 0, '2023-04-12'),
 (106, 91, 1, 0, 0, 0, '2023-04-12'),
-(107, 93, 1, 0, 0, 0, '2023-04-12');
+(107, 93, 1, 0, 0, 0, '2023-04-12'),
+(108, 96, 3, 1, 0, 0, '2023-04-13');
 
 -- --------------------------------------------------------
 
@@ -1484,7 +1490,7 @@ CREATE TABLE `gig` (
 INSERT INTO `gig` (`gigID`, `gigName`, `gigTrailor`, `gigScreenshot`, `gigDetails`, `game`, `gameDeveloperID`, `gamePublisherID`, `gigTagline`, `currentStage`, `plannedReleaseDate`, `estimatedShare`, `expectedCost`, `visibility`, `gigCoverImg`, `orderedDate`, `viewCount`, `requests`) VALUES
 (12, 'Local Bus Simulator', 'https://www.indiegala.com/login', 'SS-Naruto Shippuden-0.jpg,SS-Naruto Shippuden-1.jpg,SS-Naruto Shippuden-2.jpg', 'cscsc', 89, 46, 0, 'Bus simulator game consisting with customizable local buses ', 'adventure', '21/02/2024', '12%', '$1000', 'draft', 'Cover-Local Bus Simulator.jpg', NULL, 1, 0),
 (13, 'Indie Desert FPS ', 'https://www.indiegala.com/login', 'SS-Stray-0.jpg,SS-Stray-1.jpg,SS-Stray-2.jpg,SS-Stray-3.jpg', 'fefeff', 93, 51, 0, 'Surviving an endless desert after being stranded by you know', 'action', '21/02/2024', '12%', '$1000', 'draft', 'Cover-Indie Desert FPS .jpg', NULL, 0, 0),
-(20, 'New Gig', 'https://www.indiegala.com/login', 'SS-96-0.jpg,SS-96-1.jpg,SS-96-2.jpg', 'egrgr', 96, 46, 0, 'I am developing an open world game with extreme high movements', 'RPG', '21/02/2024', '12%', '$1000', 'draft', 'Cover-New Gig.png', NULL, 0, 0),
+(20, 'New Gig', 'https://www.indiegala.com/login', 'SS-96-0.jpg,SS-96-1.jpg,SS-96-2.jpg', 'egrgr', 96, 46, 0, 'I am developing an open world game with extreme high movements', 'RPG', '21/02/2024', '12%', '$1000', 'draft', 'Cover-New Gig.png', NULL, 1, 0),
 (21, 'Screenshot Test', 'https://www.indiegala.com/login', 'SS-96-0.jpg,SS-96-1.jpg,SS-96-2.jpg', 'fefefef', 96, 46, 0, 'I am developing an open world game with extreme high movements', 'action', '21/02/2024', '12%', '$1000', 'draft', 'Cover-Screenshot Test.jpg', NULL, 0, 0);
 
 -- --------------------------------------------------------
@@ -1545,7 +1551,8 @@ CREATE TABLE `gigs_views_tracker` (
 --
 
 INSERT INTO `gigs_views_tracker` (`id`, `userID`, `sessionID`, `gigID`, `viewedDate`) VALUES
-(1, 46, 77, 12, '2023-04-12');
+(1, 46, 77, 12, '2023-04-12'),
+(2, 46, 74, 20, '2023-04-13');
 
 -- --------------------------------------------------------
 
@@ -2218,7 +2225,7 @@ ALTER TABLE `complaint_reason_jams`
 -- AUTO_INCREMENT for table `crowdfund`
 --
 ALTER TABLE `crowdfund`
-  MODIFY `crowdFundID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `crowdFundID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `crowdfund_donations`
@@ -2230,7 +2237,7 @@ ALTER TABLE `crowdfund_donations`
 -- AUTO_INCREMENT for table `crowdfund_view_tracker`
 --
 ALTER TABLE `crowdfund_view_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `devlog`
@@ -2308,7 +2315,7 @@ ALTER TABLE `games_filters`
 -- AUTO_INCREMENT for table `games_view_tracker`
 --
 ALTER TABLE `games_view_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=206;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=209;
 
 --
 -- AUTO_INCREMENT for table `game_cart`
@@ -2344,7 +2351,7 @@ ALTER TABLE `game_stats`
 -- AUTO_INCREMENT for table `game_stats_history`
 --
 ALTER TABLE `game_stats_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 
 --
 -- AUTO_INCREMENT for table `gig`
@@ -2362,7 +2369,7 @@ ALTER TABLE `gigmessages`
 -- AUTO_INCREMENT for table `gigs_views_tracker`
 --
 ALTER TABLE `gigs_views_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `library`

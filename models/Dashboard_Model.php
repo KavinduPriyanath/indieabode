@@ -60,7 +60,9 @@ class Dashboard_Model extends Model
 
         $stmt->execute();
 
-        return $stmt->fetchAll();
+        $gigs = $stmt->fetchAll();
+
+        return $gigs;
     }
 
     function showAllMyGigRequests($devId)
@@ -168,7 +170,8 @@ class Dashboard_Model extends Model
         recommendGraphics = '$GameGraphics',
         other = '$GameOther',
         platform = '$platform',
-        gameType = '$gameType'
+        gameType = '$gameType',
+        gamePrice = '$gamePrice'
         WHERE gameID ='$gameID'";
 
         $stmt = $this->db->prepare($sql);
@@ -308,5 +311,130 @@ class Dashboard_Model extends Model
         $stmt->execute();
 
         return $stmt->fetchAll();
+    }
+
+    function FeatureTypes()
+    {
+
+        $sql = "SELECT * FROM games_filters WHERE type='features'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+
+    public function ThisGamesCrowdfunds($gameID)
+    {
+
+        $sql = "SELECT * FROM crowdfund WHERE gameName='$gameID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $crowdfund = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $crowdfund;
+    }
+
+    public function uploadCoverImg($gameName)
+    {
+        //upload cover image
+        $allowed_exts = array("jpg", "jpeg", "png");
+
+        $newImage = $_FILES['game-upload-cover-img']['name'];
+        $oldImage = $_POST['old-game-upload-cover-img'];
+
+        if ($newImage != '') {
+            $image = $newImage;
+        } else {
+            $image = $oldImage;
+        }
+
+        $game_cover_img_name = $image;
+
+
+        $game_cover_img_temp_name = $_FILES['game-upload-cover-img']['tmp_name'];
+
+        $game_cover_img_ext = strtolower(pathinfo($game_cover_img_name, PATHINFO_EXTENSION));
+
+        if (in_array($game_cover_img_ext, $allowed_exts)) {
+            $new_game_cover_img_name = "Cover-" . $gameName . '.' . $game_cover_img_ext;
+            $game_cover_upload_path = "public/uploads/games/cover/" . $new_game_cover_img_name;
+            move_uploaded_file($game_cover_img_temp_name, $game_cover_upload_path);
+        }
+
+        return $new_game_cover_img_name;
+    }
+
+    function uploadGameFile($gameName)
+    {
+
+        $newFile = $_FILES['upload-game']['name'];
+        $oldFile = $_POST['old-upload-game'];
+
+        if ($newFile != '') {
+            $file = $newFile;
+        } else {
+            $file = $oldFile;
+        }
+
+
+
+        //Game File
+        $game_file = $file;
+        //$asset_file_size = $_FILES['upload-asset']['size'];
+        $game_file_temp_name = $_FILES['upload-game']['tmp_name'];
+
+        $game_file_ext = strtolower(pathinfo($game_file, PATHINFO_EXTENSION));
+
+        $allowed_game_types = array("zip", "blend", "txt");
+
+        if (in_array($game_file_ext, $allowed_game_types)) {
+            $new_game_file_name = "Game-" . $gameName . '.' . $game_file_ext;
+            $game_upload_path = 'public/uploads/games/file/' . $new_game_file_name;
+            move_uploaded_file($game_file_temp_name, $game_upload_path);
+        } else if (!in_array($game_file_ext, $allowed_game_types) && $game_file) {
+            $incompatibleFileType = true;
+        }
+
+        return $new_game_file_name;
+    }
+
+    function uploadScreenshots($gameName)
+    {
+
+        $newScreenshots = $_FILES['game-screenshots']['name'];
+        // $oldScreenshots = $_POST['old-game-screenshots'];
+
+        // $oldSS = explode(",", $oldScreenshots);
+
+        $ssArray = $newScreenshots;
+
+
+
+        //Screenshots
+        $allowed_exts = array("jpg", "jpeg", "png");
+        $screenshots = [];
+        $ssCount = count($ssArray);
+        for ($i = 0; $i < $ssCount; $i++) {
+            $ssName = $ssArray[$i];
+            $ssExt = strtolower(pathinfo($ssName, PATHINFO_EXTENSION));
+            if (in_array($ssExt, $allowed_exts)) {
+
+                $newSSName = "SS-" . $gameName . '-' . $i . '.' . $ssExt;
+                $ss_upload_path = 'public/uploads/games/ss/' . $newSSName;
+
+                move_uploaded_file($_FILES['game-screenshots']['tmp_name'][$i], $ss_upload_path);
+
+                array_push($screenshots, $newSSName);
+            }
+        }
+
+        $screenshotsURL = implode(',', $screenshots);
+
+        return $screenshotsURL;
     }
 }
