@@ -95,7 +95,7 @@
                             <img id="chosen-image" src="public/uploads/portfolio/<?= $this->portfolioInfo['profilePhoto']; ?>">
                         </div>
                         <div class="image-buttons">
-                            <input type="file" id="upload-button" name="portfolio-img" accept=".jpg,.jpeg,.png">
+                            <input type="file" id="upload-button" name="portfolio-img" accept=".jpg,.jpeg,.png" value="<?= $this->portfolioInfo['profilePhoto']; ?>">
                             <label for="upload-button" id="upload-label">
                                 Upload Photo
                             </label>

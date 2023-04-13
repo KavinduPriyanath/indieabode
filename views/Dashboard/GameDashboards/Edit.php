@@ -46,7 +46,7 @@
                 <div class=" form-box">
 
                     <div class="upload-content">
-                        <form action="/indieabode/gameupload/uploadgame" method="POST" id="upload-game-form" class="input-upload-group" enctype="multipart/form-data">
+                        <form action="/indieabode/dashboard/editGame?id=<?= $this->game['gameID'] ?>" method="POST" id="upload-game-form" class="input-upload-group" enctype="multipart/form-data">
                             <div class="upload-row">
                                 <div class="upload-col-left">
 
@@ -159,7 +159,7 @@
                                         </div>
                                         <div id="paid-game-price-box" style="display: none" class="price-box">
                                             <p id="p">Set a price you need</p>
-                                            <input type="text" id="game-price-val" name="game-price-paid" />
+                                            <input type="text" id="game-price-val" name="game-price-paid" value="<?= $this->game['gamePrice'] ?>" />
                                         </div>
                                         <br><br>
                                     </div>
@@ -345,6 +345,7 @@
                                             </figure>
 
                                             <input type="file" id="upload-button" name="game-upload-cover-img" accept=".jpg,.jpeg,.png">
+                                            <input type="hidden" name="old-game-upload-cover-img" value="<?= $this->game['gameCoverImg'] ?>">
                                             <label for="upload-button" id="upload-label">
                                                 Upload Photo
                                             </label>
@@ -358,6 +359,7 @@
                                             <label>Upload Game</label><br>
                                             <!-- <input type="file" id="upload-game" name="upload-game">  -->
                                             <input type="file" id="upload-game" name="upload-game" accept=".zip">
+                                            <input type="hidden" name="old-upload-game" value="<?= $this->game['gameFile'] ?>">
                                             <label for="upload-game" id="upload-label">
                                                 Upload Game File
                                             </label>
@@ -374,12 +376,13 @@
                                         <p>These will appear on your game's page. Optional but highly recommended. Upload 3 to 5 for best results</p><br>
                                         <!-- <input type="file" id="game-screenshots" name="game-screenshots[]" accept=".jpg,.jpeg,.png" multiple="multiple"><br><br> -->
 
-
+                                        <!-- <input type="file" name="fef" id="fef" value="pic.jpg"> -->
                                         <div class="screenshot-container">
 
                                             <div id="screenshots"></div>
                                             <p id="num-of-files">No Files Chosen</p>
                                             <input type="file" id="file-input" accept="image/png, image/jpeg" onchange="preview()" name="game-screenshots[]" multiple>
+                                            <input type="hidden" name="old-game-screenshots" value="<?= $this->game['gameScreenshots'] ?>">
                                             <label for="file-input">
                                                 Add Screenshots
                                             </label>
@@ -625,6 +628,18 @@
 
         $(document).ready(function() {
 
+
+            // <?php foreach ($this->gameScreenshots as $gameScreenshot) { ?>
+
+            //     fileInput.files.push("<?= $gameScreenshot; ?>");
+
+            // <?php } ?>
+
+
+            // preview();
+
+            //for loading selected tags from database to the hidden input's value to be submitted in the case of no changes in tags
+            hiddenInput.value = tags;
 
 
             //for loading the relevant pricing details when the page loads with the selected price value of the game

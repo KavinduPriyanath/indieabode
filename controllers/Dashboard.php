@@ -114,19 +114,30 @@ class Dashboard extends Controller
         $gameID = $_GET['id'];
         $gameName = $_POST['game-title'];
         $releaseStatus = $_POST['game-status'];
-        $gameDetails = $_POST['game-details'];
-        $gameScreenshots = null;
-        // $this->model->uploadScreenshots($gameName);
+        $gameDetails = $_POST['description'];
+        $newScreenshots = $this->model->uploadScreenshots($gameName);
+        $oldScreenshots = $_POST['old-game-screenshots'];
+
+        if (empty($newScreenshots)) {
+            $gameScreenshots = $oldScreenshots;
+        } else {
+            $gameScreenshots = $newScreenshots;
+        }
+
         $gameTrailor = $_POST['game-illustration-vedio'];
         $gameTagline = $_POST['game-tagline'];
         $gameClassification = $_POST['game-classification'];
-        $gameTags = $_POST['game-tags'];
+        $tags = $_POST['game-tags'];
+
+        // $tags = implode(",", $gameTags);
+
         $gameType = $_POST['game-type'];
         $gameFeatures = $_POST['game-features'];
-        $gameFile = null;
-        // $this->model->uploadGameFile($gameName);
-        $gameCoverImg = null;
-        // $this->model->uploadCoverImg($gameName);
+
+        $features = implode(",", $gameFeatures);
+
+        $gameFile = $this->model->uploadGameFile($gameName);
+        $gameCoverImg = $this->model->uploadCoverImg($gameName);
         $gameDeveloperID = $_SESSION['id'];
 
         $minGameOS = $_POST['min-game-OS'];
@@ -142,7 +153,9 @@ class Dashboard extends Controller
         $GameGraphics = $_POST['game-graphics'];
         $GameOther = $_POST['game-other'];
 
-        $platform = $_POST['game-platform'];
+        $platform = $_POST['platform'];
+
+        $gamePlatforms = implode(",", $platform);
 
         if ($_POST['game-price'] == "Free") {
             $gamePrice = 0.00;
@@ -161,8 +174,8 @@ class Dashboard extends Controller
             $gameTrailor,
             $gameTagline,
             $gameClassification,
-            $gameTags,
-            $gameFeatures,
+            $tags,
+            $features,
             $gameFile,
             $gameCoverImg,
             $gameDeveloperID,
@@ -177,7 +190,7 @@ class Dashboard extends Controller
             $GameStorage,
             $GameGraphics,
             $GameOther,
-            $platform,
+            $gamePlatforms,
             $gameType,
             $gamePrice
         );
