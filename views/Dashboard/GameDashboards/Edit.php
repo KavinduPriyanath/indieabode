@@ -359,7 +359,7 @@
                                             <label>Upload Game</label><br>
                                             <!-- <input type="file" id="upload-game" name="upload-game">  -->
                                             <input type="file" id="upload-game" name="upload-game" accept=".zip">
-                                            <input type="hidden" name="old-upload-game" value="<?= $this->game['gameFile'] ?>">
+                                            <input type="hidden" name="old-upload-game" id="old-upload-game" value="<?= $this->game['gameFile'] ?>">
                                             <label for="upload-game" id="upload-label">
                                                 Upload Game File
                                             </label>
@@ -382,7 +382,7 @@
                                             <div id="screenshots"></div>
                                             <p id="num-of-files">No Files Chosen</p>
                                             <input type="file" id="file-input" accept="image/png, image/jpeg" onchange="preview()" name="game-screenshots[]" multiple>
-                                            <input type="hidden" name="old-game-screenshots" value="<?= $this->game['gameScreenshots'] ?>">
+                                            <input type="hidden" name="old-game-screenshots" id="old-game-screenshots" value="<?= $this->game['gameScreenshots'] ?>">
                                             <label for="file-input">
                                                 Add Screenshots
                                             </label>
@@ -569,6 +569,8 @@
 
         uploadButtongame.onchange = () => {
 
+            let percent = 0;
+
             let file = uploadButtongame.files[0];
             console.log(file);
 
@@ -577,12 +579,17 @@
 
             let http = new XMLHttpRequest();
             http.upload.addEventListener("progress", function(event) {
-                let percent = (event.loaded / event.total) * 100;
+                percent = (event.loaded / event.total) * 100;
                 document.querySelector("progress").value = Math.round(percent);
             });
 
             http.open("POST", "/indieabode/gameupload/file");
             http.send(formdata);
+        }
+
+        if ($("#old-upload-game").val() != "") {
+            percent = 100;
+            document.querySelector("progress").value = Math.round(percent);
         }
     </script>
 
@@ -597,7 +604,7 @@
             numOfFiles.style.display = "block";
             imageContainer.style.display = "block";
 
-            console.log(fileInput.files);
+            console.log(fileInput.files.length);
             for (i of fileInput.files) {
                 let reader = new FileReader();
                 let figure = document.createElement("figure");
@@ -613,6 +620,32 @@
                 imageContainer.appendChild(figure);
                 reader.readAsDataURL(i);
             }
+        }
+
+
+        function existingPreview() {
+
+            if (fileInput.files.length == 0) {
+                let screenshots = $("#old-game-screenshots").val();
+                let ssArray = screenshots.split(',');
+
+                imageContainer.innerHTML = "";
+                numOfFiles.textContent = `${ssArray.length} Files Selected`;
+                numOfFiles.style.display = "block";
+                imageContainer.style.display = "block";
+
+                for (let i = 0; i < ssArray.length; i++) {
+
+                    let figure = document.createElement("figure");
+                    let img = document.createElement("img");
+                    img.setAttribute("src", "<?php echo BASE_URL; ?>public/uploads/games/ss/" + ssArray[i]);
+                    figure.appendChild(img);
+                    imageContainer.appendChild(figure);
+
+                }
+
+            }
+
         }
     </script>
 
@@ -636,7 +669,7 @@
             // <?php } ?>
 
 
-            // preview();
+            existingPreview();
 
             //for loading selected tags from database to the hidden input's value to be submitted in the case of no changes in tags
             hiddenInput.value = tags;
