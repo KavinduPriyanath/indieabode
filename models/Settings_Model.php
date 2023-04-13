@@ -80,8 +80,8 @@ class Settings_Model extends Model
     {
         //upload cover image
         $allowed_exts = array("jpg", "jpeg", "png");
-        $game_cover_img_name = $_FILES['portfolio-img']['name'];
-        $game_cover_img_temp_name = $_FILES['portfolio-img']['tmp_name'];
+        $game_cover_img_name = $_POST['imgName'];
+        $game_cover_img_temp_name = $_POST['imgName'];
 
         $game_cover_img_ext = strtolower(pathinfo($game_cover_img_name, PATHINFO_EXTENSION));
 

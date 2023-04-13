@@ -67,7 +67,7 @@ class Settings extends Controller
 
             $userID = $_SESSION['id'];
             $displayName = $_POST['displayName'];
-            $displayImg = $this->model->uploadPortfolioImg($displayName);
+            $displayImg = $this->model->uploadPortfolioImg($_SESSION['id']);
             $website = $_POST['website'];
             $twitter = $_POST['twitter'];
             $linkedin = $_POST['linkedin'];
