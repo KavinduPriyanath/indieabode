@@ -323,4 +323,18 @@ class Dashboard_Model extends Model
 
         return $stmt->fetchAll();
     }
+
+    public function ThisGamesCrowdfunds($gameID)
+    {
+
+        $sql = "SELECT * FROM crowdfund WHERE gameName='$gameID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $crowdfund = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $crowdfund;
+    }
 }

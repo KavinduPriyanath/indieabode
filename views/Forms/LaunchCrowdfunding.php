@@ -41,7 +41,7 @@
                             <p>Choose the game that you are finding a publisher for</p>
                             <select id="game-name" name="game-name" required>
                                 <?php foreach ($this->games as $game) { ?>
-                                    <option value="<?= $game['gameName'] ?>"><?= $game['gameName'] ?></option>
+                                    <option value="<?= $game['gameID'] ?>"><?= $game['gameName'] ?></option>
                                 <?php } ?>
                             </select><br /><br />
                         </div>

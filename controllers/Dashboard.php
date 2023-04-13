@@ -185,6 +185,26 @@ class Dashboard extends Controller
         header('location:/indieabode/');
     }
 
+    function gameanalytics()
+    {
+        $gameStats = $this->model->GetGameStats($_GET['id']);
+
+        $downloads = [];
+        $dates = [];
+
+        foreach ($gameStats as $gameStat) {
+            array_push($downloads, $gameStat['downloads']);
+            array_push($dates, $gameStat['created_at']);
+        }
+
+        $this->view->alldownloads = $downloads;
+        $this->view->labelDates = $dates;
+
+        $this->view->game = $this->model->GetGameDetails($_GET['id']);
+
+        $this->view->render('Dashboard/GameDashboards/Analytics');
+    }
+
     function gamedevlogs()
     {
 
@@ -293,23 +313,12 @@ class Dashboard extends Controller
         header('location:/indieabode/');
     }
 
-    function gameanalytics()
+    function gamecrowdfunds()
     {
-        $gameStats = $this->model->GetGameStats($_GET['id']);
-
-        $downloads = [];
-        $dates = [];
-
-        foreach ($gameStats as $gameStat) {
-            array_push($downloads, $gameStat['downloads']);
-            array_push($dates, $gameStat['created_at']);
-        }
-
-        $this->view->alldownloads = $downloads;
-        $this->view->labelDates = $dates;
+        $this->view->crowdfund = $this->model->ThisGamesCrowdfunds($_GET['id']);
 
         $this->view->game = $this->model->GetGameDetails($_GET['id']);
 
-        $this->view->render('Dashboard/GameDashboards/Analytics');
+        $this->view->render('Dashboard/GameDashboards/Crowdfunds');
     }
 }

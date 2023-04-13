@@ -39,11 +39,11 @@
         <div class="content-row">
 
             <a href="/indieabode/creategig" id="gig-btn">
-                <div class="add-btn">
+                <div class="add-btn" id="crowdfundingbtn">
                     <div class="add-logo">
                         <img src="/indieabode/public/images/dashboard/add-devlog.png" alt="">
                     </div>
-                    <div class="text">Create new Gig</div>
+                    <div class="text">Launch a Crowdfunding</div>
                 </div>
             </a>
 
@@ -52,27 +52,27 @@
             <div class="devlog-cards">
                 <div class="game-card">
                     <div class="left-col">
-                        <div class="icon"><img src="/indieabode/public/uploads/games/cover/<?= $this->gig['gigCoverImg'] ?>" alt=""></div>
+                        <div class="icon"><img src="/indieabode/public/uploads/crowdfundings/cover/<?= $this->crowdfund['crowdfundCoverImg'] ?>" alt=""></div>
                         <div class="details">
-                            <div class="devlog-name"><?= $this->gig['gigName']; ?></div>
+                            <div class="devlog-name"><?= $this->crowdfund['title']; ?></div>
                             <div class="game-name">
-                                <?= $this->gig['game']; ?>
+                                <?= $this->crowdfund['gameName']; ?>
                             </div>
                         </div>
                     </div>
 
                     <div class="right-col">
                         <div class="views">
-                            <div class="count"><?= $this->gig['viewCount']; ?></div>
+                            <div class="count"><?= $this->crowdfund['viewCount']; ?></div>
                             <div class="label">views</div>
                         </div>
                         <div class="downloads">
-                            <div class="count"><?= $this->gig['requests']; ?></div>
-                            <div class="label">requests</div>
+                            <div class="count"><?= $this->crowdfund['backers']; ?></div>
+                            <div class="label">backers</div>
                         </div>
                         <div class="ratings">
-                            <div class="count">8</div>
-                            <div class="label">comments</div>
+                            <div class="count"><?= $this->crowdfund['currentAmount']; ?></div>
+                            <div class="label">revenue</div>
                         </div>
                     </div>
                     <a href="/indieabode/dashboard/editgig?gameid=<?= $this->game['gameID']; ?>&gigid=<?= $this->gig['gigID']; ?>">
