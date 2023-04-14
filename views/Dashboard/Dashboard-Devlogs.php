@@ -91,11 +91,11 @@
                                 <div class="label">comments</div>
                             </div>
                         </div>
-                        <div class="edit-btn">
-                            <a href="">
+                        <a href="/indieabode/dashboard/editdevlog?gameid=<?= $devlog['gameName']; ?>&postid=<?= $devlog['devLogID'] ?>">
+                            <div class="edit-btn">
                                 Edit
-                            </a>
-                        </div>
+                            </div>
+                        </a>
                     </div>
                 <?php } ?>
             </div>
