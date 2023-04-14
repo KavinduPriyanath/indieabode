@@ -279,7 +279,7 @@ class Dashboard extends Controller
 
     function editgig()
     {
-        $this->view->games = $this->model->showAllMyGames($_SESSION['id']);
+        // $this->view->games = $this->model->showAllMyGames($_SESSION['id']);
 
         $this->view->game = $this->model->GetGameDetails($_GET['gameid']);
 
@@ -295,23 +295,31 @@ class Dashboard extends Controller
         $gigName = $_POST['gig-title'];
         $tagline = $_POST['gig-tagline'];
         $description = $_POST['gig-details'];
-        $gameName = $_POST['game-name'];
+
         $currentStage = $_POST['current-stage'];
         $plannedReleaseDate = $_POST['planned-release'];
         $estimatedShare = $_POST['est-share'];
         $expectedCost = $_POST['expected-cost'];
         $visibility = $_POST['gig-visibility'];
-        $gigCoverImg = $this->model->uploadCoverImg($gigName);
-        $gigScreenshots = $this->model->uploadScreenshots($gameName);
+        $gigCoverImg = $this->model->uploadGigCoverImg($gigID);
+        // $gigScreenshots = $this->model->uploadScreenshots($gameName);
         $gigTrailer = $_POST['gig-trailer'];
         $developerID = $_SESSION['id'];
+
+        $newScreenshots = $this->model->uploadGigScreenshots($gigID);
+        $oldScreenshots = $_POST['old-gig-screenshots'];
+
+        if (empty($newScreenshots)) {
+            $gigScreenshots = $oldScreenshots;
+        } else {
+            $gigScreenshots = $newScreenshots;
+        }
 
         $this->model->EditExistingGig(
             $gigID,
             $gigName,
             $tagline,
             $description,
-            $gameName,
             $currentStage,
             $plannedReleaseDate,
             $estimatedShare,
@@ -319,8 +327,7 @@ class Dashboard extends Controller
             $visibility,
             $gigCoverImg,
             $gigScreenshots,
-            $gigTrailer,
-            $developerID
+            $gigTrailer
         );
 
         header('location:/indieabode/');
