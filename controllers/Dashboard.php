@@ -335,4 +335,46 @@ class Dashboard extends Controller
 
         $this->view->render('Dashboard/GameDashboards/Crowdfunds');
     }
+
+    function editCrowdfund()
+    {
+
+        $this->view->game = $this->model->GetGameDetails($_GET['gameid']);
+
+        $this->view->crowdfund = $this->model->GetCrowdfundDetails($_GET['crowdfundid']);
+
+        $this->view->render('Dashboard/GameDashboards/EditCrowdfund');
+    }
+
+    function editExistingCrowdfund()
+    {
+        $crowdfundID = $_GET['id'];
+        $crowdfundName = $_POST['crowdfund-title'];
+        $crowdfundTagline = $_POST['crowdfund-tagline'];
+        $crowdfundDetails = $_POST['crowdfund-details'];
+        $crowdfundTrailer = $_POST['crowdfund-trailer'];
+        $coverImg = $this->model->uploadCrowdfundCoverImg($crowdfundID);
+
+        $newScreenshots = $this->model->uploadCrowdfundScreenshots($crowdfundID);
+        $oldScreenshots = $_POST['old-crowdfund-screenshots'];
+
+        if (empty($newScreenshots)) {
+            $screenshots = $oldScreenshots;
+        } else {
+            $screenshots = $newScreenshots;
+        }
+
+
+        $this->model->EditExistingCrowdfund(
+            $crowdfundID,
+            $crowdfundName,
+            $crowdfundTagline,
+            $crowdfundDetails,
+            $coverImg,
+            $crowdfundTrailer,
+            $screenshots
+        );
+
+        header('location:/indieabode/');
+    }
 }

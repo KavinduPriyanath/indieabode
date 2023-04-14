@@ -102,9 +102,12 @@
                                 <div class="label">revenue</div>
                             </div>
                         </div>
-                        <div class="edit-btn">
-                            Edit
-                        </div>
+
+                        <a href="/indieabode/dashboard/editCrowdfund?gameid=<?= $crowdfunding['gameName']; ?>&crowdfundid=<?= $crowdfunding['crowdFundID']; ?>">
+                            <div class="edit-btn">
+                                Edit
+                            </div>
+                        </a>
                     </div>
                 <?php } ?>
             </div>

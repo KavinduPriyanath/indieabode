@@ -300,6 +300,46 @@ class Dashboard_Model extends Model
         return $gig;
     }
 
+
+    function GetCrowdfundDetails($crowdfundID)
+    {
+
+        $sql = "SELECT * FROM crowdfund WHERE crowdFundID='$crowdfundID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $crowdfund = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $crowdfund;
+    }
+
+    function EditExistingCrowdfund(
+        $crowdfundID,
+        $crowdfundName,
+        $crowdfundTagline,
+        $crowdfundDetails,
+        $coverImg,
+        $crowdfundTrailer,
+        $screenshots
+    ) {
+
+        $sql = "UPDATE crowdfund SET
+                title = '$crowdfundName',
+                tagline = '$crowdfundTagline',
+                details = '$crowdfundDetails',
+                crowdfundCoverImg = '$coverImg',
+                crowdfundSS = '$screenshots',
+                crowdfundTrailer = '$crowdfundTrailer'
+                WHERE crowdFundID = '$crowdfundID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+    }
+
+
     function GetGameStats($gameID)
     {
 
@@ -532,5 +572,66 @@ class Dashboard_Model extends Model
             $image = $oldImage;
             return $image;
         }
+    }
+
+    public function uploadCrowdfundCoverImg($gameName)
+    {
+        //upload cover image
+        $allowed_exts = array("jpg", "jpeg", "png");
+
+        $newImage = $_FILES['crowdfund-upload-cover-img']['name'];
+        $oldImage = $_POST['old-crowdfund-upload-cover-img'];
+
+        if ($newImage != '') {
+            $image = $newImage;
+
+            $game_cover_img_name = $image;
+
+
+            $game_cover_img_temp_name = $_FILES['crowdfund-upload-cover-img']['tmp_name'];
+
+            $game_cover_img_ext = strtolower(pathinfo($game_cover_img_name, PATHINFO_EXTENSION));
+
+            if (in_array($game_cover_img_ext, $allowed_exts)) {
+                $new_game_cover_img_name = "Cover-" . $gameName . '.' . $game_cover_img_ext;
+                $game_cover_upload_path = "public/uploads/crowdfundings/cover/" . $new_game_cover_img_name;
+                move_uploaded_file($game_cover_img_temp_name, $game_cover_upload_path);
+            }
+
+            return $new_game_cover_img_name;
+        } else {
+            $image = $oldImage;
+            return $image;
+        }
+    }
+
+    function uploadCrowdfundScreenshots($gameName)
+    {
+
+        $newScreenshots = $_FILES['crowdfund-screenshots']['name'];
+
+        $ssArray = $newScreenshots;
+
+        //Screenshots
+        $allowed_exts = array("jpg", "jpeg", "png");
+        $screenshots = [];
+        $ssCount = count($ssArray);
+        for ($i = 0; $i < $ssCount; $i++) {
+            $ssName = $ssArray[$i];
+            $ssExt = strtolower(pathinfo($ssName, PATHINFO_EXTENSION));
+            if (in_array($ssExt, $allowed_exts)) {
+
+                $newSSName = "SS-" . $gameName . '-' . $i . '.' . $ssExt;
+                $ss_upload_path = 'public/uploads/crowdfundings/screenshots/' . $newSSName;
+
+                move_uploaded_file($_FILES['crowdfund-screenshots']['tmp_name'][$i], $ss_upload_path);
+
+                array_push($screenshots, $newSSName);
+            }
+        }
+
+        $screenshotsURL = implode(',', $screenshots);
+
+        return $screenshotsURL;
     }
 }
