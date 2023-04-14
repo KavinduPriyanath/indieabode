@@ -230,8 +230,7 @@ class Dashboard extends Controller
 
     function editdevlog()
     {
-
-        $this->view->games = $this->model->showAllMyGames($_SESSION['id']);
+        $this->view->posttypes = $this->model->DevlogPostTypes();
 
         $this->view->game = $this->model->GetGameDetails($_GET['gameid']);
 
@@ -242,16 +241,13 @@ class Dashboard extends Controller
 
     function editExistingDevlog()
     {
-        $devlogID = $_GET['postid'];
+        $devlogID = $_GET['id'];
         $name = $_POST['title'];
         $tagline = $_POST['tagline'];
         $description = $_POST['devLog-details'];
         $type = $_POST['type'];
         $visibility = $_POST['dev-visibility'];
-        $gameName = $_POST['gname'];
-        $devlogImg = null;
-        // $this->model->uploadCoverImg($gameName);
-        $releaseDate = $_POST['rdate'];
+        $devlogImg = $this->model->uploadDevlogCoverImg($devlogID);
 
         $this->model->EditExistingDevlog(
             $devlogID,
@@ -260,9 +256,7 @@ class Dashboard extends Controller
             $description,
             $type,
             $visibility,
-            $devlogImg,
-            $gameName,
-            $releaseDate
+            $devlogImg
         );
 
         header('location:/indieabode/');

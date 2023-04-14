@@ -101,9 +101,11 @@
                                 <div class="label">comments</div>
                             </div>
                         </div>
-                        <div class="edit-btn">
-                            Edit
-                        </div>
+                        <a href="/indieabode/dashboard/editgig?gameid=<?= $gig['game'] ?>&gigid=<?= $gig['gigID'] ?>">
+                            <div class="edit-btn">
+                                Edit
+                            </div>
+                        </a>
                     </div>
                 <?php } ?>
             </div>
