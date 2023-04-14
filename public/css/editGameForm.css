@@ -549,4 +549,13 @@ input[type="checkbox"] {
     background: #2c52ed;
 }
 
+/*gigs*/
+#video-right input{
+    width: 316px;
+}
+
+#gig-left{
+    margin-right: 80px;
+}
+
   

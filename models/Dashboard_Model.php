@@ -252,7 +252,6 @@ class Dashboard_Model extends Model
         $gigName,
         $tagline,
         $description,
-        $gameName,
         $currentStage,
         $plannedReleaseDate,
         $estimatedShare,
@@ -261,30 +260,24 @@ class Dashboard_Model extends Model
         $gigCoverImg,
         $gigScreenshots,
         $gigTrailer,
-        $developerID
     ) {
-        $sql = "INSERT INTO gig (gigName, gigTagline, gigDetails, game, currentStage, 
-        plannedReleaseDate, estimatedShare, expectedCost, visibility, gigCoverImg, 
-        gigScreenshot, gigTrailor, gameDeveloperID) VALUES 
-        (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
+        $sql = "UPDATE gig SET
+                gigName = '$gigName',
+                gigTagline = '$tagline',
+                gigDetails = '$description',
+                currentStage = '$currentStage',
+                plannedReleaseDate = '$plannedReleaseDate',
+                estimatedShare = '$estimatedShare',
+                expectedCost = '$expectedCost',
+                gigTrailor = '$gigTrailer',
+                gigCoverImg = '$gigCoverImg',
+                gigScreenshot = '$gigScreenshots'
+                WHERE gigID = '$gigId'";
 
         $stmt = $this->db->prepare($sql);
 
-        $stmt->execute([
-            "$gigName",
-            "$tagline",
-            "$description",
-            "$gameName",
-            "$currentStage",
-            "$plannedReleaseDate",
-            "$estimatedShare",
-            "$expectedCost",
-            "$visibility",
-            "$gigCoverImg",
-            "$gigScreenshots",
-            "$gigTrailer",
-            "$developerID"
-        ]);
+        $stmt->execute();
     }
 
     function GetGigDetails($gigID)
@@ -428,6 +421,72 @@ class Dashboard_Model extends Model
                 $ss_upload_path = 'public/uploads/games/ss/' . $newSSName;
 
                 move_uploaded_file($_FILES['game-screenshots']['tmp_name'][$i], $ss_upload_path);
+
+                array_push($screenshots, $newSSName);
+            }
+        }
+
+        $screenshotsURL = implode(',', $screenshots);
+
+        return $screenshotsURL;
+    }
+
+    public function uploadGigCoverImg($gameName)
+    {
+        //upload cover image
+        $allowed_exts = array("jpg", "jpeg", "png");
+
+        $newImage = $_FILES['gig-upload-cover-img']['name'];
+        $oldImage = $_POST['old-gig-upload-cover-img'];
+
+        if ($newImage != '') {
+            $image = $newImage;
+
+            $game_cover_img_name = $image;
+
+
+            $game_cover_img_temp_name = $_FILES['gig-upload-cover-img']['tmp_name'];
+
+            $game_cover_img_ext = strtolower(pathinfo($game_cover_img_name, PATHINFO_EXTENSION));
+
+            if (in_array($game_cover_img_ext, $allowed_exts)) {
+                $new_game_cover_img_name = "Cover-" . $gameName . '.' . $game_cover_img_ext;
+                $game_cover_upload_path = "public/uploads/gigs/cover/" . $new_game_cover_img_name;
+                move_uploaded_file($game_cover_img_temp_name, $game_cover_upload_path);
+            }
+
+            return $new_game_cover_img_name;
+        } else {
+            $image = $oldImage;
+            return $image;
+        }
+    }
+
+    function uploadGigScreenshots($gameName)
+    {
+
+        $newScreenshots = $_FILES['gig-screenshots']['name'];
+        // $oldScreenshots = $_POST['old-game-screenshots'];
+
+        // $oldSS = explode(",", $oldScreenshots);
+
+        $ssArray = $newScreenshots;
+
+
+
+        //Screenshots
+        $allowed_exts = array("jpg", "jpeg", "png");
+        $screenshots = [];
+        $ssCount = count($ssArray);
+        for ($i = 0; $i < $ssCount; $i++) {
+            $ssName = $ssArray[$i];
+            $ssExt = strtolower(pathinfo($ssName, PATHINFO_EXTENSION));
+            if (in_array($ssExt, $allowed_exts)) {
+
+                $newSSName = "SS-" . $gameName . '-' . $i . '.' . $ssExt;
+                $ss_upload_path = 'public/uploads/gigs/screenshots/' . $newSSName;
+
+                move_uploaded_file($_FILES['gig-screenshots']['tmp_name'][$i], $ss_upload_path);
 
                 array_push($screenshots, $newSSName);
             }
