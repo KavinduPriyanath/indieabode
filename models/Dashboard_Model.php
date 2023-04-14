@@ -205,6 +205,17 @@ class Dashboard_Model extends Model
         return $devlog;
     }
 
+    function DevlogPostTypes()
+    {
+        $sql = "SELECT * FROM devlog_posttype";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+
     public function EditExistingDevlog(
         $devlogID,
         $name,
@@ -212,9 +223,7 @@ class Dashboard_Model extends Model
         $description,
         $type,
         $visibility,
-        $devlogImg,
-        $gameName,
-        $releaseDate
+        $devlogImg
     ) {
         $sql = "UPDATE devlog SET 
         `name` = '$name',
@@ -222,11 +231,8 @@ class Dashboard_Model extends Model
         `description` = '$description',
         `Type` = '$type',
         `Visibility` = '$visibility', 
-        `devlogImg` = '$devlogImg',
-        `gameName` = '$gameName', 
-        `ReleaseDate` = '$releaseDate' 
-        WHERE devLogID = '$devlogID'
-        ";
+        `devlogImg` = '$devlogImg'
+        WHERE devLogID = '$devlogID'";
 
         $stmt = $this->db->prepare($sql);
 
@@ -495,5 +501,36 @@ class Dashboard_Model extends Model
         $screenshotsURL = implode(',', $screenshots);
 
         return $screenshotsURL;
+    }
+
+    public function uploadDevlogCoverImg($gameName)
+    {
+        //upload cover image
+        $allowed_exts = array("jpg", "jpeg", "png");
+
+        $newImage = $_FILES['devlog_ss']['name'];
+        $oldImage = $_POST['old-devlog-ss'];
+
+        if ($newImage != '') {
+            $image = $newImage;
+
+            $game_cover_img_name = $image;
+
+
+            $game_cover_img_temp_name = $_FILES['devlog_ss']['tmp_name'];
+
+            $game_cover_img_ext = strtolower(pathinfo($game_cover_img_name, PATHINFO_EXTENSION));
+
+            if (in_array($game_cover_img_ext, $allowed_exts)) {
+                $new_game_cover_img_name = "Cover-" . $gameName . '.' . $game_cover_img_ext;
+                $game_cover_upload_path = "public/uploads/devlogs/" . $new_game_cover_img_name;
+                move_uploaded_file($game_cover_img_temp_name, $game_cover_upload_path);
+            }
+
+            return $new_game_cover_img_name;
+        } else {
+            $image = $oldImage;
+            return $image;
+        }
     }
 }

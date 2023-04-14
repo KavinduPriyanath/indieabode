@@ -554,7 +554,7 @@ input[type="checkbox"] {
     width: 316px;
 }
 
-#gig-left{
+#gig-left, #devlog-left{
     margin-right: 80px;
 }
 
