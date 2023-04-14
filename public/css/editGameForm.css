@@ -554,7 +554,7 @@ input[type="checkbox"] {
     width: 316px;
 }
 
-#gig-left, #devlog-left{
+#gig-left, #devlog-left, #crowdfund-left{
     margin-right: 80px;
 }
 

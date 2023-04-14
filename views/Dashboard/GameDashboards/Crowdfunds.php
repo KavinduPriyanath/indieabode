@@ -75,7 +75,7 @@
                             <div class="label">revenue</div>
                         </div>
                     </div>
-                    <a href="/indieabode/dashboard/editgig?gameid=<?= $this->game['gameID']; ?>&gigid=<?= $this->gig['gigID']; ?>">
+                    <a href="/indieabode/dashboard/editCrowdfund?gameid=<?= $this->game['gameID']; ?>&crowdfundid=<?= $this->crowdfund['crowdFundID']; ?>">
                         <div class="edit-btn">
                             Edit
                         </div>

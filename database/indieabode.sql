@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 13, 2023 at 08:07 PM
+-- Generation Time: Apr 14, 2023 at 08:41 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -44,7 +44,7 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`userID`, `profilePhoto`, `location`, `phoneNumber`, `displayName`, `twitter`, `linkedin`, `introduction`, `website`) VALUES
-(46, '', 'hrtht', '4543334', 'kavindu', 'rththt', 'hrtht', '', 'thhwwww'),
+(46, 'Portfolio-46.jpg', 'hrtht', '4543334', 'kavindu', 'rththt', 'hrtht', '', 'thhwwww'),
 (47, '', '', '', '', '', '', '', ''),
 (48, '', '', '', '', '', '', '', ''),
 (51, '', '', '', 'oh my god', '', '', '', ''),
@@ -441,15 +441,9 @@ CREATE TABLE `crowdfund` (
 --
 
 INSERT INTO `crowdfund` (`crowdFundID`, `currentAmount`, `deadline`, `expectedAmount`, `gameDeveloperName`, `gameName`, `title`, `tagline`, `backers`, `details`, `visibility`, `crowdfundCoverImg`, `crowdfundSS`, `crowdfundTrailer`, `viewCount`) VALUES
-(1, 0, '0000-00-00', 0, 12, 'Albion Online', 'ergrgrtg', 'dwd', 0, 'dwdwd', 'draft', 'Cover-Albion Online.jpg', 'SS-Albion Online-0.png,SS-Albion Online-1.png', 'https://itch.io/jam/my-first-game-jam-winter-2023', 1),
-(2, 0, '0000-00-00', 0, 0, 'Scarlet Nexus', 'ergrgrtg', 'gtgrtgrttrht', 0, 'hthth', 'draft', 'Cover-Scarlet Nexus.png', 'SS-Scarlet Nexus-0.jpg,SS-Scarlet Nexus-1.jpg,SS-Scarlet Nexus-2.jpg', 'https://itch.io/jam/my-first-game-jam-winter-2023', 0),
-(3, 0, '0000-00-00', 0, 0, 'Naruto Shippuden', 'ergrgrtgfef', 'ffef', 0, 'fefef', 'draft', 'Cover-Naruto Shippuden.jpg', 'SS-Naruto Shippuden-0.jpg,SS-Naruto Shippuden-1.jpg,SS-Naruto Shippuden-2.jpg', 'https://itch.io/jam/my-first-game-jam-winter-2023', 0),
-(4, 0, '0000-00-00', 0, 0, 'Albion Online 2', 'ergrgrtgd wdw', 'httrh', 0, 'fefe', 'draft', 'Cover-Albion Online 2.png', 'SS-Albion Online 2-0.jpg,SS-Albion Online 2-1.jpg', 'https://itch.io/jam/my-first-game-jam-winter-2023', 0),
-(5, 0, '0000-00-00', 0, 0, 'Albion Online', 'ergrgrtgffe', 'gtgrtgrttrht', 0, 'fefef', 'draft', 'Cover-Albion Online.png', 'SS-Albion Online-0.jpg,SS-Albion Online-1.jpg,SS-Albion Online-2.jpg', 'https://itch.io/jam/my-first-game-jam-winter-2023', 0),
-(6, 0, '2023-04-13', 0, 0, 'Monster Hunter Rise', 'new crowdfunding', 'gtgrtgrttrht', 0, '', 'draft', 'Cover-Monster Hunter Rise.jpg', 'SS-Monster Hunter Rise-0.jpg,SS-Monster Hunter Rise-1.jpg', 'https://itch.io/jam/my-first-game-jam-winter-2023', 0),
-(7, 0, '2023-04-28', 233, 0, 'Albion Online 3', 'grgrgg', 'grgrg', 0, 'grgg<div style=\"text-align: center;\">ggrghh</div><div style=\"text-align: center;\"><br></div>', 'draft', 'Cover-Albion Online 3.jpg', 'SS-Albion Online 3-0.jpg,SS-Albion Online 3-1.jpg', 'https://itch.io/jam/my-first-game-jam-winter-2023', 0),
-(8, 0, '2023-04-21', 0, 46, 'Scarlet Nexus', 'fefefg', 'gtgrtgrttrht', 0, 'egeg <b>gegeg </b>gegegg<div style=\"text-align: center;\">fefe</div>', 'draft', 'Cover-Scarlet Nexus.jpg', 'SS-Scarlet Nexus-0.jpg,SS-Scarlet Nexus-1.jpg', 'https://itch.io/jam/my-first-game-jam-winter-2023', 2),
-(9, 0, '2023-04-26', 0, 46, '96', 'ergregr', 'gtgrtgrttrht', 0, '<div style=\"text-align: center;\">gergreg&nbsp;</div><div style=\"text-align: center;\">rgreg</div>', 'draft', 'Cover-96.jpg', 'SS-96-0.jpg,SS-96-1.jpg', 'https://itch.io/jam/my-first-game-jam-winter-2023', 1);
+(4, 0, '2023-04-13', 0, 46, '96', 'ergrgrtgd wdw 111', 'httrh 11', 0, 'ffwf <b>fefefeef&nbsp;</b>', 'draft', 'Cover-4.jpg', 'SS-4-0.jpg,SS-4-1.jpg', 'https://itch.io/11/my-first-game-jam-winter-2023', 1),
+(6, 0, '2023-04-13', 0, 46, '95', 'new crowdfunding', 'gtgrtgrttrht', 0, '<h3>ABOUT THIS GAME</h3>\r\n<br>\r\n<p>Lost, alone and separated from family, a stray cat must untangle an ancient mystery to escape a long-forgotten city.\r\n\r\nStray is a third-person cat adventure game set amidst the detailed, neon-lit alleys of a decaying cybercity and the murky environments of its seedy underbelly. Roam surroundings high and low, defend against unforeseen threats and solve the mysteries of this unwelcoming place inhabited by curious droids and dangerous creatures.\r\n\r\nSee the world through the eyes of a cat and interact with the environment in playful ways. Be stealthy, nimble, silly, and sometimes as annoying as possible with the strange inhabitants of this mysterious world.\r\n\r\nAlong the way, the cat befriends a small flying drone, known only as B-12. With the help of this newfound companion, the duo must find a way out.\r\n\r\nStray is developed by BlueTwelve Studio, a small team from the south of France mostly made up of cats and a handful of humans.<p>', 'draft', 'Cover-Monster Hunter Rise.jpg', 'SS-Monster Hunter Rise-0.jpg,SS-Monster Hunter Rise-1.jpg', 'https://itch.io/jam/my-first-game-jam-winter-2023', 0),
+(11, 0, '2023-04-26', 234, 46, '91', 'htrhrt', 'gtgrtgrttrht', 0, 'gtthh<b>gtgt</b>', 'draft', 'Cover-91.jpg', 'SS-91-0.jpg,SS-91-1.jpg,SS-91-2.jpg', 'https://itch.io/jam/my-first-game-jam-winter-2023', 1);
 
 -- --------------------------------------------------------
 
@@ -502,7 +496,9 @@ INSERT INTO `crowdfund_view_tracker` (`id`, `userID`, `sessionID`, `crowdfundID`
 (1, 46, 77, 1, '2023-04-12'),
 (2, 46, 77, 8, '2023-04-12'),
 (3, 51, 90, 8, '2023-04-12'),
-(4, 46, 74, 9, '2023-04-13');
+(4, 46, 74, 9, '2023-04-13'),
+(5, 46, 96, 4, '2023-04-14'),
+(6, 46, 96, 11, '2023-04-15');
 
 -- --------------------------------------------------------
 
@@ -536,7 +532,7 @@ INSERT INTO `devlog` (`publishDate`, `description`, `name`, `Tagline`, `Type`, `
 ('2023-02-09 17:43:00', 'dwfwf', 'Level Editor Tutorial', 'Optimized level editor is available to players for free with extensions', 'Game Design', 'draft', 'SS-Final Fantasy VII.jpg', '93', 30, '2020-11-29 00:00:00', 1, 1, 1),
 ('2023-03-07 12:55:38', 'dwdw', 'dwd', 'ddwd', 'Tutorial', 'draft', 'SS-89.png', '89', 31, '0000-00-00 00:00:00', 1, 0, 0),
 ('2023-03-12 18:12:11', 'ththt', 'tthht', 'hth', 'Tutorial', 'draft', 'SS-89.png', '89', 34, '0000-00-00 00:00:00', 0, 0, 0),
-('2023-04-10 04:44:15', '', 'New Devlog', 'Hi all i have returned with a polished new devlog', 'Tutorial', 'draft', '', '95', 35, '0000-00-00 00:00:00', 0, 0, 0),
+('2023-04-10 04:44:15', 'fef <b>whats up</b>', 'New Devlog 1', 'Hello all i have returned with a polished new devlog', 'Marketing', 'draft', 'Cover-35.jpg', '95', 35, '0000-00-00 00:00:00', 0, 0, 1),
 ('2023-04-10 04:50:44', 'grgrg&nbsp;<div><div style=\"text-align: center;\">grgrgrgrgrgrg</div><div style=\"text-align: center;\"><br></div><div>grrgrg<b>grggrggrg grgrgeeg</b></div></div>', 'fefefg', 'ggrgrggg', 'Major Update', 'draft', 'SS-89.jpg', '89', 36, '0000-00-00 00:00:00', 1, 1, 0),
 ('2023-04-10 04:56:25', 'hththh<div>h</div><div>thththh</div><div><br></div><div style=\"text-align: center;\">htht</div>', 'grgrgr', 'hththth', 'Game Design', 'draft', 'SS-141.jpg', '141', 37, NULL, 1, 0, 0);
 
@@ -661,7 +657,8 @@ CREATE TABLE `devlog_view_tracker` (
 INSERT INTO `devlog_view_tracker` (`id`, `userID`, `sessionID`, `devlogID`, `viewedDate`) VALUES
 (1, 46, 10, 28, '2023-04-12'),
 (2, 51, 19, 28, '2023-04-12'),
-(3, 46, 77, 30, '2023-04-12');
+(3, 46, 77, 30, '2023-04-12'),
+(4, 46, 60, 35, '2023-04-14');
 
 -- --------------------------------------------------------
 
@@ -1488,10 +1485,10 @@ CREATE TABLE `gig` (
 --
 
 INSERT INTO `gig` (`gigID`, `gigName`, `gigTrailor`, `gigScreenshot`, `gigDetails`, `game`, `gameDeveloperID`, `gamePublisherID`, `gigTagline`, `currentStage`, `plannedReleaseDate`, `estimatedShare`, `expectedCost`, `visibility`, `gigCoverImg`, `orderedDate`, `viewCount`, `requests`) VALUES
-(12, 'Local Bus Simulator', 'https://www.indiegala.com/login', 'SS-Naruto Shippuden-0.jpg,SS-Naruto Shippuden-1.jpg,SS-Naruto Shippuden-2.jpg', 'cscsc', 89, 46, 0, 'Bus simulator game consisting with customizable local buses ', 'adventure', '21/02/2024', '12%', '$1000', 'draft', 'Cover-Local Bus Simulator.jpg', NULL, 1, 0),
-(13, 'Indie Desert FPS ', 'https://www.indiegala.com/login', 'SS-Stray-0.jpg,SS-Stray-1.jpg,SS-Stray-2.jpg,SS-Stray-3.jpg', 'fefeff', 93, 51, 0, 'Surviving an endless desert after being stranded by you know', 'action', '21/02/2024', '12%', '$1000', 'draft', 'Cover-Indie Desert FPS .jpg', NULL, 0, 0),
-(20, 'New Gig', 'https://www.indiegala.com/login', 'SS-96-0.jpg,SS-96-1.jpg,SS-96-2.jpg', 'egrgr', 96, 46, 0, 'I am developing an open world game with extreme high movements', 'RPG', '21/02/2024', '12%', '$1000', 'draft', 'Cover-New Gig.png', NULL, 1, 0),
-(21, 'Screenshot Test', 'https://www.indiegala.com/login', 'SS-96-0.jpg,SS-96-1.jpg,SS-96-2.jpg', 'fefefef', 96, 46, 0, 'I am developing an open world game with extreme high movements', 'action', '21/02/2024', '12%', '$1000', 'draft', 'Cover-Screenshot Test.jpg', NULL, 0, 0);
+(12, 'Local Bus Simulator', 'https://www.indiegala.com/login', 'SS-Naruto Shippuden-0.jpg,SS-Naruto Shippuden-1.jpg,SS-Naruto Shippuden-2.jpg', 'cscsc', 89, 46, 0, 'Bus simulator game consisting with customizable local buses ', '0', '21/02/2024', '12%', '$1000', 'draft', 'Cover-Local Bus Simulator.jpg', NULL, 1, 0),
+(13, 'Indie Desert FPS ', 'https://www.indiegala.com/login', 'SS-Stray-0.jpg,SS-Stray-1.jpg,SS-Stray-2.jpg,SS-Stray-3.jpg', 'fefeff', 93, 51, 0, 'Surviving an endless desert after being stranded by you know', '1', '21/02/2024', '12%', '$1000', 'draft', 'Cover-Indie Desert FPS .jpg', NULL, 1, 0),
+(20, 'New Gig', 'https://www.indieabode.ffcom', 'SS-20-0.jpg,SS-20-1.jpg,SS-20-2.jpg', 'fkh hthth<u>jyjyjyjj <b>yjtyjytjyj </b>jytjjjytjj yjtyjytj</u>', 96, 46, 0, 'I am developing an open world game with extreme high movements', '2', '2023-04-14', '3%', '$200', 'draft', 'Cover-20.jpg', NULL, 2, 0),
+(21, 'Screenshot Test', 'https://www.indiegala.com/login', 'SS-96-0.jpg,SS-96-1.jpg,SS-96-2.jpg', 'fefefef', 95, 46, 0, 'I am developing an open world game with extreme high movements', '4', '21/02/2024', '12%', '$1000', 'draft', 'Cover-Screenshot Test.jpg', NULL, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -1552,7 +1549,9 @@ CREATE TABLE `gigs_views_tracker` (
 
 INSERT INTO `gigs_views_tracker` (`id`, `userID`, `sessionID`, `gigID`, `viewedDate`) VALUES
 (1, 46, 77, 12, '2023-04-12'),
-(2, 46, 74, 20, '2023-04-13');
+(2, 46, 74, 20, '2023-04-13'),
+(3, 46, 52, 20, '2023-04-14'),
+(4, 46, 52, 13, '2023-04-14');
 
 -- --------------------------------------------------------
 
@@ -2225,7 +2224,7 @@ ALTER TABLE `complaint_reason_jams`
 -- AUTO_INCREMENT for table `crowdfund`
 --
 ALTER TABLE `crowdfund`
-  MODIFY `crowdFundID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `crowdFundID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `crowdfund_donations`
@@ -2237,13 +2236,13 @@ ALTER TABLE `crowdfund_donations`
 -- AUTO_INCREMENT for table `crowdfund_view_tracker`
 --
 ALTER TABLE `crowdfund_view_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `devlog`
 --
 ALTER TABLE `devlog`
-  MODIFY `devLogID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `devLogID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `devlog_comments`
@@ -2273,7 +2272,7 @@ ALTER TABLE `devlog_posttype`
 -- AUTO_INCREMENT for table `devlog_view_tracker`
 --
 ALTER TABLE `devlog_view_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `freeasset`
@@ -2369,7 +2368,7 @@ ALTER TABLE `gigmessages`
 -- AUTO_INCREMENT for table `gigs_views_tracker`
 --
 ALTER TABLE `gigs_views_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `library`
