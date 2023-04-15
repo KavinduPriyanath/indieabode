@@ -15,7 +15,7 @@
 
 <body>
     <div class="navbar admin-navbar">
-        <div class="logo"><a href="/indieabode">IndieAbode</a></div>
+        <div class="logo"><a href="/indieabode/developer/">IndieAbode</a></div>
         <a href="#" class="toggle-button">
             <span class="bar"></span>
             <span class="bar"></span>
