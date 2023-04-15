@@ -233,5 +233,95 @@ class Admin_userMg_Model extends Model
         return $submission;  
     }
     
+    //Report for Gamer
+    function gamer($user_id){
+
     
+        $sql = "SELECT * FROM downloadgame WHERE gamerID = ".$user_id;
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $user;
+    }
+
+    function dwGames($gameid){
+
+    
+        $sql = "SELECT * FROM freegame WHERE gameID = ".$gameid;
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $game = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        //echo $user;
+        return $game;
+    }
+
+    function participateCrowdfund($userid){
+        $sql = "SELECT * FROM participatecrowdfund WHERE gamerID = ".$userid;
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $donatedcrowdfunds = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        //echo $user;
+        return $donatedcrowdfunds;
+    }
+
+    function getCrowdfund($id){
+        $sql = "SELECT * FROM crowdfund WHERE crowdFundID = ".$id;
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $crowdfund = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        //echo $user;
+        return $crowdfund;
+    }
+
+    //rated jams 
+    function getRatedSubmissions($userid){
+        $sql = "SELECT * FROM ratesubmission WHERE gamerID = ".$userid;
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $submissions = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        //echo $user;
+        return $submissions;
+    }
+
+    function getJam($id){
+        $sql = "SELECT * FROM submission WHERE submissionID = ".$id;
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $jam = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $jamid = $jam[0]['gameJamID'];
+
+        $sql = "SELECT * FROM gamejam WHERE gameJamID = ".$jamid;
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $ratedjam = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $ratedjam;
+    }
 }
