@@ -1,4 +1,4 @@
-.developer-dashboard {
+.developer-dashboard, .creator-dashboard, .organizer-dashboard, .publisher-dashboard {
   background-color: rgba(100, 166, 204, 0.2);
   margin: 50px 210px 50px 210px;
   border-radius: 7px;
