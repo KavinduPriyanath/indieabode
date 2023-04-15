@@ -197,7 +197,7 @@
   text-decoration: none;
 }
 
-.gig-tabs {
+.gig-tabs, .jam-tabs {
   margin: 20px 120px 6px;
   font-size: 19px;
   display: flex;
@@ -208,10 +208,26 @@
   border: 1px solid rgb(96, 175, 212);
 }
 
-.gig-tabs .topic {
+.gig-tabs .topic, .jam-tabs .topic {
   margin-right: 40px;
 }
 
 .ongoing-requests-cards, .ordered-gigs-cards, .expired-crowdfund-cards, .cancelled-crowdfund-cards {
   display: none;
+}
+
+.jams-submitted {
+  display: none;
+}
+
+#gamejams-right-col {
+  justify-content: space-around;
+}
+
+#gamejams-left-col {
+  width: 380px;
+}
+
+#jam-status {
+  width: 90px;
 }

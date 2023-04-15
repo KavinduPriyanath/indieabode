@@ -50,6 +50,8 @@ class Dashboard extends Controller
 
     function gamejams()
     {
+        $this->view->gamejamsJoined = $this->model->JamsJoined($_SESSION['id']);
+
         $this->view->render('Dashboard/Dashboard-Jams');
     }
 
