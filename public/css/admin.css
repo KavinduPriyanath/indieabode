@@ -190,7 +190,7 @@ font-weight: 700;
 #content {
 position: relative;
 width: calc(100% - 260px);
-left: 260px;
+left: 200px;
 transition: all .3s ease;
 }
 #sidebar.hide + #content {

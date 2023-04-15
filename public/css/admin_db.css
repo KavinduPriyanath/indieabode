@@ -72,7 +72,6 @@ border: 2px solid #aec5c7;
 
 .addnew-admin-container{
 display:flex;
-gap:7%;
 }
 
 .add-new-btn{
@@ -101,7 +100,7 @@ font-size: 1.5em;
 }
 
 .bg-img-addnew{
-margin-top: 24%;
+margin-top: 11%;
 }
 
 .addnew-topic{
