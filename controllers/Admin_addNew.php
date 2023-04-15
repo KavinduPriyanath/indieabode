@@ -17,18 +17,22 @@ class Admin_addNew extends Controller
     function addAdmin()
     {
         $email = $_POST['email'];
-        $password = $_POST['password'];
+        // $password = $_POST['password'];
         $username = $_POST['username'];
-        $firstname = $_POST['firstname'];
-        $lastname = $_POST['lastname'];
-        $userRole = "Admin";
+        // $firstname = $_POST['firstname'];
+        // $lastname = $_POST['lastname'];
+        //$userRole = "Admin";
+
+        //generate a password for the admin
+        $password = $username.rand(1000, 9999);
+        echo $password;
 
         $count = $this->model->checkUser($email);
 
         if (!empty($count)) {
             header('location:/indieabode/dw');
         } else {
-            $this->model->insertUser($email, $username, $password, $firstname, $lastname,$userRole);
+            $this->model->insertUser($email, $username, $password);
 
             header('location:/indieabode/GameDB');
         }

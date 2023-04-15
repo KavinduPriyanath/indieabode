@@ -23,12 +23,12 @@ class Admin_addNew_Model extends Model
         //add all types of validation testing here
     }
 
-    public function insertUser($email, $username, $password, $firstname, $lastname,$userRole)
+    public function insertUser($email, $username, $password)
     {
-        $sql = "INSERT INTO gamer (email, username, password, firstName, lastName,userRole) VALUES (?,?,?,?,?,?)";
+        $sql = "INSERT INTO admin (email, username, password) VALUES (?,?,?)";
 
         $stmt = $this->db->prepare($sql);
 
-        $stmt->execute(["$email", "$username", "$password", "$firstname", "$lastname","$userRole"]);
+        $stmt->execute(["$email", "$username", "$password"]);
     }
 }
