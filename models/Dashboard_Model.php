@@ -649,4 +649,19 @@ class Dashboard_Model extends Model
 
         return $stmt->fetchAll();
     }
+
+    function JamsSubmitted($developerID)
+    {
+
+        $sql = "SELECT gamejam.gameJamID, gamejam.jamTitle, gamejam.jamType, 
+                gamejam.joinedCount, gamejam.submissionsCount, gamejam.jamCoverImg FROM gamejam 
+                INNER JOIN submission ON gamejam.gameJamID = submission.gameJamID 
+                WHERE submission.gamerID = '$developerID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
 }

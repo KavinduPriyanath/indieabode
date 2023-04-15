@@ -52,6 +52,8 @@ class Dashboard extends Controller
     {
         $this->view->gamejamsJoined = $this->model->JamsJoined($_SESSION['id']);
 
+        $this->view->gamejamsSubmitted = $this->model->JamsSubmitted($_SESSION['id']);
+
         $this->view->render('Dashboard/Dashboard-Jams');
     }
 

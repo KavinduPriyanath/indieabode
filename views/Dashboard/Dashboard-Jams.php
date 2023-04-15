@@ -98,6 +98,35 @@
 
             <div class="jams-submitted">
                 <h3>Game Jams You've Submitted To</h3>
+                <?php foreach ($this->gamejamsSubmitted as $jamSubmitted) { ?>
+                    <div class="game-card">
+                        <div class="left-col" id="gamejams-left-col">
+                            <div class="icon"><img src="/indieabode/public/uploads/gamejams/covers/<?= $jamSubmitted['jamCoverImg'] ?>" alt=""></div>
+                            <div class="details">
+                                <div class="devlog-name"><?= $jamSubmitted['jamTitle']; ?></div>
+                                <div class="game-name">
+                                    <?= $jamSubmitted['jamType']; ?>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="right-col" id="gamejams-right-col">
+                            <div class="downloads">
+                                <div class="count"><?= $jamSubmitted['joinedCount']; ?></div>
+                                <div class="label">joined</div>
+                            </div>
+                            <div class="ratings">
+                                <div class="count"><?= $jamSubmitted['submissionsCount']; ?></div>
+                                <div class="label">submissions</div>
+                            </div>
+                        </div>
+
+                        <div class="edit-btn" id="jam-status-submissions">
+                            View Submission
+                        </div>
+
+                    </div>
+                <?php } ?>
             </div>
 
         </div>
