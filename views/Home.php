@@ -21,19 +21,16 @@
     include 'includes/navbar.php';
     ?>
 
-    <?php echo $_SESSION['session']; ?>
-    <?php print_r($_SERVER['REMOTE_ADDR']); ?>
-
-
     <?php if (isset($_SESSION['status'])) { ?>
 
         <div class="flashMessage" id="flashMessage"><?= $_SESSION['status']; ?></div>
+        <?php unset($_SESSION['status']); ?>
+    <?php } ?>
 
 
 
-    <?php
-        unset($_SESSION['status']);
-    } ?>
+    <h3>Games</h3>
+
 
 
 
