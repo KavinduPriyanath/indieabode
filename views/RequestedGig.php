@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <title>Indieabode</title>
 
     <style>
@@ -83,12 +84,12 @@
                 <hr />
                 <div class="row">
                     <div class="col-1">Expected Cost</div>
-                    <div class="col-2"><?= $this->gig['expectedCost']; ?></div>
+                    <div class="col-2">$<?= $this->gig['expectedCost']; ?></div>
                 </div>
                 <hr />
                 <div class="row">
                     <div class="col-1">Estimated Share</div>
-                    <div class="col-2"><?= $this->gig['estimatedShare']; ?></div>
+                    <div class="col-2"><?= $this->gig['estimatedShare']; ?>%</div>
                 </div>
                 <hr />
                 <div class="row">
@@ -97,7 +98,7 @@
                 </div>
                 <hr />
             </div>
-            <div class="buy-button" onclick="ButtonClick()">Buy Order</div>
+            <div class="buy-button" onclick="ButtonClick()" id="buy-order">Buy Order</div>
         </div>
     </div>
 
@@ -161,7 +162,116 @@
                 </form>
             </section>
         </div>
-        <div class="customization-menu"></div>
+        <div class="customization-menu">
+
+            <div class="customization-header">
+                <h2>Customize Your Order</h2>
+            </div>
+
+            <div class="customization-table">
+                <div class="customization1">
+                    <div class="topic-custom-row">
+
+                        <div class="column1">
+                            Expected Cost
+                        </div>
+                        <div class="column2">
+                            Publisher
+                        </div>
+                        <div class="column3">
+                            Developer
+                        </div>
+
+                    </div>
+                    <div class="first-custom-row">
+
+                        <div class="column1">
+                            <input type="text" name="cost" id="cost" value="<?= $this->currentRequest['cost'] ?>">
+                        </div>
+                        <div class="column2">
+                            <div id="pub-cost">
+                                <div class="accept-text" id="publisher-cost">
+                                    Accept
+                                </div>
+                                <input type="hidden" name="pub-cost" id="pub-cost-input" value="<?= $this->currentRequest['publisherCostApproval'] ?>">
+                            </div>
+                            <div class="approved" id="publisher-cost-approval">
+                                <img src="/indieabode/public/images/publisher/approved.png" alt="">
+                            </div>
+                        </div>
+                        <div class="column3">
+                            <div id="dev-cost">
+                                <div class="accept-text" id="developer-cost">
+                                    Accept
+                                </div>
+                                <input type="hidden" name="dev-cost" id="dev-cost-input" value="<?= $this->currentRequest['developerCostApproval'] ?>">
+                            </div>
+                            <div class="approved" id="developer-cost-approval">
+                                <img src="/indieabode/public/images/publisher/approved.png" alt="">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="reset" id="reset-cost">Reset Cost Settings</div>
+                </div>
+
+                <div class="customization2">
+                    <div class="topic-custom-row">
+
+                        <div class="column1">
+                            Estimated Share
+                        </div>
+                        <div class="column2">
+                            Publisher
+
+                        </div>
+                        <div class="column3">
+                            Developer
+                        </div>
+
+                    </div>
+                    <div class="second-custom-row">
+
+                        <div class="column1">
+                            <input type="number" name="share" id="share" value="<?= $this->currentRequest['share'] ?>" min=1 max=100>
+                        </div>
+                        <div class="column2">
+                            <div id="pub-share">
+                                <div class="accept-text" id="publisher-share">
+                                    Accept
+                                </div>
+                                <input type="hidden" name="pub-share" id="pub-share-input" value="<?= $this->currentRequest['publisherShareApproval'] ?>">
+                            </div>
+                            <div class="approved" id="publisher-share-approval">
+                                <img src="/indieabode/public/images/publisher/approved.png" alt="">
+                            </div>
+                        </div>
+                        <div class="column3">
+                            <div id="dev-share">
+                                <div class="accept-text" id="developer-share">
+                                    Accept
+                                </div>
+                                <input type="hidden" name="dev-share" id="dev-share-input" value="<?= $this->currentRequest['developerShareApproval'] ?>">
+                            </div>
+                            <div class="approved" id="developer-share-approval">
+                                <img src="/indieabode/public/images/publisher/approved.png" alt="">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="reset" id="reset-share">Reset Share Settings</div>
+                </div>
+
+            </div>
+
+            <div class="negotiation-status">
+                <div class="success" id="success">
+                    Negotiation Successful
+                </div>
+            </div>
+
+
+        </div>
     </div>
 
     <?php
@@ -182,6 +292,306 @@
             document.getElementById('collapse').classList.toggle('active');
         }
     </script>
+
+    <script>
+        $(document).ready(function() {
+
+            //if both publisher and developer has not come to an agreement on both cost and share then prevent the publisher from buying the gig
+            <?php if ($this->currentRequest['eligible'] == 0) { ?>
+                $('#buy-order').hide();
+            <?php } else { ?>
+                $('#buy-order').show();
+            <?php } ?>
+
+
+            <?php if ($this->currentRequest['publisherCostApproval'] == "Approved") { ?>
+                $('#publisher-cost-approval').show();
+                $('#publisher-cost').hide();
+                $('#cost').prop("readonly", true);
+            <?php } else if ($this->currentRequest['publisherCostApproval'] == "null") { ?>
+                $('#publisher-cost-approval').hide();
+
+            <?php } ?>
+
+
+            <?php if ($this->currentRequest['developerCostApproval'] == "Approved") { ?>
+                $('#developer-cost-approval').show();
+                $('#developer-cost').hide();
+                $('#cost').prop("readonly", true);
+            <?php } else if ($this->currentRequest['developerCostApproval'] == "null") { ?>
+                $('#developer-cost-approval').hide();
+            <?php } ?>
+
+
+            <?php if ($_SESSION['userRole'] == "game publisher") { ?>
+                $('#pub-cost').click(function() {
+
+                    $('#pub-cost-input').val("Approved");
+
+                    let gigToken = <?= $_GET['token'] ?>;
+                    let cost = $('#cost').val();
+                    let share = $('#share').val();
+                    let publisherCostApproval = "Approved";
+                    let developerCostApproval = $('#dev-cost-input').val();
+
+                    let publisherShareApproval = $('#pub-share-input').val();
+                    let developerShareApproval = $('#dev-share-input').val();
+
+                    var data = {
+                        'gigToken': gigToken,
+                        'cost': cost,
+                        'share': share,
+                        'pubCostAppr': publisherCostApproval,
+                        'devCostAppr': developerCostApproval,
+                        'pubShareAppr': publisherShareApproval,
+                        'devShareAppr': developerShareApproval,
+                        'gig_request_update': true,
+                    };
+
+                    $.ajax({
+                        url: "/indieabode/gig/updateCurrentRequest",
+                        method: "POST",
+                        data: data,
+                        success: function(response) {
+
+                            $('#publisher-cost-approval').show();
+                            $('#publisher-cost').hide();
+                            $('#cost').prop("readonly", true);
+                        }
+                    })
+
+                });
+            <?php } ?>
+
+            <?php if ($_SESSION['userRole'] == "game developer") { ?>
+                $('#dev-cost').click(function() {
+
+                    $('#dev-cost-input').val("Approved");
+
+                    let gigToken = <?= $_GET['token'] ?>;
+                    let cost = $('#cost').val();
+                    let share = $('#share').val();
+                    let publisherCostApproval = $('#pub-cost-input').val();
+                    let developerCostApproval = "Approved";
+
+                    let publisherShareApproval = $('#pub-share-input').val();
+                    let developerShareApproval = $('#dev-share-input').val();
+
+                    var data = {
+                        'gigToken': gigToken,
+                        'cost': cost,
+                        'share': share,
+                        'pubCostAppr': publisherCostApproval,
+                        'devCostAppr': developerCostApproval,
+                        'pubShareAppr': publisherShareApproval,
+                        'devShareAppr': developerShareApproval,
+                        'gig_request_update': true,
+                    };
+
+                    $.ajax({
+                        url: "/indieabode/gig/updateCurrentRequest",
+                        method: "POST",
+                        data: data,
+                        success: function(response) {
+
+                            $('#developer-cost-approval').show();
+                            $('#developer-cost').hide();
+                            $('#cost').prop("readonly", true);
+                        }
+                    })
+
+                });
+            <?php } ?>
+
+            $('#reset-cost').click(function() {
+
+                $('#dev-cost-input').val("null");
+                $('#pub-cost-input').val("null");
+
+                let gigToken = <?= $_GET['token'] ?>;
+                let cost = <?= $this->gig['expectedCost']; ?>;
+                let share = $('#share').val();
+                let publisherCostApproval = "null";
+                let developerCostApproval = "null";
+
+                let publisherShareApproval = $('#pub-share-input').val();
+                let developerShareApproval = $('#dev-share-input').val();
+
+                var data = {
+                    'gigToken': gigToken,
+                    'cost': cost,
+                    'share': share,
+                    'pubCostAppr': publisherCostApproval,
+                    'devCostAppr': developerCostApproval,
+                    'pubShareAppr': publisherShareApproval,
+                    'devShareAppr': developerShareApproval,
+                    'gig_request_update': true,
+                };
+
+                $.ajax({
+                    url: "/indieabode/gig/updateCurrentRequest",
+                    method: "POST",
+                    data: data,
+                    success: function(response) {
+
+                        $('#developer-cost-approval').hide();
+                        $('#publisher-cost-approval').hide();
+                        $('#publisher-cost').show();
+                        $('#developer-cost').show();
+                        $('#cost').val(<?= $this->gig['expectedCost']; ?>)
+                        $('#cost').prop("readonly", false);
+                    }
+                })
+
+            });
+
+
+            <?php if ($this->currentRequest['publisherShareApproval'] == "Approved") { ?>
+                $('#publisher-share-approval').show();
+                $('#publisher-share').hide();
+                $('#share').prop("readonly", true);
+            <?php } else if ($this->currentRequest['publisherShareApproval'] == "null") { ?>
+                $('#publisher-share-approval').hide();
+
+            <?php } ?>
+
+
+            <?php if ($this->currentRequest['developerShareApproval'] == "Approved") { ?>
+                $('#developer-share-approval').show();
+                $('#developer-share').hide();
+                $('#share').prop("readonly", true);
+            <?php } else if ($this->currentRequest['developerShareApproval'] == "null") { ?>
+                $('#developer-share-approval').hide();
+            <?php } ?>
+
+
+            <?php if ($_SESSION['userRole'] == "game publisher") { ?>
+                $('#pub-share').click(function() {
+
+                    $('#pub-share-input').val("Approved");
+
+                    let gigToken = <?= $_GET['token'] ?>;
+                    let cost = $('#cost').val();
+                    let share = $('#share').val();
+                    let publisherCostApproval = $('#pub-cost-input').val();
+                    let developerCostApproval = $('#dev-cost-input').val();
+
+                    let publisherShareApproval = "Approved";
+                    let developerShareApproval = $('#dev-share-input').val();
+
+                    var data = {
+                        'gigToken': gigToken,
+                        'cost': cost,
+                        'share': share,
+                        'pubCostAppr': publisherCostApproval,
+                        'devCostAppr': developerCostApproval,
+                        'pubShareAppr': publisherShareApproval,
+                        'devShareAppr': developerShareApproval,
+                        'gig_request_update': true,
+                    };
+
+                    $.ajax({
+                        url: "/indieabode/gig/updateCurrentRequest",
+                        method: "POST",
+                        data: data,
+                        success: function(response) {
+
+                            $('#publisher-share-approval').show();
+                            $('#publisher-share').hide();
+                            $('#share').prop("readonly", true);
+                        }
+                    })
+
+                });
+            <?php } ?>
+
+
+            <?php if ($_SESSION['userRole'] == "game developer") { ?>
+                $('#dev-share').click(function() {
+
+                    $('#dev-share-input').val("Approved");
+
+                    let gigToken = <?= $_GET['token'] ?>;
+                    let cost = $('#cost').val();
+                    let share = $('#share').val();
+                    let publisherCostApproval = $('#pub-cost-input').val();
+                    let developerCostApproval = $('#dev-cost-input').val();
+
+                    let publisherShareApproval = $('#pub-share-input').val();
+                    let developerShareApproval = "Approved";
+
+                    var data = {
+                        'gigToken': gigToken,
+                        'cost': cost,
+                        'share': share,
+                        'pubCostAppr': publisherCostApproval,
+                        'devCostAppr': developerCostApproval,
+                        'pubShareAppr': publisherShareApproval,
+                        'devShareAppr': developerShareApproval,
+                        'gig_request_update': true,
+                    };
+
+                    $.ajax({
+                        url: "/indieabode/gig/updateCurrentRequest",
+                        method: "POST",
+                        data: data,
+                        success: function(response) {
+
+                            $('#developer-share-approval').show();
+                            $('#developer-share').hide();
+                            $('#share').prop("readonly", true);
+                        }
+                    })
+
+                });
+            <?php } ?>
+
+            $('#reset-share').click(function() {
+
+                $('#dev-share-input').val("null");
+                $('#pub-share-input').val("null");
+
+                let gigToken = <?= $_GET['token'] ?>;
+                let cost = $('#cost').val();
+                let share = <?= $this->gig['estimatedShare']; ?>;
+                let publisherCostApproval = $('#pub-cost-input').val();
+                let developerCostApproval = $('#dev-cost-input').val();
+
+                let publisherShareApproval = "null";
+                let developerShareApproval = "null";
+
+                var data = {
+                    'gigToken': gigToken,
+                    'cost': cost,
+                    'share': share,
+                    'pubCostAppr': publisherCostApproval,
+                    'devCostAppr': developerCostApproval,
+                    'pubShareAppr': publisherShareApproval,
+                    'devShareAppr': developerShareApproval,
+                    'gig_request_update': true,
+                };
+
+                $.ajax({
+                    url: "/indieabode/gig/updateCurrentRequest",
+                    method: "POST",
+                    data: data,
+                    success: function(response) {
+
+                        $('#developer-share-approval').hide();
+                        $('#publisher-share-approval').hide();
+                        $('#publisher-share').show();
+                        $('#developer-share').show();
+                        $('#share').val(<?= $this->gig['estimatedShare']; ?>)
+                        $('#share').prop("readonly", false);
+                    }
+                })
+
+            });
+
+
+        });
+    </script>
+
 
 
     <script>

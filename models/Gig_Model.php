@@ -56,11 +56,11 @@ class Gig_Model extends Model
         return $screenshots;
     }
 
-    function RequestGig($gigId, $developerId, $publisherId)
+    function RequestGig($gigId, $developerId, $publisherId, $cost, $share)
     {
         $token = $gigId . $publisherId;
 
-        $sql = "INSERT INTO requestedGigs(gigID, developerID, publisherID, gigToken) VALUES ('$gigId', '$developerId', '$publisherId', '$token')";
+        $sql = "INSERT INTO requestedGigs(gigID, developerID, publisherID, gigToken, cost, share) VALUES ('$gigId', '$developerId', '$publisherId', '$token', '$cost', '$share')";
 
         $stmt = $this->db->prepare($sql);
 
@@ -95,6 +95,34 @@ class Gig_Model extends Model
         $stmt->execute();
 
         return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    function updateCurrentRequest($gigToken, $cost, $share, $pubShareApproval, $devShareApproval, $pubCostApproval, $devCostApproval)
+    {
+
+
+        $sql = "UPDATE requestedgigs SET
+                cost = '$cost',
+                share = '$share',
+                publisherCostApproval = '$pubCostApproval',
+                developerCostApproval = '$devCostApproval',
+                publisherShareApproval = '$pubShareApproval',
+                developerShareApproval = '$devShareApproval'
+                WHERE gigToken = '$gigToken'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+    }
+
+    function UpdateEligibilityOfRequest($gigToken)
+    {
+
+        $sql = "UPDATE requestedgigs SET eligible = 1 WHERE gigToken = '$gigToken'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
     }
 
     function InsertMessages($gigId, $senderID, $receiverID, $message)

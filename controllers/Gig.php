@@ -44,15 +44,18 @@ class Gig extends Controller
 
     function gigrequest()
     {
-        $gigID = $_GET['id'];
 
-        $developer = $this->model->getGameDeveloper($this->model->showSingleGig($gigID));
 
-        $this->model->RequestGig($gigID, $developer['gamerID'], $_SESSION['id']);
+        if ($_POST['gig_request_made'] == true) {
 
-        // $query = parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
-        // parse_str($query, $result);
-        // header('location:/indieabode/gig?' . http_build_query($result));
+            $gigID = $_POST['gigID'];
+            $estimatedShare = $_POST['estimatedShare'];
+            $expectedCost = $_POST['expectedCost'];
+
+            $developer = $this->model->getGameDeveloper($this->model->showSingleGig($gigID));
+
+            $this->model->RequestGig($gigID, $developer['gamerID'], $_SESSION['id'], $expectedCost, $estimatedShare);
+        }
     }
 
     function viewgig()
@@ -75,6 +78,34 @@ class Gig extends Controller
         $this->view->ssCount = count($this->model->getScreenshots($gigID));
 
         $this->view->render('RequestedGig');
+    }
+
+    function updateCurrentRequest()
+    {
+        if ($_POST['gig_request_update'] == true) {
+
+            $gigToken = $_POST['gigToken'];
+            $cost = $_POST['cost'];
+            $share = $_POST['share'];
+            $pubShareApproval = $_POST['pubShareAppr'];
+            $devShareApproval = $_POST['devShareAppr'];
+            $pubCostApproval = $_POST['pubCostAppr'];
+            $devCostApproval = $_POST['devCostAppr'];
+
+
+            $this->model->updateCurrentRequest($gigToken, $cost, $share, $pubShareApproval, $devShareApproval, $pubCostApproval, $devCostApproval);
+        }
+    }
+
+    function updateEligibility()
+    {
+
+        if ($_POST['eligible'] == true) {
+
+            $gigToken = $_POST['gigToken'];
+
+            $this->model->UpdateEligibilityOfRequest($gigToken);
+        }
     }
 
     function sendMessages()
