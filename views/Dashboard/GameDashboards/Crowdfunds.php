@@ -47,41 +47,47 @@
                 </div>
             </a>
 
-            <h3>Published Gigs</h3>
+            <h3>Launched Crowdfunding</h3>
 
-            <div class="devlog-cards">
-                <div class="game-card">
-                    <div class="left-col">
-                        <div class="icon"><img src="/indieabode/public/uploads/crowdfundings/cover/<?= $this->crowdfund['crowdfundCoverImg'] ?>" alt=""></div>
-                        <div class="details">
-                            <div class="devlog-name"><?= $this->crowdfund['title']; ?></div>
-                            <div class="game-name">
-                                <?= $this->crowdfund['gameName']; ?>
+            <?php if (!empty($this->crowdfund)) { ?>
+                <div class="devlog-cards">
+                    <div class="game-card">
+                        <div class="left-col">
+                            <div class="icon"><img src="/indieabode/public/uploads/crowdfundings/cover/<?= $this->crowdfund['crowdfundCoverImg'] ?>" alt=""></div>
+                            <div class="details">
+                                <div class="devlog-name"><?= $this->crowdfund['title']; ?></div>
+                                <div class="game-name">
+                                    <?= $this->crowdfund['gameName']; ?>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="right-col">
-                        <div class="views">
-                            <div class="count"><?= $this->crowdfund['viewCount']; ?></div>
-                            <div class="label">views</div>
+                        <div class="right-col">
+                            <div class="views">
+                                <div class="count"><?= $this->crowdfund['viewCount']; ?></div>
+                                <div class="label">views</div>
+                            </div>
+                            <div class="downloads">
+                                <div class="count"><?= $this->crowdfund['backers']; ?></div>
+                                <div class="label">backers</div>
+                            </div>
+                            <div class="ratings">
+                                <div class="count"><?= $this->crowdfund['currentAmount']; ?></div>
+                                <div class="label">revenue</div>
+                            </div>
                         </div>
-                        <div class="downloads">
-                            <div class="count"><?= $this->crowdfund['backers']; ?></div>
-                            <div class="label">backers</div>
-                        </div>
-                        <div class="ratings">
-                            <div class="count"><?= $this->crowdfund['currentAmount']; ?></div>
-                            <div class="label">revenue</div>
-                        </div>
+                        <a href="/indieabode/dashboard/editCrowdfund?gameid=<?= $this->game['gameID']; ?>&crowdfundid=<?= $this->crowdfund['crowdFundID']; ?>">
+                            <div class="edit-btn">
+                                Edit
+                            </div>
+                        </a>
                     </div>
-                    <a href="/indieabode/dashboard/editCrowdfund?gameid=<?= $this->game['gameID']; ?>&crowdfundid=<?= $this->crowdfund['crowdFundID']; ?>">
-                        <div class="edit-btn">
-                            Edit
-                        </div>
-                    </a>
                 </div>
-            </div>
+            <?php } else { ?>
+
+                <div class="empty-msg">- This game has no ongoing crowdfunding -</div>
+
+            <?php } ?>
 
         </div>
     </div>

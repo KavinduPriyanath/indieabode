@@ -53,6 +53,28 @@
 
             <div class="analytics-header">Other related views for <?= $this->game['gameName'] ?></div>
 
+
+            <div class="other-view-table">
+                <table>
+                    <tr>
+                        <th id="column1">Type</th>
+                        <th id="column2">Views</th>
+                    </tr>
+                    <tr>
+                        <td>Devlogs</td>
+                        <td class="value-column"><?= $this->devlogViews ?></td>
+                    </tr>
+                    <tr>
+                        <td>Gig</td>
+                        <td class="value-column"><?= $this->gigViews ?></td>
+                    </tr>
+                    <tr>
+                        <td>Crowdfunding</td>
+                        <td class="value-column"><?= $this->crowdfundViews ?></td>
+                    </tr>
+                </table>
+            </div>
+
         </div>
     </div>
 
