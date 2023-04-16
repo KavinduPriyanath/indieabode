@@ -39,14 +39,19 @@
         <div class="content-row">
 
 
-            <div style="width: 600px; height: 600px">
-                <canvas id="myChart"></canvas>
+            <div class="analytics-header">Views for <?= $this->game['gameName'] ?></div>
+
+            <div class="gameCharts">
+                <canvas id="viewsChart"></canvas>
             </div>
 
-            <div style="width: 600px; height: 600px">
-                <canvas id="myViewChart"></canvas>
+            <div class="analytics-header">Downloads for <?= $this->game['gameName'] ?></div>
+
+            <div class="gameCharts">
+                <canvas id="downloadsChart"></canvas>
             </div>
 
+            <div class="analytics-header">Other related views for <?= $this->game['gameName'] ?></div>
 
         </div>
     </div>
@@ -62,25 +67,61 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+
+    <script>
+        //setup block
+        var views = <?= json_encode($this->allviews); ?>;
+        var labelDates = <?= json_encode($this->labelDates); ?>;
+
+        console.log(views);
+        const viewData = {
+            labels: labelDates,
+            datasets: [{
+                label: "views",
+                data: views,
+                borderWidth: 4,
+            }, ]
+        };
+
+        //config block
+        const viewConfig = {
+            type: "line",
+            data: viewData,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                    },
+                },
+            }
+        };
+
+        //render block
+        const viewChart = new Chart(
+            document.getElementById("viewsChart"),
+            viewConfig
+        );
+    </script>
+
     <script>
         //setup block
         var downloads = <?= json_encode($this->alldownloads); ?>;
         var labelDates = <?= json_encode($this->labelDates); ?>;
 
         console.log(downloads);
-        const data = {
+        const downloadData = {
             labels: labelDates,
             datasets: [{
-                label: "# of Votes",
+                label: "downloads",
                 data: downloads,
                 borderWidth: 4,
             }, ]
         };
 
         //config block
-        const config = {
+        const downloadConfig = {
             type: "line",
-            data,
+            data: downloadData,
             options: {
                 scales: {
                     y: {
@@ -92,10 +133,11 @@
 
         //render block
         const myChart = new Chart(
-            document.getElementById("myChart"),
-            config
+            document.getElementById("downloadsChart"),
+            downloadConfig
         );
     </script>
+
 
 
 

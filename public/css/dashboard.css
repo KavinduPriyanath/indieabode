@@ -235,3 +235,18 @@
 #jam-status-submissions {
   width: 130px;
 }
+
+
+/* game charts */
+.gameCharts {
+
+  width: 800px;
+  height: 320px;
+  margin-left: 110px;
+  margin-bottom: 40px;
+}
+
+.analytics-header {
+  font-size: 20px;
+  margin-left: 130px;
+}
