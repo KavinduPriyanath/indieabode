@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <title>Indieabode</title>
 
     <style>
@@ -96,19 +97,17 @@
                 </div>
                 <hr />
             </div>
-            <?php if ($_SESSION['logged'] && $_SESSION['userRole'] == 'game publisher') { ?>
-                <?php if ($this->hasRequested) { ?>
-                    <div id="view-button">
-                        <a href="/indieabode/gig/viewgig?id=<?= $this->gig['gigID']; ?>&token=<?= $this->gig['gigID'] . $_SESSION['id'] ?>">
-                            <div class="view-button">View Request</div>
-                        </a>
-                    </div>
-                <?php } else { ?>
-                    <div class="request-button" id="request-button" onclick="RequestOrder(<?= $_GET['id'] ?>)">Request Order</div>
-                <?php } ?>
-            <?php } else if ($_SESSION['logged'] && $_SESSION['userRole'] == 'game developer') { ?>
-                <div class="share-button">Share</div>
-            <?php } ?>
+
+            <div id="view-button">
+                <a href="/indieabode/gig/viewgig?id=<?= $this->gig['gigID']; ?>&token=<?= $this->gig['gigID'] . $_SESSION['id'] ?>">
+                    <div class="view-button">View Request</div>
+                </a>
+            </div>
+
+            <div class="request-button" id="request-button">Request Order</div>
+
+
+            <div class="share-button">Share</div>
         </div>
     </div>
 
@@ -151,35 +150,50 @@
     <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
 
 
+
     <script>
-        function ButtonClick() {
-            alert("Cant perform this action as a gamedeveloper");
-        }
+        $(document).ready(function() {
+
+            <?php if ($_SESSION['logged'] && $_SESSION['userRole'] == 'game publisher') { ?>
+                <?php if ($this->hasRequested) { ?>
+                    $('#view-button').show();
+                    $('#request-button').hide();
+                <?php } else { ?>
+                    $('#view-button').hide();
+                    $('#request-button').show();
+                <?php } ?>
+            <?php } else if ($_SESSION['logged'] && $_SESSION['userRole'] == 'game developer') { ?>
+                $('.share-button').show();
+            <?php } ?>
 
 
-        function RequestOrder(gigID) {
+            $('#request-button').click(function() {
 
-            var xhr = new XMLHttpRequest();
+                let gigID = <?= $this->gig['gigID'] ?>;
+                let estimatedShare = <?= $this->gig['estimatedShare'] ?>;
+                let expectedCost = '<?= $this->gig['expectedCost'] ?>';
 
-            xhr.onreadystatechange = function() {
+                var data = {
+                    'gigID': gigID,
+                    'estimatedShare': estimatedShare,
+                    'expectedCost': expectedCost,
+                    'gig_request_made': true,
+                };
 
-                if (xhr.readyState == 4) {
-                    var t = xhr.responseText;
+                $.ajax({
+                    url: "/indieabode/gig/gigrequest",
+                    method: "POST",
+                    data: data,
+                    success: function(response) {
 
-                    if (t == "2") {
-                        alert(t);
-                    } else {
-                        // $('.request-button').hide();
-                        document.getElementById('request-button').style.display = "none";
+                        $('#view-button').show();
+                        $('#request-button').hide();
                     }
+                })
 
-                }
+            });
 
-            }
-
-            xhr.open("GET", "/indieabode/gig/gigrequest?id=" + gigID, true);
-            xhr.send();
-        }
+        });
     </script>
 
 </body>

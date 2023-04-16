@@ -416,3 +416,87 @@
 .accordion .contentBox.active .content {
   height: 300px;
 }
+
+#view-button, #request-button, .share-button {
+  display: none;
+}
+
+
+/* Gig Order Page */
+.topic-custom-row, .first-custom-row, .second-custom-row {
+
+  display: flex;
+  justify-content: left;
+
+}
+
+.customization-table .customization1, .customization-table .customization2 {
+  font-size: 18px;
+  margin: 30px 90px;
+  background-color: #A5B9BD;
+}
+
+.customization-table .column1 {
+  width: 300px;
+}
+
+.customization-table .column2, .column3 {
+  width: 160px;
+}
+
+.topic-custom-row {
+  padding: 8px 6px 12px;
+}
+
+#buy-order {
+  display: none;
+}
+
+.accept-text {
+  font-size: 16px;
+  display: inline-block;
+  margin-left: 7px;
+  cursor: pointer;
+  background-color: #89ace3;
+  padding: 2px 4px;
+  border: 1px solid darkblue;
+  border-radius: 8px;
+}
+
+.approved {
+  display: none;
+  margin-left: 20px;
+}
+
+.approved img{
+  width: 30px;
+  height: 30px;
+}
+
+.reset {
+  margin-top: 12px;
+  text-align: center;
+  display: block;
+  background-color: #4b71ad;
+  color: black;
+  font-size: 19px;
+  font-weight: bold;
+  padding: 8px;
+}
+
+.reset:hover {
+  background-color: #4285F4;
+  cursor: pointer;
+}
+
+.customization-header {
+  height: 60px;
+  border-radius: 8px 8px 0px 0px;
+  background: rgb(155, 198, 231);
+  padding: 15px 25px;
+}
+
+#success {
+  display: none;
+}
+
