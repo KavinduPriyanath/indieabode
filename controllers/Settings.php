@@ -85,6 +85,28 @@ class Settings extends Controller
         $this->view->render('Settings/Password');
     }
 
+    function updatePassword()
+    {
+
+        if ($_POST['password_update'] == true) {
+
+            $oldPassword = $_POST['oldPassword'];
+            $newPassword = $_POST['newPassword'];
+            $userID = $_POST['userID'];
+
+
+            $hasedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+
+            $passwordUpdate = $this->model->UpdatePassword($oldPassword, $hasedPassword, $userID);
+
+            if ($passwordUpdate == true) {
+                echo "1";
+            } else {
+                echo "2";
+            }
+        }
+    }
+
     function emailaddress()
     {
 
