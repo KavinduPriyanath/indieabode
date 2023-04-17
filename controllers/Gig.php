@@ -92,8 +92,22 @@ class Gig extends Controller
             $pubCostApproval = $_POST['pubCostAppr'];
             $devCostApproval = $_POST['devCostAppr'];
 
+            $eligible = 0;
 
-            $this->model->updateCurrentRequest($gigToken, $cost, $share, $pubShareApproval, $devShareApproval, $pubCostApproval, $devCostApproval);
+            if (
+                $pubCostApproval == "Approved" &&
+                $devCostApproval == "Approved" &&
+                $pubShareApproval == "Approved" &&
+                $devShareApproval == "Approved"
+            ) {
+                $eligible = 1;
+                echo "1";
+            } else {
+                $eligible = 0;
+            }
+
+
+            $this->model->updateCurrentRequest($gigToken, $cost, $share, $pubShareApproval, $devShareApproval, $pubCostApproval, $devCostApproval, $eligible);
         }
     }
 

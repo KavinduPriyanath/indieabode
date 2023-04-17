@@ -98,7 +98,7 @@
                 </div>
                 <hr />
             </div>
-            <div class="buy-button" onclick="ButtonClick()" id="buy-order">Buy Order</div>
+            <div class="buy-button" id="buy-order">Buy Order</div>
         </div>
     </div>
 
@@ -264,9 +264,17 @@
 
             </div>
 
-            <div class="negotiation-status">
+            <div class="negotiation-status" id="negotiation-success">
                 <div class="success" id="success">
                     Negotiation Successful
+                </div>
+                <div class="updated-values">
+                    <div class="value-type">Expected Cost</div>
+                    <div class="gig-value"><span class="old-value">$<?= $this->gig['expectedCost']; ?></span><i class="fa fa-arrow-right"></i><span class="new-value" id="newCost"></span></div>
+                </div>
+                <div class="updated-values">
+                    <div class="value-type">Estimated Share</div>
+                    <div class="gig-value"><span class="old-value"><?= $this->gig['estimatedShare']; ?>%</span><i class="fa fa-arrow-right"></i><span class="new-value" id="newShare"></span></div>
                 </div>
             </div>
 
@@ -322,6 +330,41 @@
                 $('#developer-cost-approval').hide();
             <?php } ?>
 
+            <?php if ($_SESSION['userRole'] == "game publisher") { ?>
+                <?php if ($this->currentRequest['eligible'] == 1) { ?>
+                    $('#buy-order').show();
+                    $('#newCost').html("$" + $('#cost').val());
+                    $('#newShare').html($('#share').val() + "%");
+                    $('#negotiation-success').show();
+                <?php } else if ($this->currentRequest['eligible'] == 0) { ?>
+                    $('#buy-order').hide();
+                <?php } ?>
+            <?php } else { ?>
+                $('#buy-order').hide();
+            <?php } ?>
+
+            <?php if ($_SESSION['userRole'] == "game developer") { ?>
+                <?php if ($this->currentRequest['eligible'] == 1) { ?>
+                    $('#newCost').html("$" + $('#cost').val());
+                    $('#newShare').html($('#share').val() + "%");
+                    $('#negotiation-success').show();
+                <?php } ?>
+            <?php } ?>
+
+            if ($('#pub-cost-input').val() == "Approved" && $('#dev-cost-input').val() == "Approved") {
+
+                $('#reset-cost').css('pointer-events', 'none');
+                $('#reset-cost').css('background-color', '#7897b5');
+
+            }
+
+            if ($('#pub-share-input').val() == "Approved" && $('#dev-share-input').val() == "Approved") {
+
+                $('#reset-share').css('pointer-events', 'none');
+                $('#reset-share').css('background-color', '#7897b5');
+
+            }
+
 
             <?php if ($_SESSION['userRole'] == "game publisher") { ?>
                 $('#pub-cost').click(function() {
@@ -357,6 +400,22 @@
                             $('#publisher-cost-approval').show();
                             $('#publisher-cost').hide();
                             $('#cost').prop("readonly", true);
+
+                            if (response == "1") {
+
+                                $('#newCost').html("$" + $('#cost').val());
+                                $('#newShare').html($('#share').val() + "%");
+                                $('#negotiation-success').show();
+
+                                <?php if ($_SESSION['userRole'] == "game publisher") { ?>
+                                    $('#buy-order').show();
+                                <?php } ?>
+
+                                if (developerCostApproval == "Approved" && publisherCostApproval == "Approved") {
+                                    $('#reset-cost').css('pointer-events', 'none');
+                                    $('#reset-cost').css('background-color', '#7897b5');
+                                }
+                            }
                         }
                     })
 
@@ -397,6 +456,22 @@
                             $('#developer-cost-approval').show();
                             $('#developer-cost').hide();
                             $('#cost').prop("readonly", true);
+
+                            if (response == "1") {
+
+                                $('#newCost').html("$" + $('#cost').val());
+                                $('#newShare').html($('#share').val() + "%");
+                                $('#negotiation-success').show();
+
+                                <?php if ($_SESSION['userRole'] == "game publisher") { ?>
+                                    $('#buy-order').show();
+                                <?php } ?>
+
+                                if (developerCostApproval == "Approved" && publisherCostApproval == "Approved") {
+                                    $('#reset-cost').css('pointer-events', 'none');
+                                    $('#reset-cost').css('background-color', '#7897b5');
+                                }
+                            }
                         }
                     })
 
@@ -499,6 +574,21 @@
                             $('#publisher-share-approval').show();
                             $('#publisher-share').hide();
                             $('#share').prop("readonly", true);
+
+                            if (response == "1") {
+                                $('#newCost').html("$" + $('#cost').val());
+                                $('#newShare').html($('#share').val() + "%");
+                                $('#negotiation-success').show();
+
+                                <?php if ($_SESSION['userRole'] == "game publisher") { ?>
+                                    $('#buy-order').show();
+                                <?php } ?>
+
+                                if (developerShareApproval == "Approved" && publisherShareApproval == "Approved") {
+                                    $('#reset-share').css('pointer-events', 'none');
+                                    $('#reset-share').css('background-color', '#7897b5');
+                                }
+                            }
                         }
                     })
 
@@ -540,6 +630,21 @@
                             $('#developer-share-approval').show();
                             $('#developer-share').hide();
                             $('#share').prop("readonly", true);
+
+                            if (response == "1") {
+                                $('#newCost').html("$" + $('#cost').val());
+                                $('#newShare').html($('#share').val() + "%");
+                                $('#negotiation-success').show();
+
+                                <?php if ($_SESSION['userRole'] == "game publisher") { ?>
+                                    $('#buy-order').show();
+                                <?php } ?>
+
+                                if (developerShareApproval == "Approved" && publisherShareApproval == "Approved") {
+                                    $('#reset-share').css('pointer-events', 'none');
+                                    $('#reset-share').css('background-color', '#7897b5');
+                                }
+                            }
                         }
                     })
 

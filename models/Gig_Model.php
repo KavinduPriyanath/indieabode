@@ -97,7 +97,7 @@ class Gig_Model extends Model
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    function updateCurrentRequest($gigToken, $cost, $share, $pubShareApproval, $devShareApproval, $pubCostApproval, $devCostApproval)
+    function updateCurrentRequest($gigToken, $cost, $share, $pubShareApproval, $devShareApproval, $pubCostApproval, $devCostApproval, $eligible)
     {
 
 
@@ -107,7 +107,8 @@ class Gig_Model extends Model
                 publisherCostApproval = '$pubCostApproval',
                 developerCostApproval = '$devCostApproval',
                 publisherShareApproval = '$pubShareApproval',
-                developerShareApproval = '$devShareApproval'
+                developerShareApproval = '$devShareApproval',
+                eligible = '$eligible'
                 WHERE gigToken = '$gigToken'";
 
         $stmt = $this->db->prepare($sql);
