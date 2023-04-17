@@ -36,6 +36,12 @@ class Forgotpassword extends Controller
         $userEmail = $user['email'];
         $userName = $user['username'];
 
+        $userID = $user['gamerID'];
+        $token = md5(rand());
+
+        $this->model->UpdateToken($userID, $token);
+
+
         try {
             $mail = new PHPMailer(true);
 
@@ -58,7 +64,7 @@ class Forgotpassword extends Controller
                 <h2>Hello</h2>
                 <h3>Someone attempted to reset the password for your account ' . $userName .  ' on Indieabode. If that person was you click the link below to update your password. If it wasnt you then you dont have to do anything.
                 </h3>
-                <a href="https://localhost/indieabode/passwordreset?token=1">Click Me</a>
+                <a href="http://localhost/indieabode/passwordreset?id=' . $userID . '&token=' . $token . '">Click Me</a>
             ';
 
             $mail->isHTML(true);
@@ -69,6 +75,26 @@ class Forgotpassword extends Controller
             header('location:/indieabode/forgotpassword/resetmailsent');
         } catch (Exception $e) {
             header('location:/indieabode/failedpasswordreset');
+        }
+    }
+
+    function updateUserPassword()
+    {
+
+        if ($_POST['password_reset'] == true) {
+
+            $userID = $_POST['userID'];
+            $newPassword = $_POST['newPassword'];
+            $token = $_POST['token'];
+            $newToken = md5(rand());
+
+            $hasedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+
+            $this->model->ResetUserPassword($userID, $token, $hasedPassword, $newToken);
+
+            echo "1";
+        } else {
+            echo "2";
         }
     }
 }
