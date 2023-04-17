@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <title>Indieabode</title>
 
     <style>
@@ -27,46 +28,80 @@ include 'includes/navbar.php';
     <div class="containerJam">
 
 
-        <?php if ($this->gamejam) : ?>
-            <div class="box">
-                <h1><?= $this->gamejam['jamTitle']; ?></h1>
-                <p><?= $this->gamejam['jamTagline']; ?></p>
-            </div>
+        <div class="box">
+            <h1><?= $this->gamejam['jamTitle']; ?></h1>
+        </div>
 
-            <div class="topics">
+        <div class="topics">
 
-                <a href="/indieabode/jam?id=<?= $this->gamejam['gameJamID'] ?>">Overview</a>
-                <a href="/indieabode/jam/submission?id=<?= $this->gamejam['gameJamID'] ?>" id="submissionPage">Submissions</a>
-            </div>
+            <a href="/indieabode/jam?id=<?= $this->gamejam['gameJamID'] ?>">Overview</a>
+            <a href="/indieabode/jam/submission?id=<?= $this->gamejam['gameJamID'] ?>" id="submissionPage">Submissions</a>
+        </div>
 
-            <hr id="topic-break">
-            <br>
+        <hr id="topic-break">
+        <br>
+
+        <div class="card-cover">
+
+            <div class="timeline-heading">Submissions open from November 2nd 2022 at 4.00 AM to December 2nd 2022 4.00 AM </div>
+            <hr>
             <div class="card">
+
+
 
                 <h2 id=startsEnd>Starts in</h2>
 
-                <div class="launch-time">
+                <!-- <div class="launch-time">
+                <div>
+                    <p id="days">&nbsp;</p>
+                    <span>Days &nbsp;</span>
+                </div>
+
+                <div>
+                    <p id="hours">&nbsp;</p>
+                    <span>Hours&nbsp;</span>
+                </div>
+
+                <div>
+                    <p id="minutes">&nbsp;</p>
+                    <span>Minutes&nbsp;</span>
+                </div>
+
+                <div>
+                    <p id="seconds">&nbsp;</p>
+                    <span>Seconds&nbsp;</span>
+                </div>
+            </div> -->
 
 
+                <div class="jam-timeline">
 
                     <div>
-                        <p id="days">&nbsp;</p>
-                        <span>Days &nbsp;</span>
+                        <div class="count">
+                            <p id="days">&nbsp;</p>
+                        </div>
+                        <div class="label">Days</div>
                     </div>
-
+                    <div class="vl"></div>
                     <div>
-                        <p id="hours">&nbsp;</p>
-                        <span>Hours&nbsp;</span>
+                        <div class="count">
+                            <p id="hours">&nbsp;</p>
+                        </div>
+                        <div class="label">Hours</div>
                     </div>
-
+                    <div class="vl"></div>
                     <div>
-                        <p id="minutes">&nbsp;</p>
-                        <span>Minutes&nbsp;</span>
+                        <div class="count">
+                            <p id="minutes">&nbsp;</p>
+                        </div>
+                        <div class="label">Minutes</div>
                     </div>
-
+                    <div class="vl"></div>
                     <div>
-                        <p id="seconds">&nbsp;</p>
-                        <span>Seconds&nbsp;</span>
+                        <div class="count">
+                            <p id="seconds">&nbsp;</p>
+                        </div>
+                        <div class="label">Seconds</div>
                     </div>
                 </div>
 
@@ -74,15 +109,11 @@ include 'includes/navbar.php';
                 <div class="box">
                     <div class="button">
 
+                        <div class="jamButtons jamBtn" id="gamerBtn"></div>
+                        <div class="jamButtons jamBtn" id="dev-submit">Submit</div>
+                        <div class="jamButtons jamBtn" id="devBtn"></div>
 
-                        <a href="/indieabode/Jam/joinJam?id=<?= $this->gamejam['gameJamID'] ?>">
-                            <div id="developerJoin" class="jamButtons">Join Jam</div>
-                        </a>
-                        <div id="addsubmission" class="jamButtons" data-modal-target="#modal">Submit</div>
-
-                        <a href="/indieabode/Jam/joinJamGamer?id=<?= $this->gamejam['gameJamID'] ?>">
-                            <div id="gamerJoin" class="jamButtons">Join Jam</div>
-                        </a>
+                        <div class="jamStatus"></div>
 
                     </div>
                 </div>
@@ -132,15 +163,19 @@ include 'includes/navbar.php';
 
 
             </div>
-        <?php endif; ?>
+        </div>
+        <div class="submissionStatus"></div>
     </div>
 
 
     <div class="containerJam">
         <img src="/indieabode/public/uploads/gamejams/covers/<?= $this->gamejam['jamCoverImg'] ?>" alt="" />
+        <div class="content-header">About The Jam</div>
         <div class="block">
-            <h2>About The Jam</h2>
-            <p><?= $this->gamejam['jamContent']; ?></p>
+
+            <div class="details">
+                <?= $this->gamejam['jamContent']; ?>
+            </div>
         </div>
 
 
@@ -155,120 +190,262 @@ include 'includes/navbar.php';
 
 
     <script>
-        var count_id1 = "<?= $this->gamejam['submissionStartDate']; ?>";
-        var count_id2 = "<?= $this->gamejam['submissionEndDate']; ?>";
-        var count_id3 = "<?= $this->gamejam['votingEndDate']; ?>";
-
-        var countDownDate1 = new Date(count_id1).getTime();
-        var countDownDate2 = new Date(count_id2).getTime();
-        var countDownDate3 = new Date(count_id3).getTime();
+        $(document).ready(function() {
 
 
-        var x = setInterval(function() {
+            //button for developers to join or leave
+            $('#devBtn').click(function() {
 
-            var now = new Date().getTime();
+                let gamejamID = <?= $_GET['id'] ?>;
 
-            var startsIn = countDownDate1 - now;
-            var endsIn = countDownDate2 - now;
-            var votingEndsIn = countDownDate3 - now;
+                var data = {
+                    'gamejamID': gamejamID,
+                    'developer_attempt': true
+                };
 
-            var days = Math.floor(startsIn / (1000 * 60 * 60 * 24));
-            var hours = Math.floor((startsIn % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((startsIn % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((startsIn % (1000 * 60)) / 1000);
+                $.ajax({
+                    url: "/indieabode/jam/joinJam",
+                    method: "POST",
+                    data: data,
+                    success: function(response) {
 
-            var daysEnd = Math.floor(endsIn / (1000 * 60 * 60 * 24));
-            var hoursEnd = Math.floor((endsIn % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutesEnd = Math.floor((endsIn % (1000 * 60 * 60)) / (1000 * 60));
-            var secondsEnd = Math.floor((endsIn % (1000 * 60)) / 1000);
+                        if (response == "left") {
+                            $('#devBtn').text("Join Jam");
+                            $('.submissionStatus').hide();
+                            $('#dev-submit').hide()
+                        } else if (response == "joined") {
+                            $('#devBtn').text("Leave Jam");
 
-            var daysEndVote = Math.floor(votingEndsIn / (1000 * 60 * 60 * 24));
-            var hoursEndVote = Math.floor((votingEndsIn % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutesEndVote = Math.floor((votingEndsIn % (1000 * 60 * 60)) / (1000 * 60));
-            var secondsEndVote = Math.floor((votingEndsIn % (1000 * 60)) / 1000);
+                            if (jamStart == false) {
+                                $('.submissionStatus').show();
+                                $('.submissionStatus').text("You've joined this jam. Come to this page after the jam starts to submit your project.");
+                            } else if (jamStart == true) {
+                                $('#dev-submit').show()
+                            }
+                        }
+                    }
+                })
 
-            document.getElementById("days").innerHTML = days;
-            document.getElementById("hours").innerHTML = hours;
-            document.getElementById("minutes").innerHTML = minutes;
-            document.getElementById("seconds").innerHTML = seconds;
+            });
+
+
+            //button for gamers to join or leave
+            $('#gamerBtn').click(function() {
+
+                let gamejamID = <?= $_GET['id'] ?>;
+
+                var data = {
+                    'gamejamID': gamejamID,
+                    'gamer_attempt': true
+                };
+
+                $.ajax({
+                    url: "/indieabode/jam/joinJamGamer",
+                    method: "POST",
+                    data: data,
+                    success: function(response) {
+
+                        if (response == "left") {
+                            $('#gamerBtn').text("Join Jam");
+                        } else if (response == "joined") {
+                            $('#gamerBtn').text("Leave Jam");
+                        }
+                    }
+                })
+
+            });
+
+
+            var count_id1 = "<?= $this->gamejam['submissionStartDate']; ?>";
+            var count_id2 = "<?= $this->gamejam['submissionEndDate']; ?>";
+            var count_id3 = "<?= $this->gamejam['votingEndDate']; ?>";
+
+            console.log(count_id1);
+
+            var countDownDate1 = new Date(count_id1).getTime();
+            var countDownDate2 = new Date(count_id2).getTime();
+            var countDownDate3 = new Date(count_id3).getTime();
+
+            let jamStart = false;
+            let votingStart = false;
+
+
+            <?php if ($this->gamejam['submissionStartDate'] > date("Y-m-d H:i:s")) { ?>
+                jamStart = false;
+                votingStart = false;
+            <?php } else if ($this->gamejam['submissionStartDate'] < date("Y-m-d H:i:s") && $this->gamejam['submissionEndDate'] > date("Y-m-d H:i:s")) { ?>
+                jamStart = true;
+                votingStart = false;
+            <?php } else if ($this->gamejam['submissionEndDate'] < date("Y-m-d H:i:s") && $this->gamejam['votingEndDate'] > date("Y-m-d H:i:s")) { ?>
+                jamStart = true;
+                votingStart = true;
+            <?php } else { ?>
+                jamStart = false;
+                votingStart = true;
+            <?php } ?>
+
+            var x = setInterval(function() {
+
+                var now = new Date().getTime();
+
+                var startsIn = countDownDate1 - now;
+                var endsIn = countDownDate2 - now;
+                var votingEndsIn = countDownDate3 - now;
+
+                var days = Math.floor(startsIn / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((startsIn % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((startsIn % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((startsIn % (1000 * 60)) / 1000);
+
+                var daysEnd = Math.floor(endsIn / (1000 * 60 * 60 * 24));
+                var hoursEnd = Math.floor((endsIn % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutesEnd = Math.floor((endsIn % (1000 * 60 * 60)) / (1000 * 60));
+                var secondsEnd = Math.floor((endsIn % (1000 * 60)) / 1000);
+
+                var daysEndVote = Math.floor(votingEndsIn / (1000 * 60 * 60 * 24));
+                var hoursEndVote = Math.floor((votingEndsIn % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutesEndVote = Math.floor((votingEndsIn % (1000 * 60 * 60)) / (1000 * 60));
+                var secondsEndVote = Math.floor((votingEndsIn % (1000 * 60)) / 1000);
+
+                document.getElementById("days").innerHTML = days;
+                document.getElementById("hours").innerHTML = hours;
+                document.getElementById("minutes").innerHTML = minutes;
+                document.getElementById("seconds").innerHTML = seconds;
 
 
 
-            if (startsIn > 0) {
+                if (startsIn > 0) {
 
-                // document.getElementById("submit3").style.display='none';
-                document.getElementById("addsubmission").style.display = 'none';
-                document.getElementById("submissionPage").style.color = "grey";
-                document.getElementById("submissionPage").style.pointerEvents = "none";
 
-                <?php if (isset($_SESSION['logged']) && $_SESSION['userRole'] == "game developer" && $this->hasJoinedDeveloper) { ?>
-                    document.getElementById('developerJoin').innerHTML = "Leave Jam";
-                <?php } else if (isset($_SESSION['logged']) && $_SESSION['userRole'] == "game developer" && !$this->hasJoinedDeveloper) { ?>
-                    document.getElementById('developerJoin').style.display = "block";
+                    document.getElementById("submissionPage").style.color = "grey";
+                    document.getElementById("submissionPage").style.pointerEvents = "none";
+
+
+                } else if (startsIn <= 0 && endsIn > 0) {
+
+
+                    // document.getElementById("submit3").style.display = 'none';
+                    document.getElementById('startsEnd').innerHTML = "Ends In";
+                    // document.getElementById("submit").style.display = 'block';
+                    // clearInterval(x);
+                    document.getElementById("days").innerHTML = daysEnd;
+                    document.getElementById("hours").innerHTML = hoursEnd;
+                    document.getElementById("minutes").innerHTML = minutesEnd;
+                    document.getElementById("seconds").innerHTML = secondsEnd;
+
+
+                } else if (endsIn < 0 && votingEndsIn > 0) {
+
+
+
+                    // document.getElementById("submit2").style.display = 'none';
+                    // document.getElementById('developerJoin').style.display = "none";
+
+                    document.getElementById('startsEnd').innerHTML = "Voting Ends In";
+
+                    document.getElementById("days").innerHTML = daysEndVote;
+                    document.getElementById("hours").innerHTML = hoursEndVote;
+                    document.getElementById("minutes").innerHTML = minutesEndVote;
+                    document.getElementById("seconds").innerHTML = secondsEndVote;
+
+
+                } else if (votingEndsIn < 0) {
+
+
+
+                    // document.getElementById("submit3").style.display='none';
+                    // document.getElementById("submit2").style.display = 'none';
+                    // document.getElementById("submit").style.display = 'none';
+                    document.getElementById('startsEnd').innerHTML = "Jam Ended";
+                    clearInterval(x);
+                    document.getElementById("days").innerHTML = 00;
+                    document.getElementById("hours").innerHTML = 00;
+                    document.getElementById("minutes").innerHTML = 00;
+                    document.getElementById("seconds").innerHTML = 00;
+
+                }
+
+            });
+
+
+
+
+
+            if (!jamStart && !votingStart) {
+                //jam hasnt begun yet
+
+                <?php if (isset($_SESSION['logged']) && $_SESSION['userRole'] == "game developer") { ?>
+                    $('#devBtn').show();
+                    $('#gamerBtn').hide();
+
+                    <?php if ($this->hasJoinedDeveloper) { ?>
+
+                        $('#devBtn').html("Leave Jam");
+                        $('.submissionStatus').show();
+                        $('.submissionStatus').text("You've joined this jam. Come to this page after the jam starts to submit your project.");
+
+
+                    <?php } else if (!$this->hasJoinedDeveloper) { ?>
+
+
+                        $('#devBtn').html("Join Jam");
+                        $('.submissionStatus').hide();
+
+
+                    <?php } ?>
                 <?php } else { ?>
-                    document.getElementById('developerJoin').style.display = "none";
-                    document.getElementById('developerJoin').innerHTML = "Join Jam";
+
                 <?php } ?>
 
 
-            } else if (startsIn <= 0 && endsIn > 0) {
+            } else if (jamStart && !votingStart) {
+                //jam submission period has started
 
-                // document.getElementById("submit3").style.display = 'none';
-                document.getElementById('startsEnd').innerHTML = "Ends In";
-                // document.getElementById("submit").style.display = 'block';
-                // clearInterval(x);
-                document.getElementById("days").innerHTML = daysEnd;
-                document.getElementById("hours").innerHTML = hoursEnd;
-                document.getElementById("minutes").innerHTML = minutesEnd;
-                document.getElementById("seconds").innerHTML = secondsEnd;
+                <?php if (isset($_SESSION['logged']) && $_SESSION['userRole'] == "game developer") { ?>
+                    $('#devBtn').show();
+                    $('#gamerBtn').hide();
 
-                <?php if (isset($_SESSION['logged']) && $_SESSION['userRole'] == "game developer" && $this->hasJoinedDeveloper) { ?>
-                    document.getElementById("addsubmission").style.display = "block";
-                    document.getElementById('developerJoin').innerHTML = "Leave Jam";
-                <?php } else if (isset($_SESSION['logged']) && $_SESSION['userRole'] == "game developer" && !$this->hasJoinedDeveloper) { ?>
-                    document.getElementById('developerJoin').style.display = "block";
+                    <?php if ($this->hasJoinedDeveloper) { ?>
+
+                        $('#dev-submit').show()
+                        $('#devBtn').html("Leave Jam");
+
+                    <?php } else if (!$this->hasJoinedDeveloper) { ?>
+
+                        $('#dev-submit').hide()
+                        $('#devBtn').html("Join Jam");
+                    <?php } ?>
                 <?php } else { ?>
-                    document.getElementById("addsubmission").style.display = 'none';
-                    document.getElementById("gamerJoin").style.display = 'none';
-                    document.getElementById('developerJoin').style.display = "none";
-                    document.getElementById('developerJoin').innerHTML = "Join Jam";
+
                 <?php } ?>
+            } else if (jamStart && votingStart) {
+                //jam voting perioud has started
 
-            } else if (endsIn < 0 && votingEndsIn > 0) {
+                <?php if (isset($_SESSION['logged']) && $_SESSION['userRole'] == "gamer") { ?>
+                    $('#gamerBtn').show();
+                    $('#devBtn').hide();
 
-                // document.getElementById("submit2").style.display = 'none';
-                document.getElementById('developerJoin').style.display = "none";
 
-                document.getElementById('startsEnd').innerHTML = "Voting Ends In";
+                    <?php if ($this->hasJoinedGamer) { ?>
 
-                document.getElementById("days").innerHTML = daysEndVote;
-                document.getElementById("hours").innerHTML = hoursEndVote;
-                document.getElementById("minutes").innerHTML = minutesEndVote;
-                document.getElementById("seconds").innerHTML = secondsEndVote;
+                        $('#gamerBtn').html("Leave Jam");
 
-                <?php if (isset($_SESSION['logged']) && $_SESSION['userRole'] == "gamer" && $this->hasJoinedGamer) { ?>
-                    document.getElementById("gamerJoin").style.display = 'block';
-                    document.getElementById('gamerJoin').innerHTML = "Leave Jam";
-                <?php } else if (isset($_SESSION['logged']) && $_SESSION['userRole'] == "gamer" && !$this->hasJoinedGamer) { ?>
-                    document.getElementById("gamerJoin").style.display = 'block';
+                    <?php } else if (!$this->hasJoinedGamer) { ?>
+
+                        $('#gamerBtn').html("Join Jam");
+
+                    <?php } ?>
+
                 <?php } else { ?>
-                    document.getElementById("gamerJoin").style.display = 'none';
-                    document.getElementById('gamerJoin').innerHTML = "Join Jam";
+
+                    $('.jamStatus').show();
+                    $('.jamStatus').text("Voting in Progress")
+
                 <?php } ?>
-
-            } else if (votingEndsIn < 0) {
-
-                // document.getElementById("submit3").style.display='none';
-                // document.getElementById("submit2").style.display = 'none';
-                // document.getElementById("submit").style.display = 'none';
-                document.getElementById('startsEnd').innerHTML = "Jam Ended";
-                clearInterval(x);
-                document.getElementById("days").innerHTML = 00;
-                document.getElementById("hours").innerHTML = 00;
-                document.getElementById("minutes").innerHTML = 00;
-                document.getElementById("seconds").innerHTML = 00;
-
+            } else if (!jamStart && votingStart) {
+                //jam has ended.
             }
+
 
         });
     </script>
@@ -321,12 +498,6 @@ include 'includes/navbar.php';
 
 
     <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
-
-    <?php if (isset($_SESSION['id']) && !empty($_SESSION['id'])) { ?>
-        <script src="../src/js/navbar.js"></script>
-    <?php } else { ?>
-        <script src="../src/js/navbarcopy.js"></script>
-    <?php } ?>
 
 </body>
 

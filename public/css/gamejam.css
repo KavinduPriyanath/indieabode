@@ -1,36 +1,53 @@
 .containerJam {
 
     /* width: 100%; */
-    margin: 0 100px 0 100px;
+    margin: 0 180px 0 180px;
     /* border-radius: 25px; */
     /* background-color: rgb(51, 88, 121); */
 }
 
-.card {
-    width: 100%;
-    box-sizing: inherit;
-    box-align: center;
+
+
+.card-cover {
+    margin-left: 60px;
+    width: 1050px;
     background-color: #bad3e192;
-    border-radius: 25px;
+    border-radius: 12px;
+}
+
+.card-cover hr {
+    border: 1px solid rgb(85, 85, 108);
+    margin-bottom: 6px;
+}
+
+.timeline-heading {
+    display: block;
+    padding: 12px 0px 15px;
+    font-size: 18px;
+    text-align:  center;
+    
+}
+
+.card {
     display: flex;
-    justify-content: center;
-    padding: 0 50px;
-    justify-content: space-evenly;
-    
-    
+    padding: 0 50px 20px;
+    justify-content: left; 
+    align-items: center;
 }
 
 .card h2{
-    margin-top: 2%;
+    margin: 4px 80px 0px 80px;
+   font-size: 20px;
 }
 
 .box {
-    padding: 15px;
+    /* padding: 15px; */
     justify-content: center;
 }
 
 .box h1 {
-    color: rgb(51, 88, 121);
+    margin-top: 35px;
+    color: rgb(11, 12, 12);
 }
 
 .box p {
@@ -38,7 +55,7 @@
 }
 
 .topics {
-    margin: 5px 0px 0px 60px;
+    margin: 20px 0px 0px 0px;
     display: flex;
 }
 
@@ -51,7 +68,7 @@
 }
 
 #topic-break {
-    margin: 5px 80px 0px 60px;
+    margin: 5px 0px 0px 0px;
     border: 0.4px solid #9bc9dbdd;
 }
 
@@ -81,25 +98,36 @@
     image-orientation: flip;
 }
 
-img {
+.containerJam img {
     border-radius: 25px;
     display: block;
+    margin-top: 18px;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 20px;
     width: 40%;
     position: relative;
     padding: 10px;
 }
 
 .block {
-    text-align: center;
+    margin-left: 60px;
+    width: 1050px;
+    background-color: #94c5e22e;
+    border-radius: 7px;
+    margin-bottom: 25px;
+    
 }
 
-.block h2 {
-    color: rgb(51, 88, 121);
+.content-header {
+    margin: 18px 85px 4px;
+    font-weight: 800;
+    color: rgb(17, 21, 24);
+    font-size: 21px;
 }
 
-.block p {
+.block .details {
+    padding: 15px 30px;
     color: #dcf1f8;
 }
 
@@ -175,7 +203,7 @@ img {
     line-height: 25px;
 }
 
-.modal{
+.modal, .modal2, .modal3{
     position: fixed;
     top:50%;
     left: 50%;
@@ -229,6 +257,11 @@ img {
     bottom: 0;
     background-color: rgba(0, 0, 0, -5);
     pointer-events: none;
+}
+
+.modal-body2 {
+    display: flex;
+    padding: 10px 15px;
 }
 
 #overlay.active{
@@ -363,5 +396,104 @@ img {
 /* quick css */
 #addsubmission, #gamerJoin {
     display: none;
+    cursor: pointer;
+    text-align: center;
+    color: white;
+    margin-top: 7%;
+    border: 0;
+    outline: none;
+    border-radius: 30px;
+    width: 125px;
+    height: 37px;
+    background: #383F7D;
+    border-radius: 7px;
+    border-width: 2px;
+    transition: .5s;
+    font-family: 'Kreon';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1emx;
+    line-height: 25px;
+    padding-top: 3%;
 }
 
+#developerJoin{
+    cursor: pointer;
+    text-align: center;
+    color: white;
+    margin-top: 7%;
+    border: 0;
+    outline: none;
+    border-radius: 30px;
+    width: 125px;
+    height: 37px;
+    background: #383F7D;
+    border-radius: 7px;
+    border-width: 2px;
+    transition: .5s;
+    font-family: 'Kreon';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1emx;
+    line-height: 25px;
+    padding-top:3% ;
+}
+
+
+
+.jamBtn {
+    margin-top: 6px;
+    margin-left: 80px;
+    display: none;
+    color: rgb(16, 38, 117);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.jamStatus {
+    margin-top: 6px;
+    margin-left: 80px;
+    display: none;
+    color: #3e4651;
+    font-style: italic;
+}
+
+.submissionStatus {
+    display: none;
+    margin-top: 6px;
+    margin-left: 80px;
+}
+
+
+.jam-timeline {
+    margin: 15px 20px 0px 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.jam-timeline div {
+    /* margin-right: 30px; */
+}
+
+.jam-timeline .count {
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    font-size: 22px;
+    color: rgb(23, 30, 37);
+}  
+
+.vl {
+    border-left: 3px solid rgb(24, 36, 49);
+    height: 50px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+#dev-submit {
+    background-color: #3a4499;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+}

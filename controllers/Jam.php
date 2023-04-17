@@ -32,10 +32,11 @@ class Jam extends Controller
         }
     }
 
+
     function joinJam()
     {
-        if (isset($_GET['id'])) {
-            $gameJamID = $_GET['id'];
+        if ($_POST['developer_attempt'] == true) {
+            $gameJamID = $_POST['gamejamID'];
             $uID = $_SESSION['id'];
 
             // Check if user is already joined
@@ -44,26 +45,20 @@ class Jam extends Controller
             if ($isJoined) {
                 // User already joined, leave the jam
                 $this->model->leaveJam($uID, $gameJamID);
+                echo "left";
             } else {
                 // User not joined, join the jam
                 $this->model->joinJam($uID, $gameJamID);
+                echo "joined";
             }
         }
-
-        $this->view->gamejam = $this->model->showSingleJam($gameJamID);
-
-        $query = parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
-        parse_str($query, $result);
-
-        header('Location:/indieabode/jam?' . http_build_query($result));
     }
 
     function joinJamGamer()
     {
-        if (isset($_GET['id'])) {
-            $gameJamID = $_GET['id'];
+        if ($_POST['gamer_attempt'] == true) {
+            $gameJamID = $_POST['gamejamID'];
             $userID = $_SESSION['id'];
-
 
 
             // Check if user is already joined
@@ -72,18 +67,13 @@ class Jam extends Controller
             if ($isJoinedGamer) {
                 // User already joined, leave the jam
                 $this->model->leaveJamGamer($userID, $gameJamID);
+                echo "left";
             } else {
                 // User not joined, join the jam
                 $this->model->joinJamGamer($userID, $gameJamID);
+                echo "joined";
             }
         }
-
-        $this->view->gamejam = $this->model->showSingleJam($gameJamID);
-
-        $query = parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
-        parse_str($query, $result);
-
-        header('Location:/indieabode/jam?' . http_build_query($result));
     }
 
 
