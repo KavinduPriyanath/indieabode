@@ -41,7 +41,13 @@ class Login extends Controller
             $_SESSION['avatar'] = $user['avatar'];
             $_SESSION['userRole'] = $user['userRole'];
             $_SESSION['status'] = "Welcome Back!";
-            header('location:/indieabode/');
+
+
+            if ($user['userRole'] == "game developer") {
+                header('location:/indieabode/developer/');
+            } else {
+                header('location:/indieabode/');
+            }
         } else if (!empty($user) && $user['verified'] == 0) {
             $_SESSION['username'] = $user['username'];
             $_SESSION['email'] = $user['email'];

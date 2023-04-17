@@ -497,6 +497,46 @@
 }
 
 #success {
-  display: none;
+  margin-top: 45px;
+  margin-bottom: 15px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
 }
 
+.updated-values {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin: 10px 0px 0px 170px;
+}
+
+.updated-values .value-type {
+  text-align: center;
+  display: block;
+  width: 150px;
+  background-color: #A5B9BD;
+  margin-right: 40px;
+}
+
+.updated-values .old-value {
+  display: inline-block;
+  background-color: #89ace3;
+  width: 65px;
+  text-align: center;
+  margin-right: 10px;
+}
+
+.updated-values .new-value {
+
+  display: inline-block;
+  background-color: #89e3c5;
+  width: 65px;
+  text-align: center;
+  margin-left: 10px;
+
+}
+
+#negotiation-success {
+  display: n;
+}
