@@ -49,41 +49,46 @@
 
             <h3 id="sub-topic">Previous Devlogs</h3>
 
-            <div class="devlog-cards">
-                <?php foreach ($this->devlogs as $devlog) { ?>
-                    <div class="game-card">
-                        <div class="left-col">
-                            <div class="icon"><img src="/indieabode/public/uploads/devlogs/<?= $devlog['devlogImg'] ?>" alt=""></div>
-                            <div class="details">
-                                <div class="devlog-name"><?= $devlog['name']; ?></div>
-                                <div class="game-name">
-                                    <?= $devlog['gameName']; ?>
+            <?php if (!empty($this->devlogs)) { ?>
+                <div class="devlog-cards">
+                    <?php foreach ($this->devlogs as $devlog) { ?>
+                        <div class="game-card">
+                            <div class="left-col">
+                                <div class="icon"><img src="/indieabode/public/uploads/devlogs/<?= $devlog['devlogImg'] ?>" alt=""></div>
+                                <div class="details">
+                                    <div class="devlog-name"><?= $devlog['name']; ?></div>
+                                    <div class="game-name">
+                                        <?= $devlog['gameName']; ?>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="right-col">
-                            <div class="views">
-                                <div class="count"><?= $devlog['viewCount'] ?></div>
-                                <div class="label">views</div>
+                            <div class="right-col">
+                                <div class="views">
+                                    <div class="count"><?= $devlog['viewCount'] ?></div>
+                                    <div class="label">views</div>
+                                </div>
+                                <div class="downloads">
+                                    <div class="count"><?= $devlog['likeCount'] ?></div>
+                                    <div class="label">likes</div>
+                                </div>
+                                <div class="ratings">
+                                    <div class="count"><?= $devlog['commentCount'] ?></div>
+                                    <div class="label">comments</div>
+                                </div>
                             </div>
-                            <div class="downloads">
-                                <div class="count"><?= $devlog['likeCount'] ?></div>
-                                <div class="label">likes</div>
-                            </div>
-                            <div class="ratings">
-                                <div class="count"><?= $devlog['commentCount'] ?></div>
-                                <div class="label">comments</div>
-                            </div>
+                            <a href="/indieabode/dashboard/editdevlog?gameid=<?= $this->game['gameID']; ?>&postid=<?= $devlog['devLogID']; ?>">
+                                <div class="edit-btn">
+                                    Edit
+                                </div>
+                            </a>
                         </div>
-                        <a href="/indieabode/dashboard/editdevlog?gameid=<?= $this->game['gameID']; ?>&postid=<?= $devlog['devLogID']; ?>">
-                            <div class="edit-btn">
-                                Edit
-                            </div>
-                        </a>
-                    </div>
-                <?php } ?>
-            </div>
+                    <?php } ?>
+                </div>
+            <?php } else { ?>
+                <div class="empty-msg">- This game has not published any devlogs -</div>
+
+            <?php } ?>
 
 
         </div>

@@ -44,6 +44,31 @@ class Settings_Model extends Model
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    function UpdatePassword($oldPassword, $newHashedPassword, $userID)
+    {
+
+        $sql = "SELECT * FROM gamer WHERE gamerID = '$userID' LIMIT 1";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (password_verify($oldPassword, $user['password'])) {
+
+            $updateSQL = "UPDATE gamer SET password='$newHashedPassword' WHERE gamerID='$userID'";
+
+            $updateStmt = $this->db->prepare($updateSQL);
+
+            $updateStmt->execute();
+
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     //Functions for portfolio page of the settings page
 
     function currentUserPortfolio($userID)

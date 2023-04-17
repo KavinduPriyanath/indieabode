@@ -220,6 +220,20 @@ class Dashboard extends Controller
         $this->view->labelDates = $dates;
         $this->view->allviews = $views;
 
+        //for other views 
+        $gig = $this->model->ThisGamesGigs($_GET['id']);
+        $crowdfund = $this->model->ThisGamesCrowdfunds($_GET['id']);
+        $devlogs = $this->model->ThisGameDevlogs($_GET['id']);
+        $devlogViews = 0;
+
+        foreach ($devlogs as $devlog) {
+            $devlogViews = $devlogViews + $devlog['viewCount'];
+        }
+
+        $this->view->gigViews = !empty($gig) ? $gig['viewCount'] : 0;
+        $this->view->crowdfundViews = !empty($crowdfund) ? $crowdfund['viewCount'] : 0;
+        $this->view->devlogViews = $devlogViews;
+
         $this->view->game = $this->model->GetGameDetails($_GET['id']);
 
         $this->view->render('Dashboard/GameDashboards/Analytics');

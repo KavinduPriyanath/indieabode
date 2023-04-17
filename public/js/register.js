@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  //hide all the error message showing boxes when the page loads initially
   $("#firstname-check").hide();
   $("#lastname-check").hide();
   $("#username-check").hide();

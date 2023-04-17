@@ -21,6 +21,7 @@
     include 'includes/navbar.php';
     ?>
 
+    <div class="flashMessage" id="flashMessage"></div>
 
 
     <div class="settings-content">
@@ -85,20 +86,27 @@
             <div class="content-body">
                 <h2>Reset Password</h2>
                 <div class="header">Updating your password will cause all other browser sessions to be logged out.</div>
-                <form action="" method="post">
+                <div class="update-password-form">
                     <div class="labels"><span>Current Password</span></div>
-                    <input type="text" placeholder="Required">
+                    <input type="text" placeholder="Required" id="oldPassword">
+
+                    <div class="error-msg" id="old-password-check"></div>
 
                     <div class="labels"><span>New Password</span></div>
-                    <input type="text" placeholder="Required">
+                    <input type="text" placeholder="Required" id="newPassword">
+
+                    <div class="error-msg" id="password-check"></div>
 
                     <div class="labels"><span>Repeat New Password</span></div>
-                    <input type="text" placeholder="Required">
+                    <input type="text" placeholder="Required" id="confirmNewPassword">
+
+                    <div class="error-msg" id="confirm-password-check"></div>
 
 
 
-                    <button type="submit" class="save">Update</button>
-                </form>
+                    <button type="submit" class="save" id="updatePassword">Update</button>
+                </div>
+
             </div>
         </div>
     </div>
@@ -113,6 +121,132 @@
 
 
     <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
+
+
+    <script>
+        $(document).ready(function() {
+
+            $("#password-check").hide();
+            $("#confirm-password-check").hide();
+            $("#old-password-check").hide();
+
+            $("#newPassword").keyup(function() {
+                validatePassword();
+            });
+
+            $("#confirmNewPassword").keyup(function() {
+                validateConfirmPassword();
+            });
+
+
+
+            function validatePassword() {
+                let password = $("#newPassword").val();
+                let strongPassword = false;
+
+                let uppercase = /[A-Z]/.test(password);
+                let lowercase = /[a-z]/.test(password);
+                let number = /[0-9]/.test(password);
+                let specialChars = /[^\w]/.test(password);
+
+                if (password.length == 0) {
+                    $("#password-check").show();
+                    $("#password-check").css("background-color", "rgb(225, 132, 132)");
+                    $("#password-check").html("Password cannot be empty");
+                    return false;
+                } else if (
+                    !uppercase ||
+                    !lowercase ||
+                    !number ||
+                    !specialChars ||
+                    (password.length < 8 && password.length > 0)
+                ) {
+                    $("#password-check").show();
+                    $("#password-check").css("background-color", "rgb(225, 132, 132)");
+                    $("#password-check").html("Password is not strong enough");
+                    return true;
+                } else {
+                    $("#password-check").show();
+                    $("#password-check").css("background-color", "rgb(132, 225, 180)");
+                    $("#password-check").html("Password is strong");
+                    return true;
+                }
+            }
+
+
+            function validateConfirmPassword() {
+                let confirmPassword = $("#confirmNewPassword").val();
+                let password = $("#newPassword").val();
+
+                if (password == confirmPassword) {
+                    $("#confirm-password-check").show();
+                    $("#confirm-password-check").css("background-color", "rgb(132, 225, 180)");
+                    $("#confirm-password-check").html("Passwords match");
+                    return true;
+                } else {
+                    $("#confirm-password-check").show();
+                    $("#confirm-password-check").css("background-color", "rgb(225, 132, 132)");
+                    $("#confirm-password-check").html("Passwords do not match");
+                    return false;
+                }
+            }
+
+
+            $("#updatePassword").click(function(e) {
+
+                let oldPassword = $('#oldPassword').val();
+                let newPassword = $('#newPassword').val();
+                let userID = <?= $_SESSION['id'] ?>;
+
+                let passwordMatch = false;
+
+                if (validatePassword() && validateConfirmPassword()) {
+                    passwordMatch = true;
+                }
+
+                var data = {
+                    'userID': userID,
+                    'oldPassword': oldPassword,
+                    'newPassword': newPassword,
+                    'password_update': passwordMatch
+                };
+
+                $.ajax({
+                    type: "POST",
+                    url: "/indieabode/settings/updatePassword",
+                    data: data,
+                    success: function(response) {
+                        // alert(response);
+
+                        if (response == "1") {
+
+                            $("#password-check").hide();
+                            $("#confirm-password-check").hide();
+                            $("#old-password-check").hide();
+
+                            $('#oldPassword').val("");
+                            $('#newPassword').val("");
+                            $('#confirmNewPassword').val("");
+
+
+                            $('#flashMessage').html("Password Updated");
+                            $("#flashMessage").fadeIn(500);
+
+                            setTimeout(function() {
+                                $("#flashMessage").fadeOut("slow");
+                            }, 2000);
+
+                        } else if (response == "2") {
+                            $("#old-password-check").show();
+                            $("#old-password-check").html("Wrong Password");
+                        }
+                    },
+                });
+
+            });
+
+        });
+    </script>
 
 
 </body>

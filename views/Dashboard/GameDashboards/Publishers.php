@@ -49,39 +49,44 @@
 
             <h3>Published Gigs</h3>
 
-            <div class="devlog-cards">
-                <div class="game-card">
-                    <div class="left-col">
-                        <div class="icon"><img src="/indieabode/public/uploads/games/cover/<?= $this->gig['gigCoverImg'] ?>" alt=""></div>
-                        <div class="details">
-                            <div class="devlog-name"><?= $this->gig['gigName']; ?></div>
-                            <div class="game-name">
-                                <?= $this->gig['game']; ?>
+            <?php if (!empty($this->gig)) { ?>
+                <div class="devlog-cards">
+                    <div class="game-card">
+                        <div class="left-col">
+                            <div class="icon"><img src="/indieabode/public/uploads/games/cover/<?= $this->gig['gigCoverImg'] ?>" alt=""></div>
+                            <div class="details">
+                                <div class="devlog-name"><?= $this->gig['gigName']; ?></div>
+                                <div class="game-name">
+                                    <?= $this->gig['game']; ?>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="right-col">
-                        <div class="views">
-                            <div class="count"><?= $this->gig['viewCount']; ?></div>
-                            <div class="label">views</div>
+                        <div class="right-col">
+                            <div class="views">
+                                <div class="count"><?= $this->gig['viewCount']; ?></div>
+                                <div class="label">views</div>
+                            </div>
+                            <div class="downloads">
+                                <div class="count"><?= $this->gig['requests']; ?></div>
+                                <div class="label">requests</div>
+                            </div>
+                            <div class="ratings">
+                                <div class="count">8</div>
+                                <div class="label">comments</div>
+                            </div>
                         </div>
-                        <div class="downloads">
-                            <div class="count"><?= $this->gig['requests']; ?></div>
-                            <div class="label">requests</div>
-                        </div>
-                        <div class="ratings">
-                            <div class="count">8</div>
-                            <div class="label">comments</div>
-                        </div>
+                        <a href="/indieabode/dashboard/editgig?gameid=<?= $this->game['gameID']; ?>&gigid=<?= $this->gig['gigID']; ?>">
+                            <div class="edit-btn">
+                                Edit
+                            </div>
+                        </a>
                     </div>
-                    <a href="/indieabode/dashboard/editgig?gameid=<?= $this->game['gameID']; ?>&gigid=<?= $this->gig['gigID']; ?>">
-                        <div class="edit-btn">
-                            Edit
-                        </div>
-                    </a>
                 </div>
-            </div>
+            <?php } else { ?>
+                <div class="empty-msg">- This game has no ongoing gig orders -</div>
+
+            <?php } ?>
 
         </div>
     </div>

@@ -250,3 +250,37 @@
   font-size: 20px;
   margin-left: 130px;
 }
+
+.other-view-table {
+  margin: 10px 130px;
+}
+
+.other-view-table table {
+  border-collapse: collapse;
+  border: 1px solid black;
+}
+
+table th, table td {
+  border: 0.7px solid black;
+  padding: 3px 13px;
+}
+
+table th {
+  background-color: #a5b9bd;
+}
+
+table #column1 {
+  width: 160px;
+}
+
+table #column2 {
+  width: 100px;
+}
+
+.value-column {
+  text-align: center;
+}
+
+.empty-msg {
+  text-align: center;
+}
