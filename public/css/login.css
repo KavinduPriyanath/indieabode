@@ -68,7 +68,7 @@ form input[type=text], input[type=password] {
   font-family: 'Kreon', serif;
 }
 
-#login, .register {
+#login, .register{
   color: #0D3860;
   background-color: #7FAFDB;
   width: 200px;
@@ -289,5 +289,37 @@ form input[type=checkbox] {
   display: block;
   width: 179px;
   
+}
+
+/* Password Reset Page */
+.reset-header {
+  display: block;
+  border-radius: 8px 8px 0px 0px;
+  background-color: #759dc0a9;
+  padding: 10px;
+}
+
+.reset-header h3 {
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+
+.reset-header .sub-heading {
+  color: #3f4145;
+}
+
+#resetPassword {
+  display: inline-block;
+  color: #0D3860;
+  background-color: #7FAFDB;
+  padding: 7px 10px;
+  border: none;
+  border-radius: 6px;
+  margin-top: 11px;
+  margin-bottom: 18px;
+  font-size: 22px;
+  font-family: 'Kreon', serif;
+  font-weight: bold;
+  cursor: pointer;
 }
 

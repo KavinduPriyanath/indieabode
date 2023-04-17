@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 16, 2023 at 03:31 PM
+-- Generation Time: Apr 17, 2023 at 09:32 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -873,10 +873,10 @@ CREATE TABLE `gamer` (
 --
 
 INSERT INTO `gamer` (`gamerID`, `email`, `password`, `accountStatus`, `avatar`, `userRole`, `username`, `firstName`, `lastName`, `loginDate`, `logoutTime`, `verified`, `token`) VALUES
-(46, '7prend@gmail.com', '$2y$10$GoMCtUazYGp/cxGTPBklXe42cuR7vcZ3K4puVwUov6xozVMjZ3umG', 1, 'avatar1.png', 'game developer', 'Beidou', 'Kavindu', 'Priyanath', '2023-02-09 07:45:17', '2023-02-09 07:45:17', 1, ''),
+(46, '7prend@gmail.com', '$2y$10$28/Xs048i8U8nOr9xdhzaO3VEMWZxxL8maz1lzUf1XYlGIre41wFW', 1, 'avatar1.png', 'game developer', 'Beidou', 'Kavindu', 'Priyanath', '2023-02-09 07:45:17', '2023-02-09 07:45:17', 1, ''),
 (47, 'ypasindu11@gmail.com', '$2y$10$X6vRwMBT21PqzM57sr3fPeBK7gXyaUYiRYWEioYg/La9Sb4iPvI5.', 1, 'avatar3.png', 'game publisher', 'YPasi', 'Yeshan', 'pasindu', '2023-02-09 10:08:12', '2023-02-09 10:08:12', 1, ''),
 (48, 'nadeedarshika1999@gmail.com', '$2y$10$IwPRWNFoePVsvPrzle.DyO9.8MxiOC1PAM/qVuwmJnIXE7UkRp/SS', 1, 'avatar3.png', 'asset creator', 'Nadee', 'Nadee', 'Dharshi', '2023-02-09 14:57:04', '2023-02-09 14:57:04', 0, ''),
-(51, 'kavindupriyanath@gmail.com', '$2y$10$oOiRY55.Uo1h95KzjQwcFu5RSuZ0QmafaVvAfbN03lFvdE0B6xQDq', 1, 'avatar3.png', 'game developer', 'Prend', 'kavindu', 'priyanath', '2023-02-21 15:13:19', '2023-02-21 15:13:19', 1, ''),
+(51, 'kavindupriyanath@gmail.com', '$2y$10$HuRWMj1Sh9TZJNGx6IHTtuXnWc9HEvmNlphyIupW8pd9PGUbTmB/W', 1, 'avatar3.png', 'game developer', 'Prend', 'kavindu', 'priyanath', '2023-02-21 15:13:19', '2023-02-21 15:13:19', 1, 'fc68cec1f09b8dfd10dce933bf406972'),
 (52, 'kimalrasanka321@gmail.com', '$2y$10$3moxbOLzKlvkAKVnCHLxS.atHdVSAWsJrqyIA/Ki9LXWrFaZKT4Mu', 1, 'avatar2.png', 'gamer', 'KRDA', 'kimal', 'xsx', '2023-02-28 06:45:33', '2023-02-28 06:45:33', 1, ''),
 (53, 'klhimashanupama@gmail.com', '$2y$10$B.F4OXoJEJIWcmHKvofCRuCN8FooMdd3u8jDIn8BhvsJVPaQs0VD6', 1, 'avatar4.png', 'gamer', 'Hima', 'Himash', 'Anu', '2023-02-28 16:24:11', '2023-02-28 16:24:11', 1, ''),
 (78, 'akiladharmadasa1.1@gmail.com', '$2y$10$GPdfkGBN0VVqHsFnd5swGu.TgeDM.rixafWAHmLmhsSvvLcRqZG1e', 1, 'avatar2.png', 'asset creator', 'akilaks', 'akila', 'gona', '2023-04-08 06:10:47', '2023-04-08 06:10:47', 1, ''),
@@ -1184,7 +1184,10 @@ INSERT INTO `games_view_tracker` (`id`, `userID`, `sessionID`, `gameID`, `viewed
 (209, 46, 30, 181, '2023-04-15'),
 (210, 46, 20, 92, '2023-04-16'),
 (211, 46, 20, 95, '2023-04-16'),
-(212, 46, 20, 96, '2023-04-16');
+(212, 46, 20, 96, '2023-04-16'),
+(213, 52, 71, 92, '2023-04-16'),
+(214, 52, 71, 91, '2023-04-16'),
+(215, 46, 64, 181, '2023-04-16');
 
 -- --------------------------------------------------------
 
@@ -1287,7 +1290,8 @@ INSERT INTO `game_reviews` (`id`, `rating`, `reviewTopic`, `review`, `created_da
 (81, 2, 'grgr', 'ghthtfefhh', '2023-04-10', 52, 93, 'Yes'),
 (83, 4, 'fefe', 'fefefef', '2023-04-10', 52, 96, 'Yes'),
 (84, 2, 'grgr', 'ggrg', '2023-04-10', 52, 95, 'Yes'),
-(86, 1, 'grg', 'hjjj', '2023-04-10', 53, 96, 'No');
+(86, 1, 'grg', 'hjjj', '2023-04-10', 53, 96, 'No'),
+(89, 3, 'grgrg', 'grgrg', '2023-04-16', 52, 92, 'No');
 
 -- --------------------------------------------------------
 
@@ -1333,8 +1337,8 @@ INSERT INTO `game_stats` (`id`, `gameID`, `views`, `downloads`, `ratings`, `reve
 (1, 96, 38, 11, 1, 0),
 (2, 89, 13, 0, 0, 0),
 (3, 90, 23, 0, 0, 0),
-(4, 91, 30, 11, 0, 0),
-(5, 92, 30, 4, 0, 0),
+(4, 91, 31, 11, 0, 0),
+(5, 92, 31, 4, 0, 0),
 (6, 93, 13, 1, 0, 0),
 (7, 95, 17, 1, 1, 0);
 
@@ -1462,8 +1466,10 @@ INSERT INTO `game_stats_history` (`id`, `gameID`, `views`, `downloads`, `ratings
 (108, 96, 3, 1, 0, 0, '2023-04-13'),
 (109, 181, 1, 0, 0, 0, '2023-04-15'),
 (110, 96, 1, 1, 0, 0, '2023-04-16'),
-(111, 92, 1, 0, 0, 0, '2023-04-16'),
-(112, 95, 1, 0, 0, 0, '2023-04-16');
+(111, 92, 2, 0, 0, 0, '2023-04-16'),
+(112, 95, 1, 0, 0, 0, '2023-04-16'),
+(113, 91, 1, 0, 0, 0, '2023-04-16'),
+(114, 181, 1, 0, 0, 0, '2023-04-16');
 
 -- --------------------------------------------------------
 
@@ -2349,7 +2355,7 @@ ALTER TABLE `games_filters`
 -- AUTO_INCREMENT for table `games_view_tracker`
 --
 ALTER TABLE `games_view_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=213;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=216;
 
 --
 -- AUTO_INCREMENT for table `game_cart`
@@ -2373,7 +2379,7 @@ ALTER TABLE `game_purchases`
 -- AUTO_INCREMENT for table `game_reviews`
 --
 ALTER TABLE `game_reviews`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 
 --
 -- AUTO_INCREMENT for table `game_stats`
@@ -2385,7 +2391,7 @@ ALTER TABLE `game_stats`
 -- AUTO_INCREMENT for table `game_stats_history`
 --
 ALTER TABLE `game_stats_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
 
 --
 -- AUTO_INCREMENT for table `gig`
