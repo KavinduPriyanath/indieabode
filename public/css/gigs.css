@@ -257,3 +257,13 @@ input[type="radio"] {
     width: 20px;
     height: 20px;
 }
+
+/* Gigs Archive */
+.archive-details {
+    display: block;
+    background-color: rgb(221, 77, 77);
+    padding: 3px 5px;
+    text-align: center;
+    color: rgb(168, 192, 239);
+    font-weight: bold;
+}
