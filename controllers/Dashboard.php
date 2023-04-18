@@ -13,23 +13,34 @@ class Dashboard extends Controller
     {
         $currentUser = $_SESSION['id'];
 
-        $this->view->games = $this->model->showAllMyGames($currentUser);
+        if ($_SESSION['userRole'] == "game developer") {
 
-        $totalViews = 0;
-        $totalDownloads = 0;
-        $totalRevenue = 0;
 
-        foreach ($this->model->showAllMyGames($currentUser) as $game) {
-            $totalViews = $totalViews + $game['views'];
-            $totalDownloads = $totalDownloads + $game['downloads'];
-            $totalRevenue = $totalRevenue + $game['revenue'];
+
+            $this->view->games = $this->model->showAllMyGames($currentUser);
+
+            $totalViews = 0;
+            $totalDownloads = 0;
+            $totalRevenue = 0;
+
+            foreach ($this->model->showAllMyGames($currentUser) as $game) {
+                $totalViews = $totalViews + $game['views'];
+                $totalDownloads = $totalDownloads + $game['downloads'];
+                $totalRevenue = $totalRevenue + $game['revenue'];
+            }
+
+            $this->view->totalViews = $totalViews;
+            $this->view->totalDownloads = $totalDownloads;
+            $this->view->totalRevenue = $totalRevenue;
+
+            $this->view->render('Dashboard/Dashboard');
+        } else if ($_SESSION['userRole'] == "game publisher") {
+
+
+            $this->view->games = $this->model->showAllMyGamesPublisher($currentUser);
+
+            $this->view->render('Dashboard/PublisherDashboard');
         }
-
-        $this->view->totalViews = $totalViews;
-        $this->view->totalDownloads = $totalDownloads;
-        $this->view->totalRevenue = $totalRevenue;
-
-        $this->view->render('Dashboard/Dashboard');
     }
 
     function gigs()
@@ -38,14 +49,14 @@ class Dashboard extends Controller
 
         $this->view->ongoingrequests = $this->model->showAllMyGigRequests($_SESSION['id']);
 
-        $this->view->render('Dashboard/Dashboard-Gigs');
+        $this->view->render('Dashboard/DeveloperDashboards/Dashboard-Gigs');
     }
 
     function devlogs()
     {
         $this->view->devlogs = $this->model->showAllMyDevlogs($_SESSION['id']);
 
-        $this->view->render('Dashboard/Dashboard-Devlogs');
+        $this->view->render('Dashboard/DeveloperDashboards/Dashboard-Devlogs');
     }
 
     function gamejams()
@@ -54,29 +65,57 @@ class Dashboard extends Controller
 
         $this->view->gamejamsSubmitted = $this->model->JamsSubmitted($_SESSION['id']);
 
-        $this->view->render('Dashboard/Dashboard-Jams');
+        $this->view->render('Dashboard/DeveloperDashboards/Dashboard-Jams');
     }
 
     function crowdfundings()
     {
         $this->view->crowdfundings = $this->model->showAllMyCrowdfundings($_SESSION['id']);
 
-        $this->view->render('Dashboard/Dashboard-Crowdfunding');
+        $this->view->render('Dashboard/DeveloperDashboards/Dashboard-Crowdfunding');
     }
 
     function sales()
     {
-        $this->view->render('Dashboard/Dashboard-Sales');
+
+
+        if ($_SESSION['userRole'] == "game developer") {
+
+            $this->view->render('Dashboard/DeveloperDashboards/Dashboard-Sales');
+        } else if ($_SESSION['userRole'] == "game publisher") {
+
+            $this->view->render('Dashboard/PublisherDashboards/Dashboard-Sales');
+        }
     }
 
     function analytics()
     {
-        $this->view->render('Dashboard/Dashboard-Analytics');
+
+
+
+
+        if ($_SESSION['userRole'] == "game developer") {
+
+            $this->view->render('Dashboard/DeveloperDashboards/Dashboard-Analytics');
+        } else if ($_SESSION['userRole'] == "game publisher") {
+
+            $this->view->render('Dashboard/PublisherDashboards/Dashboard-Analytics');
+        }
     }
 
     function payouts()
     {
-        $this->view->render('Dashboard/Dashboard-Payout');
+
+
+
+
+        if ($_SESSION['userRole'] == "game developer") {
+
+            $this->view->render('Dashboard/DeveloperDashboards/Dashboard-Payout');
+        } else if ($_SESSION['userRole'] == "game publisher") {
+
+            $this->view->render('Dashboard/PublisherDashboards/Dashboard-Payouts');
+        }
     }
 
 
@@ -397,5 +436,30 @@ class Dashboard extends Controller
         );
 
         header('location:/indieabode/');
+    }
+
+
+    //Game Publisher Dashboard Items
+    //Game Publisher Dashboard Items
+    //Game Publisher Dashboard Items
+    //Game Publisher Dashboard Items
+    //Game Publisher Dashboard Items
+    //Game Publisher Dashboard Items
+    //Game Publisher Dashboard Items
+
+    function orders()
+    {
+        $currentUser = $_SESSION['id'];
+
+        $this->view->gigs = $this->model->showAllMyOrdersPublisher($currentUser);
+
+        $this->view->render('Dashboard/PublisherDashboards/Dashboard-Orders');
+    }
+
+    function requests()
+    {
+        $this->view->ongoingrequests = $this->model->showAllMyRequestsPublisher($_SESSION['id']);
+
+        $this->view->render('Dashboard/PublisherDashboards/Dashboard-Requests');
     }
 }

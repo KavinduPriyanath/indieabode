@@ -404,8 +404,8 @@
                             <div class="dropdown-menu">
                                 <div class="arrow gigsarrow"></div>
                                 <div class=".ulsub">
-                                    <a href="<?php echo BASE_URL; ?>requests">Requests <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                                    <a href="<?php echo BASE_URL; ?>archieve">Archieve <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                                    <a href="<?php echo BASE_URL; ?>gigs/requests">Requests <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                                    <a href="<?php echo BASE_URL; ?>gigs/archive">Archieve <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                     <hr />
                                     <a href="<?php echo BASE_URL; ?>gigs">Browse&nbsp;all&nbsp;gigs
                                         <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>

@@ -250,6 +250,8 @@ class Gig extends Controller
 
         $this->model->gigPurchased($gigID);
 
+        $this->model->AddPublisherToGame($gigID, $publisherID);
+
         //sending an email receipt
         try {
             $mail = new PHPMailer(true);

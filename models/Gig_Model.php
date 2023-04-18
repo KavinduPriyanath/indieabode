@@ -237,4 +237,24 @@ class Gig_Model extends Model
 
         $stmt->execute();
     }
+
+    function AddPublisherToGame($gigID, $publisherID)
+    {
+
+        $sql = "SELECT * FROM gig WHERE gigID='$gigID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $gig = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $gameID = $gig['game'];
+
+        $updateSql = "UPDATE freegame SET gamePublisherID='$publisherID' WHERE gameID='$gameID'";
+
+        $updateStmt = $this->db->prepare($updateSql);
+
+        $updateStmt->execute();
+    }
 }
