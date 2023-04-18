@@ -139,4 +139,69 @@ class Library_Model extends Model
 
         return $assetFile;
     }
+
+    function updateAssetDownloadStat($assetID, $todayDate)
+    {
+
+        $sql = "SELECT * FROM asset_stats_history WHERE assetID='$assetID' AND created_at='$todayDate'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $record = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (empty($record)) {
+            $insertSQL = "INSERT INTO asset_stats_history (assetID, views, downloads, ratings, reviews, created_at) VALUES ('$assetID', 0, 1, 0, 0, '$todayDate')";
+
+            $insertStmt = $this->db->prepare($insertSQL);
+
+            $insertStmt->execute();
+        } else {
+
+            $viewCount = $record['views'];
+
+            $downloadCount = $record['downloads'] + 1;
+
+            $ratingsCount = $record['ratings'];
+
+            $reviewCount = $record['reviews'];
+
+            $updateSQL = "UPDATE asset_stats_history 
+            SET assetID='$assetID', 
+            views='$viewCount', 
+            downloads='$downloadCount', 
+            ratings = '$ratingsCount',
+            reviews = '$reviewCount',
+            created_at = '$todayDate' WHERE assetID = '$assetID' AND created_at='$todayDate'";
+
+            $updateStmt = $this->db->prepare($updateSQL);
+
+            $updateStmt->execute();
+        }
+    }
+
+    function updateAssetDownloads($assetID)
+    {
+
+        $sql = "SELECT * FROM asset_stats_history WHERE assetID='$assetID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $assetDownloads = $stmt->fetchAll();
+
+        $totalDownloads = 0;
+
+        foreach ($assetDownloads as $assetDownload) {
+            $totalDownloads = $totalDownloads + $assetDownload['downloads'];
+        }
+
+        $updateSQL = "UPDATE asset_stats SET downloads='$totalDownloads' WHERE assetID='$assetID'";
+
+        $stmt = $this->db->prepare($updateSQL);
+
+        $stmt->execute();
+    }
 }

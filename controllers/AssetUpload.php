@@ -24,7 +24,7 @@ class AssetUpload extends Controller
         $foreignKey = $_SESSION['id'];
         $assetClassification = $_POST['asset-classification'];
         $assetStatus = $_POST['asset-status'];
-        $assetDetails = $_POST['asset-details'];
+        $assetDetails = $_POST['description'];
         $assetTags = $_POST['asset-tags'];
         $assetType = $_POST['asset-type'];
         $assetStyle = $_POST['asset-style'];

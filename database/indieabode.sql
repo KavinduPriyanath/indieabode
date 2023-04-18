@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 18, 2023 at 06:26 AM
+-- Generation Time: Apr 18, 2023 at 04:43 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -185,7 +185,9 @@ CREATE TABLE `asset_library` (
 INSERT INTO `asset_library` (`id`, `assetID`, `developerID`, `createdAt`) VALUES
 (1, 10, 46, '2023-03-15'),
 (15, 17, 46, '2023-03-20'),
-(16, 20, 46, '2023-03-21');
+(16, 20, 46, '2023-03-21'),
+(17, 21, 46, '2023-04-18'),
+(18, 9, 78, '2023-04-18');
 
 -- --------------------------------------------------------
 
@@ -209,7 +211,9 @@ CREATE TABLE `asset_purchases` (
 INSERT INTO `asset_purchases` (`id`, `assetID`, `buyerID`, `orderID`, `purchasedPrice`, `purchasedData`) VALUES
 (18, 17, 46, '6418200e3e141', 30, '2023-03-20'),
 (19, 17, 46, '641825ffad068', 30, '2023-03-20'),
-(20, 20, 46, '6419734216074', 30, '2023-03-21');
+(20, 20, 46, '6419734216074', 30, '2023-03-21'),
+(21, 21, 46, '643e64a57e5e2', 30, '2023-04-18'),
+(22, 9, 78, '643e681aa58db', 30, '2023-04-18');
 
 -- --------------------------------------------------------
 
@@ -222,21 +226,24 @@ CREATE TABLE `asset_stats` (
   `downloads` int(11) NOT NULL DEFAULT 0,
   `views` int(11) NOT NULL DEFAULT 0,
   `ratings` int(11) NOT NULL DEFAULT 0,
-  `ratingCount` int(11) NOT NULL DEFAULT 0
+  `ratingCount` int(11) NOT NULL DEFAULT 0,
+  `revenue` double NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `asset_stats`
 --
 
-INSERT INTO `asset_stats` (`assetID`, `downloads`, `views`, `ratings`, `ratingCount`) VALUES
-(9, 0, 0, 0, 0),
-(10, 0, 0, 0, 0),
-(17, 0, 0, 0, 0),
-(18, 0, 0, 0, 0),
-(19, 0, 0, 0, 0),
-(20, 0, 0, 0, 0),
-(21, 0, 0, 0, 0);
+INSERT INTO `asset_stats` (`assetID`, `downloads`, `views`, `ratings`, `ratingCount`, `revenue`) VALUES
+(9, 5, 0, 0, 0, 0),
+(10, 0, 0, 0, 0, 0),
+(17, 0, 0, 0, 0, 0),
+(18, 0, 1, 0, 0, 0),
+(19, 0, 1, 0, 0, 0),
+(20, 0, 0, 0, 0, 0),
+(21, 0, 0, 0, 0, 0),
+(23, 0, 0, 0, 0, 0),
+(24, 0, 1, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -262,7 +269,39 @@ INSERT INTO `asset_stats_history` (`id`, `assetID`, `views`, `downloads`, `ratin
 (1, 17, 0, 2, 0, 0, '2023-03-09'),
 (2, 10, 0, 1, 0, 0, '2023-03-14'),
 (3, 10, 0, 1, 0, 0, '2023-03-15'),
-(4, 9, 0, 1, 0, 0, '2023-03-15');
+(4, 9, 0, 1, 0, 0, '2023-03-15'),
+(5, 10, 1, 0, 0, 0, '2023-04-18'),
+(6, 17, 1, 0, 0, 0, '2023-04-18'),
+(7, 18, 1, 0, 0, 0, '2023-04-18'),
+(8, 19, 1, 0, 0, 0, '2023-04-18'),
+(9, 24, 1, 0, 0, 0, '2023-04-18'),
+(10, 9, 0, 4, 0, 0, '2023-04-18');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `asset_view_tracker`
+--
+
+CREATE TABLE `asset_view_tracker` (
+  `id` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
+  `assetID` int(11) NOT NULL,
+  `sessionID` int(11) NOT NULL,
+  `viewedDate` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `asset_view_tracker`
+--
+
+INSERT INTO `asset_view_tracker` (`id`, `userID`, `assetID`, `sessionID`, `viewedDate`) VALUES
+(1, 78, 9, 72, '2023-04-18'),
+(2, 78, 10, 72, '2023-04-18'),
+(3, 78, 17, 72, '2023-04-18'),
+(4, 78, 18, 72, '2023-04-18'),
+(5, 78, 19, 72, '2023-04-18'),
+(6, 78, 24, 72, '2023-04-18');
 
 -- --------------------------------------------------------
 
@@ -290,7 +329,7 @@ INSERT INTO `billing_addresses` (`id`, `userID`, `fullName`, `streetLine1`, `str
 (2, 46, 'fefefjkukiuliuli', 'grgr', 'grgrg', 'rrh', 'hrg', 'grgrg', 'Sri Lanka'),
 (3, 51, 'fef', 'grgr', 'grgrg', 'rrh', 'hrg', 'grgrg', 'Sri Lanka'),
 (4, 47, 'fefefjkukiuliuli', 'grgr', 'grgrg', 'rrh', 'hrg', 'grgrg', 'Sri Lanka'),
-(5, 53, 'fefefjkukiuliuli', 'grgr', 'grgrg', 'rrh', 'hrg', 'grgrg', 'Sri Lanka');
+(5, 78, 'fefefjkukiuliuli', 'grgr', 'grgrg', 'rrh', 'hrg', 'grgrg', 'Sri Lanka');
 
 -- --------------------------------------------------------
 
@@ -696,7 +735,7 @@ CREATE TABLE `freeasset` (
   `assetName` varchar(50) NOT NULL,
   `assetGenre` varchar(50) NOT NULL,
   `assetPrice` varchar(10) NOT NULL,
-  `version` varchar(10) NOT NULL,
+  `version` varchar(10) NOT NULL DEFAULT '1.0',
   `assetDetails` text NOT NULL,
   `assetScreenshots` varchar(255) NOT NULL,
   `assetTitle` varchar(50) NOT NULL,
@@ -722,13 +761,15 @@ CREATE TABLE `freeasset` (
 --
 
 INSERT INTO `freeasset` (`assetID`, `assetName`, `assetGenre`, `assetPrice`, `version`, `assetDetails`, `assetScreenshots`, `assetTitle`, `assetTagline`, `assetClassification`, `assetReleaseStatus`, `assetTags`, `assetFile`, `assetLicense`, `assetCoverImg`, `assetVisibility`, `assetVideoURL`, `assetType`, `assetStyle`, `assetCreatorID`, `fileSize`, `fileExtension`, `created_at`) VALUES
-(9, 'Sprout Lands', '', '', '', '', 'SS-Sprout Lands-0.png,SS-Sprout Lands-1.png', '', 'Cute pixel pastel farming asset pack for free', '2d', 'released', 'pixel art, sprout la', 'asset-Sprout Lands.zip', 'proprietary', 'Cover-Sprout Lands.png', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'sprite', 'pixelart', 47, '', '', '2023-04-17 20:17:28'),
-(10, 'Cozy People', '', '', '', '', 'SS-Cozy People-0.png,SS-Cozy People-1.png', '', 'Animated characters, hairstyles and clothes!', '3d', 'released', 'food, sprites, icons', 'asset-Cozy People.zip', 'open-source', 'Cover-Cozy People.png', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'sprite', 'pixelart', 47, '', '', '2023-04-23 00:00:00'),
-(17, 'New Asset', '', '30.00', '', '', 'SS-New Asset-0.jpg,SS-New Asset-1.png', '', 'Buy this one ASAP', '2d', 'released', 'feff', 'asset-New Asset.zip', 'proprietary', 'Cover-New Asset.png', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'skybox', '16bit', 47, '', '', '2023-01-08 00:00:00'),
-(18, 'New Asset 2', '', '0', '', '', 'SS-New Asset 2-0.jpg,SS-New Asset 2-1.jpg,SS-New Asset 2-2.png', '', 'cute pixel pastel farming asset pack', 'visualEffects', 'released', 'fefef', 'asset-New Asset 2.zip', 'proprietary', 'Cover-New Asset 2.jpg', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'skybox', '8bit', 47, '', '', '2023-01-24 00:00:00'),
-(19, 'New Asset 3', '', '$2.00', '', '', 'SS-New Asset 3-0.jpg,SS-New Asset 3-1.jpg,SS-New Asset 3-2.jpg', '', 'cute pixel pastel farming asset pack', '3d', 'released', 'grgg', 'asset-New Asset 3.zip', 'open-source', 'Cover-New Asset 3.jpg', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'character', '8bit', 47, '', '', '2022-01-28 00:00:00'),
-(20, 'New Asset 4', '', '2.00', '', '', 'SS-New Asset 4-0.jpg,SS-New Asset 4-1.jpg,SS-New Asset 4-2.jpg', '', 'cute pixel pastel farming asset pack', '3d', 'released', 'grgr', 'asset-New Asset 4.zip', 'open-source', 'Cover-New Asset 4.jpg', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'sprite', 'pixelart', 47, '', '', '2022-01-11 00:00:00'),
-(21, 'New Asset 5', '', '12', '', '', 'SS-New Asset 5-0.png,SS-New Asset 5-1.png', '', 'cute pixel pastel farming asset pack', '3d', 'released', 'brbr', 'asset-New Asset 5.zip', 'open-source', 'Cover-New Asset 5.png', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'sprite', 'pixelart', 47, '', '', '2023-01-01 00:00:00');
+(9, 'Sprout Lands', '', '', '1.0', '', 'SS-Sprout Lands-0.png,SS-Sprout Lands-1.png', '', 'Cute pixel pastel farming asset pack for free', '2d', 'released', 'pixel art, sprout la', 'asset-Sprout Lands.zip', 'proprietary', 'Cover-Sprout Lands.png', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'sprite', 'pixelart', 47, '', '', '2023-04-17 20:17:28'),
+(10, 'Cozy People', '', '', '1.0', '', 'SS-Cozy People-0.png,SS-Cozy People-1.png', '', 'Animated characters, hairstyles and clothes!', '3d', 'released', 'food, sprites, icons', 'asset-Cozy People.zip', 'open-source', 'Cover-Cozy People.png', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'sprite', 'pixelart', 47, '', '', '2023-04-23 00:00:00'),
+(17, 'New Asset', '', '30.00', '1.0', '', 'SS-New Asset-0.jpg,SS-New Asset-1.png', '', 'Buy this one ASAP', '2d', 'released', 'feff', 'asset-New Asset.zip', 'proprietary', 'Cover-New Asset.png', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'skybox', '16bit', 47, '', '', '2023-01-08 00:00:00'),
+(18, 'New Asset 2', '', '0', '1.0', '', 'SS-New Asset 2-0.jpg,SS-New Asset 2-1.jpg,SS-New Asset 2-2.png', '', 'cute pixel pastel farming asset pack', 'visualEffects', 'released', 'fefef', 'asset-New Asset 2.zip', 'proprietary', 'Cover-New Asset 2.jpg', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'skybox', '8bit', 47, '', '', '2023-01-24 00:00:00'),
+(19, 'New Asset 3', '', '$2.00', '1.0', '', 'SS-New Asset 3-0.jpg,SS-New Asset 3-1.jpg,SS-New Asset 3-2.jpg', '', 'cute pixel pastel farming asset pack', '3d', 'released', 'grgg', 'asset-New Asset 3.zip', 'open-source', 'Cover-New Asset 3.jpg', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'character', '8bit', 47, '', '', '2022-01-28 00:00:00'),
+(20, 'New Asset 4', '', '2.00', '1.0', '', 'SS-New Asset 4-0.jpg,SS-New Asset 4-1.jpg,SS-New Asset 4-2.jpg', '', 'cute pixel pastel farming asset pack', '3d', 'released', 'grgr', 'asset-New Asset 4.zip', 'open-source', 'Cover-New Asset 4.jpg', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'sprite', 'pixelart', 47, '', '', '2022-01-11 00:00:00'),
+(21, 'New Asset 5', '', '12', '1.0', '', 'SS-New Asset 5-0.png,SS-New Asset 5-1.png', '', 'cute pixel pastel farming asset pack', '3d', 'released', 'brbr', 'asset-New Asset 5.zip', 'open-source', 'Cover-New Asset 5.png', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'sprite', 'pixelart', 47, '', '', '2023-01-01 00:00:00'),
+(23, 'New Asset 99', '', '0', '1.0', '', 'SS-New Asset 99-0.png,SS-New Asset 99-1.png,SS-New Asset 99-2.png,SS-New Asset 99-3.png', '', 'cute pixel pastel farming asset pack', 'audio', 'released', 'game,grgr,ukuyk', 'asset-New Asset 99.zip', 'proprietary', 'Cover-New Asset 99.png', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'character', '8bit', 78, '', '', '2023-04-18 16:10:02'),
+(24, 'New Asset 1oo', '', '2', '1.0', 'ggrg <b>g eggegegg</b><div><b>rgrhhrh </b>rhrhhh</div><div style=\"text-align: center;\">grhrh</div><div style=\"text-align: center;\">grg</div><div style=\"text-align: center;\"><br></div>', 'SS-New Asset 1oo-0.jpg,SS-New Asset 1oo-1.jpg,SS-New Asset 1oo-2.jpg', '', 'Cute pixel pastel farming asset pack', 'textures', 'Upcoming', 'game,grgr,rhr', 'asset-New Asset 1oo.zip', 'proprietary', 'Cover-New Asset 1oo.jpg', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'character', '8bit', 78, '', '', '2023-04-18 16:13:23');
 
 -- --------------------------------------------------------
 
@@ -765,23 +806,24 @@ CREATE TABLE `freegame` (
   `recommendStorage` varchar(255) NOT NULL,
   `recommendGraphics` varchar(255) NOT NULL,
   `gamePrice` varchar(100) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp()
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `gamePublisherID` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `freegame`
 --
 
-INSERT INTO `freegame` (`gameID`, `gameName`, `releaseStatus`, `gameDetails`, `gameScreenshots`, `gameTrailor`, `gameTagline`, `gameClassification`, `gameTags`, `gameFeatures`, `platform`, `gameType`, `gameFile`, `gameVisibility`, `gameCoverImg`, `gameDeveloperID`, `minOS`, `minProcessor`, `minMemory`, `minStorage`, `minGraphics`, `other`, `recommendOS`, `recommendProcessor`, `recommendMemory`, `recommendStorage`, `recommendGraphics`, `gamePrice`, `created_at`) VALUES
-(89, 'Albion Online Z1', 'Upcoming', '', '', '', 'Free medieval fantasy MMORPG, set in a medieval world', 'Action', '', '', 'Linux', 'Base Game', '', 0, '', 46, '', '', '', '', '', '', '', '', '', '', '', '2', '2023-04-03 19:55:08'),
-(90, 'Stray', 'Upcoming', '<h3>ABOUT THIS GAME</h3>\n<br>\n<p>Lost, alone and separated from family, a stray cat must untangle an ancient mystery to escape a long-forgotten city.\n\nStray is a third-person cat adventure game set amidst the detailed, neon-lit alleys of a decaying cybercity and the murky environments of its seedy underbelly. Roam surroundings high and low, defend against unforeseen threats and solve the mysteries of this unwelcoming place inhabited by curious droids and dangerous creatures.\n\nSee the world through the eyes of a cat and interact with the environment in playful ways. Be stealthy, nimble, silly, and sometimes as annoying as possible with the strange inhabitants of this mysterious world.\n\nAlong the way, the cat befriends a small flying drone, known only as B-12. With the help of this newfound companion, the duo must find a way out.\n\nStray is developed by BlueTwelve Studio, a small team from the south of France mostly made up of cats and a handful of humans.<p>', 'SS-Stray-0.jpg,SS-Stray-1.jpg,SS-Stray-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'follows a stray cat who falls into a walled city populated by robots', 'action', 'stray, cat, 3d', 'Puzzle', 'Linux', 'DLC', 'Game-Stray.zip', 0, 'Cover-Stray.jpg', 49, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'Extra Content', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '3.99', '2020-01-23 19:55:18'),
-(91, 'Scarlet Nexus', 'Upcoming', '<h3>ABOUT THIS GAME</h3>\r\n<p>In the far distant future, a psionic hormone was discovered in the human brain, granting people extra-sensory powers and changed the world as we knew it. As humanity entered this new era, deranged mutants known as Others began to descend from the sky with a hunger for human brains. Highly resistant to conventional attack methods, extreme measures needed to be taken to battle the overwhelming threat and preserve humanity. Those with acute extra-sensory abilities, known as psionics, were our only chance to fight the onslaught from above. Since then, psionics have been scouted for their talents and recruited to the Other Suppression Force (OSF), humanity’s last line of defense.\r\n</p>\r\n<br>\r\n<p>Featuring a dual story, begin your adventure with either Yuito Sumeragi, an energetic recruit from a prestigious political family or Kasane Randall, the mysterious scout whose power and skill has gained great notoriety among the OSF. As their different experiences interweave with each other, it is only then that you will reveal the full story and unlock all the mysteries of a Brain Punk future caught between technology and psychic abilities in SCARLET NEXUS.\r\n</p>\r\n<br>\r\n<p>Kinetic Psychic Combat – Using psycho-kinetic abilities, the world around you becomes your greatest weapon. Lift, break and throw pieces of your environment to build your attack combos and lay waste to your enemies.\r\n\r\nExterminate the Others – Deranged mutants that descended from the sky, highly resistant to conventional attack methods and defenses. Tormented by the constant pain of their mutation, they seek brains of living organisms to calm their madness.\r\n\r\nDiscover a Brain Punk future – Explore and protect a futuristic Japanese landscape that combines inspirations from classic anime and western science fiction.\r\n\r\nA Dual Story Experience – Dive into a complex story of bonds, courage and heroism, crafted by minds behind the iconic Tales of Vesperia.</p>', 'SS-Scarlet Nexus-0.jpg,SS-Scarlet Nexus-1.jpg,SS-Scarlet Nexus-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'Elite psionics each armed with a talent in psychokinesis', 'RPG', 'scarlet, nexus, rpg,thhrh', 'Leaderboard', 'Windows,Linux', 'DLC', 'Game-Scarlet Nexus.zip', 0, 'Cover-Scarlet Nexus.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '2022-01-27 00:00:00'),
-(92, 'Naruto Shippuden', 'released', '<h3>ABOUT THIS GAME</h3>\r\n<br>\r\n<p>The latest opus in the acclaimed STORM series is taking you on a colourful and breathtaking ride. Take advantage of the totally revamped battle system and prepare to dive into the most epic fights you’ve ever seen in the NARUTO SHIPPUDEN: Ultimate Ninja STORM series!</p>\r\n<br>\r\n<p>\r\nPrepare for the most awaited STORM game ever created!</p>\r\n\r\n', 'SS-Naruto Shippuden-0.jpg,SS-Naruto Shippuden-1.jpg,SS-Naruto Shippuden-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'The latest opus in the acclaimed STORM series is taking you ', 'action', 'naruto, anime, shippuden', 'Multi-Player', 'Windows', 'Base Game', 'Game-Naruto Shippuden.zip', 0, 'Cover-Naruto Shippuden.jpg', 49, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '7.99', '2022-01-04 00:00:00'),
-(93, 'Monster Hunter Rise', 'Released', '<h3>ABOUT THIS GAME</h3>\r\n<br>\r\n<p>Rise to the challenge and join the hunt! In Monster Hunter Rise, the latest installment in the award-winning and top-selling Monster Hunter series, you’ll become a hunter, explore brand new maps and use a variety of weapons to take down fearsome monsters as part of an all-new storyline. The PC release also comes packed with a number of additional visual and performance enhancing optimizations.</p>\r\n<br>\r\n<h3>\r\nFerocious monsters with unique ecologies</h3>\r\n<p>\r\nHunt down a plethora of monsters with distinct behaviors and deadly ferocity. From classic returning monsters to all-new creatures inspired by Japanese folklore, including the flagship wyvern Magnamalo, you’ll need to think on your feet and master their unique tendencies if you hope to reap any of the rewards!</p>\r\n\r\n', 'SS-Monster Hunter Rise-0.jpg,SS-Monster Hunter Rise-1.jpg,SS-Monster Hunter Rise-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'Rise to the challenge and join the hunt! In Monster Hunter Rise', 'Strategy', 'monster hunter, rpg, singlepla', 'Single-Player', 'Windows', 'Base Game', 'Game-Monster Hunter Rise.zip', 0, 'Cover-Monster Hunter Rise.png', 46, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', '', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '4', '2023-01-16 18:56:30'),
-(95, 'Naruto Shippuden', 'released', '<h3>ABOUT THIS GAME</h3>\r\n<br>\r\n<p>The latest opus in the acclaimed STORM series is taking you on a colourful and breathtaking ride. Take advantage of the totally revamped battle system and prepare to dive into the most epic fights you’ve ever seen in the NARUTO SHIPPUDEN: Ultimate Ninja STORM series!</p>\r\n<br>\r\n<p>\r\nPrepare for the most awaited STORM game ever created!</p>\r\n\r\n', 'SS-Naruto Shippuden-0.jpg,SS-Naruto Shippuden-1.jpg,SS-Naruto Shippuden-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'The latest opus in the acclaimed STORM series is taking you ', 'action', 'naruto, anime, shippuden', 'Multi-Player,Single-Player', 'Windows', 'Base Game', 'Game-Naruto Shippuden.zip', 0, 'Cover-Naruto Shippuden.jpg', 46, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '0', '2023-01-09 00:00:00'),
-(96, 'Final Fantasy V', 'Upcoming', 'f<div><u>fefef</u>ffe<div>g</div><div>rgrg</div><div>g</div><div>g</div><div><u>grgrg</u></div></div>', 'SS-Final Fantasy V-0.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'Remaster of CRISIS CORE featuring updated graphics, combats', 'Strategy', ',grgrg,hth,ff', 'Single-Player,Achievements', 'Windows,Linux', 'DLC', 'Game-Final Fantasy V.zip', 0, 'Cover-Final Fantasy V.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-01-16 11:57:03'),
-(181, 'grgr', 'released', '', 'SS-grgr-0.jpg,SS-grgr-1.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'follows a stray cat who falls into a walled city populated by robots, ', 'action', 'game,grgre', 'Multi Player', 'Windows', 'Base Game', 'Game-grgr.zip', 0, 'Cover-grgr.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-01-24 00:00:00'),
-(182, 'greg', 'released', 'rhrhr <b>hrhrhrh&nbsp;</b>', 'SS-greg-0.jpg,SS-greg-1.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'follows a stray cat who falls into a walled city populated by robots, ', 'action', 'game,rhreh', 'Single Player', 'Windows', 'Base Game', 'Game-greg.zip', 0, 'Cover-greg.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '2022-01-01 00:00:00');
+INSERT INTO `freegame` (`gameID`, `gameName`, `releaseStatus`, `gameDetails`, `gameScreenshots`, `gameTrailor`, `gameTagline`, `gameClassification`, `gameTags`, `gameFeatures`, `platform`, `gameType`, `gameFile`, `gameVisibility`, `gameCoverImg`, `gameDeveloperID`, `minOS`, `minProcessor`, `minMemory`, `minStorage`, `minGraphics`, `other`, `recommendOS`, `recommendProcessor`, `recommendMemory`, `recommendStorage`, `recommendGraphics`, `gamePrice`, `created_at`, `gamePublisherID`) VALUES
+(89, 'Albion Online Z1', 'Upcoming', '', '', '', 'Free medieval fantasy MMORPG, set in a medieval world', 'Action', '', '', 'Linux', 'Base Game', '', 0, '', 46, '', '', '', '', '', '', '', '', '', '', '', '2', '2023-04-03 19:55:08', 47),
+(90, 'Stray', 'Upcoming', '<h3>ABOUT THIS GAME</h3>\n<br>\n<p>Lost, alone and separated from family, a stray cat must untangle an ancient mystery to escape a long-forgotten city.\n\nStray is a third-person cat adventure game set amidst the detailed, neon-lit alleys of a decaying cybercity and the murky environments of its seedy underbelly. Roam surroundings high and low, defend against unforeseen threats and solve the mysteries of this unwelcoming place inhabited by curious droids and dangerous creatures.\n\nSee the world through the eyes of a cat and interact with the environment in playful ways. Be stealthy, nimble, silly, and sometimes as annoying as possible with the strange inhabitants of this mysterious world.\n\nAlong the way, the cat befriends a small flying drone, known only as B-12. With the help of this newfound companion, the duo must find a way out.\n\nStray is developed by BlueTwelve Studio, a small team from the south of France mostly made up of cats and a handful of humans.<p>', 'SS-Stray-0.jpg,SS-Stray-1.jpg,SS-Stray-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'follows a stray cat who falls into a walled city populated by robots', 'action', 'stray, cat, 3d', 'Puzzle', 'Linux', 'DLC', 'Game-Stray.zip', 0, 'Cover-Stray.jpg', 49, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'Extra Content', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '3.99', '2020-01-23 19:55:18', 0),
+(91, 'Scarlet Nexus', 'Upcoming', '<h3>ABOUT THIS GAME</h3>\r\n<p>In the far distant future, a psionic hormone was discovered in the human brain, granting people extra-sensory powers and changed the world as we knew it. As humanity entered this new era, deranged mutants known as Others began to descend from the sky with a hunger for human brains. Highly resistant to conventional attack methods, extreme measures needed to be taken to battle the overwhelming threat and preserve humanity. Those with acute extra-sensory abilities, known as psionics, were our only chance to fight the onslaught from above. Since then, psionics have been scouted for their talents and recruited to the Other Suppression Force (OSF), humanity’s last line of defense.\r\n</p>\r\n<br>\r\n<p>Featuring a dual story, begin your adventure with either Yuito Sumeragi, an energetic recruit from a prestigious political family or Kasane Randall, the mysterious scout whose power and skill has gained great notoriety among the OSF. As their different experiences interweave with each other, it is only then that you will reveal the full story and unlock all the mysteries of a Brain Punk future caught between technology and psychic abilities in SCARLET NEXUS.\r\n</p>\r\n<br>\r\n<p>Kinetic Psychic Combat – Using psycho-kinetic abilities, the world around you becomes your greatest weapon. Lift, break and throw pieces of your environment to build your attack combos and lay waste to your enemies.\r\n\r\nExterminate the Others – Deranged mutants that descended from the sky, highly resistant to conventional attack methods and defenses. Tormented by the constant pain of their mutation, they seek brains of living organisms to calm their madness.\r\n\r\nDiscover a Brain Punk future – Explore and protect a futuristic Japanese landscape that combines inspirations from classic anime and western science fiction.\r\n\r\nA Dual Story Experience – Dive into a complex story of bonds, courage and heroism, crafted by minds behind the iconic Tales of Vesperia.</p>', 'SS-Scarlet Nexus-0.jpg,SS-Scarlet Nexus-1.jpg,SS-Scarlet Nexus-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'Elite psionics each armed with a talent in psychokinesis', 'RPG', 'scarlet, nexus, rpg,thhrh', 'Leaderboard', 'Windows,Linux', 'DLC', 'Game-Scarlet Nexus.zip', 0, 'Cover-Scarlet Nexus.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '2022-01-27 00:00:00', 0),
+(92, 'Naruto Shippuden', 'released', '<h3>ABOUT THIS GAME</h3>\r\n<br>\r\n<p>The latest opus in the acclaimed STORM series is taking you on a colourful and breathtaking ride. Take advantage of the totally revamped battle system and prepare to dive into the most epic fights you’ve ever seen in the NARUTO SHIPPUDEN: Ultimate Ninja STORM series!</p>\r\n<br>\r\n<p>\r\nPrepare for the most awaited STORM game ever created!</p>\r\n\r\n', 'SS-Naruto Shippuden-0.jpg,SS-Naruto Shippuden-1.jpg,SS-Naruto Shippuden-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'The latest opus in the acclaimed STORM series is taking you ', 'action', 'naruto, anime, shippuden', 'Multi-Player', 'Windows', 'Base Game', 'Game-Naruto Shippuden.zip', 0, 'Cover-Naruto Shippuden.jpg', 49, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '7.99', '2022-01-04 00:00:00', 0),
+(93, 'Monster Hunter Rise', 'Released', '<h3>ABOUT THIS GAME</h3>\r\n<br>\r\n<p>Rise to the challenge and join the hunt! In Monster Hunter Rise, the latest installment in the award-winning and top-selling Monster Hunter series, you’ll become a hunter, explore brand new maps and use a variety of weapons to take down fearsome monsters as part of an all-new storyline. The PC release also comes packed with a number of additional visual and performance enhancing optimizations.</p>\r\n<br>\r\n<h3>\r\nFerocious monsters with unique ecologies</h3>\r\n<p>\r\nHunt down a plethora of monsters with distinct behaviors and deadly ferocity. From classic returning monsters to all-new creatures inspired by Japanese folklore, including the flagship wyvern Magnamalo, you’ll need to think on your feet and master their unique tendencies if you hope to reap any of the rewards!</p>\r\n\r\n', 'SS-Monster Hunter Rise-0.jpg,SS-Monster Hunter Rise-1.jpg,SS-Monster Hunter Rise-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'Rise to the challenge and join the hunt! In Monster Hunter Rise', 'Strategy', 'monster hunter, rpg, singlepla', 'Single-Player', 'Windows', 'Base Game', 'Game-Monster Hunter Rise.zip', 0, 'Cover-Monster Hunter Rise.png', 46, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', '', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '4', '2023-01-16 18:56:30', 0),
+(95, 'Naruto Shippuden', 'released', '<h3>ABOUT THIS GAME</h3>\r\n<br>\r\n<p>The latest opus in the acclaimed STORM series is taking you on a colourful and breathtaking ride. Take advantage of the totally revamped battle system and prepare to dive into the most epic fights you’ve ever seen in the NARUTO SHIPPUDEN: Ultimate Ninja STORM series!</p>\r\n<br>\r\n<p>\r\nPrepare for the most awaited STORM game ever created!</p>\r\n\r\n', 'SS-Naruto Shippuden-0.jpg,SS-Naruto Shippuden-1.jpg,SS-Naruto Shippuden-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'The latest opus in the acclaimed STORM series is taking you ', 'action', 'naruto, anime, shippuden', 'Multi-Player,Single-Player', 'Windows', 'Base Game', 'Game-Naruto Shippuden.zip', 0, 'Cover-Naruto Shippuden.jpg', 46, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '0', '2023-01-09 00:00:00', 0),
+(96, 'Final Fantasy V', 'Upcoming', 'f<div><u>fefef</u>ffe<div>g</div><div>rgrg</div><div>g</div><div>g</div><div><u>grgrg</u></div></div>', 'SS-Final Fantasy V-0.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'Remaster of CRISIS CORE featuring updated graphics, combats', 'Strategy', ',grgrg,hth,ff', 'Single-Player,Achievements', 'Windows,Linux', 'DLC', 'Game-Final Fantasy V.zip', 0, 'Cover-Final Fantasy V.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-01-16 11:57:03', 0),
+(181, 'grgr', 'released', '', 'SS-grgr-0.jpg,SS-grgr-1.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'follows a stray cat who falls into a walled city populated by robots, ', 'action', 'game,grgre', 'Multi Player', 'Windows', 'Base Game', 'Game-grgr.zip', 0, 'Cover-grgr.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-01-24 00:00:00', 0),
+(182, 'greg', 'released', 'rhrhr <b>hrhrhrh&nbsp;</b>', 'SS-greg-0.jpg,SS-greg-1.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'follows a stray cat who falls into a walled city populated by robots, ', 'action', 'game,rhreh', 'Single Player', 'Windows', 'Base Game', 'Game-greg.zip', 0, 'Cover-greg.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '2022-01-01 00:00:00', 0);
 
 -- --------------------------------------------------------
 
@@ -1512,9 +1554,9 @@ CREATE TABLE `gig` (
 --
 
 INSERT INTO `gig` (`gigID`, `gigName`, `gigTrailor`, `gigScreenshot`, `gigDetails`, `game`, `gameDeveloperID`, `gamePublisherID`, `gigTagline`, `currentStage`, `plannedReleaseDate`, `estimatedShare`, `expectedCost`, `visibility`, `gigCoverImg`, `orderedDate`, `viewCount`, `requests`, `created_at`, `gigStatus`) VALUES
-(12, 'Local Bus Simulator', 'https://www.indiegala.com/login', 'SS-Naruto Shippuden-0.jpg,SS-Naruto Shippuden-1.jpg,SS-Naruto Shippuden-2.jpg', 'cscsc', 89, 46, 0, 'Bus simulator game consisting with customizable local buses ', '0', '21/02/2024', '12', '1000', 'draft', 'Cover-Local Bus Simulator.jpg', NULL, 15, 0, '2023-03-15', 1),
+(12, 'Local Bus Simulator', 'https://www.indiegala.com/login', 'SS-Naruto Shippuden-0.jpg,SS-Naruto Shippuden-1.jpg,SS-Naruto Shippuden-2.jpg', 'cscsc', 89, 46, 0, 'Bus simulator game consisting with customizable local buses ', '0', '21/02/2024', '12', '1000', 'draft', 'Cover-Local Bus Simulator.jpg', NULL, 16, 0, '2023-03-15', 1),
 (13, 'Indie Desert FPS ', 'https://www.indiegala.com/login', 'SS-Stray-0.jpg,SS-Stray-1.jpg,SS-Stray-2.jpg,SS-Stray-3.jpg', 'fefeff', 93, 51, 0, 'Surviving an endless desert after being stranded by you know', '1', '21/02/2024', '12', '1000', 'draft', 'Cover-Indie Desert FPS .jpg', NULL, 2, 0, '2023-04-11', 0),
-(20, 'New Gig', 'https://www.indieabode.ffcom', 'SS-20-0.jpg,SS-20-1.jpg,SS-20-2.jpg', 'fkh hthth<u>jyjyjyjj <b>yjtyjytjyj </b>jytjjjytjj yjtyjytj</u>', 96, 46, 0, 'I am developing an open world game with extreme high movements', '2', '2023-04-14', '3', '200', 'draft', 'Cover-20.jpg', NULL, 3, 0, '2023-04-10', 0),
+(20, 'New Gig', 'https://www.indieabode.ffcom', 'SS-20-0.jpg,SS-20-1.jpg,SS-20-2.jpg', 'fkh hthth<u>jyjyjyjj <b>yjtyjytjyj </b>jytjjjytjj yjtyjytj</u>', 96, 46, 0, 'I am developing an open world game with extreme high movements', '2', '2023-04-14', '3', '200', 'draft', 'Cover-20.jpg', NULL, 4, 0, '2023-04-10', 0),
 (21, 'Screenshot Test', 'https://www.indiegala.com/login', 'SS-96-0.jpg,SS-96-1.jpg,SS-96-2.jpg', 'fefefef', 95, 46, 0, 'I am developing an open world game with extreme high movements', '4', '21/02/2024', '12', '1000', 'draft', 'Cover-Screenshot Test.jpg', NULL, 1, 0, '2022-04-15', 0);
 
 -- --------------------------------------------------------
@@ -1599,7 +1641,9 @@ INSERT INTO `gigs_views_tracker` (`id`, `userID`, `sessionID`, `gigID`, `viewedD
 (18, 47, 99, 12, '2023-04-16'),
 (19, 47, 65, 12, '2023-04-17'),
 (20, 47, 60, 12, '2023-04-18'),
-(21, 47, 47, 12, '2023-04-18');
+(21, 47, 47, 12, '2023-04-18'),
+(22, 47, 47, 20, '2023-04-18'),
+(23, 47, 11, 12, '2023-04-18');
 
 -- --------------------------------------------------------
 
@@ -1624,7 +1668,7 @@ CREATE TABLE `gig_purchases` (
 --
 
 INSERT INTO `gig_purchases` (`id`, `gigID`, `developerID`, `publisherID`, `publisherCost`, `sharePercentage`, `publisherIncome`, `purchasedDate`, `orderID`) VALUES
-(4, 12, 46, 47, 1000, 15, 0, '2023-04-18', '643e1bd36544f');
+(5, 12, 46, 47, 1000, 15, 0, '2023-04-18', '643e31b288504');
 
 -- --------------------------------------------------------
 
@@ -1866,7 +1910,6 @@ CREATE TABLE `requestedgigs` (
 --
 
 INSERT INTO `requestedgigs` (`id`, `gigID`, `developerID`, `publisherID`, `gigToken`, `cost`, `share`, `publisherCostApproval`, `developerCostApproval`, `publisherShareApproval`, `developerShareApproval`, `eligible`) VALUES
-(39, 21, 46, 47, '2147', 0, 0, '', '', NULL, NULL, 0),
 (40, 20, 46, 47, '2047', 0, 0, '', '', NULL, NULL, 0),
 (41, 13, 51, 47, '1347', 0, 0, '', '', NULL, NULL, 0),
 (49, 12, 46, 47, '1247', 1000, 15, 'Approved', 'Approved', 'Approved', 'Approved', 1);
@@ -2008,6 +2051,12 @@ ALTER TABLE `asset_stats`
 -- Indexes for table `asset_stats_history`
 --
 ALTER TABLE `asset_stats_history`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `asset_view_tracker`
+--
+ALTER TABLE `asset_view_tracker`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -2264,25 +2313,31 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `asset_cart`
 --
 ALTER TABLE `asset_cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `asset_library`
 --
 ALTER TABLE `asset_library`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `asset_purchases`
 --
 ALTER TABLE `asset_purchases`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `asset_stats_history`
 --
 ALTER TABLE `asset_stats_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `asset_view_tracker`
+--
+ALTER TABLE `asset_view_tracker`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `billing_addresses`
@@ -2372,7 +2427,7 @@ ALTER TABLE `devlog_view_tracker`
 -- AUTO_INCREMENT for table `freeasset`
 --
 ALTER TABLE `freeasset`
-  MODIFY `assetID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `assetID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `freegame`
@@ -2462,13 +2517,13 @@ ALTER TABLE `gigmessages`
 -- AUTO_INCREMENT for table `gigs_views_tracker`
 --
 ALTER TABLE `gigs_views_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `gig_purchases`
 --
 ALTER TABLE `gig_purchases`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `library`

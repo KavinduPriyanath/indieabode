@@ -43,7 +43,9 @@ class Library extends Controller
     {
         $assetFileName = $this->model->downloadAssetFile($_GET['id']);
 
-        // $this->model->updateGameDownloadStat($_GET['id'], date("Y-m-d"));
+        $this->model->updateAssetDownloadStat($_GET['id'], date("Y-m-d"));
+
+        $this->model->updateAssetDownloads($_GET['id']);
 
         $assetFilePath = 'public/uploads/assets/file/';
 

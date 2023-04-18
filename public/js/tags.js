@@ -5,7 +5,7 @@ const ul = document.querySelector("ul"),
 const hiddenInput = document.getElementById("gametagss");
 
 let maxTags = 10,
-  tags = ["game"];
+  tags = [];
 
 countTags();
 createTag();

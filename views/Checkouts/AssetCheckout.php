@@ -61,7 +61,7 @@
                     </div>
                 </div>
             </div>
-            <?php if (isset($_SESSION['logged']) && $_SESSION['userRole'] == "game developer") { ?>
+            <?php if (isset($_SESSION['logged']) && ($_SESSION['userRole'] == "game developer" || $_SESSION['userRole'] == "asset creator")) { ?>
                 <div class="order-summary">
                     <h3>Order Summary</h3>
                     <div class="checkout-items">

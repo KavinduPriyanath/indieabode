@@ -40,6 +40,11 @@ class Dashboard extends Controller
             $this->view->games = $this->model->showAllMyGamesPublisher($currentUser);
 
             $this->view->render('Dashboard/PublisherDashboard');
+        } else if ($_SESSION['userRole'] == "asset creator") {
+
+            $this->view->assets = $this->model->showAllMyAssets($currentUser);
+
+            $this->view->render('Dashboard/CreatorDashboard');
         }
     }
 
@@ -85,6 +90,9 @@ class Dashboard extends Controller
         } else if ($_SESSION['userRole'] == "game publisher") {
 
             $this->view->render('Dashboard/PublisherDashboards/Dashboard-Sales');
+        } else if ($_SESSION['userRole'] == "asset creator") {
+
+            $this->view->render('Dashboard/CreatorDashboards/Dashboard-Sales');
         }
     }
 
@@ -100,6 +108,9 @@ class Dashboard extends Controller
         } else if ($_SESSION['userRole'] == "game publisher") {
 
             $this->view->render('Dashboard/PublisherDashboards/Dashboard-Analytics');
+        } else if ($_SESSION['userRole'] == "asset creator") {
+
+            $this->view->render('Dashboard/CreatorDashboards/Dashboard-Analytics');
         }
     }
 
@@ -115,41 +126,53 @@ class Dashboard extends Controller
         } else if ($_SESSION['userRole'] == "game publisher") {
 
             $this->view->render('Dashboard/PublisherDashboards/Dashboard-Payouts');
+        } else if ($_SESSION['userRole'] == "asset creator") {
+
+            $this->view->render('Dashboard/CreatorDashboards/Dashboard-Payouts');
         }
     }
 
 
     function edit()
     {
-        $this->view->classifications = $this->model->GetDropdowns('classification');
 
-        $this->view->releaseStatus = $this->model->GetDropdowns('releaseStatus');
+        if ($_SESSION['userRole'] == "game developer") {
 
-        $this->view->platforms = $this->model->GetDropdowns('platform');
+            $this->view->classifications = $this->model->GetDropdowns('classification');
 
-        $this->view->gameTypes = $this->model->GetDropdowns('gametype');
+            $this->view->releaseStatus = $this->model->GetDropdowns('releaseStatus');
 
-        $this->view->features = $this->model->FeatureTypes();
+            $this->view->platforms = $this->model->GetDropdowns('platform');
 
-        $this->view->game = $this->model->GetGameDetails($_GET['id']);
+            $this->view->gameTypes = $this->model->GetDropdowns('gametype');
 
-        $game = $this->model->GetGameDetails($_GET['id']);
+            $this->view->features = $this->model->FeatureTypes();
 
-        if ($game['gamePrice'] == "0") {
-            $this->view->gamePrice = "Free";
-        } else if ($game['gamePrice'] != "0") {
-            $this->view->gamePrice = "Paid";
+            $this->view->game = $this->model->GetGameDetails($_GET['id']);
+
+            $game = $this->model->GetGameDetails($_GET['id']);
+
+            if ($game['gamePrice'] == "0") {
+                $this->view->gamePrice = "Free";
+            } else if ($game['gamePrice'] != "0") {
+                $this->view->gamePrice = "Paid";
+            }
+
+            $this->view->platforms = explode(",", $game['platform']);
+
+            $this->view->selectedFeatures = explode(",", $game['gameFeatures']);
+
+            $this->view->gameTags = explode(",", $game['gameTags']);
+
+            $this->view->gameScreenshots = explode(",", $game['gameScreenshots']);
+
+            $this->view->render('Dashboard/GameDashboards/Edit');
+        } else if ($_SESSION['userRole'] == "asset creator") {
+
+            $this->view->asset = $this->model->GetAssetDetails($_GET['id']);
+
+            $this->view->render('Dashboard/AssetDashboards/Edit');
         }
-
-        $this->view->platforms = explode(",", $game['platform']);
-
-        $this->view->selectedFeatures = explode(",", $game['gameFeatures']);
-
-        $this->view->gameTags = explode(",", $game['gameTags']);
-
-        $this->view->gameScreenshots = explode(",", $game['gameScreenshots']);
-
-        $this->view->render('Dashboard/GameDashboards/Edit');
     }
 
     function editGame()
@@ -461,5 +484,25 @@ class Dashboard extends Controller
         $this->view->ongoingrequests = $this->model->showAllMyRequestsPublisher($_SESSION['id']);
 
         $this->view->render('Dashboard/PublisherDashboards/Dashboard-Requests');
+    }
+
+    //Asset Creator Dashboard Items
+    //Asset Creator Dashboard Items
+    //Asset Creator Dashboard Items
+    //Asset Creator Dashboard Items
+    //Asset Creator Dashboard Items
+
+    function reviews()
+    {
+        $this->view->asset = $this->model->GetAssetDetails($_GET['id']);
+
+        $this->view->render('Dashboard/AssetDashboards/Analytics');
+    }
+
+    function assetanalytics()
+    {
+        $this->view->asset = $this->model->GetAssetDetails($_GET['id']);
+
+        $this->view->render('Dashboard/AssetDashboards/Reviews');
     }
 }
