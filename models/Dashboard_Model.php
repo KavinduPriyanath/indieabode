@@ -713,4 +713,41 @@ class Dashboard_Model extends Model
 
         return $stmt->fetchAll();
     }
+
+
+    //Asset Creator Queries
+    //Asset Creator Queries
+    //Asset Creator Queries
+    //Asset Creator Queries
+    //Asset Creator Queries
+    //Asset Creator Queries
+
+    function showAllMyAssets($currentUser)
+    {
+
+        $sql = "SELECT freeasset.assetName, freeasset.assetCoverImg, freeasset.assetID, 
+                asset_stats.views, asset_stats.downloads, asset_stats.ratings, asset_stats.revenue 
+                FROM freeasset INNER JOIN asset_stats ON asset_stats.assetID = freeasset.assetID
+                WHERE assetCreatorID = '$currentUser'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+
+    function GetAssetDetails($assetID)
+    {
+
+        $sql = "SELECT * FROM freeasset where assetID='$assetID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $asset = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $asset;
+    }
 }
