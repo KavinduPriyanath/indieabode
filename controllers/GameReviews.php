@@ -101,6 +101,12 @@ class GameReviews extends Controller
 
             $reviewerInfo = $this->model->ReviewerInfo($_SESSION['id']);
 
+
+            $thisUserReviewTopic = !empty($thisUserReview) ? $thisUserReview['reviewTopic'] : null;
+            $thisUserReviewContent = !empty($thisUserReview) ? $thisUserReview['review'] : null;
+            $thisUserReviewRecommendation = !empty($thisUserReview) ? $thisUserReview['recommendation'] : null;
+            $thisUserReviewAverageRating = !empty($thisUserReview) ? $thisUserReview['rating'] : 0;
+
             $output = array(
                 'average_rating'    =>    number_format($average_rating, 1),
                 'total_review'        =>    $total_review,
@@ -111,10 +117,10 @@ class GameReviews extends Controller
                 'one_star_review'    =>    $one_star_review,
                 'review_data'        =>    $review_content,
                 'has_reviewed' => $thisUserHasReviewed,
-                'thisUserReviewTopic'   => $thisUserReview['reviewTopic'],
-                'thisUserReviewContent' => $thisUserReview['review'],
-                'thisUserReviewRecommendation' => $thisUserReview['recommendation'],
-                'thisUserReviewAverageRating' => number_format($thisUserReview['rating'], 1),
+                'thisUserReviewTopic'   => $thisUserReviewTopic,
+                'thisUserReviewContent' => $thisUserReviewContent,
+                'thisUserReviewRecommendation' => $thisUserReviewRecommendation,
+                'thisUserReviewAverageRating' => number_format($thisUserReviewAverageRating, 1),
                 'username'  => $reviewerInfo[0],
             );
 
