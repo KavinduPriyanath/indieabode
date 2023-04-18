@@ -57,12 +57,6 @@ class Asset extends Controller
 
         $userDetails = $this->model->getUserDetails($_SESSION['id']);
 
-
-
-        // if (empty($asseID)) {
-        //     echo "2";
-        // }
-
         // $amount = $asset['assetPrice'];
         $amount = 30.00;
         $merchant_id = "1222729";

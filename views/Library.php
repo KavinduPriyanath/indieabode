@@ -26,7 +26,7 @@
     <hr id="topic-break" />
 
 
-    <?php if (isset($_SESSION['logged']) && $_SESSION['userRole'] == 'game developer') { ?>
+    <?php if (isset($_SESSION['logged']) && ($_SESSION['userRole'] == 'game developer' || $_SESSION['userRole'] == 'asset creator')) { ?>
         <div class="container" id="card-container">
 
             <?php foreach ($this->myAssets as $myAsset) { ?>
