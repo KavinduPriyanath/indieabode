@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 17, 2023 at 05:21 PM
+-- Generation Time: Apr 18, 2023 at 06:26 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -289,7 +289,7 @@ CREATE TABLE `billing_addresses` (
 INSERT INTO `billing_addresses` (`id`, `userID`, `fullName`, `streetLine1`, `streetLine2`, `city`, `province`, `zipCode`, `country`) VALUES
 (2, 46, 'fefefjkukiuliuli', 'grgr', 'grgrg', 'rrh', 'hrg', 'grgrg', 'Sri Lanka'),
 (3, 51, 'fef', 'grgr', 'grgrg', 'rrh', 'hrg', 'grgrg', 'Sri Lanka'),
-(4, 52, 'fefefjkukiuliuli', 'grgr', 'grgrg', 'rrh', 'hrg', 'grgrg', 'Sri Lanka'),
+(4, 47, 'fefefjkukiuliuli', 'grgr', 'grgrg', 'rrh', 'hrg', 'grgrg', 'Sri Lanka'),
 (5, 53, 'fefefjkukiuliuli', 'grgr', 'grgrg', 'rrh', 'hrg', 'grgrg', 'Sri Lanka');
 
 -- --------------------------------------------------------
@@ -1503,18 +1503,19 @@ CREATE TABLE `gig` (
   `orderedDate` date DEFAULT NULL,
   `viewCount` int(11) NOT NULL DEFAULT 0,
   `requests` int(11) NOT NULL DEFAULT 0,
-  `created_at` date NOT NULL DEFAULT current_timestamp()
+  `created_at` date NOT NULL DEFAULT current_timestamp(),
+  `gigStatus` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `gig`
 --
 
-INSERT INTO `gig` (`gigID`, `gigName`, `gigTrailor`, `gigScreenshot`, `gigDetails`, `game`, `gameDeveloperID`, `gamePublisherID`, `gigTagline`, `currentStage`, `plannedReleaseDate`, `estimatedShare`, `expectedCost`, `visibility`, `gigCoverImg`, `orderedDate`, `viewCount`, `requests`, `created_at`) VALUES
-(12, 'Local Bus Simulator', 'https://www.indiegala.com/login', 'SS-Naruto Shippuden-0.jpg,SS-Naruto Shippuden-1.jpg,SS-Naruto Shippuden-2.jpg', 'cscsc', 89, 46, 0, 'Bus simulator game consisting with customizable local buses ', '0', '21/02/2024', '12', '1000', 'draft', 'Cover-Local Bus Simulator.jpg', NULL, 12, 0, '2023-03-15'),
-(13, 'Indie Desert FPS ', 'https://www.indiegala.com/login', 'SS-Stray-0.jpg,SS-Stray-1.jpg,SS-Stray-2.jpg,SS-Stray-3.jpg', 'fefeff', 93, 51, 0, 'Surviving an endless desert after being stranded by you know', '1', '21/02/2024', '12', '1000', 'draft', 'Cover-Indie Desert FPS .jpg', NULL, 2, 0, '2023-04-11'),
-(20, 'New Gig', 'https://www.indieabode.ffcom', 'SS-20-0.jpg,SS-20-1.jpg,SS-20-2.jpg', 'fkh hthth<u>jyjyjyjj <b>yjtyjytjyj </b>jytjjjytjj yjtyjytj</u>', 96, 46, 0, 'I am developing an open world game with extreme high movements', '2', '2023-04-14', '3', '200', 'draft', 'Cover-20.jpg', NULL, 3, 0, '2023-04-10'),
-(21, 'Screenshot Test', 'https://www.indiegala.com/login', 'SS-96-0.jpg,SS-96-1.jpg,SS-96-2.jpg', 'fefefef', 95, 46, 0, 'I am developing an open world game with extreme high movements', '4', '21/02/2024', '12', '1000', 'draft', 'Cover-Screenshot Test.jpg', NULL, 1, 0, '2022-04-15');
+INSERT INTO `gig` (`gigID`, `gigName`, `gigTrailor`, `gigScreenshot`, `gigDetails`, `game`, `gameDeveloperID`, `gamePublisherID`, `gigTagline`, `currentStage`, `plannedReleaseDate`, `estimatedShare`, `expectedCost`, `visibility`, `gigCoverImg`, `orderedDate`, `viewCount`, `requests`, `created_at`, `gigStatus`) VALUES
+(12, 'Local Bus Simulator', 'https://www.indiegala.com/login', 'SS-Naruto Shippuden-0.jpg,SS-Naruto Shippuden-1.jpg,SS-Naruto Shippuden-2.jpg', 'cscsc', 89, 46, 0, 'Bus simulator game consisting with customizable local buses ', '0', '21/02/2024', '12', '1000', 'draft', 'Cover-Local Bus Simulator.jpg', NULL, 15, 0, '2023-03-15', 1),
+(13, 'Indie Desert FPS ', 'https://www.indiegala.com/login', 'SS-Stray-0.jpg,SS-Stray-1.jpg,SS-Stray-2.jpg,SS-Stray-3.jpg', 'fefeff', 93, 51, 0, 'Surviving an endless desert after being stranded by you know', '1', '21/02/2024', '12', '1000', 'draft', 'Cover-Indie Desert FPS .jpg', NULL, 2, 0, '2023-04-11', 0),
+(20, 'New Gig', 'https://www.indieabode.ffcom', 'SS-20-0.jpg,SS-20-1.jpg,SS-20-2.jpg', 'fkh hthth<u>jyjyjyjj <b>yjtyjytjyj </b>jytjjjytjj yjtyjytj</u>', 96, 46, 0, 'I am developing an open world game with extreme high movements', '2', '2023-04-14', '3', '200', 'draft', 'Cover-20.jpg', NULL, 3, 0, '2023-04-10', 0),
+(21, 'Screenshot Test', 'https://www.indiegala.com/login', 'SS-96-0.jpg,SS-96-1.jpg,SS-96-2.jpg', 'fefefef', 95, 46, 0, 'I am developing an open world game with extreme high movements', '4', '21/02/2024', '12', '1000', 'draft', 'Cover-Screenshot Test.jpg', NULL, 1, 0, '2022-04-15', 0);
 
 -- --------------------------------------------------------
 
@@ -1553,7 +1554,11 @@ INSERT INTO `gigmessages` (`msgID`, `senderID`, `receiverID`, `message`, `gigID`
 (16, 47, 46, 'yu can say so', 21),
 (17, 47, 46, 'surew', 21),
 (18, 47, 46, 'for what', 21),
-(19, 47, 46, 'hiii', 23);
+(19, 47, 46, 'hiii', 23),
+(20, 47, 46, 'seems like everything is working right?', 12),
+(21, 46, 47, 'hthr', 12),
+(22, 47, 46, 'what', 12),
+(23, 46, 47, 'sry', 12);
 
 -- --------------------------------------------------------
 
@@ -1591,7 +1596,35 @@ INSERT INTO `gigs_views_tracker` (`id`, `userID`, `sessionID`, `gigID`, `viewedD
 (15, 47, 48, 12, '2023-04-16'),
 (16, 47, 95, 12, '2023-04-16'),
 (17, 47, 23, 12, '2023-04-16'),
-(18, 47, 99, 12, '2023-04-16');
+(18, 47, 99, 12, '2023-04-16'),
+(19, 47, 65, 12, '2023-04-17'),
+(20, 47, 60, 12, '2023-04-18'),
+(21, 47, 47, 12, '2023-04-18');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gig_purchases`
+--
+
+CREATE TABLE `gig_purchases` (
+  `id` int(11) NOT NULL,
+  `gigID` int(11) NOT NULL,
+  `developerID` int(11) NOT NULL,
+  `publisherID` int(11) NOT NULL,
+  `publisherCost` double NOT NULL,
+  `sharePercentage` double NOT NULL,
+  `publisherIncome` double NOT NULL DEFAULT 0,
+  `purchasedDate` date NOT NULL DEFAULT current_timestamp(),
+  `orderID` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `gig_purchases`
+--
+
+INSERT INTO `gig_purchases` (`id`, `gigID`, `developerID`, `publisherID`, `publisherCost`, `sharePercentage`, `publisherIncome`, `purchasedDate`, `orderID`) VALUES
+(4, 12, 46, 47, 1000, 15, 0, '2023-04-18', '643e1bd36544f');
 
 -- --------------------------------------------------------
 
@@ -1836,7 +1869,7 @@ INSERT INTO `requestedgigs` (`id`, `gigID`, `developerID`, `publisherID`, `gigTo
 (39, 21, 46, 47, '2147', 0, 0, '', '', NULL, NULL, 0),
 (40, 20, 46, 47, '2047', 0, 0, '', '', NULL, NULL, 0),
 (41, 13, 51, 47, '1347', 0, 0, '', '', NULL, NULL, 0),
-(49, 12, 46, 47, '1247', 1000, 12, 'null', 'null', 'null', 'null', 0);
+(49, 12, 46, 47, '1247', 1000, 15, 'Approved', 'Approved', 'Approved', 'Approved', 1);
 
 -- --------------------------------------------------------
 
@@ -2168,6 +2201,12 @@ ALTER TABLE `gigs_views_tracker`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `gig_purchases`
+--
+ALTER TABLE `gig_purchases`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `joinjam_gamedevs`
 --
 ALTER TABLE `joinjam_gamedevs`
@@ -2417,13 +2456,19 @@ ALTER TABLE `gig`
 -- AUTO_INCREMENT for table `gigmessages`
 --
 ALTER TABLE `gigmessages`
-  MODIFY `msgID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `msgID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `gigs_views_tracker`
 --
 ALTER TABLE `gigs_views_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- AUTO_INCREMENT for table `gig_purchases`
+--
+ALTER TABLE `gig_purchases`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `library`

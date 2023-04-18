@@ -13,6 +13,7 @@
     <style>
         <?php
         include 'public/css/gig.css';
+        include 'public/css/shareModal.css';
         ?>
     </style>
 
@@ -98,7 +99,8 @@
                 </div>
                 <hr />
             </div>
-            <div class="buy-button" id="buy-order">Buy Order</div>
+            <div class="buy-button" id="buy-order" data-modal-target="#purchase-modal">Buy Order</div>
+            <div class="buy-button" id="see-dashboard">Go to Dashboard</div>
         </div>
     </div>
 
@@ -282,6 +284,25 @@
         </div>
     </div>
 
+
+    <!-- Purchase Modal -->
+    <div class="share-modal">
+        <div class="modal" id="purchase-modal">
+            <div class="modal-header">
+                <div class="title">Purchase this gig</div>
+                <button data-close-button class="close-button">&times;</button>
+            </div>
+
+            <div class="content">
+                <p>Support "game name" to "crowdfund goal - develop"</p>
+                <div class="donate-btn" onclick="PurchaseGig(<?= $this->gig['gigID'] ?>, document.getElementById('cost').value)">
+                    Proceed
+                </div>
+            </div>
+        </div>
+        <div id="overlay"></div>
+    </div>
+
     <?php
     include 'includes/footer.php';
     ?>
@@ -289,6 +310,134 @@
     <script src="<?php echo BASE_URL; ?>public/js/gig.js"></script>
 
     <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
+
+    <script src="<?php echo BASE_URL; ?>public/js/reportModal.js"></script>
+
+    <script type="text/javascript" src="https://www.payhere.lk/lib/payhere.js"></script>
+
+    <script>
+        function PurchaseGig(id, publisherCost) {
+
+            var f = new FormData();
+
+            f.append("publisherCost", publisherCost);
+
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+
+                if (xhr.readyState == 3) {
+                    //console.log("processing");
+                } else if (xhr.readyState == 4) {
+
+                    var text = xhr.responseText;
+
+                    var obj = JSON.parse(text);
+
+                    //payment gateway goes here
+
+                    // Payment completed. It can be a successful failure.
+                    payhere.onCompleted = function onCompleted(orderId) {
+                        // console.log("Payment completed. OrderID:" + orderId);
+                        // alert("Payment Completed");
+                        // Note: validate the payment and show success or failure page to the customer
+                        // window.location = "/indieabode/paymentTest/purchaseSuccessful?id=" + id;
+                        // DonationSuccessful(id, obj['amount'], obj['order_id']);
+                        console.log("purchase saved in payhere");
+                        PurchaseSuccessful(id, document.getElementById('share').value, obj['order_id'], <?= $this->gig['gameDeveloperID'] ?>, publisherCost)
+                    };
+
+                    // Payment window closed
+                    payhere.onDismissed = function onDismissed() {
+                        // Note: Prompt user to pay again or show an error page
+                        alert("Payment dismissed");
+                    };
+
+                    // Error occurred
+                    payhere.onError = function onError(error) {
+                        // Note: show an error page
+                        // console.log("Error:" + error);
+                        alert("Invalid Details");
+                    };
+
+                    // Put the payment variables here
+                    var payment = {
+                        "sandbox": true,
+                        "merchant_id": "1222729", // Replace your Merchant ID
+                        "return_url": "http://localhost/indieabode/assets", // Important
+                        "cancel_url": "http://localhost/indieabode/assets", // Important
+                        "notify_url": "",
+                        "order_id": obj['order_id'],
+                        "items": "Door bell wireles",
+                        "amount": obj['amount'],
+                        "currency": obj['currency'],
+                        "hash": obj['hash'], // *Replace with generated hash retrieved from backend
+                        "first_name": obj['firstName'],
+                        "last_name": obj['lastName'],
+                        "email": obj['email'],
+                        "phone": "0771234567",
+                        "address": obj['address'],
+                        "city": obj['city'],
+                        "country": obj['country'],
+                        "delivery_address": "No. 46, Galle road, Kalutara South",
+                        "delivery_city": "Kalutara",
+                        "delivery_country": "Sri Lanka",
+                        "custom_1": "",
+                        "custom_2": ""
+                    };
+
+                    // Show the payhere.js popup, when "PayHere Pay" is clicked
+                    // document.getElementById('payhere-payment').onclick = function(e) {
+                    payhere.startPayment(payment);
+                    // };
+                }
+
+            }
+
+
+            xhr.open("POST", "/indieabode/gig/purchaseGig?id=" + id, true);
+            xhr.send(f);
+
+        }
+
+        function PurchaseSuccessful(gigID, share, orderId, developerID, cost) {
+
+            var f = new FormData();
+
+            f.append("orderID", orderId);
+            f.append("developerID", developerID);
+            f.append("share", share);
+            f.append("cost", cost);
+
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.onreadystatechange = function() {
+
+                if (xhr.readyState == 1) {
+                    console.log("waiting");
+                } else if (xhr.readyState == 4) {
+                    var t = xhr.responseText;
+
+                    // alert(t);
+
+                    if (t == "2") {
+                        alert(t);
+                    } else {
+                        window.location = "/indieabode/gig/viewgig?id=" + gigID + "&token=" + gigID + "" + <?= $_SESSION['id'] ?>;
+                    }
+
+                }
+
+            }
+
+            xhr.open("POST", "/indieabode/gig/gigPurchaseSuccessful?id=" + gigID, true);
+            xhr.send(f);
+
+            // window.location = "/indieabode/paymentTest/purchaseSuccessful?id=" + assetID;
+
+
+        }
+    </script>
 
 
     <script>
@@ -312,6 +461,7 @@
             <?php } ?>
 
 
+
             <?php if ($this->currentRequest['publisherCostApproval'] == "Approved") { ?>
                 $('#publisher-cost-approval').show();
                 $('#publisher-cost').hide();
@@ -331,11 +481,14 @@
             <?php } ?>
 
             <?php if ($_SESSION['userRole'] == "game publisher") { ?>
-                <?php if ($this->currentRequest['eligible'] == 1) { ?>
+                <?php if ($this->currentRequest['eligible'] == 1 && $this->gig['gigStatus'] == 0) { ?>
                     $('#buy-order').show();
                     $('#newCost').html("$" + $('#cost').val());
                     $('#newShare').html($('#share').val() + "%");
                     $('#negotiation-success').show();
+                <?php } else if ($this->currentRequest['eligible'] == 1 && $this->gig['gigStatus'] == 1) { ?>
+                    $('#buy-order').hide();
+                    $('#see-dashboard').show();
                 <?php } else if ($this->currentRequest['eligible'] == 0) { ?>
                     $('#buy-order').hide();
                 <?php } ?>
