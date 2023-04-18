@@ -192,4 +192,49 @@ class Gig_Model extends Model
 
         $updateStmt->execute();
     }
+
+    function getUserBillingInfo($userID)
+    {
+
+        $sql = "SELECT * FROM billing_addresses WHERE userID='$userID' LIMIT 1";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    function getUserDetails($userID)
+    {
+
+        $sql = "SELECT * FROM gamer WHERE gamerID='$userID' LIMIT 1";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    function successfulPurchase($gigID, $publisherID, $developerID, $publiserCost, $share, $orderID)
+    {
+
+        $sql = "INSERT INTO gig_purchases(gigID, developerID, publisherID, publisherCost, sharePercentage,orderID) 
+                VALUES ('$gigID', '$developerID', '$publisherID', '$publiserCost', '$share', '$orderID')";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+    }
+
+    function gigPurchased($gigID)
+    {
+
+        $sql = "UPDATE gig SET gigStatus=1 WHERE gigID='$gigID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+    }
 }

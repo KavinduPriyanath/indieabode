@@ -538,5 +538,9 @@
 }
 
 #negotiation-success {
-  display: n;
+  display: none;
+}
+
+#see-dashboard {
+  display: none;
 }
