@@ -35,6 +35,13 @@ class Asset extends Controller
 
             $this->view->popularAssets = $this->model->PopularAssets();
 
+            $ViewTracker = $this->model->AssetViewTracker($_SESSION['id'], $_SESSION['session'], $assetID);
+
+            if ($ViewTracker) {
+                $this->model->updateAssetViewStat($_GET['id'], date("Y-m-d"));
+                $this->model->updateAssetViews($_GET['id']);
+            }
+
             $this->view->render('SingleAsset');
         }
     }

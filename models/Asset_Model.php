@@ -247,4 +247,98 @@ class Asset_Model extends Model
 
         $stmt->execute();
     }
+
+    function AssetViewTracker($userID, $session, $assetID)
+    {
+
+        $sql = "SELECT * FROM asset_view_tracker WHERE assetID='$assetID' AND userID='$userID' AND sessionID='$session'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $assetView = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (empty($assetView)) {
+            $viewSQL = "INSERT INTO asset_view_tracker(userID, sessionID, assetID) VALUES ('$userID', '$session', '$assetID')";
+
+            $viewStmt = $this->db->prepare($viewSQL);
+
+            $viewStmt->execute();
+            return true;
+        } else if (!empty($assetView)) {
+            return false;
+        }
+    }
+
+    // Used to update views count for each game on a single day
+    function updateAssetViewStat($assetID, $todayDate)
+    {
+        // This block of code checks whether the current game we are viewing has a record made in the game_stats_history table
+        // If someone had viewed the game or downloaded the game today there should be a record there.
+
+        $sql = "SELECT * FROM asset_stats_history WHERE assetID='$assetID' AND created_at='$todayDate'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $record = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (empty($record)) {
+            //If such record do not exist then a record should have been made regarding this game and today's date
+
+            $insertSQL = "INSERT INTO asset_stats_history (assetID, views, downloads, ratings, reviews, created_at) VALUES ('$assetID', 1, 0, 0, 0, '$todayDate')";
+
+            $insertStmt = $this->db->prepare($insertSQL);
+
+            $insertStmt->execute();
+        } else {
+            //If such record already exist then only the view attribute of that column should be updated by incrementing one
+
+            $viewCount = $record['views'] + 1;
+
+            $downloadCount = $record['downloads'];
+
+            $ratingsCount = $record['ratings'];
+
+            $reviewCount = $record['reviews'];
+
+            $updateSQL = "UPDATE asset_stats_history 
+            SET gameID='$assetID', 
+            views='$viewCount', 
+            downloads='$downloadCount', 
+            ratings = '$ratingsCount',
+            reviews = '$reviewCount',
+            created_at = '$todayDate' WHERE gameID = '$assetID' AND created_at='$todayDate'";
+
+            $updateStmt = $this->db->prepare($updateSQL);
+
+            $updateStmt->execute();
+        }
+    }
+
+    function updateAssetViews($assetID)
+    {
+
+        $sql = "SELECT * FROM asset_stats_history WHERE assetID='$assetID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $assetViews = $stmt->fetchAll();
+
+        $totalViews = 0;
+
+        foreach ($assetViews as $assetView) {
+            $totalViews = $totalViews + $assetView['views'];
+        }
+
+        $updateSQL = "UPDATE asset_stats SET views='$totalViews' WHERE assetID='$assetID'";
+
+        $stmt = $this->db->prepare($updateSQL);
+
+        $stmt->execute();
+    }
 }
