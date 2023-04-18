@@ -157,7 +157,7 @@
                     <div class="card-image">
                         <img src="/indieabode/public/uploads/gigs/cover/<?= $gig['gigCoverImg'] ?>" alt="" />
                     </div>
-                    <div class="archive-details">Purchased on 2023-04-12</div>
+                    <div class="archive-details">Purchased on <?= $gig['purchasedDate'] ?></div>
                     <div class="gig-info">
                         <div class="left">
                             <div class="pp-icon"><img src="/indieabode/public/images/cards/profile.png" alt="" /></div>

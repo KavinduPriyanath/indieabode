@@ -664,4 +664,53 @@ class Dashboard_Model extends Model
 
         return $stmt->fetchAll();
     }
+
+    //Game Publisher Queries
+    //Game Publisher Queries
+    //Game Publisher Queries
+    //Game Publisher Queries
+    //Game Publisher Queries
+
+    function showAllMyGamesPublisher($currentUser)
+    {
+
+        $sql = "SELECT freegame.gameID, freegame.gameName, freegame.gameCoverImg, 
+                game_stats.views, game_stats.downloads, game_stats.ratings, game_stats.revenue FROM freegame 
+                INNER JOIN game_stats ON freegame.gameID = game_stats.gameID WHERE gamePublisherID = '$currentUser'";
+
+        // $sql = "SELECT * FROM freegame WHERE gamePublisherID = '$currentUser'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+
+    function showAllMyOrdersPublisher($currentUser)
+    {
+
+        $sql = "SELECT gig.gigID, gig.gigName, gig.game, gig.gigCoverImg, gig_purchases.publisherCost, 
+                gig_purchases.sharePercentage, gig_purchases.publisherIncome, gig_purchases.purchasedDate FROM gig
+                INNER JOIN gig_purchases ON gig.gigID=gig_purchases.gigID WHERE gig_purchases.publisherID='$currentUser'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+
+    function showAllMyRequestsPublisher($currentUser)
+    {
+
+        $sql = "SELECT * FROM gig INNER JOIN requestedgigs ON gig.gigID = requestedgigs.gigID
+                WHERE requestedgigs.publisherID='$currentUser'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
 }
