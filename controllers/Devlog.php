@@ -11,11 +11,22 @@ class Devlog extends Controller
 
     function index()
     {
+
+        //Redirecting Unprivileged Users
+        if (isset($_SESSION['logged'])) {
+
+            if ($_SESSION['userRole'] == "asset creator") {
+                header('location:/indieabode/');
+            } else if ($_SESSION['userRole'] == "asset creator") {
+                header('location:/indieabode/');
+            }
+        }
+
         if (isset($_GET['id'])) {
             $devlogID = $_GET['id'];
 
-            $likedorNot = $this->model->AlreadyLiked($_SESSION['id'], $_GET['id']);
-            $this->view->likesStatus = ($likedorNot == true) ? "liked" : "disliked";
+
+            $this->view->likesStatus = null;
 
             $this->view->devlog = $this->model->showSingleDevlog($devlogID);
 
@@ -25,10 +36,17 @@ class Devlog extends Controller
 
             // $this->view->ssCount = count($this->model->getScreenshots($assetID));
 
-            $viewTracker = $this->model->DevlogViewTracker($_SESSION['id'], $_SESSION['session'], $devlogID);
+            if (isset($_SESSION['logged'])) {
 
-            if ($viewTracker) {
-                $this->model->UpdateDevlogViews($devlogID);
+                $likedorNot = $this->model->AlreadyLiked($_SESSION['id'], $_GET['id']);
+
+                $this->view->likesStatus = ($likedorNot == true) ? "liked" : "disliked";
+
+                $viewTracker = $this->model->DevlogViewTracker($_SESSION['id'], $_SESSION['session'], $devlogID);
+
+                if ($viewTracker) {
+                    $this->model->UpdateDevlogViews($devlogID);
+                }
             }
 
             $gameId = $this->model->showSingleDevlog($devlogID)['gameName'];

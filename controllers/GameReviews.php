@@ -7,22 +7,12 @@ class GameReviews extends Controller
     {
         parent::__construct();
         session_start();
-        // session_destroy();
     }
 
     function index()
     {
 
         if (isset($_POST['rating_data'])) {
-
-            // $data = array(
-            //     ':review' => $_POST['review'],
-            //     ':rating' => $_POST['rating_data'],
-            //     ':topic' => $_POST['topic'],
-            //     ':gameID' => $_GET['id'],
-            //     ':userID' => $_SESSION['id'],
-            //     ':recommendation' => $_POST['recommendation']
-            // );
 
             $review = $_POST['review'];
             $rating = $_POST['rating_data'];
@@ -96,11 +86,16 @@ class GameReviews extends Controller
 
             $average_rating = $total_user_rating / $total_review;
 
-            $thisUserHasReviewed = $this->model->HasReviewedThisGame($_SESSION['id'], $_GET['id']);
+            if (isset($_SESSION['logged'])) {
+                $thisUserHasReviewed = $this->model->HasReviewedThisGame($_SESSION['id'], $_GET['id']);
 
-            $thisUserReview = $this->model->HisThisGameReview($_SESSION['id'], $_GET['id']);
+                $thisUserReview = $this->model->HisThisGameReview($_SESSION['id'], $_GET['id']);
+            } else {
 
-            $reviewerInfo = $this->model->ReviewerInfo($_SESSION['id']);
+                $thisUserHasReviewed = null;
+
+                $thisUserReview = null;
+            }
 
 
             $thisUserReviewTopic = !empty($thisUserReview) ? $thisUserReview['reviewTopic'] : null;
@@ -123,7 +118,6 @@ class GameReviews extends Controller
                 'thisUserReviewContent' => $thisUserReviewContent,
                 'thisUserReviewRecommendation' => $thisUserReviewRecommendation,
                 'thisUserReviewAverageRating' => number_format($thisUserReviewAverageRating, 1),
-                'username'  => $reviewerInfo[0],
             );
 
             echo json_encode($output);

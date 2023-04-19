@@ -36,7 +36,7 @@
                         <div class="published-date">Published 2 days ago</div>
                     </div>
                     <div class="devlog-like-btn">
-                        <?php if ($this->likesStatus == "disliked") { ?>
+                        <?php if ($this->likesStatus == "disliked" || $this->likesStatus == null) { ?>
                             <i class="fa fa-heart unliked like-btn" id="likeBtn"></i>
                         <?php } else if ($this->likesStatus == "liked") { ?>
                             <i class="fa fa-heart liked like-btn" id="likeBtn"></i>
@@ -65,7 +65,7 @@
                     <hr id="line-break">
                     <div class="row">
                         <p>Developer</p>
-                        <p>Armor Games Studios</p>
+                        <p><?= $this->game['username']; ?></p>
                     </div>
                     <hr id="line-break">
                     <div class="row">
@@ -80,7 +80,7 @@
                     <hr id="line-break">
                     <div class="row">
                         <p>Release Date</p>
-                        <p>5 Nov 2021</p>
+                        <p id="release-date"></p>
                     </div>
                 </div>
             </div>
@@ -122,6 +122,18 @@
 
     <script>
         $(document).ready(function() {
+
+            const months = ["Jan", "Feb", "March", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+            let releaseDate = "<?= $this->game['created_at'] ?>";
+
+            let year = releaseDate.substr(0, 4);
+            let month = releaseDate.slice(5, 7);
+            let day = releaseDate.slice(8, 10);
+            let monthName = months[parseInt(month) - 1];
+            let formattedReleaseDate = day + " " + monthName + " " + year;
+
+            $('#release-date').text(formattedReleaseDate);
 
             $(document).on('click', '.like-btn', function(e) {
 

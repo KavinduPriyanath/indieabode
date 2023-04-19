@@ -11,7 +11,10 @@ class Devlogs_Model extends Model
 
     function showAllDevlogs()
     {
-        $stmt = $this->db->prepare("SELECT * FROM devlog");
+        $sql = "SELECT devlog.name, devlog.Tagline, devlog.Type, devlog.devlogImg, devlog.likeCount, devlog.commentCount,
+                devlog.devLogID, freegame.gameName FROM devlog INNER JOIN freegame ON freegame.gameID=devlog.gameName";
+
+        $stmt = $this->db->prepare($sql);
 
         $stmt->execute();
 

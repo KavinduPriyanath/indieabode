@@ -17,6 +17,15 @@ class Game extends Controller
 
     function index()
     {
+
+        //Redirecting Unprivileged Users
+        if (isset($_SESSION['logged'])) {
+
+            if ($_SESSION['userRole'] == "asset creator") {
+                header('location:/indieabode/');
+            }
+        }
+
         if (isset($_GET['id'])) {
             $gameID = $_GET['id'];
 
@@ -73,6 +82,15 @@ class Game extends Controller
 
     function reviews()
     {
+
+        //Redirecting Unprivileged Users
+        if (isset($_SESSION['logged'])) {
+
+            if ($_SESSION['userRole'] == "asset creator") {
+                header('location:/indieabode/');
+            }
+        }
+
         $this->view->game = $this->model->showSingleGame($_GET['id']);
 
         // $this->view->hasReviewed = $this->model->HasReviewedThisGame($_SESSION['id'], $_GET['id']);

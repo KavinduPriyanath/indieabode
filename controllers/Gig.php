@@ -16,6 +16,16 @@ class Gig extends Controller
 
     function index()
     {
+
+        if (isset($_SESSION['logged'])) {
+
+            if ($_SESSION['userRole'] == "asset creator") {
+                header('location:/indieabode/');
+            } else if ($_SESSION['userRole'] == "asset creator") {
+                header('location:/indieabode/');
+            }
+        }
+
         if (isset($_GET['id'])) {
             $gigID = $_GET['id'];
 
@@ -28,12 +38,17 @@ class Gig extends Controller
 
             $this->view->ssCount = count($this->model->getScreenshots($gigID));
 
-            $this->view->hasRequested = $this->model->HasRequested($gigID, $_SESSION['id']);
+            $this->view->recommendedGigs = $this->model->RecommendedGigs();
 
-            $viewTracker = $this->model->GigViewTracker($_SESSION['id'], $_SESSION['session'], $_GET['id']);
+            if (isset($_SESSION['logged'])) {
 
-            if ($viewTracker) {
-                $this->model->UpdateGigViews($_GET['id']);
+                $this->view->hasRequested = $this->model->HasRequested($gigID, $_SESSION['id']);
+
+                $viewTracker = $this->model->GigViewTracker($_SESSION['id'], $_SESSION['session'], $_GET['id']);
+
+                if ($viewTracker) {
+                    $this->model->UpdateGigViews($_GET['id']);
+                }
             }
 
             $this->view->render('SingleGig');

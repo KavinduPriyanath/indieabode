@@ -27,19 +27,21 @@ class Asset extends Controller
 
             $this->view->ssCount = count($this->model->getScreenshots($assetID));
 
-            $this->view->hasClaimed = $this->model->AlreadyClaimed($assetID, $_SESSION['id']);
-
-            $this->view->hasInCart = $this->model->AlreadyInCart($assetID, $_SESSION['id']);
-
             $this->view->stats = $this->model->AssetStats($assetID);
 
             $this->view->popularAssets = $this->model->PopularAssets();
 
-            $ViewTracker = $this->model->AssetViewTracker($_SESSION['id'], $_SESSION['session'], $assetID);
+            if (isset($_SESSION['logged'])) {
+                $this->view->hasClaimed = $this->model->AlreadyClaimed($assetID, $_SESSION['id']);
 
-            if ($ViewTracker) {
-                $this->model->updateAssetViewStat($_GET['id'], date("Y-m-d"));
-                $this->model->updateAssetViews($_GET['id']);
+                $this->view->hasInCart = $this->model->AlreadyInCart($assetID, $_SESSION['id']);
+
+                $ViewTracker = $this->model->AssetViewTracker($_SESSION['id'], $_SESSION['session'], $assetID);
+
+                if ($ViewTracker) {
+                    $this->model->updateAssetViewStat($_GET['id'], date("Y-m-d"));
+                    $this->model->updateAssetViews($_GET['id']);
+                }
             }
 
             $this->view->render('SingleAsset');
