@@ -44,6 +44,20 @@ class Dashboard extends Controller
 
             $this->view->assets = $this->model->showAllMyAssets($currentUser);
 
+            $totalViews = 0;
+            $totalDownloads = 0;
+            $totalRevenue = 0;
+
+            foreach ($this->model->showAllMyAssets($currentUser) as $asset) {
+                $totalViews = $totalViews + $asset['views'];
+                $totalDownloads = $totalDownloads + $asset['downloads'];
+                $totalRevenue = $totalRevenue + $asset['revenue'];
+            }
+
+            $this->view->totalViews = $totalViews;
+            $this->view->totalDownloads = $totalDownloads;
+            $this->view->totalRevenue = $totalRevenue;
+
             $this->view->render('Dashboard/CreatorDashboard');
         }
     }
@@ -565,14 +579,32 @@ class Dashboard extends Controller
     {
         $this->view->asset = $this->model->GetAssetDetails($_GET['id']);
 
-        $this->view->render('Dashboard/AssetDashboards/Analytics');
+        $this->view->render('Dashboard/AssetDashboards/Reviews');
     }
 
     function assetanalytics()
     {
         $this->view->asset = $this->model->GetAssetDetails($_GET['id']);
 
-        $this->view->render('Dashboard/AssetDashboards/Reviews');
+
+        $assetStats = $this->model->GetAssetStats($_GET['id']);
+
+        $downloads = [];
+        $dates = [];
+        $views = [];
+
+        foreach ($assetStats as $assetStat) {
+            array_push($downloads, $assetStat['downloads']);
+            array_push($dates, $assetStat['created_at']);
+            array_push($views, $assetStat['views']);
+        }
+
+        $this->view->alldownloads = $downloads;
+        $this->view->labelDates = $dates;
+        $this->view->allviews = $views;
+
+
+        $this->view->render('Dashboard/AssetDashboards/Analytics');
     }
 
     function deleteAsset()

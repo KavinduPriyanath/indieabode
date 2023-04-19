@@ -1,6 +1,6 @@
 <?php
 
-class Developer_Model extends Model
+class Home_Model extends Model
 {
 
     function __construct()

@@ -15,15 +15,16 @@
 
 <body>
     <div class="navbar admin-navbar">
-        <div class="logo"><a href="/indieabode/developer/">IndieAbode</a></div>
-        <a href="#" class="toggle-button">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </a>
+
 
         <?php if (isset($_SESSION['logged'])) { ?>
             <?php if ($_SESSION['userRole'] == "game developer") { ?>
+                <div class="logo"><a href="/indieabode/home/developer">IndieAbode</a></div>
+                <a href="#" class="toggle-button">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </a>
                 <div class="navbar-links">
                     <div class="ul">
                         <div class="dropdown" data-dropdown>
@@ -139,6 +140,12 @@
                     </div>
                 </div>
             <?php } else if ($_SESSION['userRole'] == "gamer") { ?>
+                <div class="logo"><a href="/indieabode/home/">IndieAbode</a></div>
+                <a href="#" class="toggle-button">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </a>
                 <div class="navbar-links">
                     <div class="ul">
                         <div class="dropdown" data-dropdown>
@@ -235,6 +242,12 @@
                     </div>
                 </div>
             <?php } else if ($_SESSION['userRole'] == "asset creator") { ?>
+                <div class="logo"><a href="/indieabode/home/creator">IndieAbode</a></div>
+                <a href="#" class="toggle-button">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </a>
                 <div class="navbar-links">
                     <div class="ul">
 
@@ -312,6 +325,12 @@
                     </div>
                 </div>
             <?php } else if ($_SESSION['userRole'] == "gamejam organizer") { ?>
+                <div class="logo"><a href="/indieabode/home/organizer">IndieAbode</a></div>
+                <a href="#" class="toggle-button">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </a>
                 <div class="navbar-links">
                     <div class="ul">
 
@@ -377,6 +396,12 @@
                     </div>
                 </div>
             <?php } else if ($_SESSION['userRole'] == "game publisher") { ?>
+                <div class="logo"><a href="/indieabode/home/publisher">IndieAbode</a></div>
+                <a href="#" class="toggle-button">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </a>
                 <div class="navbar-links">
                     <div class="ul">
                         <div class="dropdown" data-dropdown>
@@ -510,6 +535,12 @@
                 </div>
             <?php } ?>
         <?php } else { ?>
+            <div class="logo"><a href="/indieabode/home/">IndieAbode</a></div>
+            <a href="#" class="toggle-button">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </a>
             <div class="navbar-links">
                 <div class="ul">
                     <div class="dropdown" data-dropdown>

@@ -901,4 +901,16 @@ class Dashboard_Model extends Model
 
         $stmt->execute();
     }
+
+    function GetAssetStats($assetID)
+    {
+
+        $sql = "SELECT * FROM asset_stats_history WHERE assetID='$assetID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
 }

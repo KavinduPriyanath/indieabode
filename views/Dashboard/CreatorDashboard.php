@@ -29,15 +29,15 @@
             <div class="dev-main-stat">
 
                 <div id="views">
-                    <div class="count">0</div>
+                    <div class="count"><?= $this->totalViews ?></div>
                     <div class="label">views</div>
                 </div>
                 <div id="downloads">
-                    <div class="count">0</div>
+                    <div class="count"><?= $this->totalDownloads ?></div>
                     <div class="label">downloads</div>
                 </div>
                 <div id="revenue">
-                    <div class="count">0</div>
+                    <div class="count"><?= $this->totalRevenue ?></div>
                     <div class="label">revenue</div>
                 </div>
             </div>
