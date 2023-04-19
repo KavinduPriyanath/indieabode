@@ -65,7 +65,8 @@ class GameReviews extends Controller
                 $review_content[] = array(
                     'review' => $row['review'],
                     'rating' => $row['rating'],
-                    'reviewTopic' => $row['reviewTopic']
+                    'reviewTopic' => $row['reviewTopic'],
+                    'reviewerName' => $row['username']
                 );
 
                 if ($row["rating"] == '5') {
@@ -106,6 +107,7 @@ class GameReviews extends Controller
             $thisUserReviewContent = !empty($thisUserReview) ? $thisUserReview['review'] : null;
             $thisUserReviewRecommendation = !empty($thisUserReview) ? $thisUserReview['recommendation'] : null;
             $thisUserReviewAverageRating = !empty($thisUserReview) ? $thisUserReview['rating'] : 0;
+
 
             $output = array(
                 'average_rating'    =>    number_format($average_rating, 1),

@@ -750,4 +750,155 @@ class Dashboard_Model extends Model
 
         return $asset;
     }
+
+    public function uploadAssetCoverImg($assetName)
+    {
+        //upload cover image
+        $allowed_exts = array("jpg", "jpeg", "png");
+
+        $newImage = $_FILES['asset-upload-cover-img']['name'];
+        $oldImage = $_POST['old-asset-upload-cover-img'];
+
+        if ($newImage != '') {
+            $image = $newImage;
+        } else {
+            $image = $oldImage;
+        }
+
+        $game_cover_img_name = $image;
+
+
+        $game_cover_img_temp_name = $_FILES['asset-upload-cover-img']['tmp_name'];
+
+        $game_cover_img_ext = strtolower(pathinfo($game_cover_img_name, PATHINFO_EXTENSION));
+
+        if (in_array($game_cover_img_ext, $allowed_exts)) {
+            $new_game_cover_img_name = "Cover-" . $assetName . '.' . $game_cover_img_ext;
+            $game_cover_upload_path = "public/uploads/asset/cover/" . $new_game_cover_img_name;
+            move_uploaded_file($game_cover_img_temp_name, $game_cover_upload_path);
+        }
+
+        return $new_game_cover_img_name;
+    }
+
+    function uploadAssetFile($assetName)
+    {
+
+        $newFile = $_FILES['upload-asset']['name'];
+        $oldFile = $_POST['old-upload-asset'];
+
+        if ($newFile != '') {
+            $file = $newFile;
+        } else {
+            $file = $oldFile;
+        }
+
+
+
+        //Game File
+        $game_file = $file;
+        //$asset_file_size = $_FILES['upload-asset']['size'];
+        $game_file_temp_name = $_FILES['upload-asset']['tmp_name'];
+
+        $game_file_ext = strtolower(pathinfo($game_file, PATHINFO_EXTENSION));
+
+        $allowed_game_types = array("zip", "blend", "txt");
+
+        if (in_array($game_file_ext, $allowed_game_types)) {
+            $new_game_file_name = "Game-" . $assetName . '.' . $game_file_ext;
+            $game_upload_path = 'public/uploads/assets/file/' . $new_game_file_name;
+            move_uploaded_file($game_file_temp_name, $game_upload_path);
+        } else if (!in_array($game_file_ext, $allowed_game_types) && $game_file) {
+            $incompatibleFileType = true;
+        }
+
+        return $new_game_file_name;
+    }
+
+
+    function uploadAssetScreenshots($assetName)
+    {
+
+        $newScreenshots = $_FILES['asset-screenshots']['name'];
+        // $oldScreenshots = $_POST['old-game-screenshots'];
+
+        // $oldSS = explode(",", $oldScreenshots);
+
+        $ssArray = $newScreenshots;
+
+
+
+        //Screenshots
+        $allowed_exts = array("jpg", "jpeg", "png");
+        $screenshots = [];
+        $ssCount = count($ssArray);
+        for ($i = 0; $i < $ssCount; $i++) {
+            $ssName = $ssArray[$i];
+            $ssExt = strtolower(pathinfo($ssName, PATHINFO_EXTENSION));
+            if (in_array($ssExt, $allowed_exts)) {
+
+                $newSSName = "SS-" . $assetName . '-' . $i . '.' . $ssExt;
+                $ss_upload_path = 'public/uploads/assets/ss/' . $newSSName;
+
+                move_uploaded_file($_FILES['asset-screenshots']['tmp_name'][$i], $ss_upload_path);
+
+                array_push($screenshots, $newSSName);
+            }
+        }
+
+        $screenshotsURL = implode(',', $screenshots);
+
+        return $screenshotsURL;
+    }
+
+    function EditExistingAsset(
+        $assetName,
+        $assetPrice,
+        $assetDetails,
+        $assetTagline,
+        $foreignKey,
+        $assetClassification,
+        $assetStatus,
+        $assetTags,
+        $assetType,
+        $assetStyle,
+        $assetLicense,
+        $assetVideoUrl,
+        $assetVisibility,
+        $assetFile,
+        $assetCoverImg,
+        $assetScreenshots
+    ) {
+
+        $sql = "UPDATE freeasset SET
+                assetName='$assetName',
+        assetPrice = '$assetPrice',
+        assetDetails = '$assetDetails',
+        assetTagline = '$assetTagline',
+        assetClassification = '$assetClassification',
+        assetReleaseStatus = '$assetStatus',
+        assetTags = '$assetTags',
+        assetType = '$assetType',
+        assetStyle = '$assetStyle',
+        assetLicense = '$assetLicense', 
+        assetVideoURL = '$assetVideoUrl',
+        assetVisibility = '$assetVisibility',
+        assetFile = '$assetFile',
+        assetCoverImg = '$assetCoverImg',
+        assetScreenshots = '$assetScreenshots' WHERE assetCreatorID='$foreignKey'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+    }
+
+    function DeleteAsset($assetID)
+    {
+
+        $sql = "DELETE FROM freeasset WHERE assetID='$assetID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+    }
 }

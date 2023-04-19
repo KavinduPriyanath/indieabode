@@ -305,12 +305,12 @@ class Asset_Model extends Model
             $reviewCount = $record['reviews'];
 
             $updateSQL = "UPDATE asset_stats_history 
-            SET gameID='$assetID', 
+            SET assetID='$assetID', 
             views='$viewCount', 
             downloads='$downloadCount', 
             ratings = '$ratingsCount',
             reviews = '$reviewCount',
-            created_at = '$todayDate' WHERE gameID = '$assetID' AND created_at='$todayDate'";
+            created_at = '$todayDate' WHERE assetID = '$assetID' AND created_at='$todayDate'";
 
             $updateStmt = $this->db->prepare($updateSQL);
 
