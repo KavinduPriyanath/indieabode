@@ -88,7 +88,7 @@
 
 
                 <!--Reviews-->
-                <div class="reviews">
+                <div class="specs-reviews">
 
                     <div class="game-specification">
                         <h3>Specifications</h3>
@@ -162,11 +162,9 @@
             <div class="card">
                 <div class="card-image game" style="background-image: url('<?php echo '/indieabode/public/uploads/games/cover/' . $this->game['gameCoverImg']; ?>')"></div>
                 <h3 id="gametype"><?= $this->game['gameType']; ?></h3>
-                <?php if ($this->game['gamePrice'] == 0) { ?>
-                    <h3 id="price">FREE</h3>
-                <?php } else { ?>
-                    <h3 id="price">$<?= $this->game['gamePrice']; ?></h3>
-                <?php } ?>
+
+                <h3 id="price"><?= $this->gamePrice ?></h3>
+
 
                 <div class="buy-btn" id="download-btn">Download</div>
                 <div class="buy-btn" id="buy-btn">Buy Now</div>
@@ -175,22 +173,7 @@
                 <div class="buy-btn" id="view-cart-btn">View Cart</div>
                 <div class="buy-btn" id="add-to-library">Add to Library</div>
                 <div class="buy-btn" id="view-library">In Library</div>
-
-
-                <!-- <?php if ($this->hasClaimed) { ?>
-                    <a href="/indieabode/game/downloadGame?id=<?= $this->game['gameID'] ?>" style="text-decoration: none;">
-                        <div class="buy-btn" id="buy-btn">Download</div>
-                    </a>
-                <?php } else if (!$this->hasClaimed && $this->game['gamePrice'] == "0") { ?>
-                    <a href="/indieabode/game/downloadGame?id=<?= $this->game['gameID'] ?>" style="text-decoration: none;">
-                        <div class="buy-btn" id="buy-btn">Download</div>
-                    </a>
-                <?php } else { ?>
-                    <a href="/indieabode/game/checkout?id=<?= $this->game['gameID'] ?>" style="text-decoration: none;">
-                        <div class="buy-btn" id="buy-btn">Buy Now</div>
-                    </a>
-
-                <?php } ?> -->
+                <div class="buy-btn" id="wishlist">Wishlist</div>
 
                 <div class="cartbutton">
 
@@ -222,7 +205,9 @@
 
                 <div class="row">
                     <p class="title">Release Date</p>
-                    <p class="sub-title">5 Nov 2021</p>
+
+                    <p class="sub-title" id="release-date"></p>
+
                 </div>
                 <hr />
 
@@ -236,7 +221,7 @@
 
                 <div class="row">
                     <p class="title">Publisher</p>
-                    <p class="sub-title">miHiYo Studios</p>
+                    <p class="sub-title"><?= $this->publisher['username'] ?></p>
                 </div>
                 <hr />
 
@@ -387,19 +372,21 @@
 
     <script src="<?php echo BASE_URL; ?>public/js/reportModal.js"></script>
 
-
-    <script>
-        function ButtonClick() {
-            <?php if (isset($_SESSION['logged']) && $_SESSION['userRole'] != "gamer") { ?>
-                alert("This action can only be performed as a gamer");
-            <?php } else if (!isset($_SESSION['logged'])) { ?>
-                alert("You should be logged in first.");
-            <?php } ?>
-        }
-    </script>
-
     <script>
         $(document).ready(function() {
+
+            const months = ["Jan", "Feb", "March", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+            let releaseDate = "<?= $this->game['created_at'] ?>";
+
+            let year = releaseDate.substr(0, 4);
+            let month = releaseDate.slice(5, 7);
+            let day = releaseDate.slice(8, 10);
+            let monthName = months[parseInt(month) - 1];
+            let formattedReleaseDate = day + " " + monthName + " " + year;
+
+            $('#release-date').text(formattedReleaseDate);
+
 
             $('#report-submit').click(function() {
 
@@ -433,172 +420,233 @@
 
     <script>
         $(document).ready(function() {
+            //Manage the way buttons are shown for different users, and for those who havent logged in
+            <?php if (isset($_SESSION['logged'])) { ?>
+                <?php if (!$this->hasClaimed) { ?>
+                    <?php if ($this->game['gamePrice'] == "0") { ?>
+                        $('#download-btn').show();
+                        $('#buy-btn').hide();
+                    <?php } else if ($this->game['gamePrice'] != "0") { ?>
+                        $('#download-btn').hide();
+                        $('#buy-btn').show();
+                    <?php } ?>
+                <?php } else if ($this->hasClaimed && $this->game['gamePrice'] != "0") { ?>
+                    $('#download-btn').show();
+                    $('#buy-btn').hide();
+                <?php } ?>
 
 
-            //show download button for free games and buy now button for paid games
-            <?php if (!$this->hasClaimed) { ?>
+                //download buttons for free games
                 <?php if ($this->game['gamePrice'] == "0") { ?>
                     $('#download-btn').show();
                     $('#buy-btn').hide();
-                <?php } else if ($this->game['gamePrice'] != "0") { ?>
-                    $('#download-btn').hide();
-                    $('#buy-btn').show();
                 <?php } ?>
-            <?php } else if ($this->hasClaimed && $this->game['gamePrice'] != "0") { ?>
-                $('#download-btn').show();
-                $('#buy-btn').hide();
-            <?php } ?>
 
-            //download buttons for free games
-            <?php if ($this->game['gamePrice'] == "0") { ?>
-                $('#download-btn').show();
-                $('#buy-btn').hide();
-            <?php } ?>
+                //download buttons for paid games
+                <?php if ($this->game['gamePrice'] != "0") { ?>
+                    <?php if ($this->hasClaimed) { ?>
+                        $('#download-btn').show();
+                        $('#buy-btn').hide();
+                    <?php } else if (!$this->hasClaimed) { ?>
+                        $('#download-btn').hide();
+                        $('#buy-btn').show();
+                    <?php } ?>
+                <?php } ?>
 
-            //download buttons for paid games
-            <?php if ($this->game['gamePrice'] != "0") { ?>
-                <?php if ($this->hasClaimed) { ?>
+                //show library and cart buttons for free games
+                <?php if ($this->game['gamePrice'] == "0") { ?>
+                    $('#add-cart-btn').hide();
+                    $('#view-cart-btn').hide();
+                    <?php if ($this->hasClaimed) { ?>
+                        $('#add-to-library').hide();
+                        $('#view-library').show();
+                    <?php } else if (!$this->hasClaimed) { ?>
+                        $('#add-to-library').show();
+                        $('#view-library').hide();
+                    <?php } ?>
+                <?php } ?>
+
+                //show library and cart buttons for free games
+                <?php if ($this->game['gamePrice'] != "0") { ?>
+                    <?php if ($this->hasClaimed) { ?>
+                        $('#add-to-library').hide();
+                        $('#view-library').show();
+                        $('#add-cart-btn').hide();
+                        $('#view-cart-btn').hide();
+                    <?php } else if (!$this->hasClaimed && $this->hasInCart) { ?>
+                        $('#add-to-library').hide();
+                        $('#view-library').hide();
+                        $('#add-cart-btn').hide();
+                        $('#view-cart-btn').show();
+                    <?php } else if (!$this->hasClaimed && !$this->hasInCart) { ?>
+                        $('#add-to-library').hide();
+                        $('#view-library').hide();
+                        $('#add-cart-btn').show();
+                        $('#view-cart-btn').hide();
+                    <?php } ?>
+                <?php } ?>
+            <?php } else { ?>
+                <?php if ($this->game['gamePrice'] == "0") { ?>
                     $('#download-btn').show();
                     $('#buy-btn').hide();
-                <?php } else if (!$this->hasClaimed) { ?>
+                    $('#add-to-library').show();
+                    $('#add-cart-btn').hide();
+                <?php } else { ?>
                     $('#download-btn').hide();
                     $('#buy-btn').show();
-                <?php } ?>
-            <?php } ?>
-
-            //show library and cart buttons for free games
-            <?php if ($this->game['gamePrice'] == "0") { ?>
-                $('#add-cart-btn').hide();
-                $('#view-cart-btn').hide();
-                <?php if ($this->hasClaimed) { ?>
                     $('#add-to-library').hide();
-                    $('#view-library').show();
-                <?php } else if (!$this->hasClaimed) { ?>
-                    $('#add-to-library').show();
-                    $('#view-library').hide();
-                <?php } ?>
-            <?php } ?>
-
-            //show library and cart buttons for free games
-            <?php if ($this->game['gamePrice'] != "0") { ?>
-                <?php if ($this->hasClaimed) { ?>
-                    $('#add-to-library').hide();
-                    $('#view-library').show();
-                    $('#add-cart-btn').hide();
-                    $('#view-cart-btn').hide();
-                <?php } else if (!$this->hasClaimed && $this->hasInCart) { ?>
-                    $('#add-to-library').hide();
-                    $('#view-library').hide();
-                    $('#add-cart-btn').hide();
-                    $('#view-cart-btn').show();
-                <?php } else if (!$this->hasClaimed && !$this->hasInCart) { ?>
-                    $('#add-to-library').hide();
-                    $('#view-library').hide();
                     $('#add-cart-btn').show();
-                    $('#view-cart-btn').hide();
                 <?php } ?>
+
+                $('#view-library').hide();
+                $('#view-cart-btn').hide();
+
             <?php } ?>
 
 
+            //For gamers, add the item to library, for unprivileged logged users prompt an alert. Redirect users who havent logged in to login page
             $('#add-to-library').click(function() {
 
-                let gameID = <?= $this->game['gameID']; ?>;
 
-                var data = {
-                    'gameID': gameID,
-                    'add_to_library': true,
-                };
+                <?php if (isset($_SESSION['logged'])) { ?>
+                    <?php if ($_SESSION['userRole'] == "gamer") { ?>
 
-                $.ajax({
-                    url: "/indieabode/game/addtoLibrary",
-                    method: "POST",
-                    data: data,
-                    success: function(response) {
 
-                        if (response == "1") {
+                        let gameID = <?= $this->game['gameID']; ?>;
 
-                            $('#add-to-library').hide();
-                            $('#view-library').show();
+                        var data = {
+                            'gameID': gameID,
+                            'add_to_library': true,
+                        };
 
-                            $("#flashMessage").html('Added to the Library')
-                            $("#flashMessage").fadeIn(1000);
+                        $.ajax({
+                            url: "/indieabode/game/addtoLibrary",
+                            method: "POST",
+                            data: data,
+                            success: function(response) {
 
-                            setTimeout(function() {
-                                $("#flashMessage").fadeOut("slow");
-                            }, 4000);
+                                if (response == "1") {
 
-                        }
-                        // alert(response);
-                    }
-                })
+                                    $('#add-to-library').hide();
+                                    $('#view-library').show();
+
+                                    $("#flashMessage").html('Added to the Library')
+                                    $("#flashMessage").fadeIn(1000);
+
+                                    setTimeout(function() {
+                                        $("#flashMessage").fadeOut("slow");
+                                    }, 4000);
+
+                                }
+                                // alert(response);
+                            }
+                        })
+
+
+                    <?php } else { ?>
+                        alert("Unauthorized User Role");
+                    <?php } ?>
+                <?php } else { ?>
+                    window.location.href = "/indieabode/login";
+                <?php } ?>
+
+
+
 
             });
 
+            //Redirect gamers to their library
             $('#view-library').click(function() {
 
                 window.location.href = "/indieabode/library";
 
             });
 
+            //For gamers, add the item to cart, for unprivileged logged users prompt an alert. Redirect users who havent logged in to login page
             $('#add-cart-btn').click(function() {
 
-                let gameID = <?= $this->game['gameID']; ?>;
+                <?php if (isset($_SESSION['logged'])) { ?>
+                    <?php if ($_SESSION['userRole'] == "gamer") { ?>
 
-                var data = {
-                    'gameID': gameID,
-                    'add_to_cart': true,
-                };
+                        let gameID = <?= $this->game['gameID']; ?>;
 
-                $.ajax({
-                    url: "/indieabode/game/AddToCart",
-                    method: "POST",
-                    data: data,
-                    success: function(response) {
+                        var data = {
+                            'gameID': gameID,
+                            'add_to_cart': true,
+                        };
 
-                        if (response == "1") {
+                        $.ajax({
+                            url: "/indieabode/game/AddToCart",
+                            method: "POST",
+                            data: data,
+                            success: function(response) {
 
-                            $('#add-cart-btn').hide();
-                            $('#view-cart-btn').show();
+                                if (response == "1") {
 
-                            $("#flashMessage").html('Added to the Cart')
-                            $("#flashMessage").fadeIn(1000);
+                                    $('#add-cart-btn').hide();
+                                    $('#view-cart-btn').show();
 
-                            setTimeout(function() {
-                                $("#flashMessage").fadeOut("slow");
-                            }, 4000);
+                                    $("#flashMessage").html('Added to the Cart')
+                                    $("#flashMessage").fadeIn(1000);
 
-                        }
-                    }
-                })
+                                    setTimeout(function() {
+                                        $("#flashMessage").fadeOut("slow");
+                                    }, 4000);
+
+                                }
+                            }
+                        })
+
+
+                    <?php } else { ?>
+                        alert("Unauthorized User Role");
+                    <?php } ?>
+                <?php } else { ?>
+                    window.location.href = "/indieabode/login";
+                <?php } ?>
+
+
 
             });
 
+            //Redirect gamers to their cart
             $('#view-cart-btn').click(function() {
 
                 window.location.href = "/indieabode/cart";
 
             });
 
+            //Redirect logged gamers to checkout while unprivileged users see an alert message. Users who hasnt logged in redirect to login page
             $('#buy-btn').click(function() {
 
-                window.location.href = "/indieabode/game/checkout?id=<?= $this->game['gameID'] ?>";
+                <?php if (isset($_SESSION['logged'])) { ?>
+                    <?php if ($_SESSION['userRole'] == "gamer") { ?>
+                        window.location.href = "/indieabode/game/checkout?id=<?= $this->game['gameID'] ?>";
+                    <?php } else { ?>
+                        alert("Unauthorized User Role");
+                    <?php } ?>
+                <?php } else { ?>
+                    window.location.href = "/indieabode/login";
+                <?php } ?>
+
+
 
             });
 
+            //Downloading the game and showing a flash message thanking
             $('#download-btn').click(function() {
 
                 window.location.href = "/indieabode/game/downloadGame?id=<?= $this->game['gameID'] ?>";
 
 
                 $("#flashMessage").html('Thanks for downloading');
-                $("#flashMessage").fadeIn(1000);
+                $("#flashMessage").fadeIn(2000);
 
                 setTimeout(function() {
                     $("#flashMessage").fadeOut("slow");
                 }, 4000);
 
             });
-
         });
     </script>
 

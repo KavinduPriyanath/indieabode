@@ -57,12 +57,13 @@
                             <label id="current-stage" for="current-stage">Current Stage</label><br />
                             <p>How long have you been developing the game</p>
                             <select id="current-stage" name="current-stage">
-                                <option value="adventure">1 month</option>
-                                <option value="action" selected>2 month</option>
-                                <option value="RPG">3 month</option>
-                                <option value="racing">4 month</option>
-                                <option value="simulation">5 month</option>
-                                <option value="strategy">6 month</option>
+                                <option value="1">1 month</option>
+                                <option value="2" selected>2 month</option>
+                                <option value="3">3 month</option>
+                                <option value="4">4 month</option>
+                                <option value="5">5 month</option>
+                                <option value="6">6 month</option>
+                                <option value="12">12 month</option>
                             </select><br /><br />
                         </div>
 

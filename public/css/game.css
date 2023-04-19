@@ -292,6 +292,11 @@
 
 /*Reviews*/
 
+.specs-reviews {
+    width: 750px;
+    margin-left: 180px;
+    margin-bottom: 30px;
+}
 
 .reviews {
     width: 850px;
@@ -687,5 +692,9 @@ td{
 }
 
 #download-btn, #buy-btn {
+    display: none;
+}
+
+#wishlist {
     display: none;
 }

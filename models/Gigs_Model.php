@@ -11,7 +11,11 @@ class Gigs_Model extends Model
 
     function showAllGigs()
     {
-        $stmt = $this->db->prepare("SELECT * FROM gig");
+        $sql = "SELECT gig.gigID, gig.gigID, gig.gigName, gig.gigTagline, gig.gigCoverImg, 
+        gamer.firstName, gamer.lastName, gamer.avatar, gamer.trustrank
+        FROM gig INNER JOIN gamer ON gamer.gamerID = gig.gameDeveloperID";
+
+        $stmt = $this->db->prepare($sql);
 
         $stmt->execute();
 

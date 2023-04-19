@@ -147,7 +147,11 @@
                     </div>
                     <div class="game-intro">
                         <h3><?= $game['gameName'] ?></h3>
-                        <p>Free</p>
+                        <?php if ($game['gamePrice'] == "0") { ?>
+                            <p>Free</p>
+                        <?php } else if ($game['gamePrice'] != "0") { ?>
+                            <p>$<?= $game['gamePrice'] ?></p>
+                        <?php } ?>
                     </div>
                     <div class="tagline"><?= $game['gameTagline'] ?></div>
                 </div>

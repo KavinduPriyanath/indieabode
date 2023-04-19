@@ -157,19 +157,13 @@
                     </div>
                     <div class="gig-info">
                         <div class="left">
-                            <div class="pp-icon"><img src="/indieabode/public/images/cards/profile.png" alt="" /></div>
+                            <div class="pp-icon"><img src="/indieabode/public/images/avatars/<?= $gig['avatar'] ?>" alt="" /></div>
                             <div class="pp-details">
-                                <h3>Prend</h3>
-                                <p>Trust Rank: 2</p>
+                                <h3> <?= $gig['firstName'] . " " . $gig['lastName'] ?> </h3>
+                                <p>Trust Rank: <?= $gig['trustrank'] ?></p>
                             </div>
                         </div>
-                        <div class="right">
-                            <div class="stars">
-                                <div class="star-logo"><img src="/indieabode/public/images/cards/star.png" alt="" /></div>
-                                <div class="rating">4.9</div>
-                            </div>
-                            <div class="rating-count">(7)</div>
-                        </div>
+
                     </div>
                     <div class="tagline"> <?= $gig['gigTagline'] ?> </div>
                 </div>

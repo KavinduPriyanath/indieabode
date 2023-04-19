@@ -25,7 +25,19 @@ class Game extends Controller
 
             $thisGame = $this->model->showSingleGame($gameID);
 
+            if ($thisGame['gamePrice'] == "0") {
+                $this->view->gamePrice = "FREE";
+            } else if ($thisGame['gamePrice'] != "0") {
+                $this->view->gamePrice = "$" . $thisGame['gamePrice'];
+            }
+
             $platforms = $thisGame['platform'];
+
+            if ($thisGame['gamePublisherID'] == 0) {
+                $this->view->publisher = $this->model->getUserDetails($thisGame['gameDeveloperID']);
+            } else {
+                $this->view->publisher = $this->model->getUserDetails($thisGame['gamePublisherID']);
+            }
 
             $this->view->platforms = explode(',', $platforms);
 
@@ -39,17 +51,20 @@ class Game extends Controller
 
             $this->view->reportReasons = $this->model->ComplaintReasons();
 
-            $this->view->hasInCart = $this->model->AlreadyInCart($gameID, $_SESSION['id']);
-
-            $this->view->hasClaimed = $this->model->AlreadyClaimed($gameID, $_SESSION['id']);
-
             $this->view->Isfree = $this->model->free($gameID);
 
-            $ViewTracker = $this->model->GameViewTracker($_SESSION['id'], $_SESSION['session'], $gameID);
+            if (isset($_SESSION['logged'])) {
 
-            if ($ViewTracker) {
-                $this->model->updateGameViewStat($_GET['id'], date("Y-m-d"));
-                $this->model->updateGameViews($_GET['id']);
+                $this->view->hasInCart = $this->model->AlreadyInCart($gameID, $_SESSION['id']);
+
+                $this->view->hasClaimed = $this->model->AlreadyClaimed($gameID, $_SESSION['id']);
+
+                $ViewTracker = $this->model->GameViewTracker($_SESSION['id'], $_SESSION['session'], $gameID);
+
+                if ($ViewTracker) {
+                    $this->model->updateGameViewStat($_GET['id'], date("Y-m-d"));
+                    $this->model->updateGameViews($_GET['id']);
+                }
             }
 
             $this->view->render('SingleGame');
