@@ -258,6 +258,10 @@ input[type="radio"] {
     height: 20px;
 }
 
+.pp-details h3{
+    font-size: 16px;
+}
+
 /* Gigs Archive */
 .archive-details {
     display: block;

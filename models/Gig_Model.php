@@ -11,7 +11,10 @@ class Gig_Model extends Model
 
     function showSingleGig($id)
     {
-        $sql = "SELECT * FROM gig WHERE gigID='$id' LIMIT 1";
+        $sql = "SELECT gig.gigID, gig.gigName, gig.gigScreenshot, gig.gigDetails, gig.game, gig.gameDeveloperID,
+                gig.gamePublisherID, gig.gigTagline, gig.currentStage, gig.plannedReleaseDate, gig.estimatedShare,
+                gig.expectedCost, gig.gigCoverImg, freegame.gameName, freegame.gameClassification, freegame.platform 
+                FROM gig INNER JOIN freegame ON freegame.gameID = gig.game WHERE gigID='$id'";
 
         $stmt = $this->db->prepare($sql);
 
@@ -256,5 +259,19 @@ class Gig_Model extends Model
         $updateStmt = $this->db->prepare($updateSql);
 
         $updateStmt->execute();
+    }
+
+    function GetUser($gamerID)
+    {
+
+        $sql = "SELECT * FROM gamer WHERE gamerID='$gamerID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $user;
     }
 }

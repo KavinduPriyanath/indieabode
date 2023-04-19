@@ -58,37 +58,37 @@
             <div class="summary-details">
                 <div class="row">
                     <div class="col-1">Game Name</div>
-                    <div class="col-2"><?= $this->gig['game']; ?></div>
+                    <div class="col-2"><?= $this->gig['gameName']; ?></div>
                 </div>
                 <hr />
                 <div class="row">
                     <div class="col-1">Genre</div>
-                    <div class="col-2">2D Platformer</div>
+                    <div class="col-2"><?= $this->gig['gameClassification']; ?></div>
                 </div>
                 <hr />
                 <div class="row">
                     <div class="col-1">Platform</div>
-                    <div class="col-2">Windows</div>
+                    <div class="col-2"><?= $this->gig['platform']; ?></div>
                 </div>
                 <hr />
                 <div class="row">
                     <div class="col-1">Current Stage</div>
-                    <div class="col-2"><?= $this->gig['currentStage']; ?>6 Months</div>
+                    <div class="col-2"><?= $this->gig['currentStage']; ?> Months</div>
                 </div>
                 <hr />
                 <div class="row">
                     <div class="col-1">Planned Release</div>
-                    <div class="col-2"><?= $this->gig['plannedReleaseDate']; ?></div>
+                    <div class="col-2" id="release-date"></div>
                 </div>
                 <hr />
                 <div class="row">
                     <div class="col-1">Expected Cost</div>
-                    <div class="col-2"><?= $this->gig['expectedCost']; ?></div>
+                    <div class="col-2">$<?= $this->gig['expectedCost']; ?></div>
                 </div>
                 <hr />
                 <div class="row">
                     <div class="col-1">Estimated Share</div>
-                    <div class="col-2"><?= $this->gig['estimatedShare']; ?></div>
+                    <div class="col-2"><?= $this->gig['estimatedShare']; ?>%</div>
                 </div>
                 <hr />
                 <div class="row">
@@ -117,11 +117,11 @@
             <h2>About Developer</h2>
             <div class="dev-profile">
                 <div class="image">
-                    <img src="" alt="" />
+                    <img src="/indieabode/public/images/avatars/<?= $this->gameDeveloper['avatar'] ?>" alt="" />
                 </div>
                 <div class="dev-name">
-                    <h4>Kavindu Priyanath</h4>
-                    <div class="trust-rank">Trust Rank: 2</div>
+                    <h4><?= $this->gameDeveloper['firstName'] . " " . $this->gameDeveloper['lastName'] ?></h4>
+                    <div class="trust-rank">Trust Rank: <?= $this->gameDeveloper['trustrank'] ?></div>
                 </div>
             </div>
 
@@ -131,7 +131,7 @@
             </div>
             <div class="dev-row">
                 <h3>Email</h3>
-                <div class="info">kavindupriyanath@gmail.com</div>
+                <div class="info"><?= $this->gameDeveloper['email'] ?></div>
             </div>
             <div class="dev-row">
                 <h3>Avg. Response Time</h3>
@@ -154,6 +154,18 @@
     <script>
         $(document).ready(function() {
 
+            const months = ["Jan", "Feb", "March", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+            let releaseDate = "<?= $this->gig['plannedReleaseDate']; ?>";
+
+            let year = releaseDate.substr(0, 4);
+            let month = releaseDate.slice(5, 7);
+            let day = releaseDate.slice(8, 10);
+            let monthName = months[parseInt(month) - 1];
+            let formattedReleaseDate = day + " " + monthName + " " + year;
+
+            $('#release-date').text(formattedReleaseDate);
+
             <?php if ($_SESSION['logged'] && $_SESSION['userRole'] == 'game publisher') { ?>
                 <?php if ($this->hasRequested) { ?>
                     $('#view-button').show();
@@ -162,7 +174,7 @@
                     $('#view-button').hide();
                     $('#request-button').show();
                 <?php } ?>
-            <?php } else if ($_SESSION['logged'] && $_SESSION['userRole'] == 'game developer') { ?>
+            <?php } else if ($_SESSION['logged'] && $_SESSION['userRole'] != 'game publisher') { ?>
                 $('.share-button').show();
             <?php } ?>
 

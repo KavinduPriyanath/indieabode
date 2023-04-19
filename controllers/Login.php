@@ -44,7 +44,7 @@ class Login extends Controller
 
 
             if ($user['userRole'] == "game developer") {
-                header('location:/indieabode/developer/');
+                header('location:/indieabode/home/developer');
             } else {
                 header('location:/indieabode/');
             }

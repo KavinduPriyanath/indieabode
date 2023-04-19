@@ -1,6 +1,6 @@
 <?php
 
-class Developer extends Controller
+class Home extends Controller
 {
 
     function __construct()
@@ -11,6 +11,10 @@ class Developer extends Controller
     }
 
     function index()
+    {
+    }
+
+    function developer()
     {
 
         $this->view->games = $this->model->showRecentGames();

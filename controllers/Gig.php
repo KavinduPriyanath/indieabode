@@ -80,6 +80,20 @@ class Gig extends Controller
 
         $this->view->screenshots = $this->model->getScreenshots($gigID);
 
+        $thisRequest = $this->model->currentRequest($gigID, $gigToken);
+
+        if ($_SESSION['userRole'] == "game developer") {
+
+            $user = $this->model->GetUser($thisRequest['publisherID']);
+            $this->view->role = "Game Publisher";
+        } else if ($_SESSION['userRole'] == "game publisher") {
+
+            $user = $this->model->GetUser($thisRequest['developerID']);
+            $this->view->role = "Game Developer";
+        }
+
+        $this->view->contactName = $user['firstName'] . " " . $user['lastName'];
+
         $this->view->ssCount = count($this->model->getScreenshots($gigID));
 
         $this->view->render('RequestedGig');

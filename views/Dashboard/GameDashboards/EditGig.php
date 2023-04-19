@@ -72,11 +72,13 @@
                                         <label id="current-stage" for="current-stage">Current Stage</label><br />
                                         <p>How long have you been developing the game</p>
                                         <select id="current-stage" name="current-stage">
-                                            <option value="0" id="0">Just Started</option>
-                                            <option value="1" id="1">1-6 months</option>
-                                            <option value="2" id="2">6-12 months</option>
-                                            <option value="3" id="3">1-2 year</option>
-                                            <option value="4" id="4">2+ years</option>
+                                            <option value="1" id="1">1 months</option>
+                                            <option value="2" id="2">2 months</option>
+                                            <option value="3" id="3">3 months</option>
+                                            <option value="4" id="4">4 months</option>
+                                            <option value="5" id="5">5 months</option>
+                                            <option value="6" id="6">6 months</option>
+
                                         </select><br /><br />
                                     </div>
 

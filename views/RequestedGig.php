@@ -147,8 +147,8 @@
         <div class="wrapper">
             <section class="chat-area">
                 <div class="header">
-                    <div class="name">Kavindu</div>
-                    <div class="role">Game Developer</div>
+                    <div class="name"><?= $this->contactName ?></div>
+                    <div class="role"><?= $this->role ?></div>
                 </div>
                 <div class="chat-box">
 
