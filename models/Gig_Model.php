@@ -257,4 +257,18 @@ class Gig_Model extends Model
 
         $updateStmt->execute();
     }
+
+    function GetUser($gamerID)
+    {
+
+        $sql = "SELECT * FROM gamer WHERE gamerID='$gamerID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $user;
+    }
 }
