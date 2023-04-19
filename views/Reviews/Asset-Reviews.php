@@ -94,7 +94,11 @@
             <div class="column-three">
                 <div class="write-text">Write Review Here</div>
 
-                <button data-modal-target="#modal" id="review-btn" class="UnReviewed">Add Review</button>
+                <?php if (isset($_SESSION['logged'])) { ?>
+                    <button data-modal-target="#modal" id="review-btn" class="UnReviewed">Add Review</button>
+                <?php } else { ?>
+                    <div class="text"><a href="/indieabode/login">Log in with indieabode</a> to leave a review</div>
+                <?php } ?>
 
             </div>
         </div>

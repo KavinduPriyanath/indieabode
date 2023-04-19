@@ -7,7 +7,6 @@ class AssetReviews extends Controller
     {
         parent::__construct();
         session_start();
-        // session_destroy();
     }
 
     function index()
@@ -87,11 +86,18 @@ class AssetReviews extends Controller
 
             $average_rating = $total_user_rating / $total_review;
 
-            $thisUserHasReviewed = $this->model->HasReviewedThisAsset($_SESSION['id'], $_GET['id']);
+            if (isset($_SESSION['logged'])) {
 
-            $thisUserReview = $this->model->HisThisAssetReview($_SESSION['id'], $_GET['id']);
+                $thisUserHasReviewed = $this->model->HasReviewedThisAsset($_SESSION['id'], $_GET['id']);
 
-            $reviewerInfo = $this->model->ReviewerInfo($_SESSION['id']);
+                $thisUserReview = $this->model->HisThisAssetReview($_SESSION['id'], $_GET['id']);
+            } else {
+
+                $thisUserHasReviewed = null;
+
+                $thisUserReview = null;
+            }
+
 
 
             $thisUserReviewTopic = !empty($thisUserReview) ? $thisUserReview['reviewTopic'] : null;
@@ -114,7 +120,6 @@ class AssetReviews extends Controller
                 'thisUserReviewContent' => $thisUserReviewContent,
                 'thisUserReviewRecommendation' => $thisUserReviewRecommendation,
                 'thisUserReviewAverageRating' => number_format($thisUserReviewAverageRating, 1),
-                'username'  => $reviewerInfo[0],
             );
 
             echo json_encode($output);

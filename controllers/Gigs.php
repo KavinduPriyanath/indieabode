@@ -11,6 +11,17 @@ class Gigs extends Controller
 
     function index()
     {
+
+        //Redirecting Unprivileged Users
+        if (isset($_SESSION['logged'])) {
+
+            if ($_SESSION['userRole'] == "asset creator") {
+                header('location:/indieabode/');
+            } else if ($_SESSION['userRole'] == "asset creator") {
+                header('location:/indieabode/');
+            }
+        }
+
         $this->view->gigs = $this->model->showAllGigs();
 
         $this->view->render('Main/Gigs');

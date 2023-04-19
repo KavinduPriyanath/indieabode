@@ -25,7 +25,7 @@ class Devlog_Model extends Model
     function gameDetails($gameId)
     {
 
-        $sql = "SELECT * FROM freegame WHERE gameID='$gameId'";
+        $sql = "SELECT * FROM freegame INNER JOIN gamer ON freegame.gameDeveloperID=gamer.gamerID WHERE gameID='$gameId'";
 
         $stmt = $this->db->prepare($sql);
 

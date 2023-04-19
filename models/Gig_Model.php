@@ -274,4 +274,18 @@ class Gig_Model extends Model
 
         return $user;
     }
+
+    function RecommendedGigs()
+    {
+
+        $sql = "SELECT gig.gigID, gig.gigID, gig.gigName, gig.gigTagline, gig.gigCoverImg, 
+        gamer.firstName, gamer.lastName, gamer.avatar, gamer.trustrank
+        FROM gig INNER JOIN gamer ON gamer.gamerID = gig.gameDeveloperID LIMIT 4";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
 }

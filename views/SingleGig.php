@@ -12,6 +12,7 @@
     <style>
         <?php
         include 'public/css/gig.css';
+        include 'public/css/gigs.css';
         ?>
     </style>
 
@@ -141,6 +142,43 @@
     </div>
 
 
+    <!--See Also -->
+    <div class="more">
+        <h3 id="more-heading">Recommended</h3>
+        <div class="cards-container">
+
+            <!--Cards-->
+
+            <div class="bottom-container">
+
+                <?php foreach ($this->recommendedGigs as $gig) { ?>
+                    <a href="/indieabode/gig?id=<?= $gig['gigID'] ?>">
+                        <div class="card">
+                            <h3 id="gig-name"><?= $gig['gigName'] ?></h3>
+                            <div class="card-image">
+                                <img src="/indieabode/public/uploads/gigs/cover/<?= $gig['gigCoverImg'] ?>" alt="" />
+                            </div>
+                            <div class="gig-info">
+                                <div class="left">
+                                    <div class="pp-icon"><img src="/indieabode/public/images/avatars/<?= $gig['avatar'] ?>" alt="" /></div>
+                                    <div class="pp-details">
+                                        <h3> <?= $gig['firstName'] . " " . $gig['lastName'] ?> </h3>
+                                        <p>Trust Rank: <?= $gig['trustrank'] ?></p>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="tagline"> <?= $gig['gigTagline'] ?> </div>
+                        </div>
+                    </a>
+                <?php } ?>
+
+
+            </div>
+        </div>
+    </div>
+
+
     <?php
     include 'includes/footer.php';
     ?>
@@ -166,7 +204,7 @@
 
             $('#release-date').text(formattedReleaseDate);
 
-            <?php if ($_SESSION['logged'] && $_SESSION['userRole'] == 'game publisher') { ?>
+            <?php if (isset($_SESSION['logged']) && $_SESSION['userRole'] == 'game publisher') { ?>
                 <?php if ($this->hasRequested) { ?>
                     $('#view-button').show();
                     $('#request-button').hide();
@@ -174,7 +212,7 @@
                     $('#view-button').hide();
                     $('#request-button').show();
                 <?php } ?>
-            <?php } else if ($_SESSION['logged'] && $_SESSION['userRole'] != 'game publisher') { ?>
+            <?php } else { ?>
                 $('.share-button').show();
             <?php } ?>
 
