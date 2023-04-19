@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 19, 2023 at 01:51 PM
+-- Generation Time: Apr 19, 2023 at 03:21 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -218,6 +218,31 @@ INSERT INTO `asset_purchases` (`id`, `assetID`, `buyerID`, `orderID`, `purchased
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `asset_reviews`
+--
+
+CREATE TABLE `asset_reviews` (
+  `id` int(11) NOT NULL,
+  `rating` int(11) NOT NULL,
+  `reviewTopic` varchar(255) NOT NULL,
+  `review` text NOT NULL,
+  `created_date` date NOT NULL DEFAULT current_timestamp(),
+  `userID` int(11) NOT NULL,
+  `assetID` int(11) NOT NULL,
+  `recommendation` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `asset_reviews`
+--
+
+INSERT INTO `asset_reviews` (`id`, `rating`, `reviewTopic`, `review`, `created_date`, `userID`, `assetID`, `recommendation`) VALUES
+(1, 1, 'hiuy', 'oihyy', '2023-04-19', 46, 10, 'No'),
+(2, 3, 'jj', 'ytjytjyj', '2023-04-19', 51, 10, 'Yes');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `asset_stats`
 --
 
@@ -235,9 +260,9 @@ CREATE TABLE `asset_stats` (
 --
 
 INSERT INTO `asset_stats` (`assetID`, `downloads`, `views`, `ratings`, `ratingCount`, `revenue`) VALUES
-(9, 5, 1, 0, 0, 0),
-(10, 0, 0, 0, 0, 0),
-(17, 0, 0, 0, 0, 0),
+(9, 5, 3, 0, 0, 0),
+(10, 0, 5, 0, 0, 0),
+(17, 0, 2, 0, 0, 0),
 (18, 0, 1, 0, 0, 0),
 (19, 0, 1, 0, 0, 0),
 (20, 0, 0, 0, 0, 0),
@@ -278,7 +303,9 @@ INSERT INTO `asset_stats_history` (`id`, `assetID`, `views`, `downloads`, `ratin
 (11, 25, 1, 0, 0, 0, '2023-04-19'),
 (12, 26, 1, 0, 0, 0, '2023-04-19'),
 (13, 29, 1, 0, 0, 0, '2023-04-19'),
-(14, 9, 1, 0, 0, 0, '2023-04-19');
+(14, 9, 3, 0, 0, 0, '2023-04-19'),
+(15, 10, 4, 0, 0, 0, '2023-04-19'),
+(16, 17, 1, 0, 0, 0, '2023-04-19');
 
 -- --------------------------------------------------------
 
@@ -312,7 +339,14 @@ INSERT INTO `asset_view_tracker` (`id`, `userID`, `assetID`, `sessionID`, `viewe
 (11, 78, 25, 76, '2023-04-19'),
 (12, 78, 26, 76, '2023-04-19'),
 (13, 78, 29, 76, '2023-04-19'),
-(14, 78, 9, 76, '2023-04-19');
+(14, 78, 9, 76, '2023-04-19'),
+(15, 46, 9, 48, '2023-04-19'),
+(16, 46, 10, 48, '2023-04-19'),
+(17, 51, 9, 83, '2023-04-19'),
+(18, 51, 10, 83, '2023-04-19'),
+(19, 78, 10, 21, '2023-04-19'),
+(20, 78, 17, 21, '2023-04-19'),
+(21, 0, 10, 0, '2023-04-19');
 
 -- --------------------------------------------------------
 
@@ -931,7 +965,7 @@ INSERT INTO `gamer` (`gamerID`, `email`, `password`, `accountStatus`, `avatar`, 
 (46, '7prend@gmail.com', '$2y$10$28/Xs048i8U8nOr9xdhzaO3VEMWZxxL8maz1lzUf1XYlGIre41wFW', 1, 'avatar1.png', 'game developer', 'Beidou', 'Kavindu', 'Priyanath', '2023-02-09 07:45:17', '2023-02-09 07:45:17', 1, '', 2),
 (47, 'ypasindu11@gmail.com', '$2y$10$X6vRwMBT21PqzM57sr3fPeBK7gXyaUYiRYWEioYg/La9Sb4iPvI5.', 1, 'avatar3.png', 'game publisher', 'YPasi', 'Yeshan', 'pasindu', '2023-02-09 10:08:12', '2023-02-09 10:08:12', 1, '', 2),
 (48, 'nadeedarshika1999@gmail.com', '$2y$10$IwPRWNFoePVsvPrzle.DyO9.8MxiOC1PAM/qVuwmJnIXE7UkRp/SS', 1, 'avatar3.png', 'asset creator', 'Nadee', 'Nadee', 'Dharshi', '2023-02-09 14:57:04', '2023-02-09 14:57:04', 0, '', 2),
-(51, 'kavindupriyanath@gmail.com', '$2y$10$HuRWMj1Sh9TZJNGx6IHTtuXnWc9HEvmNlphyIupW8pd9PGUbTmB/W', 1, 'avatar3.png', 'game developer', 'Prend', 'John', 'Cena', '2023-02-21 15:13:19', '2023-02-21 15:13:19', 1, 'fc68cec1f09b8dfd10dce933bf406972', 2),
+(51, 'kavindupriyanath@gmail.com', '$2y$10$skpVtooDwBUkpWwlLpxATeSiM0NMG7D5tkJYJKmmQ4trlMvhAr4jm', 1, 'avatar3.png', 'game developer', 'Prend', 'John', 'Cena', '2023-02-21 15:13:19', '2023-02-21 15:13:19', 1, '301ddcc8122c834473cf07d5493fe159', 2),
 (52, 'kimalrasanka321@gmail.com', '$2y$10$3moxbOLzKlvkAKVnCHLxS.atHdVSAWsJrqyIA/Ki9LXWrFaZKT4Mu', 1, 'avatar2.png', 'gamer', 'KRDA', 'kimal', 'xsx', '2023-02-28 06:45:33', '2023-02-28 06:45:33', 1, '', 2),
 (53, 'klhimashanupama@gmail.com', '$2y$10$B.F4OXoJEJIWcmHKvofCRuCN8FooMdd3u8jDIn8BhvsJVPaQs0VD6', 1, 'avatar4.png', 'gamer', 'Hima', 'Himash', 'Anu', '2023-02-28 16:24:11', '2023-02-28 16:24:11', 1, '', 2),
 (78, 'akiladharmadasa1.1@gmail.com', '$2y$10$GPdfkGBN0VVqHsFnd5swGu.TgeDM.rixafWAHmLmhsSvvLcRqZG1e', 1, 'avatar2.png', 'asset creator', 'akilaks', 'akila', 'gona', '2023-04-08 06:10:47', '2023-04-08 06:10:47', 1, '', 2),
@@ -1271,7 +1305,8 @@ INSERT INTO `games_view_tracker` (`id`, `userID`, `sessionID`, `gameID`, `viewed
 (241, 52, 47, 92, '2023-04-19'),
 (242, 52, 47, 91, '2023-04-19'),
 (243, 52, 47, 89, '2023-04-19'),
-(244, 52, 47, 182, '2023-04-19');
+(244, 52, 47, 182, '2023-04-19'),
+(245, 46, 48, 90, '2023-04-19');
 
 -- --------------------------------------------------------
 
@@ -1415,7 +1450,7 @@ CREATE TABLE `game_stats` (
 INSERT INTO `game_stats` (`id`, `gameID`, `views`, `downloads`, `ratings`, `revenue`) VALUES
 (1, 96, 41, 11, 1, 0),
 (2, 89, 14, 0, 0, 0),
-(3, 90, 26, 0, 0, 0),
+(3, 90, 27, 0, 0, 0),
 (4, 91, 34, 11, 0, 0),
 (5, 92, 36, 5, 0, 0),
 (6, 93, 17, 1, 0, 0),
@@ -1559,7 +1594,7 @@ INSERT INTO `game_stats_history` (`id`, `gameID`, `views`, `downloads`, `ratings
 (122, 96, 1, 0, 0, 0, '2023-04-18'),
 (123, 183, 2, 0, 0, 0, '2023-04-19'),
 (124, 96, 2, 0, 0, 0, '2023-04-19'),
-(125, 90, 1, 0, 0, 0, '2023-04-19'),
+(125, 90, 2, 0, 0, 0, '2023-04-19'),
 (126, 92, 2, 1, 0, 0, '2023-04-19'),
 (127, 95, 5, 3, 0, 0, '2023-04-19'),
 (128, 93, 3, 0, 0, 0, '2023-04-19'),
@@ -2108,6 +2143,12 @@ ALTER TABLE `asset_purchases`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `asset_reviews`
+--
+ALTER TABLE `asset_reviews`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `asset_stats`
 --
 ALTER TABLE `asset_stats`
@@ -2394,16 +2435,22 @@ ALTER TABLE `asset_purchases`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
+-- AUTO_INCREMENT for table `asset_reviews`
+--
+ALTER TABLE `asset_reviews`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `asset_stats_history`
 --
 ALTER TABLE `asset_stats_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `asset_view_tracker`
 --
 ALTER TABLE `asset_view_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `billing_addresses`
@@ -2529,7 +2576,7 @@ ALTER TABLE `games_filters`
 -- AUTO_INCREMENT for table `games_view_tracker`
 --
 ALTER TABLE `games_view_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=245;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=246;
 
 --
 -- AUTO_INCREMENT for table `game_cart`
