@@ -62,8 +62,8 @@
                             <div class="game-name"><?= $asset['assetName'] ?></div>
                             <div class="game-stat-tabs">
                                 <a href="/indieabode/dashboard/edit?id=<?= $asset['assetID']; ?>">Edit</a>
-                                <a href="/indieabode/dashboard/gameanalytics?id=<?= $asset['assetID']; ?>">Analytics</a>
-                                <a href="">Reviews</a>
+                                <a href="/indieabode/dashboard/assetanalytics?id=<?= $asset['assetID']; ?>">Analytics</a>
+                                <a href="/indieabode/dashboard/reviews?id=<?= $asset['assetID'] ?>">Reviews</a>
                             </div>
                         </div>
                     </div>

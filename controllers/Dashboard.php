@@ -171,6 +171,16 @@ class Dashboard extends Controller
 
             $this->view->asset = $this->model->GetAssetDetails($_GET['id']);
 
+            $asset = $this->model->GetAssetDetails($_GET['id']);
+
+            if ($asset['assetPrice'] == "0") {
+                $this->view->assetPrice = "Free";
+            } else if ($asset['assetPrice'] != "0") {
+                $this->view->assetPrice = "Paid";
+            }
+
+            $this->view->assetTags = explode(",", $asset['assetTags']);
+
             $this->view->render('Dashboard/AssetDashboards/Edit');
         }
     }
@@ -259,6 +269,65 @@ class Dashboard extends Controller
             $gamePlatforms,
             $gameType,
             $gamePrice
+        );
+
+        header('location:/indieabode/');
+    }
+
+    function editAsset()
+    {
+
+        $assetID = $_GET['id'];
+        $assetName = $_POST['asset-title'];
+        $assetTagline = $_POST['asset-tagline'];
+        $foreignKey = $_SESSION['id'];
+        $assetClassification = $_POST['asset-classification'];
+        $assetStatus = $_POST['asset-status'];
+        $assetDetails = $_POST['description'];
+        $assetTags = $_POST['asset-tags'];
+        $assetType = $_POST['asset-type'];
+        $assetStyle = $_POST['asset-style'];
+        // $assetPricing = 
+        $assetLicense = $_POST['asset-license'];
+        $assetVideoUrl = $_POST['asset-illustration-video'];
+        $assetVisibility = $_POST['asset-visibility'];
+        $assetFile = $this->model->uploadAssetFile($assetID);
+        $assetCoverImg = $this->model->uploadAssetCoverImg($assetID);
+
+        $newScreenshots = $this->model->uploadAssetScreenshots($assetID);
+        $oldScreenshots = $_POST['old-asset-screenshots'];
+
+        if (empty($newScreenshots)) {
+            $assetScreenshots = $oldScreenshots;
+        } else {
+            $assetScreenshots = $newScreenshots;
+        }
+
+        if ($_POST['asset-price'] == "Free") {
+            $assetPrice = 0.00;
+        } else if ($_POST['asset-price'] == "PWYW") {
+            $assetPrice = trim($_POST['asset-pwyw-default'], "$");
+        } else if ($_POST['asset-price'] == "Paid") {
+            $assetPrice = $_POST['asset-price-paid'];
+        }
+
+        $this->model->EditExistingAsset(
+            $assetName,
+            $assetPrice,
+            $assetDetails,
+            $assetTagline,
+            $foreignKey,
+            $assetClassification,
+            $assetStatus,
+            $assetTags,
+            $assetType,
+            $assetStyle,
+            $assetLicense,
+            $assetVideoUrl,
+            $assetVisibility,
+            $assetFile,
+            $assetCoverImg,
+            $assetScreenshots
         );
 
         header('location:/indieabode/');
@@ -504,5 +573,16 @@ class Dashboard extends Controller
         $this->view->asset = $this->model->GetAssetDetails($_GET['id']);
 
         $this->view->render('Dashboard/AssetDashboards/Reviews');
+    }
+
+    function deleteAsset()
+    {
+
+        if ($_POST['delete_asset'] == true) {
+
+            $assetID = $_POST['assetID'];
+
+            $this->model->DeleteAsset($assetID);
+        }
     }
 }

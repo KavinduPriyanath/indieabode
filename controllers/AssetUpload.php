@@ -18,7 +18,6 @@ class AssetUpload extends Controller
 
     function uploadAsset()
     {
-
         $assetName = $_POST['asset-title'];
         $assetTagline = $_POST['asset-tagline'];
         $foreignKey = $_SESSION['id'];

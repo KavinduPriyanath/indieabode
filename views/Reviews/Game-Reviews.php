@@ -189,7 +189,6 @@
 
 
 
-    <script src="<?php echo BASE_URL; ?>public/js/assets.js"></script>
     <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
     <script src="<?php echo BASE_URL; ?>public/js/game-review.js"></script>
 
@@ -360,12 +359,12 @@
                                 html += '<img src="/indieabode/public/images/games/profile.png" alt="" />';
                                 html += '</div>';
                                 html += '<div class="left-name">';
-                                html += '<p class="username">' + data.username + '</p>';
+                                html += '<p class="username">' + data.review_data[count].reviewerName + '</p>';
                                 html += '<p class="assets-count">114 games in account</p>';
                                 html += '<p class="reviews-count">Reviews:&nbsp;11</p>';
                                 html += '</div>';
                                 html += '</div>';
-                                html += '<div class="right">';
+                                html += '<div class="rightr">';
                                 html += '<div class="recommendation">';
                                 html += '</div>';
                                 html += '<div class="rating-stars">';
@@ -385,10 +384,7 @@
                                 html += '</div>';
                                 html += '<h3 class="review-title">' + data.review_data[count].reviewTopic + '</h3>';
                                 html += '<p class="review-detail">' + data.review_data[count].review + '</p>';
-                                html += '<div class="like-buttons">';
-                                html += '<i class="fa fa-thumbs-up"></i>';
-                                html += '<i class="fa fa-thumbs-down"></i>';
-                                html += '</div>';
+
                                 html += '</div>';
                                 html += '</div>';
 

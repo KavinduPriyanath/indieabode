@@ -38,8 +38,11 @@ class GameReviews_Model extends Model
 
     function FetchReviews($gameID)
     {
+        $sql = "SELECT game_reviews.rating, game_reviews.review, game_reviews.reviewTopic, 
+                game_reviews.recommendation, gamer.username FROM game_reviews
+                INNER JOIN gamer ON gamer.gamerID = game_reviews.userID WHERE gameID='$gameID' ORDER BY id DESC";
 
-        $stmt = $this->db->prepare("SELECT * FROM game_reviews WHERE gameID='$gameID' ORDER BY id DESC");
+        $stmt = $this->db->prepare($sql);
 
         $stmt->execute();
 

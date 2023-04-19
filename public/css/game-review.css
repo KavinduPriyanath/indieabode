@@ -1,5 +1,6 @@
 .checked {
     color: orange;
+    
 }
 
 .unchecked {
@@ -72,5 +73,9 @@
 
 .reviews {
     margin-top: 25px;
+}
+
+.review-title {
+    color: black;
 }
 
