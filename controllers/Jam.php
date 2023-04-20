@@ -77,34 +77,7 @@ class Jam extends Controller
     }
 
 
-    // function joinJam()
-    // {
-    //     $gameJamID = $_GET['id'];
-    //     $uID = $_SESSION['id'];
 
-    //     $this->model->joinJam($uID, $gameJamID);
-
-    //     $this->view->gamejam = $this->model->showSingleJam($gameJamID);
-
-    //     $query = parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
-    //     parse_str($query, $result);
-
-    //     header('Location:/indieabode/jam/?' . http_build_query($result));
-    // }
-
-    // function leaveJam()
-    // {
-    //     $gameJamID = $_GET['id'];
-    //     $uID = $_SESSION['id'];
-    //     $this->model->leaveJam($uID, $gameJamID);
-
-    //     $this->view->gamejam = $this->model->showSingleJam($gameJamID);
-
-    //     $query = parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
-    //     parse_str($query, $result);
-
-    //     header('Location:/indieabode/jam/?' . http_build_query($result));
-    // }
 
     function submission()
     {
@@ -117,12 +90,12 @@ class Jam extends Controller
             $this->view->games = $this->model->currentDevGames($currentUser);
         }
 
-        $this->view->sGames = $this->model->submittedgames($gameJamID);
+        $this->view->submittedGames = $this->model->submittedgames($gameJamID);
 
         // print_r($sGames);
 
 
-        $this->view->render('GameJam/submission');
+        $this->view->render('GameJam/Submission');
     }
 
     function submitproject()
@@ -145,11 +118,63 @@ class Jam extends Controller
         header('Location:/indieabode/jam?' . http_build_query($result));
     }
 
-    // function submittedgames()
-    // {
-    //     $this->view->sGames = $this->model->submittedgames();
-    //     $this->view->render('Forms/submission');
-    // }
+
+    function ratesubmission()
+    {
+        $gameJamID = $_GET['jam'];
+
+        $gameID = $_GET['id'];
+
+        $this->view->jam = $this->model->showSingleJam($gameJamID);
+
+        $this->view->submission = $this->model->submissionDetails($gameID);
+
+        $submission = $this->model->submissionDetails($gameID);
+
+        $this->view->screenshots = explode(",", $submission['gameScreenshots']);
+
+        if (isset($_SESSION['logged'])) {
+
+            $this->view->ratingData = $this->model->LoadThisGamerRating($gameJamID, $gameID, $_SESSION['id']);
+        }
+
+        $this->view->render('GameJam/Rate-Submission');
+    }
+
+    function saveRating()
+    {
+
+        if ($_POST['save_rating'] == true) {
+
+            $voterID = $_SESSION['id'];
+            $jamID = $_POST['jamID'];
+            $submissionID = $_POST['submissionID'];
+            $rating = $_POST['rating_data'];
+
+            $this->model->SaveSubmissionRating($jamID, $submissionID, $voterID, $rating);
+        }
+    }
+
+    function loadGamerRating()
+    {
+
+        if ($_POST['load_rating'] == true) {
+
+            $gamerID = $_SESSION['id'];
+            $jamID = $_POST['jamID'];
+            $submissionID = $_POST['submissionID'];
+
+            $ratingData = $this->model->LoadThisGamerRating($jamID, $submissionID, $gamerID);
+
+            if (!empty($ratingData)) {
+                $thisUserRating = $ratingData['rating'];
+            } else {
+                $thisUserRating = 0;
+            }
 
 
+
+            echo json_encode($thisUserRating);
+        }
+    }
 }

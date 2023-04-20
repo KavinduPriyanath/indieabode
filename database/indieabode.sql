@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 19, 2023 at 03:21 PM
+-- Generation Time: Apr 20, 2023 at 09:50 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -261,8 +261,8 @@ CREATE TABLE `asset_stats` (
 
 INSERT INTO `asset_stats` (`assetID`, `downloads`, `views`, `ratings`, `ratingCount`, `revenue`) VALUES
 (9, 5, 3, 0, 0, 0),
-(10, 0, 5, 0, 0, 0),
-(17, 0, 2, 0, 0, 0),
+(10, 0, 6, 0, 0, 0),
+(17, 0, 3, 0, 0, 0),
 (18, 0, 1, 0, 0, 0),
 (19, 0, 1, 0, 0, 0),
 (20, 0, 0, 0, 0, 0),
@@ -304,8 +304,8 @@ INSERT INTO `asset_stats_history` (`id`, `assetID`, `views`, `downloads`, `ratin
 (12, 26, 1, 0, 0, 0, '2023-04-19'),
 (13, 29, 1, 0, 0, 0, '2023-04-19'),
 (14, 9, 3, 0, 0, 0, '2023-04-19'),
-(15, 10, 4, 0, 0, 0, '2023-04-19'),
-(16, 17, 1, 0, 0, 0, '2023-04-19');
+(15, 10, 5, 0, 0, 0, '2023-04-19'),
+(16, 17, 2, 0, 0, 0, '2023-04-19');
 
 -- --------------------------------------------------------
 
@@ -346,7 +346,9 @@ INSERT INTO `asset_view_tracker` (`id`, `userID`, `assetID`, `sessionID`, `viewe
 (18, 51, 10, 83, '2023-04-19'),
 (19, 78, 10, 21, '2023-04-19'),
 (20, 78, 17, 21, '2023-04-19'),
-(21, 0, 10, 0, '2023-04-19');
+(21, 0, 10, 0, '2023-04-19'),
+(22, 78, 10, 48, '2023-04-19'),
+(23, 46, 17, 38, '2023-04-19');
 
 -- --------------------------------------------------------
 
@@ -526,8 +528,8 @@ CREATE TABLE `crowdfund` (
 --
 
 INSERT INTO `crowdfund` (`crowdFundID`, `currentAmount`, `deadline`, `expectedAmount`, `gameDeveloperName`, `gameName`, `title`, `tagline`, `backers`, `details`, `visibility`, `crowdfundCoverImg`, `crowdfundSS`, `crowdfundTrailer`, `viewCount`) VALUES
-(4, 0, '2023-04-13', 0, 46, '96', 'ergrgrtgd wdw 111', 'httrh 11', 0, 'ffwf <b>fefefeef&nbsp;</b>', 'draft', 'Cover-4.jpg', 'SS-4-0.jpg,SS-4-1.jpg', 'https://itch.io/11/my-first-game-jam-winter-2023', 1),
-(6, 0, '2023-04-13', 0, 46, '95', 'new crowdfunding', 'gtgrtgrttrht', 0, '<h3>ABOUT THIS GAME</h3>\r\n<br>\r\n<p>Lost, alone and separated from family, a stray cat must untangle an ancient mystery to escape a long-forgotten city.\r\n\r\nStray is a third-person cat adventure game set amidst the detailed, neon-lit alleys of a decaying cybercity and the murky environments of its seedy underbelly. Roam surroundings high and low, defend against unforeseen threats and solve the mysteries of this unwelcoming place inhabited by curious droids and dangerous creatures.\r\n\r\nSee the world through the eyes of a cat and interact with the environment in playful ways. Be stealthy, nimble, silly, and sometimes as annoying as possible with the strange inhabitants of this mysterious world.\r\n\r\nAlong the way, the cat befriends a small flying drone, known only as B-12. With the help of this newfound companion, the duo must find a way out.\r\n\r\nStray is developed by BlueTwelve Studio, a small team from the south of France mostly made up of cats and a handful of humans.<p>', 'draft', 'Cover-Monster Hunter Rise.jpg', 'SS-Monster Hunter Rise-0.jpg,SS-Monster Hunter Rise-1.jpg', 'https://itch.io/jam/my-first-game-jam-winter-2023', 0),
+(4, 0, '2023-04-13', 0, 46, '96', 'ergrgrtgd wdw 111', 'httrh 11', 0, 'ffwf <b>fefefeef&nbsp;</b>', 'draft', 'Cover-4.jpg', 'SS-4-0.jpg,SS-4-1.jpg', 'https://itch.io/11/my-first-game-jam-winter-2023', 2),
+(6, 0, '2023-04-13', 0, 46, '95', 'new crowdfunding', 'gtgrtgrttrht', 0, '<h3>ABOUT THIS GAME</h3>\r\n<br>\r\n<p>Lost, alone and separated from family, a stray cat must untangle an ancient mystery to escape a long-forgotten city.\r\n\r\nStray is a third-person cat adventure game set amidst the detailed, neon-lit alleys of a decaying cybercity and the murky environments of its seedy underbelly. Roam surroundings high and low, defend against unforeseen threats and solve the mysteries of this unwelcoming place inhabited by curious droids and dangerous creatures.\r\n\r\nSee the world through the eyes of a cat and interact with the environment in playful ways. Be stealthy, nimble, silly, and sometimes as annoying as possible with the strange inhabitants of this mysterious world.\r\n\r\nAlong the way, the cat befriends a small flying drone, known only as B-12. With the help of this newfound companion, the duo must find a way out.\r\n\r\nStray is developed by BlueTwelve Studio, a small team from the south of France mostly made up of cats and a handful of humans.<p>', 'draft', 'Cover-Monster Hunter Rise.jpg', 'SS-Monster Hunter Rise-0.jpg,SS-Monster Hunter Rise-1.jpg', 'https://itch.io/jam/my-first-game-jam-winter-2023', 1),
 (11, 0, '2023-04-26', 234, 46, '91', 'htrhrt', 'gtgrtgrttrht', 0, 'gtthh<b>gtgt</b>', 'draft', 'Cover-91.jpg', 'SS-91-0.jpg,SS-91-1.jpg,SS-91-2.jpg', 'https://itch.io/jam/my-first-game-jam-winter-2023', 1);
 
 -- --------------------------------------------------------
@@ -583,7 +585,9 @@ INSERT INTO `crowdfund_view_tracker` (`id`, `userID`, `sessionID`, `crowdfundID`
 (3, 51, 90, 8, '2023-04-12'),
 (4, 46, 74, 9, '2023-04-13'),
 (5, 46, 96, 4, '2023-04-14'),
-(6, 46, 96, 11, '2023-04-15');
+(6, 46, 96, 11, '2023-04-15'),
+(7, 0, 0, 6, '2023-04-19'),
+(8, 0, 0, 4, '2023-04-19');
 
 -- --------------------------------------------------------
 
@@ -614,9 +618,9 @@ CREATE TABLE `devlog` (
 INSERT INTO `devlog` (`publishDate`, `description`, `name`, `Tagline`, `Type`, `Visibility`, `devlogImg`, `gameName`, `devLogID`, `CreatedDate`, `likeCount`, `commentCount`, `viewCount`) VALUES
 ('2023-02-09 17:38:43', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis hendrerit neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum pharetra sem. Vestibulum eu est urna. Cras non ipsum non massa sodales condimentum quis eu risus. Praesent volutpat lorem a dolor tristique luctus eget sed elit. Ut facilisis faucibus justo tincidunt eleifend. Curabitur ultrices sapien id lorem posuere, vitae mattis nisi faucibus. Aliquam congue lorem sit amet velit lobortis, non venenatis massa feugiat. Aenean ut vehicula nibh, sed vehicula lacus. Praesent eu eros id leo maximus rhoncus eget eget risus. Curabitur vitae faucibus ligula, ac tincidunt dui. Sed diam massa, euismod sit amet augue a, pharetra egestas augue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\r\n\r\nIn hendrerit magna a dui tincidunt porta. Curabitur suscipit ex consectetur mauris ullamcorper rutrum. Mauris feugiat aliquet tristique. Curabitur egestas suscipit iaculis. Quisque tristique posuere augue, ac aliquet nisi vestibulum id. Curabitur efficitur nibh eu ipsum venenatis, et ornare tellus pellentesque. Nullam mollis lacus in nibh vestibulum, nec dignissim justo tristique. In congue dolor suscipit, eleifend leo et, commodo purus. Curabitur gravida risus et leo porttitor facilisis ut vestibulum ex. Donec enim tortor, commodo facilisis vestibulum non, viverra sed augue. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean ultricies metus vitae lobortis fermentum. Maecenas vulputate ante a sollicitudin congue. Duis purus erat, finibus eget magna sit amet, porta pharetra massa.\r\n\r\nVestibulum eleifend imperdiet felis sit amet placerat. Nulla auctor pretium turpis, quis porttitor lacus tempor vitae. Vestibulum semper non enim at dignissim. Mauris consequat elit ac purus congue iaculis. Aenean ac nibh a dolor efficitur fermentum. Mauris a porttitor lorem, ac gravida tellus. Cras iaculis malesuada mollis.', 'Finishing Utility Inventory', 'Bonjour! This is a post about me finally finishing the Utiltiy ', 'Game Design', 'draft', 'SS-Albion Online.png', '89', 28, '2020-12-29 00:00:00', 1, 2, 0),
 ('2023-02-09 17:41:03', '', 'How to Build a Mansion', 'Showing steps of using tiles to build a mansion in the city ', 'Game Design', 'draft', '', '93', 29, '2020-12-26 00:00:00', 0, 0, 0),
-('2023-02-09 17:43:00', 'dwfwf', 'Level Editor Tutorial', 'Optimized level editor is available to players for free with extensions', 'Game Design', 'draft', 'SS-Final Fantasy VII.jpg', '93', 30, '2020-11-29 00:00:00', 1, 1, 1),
-('2023-03-07 12:55:38', 'dwdw', 'dwd', 'ddwd', 'Tutorial', 'draft', 'SS-89.png', '89', 31, '2023-04-19 20:22:07', 1, 0, 0),
-('2023-03-12 18:12:11', 'ththt', 'tthht', 'hth', 'Tutorial', 'draft', 'SS-89.png', '89', 34, '2023-04-24 00:00:00', 0, 0, 0),
+('2023-02-09 17:43:00', 'dwfwf', 'Level Editor Tutorial', 'Optimized level editor is available to players for free with extensions', 'Game Design', 'draft', 'SS-Final Fantasy VII.jpg', '93', 30, '2020-11-29 00:00:00', 1, 1, 3),
+('2023-03-07 12:55:38', 'dwdw', 'dwd', 'ddwd', 'Tutorial', 'draft', 'Cover-31.png', '89', 31, '2023-04-19 20:22:07', 1, 0, 1),
+('2023-03-12 18:12:11', 'ththt', 'tthht too', 'hth omg', 'Tutorial', 'draft', 'Cover-34.jpg', '89', 34, '2023-04-24 00:00:00', 0, 0, 0),
 ('2023-04-10 04:44:15', 'fef <b>whats up</b>', 'New Devlog 1', 'Hello all i have returned with a polished new devlog', 'Marketing', 'draft', 'Cover-35.jpg', '95', 35, '2022-11-10 20:22:17', 0, 0, 1),
 ('2023-04-10 04:50:44', 'grgrg&nbsp;<div><div style=\"text-align: center;\">grgrgrgrgrgrg</div><div style=\"text-align: center;\"><br></div><div>grrgrg<b>grggrggrg grgrgeeg</b></div></div>', 'fefefg', 'ggrgrggg', 'Major Update', 'draft', 'SS-89.jpg', '89', 36, '2022-11-02 00:00:00', 1, 1, 0),
 ('2023-04-10 04:56:25', 'hththh<div>h</div><div>thththh</div><div><br></div><div style=\"text-align: center;\">htht</div>', 'grgrgr', 'hththth', 'Game Design', 'draft', 'SS-141.jpg', '141', 37, '2023-01-01 00:00:00', 1, 0, 0);
@@ -693,11 +697,11 @@ CREATE TABLE `devlog_likes` (
 --
 
 INSERT INTO `devlog_likes` (`id`, `devlogID`, `userID`) VALUES
-(9, 30, 46),
 (11, 28, 46),
 (12, 31, 46),
 (13, 36, 46),
-(14, 37, 46);
+(14, 37, 46),
+(15, 30, 46);
 
 -- --------------------------------------------------------
 
@@ -743,7 +747,10 @@ INSERT INTO `devlog_view_tracker` (`id`, `userID`, `sessionID`, `devlogID`, `vie
 (1, 46, 10, 28, '2023-04-12'),
 (2, 51, 19, 28, '2023-04-12'),
 (3, 46, 77, 30, '2023-04-12'),
-(4, 46, 60, 35, '2023-04-14');
+(4, 46, 60, 35, '2023-04-14'),
+(5, 0, 0, 30, '2023-04-19'),
+(6, 46, 69, 30, '2023-04-19'),
+(7, 46, 24, 31, '2023-04-19');
 
 -- --------------------------------------------------------
 
@@ -1306,7 +1313,16 @@ INSERT INTO `games_view_tracker` (`id`, `userID`, `sessionID`, `gameID`, `viewed
 (242, 52, 47, 91, '2023-04-19'),
 (243, 52, 47, 89, '2023-04-19'),
 (244, 52, 47, 182, '2023-04-19'),
-(245, 46, 48, 90, '2023-04-19');
+(245, 46, 48, 90, '2023-04-19'),
+(246, 78, 48, 95, '2023-04-19'),
+(247, 78, 48, 96, '2023-04-19'),
+(248, 78, 48, 91, '2023-04-19'),
+(249, 46, 38, 96, '2023-04-19'),
+(250, 46, 44, 93, '2023-04-19'),
+(251, 51, 25, 93, '2023-04-19'),
+(252, 46, 45, 93, '2023-04-20'),
+(253, 52, 70, 92, '2023-04-20'),
+(254, 46, 42, 93, '2023-04-20');
 
 -- --------------------------------------------------------
 
@@ -1448,13 +1464,13 @@ CREATE TABLE `game_stats` (
 --
 
 INSERT INTO `game_stats` (`id`, `gameID`, `views`, `downloads`, `ratings`, `revenue`) VALUES
-(1, 96, 41, 11, 1, 0),
+(1, 96, 43, 11, 1, 0),
 (2, 89, 14, 0, 0, 0),
 (3, 90, 27, 0, 0, 0),
-(4, 91, 34, 11, 0, 0),
-(5, 92, 36, 5, 0, 0),
-(6, 93, 17, 1, 0, 0),
-(7, 95, 23, 4, 1, 0);
+(4, 91, 35, 11, 0, 0),
+(5, 92, 37, 5, 0, 0),
+(6, 93, 21, 1, 0, 0),
+(7, 95, 24, 4, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -1593,15 +1609,17 @@ INSERT INTO `game_stats_history` (`id`, `gameID`, `views`, `downloads`, `ratings
 (121, 93, 1, 0, 0, 0, '2023-04-18'),
 (122, 96, 1, 0, 0, 0, '2023-04-18'),
 (123, 183, 2, 0, 0, 0, '2023-04-19'),
-(124, 96, 2, 0, 0, 0, '2023-04-19'),
+(124, 96, 4, 0, 0, 0, '2023-04-19'),
 (125, 90, 2, 0, 0, 0, '2023-04-19'),
 (126, 92, 2, 1, 0, 0, '2023-04-19'),
-(127, 95, 5, 3, 0, 0, '2023-04-19'),
-(128, 93, 3, 0, 0, 0, '2023-04-19'),
+(127, 95, 6, 3, 0, 0, '2023-04-19'),
+(128, 93, 5, 0, 0, 0, '2023-04-19'),
 (129, 181, 1, 0, 0, 0, '2023-04-19'),
-(130, 91, 1, 0, 0, 0, '2023-04-19'),
+(130, 91, 2, 0, 0, 0, '2023-04-19'),
 (131, 89, 1, 0, 0, 0, '2023-04-19'),
-(132, 182, 1, 0, 0, 0, '2023-04-19');
+(132, 182, 1, 0, 0, 0, '2023-04-19'),
+(133, 93, 2, 0, 0, 0, '2023-04-20'),
+(134, 92, 1, 0, 0, 0, '2023-04-20');
 
 -- --------------------------------------------------------
 
@@ -1637,9 +1655,9 @@ CREATE TABLE `gig` (
 --
 
 INSERT INTO `gig` (`gigID`, `gigName`, `gigTrailor`, `gigScreenshot`, `gigDetails`, `game`, `gameDeveloperID`, `gamePublisherID`, `gigTagline`, `currentStage`, `plannedReleaseDate`, `estimatedShare`, `expectedCost`, `visibility`, `gigCoverImg`, `orderedDate`, `viewCount`, `requests`, `created_at`, `gigStatus`) VALUES
-(12, 'Local Bus Simulator', 'https://www.indiegala.com/login', 'SS-Naruto Shippuden-0.jpg,SS-Naruto Shippuden-1.jpg,SS-Naruto Shippuden-2.jpg', 'cscsc', 89, 46, 0, 'Bus simulator game consisting with customizable local buses ', '12', '2023-04-20', '12', '1000', 'draft', 'Cover-Local Bus Simulator.jpg', NULL, 22, 0, '2023-03-15', 1),
-(13, 'Indie Desert FPS ', 'https://www.indiegala.com/login', 'SS-Stray-0.jpg,SS-Stray-1.jpg,SS-Stray-2.jpg,SS-Stray-3.jpg', 'fefeff', 93, 51, 0, 'Surviving an endless desert after being stranded by you know', '1', '2023-04-20', '12', '1000', 'draft', 'Cover-Indie Desert FPS .jpg', NULL, 6, 0, '2023-04-11', 0),
-(20, 'New Gig', 'https://www.indieabode.ffcom', 'SS-20-0.jpg,SS-20-1.jpg,SS-20-2.jpg', 'fkh hthth<u>jyjyjyjj <b>yjtyjytjyj </b>jytjjjytjj yjtyjytj</u>', 96, 46, 0, 'I am developing an open world game with extreme high movements', '3', '2023-04-20', '3', '200', 'draft', 'Cover-20.jpg', NULL, 7, 0, '2023-04-10', 0),
+(12, 'Local Bus Simulator', 'https://www.indiegala.com/login', 'SS-Naruto Shippuden-0.jpg,SS-Naruto Shippuden-1.jpg,SS-Naruto Shippuden-2.jpg', 'cscsc', 89, 46, 0, 'Bus simulator game consisting with customizable local buses ', '12', '2023-04-20', '12', '1000', 'draft', 'Cover-Local Bus Simulator.jpg', NULL, 23, 0, '2023-03-15', 1),
+(13, 'Indie Desert FPS ', 'https://www.indiegala.com/login', 'SS-Stray-0.jpg,SS-Stray-1.jpg,SS-Stray-2.jpg,SS-Stray-3.jpg', 'fefeff', 93, 51, 0, 'Surviving an endless desert after being stranded by you know', '1', '2023-04-20', '12', '1000', 'draft', 'Cover-Indie Desert FPS .jpg', NULL, 7, 0, '2023-04-11', 0),
+(20, 'New Gig', 'https://www.indieabode.ffcom', 'SS-20-0.jpg,SS-20-1.jpg,SS-20-2.jpg', 'fkh hthth<u>jyjyjyjj <b>yjtyjytjyj </b>jytjjjytjj yjtyjytj</u>', 96, 46, 0, 'I am developing an open world game with extreme high movements', '3', '2023-04-20', '3', '200', 'draft', 'Cover-20.jpg', NULL, 10, 0, '2023-04-10', 0),
 (21, 'Screenshot Test', 'https://www.indiegala.com/login', 'SS-96-0.jpg,SS-96-1.jpg,SS-96-2.jpg', 'fefefef', 95, 46, 0, 'I am developing an open world game with extreme high movements', '4', '2023-04-20', '12', '1000', 'draft', 'Cover-Screenshot Test.jpg', NULL, 4, 0, '2022-04-15', 0);
 
 -- --------------------------------------------------------
@@ -1744,7 +1762,12 @@ INSERT INTO `gigs_views_tracker` (`id`, `userID`, `sessionID`, `gigID`, `viewedD
 (37, 47, 79, 20, '2023-04-19'),
 (38, 47, 79, 12, '2023-04-19'),
 (39, 47, 79, 13, '2023-04-19'),
-(40, 47, 79, 21, '2023-04-19');
+(40, 47, 79, 21, '2023-04-19'),
+(41, 46, 46, 20, '2023-04-19'),
+(42, 47, 34, 20, '2023-04-19'),
+(43, 78, 48, 20, '2023-04-19'),
+(44, 78, 48, 13, '2023-04-19'),
+(45, 78, 48, 12, '2023-04-19');
 
 -- --------------------------------------------------------
 
@@ -1982,7 +2005,10 @@ CREATE TABLE `rategame` (
 CREATE TABLE `ratesubmission` (
   `gamerID` int(11) NOT NULL,
   `submissionID` int(11) NOT NULL,
-  `rating` float NOT NULL
+  `rating` float NOT NULL,
+  `id` int(11) NOT NULL,
+  `jamID` int(11) NOT NULL,
+  `rated_date` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -2034,7 +2060,8 @@ CREATE TABLE `submission` (
 --
 
 INSERT INTO `submission` (`id`, `submissionID`, `gameJamID`, `rating`, `gamerID`) VALUES
-(1, 93, 58, '', 46);
+(1, 93, 58, '', 46),
+(2, 183, 57, '', 46);
 
 -- --------------------------------------------------------
 
@@ -2376,6 +2403,12 @@ ALTER TABLE `library`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `ratesubmission`
+--
+ALTER TABLE `ratesubmission`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `requestedgigs`
 --
 ALTER TABLE `requestedgigs`
@@ -2450,7 +2483,7 @@ ALTER TABLE `asset_stats_history`
 -- AUTO_INCREMENT for table `asset_view_tracker`
 --
 ALTER TABLE `asset_view_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `billing_addresses`
@@ -2498,7 +2531,7 @@ ALTER TABLE `crowdfund_donations`
 -- AUTO_INCREMENT for table `crowdfund_view_tracker`
 --
 ALTER TABLE `crowdfund_view_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `devlog`
@@ -2516,13 +2549,13 @@ ALTER TABLE `devlog_comments`
 -- AUTO_INCREMENT for table `devlog_comments_replies`
 --
 ALTER TABLE `devlog_comments_replies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `devlog_likes`
 --
 ALTER TABLE `devlog_likes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `devlog_posttype`
@@ -2534,7 +2567,7 @@ ALTER TABLE `devlog_posttype`
 -- AUTO_INCREMENT for table `devlog_view_tracker`
 --
 ALTER TABLE `devlog_view_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `freeasset`
@@ -2576,7 +2609,7 @@ ALTER TABLE `games_filters`
 -- AUTO_INCREMENT for table `games_view_tracker`
 --
 ALTER TABLE `games_view_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=246;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=255;
 
 --
 -- AUTO_INCREMENT for table `game_cart`
@@ -2612,7 +2645,7 @@ ALTER TABLE `game_stats`
 -- AUTO_INCREMENT for table `game_stats_history`
 --
 ALTER TABLE `game_stats_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=135;
 
 --
 -- AUTO_INCREMENT for table `gig`
@@ -2630,7 +2663,7 @@ ALTER TABLE `gigmessages`
 -- AUTO_INCREMENT for table `gigs_views_tracker`
 --
 ALTER TABLE `gigs_views_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `gig_purchases`
@@ -2645,6 +2678,12 @@ ALTER TABLE `library`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
+-- AUTO_INCREMENT for table `ratesubmission`
+--
+ALTER TABLE `ratesubmission`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `requestedgigs`
 --
 ALTER TABLE `requestedgigs`
@@ -2654,7 +2693,7 @@ ALTER TABLE `requestedgigs`
 -- AUTO_INCREMENT for table `submission`
 --
 ALTER TABLE `submission`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `user_role`

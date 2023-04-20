@@ -24,15 +24,8 @@
     display: block;
     padding: 12px 0px 15px;
     font-size: 18px;
-    text-align: center;
-
-}
-
-.timrline-subheading {
-    display: flex;
-    text-align: center;
-    margin-left: 150px;
-
+    text-align:  center;
+    
 }
 
 .card {
@@ -105,7 +98,7 @@
     image-orientation: flip;
 }
 
-.containerJam img {
+/* .containerJam img {
     border-radius: 25px;
     display: block;
     margin-top: 18px;
@@ -115,7 +108,7 @@
     width: 40%;
     position: relative;
     padding: 10px;
-}
+} */
 
 .block {
     margin-left: 60px;
@@ -497,8 +490,7 @@
     margin-right: 30px;
 }
 
-#dev-submit, #devBtn,
-#gamerBtn {
+#dev-submit {
     background-color: #3a4499;
     color: rgb(255, 255, 255);
     text-decoration: none;

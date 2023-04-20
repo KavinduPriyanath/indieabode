@@ -154,4 +154,43 @@ class Jam_Model extends Model
 
         return $allGames;
     }
+
+    function submissionDetails($gameID)
+    {
+
+        $sql = "SELECT freegame.gameID, freegame.gameName, freegame.gameCoverImg, freegame.gameFile, freegame.platform,
+                freegame.gameTagline, freegame.gameScreenshots, gamer.username FROM freegame 
+                INNER JOIN gamer ON gamer.gamerID = freegame.gameDeveloperID
+                WHERE freegame.gameID='$gameID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $submission = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $submission;
+    }
+
+    function SaveSubmissionRating($jamID, $submissionId, $gamerID, $rating)
+    {
+
+        $sql = "INSERT INTO ratesubmission(jamID, submissionID, gamerID, rating) VALUES ('$jamID', '$submissionId', '$gamerID', '$rating')";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+    }
+
+    function LoadThisGamerRating($jamID, $submissionID, $gamerID)
+    {
+
+        $sql = "SELECT * FROM ratesubmission WHERE jamID='$jamID' AND submissionID='$submissionID' AND gamerID='$gamerID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }
