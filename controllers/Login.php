@@ -49,6 +49,7 @@ class Login extends Controller
                 header('location:/indieabode/');
             }
         } else if (!empty($user) && $user['verified'] == 0) {
+            $_SESSION['session'] = rand(10, 100);
             $_SESSION['username'] = $user['username'];
             $_SESSION['email'] = $user['email'];
             $_SESSION['id'] = $user['gamerID'];

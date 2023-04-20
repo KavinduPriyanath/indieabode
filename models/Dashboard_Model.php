@@ -143,7 +143,8 @@ class Dashboard_Model extends Model
         $GameOther,
         $platform,
         $gameType,
-        $gamePrice
+        $gamePrice,
+        $gameVisibility
     ) {
         $sql = "UPDATE freegame SET
         gameName = '$gameName', 
@@ -171,7 +172,8 @@ class Dashboard_Model extends Model
         other = '$GameOther',
         platform = '$platform',
         gameType = '$gameType',
-        gamePrice = '$gamePrice'
+        gamePrice = '$gamePrice',
+        gameVisibility = '$gameVisibility'
         WHERE gameID ='$gameID'";
 
         $stmt = $this->db->prepare($sql);
@@ -388,24 +390,26 @@ class Dashboard_Model extends Model
 
         if ($newImage != '') {
             $image = $newImage;
+
+            $game_cover_img_name = $image;
+
+
+            $game_cover_img_temp_name = $_FILES['game-upload-cover-img']['tmp_name'];
+
+            $game_cover_img_ext = strtolower(pathinfo($game_cover_img_name, PATHINFO_EXTENSION));
+
+            if (in_array($game_cover_img_ext, $allowed_exts)) {
+                $new_game_cover_img_name = "Cover-" . $gameName . '.' . $game_cover_img_ext;
+                $game_cover_upload_path = "public/uploads/games/cover/" . $new_game_cover_img_name;
+                move_uploaded_file($game_cover_img_temp_name, $game_cover_upload_path);
+            }
+
+            return $new_game_cover_img_name;
         } else {
             $image = $oldImage;
+
+            return $image;
         }
-
-        $game_cover_img_name = $image;
-
-
-        $game_cover_img_temp_name = $_FILES['game-upload-cover-img']['tmp_name'];
-
-        $game_cover_img_ext = strtolower(pathinfo($game_cover_img_name, PATHINFO_EXTENSION));
-
-        if (in_array($game_cover_img_ext, $allowed_exts)) {
-            $new_game_cover_img_name = "Cover-" . $gameName . '.' . $game_cover_img_ext;
-            $game_cover_upload_path = "public/uploads/games/cover/" . $new_game_cover_img_name;
-            move_uploaded_file($game_cover_img_temp_name, $game_cover_upload_path);
-        }
-
-        return $new_game_cover_img_name;
     }
 
     function uploadGameFile($gameName)
@@ -416,30 +420,30 @@ class Dashboard_Model extends Model
 
         if ($newFile != '') {
             $file = $newFile;
+
+            //Game File
+            $game_file = $file;
+            //$asset_file_size = $_FILES['upload-asset']['size'];
+            $game_file_temp_name = $_FILES['upload-game']['tmp_name'];
+
+            $game_file_ext = strtolower(pathinfo($game_file, PATHINFO_EXTENSION));
+
+            $allowed_game_types = array("zip", "blend", "txt");
+
+            if (in_array($game_file_ext, $allowed_game_types)) {
+                $new_game_file_name = "Game-" . $gameName . '.' . $game_file_ext;
+                $game_upload_path = 'public/uploads/games/file/' . $new_game_file_name;
+                move_uploaded_file($game_file_temp_name, $game_upload_path);
+            } else if (!in_array($game_file_ext, $allowed_game_types) && $game_file) {
+                $incompatibleFileType = true;
+            }
+
+            return $new_game_file_name;
         } else {
             $file = $oldFile;
+
+            return $file;
         }
-
-
-
-        //Game File
-        $game_file = $file;
-        //$asset_file_size = $_FILES['upload-asset']['size'];
-        $game_file_temp_name = $_FILES['upload-game']['tmp_name'];
-
-        $game_file_ext = strtolower(pathinfo($game_file, PATHINFO_EXTENSION));
-
-        $allowed_game_types = array("zip", "blend", "txt");
-
-        if (in_array($game_file_ext, $allowed_game_types)) {
-            $new_game_file_name = "Game-" . $gameName . '.' . $game_file_ext;
-            $game_upload_path = 'public/uploads/games/file/' . $new_game_file_name;
-            move_uploaded_file($game_file_temp_name, $game_upload_path);
-        } else if (!in_array($game_file_ext, $allowed_game_types) && $game_file) {
-            $incompatibleFileType = true;
-        }
-
-        return $new_game_file_name;
     }
 
     function uploadScreenshots($gameName)

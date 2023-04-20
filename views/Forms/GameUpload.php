@@ -53,12 +53,12 @@
                                 <label id="game-classification" for="game-classification">Classification</label><br>
                                 <p>Choose the category your game suits the most</p>
                                 <select id="game-classification" name="game-classification">
-                                    <option value="adventure">Adventure Games</option>
-                                    <option value="action" selected>Action Games</option>
+                                    <option value="Adventure">Adventure Games</option>
+                                    <option value="Action" selected>Action Games</option>
                                     <option value="RPG">RPG Games</option>
-                                    <option value="racing">Racing Games</option>
-                                    <option value="simulation">Simulation Games</option>
-                                    <option value="strategy">Strategy Games</option>
+                                    <option value="Racing">Racing Games</option>
+                                    <option value="Simulation">Simulation Games</option>
+                                    <option value="Strategy">Strategy Games</option>
                                 </select><br><br>
                             </div>
 
@@ -66,8 +66,8 @@
                             <div class="release-div">
                                 <label id="game-status" for="game-status">Release Status</label><br>
                                 <select id="game-status" name="game-status">
-                                    <option value="released" selected>Released</option>
-                                    <option value="early access">Early Access</option>
+                                    <option value="Released" selected>Released</option>
+                                    <option value="Early Access">Early Access</option>
                                     <option value="upcoming">Upcoming</option>
                                 </select><br><br>
                             </div>
@@ -272,9 +272,9 @@
                                                     <input type="text" name="min-game-storage" id="min-game-storage" placeholder="14 GB" /><br><br>
                                                     <label id="min-game-graphics" for="min-game-graphics">Graphics</label><br>
                                                     <input type="text" name="min-game-graphics" id="min-game-graphics" placeholder="NVIDIA GeForce 1660" /><br><br>
-                                                    <label id="min-game-other" for="min-game-other">Other</label><br>
-                                                    <input type="text" name="min-game-other" id="min-game-other" placeholder="English Language Support" /><br><br>
 
+                                                    <label id="game-other" for="game-other">Other</label><br>
+                                                    <input type="text" name="game-other" id="game-other" placeholder="English Language Support" /><br><br>
                                                 </div>
                                                 <div class="game-spec-item-details">
 
@@ -288,8 +288,7 @@
                                                     <input type="text" name="game-storage" id="game-storage" placeholder="14 GB" /><br><br>
                                                     <label id="game-graphics" for="game-graphics">Graphics</label><br>
                                                     <input type="text" name="game-graphics" id="game-graphics" placeholder="NVIDIA GeForce 1660" /><br><br>
-                                                    <label id="game-other" for="game-other">Other</label><br>
-                                                    <input type="text" name="game-other" id="game-other" placeholder="English Language Support" /><br><br>
+
 
                                                 </div>
                                             </div>
