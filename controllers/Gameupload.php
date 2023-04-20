@@ -23,16 +23,21 @@ class Gameupload extends Controller
         $gameName = $_POST['game-title'];
         $releaseStatus = $_POST['game-status'];
         $gameDetails = $_POST['description'];
-        $gameScreenshots = $this->model->uploadScreenshots($gameName);
+
         $gameTrailor = $_POST['game-illustration-vedio'];
         $gameTagline = $_POST['game-tagline'];
         $gameClassification = $_POST['game-classification'];
+        $gameDeveloperID = $_SESSION['id'];
 
         $gameType = $_POST['game-type'];
-        // $gameFeatures = $_POST['game-features'];
-        $gameFile = $this->model->uploadGameFile($gameName);
-        $gameCoverImg = $this->model->uploadCoverImg($gameName);
-        $gameDeveloperID = $_SESSION['id'];
+
+        //A name for how file type items will saved in database
+        $TempFileName = $gameName . $gameDeveloperID;
+
+        $gameCoverImg = $this->model->uploadCoverImg($TempFileName);
+        $gameFile = $this->model->uploadGameFile($TempFileName);
+        $gameScreenshots = $this->model->uploadScreenshots($TempFileName);
+
 
         $minGameOS = $_POST['min-game-OS'];
         $minGameProcessor = $_POST['min-game-processor'];
@@ -46,6 +51,8 @@ class Gameupload extends Controller
         $GameStorage = $_POST['game-storage'];
         $GameGraphics = $_POST['game-graphics'];
         $GameOther = $_POST['game-other'];
+
+        $gameVisibility = $_POST['game-visibility'];
 
         $gameTags = $_POST['game-tags'];
 
@@ -105,8 +112,12 @@ class Gameupload extends Controller
             $GameOther,
             $chosenPlatforms,
             $gameType,
-            $gamePrice
+            $gamePrice,
+            $gameVisibility
         );
+
+        //For creating a record in Game_stats table to keep track of views, downloads, and revenues
+        $this->model->UpdateGameStats($gameName, $_SESSION['id']);
 
         header('location:/indieabode/');
     }

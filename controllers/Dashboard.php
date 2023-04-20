@@ -205,7 +205,25 @@ class Dashboard extends Controller
         $gameName = $_POST['game-title'];
         $releaseStatus = $_POST['game-status'];
         $gameDetails = $_POST['description'];
-        $newScreenshots = $this->model->uploadScreenshots($gameName);
+
+
+        $gameTrailor = $_POST['game-illustration-vedio'];
+        $gameTagline = $_POST['game-tagline'];
+        $gameClassification = $_POST['game-classification'];
+        $tags = $_POST['game-tags'];
+        $gameDeveloperID = $_SESSION['id'];
+        // $tags = implode(",", $gameTags);
+
+        $gameType = $_POST['game-type'];
+        $gameFeatures = $_POST['game-features'];
+
+        $features = implode(",", $gameFeatures);
+
+        $TempFileName = $gameName . $gameDeveloperID;
+
+        $gameCoverImg = $this->model->uploadCoverImg($TempFileName);
+        $gameFile = $this->model->uploadGameFile($TempFileName);
+        $newScreenshots = $this->model->uploadScreenshots($TempFileName);
         $oldScreenshots = $_POST['old-game-screenshots'];
 
         if (empty($newScreenshots)) {
@@ -214,21 +232,9 @@ class Dashboard extends Controller
             $gameScreenshots = $newScreenshots;
         }
 
-        $gameTrailor = $_POST['game-illustration-vedio'];
-        $gameTagline = $_POST['game-tagline'];
-        $gameClassification = $_POST['game-classification'];
-        $tags = $_POST['game-tags'];
 
-        // $tags = implode(",", $gameTags);
 
-        $gameType = $_POST['game-type'];
-        $gameFeatures = $_POST['game-features'];
 
-        $features = implode(",", $gameFeatures);
-
-        $gameFile = $this->model->uploadGameFile($gameName);
-        $gameCoverImg = $this->model->uploadCoverImg($gameName);
-        $gameDeveloperID = $_SESSION['id'];
 
         $minGameOS = $_POST['min-game-OS'];
         $minGameProcessor = $_POST['min-game-processor'];
@@ -242,6 +248,8 @@ class Dashboard extends Controller
         $GameStorage = $_POST['game-storage'];
         $GameGraphics = $_POST['game-graphics'];
         $GameOther = $_POST['game-other'];
+
+        $gameVisibility = $_POST['game-visibility'];
 
         $platform = $_POST['platform'];
 
@@ -282,7 +290,8 @@ class Dashboard extends Controller
             $GameOther,
             $gamePlatforms,
             $gameType,
-            $gamePrice
+            $gamePrice,
+            $gameVisibility
         );
 
         header('location:/indieabode/');

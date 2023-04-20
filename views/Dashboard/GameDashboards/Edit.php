@@ -169,7 +169,6 @@
                                     <div class="details-div">
                                         <label id="game-details" for="game-details">Details</label>
                                         <p id="p">This will be the content of your game page</p>
-                                        <!-- <textarea id="game-details" name="game-details" rows="9" cols="50"></textarea><br><br> -->
 
                                         <div class="main-content">
                                             <div class="text-editor-header">
@@ -279,33 +278,32 @@
 
 
                                                             <label id="min-game-OS" for="min-game-OS">OS</label><br>
-                                                            <input type="text" name="min-game-OS" id="min-game-OS" placeholder="Windows 10" /><br><br>
+                                                            <input type="text" name="min-game-OS" id="min-game-OS" placeholder="Windows 10" value="<?= $this->game['minOS'] ?>" /><br><br>
                                                             <label id="min-game-processor" for="min-game-processor">Processor</label><br>
-                                                            <input type="text" name="min-game-processor" id="min-game-processor" placeholder="Intel Core I5" /><br><br>
+                                                            <input type="text" name="min-game-processor" id="min-game-processor" value="<?= $this->game['minProcessor'] ?>" placeholder="Intel Core I5" /><br><br>
                                                             <label id="min-game-memory" for=" min-game-memory">Memory</label><br>
-                                                            <input type="text" name="min-game-memory" id="min-game-memory" placeholder="8 GB" /><br><br>
+                                                            <input type="text" name="min-game-memory" id="min-game-memory" value="<?= $this->game['minMemory'] ?>" placeholder="8 GB" /><br><br>
                                                             <label id="min-game-storage" for="min-game-storage">Storage</label><br>
-                                                            <input type="text" name="min-game-storage" id="min-game-storage" placeholder="14 GB" /><br><br>
+                                                            <input type="text" name="min-game-storage" id="min-game-storage" value="<?= $this->game['minStorage'] ?>" placeholder="14 GB" /><br><br>
                                                             <label id="min-game-graphics" for="min-game-graphics">Graphics</label><br>
-                                                            <input type="text" name="min-game-graphics" id="min-game-graphics" placeholder="NVIDIA GeForce 1660" /><br><br>
-                                                            <label id="min-game-other" for="min-game-other">Other</label><br>
-                                                            <input type="text" name="min-game-other" id="min-game-other" placeholder="English Language Support" /><br><br>
+                                                            <input type="text" name="min-game-graphics" id="min-game-graphics" value="<?= $this->game['minGraphics'] ?>" placeholder="NVIDIA GeForce 1660" /><br><br>
+                                                            <label id="game-other" for="game-other">Other</label><br>
+                                                            <input type="text" name="game-other" id="game-other" value="<?= $this->game['other'] ?>" placeholder="English Language Support" /><br><br>
 
                                                         </div>
                                                         <div class="game-spec-item-details">
 
                                                             <label id="game-OS" for="game-OS">OS</label><br>
-                                                            <input type="text" name="game-OS" id="game-OS" placeholder="Windows 10" /><br><br>
+                                                            <input type="text" name="game-OS" id="game-OS" placeholder="Windows 10" value="<?= $this->game['recommendOS'] ?>" /><br><br>
                                                             <label id="game-processor" for="game-processor">Processor</label><br>
-                                                            <input type="text" name="game-processor" id="game-processor" placeholder="Intel Core I5" /><br><br>
+                                                            <input type="text" name="game-processor" id="game-processor" value="<?= $this->game['recommendProcessor'] ?>" placeholder="Intel Core I5" /><br><br>
                                                             <label id="game-memory" for="game-memory">Memory</label><br>
-                                                            <input type="text" name="game-memory" id="game-memory" placeholder="8 GB" /><br><br>
+                                                            <input type="text" name="game-memory" id="game-memory" value="<?= $this->game['recommendMemory'] ?>" placeholder="8 GB" /><br><br>
                                                             <label id="game-storage" for="game-storage">Storage</label><br>
-                                                            <input type="text" name="game-storage" id="game-storage" placeholder="14 GB" /><br><br>
+                                                            <input type="text" name="game-storage" id="game-storage" value="<?= $this->game['recommendStorage'] ?>" placeholder="14 GB" /><br><br>
                                                             <label id="game-graphics" for="game-graphics">Graphics</label><br>
-                                                            <input type="text" name="game-graphics" id="game-graphics" placeholder="NVIDIA GeForce 1660" /><br><br>
-                                                            <label id="game-other" for="game-other">Other</label><br>
-                                                            <input type="text" name="game-other" id="game-other" placeholder="English Language Support" /><br><br>
+                                                            <input type="text" name="game-graphics" id="game-graphics" value="<?= $this->game['recommendGraphics'] ?>" placeholder="NVIDIA GeForce 1660" /><br><br>
+
 
                                                         </div>
                                                     </div>
@@ -320,10 +318,10 @@
                                         <label id="game-visibility" for="game-visibility">Visibility</label>
                                         <div class="visibility">
                                             <p>Decide when is your page ready for the public</p>
-                                            <input type="radio" id="game-draft" name="game-visibility" value="draft" checked>
-                                            <label for="game-draft">Draft - Only those who can edit the project can view the page</label><br>
-                                            <input type="radio" id="game-public" name="game-visibility" value="public">
-                                            <label for="game-public">Public - Anyone can view the page, you can enable this after you've saved</label><br><br>
+                                            <input type="radio" id="draft" name="game-visibility" value="draft">
+                                            <label for="draft">Draft - Only those who can edit the project can view the page</label><br>
+                                            <input type="radio" id="public" name="game-visibility" value="public">
+                                            <label for="public">Public - Anyone can view the page, you can enable this after you've saved</label><br><br>
                                         </div>
                                     </div>
 
@@ -661,6 +659,8 @@
 
         $(document).ready(function() {
 
+            //selecting the relevant game visibility from the database
+            $("#<?= $this->game['gameVisibility'] ?>").attr("checked", true);
 
             // <?php foreach ($this->gameScreenshots as $gameScreenshot) { ?>
 

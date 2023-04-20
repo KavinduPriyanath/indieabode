@@ -35,7 +35,8 @@ class Gameupload_Model extends Model
         $GameOther,
         $platform,
         $gameType,
-        $gamePrice
+        $gamePrice,
+        $gameVisibility
     ) {
         $sql = "INSERT INTO freegame (gameName, releaseStatus, 
         gameDetails, 
@@ -58,7 +59,7 @@ class Gameupload_Model extends Model
         recommendMemory, 
         recommendStorage, 
         recommendGraphics, 
-        other, platform, gameType, gamePrice) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        other, platform, gameType, gamePrice, gameVisibility) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         $stmt = $this->db->prepare($sql);
 
@@ -88,7 +89,8 @@ class Gameupload_Model extends Model
             "$GameOther",
             "$platform",
             "$gameType",
-            "$gamePrice"
+            "$gamePrice",
+            "$gameVisibility"
         ]);
     }
 
@@ -169,5 +171,32 @@ class Gameupload_Model extends Model
         $stmt->execute();
 
         return $stmt->fetchAll();
+    }
+
+    //Create a record in game_stats table using the uploaded games ID to keep track of games views, downloads & revenue
+    function UpdateGameStats($gameName, $developerID)
+    {
+
+        $sql = "SELECT * FROM freegame WHERE gameName='$gameName' AND gameDeveloperID='$developerID' LIMIT 1";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $uploadedGame = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $insertSQL = "INSERT INTO game_stats(gameID, downloads, views, ratings, revenue) VALUES (?,?,?,?,?) ";
+
+        $stmtInsert = $this->db->prepare($insertSQL);
+
+        $gameID = $uploadedGame['gameID'];
+
+        $stmtInsert->execute([
+            "$gameID",
+            "0",
+            "0",
+            "0",
+            "0"
+        ]);
     }
 }
