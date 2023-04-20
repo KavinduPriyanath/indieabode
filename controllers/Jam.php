@@ -131,6 +131,26 @@ class Jam extends Controller
 
         $submission = $this->model->submissionDetails($gameID);
 
+        $results = $this->model->JamResults($gameJamID);
+
+        $resultsCount = count($results);
+
+        $rank = 0;
+
+        for ($i = 0; $i < $resultsCount; $i++) {
+
+            $rank = $rank + 1;
+            if ($results[$i]['submissionID'] == $gameID) {
+                break;
+            }
+        }
+
+        $this->view->rank = $rank;
+
+        $this->view->totalSubmissions = $resultsCount;
+
+        $this->view->totalRating = $this->model->ThisSubmissionTotalRating($gameID, $gameJamID);
+
         $this->view->screenshots = explode(",", $submission['gameScreenshots']);
 
         if (isset($_SESSION['logged'])) {
@@ -152,6 +172,8 @@ class Jam extends Controller
             $rating = $_POST['rating_data'];
 
             $this->model->SaveSubmissionRating($jamID, $submissionID, $voterID, $rating);
+
+            $this->model->UpdateThisSubmissionRating($submissionID, $jamID, $rating);
         }
     }
 
@@ -176,5 +198,17 @@ class Jam extends Controller
 
             echo json_encode($thisUserRating);
         }
+    }
+
+    function results()
+    {
+
+        $gameJamID = $_GET['id'];
+
+        $this->view->jamResults = $this->model->OverallJamResults($gameJamID);
+
+        $this->view->jam = $this->model->showSingleJam($gameJamID);
+
+        $this->view->render('GameJam/Results');
     }
 }

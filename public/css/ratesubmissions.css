@@ -189,3 +189,20 @@
 .unchecked {
     color: rgba(50, 43, 43, 0.608);
 }
+
+.ranked-block {
+    text-align:center;
+}
+
+.ranked-block .total-rating-heading {
+    font-size: 22px;
+}
+
+.total-rating-heading span {
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.ranked-block .game-rank {
+    font-size: 22px;
+}

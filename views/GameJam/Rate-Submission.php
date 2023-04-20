@@ -38,6 +38,7 @@ include 'includes/navbar.php';
 
             <a href="/indieabode/jam?id=<?= $this->jam['gameJamID'] ?>">Overview</a>
             <a href="/indieabode/jam/submission?id=<?= $this->jam['gameJamID'] ?>" id="submissionPage">Submissions</a>
+            <a href="/indieabode/jam/results?id=<?= $this->jam['gameJamID'] ?>">Results</a>
         </div>
 
         <hr id="topic-break">
@@ -96,27 +97,38 @@ include 'includes/navbar.php';
                     <div class="rankings">
 
                         <div class="rank-status"></div>
+                        <div class="total-rating"><?= $this->totalRating['rating'] ?></div>
+                        <div class="rank">Rank: <?= $this->rank ?></div>
 
 
                     </div>
                 </div>
 
 
-                <div class="rating-head">
-                    <div class="rating-header">
-                        Rate this Game
+                <div class="voting-block">
+                    <div class="rating-head">
+                        <div class="rating-header">
+                            Rate this Game
+                        </div>
+                        <div class="status" id="status"></div>
                     </div>
-                    <div class="status" id="status"></div>
+                    <div class="rating-block">
+                        <div class="stars">
+                            <i class="fa fa-star unchecked submit_star" id="submit_star_1" data-rating="1"></i>
+                            <i class="fa fa-star unchecked submit_star" id="submit_star_2" data-rating="2"></i>
+                            <i class="fa fa-star unchecked submit_star" id="submit_star_3" data-rating="3"></i>
+                            <i class="fa fa-star unchecked submit_star" id="submit_star_4" data-rating="4"></i>
+                            <i class="fa fa-star unchecked submit_star" id="submit_star_5" data-rating="5"></i>
+                        </div>
+                        <div class="save" id="save-my-vote">Save Vote</div>
+                    </div>
                 </div>
-                <div class="rating-block">
-                    <div class="stars">
-                        <i class="fa fa-star unchecked submit_star" id="submit_star_1" data-rating="1"></i>
-                        <i class="fa fa-star unchecked submit_star" id="submit_star_2" data-rating="2"></i>
-                        <i class="fa fa-star unchecked submit_star" id="submit_star_3" data-rating="3"></i>
-                        <i class="fa fa-star unchecked submit_star" id="submit_star_4" data-rating="4"></i>
-                        <i class="fa fa-star unchecked submit_star" id="submit_star_5" data-rating="5"></i>
-                    </div>
-                    <div class="save" id="save-my-vote">Save Vote</div>
+
+                <div class="ranked-block">
+                    <div class="total-rating-heading">Total Rating: <span><?= $this->totalRating['rating'] ?></span></div>
+                    <div class="rank-text">This game is ranked at</div>
+                    <div class="game-rank">#<?= $this->rank ?></div>
+                    <div class="rank-text-bottom">out of <?= $this->totalSubmissions ?> games</div>
                 </div>
             </div>
 
@@ -124,8 +136,6 @@ include 'includes/navbar.php';
 
         </div>
     </div>
-
-
 
 
     <?php
@@ -161,12 +171,16 @@ include 'includes/navbar.php';
 
             <?php if ($this->jam['submissionStartDate'] < date("Y-m-d H:i:s") && $this->jam['submissionEndDate'] > date("Y-m-d H:i:s")) { ?>
                 $('.rank-status').text("Voting has not begun yet");
-                $('.ratings').css('pointer-events', 'none');
+                $('.voting-block').hide();
+                $('.ranked-block').hide();
             <?php } else if ($this->jam['submissionEndDate'] < date("Y-m-d H:i:s") && $this->jam['votingEndDate'] > date("Y-m-d H:i:s")) { ?>
                 $('.rank-status').text("Voting in Progress");
+                $('.voting-block').show();
+                $('.ranked-block').hide();
             <?php } else { ?>
                 $('.rank-status').text("Voting has ended");
-                $('.ratings').css('pointer-events', 'none');
+                $('.voting-block').hide();
+                $('.ranked-block').show();
             <?php } ?>
 
 

@@ -193,4 +193,62 @@ class Jam_Model extends Model
 
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+    function UpdateThisSubmissionRating($gameID, $jamID, $newVote)
+    {
+        $sql = "SELECT * FROM submission WHERE gameJamID='$jamID' AND submissionID='$gameID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $submissionInfo = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $currentRating = $submissionInfo['rating'];
+
+        $newRating = $currentRating + $newVote;
+
+        $updateSQL = "UPDATE submission SET rating='$newRating' WHERE gameJamID='$jamID' AND submissionID='$gameID'";
+
+        $updateStmt = $this->db->prepare($updateSQL);
+
+        $updateStmt->execute();
+    }
+
+    function ThisSubmissionTotalRating($submissionID, $jamID)
+    {
+
+        $sql = "SELECT * FROM submission WHERE submissionID='$submissionID' AND gameJamID='$jamID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    function JamResults($jamID)
+    {
+
+        $sql = "SELECT submissionID, rating FROM submission WHERE gameJamID='$jamID' ORDER BY rating DESC";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+
+    function OverallJamResults($jamID)
+    {
+
+        $sql = "SELECT submission.submissionID, submission.rating, freegame.gameName, freegame.gameCoverImg
+                FROM submission INNER JOIN freegame ON freegame.gameID=submission.submissionID WHERE gameJamID='$jamID' ORDER BY rating DESC";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
 }
