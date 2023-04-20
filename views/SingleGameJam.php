@@ -36,6 +36,7 @@ include 'includes/navbar.php';
 
             <a href="/indieabode/jam?id=<?= $this->gamejam['gameJamID'] ?>">Overview</a>
             <a href="/indieabode/jam/submission?id=<?= $this->gamejam['gameJamID'] ?>" id="submissionPage">Submissions</a>
+            <a href="/indieabode/jam/results?id=<?= $this->jam['gameJamID'] ?>">Results</a>
         </div>
 
         <hr id="topic-break">
@@ -45,10 +46,12 @@ include 'includes/navbar.php';
 
             <div class="timeline-heading">
                 <div class="timrline-subheading">
-                Submissions open from &nbsp; <div id="monthStart"></div> &nbsp; <div id="dateStart"></div><div id="startPostfix"></div>&nbsp;<div id="yearStart"></div>&nbsp; at&nbsp; <div id="timeStart"></div> &nbsp; 
-                to &nbsp; <div id="monthEnd"></div> &nbsp; <div id="dateEnd"></div><div id="endPostfix"></div> &nbsp; <div id="yearEnd"></div> &nbsp; <div id="timeEnd"> </div>
-                </div> 
-            <hr>
+                    Submissions open from &nbsp; <div id="monthStart"></div> &nbsp; <div id="dateStart"></div>
+                    <div id="startPostfix"></div>&nbsp;<div id="yearStart"></div>&nbsp; at&nbsp; <div id="timeStart"></div> &nbsp;
+                    to &nbsp; <div id="monthEnd"></div> &nbsp; <div id="dateEnd"></div>
+                    <div id="endPostfix"></div> &nbsp; <div id="yearEnd"></div> &nbsp; <div id="timeEnd"> </div>
+                </div>
+                <hr>
             </div>
             <div class="card">
 
@@ -272,9 +275,9 @@ include 'includes/navbar.php';
             var countDownDate3 = new Date(count_id3).getTime();
 
             //jamTimeline subheading
-            var timeStart = count_id1.substring(11,16);
-            var timeEnd = count_id2.substring(11,16);
-            
+            var timeStart = count_id1.substring(11, 16);
+            var timeEnd = count_id2.substring(11, 16);
+
             var StartDate = new Date("<?= $this->gamejam['submissionStartDate']; ?>"),
                 yearStart = StartDate.getFullYear(),
                 monthStart = StartDate.getMonth(),
@@ -297,25 +300,25 @@ include 'includes/navbar.php';
             document.getElementById("monthStart").innerHTML = months[monthStart];
             document.getElementById("monthEnd").innerHTML = months[monthEnd];
 
-            if (dateStart == 01 || dateStart == 21 || dateStart == 31){
+            if (dateStart == 01 || dateStart == 21 || dateStart == 31) {
                 document.getElementById("startPostfix").innerHTML = "st";
-            }else if (dateStart == 02 || dateStart == 22){
+            } else if (dateStart == 02 || dateStart == 22) {
                 document.getElementById("startPostfix").innerHTML = "nd";
-            }else if (dateStart == 03 || dateStart == 23){
+            } else if (dateStart == 03 || dateStart == 23) {
                 document.getElementById("startPostfix").innerHTML = "rd";
-            }else{
+            } else {
                 document.getElementById("startPostfix").innerHTML = "th";
             }
 
             console.log(dateEnd);
 
-            if (dateEnd == 01 || dateEnd == 21 || dateEnd == 31){
+            if (dateEnd == 01 || dateEnd == 21 || dateEnd == 31) {
                 document.getElementById("endPostfix").innerHTML = "st";
-            }else if (dateEnd == 02 || dateEnd == 22){
+            } else if (dateEnd == 02 || dateEnd == 22) {
                 document.getElementById("endPostfix").innerHTML = "nd";
-            }else if (dateEnd == 03 || dateEnd == 23){
+            } else if (dateEnd == 03 || dateEnd == 23) {
                 document.getElementById("endPostfix").innerHTML = "rd";
-            }else{
+            } else {
                 document.getElementById("endPostfix").innerHTML = "th";
             }
 

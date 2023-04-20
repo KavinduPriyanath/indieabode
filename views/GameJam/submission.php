@@ -34,6 +34,7 @@ include 'includes/navbar.php';
         <div class="topics">
             <a href="/indieabode/jam?id=<?= $this->jam['gameJamID'] ?>">Overview</a>
             <a href="/indieabode/jam/submission?id=<?= $this->jam['gameJamID'] ?>">Submissions</a>
+            <a href="/indieabode/jam/results?id=<?= $this->jam['gameJamID'] ?>">Results</a>
         </div>
 
         <hr id="topic-break">
