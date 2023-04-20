@@ -74,16 +74,16 @@ include 'includes/navbar.php';
 
     <div class="container2" id="card-container">
 
-        <?php foreach ($this->sGames as $game) { ?>
-            <a href="/indieabode/game?id=<?= $game['gameID'] ?>">
+        <?php foreach ($this->submittedGames as $submittedGame) { ?>
+            <a href="/indieabode/jam/ratesubmission?jam=<?= $this->jam['gameJamID'] ?>&&id=<?= $submittedGame['gameID'] ?>">
                 <div class="card2">
-                    <div class="card-image2"> <img src="/indieabode/public/uploads/games/cover/<?= $game['gameCoverImg'] ?>" alt="">
+                    <div class="card-image2"> <img src="/indieabode/public/uploads/games/cover/<?= $submittedGame['gameCoverImg'] ?>" alt="">
                     </div>
                     <div class="game-intro">
-                        <h3><?= $game['gameName'] ?></h3>
+                        <h3><?= $submittedGame['gameName'] ?></h3>
                         <p>Free</p>
                     </div>
-                    <div class="tagline"><?= $game['gameTagline'] ?></div>
+                    <div class="tagline"><?= $submittedGame['gameTagline'] ?></div>
                 </div>
             </a>
         <?php } ?>

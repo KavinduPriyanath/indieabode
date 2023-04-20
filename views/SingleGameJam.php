@@ -43,8 +43,13 @@ include 'includes/navbar.php';
 
         <div class="card-cover">
 
-            <div class="timeline-heading">Submissions open from November 2nd 2022 at 4.00 AM to December 2nd 2022 4.00 AM </div>
+            <div class="timeline-heading">
+                <div class="timrline-subheading">
+                Submissions open from &nbsp; <div id="monthStart"></div> &nbsp; <div id="dateStart"></div><div id="startPostfix"></div>&nbsp;<div id="yearStart"></div>&nbsp; at&nbsp; <div id="timeStart"></div> &nbsp; 
+                to &nbsp; <div id="monthEnd"></div> &nbsp; <div id="dateEnd"></div><div id="endPostfix"></div> &nbsp; <div id="yearEnd"></div> &nbsp; <div id="timeEnd"> </div>
+                </div> 
             <hr>
+            </div>
             <div class="card">
 
 
@@ -265,6 +270,54 @@ include 'includes/navbar.php';
             var countDownDate1 = new Date(count_id1).getTime();
             var countDownDate2 = new Date(count_id2).getTime();
             var countDownDate3 = new Date(count_id3).getTime();
+
+            //jamTimeline subheading
+            var timeStart = count_id1.substring(11,16);
+            var timeEnd = count_id2.substring(11,16);
+            
+            var StartDate = new Date("<?= $this->gamejam['submissionStartDate']; ?>"),
+                yearStart = StartDate.getFullYear(),
+                monthStart = StartDate.getMonth(),
+                dateStart = StartDate.getDate();
+
+            var EndDate = new Date("<?= $this->gamejam['submissionEndDate']; ?>"),
+                yearEnd = EndDate.getFullYear(),
+                monthEnd = EndDate.getMonth(),
+                dateEnd = EndDate.getDate();
+
+            var months = ["January", "February", "March", "April", "May", "June", "July", "Äugust", "September", "Öctober", "November", "December"];
+
+
+            document.getElementById("yearStart").innerHTML = yearStart;
+            document.getElementById("yearEnd").innerHTML = yearEnd;
+            document.getElementById("dateStart").innerHTML = dateStart;
+            document.getElementById("dateEnd").innerHTML = dateEnd;
+            document.getElementById("timeStart").innerHTML = timeStart;
+            document.getElementById("timeEnd").innerHTML = timeEnd;
+            document.getElementById("monthStart").innerHTML = months[monthStart];
+            document.getElementById("monthEnd").innerHTML = months[monthEnd];
+
+            if (dateStart == 01 || dateStart == 21 || dateStart == 31){
+                document.getElementById("startPostfix").innerHTML = "st";
+            }else if (dateStart == 02 || dateStart == 22){
+                document.getElementById("startPostfix").innerHTML = "nd";
+            }else if (dateStart == 03 || dateStart == 23){
+                document.getElementById("startPostfix").innerHTML = "rd";
+            }else{
+                document.getElementById("startPostfix").innerHTML = "th";
+            }
+
+            console.log(dateEnd);
+
+            if (dateEnd == 01 || dateEnd == 21 || dateEnd == 31){
+                document.getElementById("endPostfix").innerHTML = "st";
+            }else if (dateEnd == 02 || dateEnd == 22){
+                document.getElementById("endPostfix").innerHTML = "nd";
+            }else if (dateEnd == 03 || dateEnd == 23){
+                document.getElementById("endPostfix").innerHTML = "rd";
+            }else{
+                document.getElementById("endPostfix").innerHTML = "th";
+            }
 
             let jamStart = false;
             let votingStart = false;
