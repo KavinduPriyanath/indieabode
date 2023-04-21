@@ -380,7 +380,7 @@ class Dashboard_Model extends Model
         return $crowdfund;
     }
 
-    public function uploadCoverImg($gameName)
+    public function UpdateGameCoverImg($gameName)
     {
         //upload cover image
         $allowed_exts = array("jpg", "jpeg", "png");
@@ -412,7 +412,7 @@ class Dashboard_Model extends Model
         }
     }
 
-    function uploadGameFile($gameName)
+    function UpdateGameFile($gameName)
     {
 
         $newFile = $_FILES['upload-game']['name'];
@@ -446,19 +446,12 @@ class Dashboard_Model extends Model
         }
     }
 
-    function uploadScreenshots($gameName)
+    function UpdateGameScreenshots($gameName)
     {
 
         $newScreenshots = $_FILES['game-screenshots']['name'];
-        // $oldScreenshots = $_POST['old-game-screenshots'];
-
-        // $oldSS = explode(",", $oldScreenshots);
-
         $ssArray = $newScreenshots;
 
-
-
-        //Screenshots
         $allowed_exts = array("jpg", "jpeg", "png");
         $screenshots = [];
         $ssCount = count($ssArray);

@@ -144,7 +144,6 @@
                             <label id="gig-visibility" for="gig-visibility">Visibility</label><br />
                             <div class="visibility">
                                 <p>Decide when is your page ready for the public</p>
-                                <br />
                                 <input type="radio" id="game-draft" name="gig-visibility" value="draft" checked />
                                 <label for="game-draft">Draft - Only those who can edit the project can view the
                                     page</label><br />
@@ -211,6 +210,11 @@
             </form>
         </div>
     </div>
+
+
+    <?php
+    include 'includes/footer.php';
+    ?>
 
     <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
 

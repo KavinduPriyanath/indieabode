@@ -275,17 +275,100 @@ class Gig_Model extends Model
         return $user;
     }
 
-    function RecommendedGigs()
+    function RecommendedGigs($currentID)
     {
 
         $sql = "SELECT gig.gigID, gig.gigID, gig.gigName, gig.gigTagline, gig.gigCoverImg, 
         gamer.firstName, gamer.lastName, gamer.avatar, gamer.trustrank
-        FROM gig INNER JOIN gamer ON gamer.gamerID = gig.gameDeveloperID LIMIT 4";
+        FROM gig INNER JOIN gamer ON gamer.gamerID = gig.gameDeveloperID 
+        WHERE NOT gig.gigID='$currentID' ORDER BY gig.created_at 
+        DESC LIMIT 4";
 
         $stmt = $this->db->prepare($sql);
 
         $stmt->execute();
 
         return $stmt->fetchAll();
+    }
+
+    function downloadGameFile($id)
+    {
+
+        $sql = "SELECT * FROM freegame WHERE gameID='$id'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $game = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $gameFile = $game['gameFile'];
+
+        return $gameFile;
+    }
+
+    function updateGameDownloadStat($gameID, $todayDate)
+    {
+
+        $sql = "SELECT * FROM game_stats_history WHERE gameID='$gameID' AND created_at='$todayDate'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $record = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (empty($record)) {
+            $insertSQL = "INSERT INTO game_stats_history (gameID, views, downloads, ratings, reviews, created_at) VALUES ('$gameID', 0, 1, 0, 0, '$todayDate')";
+
+            $insertStmt = $this->db->prepare($insertSQL);
+
+            $insertStmt->execute();
+        } else {
+
+            $viewCount = $record['views'];
+
+            $downloadCount = $record['downloads'] + 1;
+
+            $ratingsCount = $record['ratings'];
+
+            $reviewCount = $record['reviews'];
+
+            $updateSQL = "UPDATE game_stats_history 
+            SET gameID='$gameID', 
+            views='$viewCount', 
+            downloads='$downloadCount', 
+            ratings = '$ratingsCount',
+            reviews = '$reviewCount',
+            created_at = '$todayDate' WHERE gameID = '$gameID' AND created_at='$todayDate'";
+
+            $updateStmt = $this->db->prepare($updateSQL);
+
+            $updateStmt->execute();
+        }
+    }
+
+    function updateGameDownloads($gameID)
+    {
+
+        $sql = "SELECT * FROM game_stats_history WHERE gameID='$gameID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $gameDownloads = $stmt->fetchAll();
+
+        $totalDownloads = 0;
+
+        foreach ($gameDownloads as $gameDownload) {
+            $totalDownloads = $totalDownloads + $gameDownload['downloads'];
+        }
+
+        $updateSQL = "UPDATE game_stats SET downloads='$totalDownloads' WHERE gameID='$gameID'";
+
+        $stmt = $this->db->prepare($updateSQL);
+
+        $stmt->execute();
     }
 }

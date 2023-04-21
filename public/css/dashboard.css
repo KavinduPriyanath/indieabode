@@ -195,6 +195,7 @@
 
 #gig-btn {
   text-decoration: none;
+  cursor: pointer;
 }
 
 .gig-tabs, .jam-tabs {

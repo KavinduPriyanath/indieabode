@@ -38,7 +38,7 @@
             <div class="custom-select">
                 <form action="/indieabode/search?q=<?= $_GET['q']; ?>" method="GET">
                     <!-- <select onchange="this.form.submit()"> -->
-                    <select id="search_field">\
+                    <select id="search_field">
                         <option value="games" id="games">games</option>
                         <?php foreach ($this->options as $option) { ?>
 
@@ -59,23 +59,31 @@
 
     <div class="container" id="card-container">
 
-        <?php foreach ($this->games as $game) { ?>
-            <a href="/indieabode/game?id=<?= $game['gameID'] ?>">
-                <div class="card">
-                    <div class="card-image"> <img src="/indieabode/public/uploads/games/cover/<?= $game['gameCoverImg'] ?>" alt="">
+        <?php if (!empty($this->games)) { ?>
+            <?php foreach ($this->games as $game) { ?>
+                <a href="/indieabode/game?id=<?= $game['gameID'] ?>">
+                    <div class="card">
+                        <div class="card-image"> <img src="/indieabode/public/uploads/games/cover/<?= $game['gameCoverImg'] ?>" alt="">
+                        </div>
+                        <div class="game-intro">
+                            <h3><?= $game['gameName'] ?></h3>
+                            <p>Free</p>
+                        </div>
+                        <div class="tagline"><?= $game['gameTagline'] ?></div>
                     </div>
-                    <div class="game-intro">
-                        <h3><?= $game['gameName'] ?></h3>
-                        <p>Free</p>
-                    </div>
-                    <div class="tagline"><?= $game['gameTagline'] ?></div>
-                </div>
-            </a>
+                </a>
+            <?php } ?>
+        <?php } else { ?>
+            <div class="empty-msg">- No games for the searched query -</div>
         <?php } ?>
     </div>
 
+    <?php
+    include 'includes/footer.php';
+    ?>
 
 
+    <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
 
 
     <script>
@@ -240,9 +248,7 @@
     </script>
 
 
-    <?php
-    include 'includes/footer.php';
-    ?>
+
 
 
 

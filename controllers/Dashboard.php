@@ -221,9 +221,9 @@ class Dashboard extends Controller
 
         $TempFileName = $gameName . $gameDeveloperID;
 
-        $gameCoverImg = $this->model->uploadCoverImg($TempFileName);
-        $gameFile = $this->model->uploadGameFile($TempFileName);
-        $newScreenshots = $this->model->uploadScreenshots($TempFileName);
+        $gameCoverImg = $this->model->UpdateGameCoverImg($TempFileName);
+        $gameFile = $this->model->UpdateGameFile($TempFileName);
+        $newScreenshots = $this->model->UpdateGameScreenshots($TempFileName);
         $oldScreenshots = $_POST['old-game-screenshots'];
 
         if (empty($newScreenshots)) {
@@ -241,7 +241,6 @@ class Dashboard extends Controller
         $minGameMemory = $_POST['min-game-memory'];
         $minGameStorage = $_POST['min-game-storage'];
         $minGameGraphics = $_POST['min-game-graphics'];
-        $minGameOther = $_POST['min-game-other'];
         $GameOS = $_POST['game-OS'];
         $GameProcessor = $_POST['game-processor'];
         $GameMemory = $_POST['game-memory'];

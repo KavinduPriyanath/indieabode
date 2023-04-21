@@ -47,27 +47,19 @@ class Portfolio_Model extends Model
         return $devAccountDetails;
     }
 
+    //For showing the games of game developer that he has published to the public
     function GetDeveloperGames($username)
     {
 
-        $sql = "SELECT * FROM gamer WHERE username='$username' LIMIT 1";
+        $sql = "SELECT freegame.gameID, freegame.gameName, freegame.gamePrice, freegame.gameTagline,
+                freegame.gameCoverImg, freegame.gameVisibility, freegame.gameClassification FROM freegame 
+                INNER JOIN gamer ON freegame.gameDeveloperID=gamer.gamerID 
+                WHERE gamer.username='$username' AND freegame.gameVisibility = 'public'";
 
         $stmt = $this->db->prepare($sql);
 
         $stmt->execute();
 
-        $devDetails = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        $devID = $devDetails['gamerID'];
-
-        $gameSQL = "SELECT * FROM freegame WHERE gameDeveloperID='$devID'";
-
-        $gamestmt = $this->db->prepare($gameSQL);
-
-        $gamestmt->execute();
-
-        $games = $gamestmt->fetchAll();
-
-        return $games;
+        return $stmt->fetchAll();
     }
 }
