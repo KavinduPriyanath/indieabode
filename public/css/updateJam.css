@@ -1,27 +1,20 @@
 .form-container {
-    /* max-width: 1000px;
-    width: 100%;
-    padding: 25px 30px;
-
-    margin-left: 240px;
-
-
-    background: #95B2C8; */
-    border-radius: 0px 0px 6px 6px;
-
     background: rgba(149, 178, 200, 0.6);
-
-    width: 1130px;
     position: relative;
-    padding: 10px;
-    margin-top: 0;
-    margin-bottom: 0;
-    margin-left: 0;
-    margin-right: 0;
-    margin: 40px 100px 20px 185px;
-    /* overflow:hidden; */
+    padding: 0px 10px;
+    margin: 0px 75px 20px 75px;
+    overflow: hidden;
     border-radius: 10px;
 
+}
+
+.container {
+    margin-top: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    display: block;
+    background-color: rgba(168, 202, 231, 0.688);
+    border-radius: 0px 0px 7px 7px;
 }
 
 .form {
@@ -30,12 +23,12 @@
 
 .left-form {
     display: block;
-    margin: 10px 40px 5px 10px;
+    margin: 10px 0px 5px 10px;
 }
 
 .right-form {
     display: block;
-    margin: 10px 0px 5px 40px;
+    margin: 10px 20px 5px 0px;
 }
 
 input::placeholder,
@@ -85,13 +78,10 @@ form .card-details .card-box {
 
 }
 
-.card-details .card-box .details,
-.circle-title {
-    font-weight: 1000;
-    font-size: 20px;
-    line-height: 25px;
-    color: #000000;
-    /* margin-bottom: 5px; */
+.card-details .card-box .details {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 2px;
 
 }
 
@@ -108,13 +98,6 @@ form .card-details .card-box {
     outline: none;
     border-radius: 4px;
 }
-
-.left-form input[type=text],
-.left-form input[type=datetime_local] {
-    width: 470px;
-}
-
-
 
 form .circle-form .circle-title {
     display: block;
@@ -172,7 +155,7 @@ form .circle-form .circle-title {
 /* Redactor Box */
 
 .main-content {
-    width: 470px;
+    width: 90%;
     border: 2px solid;
 
 }
@@ -206,8 +189,8 @@ form .circle-form .circle-title {
 /* coverimg preview */
 
 .image-container {
-    width: 395.5px;
-    height: 210px;
+    width: 330px;
+    height: 190px;
     margin: 0px;
     border: 2px solid #1E3455;
     background: transparent;
@@ -242,4 +225,21 @@ form .circle-form .circle-title {
     border-radius: 8px;
     margin: 8px 0px;
     cursor: pointer;
+}
+
+.card-details .card-box .details, .circle-title {
+    font-weight: 1000;
+    font-size: 20px;
+    line-height: 25px;
+    color: #000000;
+    /* margin-bottom: 5px; */
+    
+}
+
+.left-form input[type=text], .left-form input[type=datetime_local] {
+    width: 420px;
+}
+
+.right-form input{
+    width: 395.5px;
 }

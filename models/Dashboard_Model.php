@@ -910,4 +910,106 @@ class Dashboard_Model extends Model
 
         return $stmt->fetchAll();
     }
+
+    //GameJam Organizer Queries
+    //GameJam Organizer Queries
+    //GameJam Organizer Queries
+    //GameJam Organizer Queries
+    //GameJam Organizer Queries
+    //GameJam Organizer Queries
+
+    function showAllMyJamsOrganizer($hostID)
+    {
+
+        $sql = "SELECT * FROM gamejam WHERE jamHostID='$hostID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+
+    function GetJamDetails($jamID)
+    {
+
+        $sql = "SELECT * FROM gamejam where gameJamID='$jamID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $jam = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $jam;
+    }
+
+    function editExistingJam(
+        $gamejamTitle,
+        $gamejamTagline,
+        $jamStartDate,
+        $jamEndtDate,
+        $jamVEndDate,
+        $jamContent,
+        $jamType,
+        $jamCriteria,
+        $jamVisibility,
+        $jamHostID,
+        $jamVoters,
+        $jamTwitterHashtag,
+        $jamCoverImg,
+        $jamTheme,
+        $jamID
+    ) {
+        $sql = "UPDATE gamejam SET
+                jamTitle='$gamejamTitle',
+                jamTagline = '$gamejamTagline',
+                submissionStartDate = '$jamStartDate',
+                submissionEndDate = '$jamEndtDate',
+                votingEndDate = '$jamVEndDate',
+                jamContent = '$jamContent',
+                jamType='$jamType',
+                jamCriteria='$jamCriteria',
+                jamVisibility='$jamVisibility',
+                jamVoters='$jamVoters',
+                jamTwitter='$jamTwitterHashtag',
+                jamCoverImg='$jamCoverImg',
+                jamTheme='$jamTheme' WHERE gameJamID='$jamID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+    }
+
+    function updateJamCoverImg($gamejamTitle)
+    {
+
+        $allowed_exts = array("jpg", "jpeg", "png");
+
+
+
+        $newImage = $_FILES['coverImg']['name'];
+        $oldImage = $_POST['old-coverImg'];
+
+        if ($newImage != '') {
+            $image = $newImage;
+
+            $jam_cover_img_name = $image;
+            $jam_cover_img_temp_name = $_FILES['coverImg']['tmp_name'];
+
+            $jam_cover_img_ext = strtolower(pathinfo($jam_cover_img_name, PATHINFO_EXTENSION));
+
+            if (in_array($jam_cover_img_ext, $allowed_exts)) {
+                $new_jam_cover_img_name = "Cover-" . $gamejamTitle . '.' . $jam_cover_img_ext;
+                $jam_cover_upload_path = "public/uploads/gamejams/covers/" . $new_jam_cover_img_name;
+                move_uploaded_file($jam_cover_img_temp_name, $jam_cover_upload_path);
+            }
+
+            return $new_jam_cover_img_name;
+        } else {
+            $image = $oldImage;
+
+            return $image;
+        }
+    }
 }

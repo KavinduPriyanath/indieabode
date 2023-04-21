@@ -36,7 +36,6 @@ include 'includes/navbar.php';
 
             <a href="/indieabode/jam?id=<?= $this->gamejam['gameJamID'] ?>">Overview</a>
             <a href="/indieabode/jam/submission?id=<?= $this->gamejam['gameJamID'] ?>" id="submissionPage">Submissions</a>
-            <a href="/indieabode/jam/results?id=<?= $this->jam['gameJamID'] ?>">Results</a>
         </div>
 
         <hr id="topic-break">
@@ -79,7 +78,7 @@ include 'includes/navbar.php';
                     <p id="seconds">&nbsp;</p>
                     <span>Seconds&nbsp;</span>
                 </div>
-            </div> -->
+             </div> -->
 
 
                 <div class="jam-timeline">
@@ -117,9 +116,10 @@ include 'includes/navbar.php';
                 <div class="box">
                     <div class="button">
 
-                        <div class="jamButtons jamBtn" id="gamerBtn"></div>
-                        <div class="jamButtons jamBtn" id="dev-submit">Submit</div>
+                        <div class="jamButtons jamBtn" id="gamerBtn"> </div>
                         <div class="jamButtons jamBtn" id="devBtn"></div>
+                        <div class="jamButtons jamBtn" id="dev-submit" data-modal-target="#modal">Submit</div>
+
 
                         <div class="jamStatus"></div>
 
@@ -178,6 +178,13 @@ include 'includes/navbar.php';
 
     <div class="containerJam">
         <img src="/indieabode/public/uploads/gamejams/covers/<?= $this->gamejam['jamCoverImg'] ?>" alt="" />
+        <div class="content-header">Theme of the GameJam</div>
+        <p class="theme-visibility">will visible after the Jam Started</p>
+        <div class="block">
+            <div class="details" id="theme">
+                <?= $this->gamejam['jamTheme']; ?>
+            </div>
+        </div>
         <div class="content-header">About The Jam</div>
         <div class="block">
 
@@ -188,6 +195,7 @@ include 'includes/navbar.php';
 
 
     </div>
+
 
 
 
@@ -270,14 +278,15 @@ include 'includes/navbar.php';
 
             console.log(count_id1);
 
-            var countDownDate1 = new Date(count_id1).getTime();
-            var countDownDate2 = new Date(count_id2).getTime();
-            var countDownDate3 = new Date(count_id3).getTime();
-
-            //jamTimeline subheading
+            // var yearStart = count_id1.substr(0,4);
+            // var yearEnd = count_id2.substr(0,4);
+            // var dateStart = count_id1.substring(8,10);
+            // var dateEnd = count_id2.substring(8,10);
             var timeStart = count_id1.substring(11, 16);
             var timeEnd = count_id2.substring(11, 16);
 
+
+            // console.log(monthStart);
             var StartDate = new Date("<?= $this->gamejam['submissionStartDate']; ?>"),
                 yearStart = StartDate.getFullYear(),
                 monthStart = StartDate.getMonth(),
@@ -321,6 +330,11 @@ include 'includes/navbar.php';
             } else {
                 document.getElementById("endPostfix").innerHTML = "th";
             }
+
+
+            var countDownDate1 = new Date(count_id1).getTime();
+            var countDownDate2 = new Date(count_id2).getTime();
+            var countDownDate3 = new Date(count_id3).getTime();
 
             let jamStart = false;
             let votingStart = false;
@@ -373,6 +387,7 @@ include 'includes/navbar.php';
                 if (startsIn > 0) {
 
 
+                    document.getElementById('theme').style.display = "none";
                     document.getElementById("submissionPage").style.color = "grey";
                     document.getElementById("submissionPage").style.pointerEvents = "none";
 
