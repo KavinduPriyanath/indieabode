@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <title>Indieabode</title>
 
     <style>
@@ -38,7 +39,7 @@
         </div>
         <div class="content-row">
 
-            <a href="/indieabode/creategig" id="gig-btn">
+            <a id="gig-btn">
                 <div class="add-btn">
                     <div class="add-logo">
                         <img src="/indieabode/public/images/dashboard/add-devlog.png" alt="">
@@ -99,6 +100,26 @@
     ?>
 
     <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
+
+
+    <script>
+        $(document).ready(function() {
+
+            $('#gig-btn').click(function() {
+                <?php if (!empty($this->gig)) { ?>
+                    alert("This game already has a gig");
+                <?php } else { ?>
+                    window.location.href = "/indieabode/creategig";
+                <?php } ?>
+            })
+
+
+
+
+
+
+        });
+    </script>
 
 
 </body>

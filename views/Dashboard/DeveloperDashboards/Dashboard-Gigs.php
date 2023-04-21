@@ -75,38 +75,42 @@
 
             <div class="devlog-cards all-gigs-cards">
                 <h3>Published Gigs</h3>
-                <?php foreach ($this->gigs as $gig) { ?>
-                    <div class="game-card">
-                        <div class="left-col">
-                            <div class="icon"><img src="/indieabode/public/uploads/gigs/cover/<?= $gig['gigCoverImg'] ?>" alt=""></div>
-                            <div class="details">
-                                <div class="devlog-name"><?= $gig['gigName']; ?></div>
-                                <div class="game-name">
-                                    <?= $gig['game']; ?>
+                <?php if (!empty($this->gigs)) { ?>
+                    <?php foreach ($this->gigs as $gig) { ?>
+                        <div class="game-card">
+                            <div class="left-col">
+                                <div class="icon"><img src="/indieabode/public/uploads/gigs/cover/<?= $gig['gigCoverImg'] ?>" alt=""></div>
+                                <div class="details">
+                                    <div class="devlog-name"><?= $gig['gigName']; ?></div>
+                                    <div class="game-name">
+                                        <?= $gig['game']; ?>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="right-col">
-                            <div class="views">
-                                <div class="count"><?= $gig['viewCount']; ?></div>
-                                <div class="label">views</div>
+                            <div class="right-col">
+                                <div class="views">
+                                    <div class="count"><?= $gig['viewCount']; ?></div>
+                                    <div class="label">views</div>
+                                </div>
+                                <div class="downloads">
+                                    <div class="count"><?= $gig['requests']; ?></div>
+                                    <div class="label">requests</div>
+                                </div>
+                                <div class="ratings">
+                                    <div class="count">8</div>
+                                    <div class="label">comments</div>
+                                </div>
                             </div>
-                            <div class="downloads">
-                                <div class="count"><?= $gig['requests']; ?></div>
-                                <div class="label">requests</div>
-                            </div>
-                            <div class="ratings">
-                                <div class="count">8</div>
-                                <div class="label">comments</div>
-                            </div>
+                            <a href="/indieabode/dashboard/editgig?gameid=<?= $gig['game'] ?>&gigid=<?= $gig['gigID'] ?>">
+                                <div class="edit-btn">
+                                    Edit
+                                </div>
+                            </a>
                         </div>
-                        <a href="/indieabode/dashboard/editgig?gameid=<?= $gig['game'] ?>&gigid=<?= $gig['gigID'] ?>">
-                            <div class="edit-btn">
-                                Edit
-                            </div>
-                        </a>
-                    </div>
+                    <?php } ?>
+                <?php } else { ?>
+                    <div class="empty-msg">- You have not published any gig orders -</div>
                 <?php } ?>
             </div>
 
@@ -114,26 +118,30 @@
 
             <div class="ongoing-requests-cards">
                 <h3>Ongoing Requests</h3>
-                <?php foreach ($this->ongoingrequests as $ongoingrequest) { ?>
-                    <div class="game-card">
-                        <div class="left-col">
-                            <div class="icon"><img src="/indieabode/public/uploads/gigs/cover/<?= $ongoingrequest['gigCoverImg'] ?>" alt=""></div>
-                            <div class="details">
-                                <a href="/indieabode/gig/viewgig?id=<?= $ongoingrequest['gigID'] ?>&token=<?= $ongoingrequest['gigToken'] ?>">
-                                    <div class="devlog-name"><?= $ongoingrequest['gigName']; ?></div>
-                                </a>
-                                <div class="game-name">
-                                    <?= $ongoingrequest['game']; ?>
+                <?php if (!empty($this->ongoingrequests)) { ?>
+                    <?php foreach ($this->ongoingrequests as $ongoingrequest) { ?>
+                        <div class="game-card">
+                            <div class="left-col">
+                                <div class="icon"><img src="/indieabode/public/uploads/gigs/cover/<?= $ongoingrequest['gigCoverImg'] ?>" alt=""></div>
+                                <div class="details">
+                                    <a href="/indieabode/gig/viewgig?id=<?= $ongoingrequest['gigID'] ?>&token=<?= $ongoingrequest['gigToken'] ?>">
+                                        <div class="devlog-name"><?= $ongoingrequest['gigName']; ?></div>
+                                    </a>
+                                    <div class="game-name">
+                                        <?= $ongoingrequest['game']; ?>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="right-col">
+                            <div class="right-col">
+                            </div>
+                            <div class="edit-btn">
+                                Edit
+                            </div>
                         </div>
-                        <div class="edit-btn">
-                            Edit
-                        </div>
-                    </div>
+                    <?php } ?>
+                <?php } else { ?>
+                    <div class="empty-msg">- You do not have any ongoing gig requests -</div>
                 <?php } ?>
             </div>
 

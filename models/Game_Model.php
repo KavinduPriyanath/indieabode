@@ -37,22 +37,7 @@ class Game_Model extends Model
         return $gameDeveloper;
     }
 
-    // function getScreenshots($id)
-    // {
-    //     $sql = "SELECT * FROM freeasset WHERE assetID='$id' LIMIT 1";
 
-    //     $stmt = $this->db->prepare($sql);
-
-    //     $stmt->execute();
-
-    //     $asset = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    //     $ss = $asset['assetScreenshots'];
-
-    //     $screenshots = explode(',', $ss);
-
-    //     return $screenshots;
-    // }
 
     function getScreenshots($id)
     {
@@ -71,9 +56,12 @@ class Game_Model extends Model
         return $screenshots;
     }
 
-    function PopularGames()
+    //For showing recommended games based on the current games classification, but excluding the currently showing game
+    function PopularGames($thisGameID, $thisGameClassification)
     {
-        $stmt = $this->db->prepare("SELECT * FROM freegame LIMIT 4");
+        $sql = "SELECT * FROM freegame WHERE gameClassification='$thisGameClassification' AND NOT gameID='$thisGameID' LIMIT 4";
+
+        $stmt = $this->db->prepare($sql);
 
         $stmt->execute();
 

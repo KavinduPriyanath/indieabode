@@ -48,9 +48,10 @@ class Creategig_Model extends Model
         ]);
     }
 
+    //Can only create gigs for demo games which are published for the site for free
     function currentDevGames($developerID)
     {
-        $sql = "SELECT * FROM freegame WHERE gameDeveloperID = '$developerID'";
+        $sql = "SELECT * FROM freegame WHERE gameType='Demo' AND gameDeveloperID = '$developerID' AND gamePrice='0' AND gameVisibility='public'";
 
         $stmt = $this->db->prepare($sql);
 

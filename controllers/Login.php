@@ -123,7 +123,11 @@ class Login extends Controller
         if ($this->model->OTPValidation($first, $second, $third, $fourth, $fifth, $_SESSION['id'])) {
             $_SESSION['logged'] = $_SESSION['id'];
             $this->model->ActivateAccount($_SESSION['id']);
-            header('location:/indieabode/games');
+            if ($_SESSION['userRole'] == "game developer") {
+                header('location:/indieabode/home/developer');
+            } else {
+                header('location:/indieabode/');
+            }
         } else {
             print_r($this->model->OTPValidation($first, $second, $third, $fourth, $fifth, $_SESSION['id']));
             print_r($first . $second . $third . $fourth . $fifth);

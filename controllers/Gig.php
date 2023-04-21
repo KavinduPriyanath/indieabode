@@ -38,7 +38,7 @@ class Gig extends Controller
 
             $this->view->ssCount = count($this->model->getScreenshots($gigID));
 
-            $this->view->recommendedGigs = $this->model->RecommendedGigs();
+            $this->view->recommendedGigs = $this->model->RecommendedGigs($gigID);
 
             if (isset($_SESSION['logged'])) {
 
@@ -319,5 +319,25 @@ class Gig extends Controller
             header('location:/indieabode/downloadfailed');
             // echo "1";
         }
+    }
+
+    function downloadDemo()
+    {
+        $gameFileName = $this->model->downloadGameFile($_GET['id']);
+
+        $this->model->updateGameDownloadStat($_GET['id'], date("Y-m-d"));
+
+        $this->model->updateGameDownloads($_GET['id']);
+
+        $gameFilePath = 'public/uploads/games/file/';
+
+        $downloadPath = $gameFilePath . $gameFileName;
+
+        header('Cache-Control: public');
+        header('Content-Description: File Transfer');
+        header('Content-Type: application/zip');
+        header("Content-Transfer-Encoding: utf-8");
+        header("Content-Disposition: attachment; filename=$gameFileName");
+        readfile($downloadPath);
     }
 }
