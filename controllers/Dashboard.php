@@ -15,8 +15,6 @@ class Dashboard extends Controller
 
         if ($_SESSION['userRole'] == "game developer") {
 
-
-
             $this->view->games = $this->model->showAllMyGames($currentUser);
 
             $totalViews = 0;
@@ -59,6 +57,11 @@ class Dashboard extends Controller
             $this->view->totalRevenue = $totalRevenue;
 
             $this->view->render('Dashboard/CreatorDashboard');
+        } else if ($_SESSION['userRole'] == "gamejam organizer") {
+
+            $this->view->jams = $this->model->showAllMyJamsOrganizer($currentUser);
+
+            $this->view->render('Dashboard/OrganizerDashboard');
         }
     }
 
@@ -196,6 +199,11 @@ class Dashboard extends Controller
             $this->view->assetTags = explode(",", $asset['assetTags']);
 
             $this->view->render('Dashboard/AssetDashboards/Edit');
+        } else if ($_SESSION['userRole'] == "gamejam organizer") {
+
+            $this->view->jam = $this->model->GetJamDetails($_GET['id']);
+
+            $this->view->render('Dashboard/JamDashboards/Edit');
         }
     }
 
@@ -624,5 +632,55 @@ class Dashboard extends Controller
 
             $this->model->DeleteAsset($assetID);
         }
+    }
+
+
+    //GameJam Organizer Items
+    //GameJam Organizer Items
+    //GameJam Organizer Items
+    //GameJam Organizer Items
+    //GameJam Organizer Items
+    //GameJam Organizer Items
+
+    function EditJam()
+    {
+        $jamID = $_GET['id'];
+        $gamejamTitle = $_POST['title'];
+        $gamejamTagline = $_POST['tagline'];
+        $jamType = $_POST['ranking'];
+        $jamStartDate = $_POST['Sdate'];
+        $jamEndtDate = $_POST['Edate'];
+        $jamVEndDate = ($_POST['ranking'] == "Ranked") ? $_POST['V_E_Date'] : null;
+        $jamContent = $_POST['description'];
+        $jamCriteria = ($_POST['ranking'] == "Ranked") ? $_POST['criteria'] : null;
+        $jamVisibility = $_POST['visibility'];
+        $jamHostID = $_SESSION['id'];
+        $jamVoters = $_POST['voters'];
+        $jamTwitterHashtag = $_POST['twitter'];
+        $jamTheme = $_POST['jamTheme'];
+
+
+        $jamCoverImg = $this->model->updateJamCoverImg($gamejamTitle);
+
+
+        $this->model->editExistingJam(
+            $gamejamTitle,
+            $gamejamTagline,
+            $jamStartDate,
+            $jamEndtDate,
+            $jamVEndDate,
+            $jamContent,
+            $jamType,
+            $jamCriteria,
+            $jamVisibility,
+            $jamHostID,
+            $jamVoters,
+            $jamTwitterHashtag,
+            $jamCoverImg,
+            $jamTheme,
+            $jamID
+        );
+
+        header('location:/indieabode/');
     }
 }
