@@ -24,7 +24,9 @@ class Gameupload extends Controller
         $releaseStatus = $_POST['game-status'];
         $gameDetails = $_POST['description'];
 
-        $gameTrailor = $_POST['game-illustration-vedio'];
+        $gameTrailor = (!empty($_POST['game-illustration-vedio'])) ? $_POST['game-illustration-vedio'] : null;
+
+
         $gameTagline = $_POST['game-tagline'];
         $gameClassification = $_POST['game-classification'];
         $gameDeveloperID = $_SESSION['id'];
@@ -133,4 +135,22 @@ class Gameupload extends Controller
     //         }
     //     }
     // }
+
+    function gameNameAvailabilityCheck()
+    {
+
+        $gameName = $_POST['gameName'];
+
+        $nameAvailability = $this->model->GameNameAvailabilityCheck($gameName, $_SESSION['id']);
+
+        $nameAvailabilityWhole = $this->model->CheckGameNameWholeSite($gameName, $_SESSION['id']);
+
+        if ($nameAvailability == "false") {
+            echo "unavailable";
+        } else if (!empty($nameAvailabilityWhole)) {
+            echo "warning";
+        } else {
+            echo "available";
+        }
+    }
 }

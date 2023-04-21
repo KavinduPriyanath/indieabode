@@ -38,14 +38,17 @@
                         <div class="upload-col-left">
 
                             <div class="title-div">
-                                <label id="game-title" for="game-title">Title</label><br>
-                                <input type="text" name="game-title" id="game-title" /><br><br>
+                                <label for="game-title">Title</label><br>
+                                <input type="text" name="game-title" id="game-title" />
+                                <div class="error-msg" id="gameNameCheck"></div><br><br>
+
                             </div>
 
                             <div class="tagline-div">
-                                <label id="game-tagline" for="game-tagline">Tagline</label><br>
+                                <label for="game-tagline">Tagline</label><br>
                                 <p>Shown when we link your game to other pages</p>
-                                <input type="text" name="game-tagline" id="game-tagline" minlength="40" maxlength="70" placeholder="Short Description about your game" /><br><br>
+                                <input type="text" name="game-tagline" id="game-tagline" minlength="40" maxlength="70" placeholder="Short Description about your game" />
+                                <div class="error-msg" id="gameTaglineCheck"></div><br><br>
                             </div>
 
                             <!--classification details-->
@@ -395,6 +398,70 @@
     <script src=" <?php echo BASE_URL; ?>public/js/richtext.js"> </script>
     <script src=" <?php echo BASE_URL; ?>public/js/tags.js"> </script>
 
+    <script>
+        $(document).ready(function() {
+
+            //Check for the availability of game name the developer chose
+            $("#game-title").keyup(function() {
+                let gameName = $('#game-title').val();
+
+                if (gameName.length == 0) {
+                    $('#gameNameCheck').show();
+                    $('#gameNameCheck').text("Game Name Cannot be empty");
+                } else {
+                    gameNameAvailability();
+                }
+
+            });
+
+            //Check whether the chosen tagline length is compatible with game platforms cards
+            $('#game-tagline').keyup(function() {
+
+                let tagline = $('#game-tagline').val();
+
+                if (tagline.length < 40) {
+                    $('#gameTaglineCheck').show();
+                    $('#gameTaglineCheck').text("Must use more than 40 characters");
+                } else if (tagline.length > 40 && tagline.length < 70) {
+                    $('#gameTaglineCheck').hide();
+                } else {
+                    $('#gameTaglineCheck').show();
+                    $('#gameTaglineCheck').text("Cannot exceed 70 characters");
+                }
+            });
+
+            function gameNameAvailability() {
+
+                let gameName = $('#game-title').val();
+
+                var data = {
+                    'gameName': gameName,
+                };
+
+                $.ajax({
+                    type: "POST",
+                    url: "/indieabode/gameupload/gameNameAvailabilityCheck",
+                    data: data,
+                    success: function(response) {
+
+                        if (response == "available") {
+                            $('#gameNameCheck').hide();
+                        } else if (response == "unavailable") {
+                            $('#gameNameCheck').show();
+                            $('#gameNameCheck').css("background-color", "rgb(225, 132, 132)");
+                            $('#gameNameCheck').text("You alreay have a game with this name");
+                        } else if (response == "warning") {
+                            $('#gameNameCheck').show();
+                            $('#gameNameCheck').css("background-color", "#ffff80");
+                            $('#gameNameCheck').text("Warning: Platform already has a game with this name");
+                        }
+
+                    },
+                });
+            }
+
+        });
+    </script>
 
     <script>
         $(document).ready(function() {
