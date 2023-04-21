@@ -559,4 +559,11 @@ input[type="checkbox"] {
     background: #2c52ed;
 }
 
+.error-msg {
+    background-color: rgb(225, 132, 132);
+    margin: 0px 0px;
+    width: 470px;
+    display: none;
+}
+
   

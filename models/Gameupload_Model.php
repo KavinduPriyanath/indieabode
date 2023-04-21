@@ -199,4 +199,34 @@ class Gameupload_Model extends Model
             "0"
         ]);
     }
+
+    function GameNameAvailabilityCheck($gameName, $userID)
+    {
+
+        $sql = "SELECT * FROM freegame WHERE gameName='$gameName' AND gameDeveloperID='$userID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $game = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (empty($game)) {
+            return "true";
+        } else {
+            return "false";
+        }
+    }
+
+    function CheckGameNameWholeSite($gameName, $userID)
+    {
+
+        $Namesql = "SELECT * FROM freegame WHERE gameName='$gameName' AND NOT gameDeveloperID='$userID'";
+
+        $Namestmt = $this->db->prepare($Namesql);
+
+        $Namestmt->execute();
+
+        return $Namestmt->fetch(PDO::FETCH_ASSOC);
+    }
 }
