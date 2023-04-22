@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 21, 2023 at 08:56 AM
+-- Generation Time: Apr 22, 2023 at 01:28 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -36,25 +36,26 @@ CREATE TABLE `account` (
   `twitter` varchar(50) NOT NULL,
   `linkedin` varchar(50) NOT NULL,
   `introduction` varchar(200) NOT NULL,
-  `website` varchar(200) NOT NULL
+  `website` varchar(200) NOT NULL,
+  `revenueShare` int(11) NOT NULL DEFAULT 10
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `account`
 --
 
-INSERT INTO `account` (`userID`, `profilePhoto`, `location`, `phoneNumber`, `displayName`, `twitter`, `linkedin`, `introduction`, `website`) VALUES
-(46, 'Portfolio-46.jpg', 'hrtht', '4543334', 'kavindu', 'rththt', 'hrtht', '', 'thhwwww'),
-(47, '', '', '', '', '', '', '', ''),
-(48, '', '', '', '', '', '', '', ''),
-(51, '', '', '', 'oh my god', '', '', '', ''),
-(52, '', '', '', '', '', '', '', ''),
-(53, '', '', '', '', '', '', '', ''),
-(78, '', '', '', '', '', '', '', ''),
-(80, '', '', '', '', '', '', '', ''),
-(81, '', '', '', '', '', '', '', ''),
-(82, '', '', '', '', '', '', '', ''),
-(83, '', '', '', '', '', '', '', '');
+INSERT INTO `account` (`userID`, `profilePhoto`, `location`, `phoneNumber`, `displayName`, `twitter`, `linkedin`, `introduction`, `website`, `revenueShare`) VALUES
+(46, 'Portfolio-46.jpg', 'hrtht', '4543334', 'kavindu', 'rththt', 'hrtht', '', 'thhwwww', 17),
+(47, '', '', '', '', '', '', '', '', 10),
+(48, '', '', '', '', '', '', '', '', 10),
+(51, '', '', '', 'oh my god', '', '', '', '', 10),
+(52, '', '', '', '', '', '', '', '', 10),
+(53, '', '', '', '', '', '', '', '', 10),
+(78, '', '', '', '', '', '', '', '', 10),
+(80, '', '', '', '', '', '', '', '', 10),
+(81, '', '', '', '', '', '', '', '', 10),
+(82, '', '', '', '', '', '', '', '', 10),
+(83, '', '', '', '', '', '', '', '', 10);
 
 -- --------------------------------------------------------
 
@@ -83,7 +84,8 @@ INSERT INTO `activation_keys` (`id`, `userID`, `activationCode`) VALUES
 (15, 79, '43541'),
 (16, 80, '88692'),
 (17, 81, '32305'),
-(18, 82, '82155');
+(18, 82, '82155'),
+(19, 83, '29897');
 
 -- --------------------------------------------------------
 
@@ -381,7 +383,7 @@ CREATE TABLE `billing_addresses` (
 
 INSERT INTO `billing_addresses` (`id`, `userID`, `fullName`, `streetLine1`, `streetLine2`, `city`, `province`, `zipCode`, `country`) VALUES
 (2, 46, 'fefefjkukiuliuli', 'grgr', 'grgrg', 'rrh', 'hrg', 'grgrg', 'Sri Lanka'),
-(3, 51, 'fef', 'grgr', 'grgrg', 'rrh', 'hrg', 'grgrg', 'Sri Lanka'),
+(3, 52, 'fef', 'grgr', 'grgrg', 'rrh', 'hrg', 'grgrg', 'Sri Lanka'),
 (4, 47, 'fefefjkukiuliuli', 'grgr', 'grgrg', 'rrh', 'hrg', 'grgrg', 'Sri Lanka'),
 (5, 78, 'fefefjkukiuliuli', 'grgr', 'grgrg', 'rrh', 'hrg', 'grgrg', 'Sri Lanka');
 
@@ -885,7 +887,9 @@ INSERT INTO `freegame` (`gameID`, `gameName`, `releaseStatus`, `gameDetails`, `g
 (183, 'Albion Online New', 'early access', 'this game is <b>Free </b>so please play', 'SS-Albion Online New-0.jpg,SS-Albion Online New-1.jpg,SS-Albion Online New-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'follows a stray cat who falls into a walled city populated by robots, ', 'simulation', 'free,albion', 'Single-Player,Multi-Player', 'Windows,Linux', 'Prologue', 'Game-Albion Online New.zip', 'draft', 'Cover-Albion Online New.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-04-19 08:38:16', 0),
 (184, 'Loria', 'Released', '<b>ABOUT THIS GAME</b><div>Loria is a homage to classics from golden era of strategy games, with modern spin on controls and user experience.<br></div><div><br></div><div>Game introduces not just RTS elements but also RPG elements such as: hero units, collecting items and quest driven missions offers for a more interesting take on the RTS genre.<br></div><div><br></div><div>Goal of Loria is to take the best concepts from the classics and create a modern user-experience, intelligent AI, smooth controls, pleasing aesthetic and to add interesting content.<br></div><div><br></div><div>Loria was made with passion and love of the RTS genre, that has given us so many hours of fun.<br></div><div>Hopefully we have managed to recreate the experience and fun.<br></div><div><br></div><div>Loria features:<br></div><div><ul><li><li>2 playable races</li><li>2 campaigns with 8 missions each ( 16 missions in summary )</li><li>Entertaining story</li><li>Dozens of units, buildings and upgrades</li><li>6 unique heroes</li><li>Levelable heroes with backpack</li><li>Veteran units</li></li><li>Skirmish games</li></ul><br></div><div><b>Soundtrack is included as well in basic package.</b><br></div><div>About Multiplayer:<br></div><div><br></div>', 'SS-Loria81-0.jpg,SS-Loria81-1.png,SS-Loria81-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', ' A homage to classics from golden era of strategy games', 'RPG', 'Loria,Story,Strategy,Retro', 'Single-Player', 'Windows,MacOS,Linux', 'Base Game', 'Game-Loria81.zip', 'public', 'Cover-Loria81.jpg', 81, 'Windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'Windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '0', '2023-04-20 21:55:44', 0),
 (186, 'Fallout Shelter', 'Released', '<b>ABOUT THIS GAME</b><div>Fallout Shelter puts you in control of a state-of-the-art underground Vault from Vault-Tec. Build the perfect Vault, keep your Dwellers happy, and protect them from the dangers of the Wasteland.<br></div><div><br></div><div><b>BUILD THE PERFECT VAULT</b></div><div>Create a brighter future…underground! Select from a variety of modern-day rooms to turn an excavation beneath 2,000 feet of bedrock into the very picture of Vault Life.<br></div>', 'SS-Fallout Shelter82-0.jpg,SS-Fallout Shelter82-1.jpg,SS-Fallout Shelter82-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'Puts you in control of a state-of-the-art underground Vault', 'Strategy', 'Free to Play,Survival,Base Building,Fallout Shelter', 'Single-Player', 'Windows', 'Base Game', 'Game-Fallout Shelter82.zip', 'public', 'Cover-Fallout Shelter82.jpg', 82, 'Windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'Windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '0', '2023-04-21 08:41:04', 0),
-(187, 'Recourse', 'Released', '<b>ABOUT THIS GAME</b><div>Journey to a scenic arctic planet inhabited by experimental A.I. units and discarded robots. Play as Sleet, a sentient robot confronted with a series of puzzles and has little idea what is going on. Then meet Floe, an older A.I. unit, willing to help you proceed and unravel the mysteries of this beautiful desolate planet.<br></div><div><br></div><div><b>MORE ABOUT THE DEMO</b></div><div>Currently only five levels have been fully developed and implemented to be experience for free in this demo. <i><b>Having a publisher for this game is much appreciated.</b></i></div>', 'SS-Recourse81-0.jpg,SS-Recourse81-1.jpg,SS-Recourse81-2.jpg,SS-Recourse81-3.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'Curiosity is a sign of intelligence. Lets see how far can yours go?', 'Action', 'Indie,Casual,Platformer,Puzzle,Kulla,Recourse', 'Single-Player,Puzzle', 'Windows', 'Demo', 'Game-Recourse81.zip', 'public', 'Cover-Recourse81.jpg', 81, 'Windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'Windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '0', '2023-04-21 11:05:33', 0);
+(187, 'Recourse', 'Released', '<b>ABOUT THIS GAME</b><div>Journey to a scenic arctic planet inhabited by experimental A.I. units and discarded robots. Play as Sleet, a sentient robot confronted with a series of puzzles and has little idea what is going on. Then meet Floe, an older A.I. unit, willing to help you proceed and unravel the mysteries of this beautiful desolate planet.<br></div><div><br></div><div><b>MORE ABOUT THE DEMO</b></div><div>Currently only five levels have been fully developed and implemented to be experience for free in this demo. <i><b>Having a publisher for this game is much appreciated.</b></i></div>', 'SS-Recourse81-0.jpg,SS-Recourse81-1.jpg,SS-Recourse81-2.jpg,SS-Recourse81-3.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'Curiosity is a sign of intelligence. Lets see how far can yours go?', 'Action', 'Indie,Casual,Platformer,Puzzle,Kulla,Recourse', 'Single-Player,Puzzle', 'Windows', 'Demo', 'Game-Recourse81.zip', 'public', 'Cover-Recourse81.jpg', 81, 'Windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'Windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '0', '2023-04-21 11:05:33', 0),
+(188, 'Dark Deception', 'Released', '<b>ABOUT DARK DECEPTION</b><div>Dark Deception is a story driven first-person horror action maze game that mixes the fast-paced style of classic arcade games with fun horror game design. Trapped in a dark world full of nightmarish mazes and ridiculous monsters, the only way out is to face the darkness and find a way to survive.<br></div><div><br></div><div>This is the first chapter in the Dark Deception story. Investigate and survive the first maze. Be careful though. You are not alone. There are monsters in there and they are looking for you. You will face your fears. The question is - what are you afraid of?</div>', 'SS-Dark Deception46-0.jpg,SS-Dark Deception46-1.jpg,SS-Dark Deception46-2.jpg', '', 'Death awaits you in Dark Deception, There is nowhere to hide anymore', 'Adventure', 'horror,fps,first-person,multiplayer,blood,fear,night', 'Multi-Player', 'Windows', 'Base Game', 'Game-Dark Deception46.zip', 'draft', 'Cover-Dark Deception46.jpg', 46, 'Windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'Windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '30', '2023-04-21 16:24:37', 0),
+(189, 'Path of Exile', 'Released', '<b>ABOUT THE GAME</b><div>You are an Exile, struggling to survive on the dark continent of Wraeclast, as you fight to earn power that will allow you to exact your revenge against those who wronged you. Created by hardcore gamers, Path of Exile is an online Action RPG set in a dark fantasy world. With a focus on visceral action combat, powerful items and deep character customization, Path of Exile is completely free and will never be pay-to-win.<br></div><div><br></div><div><b>KEY FEATURES</b></div><div><ul><li><b>Freedom. Power. Revenge.</b></li></ul>Banished for your misdeeds to the dark, brutal world of Wraeclast, you play as the Duelist, Witch, Ranger, Templar, Marauder, Shadow or the Scion class. From forsaken shores through to the ruined city of Sarn, explore Wraeclast and uncover the ancient secrets waiting for you.<br></div>', 'SS-Path of Exile82-0.jpg,SS-Path of Exile82-1.jpg,SS-Path of Exile82-2.jpg,SS-Path of Exile82-3.jpg', '', 'Struggling to survive on the vast dark continent of Wraeclast', 'RPG', 'rpg,hack and slash,action,hicraft,gore,blood', 'Multi-Player,Achievements,Multiplayer-Co-op', 'Windows,MacOS', 'Base Game', 'Game-Path of Exile82.zip', 'public', 'Cover-Path of Exile82.jpg', 82, '', '', '', '', '', '', '', '', '', '', '', '49.99', '2023-04-21 23:29:43', 0);
 
 -- --------------------------------------------------------
 
@@ -934,14 +938,14 @@ CREATE TABLE `gamejam` (
   `jamCoverImg` varchar(255) NOT NULL,
   `joinedCount` int(11) NOT NULL DEFAULT 0,
   `submissionsCount` int(11) NOT NULL DEFAULT 0,
-  `theme` varchar(250) NOT NULL
+  `jamTheme` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `gamejam`
 --
 
-INSERT INTO `gamejam` (`gameJamID`, `submissionStartDate`, `submissionEndDate`, `jamContent`, `votingEndDate`, `jamTitle`, `jamTagline`, `jamType`, `jamCriteria`, `jamVisibility`, `maxParticipants`, `canJoinAfterStarted`, `jamHostID`, `jamVoters`, `jamTwitter`, `jamCoverImg`, `joinedCount`, `submissionsCount`, `theme`) VALUES
+INSERT INTO `gamejam` (`gameJamID`, `submissionStartDate`, `submissionEndDate`, `jamContent`, `votingEndDate`, `jamTitle`, `jamTagline`, `jamType`, `jamCriteria`, `jamVisibility`, `maxParticipants`, `canJoinAfterStarted`, `jamHostID`, `jamVoters`, `jamTwitter`, `jamCoverImg`, `joinedCount`, `submissionsCount`, `jamTheme`) VALUES
 (53, '2022-12-01 16:55:00', '2022-12-08 16:55:00', ' This is an online game jam, so anyone, from anywhere, aged 13 or older can enter the jam. (Those younger can take part, as long as a parent or guardian uploads the game).\r\n\r\nYou can work alone or in teams. There is no limit on the number of people per team and people can be in multiple teams.', '2022-12-15 16:55:00', 'GMTK GameJam', '48 hour game development marathon', 'Non-Ranked', 'Creativity', 'Public', 0, 1, 12, 'Public', '#gmtk', 'Cover-GMTK GameJam.jpg', 0, 0, ''),
 (55, '2023-01-02 12:00:00', '2023-01-03 12:00:00', ' Genshin Impact takes place in the fantasy world of Teyvat, home to seven nations, each of which is tied to a different element and ', '2023-01-04 12:00:00', 'GameJam', 'This is a gamejam', 'Non-Ranked', 'Creativity', 'Draft', 40, 1, 12, 'Public', '#brackeys', 'Cover-GameJam.jpg', 0, 0, ''),
 (56, '2023-04-12 16:55:00', '2023-12-08 16:55:00', ' majhcdsjc vmnb', '0000-00-00 00:00:00', 'majbhdhjsa', 'grg', 'Ranked', 'mdhcbgd', 'Draft', 67, 1, 16, 'Public', 'mhcbds', 'Cover-majbhdhjsa.jpg', 0, 0, ''),
@@ -949,7 +953,8 @@ INSERT INTO `gamejam` (`gameJamID`, `submissionStartDate`, `submissionEndDate`, 
 (58, '2023-01-02 12:00:00', '2023-05-16 00:00:00', ' Genshin Impact takes place in the fantasy world of Teyvat, home to seven nations, each of which is tied to a different element and ', '2023-01-04 12:00:00', 'GMTK GameJam', 'This is a gamejam', 'Non-Ranked', 'Creativity', 'Draft', 40, 1, 12, 'Public', '#brackeys', 'Cover-GameJam.jpg', 0, 0, ''),
 (59, '2023-12-01 16:55:00', '2023-12-08 16:55:00', ' majhcdsjc vmnb', '0000-00-00 00:00:00', 'majbhdhjsa', 'grg', 'Ranked', 'mdhcbgd', 'Draft', 67, 1, 16, 'Public', 'mhcbds', 'Cover-majbhdhjsa.jpg', 0, 0, ''),
 (60, '2023-01-02 12:00:00', '2023-01-03 12:00:00', ' Genshin Impact takes place in the fantasy world of Teyvat, home to seven nations, each of which is tied to a different element and ', '2023-01-04 12:00:00', 'GameJam', 'This is a gamejam', 'Non-Ranked', 'Creativity', 'Draft', 40, 1, 12, 'Public', '#brackeys', 'Cover-GameJam.jpg', 0, 0, ''),
-(61, '2023-12-01 16:55:00', '2023-12-08 16:55:00', ' majhcdsjc vmnb', '0000-00-00 00:00:00', 'majbhdhjsa', 'grg', 'Ranked', 'mdhcbgd', 'Draft', 67, 1, 16, 'Public', 'mhcbds', 'Cover-majbhdhjsa.jpg', 0, 0, '');
+(61, '2023-12-01 16:55:00', '2023-12-08 16:55:00', ' majhcdsjc vmnb', '0000-00-00 00:00:00', 'majbhdhjsa', 'grg', 'Ranked', 'mdhcbgd', 'Draft', 67, 1, 16, 'Public', 'mhcbds', 'Cover-majbhdhjsa.jpg', 0, 0, ''),
+(62, '2023-06-14 16:55:00', '2023-08-15 16:55:00', 'gregr <b>rhrtthtrhrth </b>htrt <u>trhthththh </u>htrtttrthrthr 11', '2023-10-23 16:55:00', 'new jam 1', 'grg', 'Ranked', 'Creativity', 'Public', 0, 0, 79, 'Public', '#brackeys', 'Cover-new jam 1.jpg', 0, 0, 'stick together');
 
 -- --------------------------------------------------------
 
@@ -990,7 +995,7 @@ INSERT INTO `gamer` (`gamerID`, `email`, `password`, `accountStatus`, `avatar`, 
 (80, 'tkulith@gmail.com', '$2y$10$yNJAErwvKixcAYquMChKYOynfHEVQ5U0sMw5FTk0ZV9iocL6rbRpO', 1, 'avatar4.png', 'game developer', 'Hyperkulla', 'Kulith', 'Thamuditha', '2023-04-20 16:07:05', '2023-04-20 16:07:05', 0, '', 2),
 (81, 'dukerane69@gmail.com', '$2y$10$XrgXA7THJcHEtr0LwM8xvuaXk3t4S8nA378KoBOMk1c8tKlSvAJqS', 1, 'avatar4.png', 'game developer', 'Kulla123', 'Kulith', 'Thamuditha', '2023-04-20 16:10:10', '2023-04-20 16:10:10', 1, '', 2),
 (82, 'hicraft1112@gmail.com', '$2y$10$fZ/8rWDnDsraekd6igNZhuN7114Qn.is4TcCiARCeRdYZV8w289CK', 1, 'avatar1.png', 'game developer', 'Hicraft', 'Hi', 'Craft', '2023-04-20 17:00:03', '2023-04-20 17:00:03', 1, '', 2),
-(83, 'lasathtiktak@gmail.com', '$2y$10$sKeGKfzuhGRllFl9wr.tceJ8qZaXrmse3fbTJW.3/jjYndiVIiCDK', 1, 'avatar2.png', 'game developer', 'Lasa', 'Tharindu', 'Lasath', '2023-04-21 03:30:22', '2023-04-21 03:30:22', 0, '', 2);
+(83, 'lasathtiktak@gmail.com', '$2y$10$sKeGKfzuhGRllFl9wr.tceJ8qZaXrmse3fbTJW.3/jjYndiVIiCDK', 1, 'avatar2.png', 'game developer', 'Lasa', 'Tharindu', 'Lasath', '2023-04-21 03:30:22', '2023-04-21 03:30:22', 1, '', 2);
 
 -- --------------------------------------------------------
 
@@ -1349,7 +1354,20 @@ INSERT INTO `games_view_tracker` (`id`, `userID`, `sessionID`, `gameID`, `viewed
 (264, 82, 96, 93, '2023-04-21'),
 (265, 82, 96, 184, '2023-04-21'),
 (266, 81, 92, 187, '2023-04-21'),
-(267, 81, 64, 187, '2023-04-21');
+(267, 81, 64, 187, '2023-04-21'),
+(268, 46, 67, 188, '2023-04-21'),
+(269, 81, 10, 184, '2023-04-21'),
+(270, 81, 10, 187, '2023-04-21'),
+(271, 82, 97, 186, '2023-04-21'),
+(272, 82, 97, 188, '2023-04-21'),
+(273, 82, 97, 184, '2023-04-21'),
+(274, 82, 97, 189, '2023-04-21'),
+(275, 52, 76, 96, '2023-04-22'),
+(276, 52, 15, 96, '2023-04-22'),
+(277, 52, 15, 188, '2023-04-22'),
+(278, 52, 15, 189, '2023-04-22'),
+(279, 52, 12, 189, '2023-04-22'),
+(280, 82, 65, 189, '2023-04-22');
 
 -- --------------------------------------------------------
 
@@ -1398,7 +1416,8 @@ INSERT INTO `game_library` (`id`, `gameID`, `gamerID`, `createdAt`) VALUES
 (16, 91, 52, '2023-04-11'),
 (17, 92, 52, '2023-04-11'),
 (18, 95, 0, '2023-04-19'),
-(19, 181, 52, '2023-04-19');
+(19, 181, 52, '2023-04-19'),
+(25, 189, 52, '2023-04-22');
 
 -- --------------------------------------------------------
 
@@ -1422,7 +1441,12 @@ CREATE TABLE `game_purchases` (
 INSERT INTO `game_purchases` (`id`, `gameID`, `buyerID`, `orderID`, `purchasedPrice`, `purchasedDate`) VALUES
 (1, 106, 52, '641996fdad338', 30, '2023-03-21'),
 (2, 95, 52, '6433f938442db', 30, '2023-04-10'),
-(3, 92, 52, '64358669b14e9', 30, '2023-04-11');
+(3, 92, 52, '64358669b14e9', 30, '2023-04-11'),
+(5, 189, 52, '6443ab97c9839', 49.99, '2023-04-22'),
+(6, 189, 52, '6443ad2bdcd01', 49.99, '2023-04-22'),
+(7, 189, 52, '6443b0ea6cbed', 49.99, '2023-04-22'),
+(8, 189, 52, '6443b1aff23a1', 49.99, '2023-04-22'),
+(9, 189, 52, '6443b232426bd', 49.99, '2023-04-22');
 
 -- --------------------------------------------------------
 
@@ -1483,7 +1507,7 @@ CREATE TABLE `game_stats` (
   `views` int(11) NOT NULL DEFAULT 0,
   `downloads` int(11) NOT NULL DEFAULT 0,
   `ratings` int(11) NOT NULL DEFAULT 0,
-  `revenue` int(11) NOT NULL DEFAULT 0
+  `revenue` float NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -1491,16 +1515,18 @@ CREATE TABLE `game_stats` (
 --
 
 INSERT INTO `game_stats` (`id`, `gameID`, `views`, `downloads`, `ratings`, `revenue`) VALUES
-(1, 96, 43, 11, 1, 0),
+(1, 96, 45, 11, 1, 0),
 (2, 89, 14, 0, 0, 0),
 (3, 90, 27, 0, 0, 0),
 (4, 91, 35, 12, 0, 0),
 (5, 92, 38, 5, 0, 0),
 (6, 93, 22, 1, 0, 0),
 (7, 95, 25, 4, 1, 0),
-(8, 184, 7, 3, 0, 0),
-(10, 186, 1, 0, 0, 0),
-(11, 187, 2, 3, 0, 0);
+(8, 184, 9, 3, 0, 0),
+(10, 186, 2, 0, 0, 0),
+(11, 187, 3, 3, 0, 0),
+(12, 188, 3, 0, 0, 0),
+(14, 189, 4, 0, 0, 43.5063);
 
 -- --------------------------------------------------------
 
@@ -1652,12 +1678,18 @@ INSERT INTO `game_stats_history` (`id`, `gameID`, `views`, `downloads`, `ratings
 (134, 92, 1, 0, 0, 0, '2023-04-20'),
 (135, 91, 0, 1, 0, 0, '2023-04-20'),
 (136, 184, 5, 3, 0, 0, '2023-04-20'),
-(137, 184, 2, 0, 0, 0, '2023-04-21'),
+(137, 184, 4, 0, 0, 0, '2023-04-21'),
 (138, 92, 1, 0, 0, 0, '2023-04-21'),
 (139, 95, 1, 0, 0, 0, '2023-04-21'),
-(140, 186, 1, 0, 0, 0, '2023-04-21'),
+(140, 186, 2, 0, 0, 0, '2023-04-21'),
 (141, 93, 1, 0, 0, 0, '2023-04-21'),
-(142, 187, 2, 3, 0, 0, '2023-04-21');
+(142, 187, 3, 3, 0, 0, '2023-04-21'),
+(143, 188, 2, 0, 0, 0, '2023-04-21'),
+(144, 189, 1, 0, 0, 0, '2023-04-21'),
+(145, 96, 1, 0, 0, 0, '2023-04-21'),
+(146, 96, 1, 0, 0, 0, '2023-04-22'),
+(147, 188, 1, 0, 0, 0, '2023-04-22'),
+(148, 189, 3, 1, 0, 0, '2023-04-22');
 
 -- --------------------------------------------------------
 
@@ -2094,6 +2126,27 @@ INSERT INTO `requestedgigs` (`id`, `gigID`, `developerID`, `publisherID`, `gigTo
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `sitegamesrevenue`
+--
+
+CREATE TABLE `sitegamesrevenue` (
+  `id` int(11) NOT NULL,
+  `gameID` int(11) NOT NULL,
+  `orderID` varchar(255) NOT NULL,
+  `siteShare` float NOT NULL,
+  `sale_date` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `sitegamesrevenue`
+--
+
+INSERT INTO `sitegamesrevenue` (`id`, `gameID`, `orderID`, `siteShare`, `sale_date`) VALUES
+(5, 189, '6443b232426bd', 4.999, '2023-04-22');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `submission`
 --
 
@@ -2467,6 +2520,12 @@ ALTER TABLE `requestedgigs`
   ADD KEY `gigID` (`gigID`);
 
 --
+-- Indexes for table `sitegamesrevenue`
+--
+ALTER TABLE `sitegamesrevenue`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `submission`
 --
 ALTER TABLE `submission`
@@ -2492,7 +2551,7 @@ ALTER TABLE `account`
 -- AUTO_INCREMENT for table `activation_keys`
 --
 ALTER TABLE `activation_keys`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `admin`
@@ -2630,13 +2689,13 @@ ALTER TABLE `freeasset`
 -- AUTO_INCREMENT for table `freegame`
 --
 ALTER TABLE `freegame`
-  MODIFY `gameID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=188;
+  MODIFY `gameID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=190;
 
 --
 -- AUTO_INCREMENT for table `gamejam`
 --
 ALTER TABLE `gamejam`
-  MODIFY `gameJamID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `gameJamID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT for table `gamer`
@@ -2660,7 +2719,7 @@ ALTER TABLE `games_filters`
 -- AUTO_INCREMENT for table `games_view_tracker`
 --
 ALTER TABLE `games_view_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=268;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=281;
 
 --
 -- AUTO_INCREMENT for table `game_cart`
@@ -2672,13 +2731,13 @@ ALTER TABLE `game_cart`
 -- AUTO_INCREMENT for table `game_library`
 --
 ALTER TABLE `game_library`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `game_purchases`
 --
 ALTER TABLE `game_purchases`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `game_reviews`
@@ -2690,13 +2749,13 @@ ALTER TABLE `game_reviews`
 -- AUTO_INCREMENT for table `game_stats`
 --
 ALTER TABLE `game_stats`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `game_stats_history`
 --
 ALTER TABLE `game_stats_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=149;
 
 --
 -- AUTO_INCREMENT for table `gig`
@@ -2739,6 +2798,12 @@ ALTER TABLE `ratesubmission`
 --
 ALTER TABLE `requestedgigs`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+
+--
+-- AUTO_INCREMENT for table `sitegamesrevenue`
+--
+ALTER TABLE `sitegamesrevenue`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `submission`

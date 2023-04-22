@@ -32,6 +32,17 @@
     <h3>Games</h3>
 
 
+    <?php
+
+    $developerShare = ((int)49.99 / 100) * (100 - 10);
+
+    $paymentGatewayCut = ($developerShare / 100) * (3.3);
+
+    $finalDeveloperShare = $developerShare - $paymentGatewayCut;
+
+    print_r($finalDeveloperShare);
+    ?>
+
 
 
 

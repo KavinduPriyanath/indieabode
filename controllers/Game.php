@@ -291,8 +291,9 @@ class Game extends Controller
         //     echo "2";
         // }
 
-        // $amount = $asset['assetPrice'];
-        $amount = 30.00;
+        $amount = $game['gamePrice'];
+        $item = $game['gameName'];
+        // $amount = 30.00;
         $merchant_id = "1222729";
         $order_id = uniqid();
         $merchant_secret = "MjczNjU0OTYzMzM3NDA3NzYzMjczNzEyMjI2MjM4MTQ3MjE2OTkxMg==";
@@ -320,6 +321,7 @@ class Game extends Controller
         $array = [];
 
         $array['amount'] = $amount;
+        $array['item'] = $item;
         $array['merchant_id'] = $merchant_id;
         $array['order_id'] = $order_id;
         $array['currency'] = $currency;
@@ -341,13 +343,23 @@ class Game extends Controller
     {
 
         $orderId = $_POST['orderID'];
-        $amount = $_POST['assetID'];
+        $amount = $_POST['amount'];
 
         $downloadingDev = $this->model->currentUser($_SESSION['id']);
 
         $developerEmail = $downloadingDev['email'];
 
+        //updating game_purchas table
         $this->model->SuccessfulGamePurchase($_GET['id'], $_SESSION['id'], $amount, $orderId);
+
+        //upading game_stats for increment the total revenue of that game
+        $revenueShare = $this->model->GetRevenueShare($_GET['id']);
+
+        $this->model->GameDeveloperShare($_GET['id'], $revenueShare['revenueShare'], $amount);
+
+        $this->model->IndieabodeShare($_GET['id'], $orderId, $revenueShare['revenueShare'], $amount);
+
+
 
         $this->model->AddtoLibrary($_GET['id'], $_SESSION['id']);
 
