@@ -434,6 +434,7 @@ class Game_Model extends Model
         $stmt->execute();
     }
 
+    //Get Currently set revenue share of developer
     function GetRevenueShare($gameID)
     {
 
@@ -448,6 +449,7 @@ class Game_Model extends Model
     }
 
 
+    //Update revenue of game_stats table of a game after each game purchase
     function GameDeveloperShare($gameID, $revenueShare, $gamePrice)
     {
 
@@ -476,6 +478,7 @@ class Game_Model extends Model
         $updatedStmt->execute();
     }
 
+    //How much portion site gains from each game purchase
     function IndieabodeShare($gameID, $orderID, $revenueShare, $gamePrice)
     {
 

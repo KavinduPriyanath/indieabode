@@ -359,6 +359,8 @@ class Game extends Controller
 
         $this->model->IndieabodeShare($_GET['id'], $orderId, $revenueShare['revenueShare'], $amount);
 
+
+
         $this->model->AddtoLibrary($_GET['id'], $_SESSION['id']);
 
         //sending an email receipt
