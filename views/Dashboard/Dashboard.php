@@ -35,7 +35,7 @@
                     <div class="label">downloads</div>
                 </div>
                 <div id="revenue">
-                    <div class="count"><?= number_format($this->totalRevenue, 2) ?></div>
+                    <div class="count">$<?= number_format($this->totalRevenue, 2) ?></div>
                     <div class="label">revenue</div>
                 </div>
             </div>

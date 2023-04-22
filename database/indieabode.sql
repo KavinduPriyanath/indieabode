@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 22, 2023 at 01:28 PM
+-- Generation Time: Apr 22, 2023 at 05:25 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -55,7 +55,9 @@ INSERT INTO `account` (`userID`, `profilePhoto`, `location`, `phoneNumber`, `dis
 (80, '', '', '', '', '', '', '', '', 10),
 (81, '', '', '', '', '', '', '', '', 10),
 (82, '', '', '', '', '', '', '', '', 10),
-(83, '', '', '', '', '', '', '', '', 10);
+(83, '', '', '', '', '', '', '', '', 10),
+(84, '', '', '', '', '', '', '', '', 10),
+(86, '', '', '', '', '', '', '', '', 10);
 
 -- --------------------------------------------------------
 
@@ -85,7 +87,9 @@ INSERT INTO `activation_keys` (`id`, `userID`, `activationCode`) VALUES
 (16, 80, '88692'),
 (17, 81, '32305'),
 (18, 82, '82155'),
-(19, 83, '29897');
+(19, 83, '29897'),
+(20, 84, '93595'),
+(26, 86, '36850');
 
 -- --------------------------------------------------------
 
@@ -385,7 +389,10 @@ INSERT INTO `billing_addresses` (`id`, `userID`, `fullName`, `streetLine1`, `str
 (2, 46, 'fefefjkukiuliuli', 'grgr', 'grgrg', 'rrh', 'hrg', 'grgrg', 'Sri Lanka'),
 (3, 52, 'fef', 'grgr', 'grgrg', 'rrh', 'hrg', 'grgrg', 'Sri Lanka'),
 (4, 47, 'fefefjkukiuliuli', 'grgr', 'grgrg', 'rrh', 'hrg', 'grgrg', 'Sri Lanka'),
-(5, 78, 'fefefjkukiuliuli', 'grgr', 'grgrg', 'rrh', 'hrg', 'grgrg', 'Sri Lanka');
+(5, 78, 'fefefjkukiuliuli', 'grgr', 'grgrg', 'rrh', 'hrg', 'grgrg', 'Sri Lanka'),
+(6, 53, 'fefefjkukiuliuli', 'grgr', 'grgrg', 'rrh', 'hrg', 'grgrg', 'Sri Lanka'),
+(7, 84, 'fefe', 'grgr', 'hrhr', 'rhh', 'rhrh', 'hrhr', 'Sri Lanka'),
+(8, 86, 'grgr', 'hrhr', 'grg', 'rgrg', 'htht', 'hth', 'Sri Lanka');
 
 -- --------------------------------------------------------
 
@@ -995,7 +1002,9 @@ INSERT INTO `gamer` (`gamerID`, `email`, `password`, `accountStatus`, `avatar`, 
 (80, 'tkulith@gmail.com', '$2y$10$yNJAErwvKixcAYquMChKYOynfHEVQ5U0sMw5FTk0ZV9iocL6rbRpO', 1, 'avatar4.png', 'game developer', 'Hyperkulla', 'Kulith', 'Thamuditha', '2023-04-20 16:07:05', '2023-04-20 16:07:05', 0, '', 2),
 (81, 'dukerane69@gmail.com', '$2y$10$XrgXA7THJcHEtr0LwM8xvuaXk3t4S8nA378KoBOMk1c8tKlSvAJqS', 1, 'avatar4.png', 'game developer', 'Kulla123', 'Kulith', 'Thamuditha', '2023-04-20 16:10:10', '2023-04-20 16:10:10', 1, '', 2),
 (82, 'hicraft1112@gmail.com', '$2y$10$fZ/8rWDnDsraekd6igNZhuN7114Qn.is4TcCiARCeRdYZV8w289CK', 1, 'avatar1.png', 'game developer', 'Hicraft', 'Hi', 'Craft', '2023-04-20 17:00:03', '2023-04-20 17:00:03', 1, '', 2),
-(83, 'lasathtiktak@gmail.com', '$2y$10$sKeGKfzuhGRllFl9wr.tceJ8qZaXrmse3fbTJW.3/jjYndiVIiCDK', 1, 'avatar2.png', 'game developer', 'Lasa', 'Tharindu', 'Lasath', '2023-04-21 03:30:22', '2023-04-21 03:30:22', 1, '', 2);
+(83, 'lasathtiktak@gmail.com', '$2y$10$sKeGKfzuhGRllFl9wr.tceJ8qZaXrmse3fbTJW.3/jjYndiVIiCDK', 1, 'avatar2.png', 'game developer', 'Lasa', 'Tharindu', 'Lasath', '2023-04-21 03:30:22', '2023-04-21 03:30:22', 1, '', 2),
+(84, 'somasira83@gmail.com', '$2y$10$cIOyyp/HlJRMwsRE4aFwje.5jsX8PgBE.6bnbTSSmujsSOnihN7Ai', 1, 'avatar4.png', 'gamer', 'Escanor', 'Seven', 'Sin', '2023-04-22 14:44:57', '2023-04-22 14:44:57', 1, '', 2),
+(86, 'sinharasa7@gmail.com', '$2y$10$PEbhk8sh.Zr35K2S0WCs3.j2IHkpqRPT7bP8yU4Mxn0cIXuF3mlbm', 1, 'avatar2.png', 'gamer', 'Baan', 'Undead', 'Ban', '2023-04-22 14:53:27', '2023-04-22 14:53:27', 1, '', 2);
 
 -- --------------------------------------------------------
 
@@ -1367,7 +1376,24 @@ INSERT INTO `games_view_tracker` (`id`, `userID`, `sessionID`, `gameID`, `viewed
 (277, 52, 15, 188, '2023-04-22'),
 (278, 52, 15, 189, '2023-04-22'),
 (279, 52, 12, 189, '2023-04-22'),
-(280, 82, 65, 189, '2023-04-22');
+(280, 82, 65, 189, '2023-04-22'),
+(281, 52, 56, 189, '2023-04-22'),
+(282, 52, 56, 188, '2023-04-22'),
+(283, 52, 56, 183, '2023-04-22'),
+(284, 52, 56, 182, '2023-04-22'),
+(285, 52, 56, 181, '2023-04-22'),
+(286, 52, 56, 93, '2023-04-22'),
+(287, 52, 56, 95, '2023-04-22'),
+(288, 52, 56, 96, '2023-04-22'),
+(289, 53, 20, 189, '2023-04-22'),
+(290, 53, 20, 188, '2023-04-22'),
+(291, 53, 80, 188, '2023-04-22'),
+(292, 82, 12, 188, '2023-04-22'),
+(293, 84, 69, 188, '2023-04-22'),
+(294, 84, 69, 189, '2023-04-22'),
+(295, 86, 66, 189, '2023-04-22'),
+(296, 86, 66, 188, '2023-04-22'),
+(297, 86, 48, 92, '2023-04-22');
 
 -- --------------------------------------------------------
 
@@ -1387,7 +1413,13 @@ CREATE TABLE `game_cart` (
 --
 
 INSERT INTO `game_cart` (`id`, `userID`, `gameID`, `addedDate`) VALUES
-(11, 46, 92, '2023-04-11');
+(11, 46, 92, '2023-04-11'),
+(16, 52, 188, '2023-04-22'),
+(17, 53, 189, '2023-04-22'),
+(19, 53, 188, '2023-04-22'),
+(20, 84, 188, '2023-04-22'),
+(21, 84, 189, '2023-04-22'),
+(25, 86, 92, '2023-04-22');
 
 -- --------------------------------------------------------
 
@@ -1417,7 +1449,13 @@ INSERT INTO `game_library` (`id`, `gameID`, `gamerID`, `createdAt`) VALUES
 (17, 92, 52, '2023-04-11'),
 (18, 95, 0, '2023-04-19'),
 (19, 181, 52, '2023-04-19'),
-(25, 189, 52, '2023-04-22');
+(25, 189, 52, '2023-04-22'),
+(26, 189, 53, '2023-04-22'),
+(27, 188, 53, '2023-04-22'),
+(28, 188, 84, '2023-04-22'),
+(29, 189, 84, '2023-04-22'),
+(30, 189, 86, '2023-04-22'),
+(31, 188, 86, '2023-04-22');
 
 -- --------------------------------------------------------
 
@@ -1446,7 +1484,14 @@ INSERT INTO `game_purchases` (`id`, `gameID`, `buyerID`, `orderID`, `purchasedPr
 (6, 189, 52, '6443ad2bdcd01', 49.99, '2023-04-22'),
 (7, 189, 52, '6443b0ea6cbed', 49.99, '2023-04-22'),
 (8, 189, 52, '6443b1aff23a1', 49.99, '2023-04-22'),
-(9, 189, 52, '6443b232426bd', 49.99, '2023-04-22');
+(9, 189, 52, '6443b232426bd', 49.99, '2023-04-22'),
+(10, 189, 53, '6443e7a97c091', 79.99, '2023-04-22'),
+(11, 189, 53, '6443e7ea3e09e', 79.99, '2023-04-22'),
+(12, 188, 53, '6443e7ea3e09e', 79.99, '2023-04-22'),
+(13, 188, 84, '6443f34c510a9', 79.99, '2023-04-22'),
+(14, 189, 84, '6443f34c510a9', 79.99, '2023-04-22'),
+(15, 189, 86, '6443f6316333f', 49.99, '2023-04-22'),
+(16, 188, 86, '6443f6316333f', 30, '2023-04-22');
 
 -- --------------------------------------------------------
 
@@ -1515,18 +1560,18 @@ CREATE TABLE `game_stats` (
 --
 
 INSERT INTO `game_stats` (`id`, `gameID`, `views`, `downloads`, `ratings`, `revenue`) VALUES
-(1, 96, 45, 11, 1, 0),
+(1, 96, 46, 11, 1, 0),
 (2, 89, 14, 0, 0, 0),
 (3, 90, 27, 0, 0, 0),
 (4, 91, 35, 12, 0, 0),
-(5, 92, 38, 5, 0, 0),
-(6, 93, 22, 1, 0, 0),
-(7, 95, 25, 4, 1, 0),
+(5, 92, 39, 5, 0, 0),
+(6, 93, 23, 1, 0, 0),
+(7, 95, 26, 4, 1, 0),
 (8, 184, 9, 3, 0, 0),
 (10, 186, 2, 0, 0, 0),
 (11, 187, 3, 3, 0, 0),
-(12, 188, 3, 0, 0, 0),
-(14, 189, 4, 0, 0, 43.5063);
+(12, 188, 9, 1, 0, 152.48),
+(14, 189, 8, 0, 0, 295.858);
 
 -- --------------------------------------------------------
 
@@ -1687,9 +1732,15 @@ INSERT INTO `game_stats_history` (`id`, `gameID`, `views`, `downloads`, `ratings
 (143, 188, 2, 0, 0, 0, '2023-04-21'),
 (144, 189, 1, 0, 0, 0, '2023-04-21'),
 (145, 96, 1, 0, 0, 0, '2023-04-21'),
-(146, 96, 1, 0, 0, 0, '2023-04-22'),
-(147, 188, 1, 0, 0, 0, '2023-04-22'),
-(148, 189, 3, 1, 0, 0, '2023-04-22');
+(146, 96, 2, 0, 0, 0, '2023-04-22'),
+(147, 188, 7, 1, 0, 0, '2023-04-22'),
+(148, 189, 7, 1, 0, 0, '2023-04-22'),
+(149, 183, 1, 0, 0, 0, '2023-04-22'),
+(150, 182, 1, 0, 0, 0, '2023-04-22'),
+(151, 181, 1, 0, 0, 0, '2023-04-22'),
+(152, 93, 1, 0, 0, 0, '2023-04-22'),
+(153, 95, 1, 0, 0, 0, '2023-04-22'),
+(154, 92, 1, 0, 0, 0, '2023-04-22');
 
 -- --------------------------------------------------------
 
@@ -2142,7 +2193,14 @@ CREATE TABLE `sitegamesrevenue` (
 --
 
 INSERT INTO `sitegamesrevenue` (`id`, `gameID`, `orderID`, `siteShare`, `sale_date`) VALUES
-(5, 189, '6443b232426bd', 4.999, '2023-04-22');
+(5, 189, '6443b232426bd', 4.999, '2023-04-22'),
+(6, 189, '6443e7a97c091', 7.999, '2023-04-22'),
+(7, 189, '6443e7ea3e09e', 7.999, '2023-04-22'),
+(8, 188, '6443e7ea3e09e', 13.5983, '2023-04-22'),
+(9, 188, '6443f34c510a9', 13.5983, '2023-04-22'),
+(10, 189, '6443f34c510a9', 7.999, '2023-04-22'),
+(11, 189, '6443f6316333f', 4.999, '2023-04-22'),
+(12, 188, '6443f6316333f', 5.1, '2023-04-22');
 
 -- --------------------------------------------------------
 
@@ -2545,13 +2603,13 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
 -- AUTO_INCREMENT for table `activation_keys`
 --
 ALTER TABLE `activation_keys`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `admin`
@@ -2599,7 +2657,7 @@ ALTER TABLE `asset_view_tracker`
 -- AUTO_INCREMENT for table `billing_addresses`
 --
 ALTER TABLE `billing_addresses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `cart`
@@ -2701,7 +2759,7 @@ ALTER TABLE `gamejam`
 -- AUTO_INCREMENT for table `gamer`
 --
 ALTER TABLE `gamer`
-  MODIFY `gamerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `gamerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
 -- AUTO_INCREMENT for table `games_cart`
@@ -2719,25 +2777,25 @@ ALTER TABLE `games_filters`
 -- AUTO_INCREMENT for table `games_view_tracker`
 --
 ALTER TABLE `games_view_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=281;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=298;
 
 --
 -- AUTO_INCREMENT for table `game_cart`
 --
 ALTER TABLE `game_cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `game_library`
 --
 ALTER TABLE `game_library`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `game_purchases`
 --
 ALTER TABLE `game_purchases`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `game_reviews`
@@ -2755,7 +2813,7 @@ ALTER TABLE `game_stats`
 -- AUTO_INCREMENT for table `game_stats_history`
 --
 ALTER TABLE `game_stats_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=149;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=155;
 
 --
 -- AUTO_INCREMENT for table `gig`
@@ -2803,7 +2861,7 @@ ALTER TABLE `requestedgigs`
 -- AUTO_INCREMENT for table `sitegamesrevenue`
 --
 ALTER TABLE `sitegamesrevenue`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `submission`
