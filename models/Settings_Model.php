@@ -170,4 +170,26 @@ class Settings_Model extends Model
             $updatestmt->execute();
         }
     }
+
+    function UpdateRevenueShare($userID, $shareAmount)
+    {
+
+        $sql = "UPDATE account SET revenueShare='$shareAmount' WHERE userID='$userID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+    }
+
+    function CurrentRevenueShare($userID)
+    {
+
+        $sql = "SELECT * FROM account WHERE userID='$userID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }
