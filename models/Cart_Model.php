@@ -179,4 +179,88 @@ class Cart_Model extends Model
 
         $stmt->execute();
     }
+
+    //For checkouting assets from the cart
+    //For checkouting assets from the cart
+    //For checkouting assets from the cart
+    //For checkouting assets from the cart
+    //For checkouting assets from the cart
+    //For checkouting assets from the cart
+    //For checkouting assets from the cart
+
+    function AddtoAssetLibrary($assetID, $ownerID)
+    {
+
+        $sql = "INSERT INTO asset_library(developerID, assetID) VALUES (?,?)";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute(["$ownerID", "$assetID"]);
+    }
+
+    function SuccessfulAssetPurchase($assetID, $userID, $paidPrice, $orderID)
+    {
+
+        $sql = "INSERT INTO asset_purchases(assetID, buyerID, purchasedPrice, orderID) VALUES ('$assetID', '$userID', '$paidPrice', '$orderID')";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+    }
+
+    //Get Currently set revenue share of asset creator
+    function GetAssetRevenueShare($assetID)
+    {
+
+        $sql = "SELECT account.revenueShare FROM account INNER JOIN freeasset ON freeasset.assetCreatorID=account.userID 
+                    WHERE freeasset.assetID='$assetID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    //Update revenue of game_stats table of a game after each game purchase
+    function AssetCreatorShare($assetID, $revenueShare, $assetPrice)
+    {
+
+        $sql = "SELECT * FROM asset_stats WHERE assetID='$assetID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $assetStats = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $currentAssetRevenue = $assetStats['revenue'];
+
+        $creatorShare = (floatval($assetPrice) / 100) * (100 - $revenueShare);
+
+        $paymentGatewayCut = ($creatorShare / 100) * (3.3);
+
+        $finalCreatorShare = $creatorShare - $paymentGatewayCut;
+
+        $updatedTotalRevenue = $currentAssetRevenue + $finalCreatorShare;
+
+        $updateSQL = "UPDATE asset_stats SET revenue='$updatedTotalRevenue' WHERE assetID='$assetID'";
+
+        $updatedStmt = $this->db->prepare($updateSQL);
+
+        $updatedStmt->execute();
+    }
+
+    //How much portion site gains from each asset purchase
+    function IndieabodeAssetShare($assetID, $orderID, $revenueShare, $assetPrice)
+    {
+
+        $sitePortion = (floatval($assetPrice) / 100) * $revenueShare;
+
+        $sql = "INSERT INTO site_assets_revenue(assetID, orderID, siteShare) VALUES ('$assetID', '$orderID', '$sitePortion')";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+    }
 }
