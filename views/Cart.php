@@ -70,7 +70,7 @@
                 <?php } ?>
 
             </div>
-            <?php if (isset($_SESSION['logged']) && $_SESSION['userRole'] == "game developer") { ?>
+            <?php if (isset($_SESSION['logged']) && ($_SESSION['userRole'] == "game developer" || $_SESSION['userRole'] == "asset creator")) { ?>
                 <div class="order-summary">
                     <h3>Order Summary</h3>
 
@@ -139,10 +139,10 @@
             //if any games available in gamer's cart show checkout button, otherwise show find games button
             if ($('#checkout-total').val() == "0.00") {
                 $('#checkout-btn').hide();
-                $('#find-assets-btn').show();
+                $('#find-games-btn').show();
             } else {
                 $('#checkout-btn').show();
-                $('#find-assets-btn').hide();
+                $('#find-games-btn').hide();
             }
 
             //checkout game cart

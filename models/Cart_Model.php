@@ -103,7 +103,7 @@ class Cart_Model extends Model
         return $developer;
     }
 
-    function AddtoLibrary($gameID, $gamerID)
+    function AddtoGameLibrary($gameID, $gamerID)
     {
 
         $sql = "INSERT INTO game_library(gamerID, gameID) VALUES (?,?)";
@@ -124,7 +124,7 @@ class Cart_Model extends Model
     }
 
     //Get Currently set revenue share of developer
-    function GetRevenueShare($gameID)
+    function GetGameRevenueShare($gameID)
     {
 
         $sql = "SELECT account.revenueShare FROM account INNER JOIN freegame ON freegame.gameDeveloperID=account.userID 
@@ -168,7 +168,7 @@ class Cart_Model extends Model
     }
 
     //How much portion site gains from each game purchase
-    function IndieabodeShare($gameID, $orderID, $revenueShare, $gamePrice)
+    function IndieabodeGameShare($gameID, $orderID, $revenueShare, $gamePrice)
     {
 
         $sitePortion = (floatval($gamePrice) / 100) * $revenueShare;

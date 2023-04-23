@@ -37,7 +37,7 @@ class Cart extends Controller
             $this->view->discountTotal = number_format($saleDiscount, 2);
 
             $this->view->subTotal = number_format($cartTotal - $saleDiscount, 2);
-        } else if (isset($_SESSION['logged']) && $_SESSION['userRole'] == "game developer") {
+        } else if (isset($_SESSION['logged']) && ($_SESSION['userRole'] == "game developer" || $_SESSION['userRole'] == "asset creator")) {
 
             $this->view->myAssets = $this->model->showMyAssetCart($_SESSION['id']);
 
@@ -169,13 +169,13 @@ class Cart extends Controller
             $this->model->SuccessfulGamePurchase($cartGame['gameID'], $_SESSION['id'], $cartGame['gamePrice'], $orderId);
 
             //upading game_stats for increment the total revenue of that game
-            $revenueShare = $this->model->GetRevenueShare($cartGame['gameID']);
+            $revenueShare = $this->model->GetGameRevenueShare($cartGame['gameID']);
 
             $this->model->GameDeveloperShare($cartGame['gameID'], $revenueShare['revenueShare'], $cartGame['gamePrice']);
 
-            $this->model->IndieabodeShare($cartGame['gameID'], $orderId, $revenueShare['revenueShare'], $cartGame['gamePrice']);
+            $this->model->IndieabodeGameShare($cartGame['gameID'], $orderId, $revenueShare['revenueShare'], $cartGame['gamePrice']);
 
-            $this->model->AddtoLibrary($cartGame['gameID'], $_SESSION['id']);
+            $this->model->AddtoGameLibrary($cartGame['gameID'], $_SESSION['id']);
 
             $this->model->RemoveGameFromCart($_SESSION['id'], $cartGame['gameID']);
         }
