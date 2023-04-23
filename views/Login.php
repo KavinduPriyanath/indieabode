@@ -90,6 +90,13 @@
         }
     </script>
 
+    <script>
+        document.getElementById("login").addEventListener("click", function() {
+            this.classList.add("loading");
+            this.innerHTML = "<i class='fa fa-spinner fa-spin'></i>";
+        });
+    </script>
+
 </body>
 
 

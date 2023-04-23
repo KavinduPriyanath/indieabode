@@ -80,6 +80,7 @@ form input[type=text], input[type=password] {
   font-size: 25px;
   font-family: 'Kreon', serif;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .register {
