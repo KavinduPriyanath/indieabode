@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 22, 2023 at 05:25 PM
+-- Generation Time: Apr 23, 2023 at 06:44 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -200,7 +200,8 @@ INSERT INTO `asset_library` (`id`, `assetID`, `developerID`, `createdAt`) VALUES
 (15, 17, 46, '2023-03-20'),
 (16, 20, 46, '2023-03-21'),
 (17, 21, 46, '2023-04-18'),
-(18, 9, 78, '2023-04-18');
+(18, 9, 78, '2023-04-18'),
+(19, 29, 46, '2023-04-23');
 
 -- --------------------------------------------------------
 
@@ -213,7 +214,7 @@ CREATE TABLE `asset_purchases` (
   `assetID` int(11) NOT NULL,
   `buyerID` int(11) NOT NULL,
   `orderID` varchar(250) NOT NULL,
-  `purchasedPrice` double NOT NULL,
+  `purchasedPrice` float NOT NULL,
   `purchasedData` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -226,7 +227,8 @@ INSERT INTO `asset_purchases` (`id`, `assetID`, `buyerID`, `orderID`, `purchased
 (19, 17, 46, '641825ffad068', 30, '2023-03-20'),
 (20, 20, 46, '6419734216074', 30, '2023-03-21'),
 (21, 21, 46, '643e64a57e5e2', 30, '2023-04-18'),
-(22, 9, 78, '643e681aa58db', 30, '2023-04-18');
+(22, 9, 78, '643e681aa58db', 30, '2023-04-18'),
+(23, 29, 46, '6444b3e376984', 34, '2023-04-23');
 
 -- --------------------------------------------------------
 
@@ -265,7 +267,7 @@ CREATE TABLE `asset_stats` (
   `views` int(11) NOT NULL DEFAULT 0,
   `ratings` int(11) NOT NULL DEFAULT 0,
   `ratingCount` int(11) NOT NULL DEFAULT 0,
-  `revenue` double NOT NULL DEFAULT 0
+  `revenue` float NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -273,14 +275,14 @@ CREATE TABLE `asset_stats` (
 --
 
 INSERT INTO `asset_stats` (`assetID`, `downloads`, `views`, `ratings`, `ratingCount`, `revenue`) VALUES
-(9, 5, 3, 0, 0, 0),
-(10, 0, 6, 0, 0, 0),
+(9, 5, 4, 0, 0, 0),
+(10, 0, 8, 0, 0, 0),
 (17, 0, 3, 0, 0, 0),
-(18, 0, 1, 0, 0, 0),
-(19, 0, 1, 0, 0, 0),
-(20, 0, 0, 0, 0, 0),
-(21, 0, 0, 0, 0, 0),
-(29, 0, 1, 0, 0, 0);
+(18, 0, 3, 0, 0, 0),
+(19, 0, 2, 0, 0, 0),
+(20, 0, 1, 0, 0, 0),
+(21, 0, 1, 0, 0, 0),
+(29, 1, 3, 0, 0, 29.5902);
 
 -- --------------------------------------------------------
 
@@ -318,7 +320,14 @@ INSERT INTO `asset_stats_history` (`id`, `assetID`, `views`, `downloads`, `ratin
 (13, 29, 1, 0, 0, 0, '2023-04-19'),
 (14, 9, 3, 0, 0, 0, '2023-04-19'),
 (15, 10, 5, 0, 0, 0, '2023-04-19'),
-(16, 17, 2, 0, 0, 0, '2023-04-19');
+(16, 17, 2, 0, 0, 0, '2023-04-19'),
+(17, 10, 2, 0, 0, 0, '2023-04-23'),
+(18, 18, 2, 0, 0, 0, '2023-04-23'),
+(19, 19, 1, 0, 0, 0, '2023-04-23'),
+(20, 20, 1, 0, 0, 0, '2023-04-23'),
+(21, 21, 1, 0, 0, 0, '2023-04-23'),
+(22, 29, 2, 1, 0, 0, '2023-04-23'),
+(23, 9, 1, 0, 0, 0, '2023-04-23');
 
 -- --------------------------------------------------------
 
@@ -361,7 +370,17 @@ INSERT INTO `asset_view_tracker` (`id`, `userID`, `assetID`, `sessionID`, `viewe
 (20, 78, 17, 21, '2023-04-19'),
 (21, 0, 10, 0, '2023-04-19'),
 (22, 78, 10, 48, '2023-04-19'),
-(23, 46, 17, 38, '2023-04-19');
+(23, 46, 17, 38, '2023-04-19'),
+(24, 46, 10, 18, '2023-04-23'),
+(25, 46, 18, 18, '2023-04-23'),
+(26, 46, 19, 18, '2023-04-23'),
+(27, 46, 20, 18, '2023-04-23'),
+(28, 46, 21, 18, '2023-04-23'),
+(29, 46, 29, 18, '2023-04-23'),
+(30, 82, 9, 53, '2023-04-23'),
+(31, 82, 18, 53, '2023-04-23'),
+(32, 82, 29, 53, '2023-04-23'),
+(33, 82, 10, 53, '2023-04-23');
 
 -- --------------------------------------------------------
 
@@ -829,11 +848,11 @@ CREATE TABLE `freeasset` (
 --
 
 INSERT INTO `freeasset` (`assetID`, `assetName`, `assetGenre`, `assetPrice`, `version`, `assetDetails`, `assetScreenshots`, `assetTitle`, `assetTagline`, `assetClassification`, `assetReleaseStatus`, `assetTags`, `assetFile`, `assetLicense`, `assetCoverImg`, `assetVisibility`, `assetVideoURL`, `assetType`, `assetStyle`, `assetCreatorID`, `fileSize`, `fileExtension`, `created_at`) VALUES
-(9, 'Sprout Lands', '', '', '1.0', '', 'SS-Sprout Lands-0.png,SS-Sprout Lands-1.png', '', 'Cute pixel pastel farming asset pack for free', '2d', 'released', 'pixel art, sprout la', 'asset-Sprout Lands.zip', 'proprietary', 'Cover-Sprout Lands.png', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'sprite', 'pixelart', 47, '', '', '2023-04-17 20:17:28'),
-(10, 'Cozy People', '', '', '1.0', '', 'SS-Cozy People-0.png,SS-Cozy People-1.png', '', 'Animated characters, hairstyles and clothes!', '3d', 'Released', 'food, sprites, icons', 'asset-Cozy People.zip', 'open-source', 'Cover-Cozy People.png', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'sprite', 'pixelart', 47, '', '', '2023-04-23 00:00:00'),
+(9, 'Sprout Lands', '', '0', '1.0', '', 'SS-Sprout Lands-0.png,SS-Sprout Lands-1.png', '', 'Cute pixel pastel farming asset pack for free', '2d', 'released', 'pixel art, sprout la', 'asset-Sprout Lands.zip', 'proprietary', 'Cover-Sprout Lands.png', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'sprite', 'pixelart', 47, '', '', '2023-04-17 20:17:28'),
+(10, 'Cozy People', '', '0', '1.0', '', 'SS-Cozy People-0.png,SS-Cozy People-1.png', '', 'Animated characters, hairstyles and clothes!', '3d', 'Released', 'food, sprites, icons', 'asset-Cozy People.zip', 'open-source', 'Cover-Cozy People.png', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'sprite', 'pixelart', 47, '', '', '2023-04-23 00:00:00'),
 (17, 'New Asset', '', '30.00', '1.0', '', 'SS-New Asset-0.jpg,SS-New Asset-1.png', '', 'Buy this one ASAP', '2d', 'Released', 'feff', 'asset-New Asset.zip', 'proprietary', 'Cover-New Asset.png', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'skybox', '16bit', 47, '', '', '2023-01-08 00:00:00'),
 (18, 'New Asset 2', '', '0', '1.0', '', 'SS-New Asset 2-0.jpg,SS-New Asset 2-1.jpg,SS-New Asset 2-2.png', '', 'cute pixel pastel farming asset pack', 'visualEffects', 'Released', 'fefef', 'asset-New Asset 2.zip', 'proprietary', 'Cover-New Asset 2.jpg', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'skybox', '8bit', 47, '', '', '2023-01-24 00:00:00'),
-(19, 'New Asset 3', '', '$2.00', '1.0', '', 'SS-New Asset 3-0.jpg,SS-New Asset 3-1.jpg,SS-New Asset 3-2.jpg', '', 'cute pixel pastel farming asset pack', '3d', 'Released', 'grgg', 'asset-New Asset 3.zip', 'open-source', 'Cover-New Asset 3.jpg', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'character', '8bit', 47, '', '', '2022-01-28 00:00:00'),
+(19, 'New Asset 3', '', '2.00', '1.0', '', 'SS-New Asset 3-0.jpg,SS-New Asset 3-1.jpg,SS-New Asset 3-2.jpg', '', 'cute pixel pastel farming asset pack', '3d', 'Released', 'grgg', 'asset-New Asset 3.zip', 'open-source', 'Cover-New Asset 3.jpg', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'character', '8bit', 47, '', '', '2022-01-28 00:00:00'),
 (20, 'New Asset 4', '', '2.00', '1.0', '', 'SS-New Asset 4-0.jpg,SS-New Asset 4-1.jpg,SS-New Asset 4-2.jpg', '', 'cute pixel pastel farming asset pack', '3d', 'Released', 'grgr', 'asset-New Asset 4.zip', 'open-source', 'Cover-New Asset 4.jpg', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'sprite', 'pixelart', 47, '', '', '2022-01-11 00:00:00'),
 (21, 'New Asset 5', '', '12', '1.0', '', 'SS-New Asset 5-0.png,SS-New Asset 5-1.png', '', 'cute pixel pastel farming asset pack', '3d', 'Released', 'brbr', 'asset-New Asset 5.zip', 'open-source', 'Cover-New Asset 5.png', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'sprite', 'pixelart', 47, '', '', '2023-01-01 00:00:00'),
 (29, 'New Asset 1000', '', '34', '1.0', 'fefe&nbsp;', 'SS-New Asset 1000-0.jpg,SS-New Asset 1000-1.jpg,SS-New Asset 1000-2.jpg', '', 'Animated characters, hairstyles and clothes!', '3d', 'released', 'rhgth,jytjty', 'asset-New Asset 1000.zip', 'open-source', 'Cover-New Asset 1000.jpg', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'sprite', 'pixelart', 78, '', '', '2023-04-19 11:29:38');
@@ -1393,7 +1412,9 @@ INSERT INTO `games_view_tracker` (`id`, `userID`, `sessionID`, `gameID`, `viewed
 (294, 84, 69, 189, '2023-04-22'),
 (295, 86, 66, 189, '2023-04-22'),
 (296, 86, 66, 188, '2023-04-22'),
-(297, 86, 48, 92, '2023-04-22');
+(297, 86, 48, 92, '2023-04-22'),
+(298, 82, 53, 189, '2023-04-23'),
+(299, 82, 53, 188, '2023-04-23');
 
 -- --------------------------------------------------------
 
@@ -1570,8 +1591,8 @@ INSERT INTO `game_stats` (`id`, `gameID`, `views`, `downloads`, `ratings`, `reve
 (8, 184, 9, 3, 0, 0),
 (10, 186, 2, 0, 0, 0),
 (11, 187, 3, 3, 0, 0),
-(12, 188, 9, 1, 0, 152.48),
-(14, 189, 8, 0, 0, 295.858);
+(12, 188, 10, 1, 0, 152.48),
+(14, 189, 9, 0, 0, 295.858);
 
 -- --------------------------------------------------------
 
@@ -1740,7 +1761,9 @@ INSERT INTO `game_stats_history` (`id`, `gameID`, `views`, `downloads`, `ratings
 (151, 181, 1, 0, 0, 0, '2023-04-22'),
 (152, 93, 1, 0, 0, 0, '2023-04-22'),
 (153, 95, 1, 0, 0, 0, '2023-04-22'),
-(154, 92, 1, 0, 0, 0, '2023-04-22');
+(154, 92, 1, 0, 0, 0, '2023-04-22'),
+(155, 189, 1, 0, 0, 0, '2023-04-23'),
+(156, 188, 1, 0, 0, 0, '2023-04-23');
 
 -- --------------------------------------------------------
 
@@ -2205,6 +2228,27 @@ INSERT INTO `sitegamesrevenue` (`id`, `gameID`, `orderID`, `siteShare`, `sale_da
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `site_assets_revenue`
+--
+
+CREATE TABLE `site_assets_revenue` (
+  `id` int(11) NOT NULL,
+  `assetID` int(11) NOT NULL,
+  `orderID` varchar(255) NOT NULL,
+  `siteShare` float NOT NULL,
+  `sale_date` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `site_assets_revenue`
+--
+
+INSERT INTO `site_assets_revenue` (`id`, `assetID`, `orderID`, `siteShare`, `sale_date`) VALUES
+(1, 29, '6444b3e376984', 3.4, '2023-04-23');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `submission`
 --
 
@@ -2584,6 +2628,12 @@ ALTER TABLE `sitegamesrevenue`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `site_assets_revenue`
+--
+ALTER TABLE `site_assets_revenue`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `submission`
 --
 ALTER TABLE `submission`
@@ -2627,13 +2677,13 @@ ALTER TABLE `asset_cart`
 -- AUTO_INCREMENT for table `asset_library`
 --
 ALTER TABLE `asset_library`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `asset_purchases`
 --
 ALTER TABLE `asset_purchases`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `asset_reviews`
@@ -2645,13 +2695,13 @@ ALTER TABLE `asset_reviews`
 -- AUTO_INCREMENT for table `asset_stats_history`
 --
 ALTER TABLE `asset_stats_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `asset_view_tracker`
 --
 ALTER TABLE `asset_view_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `billing_addresses`
@@ -2777,7 +2827,7 @@ ALTER TABLE `games_filters`
 -- AUTO_INCREMENT for table `games_view_tracker`
 --
 ALTER TABLE `games_view_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=298;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=300;
 
 --
 -- AUTO_INCREMENT for table `game_cart`
@@ -2813,7 +2863,7 @@ ALTER TABLE `game_stats`
 -- AUTO_INCREMENT for table `game_stats_history`
 --
 ALTER TABLE `game_stats_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=155;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=157;
 
 --
 -- AUTO_INCREMENT for table `gig`
@@ -2862,6 +2912,12 @@ ALTER TABLE `requestedgigs`
 --
 ALTER TABLE `sitegamesrevenue`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `site_assets_revenue`
+--
+ALTER TABLE `site_assets_revenue`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `submission`

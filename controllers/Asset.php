@@ -21,6 +21,14 @@ class Asset extends Controller
 
             $this->view->asset = $this->model->showSingleAsset($assetID);
 
+            $thisAsset = $this->model->showSingleAsset($assetID);
+
+            if ($thisAsset['assetPrice'] == "0") {
+                $this->view->assetPrice = "FREE";
+            } else if ($thisAsset['assetPrice'] != "0") {
+                $this->view->assetPrice = "$" . number_format(floatval($thisAsset['assetPrice']), 2);
+            }
+
             $this->view->assetCreator = $this->model->getAssetsCreator($this->model->showSingleAsset($assetID));
 
             $this->view->screenshots = $this->model->getScreenshots($assetID);
@@ -66,8 +74,9 @@ class Asset extends Controller
 
         $userDetails = $this->model->getUserDetails($_SESSION['id']);
 
-        // $amount = $asset['assetPrice'];
-        $amount = 30.00;
+        $amount = $asset['assetPrice'];
+        $item = $asset['assetName'];
+        // $amount = 30.00;
         $merchant_id = "1222729";
         $order_id = uniqid();
         $merchant_secret = "MjczNjU0OTYzMzM3NDA3NzYzMjczNzEyMjI2MjM4MTQ3MjE2OTkxMg==";
@@ -95,6 +104,7 @@ class Asset extends Controller
         $array = [];
 
         $array['amount'] = $amount;
+        $array['item'] = $item;
         $array['merchant_id'] = $merchant_id;
         $array['order_id'] = $order_id;
         $array['currency'] = $currency;
@@ -116,13 +126,20 @@ class Asset extends Controller
     {
 
         $orderId = $_POST['orderID'];
-        $amount = $_POST['assetID'];
+        $amount = $_POST['amount'];
 
         $downloadingDev = $this->model->currentUser($_SESSION['id']);
 
         $developerEmail = $downloadingDev['email'];
 
         $this->model->SuccessfulAssetPurchase($_GET['id'], $_SESSION['id'], $amount, $orderId);
+
+        //upadating game_stats for increment the total revenue of that game
+        $revenueShare = $this->model->GetRevenueShare($_GET['id']);
+
+        $this->model->AssetCreatorShare($_GET['id'], $revenueShare['revenueShare'], $amount);
+
+        $this->model->IndieabodeShare($_GET['id'], $orderId, $revenueShare['revenueShare'], $amount);
 
         $this->model->AddtoLibrary($_GET['id'], $_SESSION['id']);
 
@@ -164,39 +181,6 @@ class Asset extends Controller
             header('location:/indieabode/downloadfailed');
             // echo "1";
         }
-
-
-
-        // header('location:/indieabode/fefefef');
-
-        // $merchant_id        = $_POST['merchant_id'];
-        // $order_id           = $_POST['order_id'];
-        // $payhere_amount     = $_POST['payhere_amount'];
-        // $payhere_currency   = $_POST['payhere_currency'];
-        // $status_code        = $_POST['status_code'];
-        // $md5sig             = $_POST['md5sig'];
-        // $status_message     = $_POST['status_message'];
-        // $customer_token     = $_POST['customer_token'];
-
-        // $merchant_secret = 'MjczNjU0OTYzMzM3NDA3NzYzMjczNzEyMjI2MjM4MTQ3MjE2OTkxMg=='; // Replace with your Merchant Secret
-
-        // $local_md5sig = strtoupper(
-        //     md5(
-        //         $merchant_id .
-        //             $order_id .
-        //             $payhere_amount .
-        //             $payhere_currency .
-        //             $status_code .
-        //             strtoupper(md5($merchant_secret))
-        //     )
-        // );
-
-        // if (($local_md5sig === $md5sig) and ($status_code == 2)) {
-        //     //TODO: Store the encrypted token ($customer_token) securely in your database against your customer
-        //     $this->model->SuccessfulAssetPurchase($_GET['id'], $_SESSION['id'], 7.50);
-
-        //     header('location:/indieabode/fefefef');
-        // }
     }
 
     function download()

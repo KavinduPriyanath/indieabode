@@ -37,7 +37,7 @@ class Game extends Controller
             if ($thisGame['gamePrice'] == "0") {
                 $this->view->gamePrice = "FREE";
             } else if ($thisGame['gamePrice'] != "0") {
-                $this->view->gamePrice = "$" . $thisGame['gamePrice'];
+                $this->view->gamePrice = "$" . number_format(floatval($thisGame['gamePrice']), 2);
             }
 
             $platforms = $thisGame['platform'];
@@ -352,7 +352,7 @@ class Game extends Controller
         //updating game_purchas table
         $this->model->SuccessfulGamePurchase($_GET['id'], $_SESSION['id'], $amount, $orderId);
 
-        //upading game_stats for increment the total revenue of that game
+        //upadating game_stats for increment the total revenue of that game
         $revenueShare = $this->model->GetRevenueShare($_GET['id']);
 
         $this->model->GameDeveloperShare($_GET['id'], $revenueShare['revenueShare'], $amount);

@@ -102,7 +102,7 @@
                     <?php if ($this->asset['assetPrice'] == "0.00") { ?>
                         <h1>FREE</h1>
                     <?php } else { ?>
-                        <h1>$<?= $this->asset['assetPrice']; ?></h1>
+                        <h1><?= $this->assetPrice ?></h1>
                     <?php } ?>
                 </div>
                 <div id="not-claimed">
