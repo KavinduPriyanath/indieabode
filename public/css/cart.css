@@ -123,6 +123,6 @@
     background-color: #78a0a8;
 }
 
-#find-games-btn, #checkout-btn{
+#find-games-btn, #checkout-btn, #asset-checkout-btn, #find-assets-btn{
     display: none;
 }
