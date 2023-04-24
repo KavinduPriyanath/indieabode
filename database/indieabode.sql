@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 23, 2023 at 04:56 PM
+-- Generation Time: Apr 24, 2023 at 05:36 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -59,7 +59,8 @@ INSERT INTO `account` (`userID`, `profilePhoto`, `location`, `phoneNumber`, `dis
 (84, '', '', '', '', '', '', '', '', 10),
 (86, '', '', '', '', '', '', '', '', 10),
 (87, '', '', '', '', '', '', '', '', 10),
-(88, '', '', '', '', '', '', '', '', 10);
+(88, '', '', '', '', '', '', '', '', 10),
+(89, '', '', '', '', '', '', '', '', 10);
 
 -- --------------------------------------------------------
 
@@ -100,7 +101,8 @@ INSERT INTO `activation_keys` (`id`, `userID`, `activationCode`) VALUES
 (32, 88, '24786'),
 (33, 88, '16401'),
 (34, 88, '29155'),
-(35, 88, '29090');
+(35, 88, '29090'),
+(36, 89, '54574');
 
 -- --------------------------------------------------------
 
@@ -294,7 +296,7 @@ CREATE TABLE `asset_stats` (
 INSERT INTO `asset_stats` (`assetID`, `downloads`, `views`, `ratings`, `ratingCount`, `revenue`) VALUES
 (9, 5, 8, 0, 0, 0),
 (10, 0, 11, 0, 0, 0),
-(17, 3, 5, 0, 0, 26.109),
+(17, 4, 5, 0, 0, 26.109),
 (18, 0, 4, 0, 0, 0),
 (19, 2, 4, 0, 0, 28.276),
 (20, 0, 3, 0, 0, 0),
@@ -345,7 +347,8 @@ INSERT INTO `asset_stats_history` (`id`, `assetID`, `views`, `downloads`, `ratin
 (21, 21, 3, 2, 0, 0, '2023-04-23'),
 (22, 29, 5, 1, 0, 0, '2023-04-23'),
 (23, 9, 5, 0, 0, 0, '2023-04-23'),
-(24, 17, 2, 1, 0, 0, '2023-04-23');
+(24, 17, 2, 1, 0, 0, '2023-04-23'),
+(25, 17, 0, 1, 0, 0, '2023-04-24');
 
 -- --------------------------------------------------------
 
@@ -442,7 +445,7 @@ CREATE TABLE `billing_addresses` (
 --
 
 INSERT INTO `billing_addresses` (`id`, `userID`, `fullName`, `streetLine1`, `streetLine2`, `city`, `province`, `zipCode`, `country`) VALUES
-(2, 46, 'fefefjkukiuliuli', 'grgr', 'grgrg', 'rrh', 'hrg', 'grgrg', 'Sri Lanka'),
+(2, 46, 'kavindu priyanath', '342/C/2', 'Biyagama', 'Warana', 'Uva', '121001', 'Sri Lanka'),
 (3, 52, 'fef', 'grgr', 'grgrg', 'rrh', 'hrg', 'grgrg', 'Sri Lanka'),
 (4, 47, 'fefefjkukiuliuli', 'grgr', 'grgrg', 'rrh', 'hrg', 'grgrg', 'Sri Lanka'),
 (5, 78, 'fefefjkukiuliuli', 'grgr', 'grgrg', 'rrh', 'hrg', 'grgrg', 'Sri Lanka'),
@@ -1019,7 +1022,8 @@ INSERT INTO `gamejam` (`gameJamID`, `submissionStartDate`, `submissionEndDate`, 
 (59, '2023-12-01 16:55:00', '2023-12-08 16:55:00', ' majhcdsjc vmnb', '0000-00-00 00:00:00', 'majbhdhjsa', 'grg', 'Ranked', 'mdhcbgd', 'Draft', 67, 1, 16, 'Public', 'mhcbds', 'Cover-majbhdhjsa.jpg', 0, 0, ''),
 (60, '2023-01-02 12:00:00', '2023-01-03 12:00:00', ' Genshin Impact takes place in the fantasy world of Teyvat, home to seven nations, each of which is tied to a different element and ', '2023-01-04 12:00:00', 'GameJam', 'This is a gamejam', 'Non-Ranked', 'Creativity', 'Draft', 40, 1, 12, 'Public', '#brackeys', 'Cover-GameJam.jpg', 0, 0, ''),
 (61, '2023-12-01 16:55:00', '2023-12-08 16:55:00', ' majhcdsjc vmnb', '0000-00-00 00:00:00', 'majbhdhjsa', 'grg', 'Ranked', 'mdhcbgd', 'Draft', 67, 1, 16, 'Public', 'mhcbds', 'Cover-majbhdhjsa.jpg', 0, 0, ''),
-(62, '2023-06-14 16:55:00', '2023-08-15 16:55:00', 'gregr <b>rhrtthtrhrth </b>htrt <u>trhthththh </u>htrtttrthrthr 11', '2023-10-23 16:55:00', 'new jam 1', 'grg', 'Ranked', 'Creativity', 'Public', 0, 0, 79, 'Public', '#brackeys', 'Cover-new jam 1.jpg', 0, 0, 'stick together');
+(62, '2023-06-14 16:55:00', '2023-08-15 16:55:00', 'gregr <b>rhrtthtrhrth </b>htrt <u>trhthththh </u>htrtttrthrthr 11', '2023-10-23 16:55:00', 'new jam 1', 'grg', 'Ranked', 'Creativity', 'Public', 0, 0, 79, 'Public', '#brackeys', 'Cover-new jam 1.jpg', 0, 0, 'stick together'),
+(63, '2023-04-25 16:55:00', '2023-04-26 16:55:00', '', '2023-04-27 16:55:00', 'Kenney Jam', 'Make a game using Kenney Assets in 24 hours', 'Ranked', 'Creativity', 'Public', 0, 0, 89, 'Public', '#kenny', 'Cover-Kenney Jam.png', 0, 0, 'Growth');
 
 -- --------------------------------------------------------
 
@@ -1064,7 +1068,8 @@ INSERT INTO `gamer` (`gamerID`, `email`, `password`, `accountStatus`, `avatar`, 
 (84, 'somasira83@gmail.com', '$2y$10$cIOyyp/HlJRMwsRE4aFwje.5jsX8PgBE.6bnbTSSmujsSOnihN7Ai', 1, 'avatar4.png', 'gamer', 'Escanor', 'Seven', 'Sin', '2023-04-22 14:44:57', '2023-04-22 14:44:57', 1, '', 2),
 (86, 'sinharasa7@gmail.com', '$2y$10$PEbhk8sh.Zr35K2S0WCs3.j2IHkpqRPT7bP8yU4Mxn0cIXuF3mlbm', 1, 'avatar2.png', 'gamer', 'Baan', 'Undead', 'Ban', '2023-04-22 14:53:27', '2023-04-22 14:53:27', 1, '', 2),
 (87, 'liyanagunawardanainoka@gmail.com', '$2y$10$zx9.kYnkZV.TCQ3tXw6a7uk5jT5.ZR9o08mEaIFvtsxJtAwADdAoi', 1, 'avatar4.png', 'asset creator', 'King', 'Fairy', 'King', '2023-04-23 06:46:19', '2023-04-23 06:46:19', 1, '', 2),
-(88, '2020cs029@stu.ucsc.cmb.ac.lk', '$2y$10$sJA5JFFkxUmSTOkxdZxYTOE7XfhR1qib5/qWty/Bat5vgruPSlki.', 1, 'avatar4.png', 'gamejam organizer', 'Diane', 'Serpent', 'Sin', '2023-04-23 14:48:45', '2023-04-23 14:48:45', 0, '', 2);
+(88, '2020cs029@stu.ucsc.cmb.ac.lk', '$2y$10$sJA5JFFkxUmSTOkxdZxYTOE7XfhR1qib5/qWty/Bat5vgruPSlki.', 1, 'avatar4.png', 'gamejam organizer', 'Diane', 'Serpent', 'Sin', '2023-04-23 14:48:45', '2023-04-23 14:48:45', 0, '', 2),
+(89, '2020cs104@stu.ucsc.cmb.ac.lk', '$2y$10$6h2JqX09rf5YF80v.k84n.R5uiiEAU5d9oUMkjckdnq1gbnaiu92q', 1, 'avatar1.png', 'gamejam organizer', 'Capn', 'Cap', 'Meliodas', '2023-04-23 18:38:32', '2023-04-23 18:38:32', 1, '', 2);
 
 -- --------------------------------------------------------
 
@@ -2698,13 +2703,13 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 
 --
 -- AUTO_INCREMENT for table `activation_keys`
 --
 ALTER TABLE `activation_keys`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `admin`
@@ -2740,7 +2745,7 @@ ALTER TABLE `asset_reviews`
 -- AUTO_INCREMENT for table `asset_stats_history`
 --
 ALTER TABLE `asset_stats_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `asset_view_tracker`
@@ -2848,13 +2853,13 @@ ALTER TABLE `freegame`
 -- AUTO_INCREMENT for table `gamejam`
 --
 ALTER TABLE `gamejam`
-  MODIFY `gameJamID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `gameJamID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT for table `gamer`
 --
 ALTER TABLE `gamer`
-  MODIFY `gamerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+  MODIFY `gamerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 
 --
 -- AUTO_INCREMENT for table `games_cart`
