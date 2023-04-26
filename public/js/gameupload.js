@@ -149,7 +149,7 @@ $(document).ready(function () {
     if ($("#file-input")[0].files.length == 0) {
       $("#screenshotsCheck").show();
       $("#screenshotsCheck").text("Select at leaset one screenshot");
-      screenshotsOkay = true;
+      screenshotsOkay = false;
     }
   }
 
