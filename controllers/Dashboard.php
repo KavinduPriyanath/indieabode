@@ -509,6 +509,27 @@ class Dashboard extends Controller
         header('location:/indieabode/');
     }
 
+    //Developer can delete his published gigs if they do not have any requests made by publishers
+    function deleteGig()
+    {
+        if ($_POST['delete_gig'] == true) {
+
+            $gigID = $_POST['gigID'];
+
+            //Checks whether the gig has any requests
+            $hasRequests = $this->model->OngoingRequestsOfThisGig($gigID);
+
+            //Delete the gig if it dont have any requests. Otherwise display an alert message
+            if (empty($hasRequests)) {
+
+                $this->model->DeleteGig($gigID);
+                echo "deleted";
+            } else {
+                echo "has requests";
+            }
+        }
+    }
+
     function gamecrowdfunds()
     {
         $this->view->crowdfund = $this->model->ThisGamesCrowdfunds($_GET['id']);

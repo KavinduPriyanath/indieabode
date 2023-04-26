@@ -225,6 +225,8 @@
                             <button type="submit" class="submit-btn" name="game-submit">
                                 Save & View Page
                             </button>
+
+                            <div class="delete-btn" id="delete-btn">Delete Gig</div>
                         </form>
                     </div>
                 </div>
@@ -343,6 +345,45 @@
     </script>
 
 
+    <script>
+        $(document).ready(function() {
+
+            $('#delete-btn').click(function() {
+
+                let message = "Are you sure you want to delete the gig <?= $this->gig['gigName'] ?> ? ";
+
+                if (confirm(message) == true) {
+
+                    let gigID = <?= $_GET['gigid'] ?>;
+
+                    var data = {
+                        'gigID': gigID,
+                        'delete_gig': true,
+                    };
+
+                    $.ajax({
+                        url: "/indieabode/dashboard/deleteGig",
+                        method: "POST",
+                        data: data,
+                        success: function(response) {
+
+                            if (response == "deleted") {
+                                window.location.href = "/indieabode/dashboard/";
+                            } else if (response == "has requests") {
+                                alert("cannot delete");
+                            }
+
+                        }
+                    })
+
+                } else {
+                    //nothin happens
+                }
+
+            });
+
+        });
+    </script>
 
 
 </body>

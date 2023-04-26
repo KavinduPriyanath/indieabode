@@ -302,6 +302,28 @@ class Dashboard_Model extends Model
         return $gig;
     }
 
+    function OngoingRequestsOfThisGig($gigID)
+    {
+
+        $sql = "SELECT * FROM requestedgigs WHERE gigID='$gigID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+
+    function DeleteGig($gigID)
+    {
+
+        $sql = "DELETE FROM gig WHERE gigID='$gigID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+    }
+
 
     function GetCrowdfundDetails($crowdfundID)
     {
