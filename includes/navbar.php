@@ -79,7 +79,7 @@
                                 <div class="arrow arrow3"></div>
                                 <div class=".ulsub">
                                     <a href="<?php echo BASE_URL; ?>jams">Join Jams <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                                    <a href="<?php echo BASE_URL; ?>jams-calender">Jam&nbsp;Calender
+                                    <a href="<?php echo BASE_URL; ?>jamsCalender">Jam&nbsp;Calender
                                         <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                 </div>
                             </div>
@@ -179,7 +179,7 @@
                                 <div class="arrow arrow3"></div>
                                 <div class=".ulsub">
                                     <a href="<?php echo BASE_URL; ?>jams">Join Jams <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                                    <a href="<?php echo BASE_URL; ?>jams-calender">Jam&nbsp;Calender
+                                    <a href="<?php echo BASE_URL; ?>jamsCalender">Jam&nbsp;Calender
                                         <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                 </div>
                             </div>
@@ -342,7 +342,7 @@
                                 <div class="arrow arrow3"></div>
                                 <div class=".ulsub">
                                     <a href="<?php echo BASE_URL; ?>gameJamForm">Host Jams <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                                    <a href="<?php echo BASE_URL; ?>jams-calender">Jam&nbsp;Calender
+                                    <a href="<?php echo BASE_URL; ?>jamsCalender">Jam&nbsp;Calender
                                         <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                 </div>
                             </div>
@@ -595,7 +595,7 @@
                             <div class="arrow arrow3"></div>
                             <div class=".ulsub">
                                 <a href="<?php echo BASE_URL; ?>jams">Join Jams <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                                <a href="<?php echo BASE_URL; ?>jams-calender">Jam&nbsp;Calender
+                                <a href="<?php echo BASE_URL; ?>jamsCalender">Jam&nbsp;Calender
                                     <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                             </div>
                         </div>
