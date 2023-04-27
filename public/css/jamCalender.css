@@ -1,0 +1,205 @@
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+    height: 7px;
+    transform: translate(0 10px);
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, .5);
+    -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+  }
+
+  .ofs-timeline {
+    cursor: move;
+    padding-bottom: 10px;
+    width: 100%;
+    height: min-content;
+    overflow-x: scroll;
+  }
+
+  .ofs-timeline-legend {
+    display: grid;
+    width: min-content;
+    grid-template-columns: 50px repeat(181, 100px);
+    grid-column: 1 / span 25;
+  }
+
+  .day-label:first-child {
+    grid-column-start: 2;
+  }
+
+  .day-label {
+    z-index: 1;
+    grid-row-end: 1;
+    grid-column-end: span 2;
+    text-align: center;
+    line-height: 50px;
+  }
+
+
+  .ofs-timeline-track {
+    width: min-content;
+    display: grid;
+    grid-template-columns: 150px repeat(181, 100px [day]);
+    grid-template-rows:  min-content;
+    padding: 1rem 0;
+    border-bottom: 3px solid #080825;
+  }
+
+  .ofs-timeline-track:last-child {
+    border-bottom-width: 0;
+  }
+  .ofs-timeline-track {
+    background-attachment: local;
+    background-image:
+      repeating-linear-gradient(
+        to right,
+        rgba(152, 191, 232, 0.516),
+        rgba(152, 191, 232, 0.516) 199px,
+        #0a2144 199px,
+        #1a3251 200px);
+        background-color: rgba(152, 191, 232, 0.516);
+    background-position: -50px 0px;
+  }
+
+  .row {
+    height: 130px;
+    position: relative;
+  }
+
+  .row-inner-wrap {
+    position: fixed;
+    margin-top: -5px;
+    padding: 1.25rem;
+    background-color: #d34c8b;
+    border-right: 1px solid #eee;
+  }
+
+  .ofs-timeline-item {
+    padding: 1.25rem;
+    font-size: 22px;
+    background-color: #97d1e1;
+    grid-row-end: 2;
+    border-width: 0px;
+    box-shadow: 0px 0px 5px 0px #00000033
+  }
+
+
+  .ofs-timeline-item {
+    grid-column-end: span var(--span);
+  }
+
+
+  /* styling for january starting dates */
+  .start-01-01-am {grid-column-start: 2;}
+  .start-01-01-pm {grid-column-start: 3;}
+  .start-01-02-am {grid-column-start: 4;}
+  .start-01-02-pm {grid-column-start: 5;}
+  .start-01-03-am {grid-column-start: 6;}
+  .start-01-03-pm {grid-column-start: 7;}
+  .start-01-04-am {grid-column-start: 8;}
+  .start-01-04-pm {grid-column-start: 9;}
+  .start-01-05-am {grid-column-start: 10;}
+  .start-01-05-pm {grid-column-start: 11;}
+  .start-01-06-am {grid-column-start: 12;}
+  .start-01-06-pm {grid-column-start: 13;}
+  .start-01-07-am {grid-column-start: 14;}
+  .start-01-07-pm {grid-column-start: 15;}
+  .start-01-08-am {grid-column-start: 16;}
+  .start-01-08-pm {grid-column-start: 17;}
+  .start-01-09-am {grid-column-start: 18;}
+  .start-01-09-pm {grid-column-start: 19;}
+  .start-01-10-am {grid-column-start: 20;}
+  .start-01-10-pm {grid-column-start: 21;}
+  .start-01-11-am {grid-column-start: 22;}
+  .start-01-11-pm {grid-column-start: 23;}
+  .start-01-12-am {grid-column-start: 24;}
+  .start-01-12-pm {grid-column-start: 25;}
+  .start-01-13-am {grid-column-start: 26;}
+  .start-01-13-pm {grid-column-start: 27;}
+  .start-01-14-am {grid-column-start: 28;}
+  .start-01-14-pm {grid-column-start: 29;}
+  .start-01-15-am {grid-column-start: 30;}
+  .start-01-15-pm {grid-column-start: 31;}
+  .start-01-16-am {grid-column-start: 32;}
+  .start-01-16-pm {grid-column-start: 33;}
+  .start-01-17-am {grid-column-start: 34;}
+  .start-01-17-pm {grid-column-start: 35;}
+  .start-01-18-am {grid-column-start: 36;}
+  .start-01-18-pm {grid-column-start: 37;}
+  .start-01-19-am {grid-column-start: 38;}
+  .start-01-19-pm {grid-column-start: 39;}
+  .start-01-20-am {grid-column-start: 40;}
+  .start-01-20-pm {grid-column-start: 41;}
+  .start-01-21-am {grid-column-start: 42;}
+  .start-01-21-pm {grid-column-start: 43;}
+  .start-01-22-am {grid-column-start: 44;}
+  .start-01-22-pm {grid-column-start: 45;}
+  .start-01-23-am {grid-column-start: 46;}
+  .start-01-23-pm {grid-column-start: 47;}
+
+  .start-01-24 {grid-column-start: 2;}
+  .start-01-25 {grid-column-start: 2;}
+  .start-01-26 {grid-column-start: 2;}
+  .start-01-27 {grid-column-start: 2;}
+  .start-01-28 {grid-column-start: 2;}
+  .start-01-29 {grid-column-start: 2;}
+  .start-01-30 {grid-column-start: 2;}
+  .start-01-31 {grid-column-start: 2;}
+
+  /*styling for january end dates*/
+  .end-01-01-am {grid-column-end: 2;}
+  .end-01-01-pm {grid-column-end: 3;}
+  .end-01-02-am {grid-column-end: 4;}
+  .end-01-02-pm {grid-column-end: 5;}
+  .end-01-03-am {grid-column-end: 6;}
+  .end-01-03-pm {grid-column-end: 7;}
+  .end-01-04-am {grid-column-end: 8;}
+  .end-01-04-pm {grid-column-end: 9;}
+  .end-01-05-am {grid-column-end: 10;}
+  .end-01-05-pm {grid-column-end: 11;}
+  .end-01-06-am {grid-column-end: 12;}
+  .end-01-06-pm {grid-column-end: 13;}
+  .end-01-07-am {grid-column-end: 14;}
+  .end-01-07-pm {grid-column-end: 15;}
+  .end-01-08-am {grid-column-end: 16;}
+  .end-01-08-pm {grid-column-end: 17;}
+  .end-01-09-am {grid-column-end: 18;}
+  .end-01-09-pm {grid-column-end: 19;}
+  .end-01-10-am {grid-column-end: 20;}
+  .end-01-10-pm {grid-column-end: 21;}
+  .end-01-11-am {grid-column-end: 22;}
+  .end-01-11-pm {grid-column-end: 23;}
+  .end-01-12-am {grid-column-end: 24;}
+  .end-01-12-pm {grid-column-end: 25;}
+  .end-01-13-am {grid-column-end: 26;}
+  .end-01-13-pm {grid-column-end: 27;}
+  .end-01-14-am {grid-column-end: 28;}
+  .end-01-14-pm {grid-column-end: 29;}
+  .end-01-15-am {grid-column-end: 30;}
+  .end-01-15-pm {grid-column-end: 31;}
+  .end-01-16-am {grid-column-end: 32;}
+  .end-01-16-pm {grid-column-end: 33;}
+  .end-01-17-am {grid-column-end: 34;}
+  .end-01-17-pm {grid-column-end: 35;}
+  .end-01-18-am {grid-column-end: 36;}
+  .end-01-18-pm {grid-column-end: 37;}
+  .end-01-19-am {grid-column-end: 38;}
+  .end-01-19-pm {grid-column-end: 39;}
+  .end-01-20-am {grid-column-end: 40;}
+  .end-01-20-pm {grid-column-end: 41;}
+  .end-01-21-am {grid-column-end: 42;}
+  .end-01-21-pm {grid-column-end: 43;}
+  .end-01-22-am {grid-column-end: 44;}
+  .end-01-22-pm {grid-column-end: 45;}
+  .end-01-23-am {grid-column-end: 46;}
+  .end-01-23-pm {grid-column-end: 47;}
+
+
+
+  .scrollbar-enabler {
+    grid-column-end: span 24;
+    z-index: -1;
+    background-color: transparent;
+  }
