@@ -28,9 +28,9 @@
 				<img src="/indieabode/public/images/Admin/admin-1.png" alt="user-image" class="rounded-circle" />
 			</div>
 			<div class="user-details">
-				<div class="user-role"><?= $_SESSION['username']; ?></div>
+				<div class="user-role">Admin</div>
 				<div class="email-address">
-					<div class="box"><?= $_SESSION['email']; ?></div>
+					<div class="box">admin@gmail.com</div>
 				</div>
 			</div>
 		</div>
@@ -55,20 +55,109 @@
 	<!-- NAVBAR -->
 	<section id="content">
 		<main>
-            <div class="dashboard-tabs-container">
-                <div class="db-btn-container">
-                    <button onclick="showPanel(0,'#7FAFDB')">Game Dashboard</button>
-                    <button onclick="showPanel(1,'#7FAFDB')">Assets Dashboard</button>
-                    <button onclick="showPanel(2,'#7FAFDB')">Game Jam Dashboard</button>
-                    <button onclick="showPanel(3,'#7FAFDB')">Gigs Dashboard</button>
-                </div>
+			<h1 class="title">Dashboard</h1>
 
-                <div class="tabPanel">Game Dashboard:Content</div>
-                <div class="tabPanel">Assets Dashboard:Content</div>
-                <div class="tabPanel">Game Jam Dashboard:Content</div>
-                <div class="tabPanel">Gigs Dashboard:Content</div>
-            </div>
-			
+			<div class="info-data">
+				<div class="card db-card">
+					<div class="total-views">
+						<div class="main-total-view-left">
+							<h3>Registered Users</h3>
+							<h1><?= $this->userCount ?></h1>
+						</div>
+						<div class="main-total-view-right">
+							<i class='bx bx-user view-icon'></i>
+						</div>
+					</div>
+				</div>
+				<div class="card db-card">
+					<div class="total-views">
+						<div class="main-total-view-left">
+							<h3>Total Transactions</h3>
+							<h1>1356700.00</h1>
+						</div>
+						<div class="main-total-view-right">
+							<i class='bx bx-money view-icon'></i>
+						</div>
+					</div>
+				</div>
+				<div class="card db-card">
+					<div class="total-views">
+						<div class="main-total-view-left">
+							<h3>Total Downloads</h3>
+							<h1><?= $this->downloadCount ?></h1>
+						</div>
+						<div class="main-total-view-right">
+							<i class='bx bx-download view-icon'></i>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="data">
+				<div class="content-data active-user">
+					<div class="recentOrders">
+						<?php
+						$data = array(12, 19, 3, 5, 2, 3);
+						$data_js = json_encode($data);
+						?>
+
+						<script>
+							var data = <?php echo $data_js; ?>;
+						</script>
+
+						<canvas id="myChart"></canvas>
+					</div>
+				</div>
+				<div class="content-data popular-games">
+					<div class="popular-header">
+						<h2>Most Popular Games</h2>
+					</div>
+					<div class="popular-cards">
+
+						<?php foreach ($this->top_games as $game) { ?>
+							<div class="popular-game-card">
+								<div class="game-cvr-img">
+									<!-- <img src=<?php echo "'" . $game['img'] . "'"; ?>> -->
+									<img src="<?php echo '/indieabode/public/uploads/games/cover/' . $game['img']; ?>">
+								</div>
+
+								<div class="game-name gm-crd">
+									<?php echo $game['name']; ?>
+								</div>
+
+								<div class="game-count gm-crd">
+									<?php echo $game['count']; ?>+
+								</div>
+							</div>
+						<?php } ?>
+					</div>
+				</div>
+
+				<div class="content-data popular-games">
+					<div class="popular-header">
+						<h2>Most Popular Assets</h2>
+					</div>
+					<div class="popular-cards">
+					<?php foreach ($this->top_assets as $asset) { ?>
+						<div class="popular-game-card">
+							<div class="game-cvr-img">
+								<!-- <img src=<?php echo "'".$asset['img']."'"; ?>> -->
+								<img src="<?php echo '/indieabode/public/uploads/assets/cover/'.$asset['img']; ?>">
+							</div>
+
+							<div class="game-name gm-crd">
+								<?php echo $asset['name']; ?>
+							</div>
+
+							<div class="game-count gm-crd">
+								<?php echo $asset['count']; ?>+
+							</div>
+						</div>
+					<?php } ?>
+						
+
+					</div>
+				</div>
+			</div>
 		</main>
 		<!-- MAIN -->
 	</section>
@@ -117,7 +206,6 @@
 
 	<script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
 	<script src="<?php echo BASE_URL; ?>public/js/admin.js"></script>
-    <script src="<?php echo BASE_URL; ?>public/js/admin_db.js"></script>
 	<!-- <?php if (isset($_SESSION['id']) && !empty($_SESSION['id'])) { ?>
         <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
     <?php } else { ?>
