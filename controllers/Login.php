@@ -35,14 +35,24 @@ class Login extends Controller
             header('location:/indieabode/SiteDashboard');
         } else if (!empty($user) && $user['verified'] == 1) {
             //$_SESSION['role'] = "Game-Developer";
+            $_SESSION['session'] = rand(10, 100);
             $_SESSION['logged'] = $user['gamerID'];
             $_SESSION['username'] = $user['username'];
             $_SESSION['id'] = $user['gamerID'];
             $_SESSION['avatar'] = $user['avatar'];
             $_SESSION['userRole'] = $user['userRole'];
             $_SESSION['status'] = "Welcome Back!";
-            header('location:/indieabode/');
+
+
+            if ($user['userRole'] == "game developer") {
+                header('location:/indieabode/home/developer');
+            } else if ($user['userRole'] == "gamer") {
+                header('location:/indieabode/home');
+            } else {
+                header('location:/indieabode/');
+            }
         } else if (!empty($user) && $user['verified'] == 0) {
+            $_SESSION['session'] = rand(10, 100);
             $_SESSION['username'] = $user['username'];
             $_SESSION['email'] = $user['email'];
             $_SESSION['id'] = $user['gamerID'];
@@ -116,7 +126,11 @@ class Login extends Controller
         if ($this->model->OTPValidation($first, $second, $third, $fourth, $fifth, $_SESSION['id'])) {
             $_SESSION['logged'] = $_SESSION['id'];
             $this->model->ActivateAccount($_SESSION['id']);
-            header('location:/indieabode/games');
+            if ($_SESSION['userRole'] == "game developer") {
+                header('location:/indieabode/home/developer');
+            } else {
+                header('location:/indieabode/');
+            }
         } else {
             print_r($this->model->OTPValidation($first, $second, $third, $fourth, $fifth, $_SESSION['id']));
             print_r($first . $second . $third . $fourth . $fifth);
