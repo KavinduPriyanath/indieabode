@@ -89,7 +89,7 @@
     include 'includes/footer.php';
     ?>
 
-    <script src="<?php echo BASE_URL; ?>public/js/login.js"></script>
+    <!-- <script src="<?php echo BASE_URL; ?>public/js/login.js"></script> -->
 
     <script>
         let passwordField = document.getElementById("password");
@@ -195,6 +195,45 @@
 
             //call triggerFunction when page loads
             triggerFunction();
+
+            $("#login").click(function(e) {
+                let email = $("#email").val();
+                let password = $("#password").val();
+                let captcha = $('#user-input').val();
+                let captchaMatch = false;
+
+                let data = {
+                    email: email,
+                    password: password,
+                    login_validation: true,
+                };
+
+                if (captcha == text) {
+                    captchaMatch = true;
+                } else {
+                    captchaMatch = false;
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: "/indieabode/login/loginValidation",
+                    data: data,
+                    success: function(response) {
+                        console.log(response);
+                        if (response == "success" && captchaMatch == true) {
+                            $("#login").addClass("loading");
+                            $("#login").html("<i class='fa fa-spinner fa-spin'></i>");
+                            $("#form").submit();
+                        } else if (response == "success" && captchaMatch == false) {
+                            $("#login-check").show();
+                            $("#login-check").text("Invalid Captcha");
+                        } else if (response == "failure") {
+                            $("#login-check").show();
+                            $("#login-check").text("Incorrect username or password");
+                        }
+                    },
+                });
+            });
 
             //When user clicks on submit
             // submitButton.addEventListener("click", () => {
