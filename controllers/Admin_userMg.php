@@ -682,7 +682,6 @@ class Admin_userMg extends Controller
             $pdf->Cell(40, 7, $header[1], 1, 0, 'C', 1);
             $pdf->Cell(40, 7, $header[2], 1, 0, 'C', 1);
             $pdf->Cell(40, 7, $header[3], 1, 1, 'C', 1);
-            // $pdf->Cell(40, 7, $header[4], 1, 1, 'C', 1);
             $pdf->SetFillColor(255, 255, 255); // set background color for data rows
             $pdf->SetTextColor(0); // set text color for data rows
             $pdf->SetLineWidth(0.3); // Set the border width for cells
@@ -710,17 +709,6 @@ class Admin_userMg extends Controller
             $pdf->Ln(2); // move down by 2 units again
             $pdf->Line(50, $pdf->GetY(), $pdf->GetPageWidth() - 50, $pdf->GetY()); // draw second line
 
-
-            // $signature = 'John Doe';
-            // $date = date('F j, Y');
-
-            // $pdf->SetY(-30);
-            // $pdf->SetFont('helvetica', 'B', 12);
-            // $pdf->Cell(0, 10, 'Signature: '.$signature, 0, 1, 'L');
-            // $pdf->Cell(0, 10, 'Date: '.$date, 0, 1, 'R');
-            // $pdf->Line(10, $pdf->GetY(), 200, $pdf->GetY());
-
-            // print a block of text using Write()
             $pdf->Write(0, $txt, '', 0, 'C', true, 0, false, false, 0);
 
             
@@ -734,11 +722,6 @@ class Admin_userMg extends Controller
             ob_end_flush();
             ob_end_clean();
 
-
-
-            // $this->view->render('Admin/reports/Admin_gamePublisher_report');
-
-            //$this->view->render('Admin/reports/Admin_assetCreator_report');
         }
 
     }
