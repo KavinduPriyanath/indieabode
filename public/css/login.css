@@ -37,7 +37,7 @@
 }
 
 /*Normal Form Input*/
-form input[type=text]:not(#user-input), input[type=password] {
+form input[type=text]:not(#user-input):not(#firstname):not(#lastname), input[type=password] {
   display: inline-block;
   height: 40px;
   width: 380px;
@@ -357,4 +357,9 @@ canvas {
   display: inline-block;
   font-size: 18px;
   color: white;
+}
+
+.login {
+  margin-left: 110px;
+  cursor: pointer;
 }

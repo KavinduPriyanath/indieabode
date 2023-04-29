@@ -28,10 +28,12 @@
             <a href="/indieabode/register"><button type="button" class="toggle-btn">Register</button></a>
         </div>
         <form action="/indieabode/login/signin" method="POST" id="form">
+            <div class="error-msg" id="login-check"></div>
             <div class="field">
                 <label class="form-login-label" id="username">Email or Username</label><br>
-                <input type="text" placeholder="email" name="email"><br>
+                <input type="text" placeholder="email" name="email" id="email"><br>
             </div>
+
             <div class="field" id="password-field">
                 <label class="form-login-label">Password</label><br>
                 <input type="password" placeholder="Password" name="password" id="password">
@@ -72,11 +74,12 @@
 
 
 
-            <button type="submit" name="submit" id="login">Login</button>
-
-
+            <!-- <button type="submit" name="submit" id="login">Login</button> -->
 
         </form>
+
+        <div class="login" id="login">Login</div>
+
         <div class="forgot-pw">
             <div> Forgot Password? </div><a href="/indieabode/forgotpassword">Reset Password</a>
         </div>
@@ -85,6 +88,8 @@
     <?php
     include 'includes/footer.php';
     ?>
+
+    <script src="<?php echo BASE_URL; ?>public/js/login.js"></script>
 
     <script>
         let passwordField = document.getElementById("password");
@@ -101,12 +106,6 @@
         }
     </script>
 
-    <script>
-        document.getElementById("login").addEventListener("click", function() {
-            this.classList.add("loading");
-            this.innerHTML = "<i class='fa fa-spinner fa-spin'></i>";
-        });
-    </script>
 
     <script>
         $(document).ready(function() {

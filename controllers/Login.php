@@ -98,8 +98,6 @@ class Login extends Controller
                 header('location:/indieabode/failedpasswordreset');
             }
             // header('location:/indieabode/activation');
-        } else {
-            header('location:/indieabode/aa');
         }
     }
 
@@ -134,6 +132,25 @@ class Login extends Controller
             print_r($this->model->OTPValidation($first, $second, $third, $fourth, $fifth, $_SESSION['id']));
             print_r($first . $second . $third . $fourth . $fifth);
             //header('location:/indieabode/aa');
+        }
+    }
+
+
+    function loginValidation()
+    {
+
+        if ($_POST['login_validation'] == true) {
+
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+
+            $user = $this->model->signin();
+
+            if (!empty($user)) {
+                echo "success";
+            } else {
+                echo "failure";
+            }
         }
     }
 }
