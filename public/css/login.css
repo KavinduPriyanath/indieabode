@@ -37,7 +37,7 @@
 }
 
 /*Normal Form Input*/
-form input[type=text], input[type=password] {
+form input[type=text]:not(#user-input), input[type=password] {
   display: inline-block;
   height: 40px;
   width: 380px;
@@ -182,14 +182,7 @@ form input[type=checkbox] {
   display: flex;
 }
 
-.captcha .captcha-form input {
-  width: 210px;
-  padding: 8px;
-  margin-top: 0px;
-  margin-right: 0px;
-  border-radius: 0px 0px 0px 8px;
-  /* border: 1px solid rgb(38, 103, 183); */
-}
+
 
 .captcha .captcha-form .captcha-refresh {
   width: 40px;
@@ -202,16 +195,7 @@ form input[type=checkbox] {
   border-radius: 0px 0px 8px 0px;
 }
 
-.check-bar {
-  text-align: left;
-  margin-left: 100px;
-}
 
-#robotlabel {
-  display: inline-block;
-  font-size: 18px;
-  color: white;
-}
 
 .container {
   height: 60px;
@@ -324,3 +308,53 @@ form input[type=checkbox] {
   cursor: pointer;
 }
 
+.captcha-reader {
+  display: block;
+  width: 425px;
+}
+
+#user-input {
+  width: 185px;
+  padding: 8px;
+  border-radius: 8px 0px 0px 8px;
+  /* border: 1px solid rgb(38, 103, 183); */
+  background-color: rgb(115, 170, 193, 0.72);
+  border: none;
+}
+
+.wrapper-canvas {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+
+}
+canvas {
+  border: 1px solid #000000;
+  border-radius: 0.4em;
+  padding: 5px;
+}
+
+
+#reload-button {
+  font-size: 20px;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  background-color: rgba(30, 69, 85, 0.72);
+  border: none;
+  border-radius: 0px 8px 8px 0px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.check-bar {
+  text-align: center;
+  /* margin-left: 100px; */
+}
+
+#robotlabel {
+  display: inline-block;
+  font-size: 18px;
+  color: white;
+}
