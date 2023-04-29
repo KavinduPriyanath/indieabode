@@ -1,0 +1,98 @@
+
+
+
+  
+  .column{
+    position:relative;
+    
+   left: 170px;
+   top:100px;
+  }
+  
+  .panel-body {
+    padding: 5px 5px ;
+    
+  }
+   
+  .title {
+    color: #8AB3CA;
+    left: 180px;
+    top: 30px;
+    position: relative;
+  }
+  
+  .filter{
+    display: flex;
+      width: 682px;
+      height: 50px;
+      color: #BAC6CD;
+      background-color:#38648B;
+      align-items: center;
+      font-size:9px;
+      left: 180px;
+      top: 50px;
+      position: relative;
+      justify-content: space;
+      margin: 5px;
+  }
+  .fil{
+    margin:1px;
+  }
+  
+  .logo1{
+    margin-left: 10px;
+  }
+
+
+  .game1{
+    display: flex;
+      width: 682px;
+      height: 50px;
+      /* padding: 0.5em; */
+      background-color:#38648B;
+      align-items: center;
+      color: #8AB3CA;
+      font-size:13px;
+      left: 184px;
+      top: 57px;
+      position: relative;
+      justify-content: space;
+      margin: -1px;
+      
+  }
+  .Uname{
+    width: 100px;
+    left: 15px;
+    position: relative;
+  }
+  .do{
+    position: relative;
+    width:125px;
+    left: 20px;
+  }
+  .time{
+    position: relative;
+    left: 50px;
+    color: #9DCDE8;
+  }
+  .rgame{
+    width:170px;
+    position: relative;
+    left: 90px;
+    color: #69B0D8;
+    
+    
+  }
+  
+  
+/*   
+  .logo1{
+    align-items: center;
+
+    width: 50px;
+  } */
+  
+  
+
+
+  

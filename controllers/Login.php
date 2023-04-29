@@ -31,6 +31,7 @@ class Login extends Controller
             $_SESSION['logged'] = $admin['id'];
             $_SESSION['username'] = $admin['username'];
             $_SESSION['userRole'] = "admin";
+            $_SESSION['email'] = $admin['email'];
             header('location:/indieabode/SiteDashboard');
         } else if (!empty($user) && $user['verified'] == 1) {
             //$_SESSION['role'] = "Game-Developer";
@@ -136,6 +137,7 @@ class Login extends Controller
     }
 
 
+
     function loginValidation()
     {
 
@@ -154,3 +156,4 @@ class Login extends Controller
         }
     }
 }
+
