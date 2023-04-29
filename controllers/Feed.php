@@ -18,7 +18,7 @@ class Feed extends Controller
             $this->view->feed = $this->model->showCart();
 
         
-        $this->view->render('Feed');
+        $this->view->render('Feeds/Feed');
     }
 
 }

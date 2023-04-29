@@ -48,7 +48,7 @@
                 </div>
                 <div class="do">
                     <h3> 
-                        <?php if ($feedcol['checkw']==1) { ?>
+                        <?php if ($feedcol['ActivityCheck']==1) { ?>
                             add cart
                         <?php } else { ?>
                             add library
@@ -58,7 +58,7 @@
                 <div class="time">
                     <?php
                     // convert the given time to a Unix timestamp
-                    $given_timestamp = strtotime($feedcol['time']);
+                    $given_timestamp = strtotime($feedcol['addedDate']);
 
                     // calculate the time difference between the given time and the current time, in seconds
                     $time_diff_seconds = time() - $given_timestamp;
