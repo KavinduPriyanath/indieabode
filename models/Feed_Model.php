@@ -12,18 +12,18 @@ class Feed_Model extends Model
     function showCart()
     {
         $sql = 
-        "SELECT games_cart.gamerID,games_cart.checkw,games_cart.time,games_cart.itemID,freegame.gameName,gamer.username,gamer.avatar
-        FROM games_cart 
-        INNER JOIN freegame ON games_cart.itemID = freegame.gameID
-        INNER JOIN gamer ON games_cart.gamerID = gamer.gamerID
+        "SELECT game_cart.userID,game_cart.ActivityCheck,game_cart.addedDate,game_cart.gameID,freegame.gameName,gamer.username,gamer.avatar
+        FROM game_cart 
+        INNER JOIN freegame ON game_cart.gameID = freegame.gameID
+        INNER JOIN gamer ON game_cart.userID = gamer.gamerID
 
         UNION 
         
-        SELECT library.id,library.itemID,library.time ,library.checkw,freegame.gameName,gamer.username,gamer.avatar
-        FROM library 
-        INNER JOIN freegame ON library.itemID = freegame.gameID
-        INNER JOIN gamer ON library.developerID = gamer.gamerID
-        ORDER BY time DESC";
+        SELECT game_library.id,game_library.gameID,game_library.addedDate,game_library.ActivityCheck,freegame.gameName,gamer.username,gamer.avatar
+        FROM game_library 
+        INNER JOIN freegame ON game_library.gameID = freegame.gameID
+        INNER JOIN gamer ON game_library.gamerID = gamer.gamerID
+        ORDER BY addedDate DESC";
 
         // SELECT name, time FROM table1
         // UNION
