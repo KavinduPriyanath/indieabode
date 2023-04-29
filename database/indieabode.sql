@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 26, 2023 at 06:25 PM
+-- Generation Time: Apr 29, 2023 at 10:23 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -59,8 +59,8 @@ INSERT INTO `account` (`userID`, `profilePhoto`, `location`, `phoneNumber`, `dis
 (84, '', '', '', '', '', '', '', '', 10),
 (86, '', '', '', '', '', '', '', '', 10),
 (87, '', '', '', '', '', '', '', '', 10),
-(88, '', '', '', '', '', '', '', '', 10),
-(89, '', '', '', '', '', '', '', '', 10);
+(89, '', '', '', '', '', '', '', '', 10),
+(91, '', '', '', '', '', '', '', '', 10);
 
 -- --------------------------------------------------------
 
@@ -94,15 +94,11 @@ INSERT INTO `activation_keys` (`id`, `userID`, `activationCode`) VALUES
 (20, 84, '93595'),
 (26, 86, '36850'),
 (27, 87, '50650'),
-(28, 88, '59324'),
-(29, 88, '40269'),
-(30, 88, '15278'),
-(31, 88, '33645'),
-(32, 88, '24786'),
-(33, 88, '16401'),
-(34, 88, '29155'),
-(35, 88, '29090'),
-(36, 89, '54574');
+(36, 89, '54574'),
+(38, 91, '26856'),
+(39, 91, '49511'),
+(40, 91, '58335'),
+(41, 91, '28040');
 
 -- --------------------------------------------------------
 
@@ -189,7 +185,7 @@ CREATE TABLE `asset_cart` (
 --
 
 INSERT INTO `asset_cart` (`id`, `userID`, `assetID`, `addedDate`) VALUES
-(20, 46, 9, '2023-04-23');
+(22, 46, 19, '2023-04-28');
 
 -- --------------------------------------------------------
 
@@ -272,7 +268,8 @@ CREATE TABLE `asset_reviews` (
 
 INSERT INTO `asset_reviews` (`id`, `rating`, `reviewTopic`, `review`, `created_date`, `userID`, `assetID`, `recommendation`) VALUES
 (1, 1, 'hiuy', 'oihyy', '2023-04-19', 46, 10, 'No'),
-(2, 3, 'jj', 'ytjytjyj', '2023-04-19', 51, 10, 'Yes');
+(2, 3, 'jj', 'ytjytjyj', '2023-04-19', 51, 10, 'Yes'),
+(3, 3, 'rggr', 'rgrg', '2023-04-28', 78, 9, 'Yes');
 
 -- --------------------------------------------------------
 
@@ -294,14 +291,14 @@ CREATE TABLE `asset_stats` (
 --
 
 INSERT INTO `asset_stats` (`assetID`, `downloads`, `views`, `ratings`, `ratingCount`, `revenue`) VALUES
-(9, 5, 8, 0, 0, 0),
-(10, 0, 11, 0, 0, 0),
+(9, 5, 9, 0, 0, 0),
+(10, 0, 12, 0, 0, 0),
 (17, 4, 5, 0, 0, 26.109),
 (18, 0, 4, 0, 0, 0),
-(19, 2, 4, 0, 0, 28.276),
+(19, 2, 5, 0, 0, 28.276),
 (20, 0, 3, 0, 0, 0),
 (21, 2, 3, 0, 0, 26.109),
-(29, 1, 6, 0, 0, 29.5902);
+(29, 2, 7, 0, 0, 29.5902);
 
 -- --------------------------------------------------------
 
@@ -348,7 +345,11 @@ INSERT INTO `asset_stats_history` (`id`, `assetID`, `views`, `downloads`, `ratin
 (22, 29, 5, 1, 0, 0, '2023-04-23'),
 (23, 9, 5, 0, 0, 0, '2023-04-23'),
 (24, 17, 2, 1, 0, 0, '2023-04-23'),
-(25, 17, 0, 1, 0, 0, '2023-04-24');
+(25, 17, 0, 1, 0, 0, '2023-04-24'),
+(26, 29, 1, 1, 0, 0, '2023-04-28'),
+(27, 19, 1, 0, 0, 0, '2023-04-28'),
+(28, 9, 1, 0, 0, 0, '2023-04-28'),
+(29, 10, 1, 0, 0, 0, '2023-04-28');
 
 -- --------------------------------------------------------
 
@@ -420,7 +421,11 @@ INSERT INTO `asset_view_tracker` (`id`, `userID`, `assetID`, `sessionID`, `viewe
 (49, 46, 29, 50, '2023-04-23'),
 (50, 46, 9, 50, '2023-04-23'),
 (51, 46, 20, 50, '2023-04-23'),
-(52, 87, 21, 11, '2023-04-23');
+(52, 87, 21, 11, '2023-04-23'),
+(53, 46, 29, 80, '2023-04-28'),
+(54, 46, 19, 80, '2023-04-28'),
+(55, 78, 9, 92, '2023-04-28'),
+(56, 46, 10, 73, '2023-04-28');
 
 -- --------------------------------------------------------
 
@@ -605,10 +610,10 @@ CREATE TABLE `crowdfund` (
 --
 
 INSERT INTO `crowdfund` (`crowdFundID`, `currentAmount`, `deadline`, `expectedAmount`, `gameDeveloperName`, `gameName`, `title`, `tagline`, `backers`, `details`, `visibility`, `crowdfundCoverImg`, `crowdfundSS`, `crowdfundTrailer`, `viewCount`) VALUES
-(4, 0, '2023-04-13', 0, 46, '96', 'ergrgrtgd wdw 111', 'httrh 11', 0, 'ffwf <b>fefefeef&nbsp;</b>', 'draft', 'Cover-4.jpg', 'SS-4-0.jpg,SS-4-1.jpg', 'https://itch.io/11/my-first-game-jam-winter-2023', 3),
+(4, 0, '2023-04-13', 0, 46, '96', 'ergrgrtgd wdw 111', 'httrh 11', 0, 'ffwf <b>fefefeef&nbsp;</b>', 'draft', 'Cover-4.jpg', 'SS-4-0.jpg,SS-4-1.jpg', 'https://itch.io/11/my-first-game-jam-winter-2023', 4),
 (6, 0, '2023-04-13', 0, 46, '95', 'new crowdfunding', 'gtgrtgrttrht', 0, '<h3>ABOUT THIS GAME</h3>\r\n<br>\r\n<p>Lost, alone and separated from family, a stray cat must untangle an ancient mystery to escape a long-forgotten city.\r\n\r\nStray is a third-person cat adventure game set amidst the detailed, neon-lit alleys of a decaying cybercity and the murky environments of its seedy underbelly. Roam surroundings high and low, defend against unforeseen threats and solve the mysteries of this unwelcoming place inhabited by curious droids and dangerous creatures.\r\n\r\nSee the world through the eyes of a cat and interact with the environment in playful ways. Be stealthy, nimble, silly, and sometimes as annoying as possible with the strange inhabitants of this mysterious world.\r\n\r\nAlong the way, the cat befriends a small flying drone, known only as B-12. With the help of this newfound companion, the duo must find a way out.\r\n\r\nStray is developed by BlueTwelve Studio, a small team from the south of France mostly made up of cats and a handful of humans.<p>', 'draft', 'Cover-Monster Hunter Rise.jpg', 'SS-Monster Hunter Rise-0.jpg,SS-Monster Hunter Rise-1.jpg', 'https://itch.io/jam/my-first-game-jam-winter-2023', 1),
 (11, 0, '2023-04-26', 234, 46, '91', 'htrhrt', 'gtgrtgrttrht', 0, 'gtthh<b>gtgt</b>', 'draft', 'Cover-91.jpg', 'SS-91-0.jpg,SS-91-1.jpg,SS-91-2.jpg', 'https://itch.io/jam/my-first-game-jam-winter-2023', 1),
-(12, 0, '2023-04-29', 51, 46, '89', 'ergrgrtgfefregreg gregerger ', 'gtgrtgrttrhte greg ererh erherhh hh thj7j eg owgrjrjgri r grgjrgj rgjjowjg ', 0, '', 'draft', 'Cover-89.jpg', 'SS-89-0.jpg,SS-89-1.jpg', 'https://itch.io/jam/my-first-game-jam-winter-2023', 1);
+(12, 0, '2023-04-29', 51, 46, '89', 'ergrgrtgfefregreg gregerger ', 'gtgrtgrttrhte greg ererh erherhh hh thj7j eg owgrjrjgri r grgjrgj rgjjowjg ', 0, '', 'draft', 'Cover-89.jpg', 'SS-89-0.jpg,SS-89-1.jpg', 'https://itch.io/jam/my-first-game-jam-winter-2023', 2);
 
 -- --------------------------------------------------------
 
@@ -667,7 +672,9 @@ INSERT INTO `crowdfund_view_tracker` (`id`, `userID`, `sessionID`, `crowdfundID`
 (7, 0, 0, 6, '2023-04-19'),
 (8, 0, 0, 4, '2023-04-19'),
 (9, 46, 16, 4, '2023-04-26'),
-(10, 46, 16, 12, '2023-04-26');
+(10, 46, 16, 12, '2023-04-26'),
+(11, 46, 80, 4, '2023-04-28'),
+(12, 46, 80, 12, '2023-04-28');
 
 -- --------------------------------------------------------
 
@@ -696,7 +703,7 @@ CREATE TABLE `devlog` (
 --
 
 INSERT INTO `devlog` (`publishDate`, `description`, `name`, `Tagline`, `Type`, `Visibility`, `devlogImg`, `gameName`, `devLogID`, `CreatedDate`, `likeCount`, `commentCount`, `viewCount`) VALUES
-('2023-02-09 17:38:43', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis hendrerit neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum pharetra sem. Vestibulum eu est urna. Cras non ipsum non massa sodales condimentum quis eu risus. Praesent volutpat lorem a dolor tristique luctus eget sed elit. Ut facilisis faucibus justo tincidunt eleifend. Curabitur ultrices sapien id lorem posuere, vitae mattis nisi faucibus. Aliquam congue lorem sit amet velit lobortis, non venenatis massa feugiat. Aenean ut vehicula nibh, sed vehicula lacus. Praesent eu eros id leo maximus rhoncus eget eget risus. Curabitur vitae faucibus ligula, ac tincidunt dui. Sed diam massa, euismod sit amet augue a, pharetra egestas augue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\r\n\r\nIn hendrerit magna a dui tincidunt porta. Curabitur suscipit ex consectetur mauris ullamcorper rutrum. Mauris feugiat aliquet tristique. Curabitur egestas suscipit iaculis. Quisque tristique posuere augue, ac aliquet nisi vestibulum id. Curabitur efficitur nibh eu ipsum venenatis, et ornare tellus pellentesque. Nullam mollis lacus in nibh vestibulum, nec dignissim justo tristique. In congue dolor suscipit, eleifend leo et, commodo purus. Curabitur gravida risus et leo porttitor facilisis ut vestibulum ex. Donec enim tortor, commodo facilisis vestibulum non, viverra sed augue. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean ultricies metus vitae lobortis fermentum. Maecenas vulputate ante a sollicitudin congue. Duis purus erat, finibus eget magna sit amet, porta pharetra massa.\r\n\r\nVestibulum eleifend imperdiet felis sit amet placerat. Nulla auctor pretium turpis, quis porttitor lacus tempor vitae. Vestibulum semper non enim at dignissim. Mauris consequat elit ac purus congue iaculis. Aenean ac nibh a dolor efficitur fermentum. Mauris a porttitor lorem, ac gravida tellus. Cras iaculis malesuada mollis.', 'Finishing Utility Inventory', 'Bonjour! This is a post about me finally finishing the Utiltiy ', 'Game Design', 'draft', 'SS-Albion Online.png', '89', 28, '2020-12-29 00:00:00', 1, 2, 0),
+('2023-02-09 17:38:43', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis hendrerit neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum pharetra sem. Vestibulum eu est urna. Cras non ipsum non massa sodales condimentum quis eu risus. Praesent volutpat lorem a dolor tristique luctus eget sed elit. Ut facilisis faucibus justo tincidunt eleifend. Curabitur ultrices sapien id lorem posuere, vitae mattis nisi faucibus. Aliquam congue lorem sit amet velit lobortis, non venenatis massa feugiat. Aenean ut vehicula nibh, sed vehicula lacus. Praesent eu eros id leo maximus rhoncus eget eget risus. Curabitur vitae faucibus ligula, ac tincidunt dui. Sed diam massa, euismod sit amet augue a, pharetra egestas augue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\r\n\r\nIn hendrerit magna a dui tincidunt porta. Curabitur suscipit ex consectetur mauris ullamcorper rutrum. Mauris feugiat aliquet tristique. Curabitur egestas suscipit iaculis. Quisque tristique posuere augue, ac aliquet nisi vestibulum id. Curabitur efficitur nibh eu ipsum venenatis, et ornare tellus pellentesque. Nullam mollis lacus in nibh vestibulum, nec dignissim justo tristique. In congue dolor suscipit, eleifend leo et, commodo purus. Curabitur gravida risus et leo porttitor facilisis ut vestibulum ex. Donec enim tortor, commodo facilisis vestibulum non, viverra sed augue. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean ultricies metus vitae lobortis fermentum. Maecenas vulputate ante a sollicitudin congue. Duis purus erat, finibus eget magna sit amet, porta pharetra massa.\r\n\r\nVestibulum eleifend imperdiet felis sit amet placerat. Nulla auctor pretium turpis, quis porttitor lacus tempor vitae. Vestibulum semper non enim at dignissim. Mauris consequat elit ac purus congue iaculis. Aenean ac nibh a dolor efficitur fermentum. Mauris a porttitor lorem, ac gravida tellus. Cras iaculis malesuada mollis.', 'Finishing Utility Inventory', 'Bonjour! This is a post about me finally finishing the Utiltiy ', 'Game Design', 'draft', 'SS-Albion Online.png', '89', 28, '2020-12-29 00:00:00', 1, 2, 1),
 ('2023-02-09 17:41:03', '', 'How to Build a Mansion', 'Showing steps of using tiles to build a mansion in the city ', 'Game Design', 'draft', '', '93', 29, '2020-12-26 00:00:00', 0, 0, 0),
 ('2023-02-09 17:43:00', 'dwfwf', 'Level Editor Tutorial', 'Optimized level editor is available to players for free with extensions', 'Game Design', 'draft', 'SS-Final Fantasy VII.jpg', '93', 30, '2020-11-29 00:00:00', 1, 1, 3),
 ('2023-03-07 12:55:38', 'dwdw', 'dwd', 'ddwd', 'Tutorial', 'draft', 'Cover-31.png', '89', 31, '2023-04-19 20:22:07', 1, 0, 1),
@@ -832,7 +839,8 @@ INSERT INTO `devlog_view_tracker` (`id`, `userID`, `sessionID`, `devlogID`, `vie
 (5, 0, 0, 30, '2023-04-19'),
 (6, 46, 69, 30, '2023-04-19'),
 (7, 46, 24, 31, '2023-04-19'),
-(8, 46, 80, 40, '2023-04-26');
+(8, 46, 80, 40, '2023-04-26'),
+(9, 46, 80, 28, '2023-04-28');
 
 -- --------------------------------------------------------
 
@@ -1021,14 +1029,17 @@ CREATE TABLE `gamejam` (
 INSERT INTO `gamejam` (`gameJamID`, `submissionStartDate`, `submissionEndDate`, `jamContent`, `votingEndDate`, `jamTitle`, `jamTagline`, `jamType`, `jamCriteria`, `jamVisibility`, `maxParticipants`, `canJoinAfterStarted`, `jamHostID`, `jamVoters`, `jamTwitter`, `jamCoverImg`, `joinedCount`, `submissionsCount`, `jamTheme`) VALUES
 (53, '2022-12-01 16:55:00', '2022-12-08 16:55:00', ' This is an online game jam, so anyone, from anywhere, aged 13 or older can enter the jam. (Those younger can take part, as long as a parent or guardian uploads the game).\r\n\r\nYou can work alone or in teams. There is no limit on the number of people per team and people can be in multiple teams.', '2022-12-15 16:55:00', 'GMTK GameJam', '48 hour game development marathon', 'Non-Ranked', 'Creativity', 'Public', 0, 1, 12, 'Public', '#gmtk', 'Cover-GMTK GameJam.jpg', 0, 0, ''),
 (55, '2023-01-02 12:00:00', '2023-01-03 12:00:00', ' Genshin Impact takes place in the fantasy world of Teyvat, home to seven nations, each of which is tied to a different element and ', '2023-01-04 12:00:00', 'GameJam', 'This is a gamejam', 'Non-Ranked', 'Creativity', 'Draft', 40, 1, 12, 'Public', '#brackeys', 'Cover-GameJam.jpg', 0, 0, ''),
-(56, '2023-04-12 16:55:00', '2023-12-08 16:55:00', ' majhcdsjc vmnb', '0000-00-00 00:00:00', 'majbhdhjsa', 'grg', 'Ranked', 'mdhcbgd', 'Draft', 67, 1, 16, 'Public', 'mhcbds', 'Cover-majbhdhjsa.jpg', 0, 0, ''),
+(56, '2023-04-28 16:55:00', '2023-04-20 16:55:00', ' majhcdsjc vmnb', '2023-05-05 00:00:00', 'majbhdhjsa', 'grg', 'Ranked', 'mdhcbgd', 'Draft', 67, 1, 16, 'Public', 'mhcbds', 'Cover-majbhdhjsa.jpg', 0, 0, ''),
 (57, '2022-12-01 16:55:00', '2022-12-08 16:55:00', '<p>Lost, alone and separated from family, a stray cat must untangle an ancient mystery to escape a long-forgotten city.\r\n\r\nStray is a third-person cat adventure game set amidst the detailed, neon-lit alleys of a decaying cybercity and the murky environments of its seedy underbelly. Roam surroundings high and low, defend against unforeseen threats and solve the mysteries of this unwelcoming place inhabited by curious droids and dangerous creatures.\r\n\r\nSee the world through the eyes of a cat and interact with the environment in playful ways. Be stealthy, nimble, silly, and sometimes as annoying as possible with the strange inhabitants of this mysterious world.\r\n\r\nAlong the way, the cat befriends a small flying drone, known only as B-12. With the help of this newfound companion, the duo must find a way out.\r\n\r\nStray is developed by BlueTwelve Studio, a small team from the south of France mostly made up of cats and a handful of humans.<p>\r\n<br>\r\n<p>Lost, alone and separated from family, a stray cat must untangle an ancient mystery to escape a long-forgotten city.\r\n\r\nStray is a third-person cat adventure game set amidst the detailed, neon-lit alleys of a decaying cybercity and the murky environments of its seedy underbelly. Roam surroundings high and low, defend against unforeseen threats and solve the mysteries of this unwelcoming place inhabited by curious droids and dangerous creatures.\r\n\r\nSee the world through the eyes of a cat and interact with the environment in playful ways. Be stealthy, nimble, silly, and sometimes as annoying as possible with the strange inhabitants of this mysterious world.\r\n\r\nAlong the way, the cat befriends a small flying drone, known only as B-12. With the help of this newfound companion, the duo must find a way out.\r\n\r\nStray is developed by BlueTwelve Studio, a small team from the south of France mostly made up of cats and a handful of humans.<p>', '2023-12-14 16:55:00', 'GMTK GameJam', '48 hour game development marathon', 'Non-Ranked', 'Creativity', 'Public', 0, 1, 12, 'Public', '#gmtk', 'Cover-GMTK GameJam.jpg', 0, 0, ''),
 (58, '2023-01-02 12:00:00', '2023-05-16 00:00:00', ' Genshin Impact takes place in the fantasy world of Teyvat, home to seven nations, each of which is tied to a different element and ', '2023-01-04 12:00:00', 'GMTK GameJam', 'This is a gamejam', 'Non-Ranked', 'Creativity', 'Draft', 40, 1, 12, 'Public', '#brackeys', 'Cover-GameJam.jpg', 0, 0, ''),
 (59, '2023-12-01 16:55:00', '2023-12-08 16:55:00', ' majhcdsjc vmnb', '0000-00-00 00:00:00', 'majbhdhjsa', 'grg', 'Ranked', 'mdhcbgd', 'Draft', 67, 1, 16, 'Public', 'mhcbds', 'Cover-majbhdhjsa.jpg', 0, 0, ''),
 (60, '2023-01-02 12:00:00', '2023-01-03 12:00:00', ' Genshin Impact takes place in the fantasy world of Teyvat, home to seven nations, each of which is tied to a different element and ', '2023-01-04 12:00:00', 'GameJam', 'This is a gamejam', 'Non-Ranked', 'Creativity', 'Draft', 40, 1, 12, 'Public', '#brackeys', 'Cover-GameJam.jpg', 0, 0, ''),
 (61, '2023-12-01 16:55:00', '2023-12-08 16:55:00', ' majhcdsjc vmnb', '0000-00-00 00:00:00', 'majbhdhjsa', 'grg', 'Ranked', 'mdhcbgd', 'Draft', 67, 1, 16, 'Public', 'mhcbds', 'Cover-majbhdhjsa.jpg', 0, 0, ''),
 (62, '2023-06-14 16:55:00', '2023-08-15 16:55:00', 'gregr <b>rhrtthtrhrth </b>htrt <u>trhthththh </u>htrtttrthrthr 11', '2023-10-23 16:55:00', 'new jam 1', 'grg', 'Ranked', 'Creativity', 'Public', 0, 0, 79, 'Public', '#brackeys', 'Cover-new jam 1.jpg', 0, 0, 'stick together'),
-(63, '2023-04-25 16:55:00', '2023-04-26 16:55:00', '', '2023-04-27 16:55:00', 'Kenney Jam', 'Make a game using Kenney Assets in 24 hours', 'Ranked', 'Creativity', 'Public', 0, 0, 89, 'Public', '#kenny', 'Cover-Kenney Jam.png', 0, 0, 'Growth');
+(63, '2023-03-12 16:55:00', '2023-03-18 16:55:00', '', '2023-03-20 16:55:00', 'Kenney Jam', 'Make a game using Kenney Assets in 24 hours', 'Ranked', 'Creativity', 'Public', 0, 0, 89, 'Public', '#kenny', 'Cover-Kenney Jam.png', 0, 0, 'Growth'),
+(64, '2023-03-22 16:55:00', '2023-03-24 16:55:00', '', '2023-03-28 16:55:00', 'Duchan Jam', 'Make a game using Kenney Assets in 24 hours', 'Ranked', 'Creativity', 'Public', 0, 0, 89, 'Public', '#kenny', 'Cover-Kenney Jam.png', 0, 0, 'Strong Together'),
+(65, '2023-05-03 16:55:00', '2023-05-07 16:55:00', '', '2023-05-10 16:55:00', 'Metoer Shower Jam 2023', 'fefefefefef', 'Ranked', '', 'Draft', 0, 0, 89, 'Public', '', 'Cover-Metoer Shower Jam 2023.png', 0, 0, 'Progress'),
+(66, '2023-05-11 16:55:00', '2023-05-12 16:55:00', '', '2023-05-17 16:55:00', 'CC Jam 2', 'fefefefefef', 'Ranked', '', 'Draft', 0, 0, 89, 'Public', '', 'Cover-Metoer Shower Jam 2023.png', 0, 0, 'Progress');
 
 -- --------------------------------------------------------
 
@@ -1073,8 +1084,8 @@ INSERT INTO `gamer` (`gamerID`, `email`, `password`, `accountStatus`, `avatar`, 
 (84, 'somasira83@gmail.com', '$2y$10$cIOyyp/HlJRMwsRE4aFwje.5jsX8PgBE.6bnbTSSmujsSOnihN7Ai', 1, 'avatar4.png', 'gamer', 'Escanor', 'Seven', 'Sin', '2023-04-22 14:44:57', '2023-04-22 14:44:57', 1, '', 2),
 (86, 'sinharasa7@gmail.com', '$2y$10$PEbhk8sh.Zr35K2S0WCs3.j2IHkpqRPT7bP8yU4Mxn0cIXuF3mlbm', 1, 'avatar2.png', 'gamer', 'Baan', 'Undead', 'Ban', '2023-04-22 14:53:27', '2023-04-22 14:53:27', 1, '', 2),
 (87, 'liyanagunawardanainoka@gmail.com', '$2y$10$zx9.kYnkZV.TCQ3tXw6a7uk5jT5.ZR9o08mEaIFvtsxJtAwADdAoi', 1, 'avatar4.png', 'asset creator', 'King', 'Fairy', 'King', '2023-04-23 06:46:19', '2023-04-23 06:46:19', 1, '', 2),
-(88, '2020cs029@stu.ucsc.cmb.ac.lk', '$2y$10$sJA5JFFkxUmSTOkxdZxYTOE7XfhR1qib5/qWty/Bat5vgruPSlki.', 1, 'avatar4.png', 'gamejam organizer', 'Diane', 'Serpent', 'Sin', '2023-04-23 14:48:45', '2023-04-23 14:48:45', 0, '', 2),
-(89, '2020cs104@stu.ucsc.cmb.ac.lk', '$2y$10$6h2JqX09rf5YF80v.k84n.R5uiiEAU5d9oUMkjckdnq1gbnaiu92q', 1, 'avatar1.png', 'gamejam organizer', 'Capn', 'Cap', 'Meliodas', '2023-04-23 18:38:32', '2023-04-23 18:38:32', 1, '', 2);
+(89, '2020cs104@stu.ucsc.cmb.ac.lk', '$2y$10$6h2JqX09rf5YF80v.k84n.R5uiiEAU5d9oUMkjckdnq1gbnaiu92q', 1, 'avatar1.png', 'gamejam organizer', 'Capn', 'Cap', 'Meliodas', '2023-04-23 18:38:32', '2023-04-23 18:38:32', 1, '', 2),
+(91, '2020cs029@stu.ucsc.cmb.ac.lk', '$2y$10$ooDrFzqhYNmkl3nef6nHP.e7Vm2VjL0Q8HpgWZNIMMQ9L/HdEcPZa', 1, 'avatar2.png', 'game developer', 'fefeg', 'fefe', 'grgrg', '2023-04-29 08:13:53', '2023-04-29 08:13:53', 0, '', 2);
 
 -- --------------------------------------------------------
 
@@ -1471,7 +1482,27 @@ INSERT INTO `games_view_tracker` (`id`, `userID`, `sessionID`, `gameID`, `viewed
 (302, 46, 13, 188, '2023-04-26'),
 (303, 46, 13, 191, '2023-04-26'),
 (304, 46, 13, 182, '2023-04-26'),
-(305, 46, 13, 181, '2023-04-26');
+(305, 46, 13, 181, '2023-04-26'),
+(306, 46, 31, 191, '2023-04-27'),
+(307, 46, 31, 189, '2023-04-27'),
+(308, 46, 31, 184, '2023-04-27'),
+(309, 46, 31, 187, '2023-04-27'),
+(310, 46, 31, 186, '2023-04-27'),
+(311, 52, 18, 181, '2023-04-28'),
+(312, 52, 18, 187, '2023-04-28'),
+(313, 52, 18, 188, '2023-04-28'),
+(314, 46, 73, 90, '2023-04-28'),
+(315, 46, 27, 183, '2023-04-30'),
+(316, 46, 27, 191, '2023-04-30'),
+(317, 46, 27, 189, '2023-04-30'),
+(318, 46, 27, 188, '2023-04-30'),
+(319, 46, 27, 187, '2023-04-30'),
+(320, 46, 27, 186, '2023-04-30'),
+(321, 46, 27, 184, '2023-04-30'),
+(322, 46, 27, 181, '2023-04-30'),
+(323, 46, 27, 90, '2023-04-30'),
+(324, 46, 27, 89, '2023-04-30'),
+(325, 46, 27, 95, '2023-04-30');
 
 -- --------------------------------------------------------
 
@@ -1638,18 +1669,18 @@ CREATE TABLE `game_stats` (
 
 INSERT INTO `game_stats` (`id`, `gameID`, `views`, `downloads`, `ratings`, `revenue`) VALUES
 (1, 96, 46, 11, 1, 0),
-(2, 89, 14, 0, 0, 0),
-(3, 90, 28, 0, 0, 0),
-(4, 91, 35, 12, 0, 0),
+(2, 89, 15, 0, 0, 0),
+(3, 90, 30, 0, 0, 0),
+(4, 91, 35, 13, 0, 0),
 (5, 92, 39, 5, 0, 0),
 (6, 93, 23, 1, 0, 0),
-(7, 95, 26, 4, 1, 0),
-(8, 184, 9, 3, 0, 0),
-(10, 186, 2, 0, 0, 0),
-(11, 187, 3, 3, 0, 0),
-(12, 188, 11, 1, 0, 152.48),
-(14, 189, 9, 0, 0, 295.858),
-(16, 191, 1, 0, 0, 0);
+(7, 95, 27, 4, 1, 0),
+(8, 184, 11, 3, 0, 0),
+(10, 186, 4, 0, 0, 0),
+(11, 187, 6, 4, 0, 0),
+(12, 188, 13, 1, 0, 152.48),
+(14, 189, 11, 0, 0, 295.858),
+(16, 191, 3, 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -1826,7 +1857,28 @@ INSERT INTO `game_stats_history` (`id`, `gameID`, `views`, `downloads`, `ratings
 (159, 188, 1, 0, 0, 0, '2023-04-26'),
 (160, 191, 1, 0, 0, 0, '2023-04-26'),
 (161, 182, 1, 0, 0, 0, '2023-04-26'),
-(162, 181, 1, 0, 0, 0, '2023-04-26');
+(162, 181, 1, 0, 0, 0, '2023-04-26'),
+(163, 191, 1, 1, 0, 0, '2023-04-27'),
+(164, 189, 1, 0, 0, 0, '2023-04-27'),
+(165, 184, 1, 0, 0, 0, '2023-04-27'),
+(166, 187, 1, 1, 0, 0, '2023-04-27'),
+(167, 186, 1, 0, 0, 0, '2023-04-27'),
+(168, 91, 0, 1, 0, 0, '2023-04-28'),
+(169, 181, 1, 0, 0, 0, '2023-04-28'),
+(170, 187, 1, 0, 0, 0, '2023-04-28'),
+(171, 188, 1, 0, 0, 0, '2023-04-28'),
+(172, 90, 1, 0, 0, 0, '2023-04-28'),
+(173, 183, 1, 0, 0, 0, '2023-04-29'),
+(174, 191, 1, 0, 0, 0, '2023-04-29'),
+(175, 189, 1, 0, 0, 0, '2023-04-29'),
+(176, 188, 1, 0, 0, 0, '2023-04-29'),
+(177, 187, 1, 0, 0, 0, '2023-04-29'),
+(178, 186, 1, 0, 0, 0, '2023-04-29'),
+(179, 184, 1, 0, 0, 0, '2023-04-29'),
+(180, 181, 1, 0, 0, 0, '2023-04-29'),
+(181, 90, 1, 0, 0, 0, '2023-04-29'),
+(182, 89, 1, 0, 0, 0, '2023-04-29'),
+(183, 95, 1, 0, 0, 0, '2023-04-29');
 
 -- --------------------------------------------------------
 
@@ -1862,10 +1914,10 @@ CREATE TABLE `gig` (
 --
 
 INSERT INTO `gig` (`gigID`, `gigName`, `gigTrailor`, `gigScreenshot`, `gigDetails`, `game`, `gameDeveloperID`, `gamePublisherID`, `gigTagline`, `currentStage`, `plannedReleaseDate`, `estimatedShare`, `expectedCost`, `visibility`, `gigCoverImg`, `orderedDate`, `viewCount`, `requests`, `created_at`, `gigStatus`) VALUES
-(12, 'Local Bus Simulator', 'https://www.indiegala.com/login', 'SS-Naruto Shippuden-0.jpg,SS-Naruto Shippuden-1.jpg,SS-Naruto Shippuden-2.jpg', 'cscsc', 89, 46, 0, 'Bus simulator game consisting with customizable local buses ', '12', '2023-04-20', '12', '1000', 'draft', 'Cover-Local Bus Simulator.jpg', NULL, 24, 0, '2023-03-15', 1),
+(12, 'Local Bus Simulator', 'https://www.indiegala.com/login', 'SS-Naruto Shippuden-0.jpg,SS-Naruto Shippuden-1.jpg,SS-Naruto Shippuden-2.jpg', 'cscsc', 89, 46, 0, 'Bus simulator game consisting with customizable local buses ', '12', '2023-04-20', '12', '1000', 'draft', 'Cover-Local Bus Simulator.jpg', NULL, 25, 0, '2023-03-15', 1),
 (13, 'Indie Desert FPS ', 'https://www.indiegala.com/login', 'SS-Stray-0.jpg,SS-Stray-1.jpg,SS-Stray-2.jpg,SS-Stray-3.jpg', 'fefeff', 93, 51, 0, 'Surviving an endless desert after being stranded by you know', '1', '2023-04-20', '12', '1000', 'draft', 'Cover-Indie Desert FPS .jpg', NULL, 7, 0, '2023-04-11', 0),
 (20, 'This is a new gig made by me and my other', 'https://www.indieabode.ffcom', 'SS-20-0.jpg,SS-20-1.jpg,SS-20-2.jpg', 'fkh hthth<u>jyjyjyjj <b>yjtyjytjyj </b>jytjjjytjj yjtyjytj</u>', 96, 46, 0, 'I am developing an open world game with extreme high movements', '3', '2023-04-20', '3', '200', 'draft', 'Cover-20.jpg', NULL, 10, 0, '2023-04-10', 0),
-(25, 'Indie Puzzle Platformer', 'https://www.indiegala.com/login', 'SS-187-0.jpg,SS-187-1.jpg,SS-187-2.jpg', '<b>ABOUT THIS GAME</b><div>Currently I have been developing this game for five months and has gained considerably pleasing progress. Currently it contains five levels with nearly 15 minutes of gameplay. The game has been released on Indieabode as a Demo to try out for anybody who gets liking in the game features, mechanics shown in the images and videos.</div><div><br></div><div><b>DEVELOPMENT OF RECOURSE</b></div><div>Recourse is been developed in Unity game engine using C# as the programming language. As the sole developer I am responsible for all the coding, modeling, texturing and sounds also. Every model currently in use in the game is made by me using Blender and Substance Painter. For audios, and sound effects I am using Audacity and SFXR. The however still lacks on VFX but they would also be added to the game due time.</div>', 187, 81, 0, 'Stylish Puzzle Platformer with a casual gameplay loop', '5', '2024-06-17', '10', '500', 'draft', 'Cover-Indie Puzzle Platformer.jpg', NULL, 1, 0, '2023-04-21', 0),
+(25, 'Indie Puzzle Platformer', 'https://www.indiegala.com/login', 'SS-187-0.jpg,SS-187-1.jpg,SS-187-2.jpg', '<b>ABOUT THIS GAME</b><div>Currently I have been developing this game for five months and has gained considerably pleasing progress. Currently it contains five levels with nearly 15 minutes of gameplay. The game has been released on Indieabode as a Demo to try out for anybody who gets liking in the game features, mechanics shown in the images and videos.</div><div><br></div><div><b>DEVELOPMENT OF RECOURSE</b></div><div>Recourse is been developed in Unity game engine using C# as the programming language. As the sole developer I am responsible for all the coding, modeling, texturing and sounds also. Every model currently in use in the game is made by me using Blender and Substance Painter. For audios, and sound effects I am using Audacity and SFXR. The however still lacks on VFX but they would also be added to the game due time.</div>', 187, 81, 0, 'Stylish Puzzle Platformer with a casual gameplay loop', '5', '2024-06-17', '10', '500', 'draft', 'Cover-Indie Puzzle Platformer.jpg', NULL, 2, 0, '2023-04-21', 0),
 (26, 'New Gig 2fe', '', 'SS-187-0.jpg', '', 187, 81, 0, 'I am developing an open world game with extreme high movements', '2', '2023-04-05', '12', '1234', 'draft', 'Cover-New Gig 2fe.jpg', NULL, 0, 0, '2023-04-26', 0);
 
 -- --------------------------------------------------------
@@ -1977,7 +2029,9 @@ INSERT INTO `gigs_views_tracker` (`id`, `userID`, `sessionID`, `gigID`, `viewedD
 (44, 78, 48, 13, '2023-04-19'),
 (45, 78, 48, 12, '2023-04-19'),
 (46, 81, 64, 12, '2023-04-21'),
-(47, 81, 64, 25, '2023-04-21');
+(47, 81, 64, 25, '2023-04-21'),
+(48, 46, 80, 12, '2023-04-28'),
+(49, 46, 80, 25, '2023-04-28');
 
 -- --------------------------------------------------------
 
@@ -2719,13 +2773,13 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 
 --
 -- AUTO_INCREMENT for table `activation_keys`
 --
 ALTER TABLE `activation_keys`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `admin`
@@ -2737,7 +2791,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `asset_cart`
 --
 ALTER TABLE `asset_cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `asset_library`
@@ -2755,19 +2809,19 @@ ALTER TABLE `asset_purchases`
 -- AUTO_INCREMENT for table `asset_reviews`
 --
 ALTER TABLE `asset_reviews`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `asset_stats_history`
 --
 ALTER TABLE `asset_stats_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `asset_view_tracker`
 --
 ALTER TABLE `asset_view_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `billing_addresses`
@@ -2815,7 +2869,7 @@ ALTER TABLE `crowdfund_donations`
 -- AUTO_INCREMENT for table `crowdfund_view_tracker`
 --
 ALTER TABLE `crowdfund_view_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `devlog`
@@ -2851,7 +2905,7 @@ ALTER TABLE `devlog_posttype`
 -- AUTO_INCREMENT for table `devlog_view_tracker`
 --
 ALTER TABLE `devlog_view_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `freeasset`
@@ -2869,13 +2923,13 @@ ALTER TABLE `freegame`
 -- AUTO_INCREMENT for table `gamejam`
 --
 ALTER TABLE `gamejam`
-  MODIFY `gameJamID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `gameJamID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT for table `gamer`
 --
 ALTER TABLE `gamer`
-  MODIFY `gamerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+  MODIFY `gamerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 
 --
 -- AUTO_INCREMENT for table `games_cart`
@@ -2893,13 +2947,13 @@ ALTER TABLE `games_filters`
 -- AUTO_INCREMENT for table `games_view_tracker`
 --
 ALTER TABLE `games_view_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=306;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=326;
 
 --
 -- AUTO_INCREMENT for table `game_cart`
 --
 ALTER TABLE `game_cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `game_library`
@@ -2929,7 +2983,7 @@ ALTER TABLE `game_stats`
 -- AUTO_INCREMENT for table `game_stats_history`
 --
 ALTER TABLE `game_stats_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=163;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=184;
 
 --
 -- AUTO_INCREMENT for table `gig`
@@ -2947,7 +3001,7 @@ ALTER TABLE `gigmessages`
 -- AUTO_INCREMENT for table `gigs_views_tracker`
 --
 ALTER TABLE `gigs_views_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `gig_purchases`

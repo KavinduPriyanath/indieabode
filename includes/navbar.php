@@ -127,17 +127,18 @@
                             </div>
                         </div>
 
-                        <div class="search">
-                            <form action="/indieabode/search" method="GET" class="search-bar">
-                                <input type="text" placeholder="Search Anything..." name="q" value="<?php if (isset($_GET['q'])) {
-                                                                                                        echo $_GET['q'];
-                                                                                                    }  ?>" />
-                                <button type="submit">
-                                    <img src="<?php echo BASE_URL; ?>public/images/navbar/search.png" alt="" />
-                                </button>
-                            </form>
-                        </div>
+
                     </div>
+                </div>
+                <div class="search">
+                    <form action="/indieabode/search" method="GET" class="search-bar">
+                        <input type="text" placeholder="Search Anything..." name="q" value="<?php if (isset($_GET['q'])) {
+                                                                                                echo $_GET['q'];
+                                                                                            }  ?>" />
+                        <button type="submit">
+                            <img src="<?php echo BASE_URL; ?>public/images/navbar/search.png" alt="" />
+                        </button>
+                    </form>
                 </div>
             <?php } else if ($_SESSION['userRole'] == "gamer") { ?>
                 <div class="logo"><a href="/indieabode/home/">IndieAbode</a></div>

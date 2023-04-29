@@ -30,12 +30,13 @@ body {
     background-attachment: fixed;
     color: white;
     height: 56px;
+    position: relative;
 }
 
 .logo {
     display: flex;
     font-size: 28px;
-    margin: 15px 20px 15px 180px;
+    margin: 15px 20px 15px 160px;
 }
 
 .logo a{
@@ -271,8 +272,13 @@ a:hover .double{
 
 }
 
+.search {
+    position: absolute;
+    margin-top: 2px;
+    right: 165px;
+}
+
 .search-bar {
-    margin-top: 15px;
     display: flex;
     align-content: center;
     width: 100%;
@@ -299,6 +305,7 @@ a:hover .double{
 }
 
 .search-bar button{
+    margin-top: 2px;
     border: 0;
     border-radius: 50%;
     width: 30px;
