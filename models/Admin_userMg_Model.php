@@ -9,16 +9,12 @@ class Admin_userMg_Model extends Model
     }
 
     function viewUser($usertype=""){
-
-        // print($usertype);
-
         if ($usertype==""){
             $sql = "SELECT * FROM `gamer` WHERE accountStatus=1";
         }
 
         else{
             $sql = "SELECT * FROM `gamer` WHERE accountStatus=1 AND userRole='".$usertype."'";
-            print($sql);
         }
         
 
@@ -27,9 +23,8 @@ class Admin_userMg_Model extends Model
         $stmt->execute();
 
         $user = $stmt->fetchAll();
-       // print_r($user);
 
-       return $user;
+        return $user;
     }
 
     
@@ -51,13 +46,6 @@ class Admin_userMg_Model extends Model
         $sql = "SELECT * FROM gamer WHERE gamerID = ".$user_id;
 
         $stmt = $this->db->prepare($sql);
-
-        // if($stmt->execute()){
-        //     return true;
-
-        // }else{
-        //     return false;
-        // }
 
         $stmt->execute();
 
@@ -92,8 +80,6 @@ class Admin_userMg_Model extends Model
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
         $downloads = $row['total'];
-
-        // print_r($row);
 
         return $downloads;
     }
@@ -180,29 +166,6 @@ class Admin_userMg_Model extends Model
         return $submissions;
     }
 
-    // function getFirstPlace($jamID){
-    //     $sql = "SELECT submissionID  FROM submission WHERE gameJamID = ".$jamID." ORDER BY rating DESC LIMIT 1";
-
-        
-    //     $stmt = $this->db->prepare($sql);
-
-    //     $stmt->execute();
-
-    //     $row = $stmt->fetch(PDO::FETCH_ASSOC);
-    //     $firstSubmission = $row['submissionID'];
-
-    //     $sql1 = "SELECT * FROM freegame WHERE gameID = ".$firstSubmission;
-
-    //     // print_r($row);
-
-    //     $stmt = $this->db->prepare($sql1);
-
-    //     $stmt->execute();
-
-    //     $submission = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    //     return $submission;  
-    // }
     function getFirstPlace($jamID){
         if ($jamID === null) {
             return null;

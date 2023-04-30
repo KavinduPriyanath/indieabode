@@ -69,7 +69,7 @@
 
 			<div class="search-user-type">
 				<button class="<?php echo $this->active == 'all' ? 'btn active' : 'btn'; ?>" onclick="filterSelection('all')"> Show all Complaints</button>
-				<a class="<?php echo $this->active == 'Game' ? 'btn active' : 'btn'; ?>" href='/indieabode/Admin_userMg/viewFilteredUser/gamer'"> Games</a>
+				<a class="<?php echo $this->active == 'Game' ? 'btn active' : 'btn'; ?>" href='/indieabode/Admin_complaints/viewFilteredComplaints/Game'"> Games</a>
 				<button class=" <?php echo $this->active == 'Asset' ? 'btn active' : 'btn'; ?>" onclick="filterSelection('Asset')">Assets</button>
 					<button class="<?php echo $this->active == 'Gamejam' ? 'btn active' : 'btn'; ?>" onclick="filterSelection('Gamejam')"> Game Jams</button>
 					<button class="<?php echo $this->active == 'Gig' ? 'btn active' : 'btn'; ?>" onclick="filterSelection('Gig')">Gigs</button>
@@ -111,6 +111,20 @@
 	<script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
 
 
+	<script>
+		function filterSelection(filter_text) {
+			console.log(filter_text)
+
+			if (filter_text === "all") {
+				window.location.href = '/indieabode/Admin_complaints'
+			} else {
+				window.location.href = '/indieabode/Admin_complaints/viewFilteredComplaints/' + filter_text
+			}
+
+
+
+		}
+	</script>
 </body>
 
 </html>
