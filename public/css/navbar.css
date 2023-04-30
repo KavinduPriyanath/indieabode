@@ -251,6 +251,11 @@ a:hover .double{
     top: -10px;
 }
 
+.adarrow {
+    right: 68px;
+    top: -10px;
+}
+
 #logged a{
     display: flex;
 }

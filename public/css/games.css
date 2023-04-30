@@ -9,7 +9,8 @@
 
 
 .side-nav {
-    height: 1100px;
+    display: inline-block;
+    /* height: 1100px; */
     width: 250px;
     position: absolute;
     z-index: 1;

@@ -231,16 +231,16 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="search">
-                            <form action="" class="search-bar">
-                                <input type="text" placeholder="Search Anything..." name="search" />
-                                <button type="submit">
-                                    <img src="<?php echo BASE_URL; ?>public/images/navbar/search.png" alt="" />
-                                </button>
-                            </form>
-                        </div>
                     </div>
+                </div>
+
+                <div class="search">
+                    <form action="" class="search-bar">
+                        <input type="text" placeholder="Search Anything..." name="search" />
+                        <button type="submit">
+                            <img src="<?php echo BASE_URL; ?>public/images/navbar/search.png" alt="" />
+                        </button>
+                    </form>
                 </div>
             <?php } else if ($_SESSION['userRole'] == "asset creator") { ?>
                 <div class="logo"><a href="/indieabode/home/creator">IndieAbode</a></div>
@@ -315,15 +315,16 @@
                             </div>
                         </div>
 
-                        <div class="search">
-                            <form action="" class="search-bar">
-                                <input type="text" placeholder="Search Anything..." name="search" />
-                                <button type="submit">
-                                    <img src="public/images/navbar/search.png" alt="" />
-                                </button>
-                            </form>
-                        </div>
+
                     </div>
+                </div>
+                <div class="search">
+                    <form action="" class="search-bar">
+                        <input type="text" placeholder="Search Anything..." name="search" />
+                        <button type="submit">
+                            <img src="public/images/navbar/search.png" alt="" />
+                        </button>
+                    </form>
                 </div>
             <?php } else if ($_SESSION['userRole'] == "gamejam organizer") { ?>
                 <div class="logo"><a href="/indieabode/home/organizer">IndieAbode</a></div>
@@ -386,15 +387,16 @@
                             </div>
                         </div>
 
-                        <div class="search">
-                            <form action="" class="search-bar">
-                                <input type="text" placeholder="Search Anything..." name="search" />
-                                <button type="submit">
-                                    <img src="public/images/navbar/search.png" alt="" />
-                                </button>
-                            </form>
-                        </div>
+
                     </div>
+                </div>
+                <div class="search">
+                    <form action="" class="search-bar">
+                        <input type="text" placeholder="Search Anything..." name="search" />
+                        <button type="submit">
+                            <img src="public/images/navbar/search.png" alt="" />
+                        </button>
+                    </form>
                 </div>
             <?php } else if ($_SESSION['userRole'] == "game publisher") { ?>
                 <div class="logo"><a href="/indieabode/home/publisher">IndieAbode</a></div>
@@ -443,12 +445,12 @@
                             <a href="<?php echo BASE_URL; ?>gigs" data-dropdown-button>Advertisements<i class="fa fa-angle-down droparrow"></i></a>
 
                             <div class="dropdown-menu">
-                                <div class="arrow gigsarrow"></div>
+                                <div class="arrow adarrow"></div>
                                 <div class=".ulsub">
-                                    <a href="<?php echo BASE_URL; ?>requests">Requests <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                                    <a href="<?php echo BASE_URL; ?>archieve">Archieve <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                                    <a href="<?php echo BASE_URL; ?>requests">Add&nbsp;Advertisement <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                                    <a href="<?php echo BASE_URL; ?>archieve">Ad&nbsp;Dashboard <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                     <hr />
-                                    <a href="<?php echo BASE_URL; ?>gigs">Browse&nbsp;all&nbsp;gigs
+                                    <a href="<?php echo BASE_URL; ?>gigs">Ad&nbsp;Settings
                                         <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                 </div>
                             </div>
@@ -490,15 +492,16 @@
                             </div>
                         </div>
 
-                        <div class="search">
-                            <form action="" class="search-bar">
-                                <input type="text" placeholder="Search Anything..." name="search" />
-                                <button type="submit">
-                                    <img src="public/images/navbar/search.png" alt="" />
-                                </button>
-                            </form>
-                        </div>
+
                     </div>
+                </div>
+                <div class="search">
+                    <form action="" class="search-bar">
+                        <input type="text" placeholder="Search Anything..." name="search" />
+                        <button type="submit">
+                            <img src="public/images/navbar/search.png" alt="" />
+                        </button>
+                    </form>
                 </div>
             <?php } else if ($_SESSION['userRole'] == "admin") { ?>
                 <div class="navbar-links">
@@ -631,15 +634,16 @@
 
 
 
-                    <div class="search">
-                        <form action="" class="search-bar">
-                            <input type="text" placeholder="Search Anything..." name="search" />
-                            <button type="submit">
-                                <img src="public/images/navbar/search.png" alt="" />
-                            </button>
-                        </form>
-                    </div>
+
                 </div>
+            </div>
+            <div class="search">
+                <form action="" class="search-bar">
+                    <input type="text" placeholder="Search Anything..." name="search" />
+                    <button type="submit">
+                        <img src="public/images/navbar/search.png" alt="" />
+                    </button>
+                </form>
             </div>
         <?php } ?>
     </div>
