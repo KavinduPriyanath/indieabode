@@ -23,12 +23,18 @@
     <div class="user-detail-container">
         <div class="left-container">
             <div class="user-detail-container-item">
-                <!-- <img src="" id="profile-pic"> -->
+                <img src="/indieabode/public/uploads/portfolio/pic.jpg" id="profile-pic">
             </div>
 
             <div class="name-role">
-                <h1 id="user-name"><?= $this->developerDetails['username']; ?></h1>
-                <h4 id="user-role"><?= $this->developerDetails['userRole']; ?></h4>
+                <div class="upper-name-row">
+                    <h1 id="user-name"><?= $this->developerDetails['username']; ?> </h1>
+                    <?php if ($_GET['profile'] != $_SESSION['username']) { ?>
+                        <span class="follow-btn">Follow</span>
+                    <?php } ?>
+                </div>
+
+                <h4 id="user-role"><?= ucwords($this->developerDetails['userRole']) ?></h4>
             </div>
         </div>
 
@@ -41,12 +47,12 @@
             </div>
             <div class="user-follow-follower">
                 <!--follower counting-->
-                <p class="value">134</p>
+                <p class="value"><?= $this->additionalDeveloperDetails['followers']; ?></p>
                 <p>Followers</p>
             </div>
             <div class="user-follow-following">
                 <!--following counting-->
-                <p class="value">13</p>
+                <p class="value"><?= $this->additionalDeveloperDetails['following']; ?></p>
                 <p>Following</p>
             </div>
         </div>
@@ -54,7 +60,7 @@
 
 
     <div class="portfolio-container-2">
-        <p><?= $this->additionalDeveloperDetails['tagline']; ?>
+        <p><?= $this->additionalDeveloperDetails['introduction']; ?>
         </p>
     </div>
 
