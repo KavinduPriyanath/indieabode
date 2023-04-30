@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <title>Indieabode</title>
 
     <style>
@@ -31,6 +32,7 @@
                     <h1 id="user-name"><?= $this->developerDetails['username']; ?> </h1>
                     <?php if ($_GET['profile'] != $_SESSION['username']) { ?>
                         <span class="follow-btn">Follow</span>
+                        <input type="hidden" name="followingID" id="followingID" value="<?= $this->developerDetails['gamerID'] ?>">
                     <?php } ?>
                 </div>
 
@@ -47,7 +49,7 @@
             </div>
             <div class="user-follow-follower">
                 <!--follower counting-->
-                <p class="value"><?= $this->additionalDeveloperDetails['followers']; ?></p>
+                <p class="value" id="followers"><?= $this->additionalDeveloperDetails['followers']; ?></p>
                 <p>Followers</p>
             </div>
             <div class="user-follow-following">
@@ -96,6 +98,47 @@
 
     <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
 
+    <script>
+        $(document).ready(function() {
+
+            <?php if (empty($this->isFollowing)) { ?>
+                $('.follow-btn').text("Follow");
+            <?php } else { ?>
+                $('.follow-btn').text("Following");
+            <?php } ?>
+
+            $(".follow-btn").click(function(e) {
+
+                let follower = <?= $_SESSION['id'] ?>;
+                let following = $('#followingID').val();
+
+
+                var data = {
+                    'follower': follower,
+                    'following': following,
+                };
+
+                $.ajax({
+                    type: "POST",
+                    url: "/indieabode/portfolio/followOthers",
+                    data: data,
+                    success: function(response) {
+                        // alert(response);
+                        $('.follow-btn').text("Following");
+
+                        if (response == "Followed") {
+                            $('.follow-btn').text("Following");
+                        } else if (response == "UnFollowed") {
+                            $('.follow-btn').text("Follow");
+                        }
+
+                    },
+                });
+
+            });
+
+        });
+    </script>
 
 </body>
 

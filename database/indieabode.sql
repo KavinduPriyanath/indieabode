@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 29, 2023 at 10:23 PM
+-- Generation Time: Apr 30, 2023 at 04:01 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -35,32 +35,34 @@ CREATE TABLE `account` (
   `displayName` varchar(100) NOT NULL,
   `twitter` varchar(50) NOT NULL,
   `linkedin` varchar(50) NOT NULL,
-  `introduction` varchar(200) NOT NULL,
+  `introduction` text NOT NULL,
   `website` varchar(200) NOT NULL,
-  `revenueShare` int(11) NOT NULL DEFAULT 10
+  `revenueShare` int(11) NOT NULL DEFAULT 10,
+  `followers` int(11) NOT NULL DEFAULT 0,
+  `following` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `account`
 --
 
-INSERT INTO `account` (`userID`, `profilePhoto`, `location`, `phoneNumber`, `displayName`, `twitter`, `linkedin`, `introduction`, `website`, `revenueShare`) VALUES
-(46, 'Portfolio-46.jpg', 'hrtht', '4543334', 'kavindu', 'rththt', 'hrtht', '', 'thhwwww', 17),
-(47, '', '', '', '', '', '', '', '', 10),
-(48, '', '', '', '', '', '', '', '', 10),
-(51, '', '', '', 'oh my god', '', '', '', '', 10),
-(52, '', '', '', '', '', '', '', '', 10),
-(53, '', '', '', '', '', '', '', '', 10),
-(78, '', '', '', '', '', '', '', '', 10),
-(80, '', '', '', '', '', '', '', '', 10),
-(81, '', '', '', '', '', '', '', '', 10),
-(82, '', '', '', '', '', '', '', '', 10),
-(83, '', '', '', '', '', '', '', '', 10),
-(84, '', '', '', '', '', '', '', '', 10),
-(86, '', '', '', '', '', '', '', '', 10),
-(87, '', '', '', '', '', '', '', '', 10),
-(89, '', '', '', '', '', '', '', '', 10),
-(91, '', '', '', '', '', '', '', '', 10);
+INSERT INTO `account` (`userID`, `profilePhoto`, `location`, `phoneNumber`, `displayName`, `twitter`, `linkedin`, `introduction`, `website`, `revenueShare`, `followers`, `following`) VALUES
+(46, 'pic.jpg', 'hrtht', '4543334', 'kavindu', 'rththt', 'hrtht', 'Hi. I\'m computer science undergraduate and indie game developer who enjoys working with games', 'thhwwww', 17, 0, 0),
+(47, '', '', '', '', '', '', '', '', 10, 0, 0),
+(48, '', '', '', '', '', '', '', '', 10, 0, 0),
+(51, '', '', '', 'oh my god', '', '', '', '', 10, 0, 0),
+(52, '', '', '', '', '', '', '', '', 10, 0, 0),
+(53, '', '', '', '', '', '', '', '', 10, 0, 0),
+(78, '', '', '', '', '', '', '', '', 10, 0, 0),
+(80, '', '', '', '', '', '', '', '', 10, 0, 0),
+(81, '', '', '', '', '', '', 'Hi. I\'m computer science undergraduate and indie game developer who enjoys working with games', '', 10, 0, 0),
+(82, '', '', '', '', '', '', '', '', 10, 0, 0),
+(83, '', '', '', '', '', '', '', '', 10, 0, 0),
+(84, '', '', '', '', '', '', '', '', 10, 0, 0),
+(86, '', '', '', '', '', '', '', '', 10, 0, 0),
+(87, '', '', '', '', '', '', '', '', 10, 0, 0),
+(89, '', '', '', '', '', '', '', '', 10, 0, 0),
+(91, '', '', '', '', '', '', '', '', 10, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -292,7 +294,7 @@ CREATE TABLE `asset_stats` (
 
 INSERT INTO `asset_stats` (`assetID`, `downloads`, `views`, `ratings`, `ratingCount`, `revenue`) VALUES
 (9, 5, 9, 0, 0, 0),
-(10, 0, 12, 0, 0, 0),
+(10, 0, 13, 0, 0, 0),
 (17, 4, 5, 0, 0, 26.109),
 (18, 0, 4, 0, 0, 0),
 (19, 2, 5, 0, 0, 28.276),
@@ -349,7 +351,8 @@ INSERT INTO `asset_stats_history` (`id`, `assetID`, `views`, `downloads`, `ratin
 (26, 29, 1, 1, 0, 0, '2023-04-28'),
 (27, 19, 1, 0, 0, 0, '2023-04-28'),
 (28, 9, 1, 0, 0, 0, '2023-04-28'),
-(29, 10, 1, 0, 0, 0, '2023-04-28');
+(29, 10, 1, 0, 0, 0, '2023-04-28'),
+(30, 10, 1, 0, 0, 0, '2023-04-30');
 
 -- --------------------------------------------------------
 
@@ -425,7 +428,8 @@ INSERT INTO `asset_view_tracker` (`id`, `userID`, `assetID`, `sessionID`, `viewe
 (53, 46, 29, 80, '2023-04-28'),
 (54, 46, 19, 80, '2023-04-28'),
 (55, 78, 9, 92, '2023-04-28'),
-(56, 46, 10, 73, '2023-04-28');
+(56, 46, 10, 73, '2023-04-28'),
+(57, 81, 10, 80, '2023-04-30');
 
 -- --------------------------------------------------------
 
@@ -864,6 +868,19 @@ CREATE TABLE `downloadgame` (
   `gamerID` int(11) NOT NULL,
   `gameID` int(11) NOT NULL,
   `created_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `followers`
+--
+
+CREATE TABLE `followers` (
+  `id` int(11) NOT NULL,
+  `follower` int(11) NOT NULL,
+  `following` int(11) NOT NULL,
+  `followed_date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -1502,7 +1519,10 @@ INSERT INTO `games_view_tracker` (`id`, `userID`, `sessionID`, `gameID`, `viewed
 (322, 46, 27, 181, '2023-04-30'),
 (323, 46, 27, 90, '2023-04-30'),
 (324, 46, 27, 89, '2023-04-30'),
-(325, 46, 27, 95, '2023-04-30');
+(325, 46, 27, 95, '2023-04-30'),
+(326, 81, 80, 95, '2023-04-30'),
+(327, 81, 80, 187, '2023-04-30'),
+(328, 81, 80, 92, '2023-04-30');
 
 -- --------------------------------------------------------
 
@@ -1672,12 +1692,12 @@ INSERT INTO `game_stats` (`id`, `gameID`, `views`, `downloads`, `ratings`, `reve
 (2, 89, 15, 0, 0, 0),
 (3, 90, 30, 0, 0, 0),
 (4, 91, 35, 13, 0, 0),
-(5, 92, 39, 5, 0, 0),
+(5, 92, 40, 5, 0, 0),
 (6, 93, 23, 1, 0, 0),
-(7, 95, 27, 4, 1, 0),
+(7, 95, 28, 4, 1, 0),
 (8, 184, 11, 3, 0, 0),
 (10, 186, 4, 0, 0, 0),
-(11, 187, 6, 4, 0, 0),
+(11, 187, 7, 4, 0, 0),
 (12, 188, 13, 1, 0, 152.48),
 (14, 189, 11, 0, 0, 295.858),
 (16, 191, 3, 1, 0, 0);
@@ -1878,7 +1898,10 @@ INSERT INTO `game_stats_history` (`id`, `gameID`, `views`, `downloads`, `ratings
 (180, 181, 1, 0, 0, 0, '2023-04-29'),
 (181, 90, 1, 0, 0, 0, '2023-04-29'),
 (182, 89, 1, 0, 0, 0, '2023-04-29'),
-(183, 95, 1, 0, 0, 0, '2023-04-29');
+(183, 95, 1, 0, 0, 0, '2023-04-29'),
+(184, 95, 1, 0, 0, 0, '2023-04-30'),
+(185, 187, 1, 0, 0, 0, '2023-04-30'),
+(186, 92, 1, 0, 0, 0, '2023-04-30');
 
 -- --------------------------------------------------------
 
@@ -2608,6 +2631,12 @@ ALTER TABLE `devlog_view_tracker`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `followers`
+--
+ALTER TABLE `followers`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `freeasset`
 --
 ALTER TABLE `freeasset`
@@ -2815,13 +2844,13 @@ ALTER TABLE `asset_reviews`
 -- AUTO_INCREMENT for table `asset_stats_history`
 --
 ALTER TABLE `asset_stats_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `asset_view_tracker`
 --
 ALTER TABLE `asset_view_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `billing_addresses`
@@ -2908,6 +2937,12 @@ ALTER TABLE `devlog_view_tracker`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
+-- AUTO_INCREMENT for table `followers`
+--
+ALTER TABLE `followers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
 -- AUTO_INCREMENT for table `freeasset`
 --
 ALTER TABLE `freeasset`
@@ -2917,7 +2952,7 @@ ALTER TABLE `freeasset`
 -- AUTO_INCREMENT for table `freegame`
 --
 ALTER TABLE `freegame`
-  MODIFY `gameID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=193;
+  MODIFY `gameID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=195;
 
 --
 -- AUTO_INCREMENT for table `gamejam`
@@ -2947,7 +2982,7 @@ ALTER TABLE `games_filters`
 -- AUTO_INCREMENT for table `games_view_tracker`
 --
 ALTER TABLE `games_view_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=326;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=329;
 
 --
 -- AUTO_INCREMENT for table `game_cart`
@@ -2983,7 +3018,7 @@ ALTER TABLE `game_stats`
 -- AUTO_INCREMENT for table `game_stats_history`
 --
 ALTER TABLE `game_stats_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=184;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=187;
 
 --
 -- AUTO_INCREMENT for table `gig`
