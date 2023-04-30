@@ -1,4 +1,7 @@
-.developer-dashboard, .creator-dashboard, .organizer-dashboard, .publisher-dashboard {
+.developer-dashboard,
+.creator-dashboard,
+.organizer-dashboard,
+.publisher-dashboard {
   background-color: rgba(100, 166, 204, 0.2);
   margin: 50px 210px 50px 210px;
   border-radius: 7px;
@@ -123,12 +126,12 @@
   margin-right: 8px;
 }
 
-.devlog-cards .right-col{
-    width: 300px;
+.devlog-cards .right-col {
+  width: 300px;
 }
 
 .all-crowdfund-cards .right-col {
-    width: 300px;
+  width: 300px;
 }
 
 .right-col {
@@ -146,15 +149,15 @@
 }
 
 .edit-btn {
-    margin: 28px 18px;
-    text-decoration: underline;
-    
+  margin: 28px 18px;
+  text-decoration: underline;
+
 
 }
 
 .edit-btn a {
-    color: black;
-    text-decoration: none;
+  color: black;
+  text-decoration: none;
 }
 
 /* Devlog Page  */
@@ -198,7 +201,8 @@
   cursor: pointer;
 }
 
-.gig-tabs, .jam-tabs {
+.gig-tabs,
+.jam-tabs {
   margin: 20px 120px 6px;
   font-size: 19px;
   display: flex;
@@ -209,11 +213,15 @@
   border: 1px solid rgb(96, 175, 212);
 }
 
-.gig-tabs .topic, .jam-tabs .topic {
+.gig-tabs .topic,
+.jam-tabs .topic {
   margin-right: 40px;
 }
 
-.ongoing-requests-cards, .ordered-gigs-cards, .expired-crowdfund-cards, .cancelled-crowdfund-cards {
+.ongoing-requests-cards,
+.ordered-gigs-cards,
+.expired-crowdfund-cards,
+.cancelled-crowdfund-cards {
   display: none;
 }
 
@@ -261,7 +269,8 @@
   border: 1px solid black;
 }
 
-table th, table td {
+table th,
+table td {
   border: 0.7px solid black;
   padding: 3px 13px;
 }
@@ -284,4 +293,9 @@ table #column2 {
 
 .empty-msg {
   text-align: center;
+}
+
+#certificate-heading {
+  margin-left: 80px;
+  margin-bottom: 20px;
 }

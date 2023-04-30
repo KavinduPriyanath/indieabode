@@ -1,5 +1,7 @@
 <?php
 
+require_once('includes/tcpdf/tcpdf.php');
+
 class Dashboard extends Controller
 {
 
@@ -509,6 +511,27 @@ class Dashboard extends Controller
         header('location:/indieabode/');
     }
 
+    //Developer can delete his published gigs if they do not have any requests made by publishers
+    function deleteGig()
+    {
+        if ($_POST['delete_gig'] == true) {
+
+            $gigID = $_POST['gigID'];
+
+            //Checks whether the gig has any requests
+            $hasRequests = $this->model->OngoingRequestsOfThisGig($gigID);
+
+            //Delete the gig if it dont have any requests. Otherwise display an alert message
+            if (empty($hasRequests)) {
+
+                $this->model->DeleteGig($gigID);
+                echo "deleted";
+            } else {
+                echo "has requests";
+            }
+        }
+    }
+
     function gamecrowdfunds()
     {
         $this->view->crowdfund = $this->model->ThisGamesCrowdfunds($_GET['id']);
@@ -682,5 +705,93 @@ class Dashboard extends Controller
         );
 
         header('location:/indieabode/');
+    }
+
+    function certificates()
+    {
+
+        $this->view->allJams = $this->model->showAllMyJamsOrganizer($_SESSION['id']);
+
+        $this->view->render('Dashboard/OrganizerDashboards/Add-Certificate');
+    }
+
+    function viewCertificate()
+    {
+
+
+        $certificationType = $_POST['certificate-type'];
+        $participantName = $_POST['participant-name'];
+        // $partipantPlace = $_POST['participant-place'];
+        $reason = "For Winning the First Place in the";
+        $jamName = $_POST['game-jam'];
+
+
+        if ($certificationType == "PARTICIPATION") {
+            $reason = "For his/her participation in the";
+        } else if ($certificationType == "FINALIST") {
+            $reason = "For achieving place in top 10 in the";
+        } else if ($certificationType == "WINNER") {
+            $reason = "For Winning the First Place in the";
+        }
+
+        $pdf = new TCPDF('L', 'mm', 'A4', true, 'UTF-8', true);
+
+        $pdf->setTitle("Certification of Completion");
+
+        $pdf->SetPrintHeader(false);
+        $pdf->setPrintFooter(false);
+
+        $pdf->AddPage();
+
+        $pdf->setFont('helvetica', '', 24);
+
+        $pdf->Rect(0, 0, $pdf->getPageWidth(),    $pdf->getPageHeight(), 'DF', "",  array(184, 218, 253));
+        $pdf->SetLineStyle(array('width' => 15, 'color' => array(69, 135, 202)));
+        $pdf->Rect(0, 0, $pdf->getPageWidth(), $pdf->getPageHeight());
+
+        $html1 = <<<EOF
+                        <!DOCTYPE html>
+                        <html lang="en">
+
+                        <body>
+                        <style>
+                            * {
+                                text-align:center;
+                            }
+                        </style>
+                        <img src="/indieabode/public/images/Certificate/logo.jpg" alt="test alt attribute" width="130" height="120" border="0" />
+                        <div id="heading" style="color:black;font-size:xx-large;" ><b>CERTIFICATE OF 
+                    EOF;
+
+        $html2 = <<<EOF
+                        </b></div>
+                        <div style="font-size: x-small;">This certificate is proudly presented to </div>
+                        <div style="font-weight:bold;background-color: rgb(50, 112, 175);color: rgb(255, 255, 255);">  
+                    EOF;
+
+        $html3 = <<<EOF
+                        </div>
+                        <div style="font-size: x-small;">
+                    EOF;
+
+        $html4 = <<<EOF
+                        </div>
+                        <div>
+                    EOF;
+
+        $html5 = <<<EOF
+                        </div>
+                        <small>September 12th, 2023</small><br/><br/>
+                        <img src="/indieabode/public/images/Certificate/end.jpg" alt="test alt attribute" width="75" height="30" border="0" />
+                        </body>
+
+                        </html>
+                    EOF;
+
+        $html = $html1 . $certificationType . $html2 . $participantName . $html3 . $reason . $html4 . $jamName . $html5;
+
+        $pdf->writeHTML($html);
+
+        $pdf->Output("kavi.pdf", 'I');
     }
 }
