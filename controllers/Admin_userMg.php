@@ -12,29 +12,11 @@ class Admin_userMg extends Controller
     function index()
     {
         $this->view->users = $this->model->viewUser();
-            // if(empty($this->users)){
-            //     echo "empty";
-
-            // }else{
-            //     echo "na";
-            // }
-        //$this->view->totalDownloads = $this->model->totalDownloads();
-
-        // $this->view = $this->model->delete_user($user['id']);
-
-        // if(isset($_POST['delete_user'])){
-        //    $user_id = mysqli_real_escape_string($con, $_POST['id']); 
-        //    echo $user_id;
-        //    $this->view = $this->model->delete_user($user_id);
-        // }
         $this->view->active="all";
         $this->view->render('Admin/Admin_userMg');
     }
 
     public function viewFilteredUser($filter_text){
-
-        
-
         if($filter_text=="gd")
             $usertype = "game developer";
         if($filter_text=="gp")
@@ -52,18 +34,42 @@ class Admin_userMg extends Controller
         $this->view->render('Admin/Admin_userMg');
     }
 
+    public function viewFilteredBlockUser($filter_text){
+        $this->view->users = $this->model->viewBlockUser($filter_text);
+        $this->view->render('Admin/Admin_userMg');
+    }
+
     public function deleteUser($userid){
-        
-     
-               $this->view = $this->model->delete_user($userid);
-               if($this->view){
-                 echo" wade hari";
-               }else{
-                echo "ba";
-               }
-            
+        $result = $this->model->delete_user($userid);
+        if ($result === true) {
+            //echo "<script>alert('User deleted successfully.'); window.location.href = '/indieabode/Admin_userMg/viewFilteredBlockUser/block';</script>";
+            $this->view->users = $this->model->viewBlockUser('block');
+            $this->view->render('Admin/Admin_userMg');
+        } else {
+            $this->view->users = $this->model->viewUser();
+
+            // $this->view->active=$usertype;
+            // echo "<script>alert('Error deleting user.'); window.location.href = '/indieabode/Admin_userMg';</script>";
+            $this->view->render('Admin/Admin_userMg');
+        }
 
     }
+    public function unblockUser($userid){
+        $result = $this->model->unblock_user($userid);
+        if ($result === true) {
+            // $this->view->active=$usertype;
+            $this->view->users = $this->model->viewUser();
+            //echo "<script>alert('User deleted successfully.'); window.location.href = '/indieabode/Admin_userMg/viewFilteredBlockUser/block';</script>";
+            
+            $this->view->render('Admin/Admin_userMg');
+        } else {
+            $this->view->users = $this->model->viewBlockUser('block');
+           // echo "<script>alert('Error deleting user.'); window.location.href = '/indieabode/Admin_userMg';</script>";
+            $this->view->render('Admin/Admin_userMg');
+        }
+
+    }
+
     public function viewUser($userid){
         
      
@@ -80,8 +86,6 @@ class Admin_userMg extends Controller
         }
         if($user['userRole']=="asset creator"){
             $ac_user = $this->model->assetCreator($userid);
-
-            // print_r($ac_user);
             $this->view->render('Admin/reports/Admin_assetCreator_report');
         }
         if($user['userRole']=="game publisher"){
@@ -98,10 +102,6 @@ class Admin_userMg extends Controller
             $this->view->render('Admin/reports/Admin_report');
         }
         if($user['userRole']=="gamer"){
-            // $gp_user = $this->model->gamer($userid);
-
-            // print_r($ac_user);
-
             require_once('includes/tcpdf/tcpdf.php');
 
             ob_start();

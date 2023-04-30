@@ -40,22 +40,11 @@
 				</div>
 			</div>
 		</div>
-
-		<!-- <a href="#" class="brand"><i class='bx bxs-smile icon'></i>Indie Abode</a> -->
 		<ul class="side-menu">
 			<li class="divider" data-text="main">Main</li>
 
 			<li><a href="<?php echo BASE_URL; ?>SiteDashboard" class="active"><i class='bx bxs-dashboard icon'></i> Dashboard <i
 						class='bx bx-chevron-right icon-right'></i> </a></li>
-
-			<!-- <ul class="side-dropdown"> -->
-			<!-- <li><a href="<?php echo BASE_URL; ?>Admin_G"><i class='bx bxs-dashboard icon'></i>Game Dashboard</a></li>
-			<li><a href="<?php echo BASE_URL; ?>Admin_assetD"><i class='bx bxs-dashboard icon'></i>Asset Dashboard</a></li>
-			<li><a href="<?php echo BASE_URL; ?>Admin_GigD"><i class='bx bxs-dashboard icon'></i>Gigs Dashboard</a></li>
-			<li><a href="<?php echo BASE_URL; ?>Admin_crowdfundD"><i class='bx bxs-dashboard icon'></i>Crowdfund Dashboard</a></li>
-			<li><a href="<?php echo BASE_URL; ?>Admin_devlogsD"><i class='bx bxs-dashboard icon'></i>Devlogs Dashboard</a></li>
-			<li><a href="<?php echo BASE_URL; ?>Admin_gameJamD"><i class='bx bxs-dashboard icon'></i>Game Jam Dashboard</a></li> -->
-			<!-- </ul> -->
 			<li>
 				<a href="<?php echo BASE_URL; ?>Admin_complaints"><i class='bx bxs-message-square-error icon'></i> Complaints </a>
 			</li>
@@ -97,28 +86,9 @@
 						<button class="<?php echo $this->active == 'gamejam organizer' ? 'btn active' : 'btn'; ?>" onclick="filterSelection('go')"> Game Jam Organizers</button>
 				</div>
 				<div class="blocked-users">
-					<button class="#" onclick="filterSelection('')">Blocked Users</button>
+					<button class="#" onclick="viewBlockUsers('block')">Blocked Users</button>
 				</div>
 			</div>
-
-			<!--
-			<div class="container">
-				<div class="filterDiv cars">BMW</div>
-				<div class="filterDiv colors fruits">Orange</div>
-				<div class="filterDiv cars">Volvo</div>
-				<div class="filterDiv colors">Red</div>
-				<div class="filterDiv cars animals">Mustang</div>
-				<div class="filterDiv colors">Blue</div>
-				<div class="filterDiv animals">Cat</div>
-				<div class="filterDiv animals">Dog</div>
-				<div class="filterDiv fruits">Melon</div>
-				<div class="filterDiv fruits animals">Kiwi</div>
-				<div class="filterDiv fruits">Banana</div>
-				<div class="filterDiv fruits">Lemon</div>
-				<div class="filterDiv animals">Cow</div>
-			</div> -->
-
-
 			<section class="table__body">
             <table>
                 <thead>
@@ -152,11 +122,17 @@
           							<input type="submit" name="download_user" value="download" class="download-user-btn">
 								</form>
 							</td>
-                            <td>
-								<form action="/indieabode/Admin_userMg/deleteUser/<?php echo $user['gamerID']; ?>" method="post"> 
-          							<input type="submit" name="delete_user" value="Block" class="del-user-btn">
-								</form>
-                            </td>
+							<td>
+								<?php if($user['accountStatus'] == 1){ ?>
+									<form action="/indieabode/Admin_userMg/deleteUser/<?php echo $user['gamerID']; ?>" method="post"> 
+										<input type="submit" name="block_user" value="Block" class="del-user-btn">
+									</form>
+								<?php } else { ?>
+									<form action="/indieabode/Admin_userMg/unblockUser/<?php echo $user['gamerID']; ?>" method="post"> 
+										<input type="submit" name="unblock_user" value="Unblock" class="del-user-btn unblock-btn">
+									</form>
+								<?php } ?>
+							</td>
                         </tr>
                     <?php } ?>
                 </tbody>
@@ -185,9 +161,11 @@
 			} else {
 				window.location.href = '/indieabode/Admin_userMg/viewFilteredUser/' + filter_text
 			}
+		}
+		function viewBlockUsers(filter_text) {
 
-
-
+			console.log(filter_text)
+			window.location.href = '/indieabode/Admin_userMg/viewFilteredBlockUser/' + filter_text
 		}
 	</script>
 
