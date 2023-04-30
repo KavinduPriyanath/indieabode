@@ -35,7 +35,7 @@
                     <div class="label">downloads</div>
                 </div>
                 <div id="revenue">
-                    <div class="count"><?= $this->totalRevenue ?></div>
+                    <div class="count">$<?= number_format($this->totalRevenue, 2) ?></div>
                     <div class="label">revenue</div>
                 </div>
             </div>
@@ -85,7 +85,7 @@
                             <div class="label">ratings</div>
                         </div>
                         <div class="revenue">
-                            <div class="count">$<?= $game['revenue'] ?></div>
+                            <div class="count">$<?= number_format($game['revenue'], 2) ?></div>
                             <div class="label">revenue</div>
                         </div>
                     </div>

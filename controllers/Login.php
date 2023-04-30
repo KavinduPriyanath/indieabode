@@ -31,6 +31,7 @@ class Login extends Controller
             $_SESSION['logged'] = $admin['id'];
             $_SESSION['username'] = $admin['username'];
             $_SESSION['userRole'] = "admin";
+            $_SESSION['email'] = $admin['email'];
             header('location:/indieabode/SiteDashboard');
         } else if (!empty($user) && $user['verified'] == 1) {
             //$_SESSION['role'] = "Game-Developer";
@@ -45,6 +46,8 @@ class Login extends Controller
 
             if ($user['userRole'] == "game developer") {
                 header('location:/indieabode/home/developer');
+            } else if ($user['userRole'] == "gamer") {
+                header('location:/indieabode/home');
             } else {
                 header('location:/indieabode/');
             }
@@ -96,8 +99,6 @@ class Login extends Controller
                 header('location:/indieabode/failedpasswordreset');
             }
             // header('location:/indieabode/activation');
-        } else {
-            header('location:/indieabode/aa');
         }
     }
 
@@ -134,4 +135,25 @@ class Login extends Controller
             //header('location:/indieabode/aa');
         }
     }
+
+
+
+    function loginValidation()
+    {
+
+        if ($_POST['login_validation'] == true) {
+
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+
+            $user = $this->model->signin();
+
+            if (!empty($user)) {
+                echo "success";
+            } else {
+                echo "failure";
+            }
+        }
+    }
 }
+

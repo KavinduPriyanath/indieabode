@@ -12,6 +12,17 @@ class Home extends Controller
 
     function index()
     {
+        $this->view->topSellerGames = $this->model->TopSellers();
+
+        $this->view->latestGames = $this->model->NewReleases();
+
+        $this->view->mostPopular = $this->model->MostPopular();
+
+        $this->view->topRated = $this->model->TopRated();
+
+        $this->view->comingSoon = $this->model->ComingSoon();
+
+        $this->view->render('HomePages/GamerHome');
     }
 
     function developer()

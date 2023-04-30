@@ -256,12 +256,14 @@ a:hover .double {
     top: -10px;
 }
 
+
 .certificateArrow {
     right: 90px;
     top: -10px;
 }
 
 #logged a {
+
     display: flex;
 }
 
@@ -314,7 +316,9 @@ a:hover .double {
     font-family: 'Kreon', serif;
 }
 
-.search-bar button {
+
+.search-bar button{
+
     margin-top: 2px;
     border: 0;
     border-radius: 50%;

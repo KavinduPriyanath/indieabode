@@ -38,13 +38,15 @@
                                 <div class="card-box">
 
                                     <label for="">Title</label><br>
-                                    <input type="text" name="title" required><br><br>
+                                    <input type="text" name="title" id="title" required><br>
+                                    <div class="error-msg" id="devlogTitleCheck"></div><br>
                                 </div>
 
                                 <div class="card-box">
                                     <label for="">Tagline</label>
                                     <p>One line summery of the devlog</p>
-                                    <input type="text" name="tagline" placeholder="tagline" required><br><br>
+                                    <input type="text" name="tagline" placeholder="tagline" id="tagline" required><br>
+                                    <div class="error-msg" id="devlogTaglineCheck"></div><br>
                                 </div>
 
 
@@ -128,7 +130,7 @@
                                     <div class="visibility">
                                         <p>Decide when is your page ready for the public.</p>
                                         <div class="category">
-                                            <input type="radio" id="dev-draft" name="dev-visibility" value="draft">
+                                            <input type="radio" id="dev-draft" name="dev-visibility" value="draft" checked>
                                             <label for="dev-draft">Draft - Only those who can edit the project can view the page</label><br>
                                             <input type="radio" id="dev-public" name="dev-visibility" value="public">
                                             <label for="dev-public">Public - Anyone can view the page, you can enable this after you've saved</label><br>
@@ -153,6 +155,7 @@
                                             Upload Photo
                                         </label>
                                     </div>
+                                    <div class="error-msg" id="devlogCoverImgCheck"></div>
                                 </div>
                             </div>
                         </div>
@@ -175,6 +178,7 @@
 
     <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
     <script src=" <?php echo BASE_URL; ?>public/js/richtext.js"> </script>
+    <script src=" <?php echo BASE_URL; ?>public/js/makedevlog.js"> </script>
 
     <script>
         $(document).ready(function() {

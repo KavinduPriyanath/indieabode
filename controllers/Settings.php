@@ -121,6 +121,7 @@ class Settings extends Controller
 
     function revenueshare()
     {
+        $this->view->currentRevenueShare = $this->model->CurrentRevenueShare($_SESSION['id']);
 
         $this->view->render('Settings/RevenueShare');
     }
@@ -158,7 +159,7 @@ class Settings extends Controller
 
     function addBillingAddressData()
     {
-        if (isset($_POST['save'])) {
+        if ($_POST['billingdata_update'] == true) {
 
             $fullName = $_POST['fullName'];
             $street1 = $_POST['street1'];
@@ -168,10 +169,21 @@ class Settings extends Controller
             $postalCode = $_POST['postalCode'];
             $country = $_POST['country'];
             $userID = $_SESSION['id'];
+
+            $this->model->addUserBillingData($fullName, $street1, $street2, $city, $province, $postalCode, $country, $userID);
+
+            echo "1";
         }
+    }
 
-        $this->model->addUserBillingData($fullName, $street1, $street2, $city, $province, $postalCode, $country, $userID);
+    function updateRevenueShare()
+    {
 
-        header('location:/indieabode/settings/billingAddress');
+        $userID = $_SESSION['id'];
+        $shareAmount = $_POST['revenueShare'];
+
+        $this->model->UpdateRevenueShare($userID, $shareAmount);
+
+        echo "success";
     }
 }

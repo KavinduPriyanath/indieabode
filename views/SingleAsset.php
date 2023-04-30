@@ -99,10 +99,10 @@
                 </div>
                 <div class="price-flex">
                     <div class="category"><?= $this->asset['assetType']; ?></div>
-                    <?php if ($this->asset['assetPrice'] == "0.00") { ?>
+                    <?php if ($this->asset['assetPrice'] == "0") { ?>
                         <h1>FREE</h1>
                     <?php } else { ?>
-                        <h1>$<?= $this->asset['assetPrice']; ?></h1>
+                        <h1><?= $this->assetPrice ?></h1>
                     <?php } ?>
                 </div>
                 <div id="not-claimed">

@@ -68,6 +68,7 @@ class Games extends Controller
                 $checkedPlatformTypes =  $_GET['platforms'];
             }
 
+
             if (isset($_GET['releasestatus'])) {
                 $checkedReleaseStatusTypes =  $_GET['releasestatus'];
             }

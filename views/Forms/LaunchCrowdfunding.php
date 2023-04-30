@@ -32,8 +32,9 @@
                 <div class="upload-row">
                     <div class="upload-col-left">
                         <div class="title-div">
-                            <label id="gig-title" for="gig-title">Crowdfund Title</label><br />
-                            <input type="text" name="crowdfund-title" id="gig-title" /><br /><br />
+                            <label for="gig-title">Crowdfund Title</label><br />
+                            <input type="text" name="crowdfund-title" id="gig-title" /><br />
+                            <div class="error-msg" id="titleCheck"></div><br />
                         </div>
 
                         <div class="game-div">
@@ -47,9 +48,10 @@
                         </div>
 
                         <div class="tagline-div">
-                            <label id="gig-tagline" for="gig-tagline">Tagline</label><br />
+                            <label for="gig-tagline">Tagline</label><br />
                             <p>Shown when we link your gig to other pages</p>
-                            <input type="text" name="crowdfund-tagline" id="gig-tagline" placeholder="Short Description about your game" required /><br /><br />
+                            <input type="text" name="crowdfund-tagline" id="gig-tagline" placeholder="Short Description about your game" required /><br />
+                            <div class="error-msg" id="taglineCheck"></div><br />
 
                         </div>
 
@@ -59,7 +61,8 @@
                                 The assumed amount needed for the development of the game
                             </p>
                             <input type="text" id="expected-cost" name="expected-amount" />
-                            <br /><br />
+                            <br />
+                            <div class="error-msg" id="expectedAmountCheck"></div><br />
                         </div>
 
                         <!--Releasing status-->
@@ -148,6 +151,7 @@
                                     Upload Photo
                                 </label>
                             </div>
+                            <div class="error-msg" id="coverImgCheck"></div>
                         </div>
 
                         <div class="trailer-div">
@@ -176,6 +180,7 @@
                                 </label>
 
                             </div>
+                            <div class="error-msg" id="screenshotsCheck"></div>
                         </div>
                     </div>
                 </div>
@@ -194,7 +199,7 @@
 
     <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
     <script src=" <?php echo BASE_URL; ?>public/js/richtext.js"> </script>
-
+    <script src=" <?php echo BASE_URL; ?>public/js/launchcrowdfund.js"> </script>
 
     <script>
         $(document).ready(function() {

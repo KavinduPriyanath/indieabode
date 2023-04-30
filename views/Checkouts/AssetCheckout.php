@@ -208,7 +208,7 @@
                             "cancel_url": "http://localhost/indieabode/assets", // Important
                             "notify_url": "",
                             "order_id": obj['order_id'],
-                            "items": "Door bell wireles",
+                            "items": obj['item'],
                             "amount": obj['amount'],
                             "currency": obj['currency'],
                             "hash": obj['hash'], // *Replace with generated hash retrieved from backend
@@ -246,7 +246,7 @@
             var f = new FormData();
 
             f.append("orderID", orderId);
-            f.append("assetID", amount);
+            f.append("amount", amount);
 
 
             var xhr = new XMLHttpRequest();
@@ -286,6 +286,8 @@
                 if (x.readyState == 4) {
 
                     var text = x.responseText;
+
+                    console.log(text);
 
                     if (text == "2") {
                         alert("Product Not found");
@@ -328,7 +330,7 @@
                             "cancel_url": "http://localhost/indieabode/assets", // Important
                             "notify_url": "",
                             "order_id": obj['order_id'],
-                            "items": "Door bell wireles",
+                            "items": obj['item'],
                             "amount": obj['amount'],
                             "currency": obj['currency'],
                             "hash": obj['hash'], // *Replace with generated hash retrieved from backend
@@ -366,7 +368,7 @@
             var f = new FormData();
 
             f.append("orderID", orderId);
-            f.append("assetID", amount);
+            f.append("amount", amount);
 
 
             var xhr = new XMLHttpRequest();

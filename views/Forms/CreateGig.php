@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> -->
     <title>Indieabode</title>
 
     <style>
@@ -32,8 +33,9 @@
                 <div class="upload-row">
                     <div class="upload-col-left">
                         <div class="gig-title">
-                            <label id="gig-title" for="gig-title">Gig Title</label><br />
-                            <input type="text" name="gig-title" id="gig-title" /><br /><br />
+                            <label for="gig-title">Gig Title</label><br />
+                            <input type="text" name="gig-title" id="gig-title" /><br />
+                            <div class="error-msg" id="gigTitleCheck"></div><br />
                         </div>
 
                         <div class="game">
@@ -47,9 +49,10 @@
                         </div>
 
                         <div class="tagline">
-                            <label id="gig-tagline" for="gig-tagline">Tagline</label><br />
+                            <label for="gig-tagline">Tagline</label><br />
                             <p>Shown when we link your gig to other pages</p>
-                            <input type="text" name="gig-tagline" id="gig-tagline" placeholder="Short Description about your game" required /><br /><br />
+                            <input type="text" name="gig-tagline" id="gig-tagline" placeholder="Short Description about your game" required /><br />
+                            <div class="error-msg" id="gigTaglineCheck"></div><br />
                         </div>
 
                         <!--classification details-->
@@ -124,20 +127,22 @@
                         </div>
 
                         <div class="estimated-share">
-                            <label id="est-share" for="est-share">Estimated Share</label><br />
+                            <label for="est-share">Estimated Share</label><br />
                             <p id="p">
                                 The assumed share to be given after initial payment is completed
                             </p>
-                            <input type="text" id="est-share" name="est-share" /> <br /><br />
+                            <input type="number" id="est-share" name="est-share" max="100" min="0" value="12" /> <br />
+                            <div class="error-msg" id="shareCheck"></div><br />
                         </div>
 
                         <div class="expected-cost">
-                            <label id="expected-cost" for="expected-cost">Expected Cost</label><br />
+                            <label for="expected-cost">Expected Cost</label><br />
                             <p id="p">
                                 The assumed amount needed for the development of the game
                             </p>
                             <input type="text" id="expected-cost" name="expected-cost" />
-                            <br /><br />
+                            <br />
+                            <div class="error-msg" id="costCheck"></div><br />
                         </div>
 
                         <div class="gig-visibility">
@@ -171,6 +176,7 @@
                                 </label>
                             </div>
                             <br>
+                            <div class="error-msg" id="coverImgCheck"></div>
                         </div>
 
                         <div class="gig-video">
@@ -199,7 +205,7 @@
                                 </label>
 
                             </div>
-
+                            <div class="error-msg" id="screenshotsCheck"></div>
                         </div>
                     </div>
                 </div>
@@ -219,6 +225,8 @@
     <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
 
     <script src=" <?php echo BASE_URL; ?>public/js/richtext.js"> </script>
+
+    <script src=" <?php echo BASE_URL; ?>public/js/gigcreate.js"> </script>
 
     <script>
         $(document).ready(function() {
