@@ -11,8 +11,8 @@ class Feed_Model extends Model
 
     function showCart()
     {
-        $sql = 
-        "SELECT game_cart.userID,game_cart.ActivityCheck,game_cart.addedDate,game_cart.gameID,freegame.gameName,gamer.username,gamer.avatar
+        $sql =
+            "SELECT game_cart.userID,game_cart.ActivityCheck,game_cart.addedDate,game_cart.gameID,freegame.gameName,gamer.username,gamer.avatar
         FROM game_cart 
         INNER JOIN freegame ON game_cart.gameID = freegame.gameID
         INNER JOIN gamer ON game_cart.userID = gamer.gamerID
@@ -36,5 +36,4 @@ class Feed_Model extends Model
 
         return $stmt->fetchAll();
     }
-
 }

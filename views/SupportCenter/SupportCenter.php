@@ -56,7 +56,7 @@
 
         </div>
         <div class="second-three">
-            <a href="">
+            <a href="/indieabode/support_center/publishing">
                 <div class="card">
                     <img src="/indieabode/public/images/support_center/publishing.png" alt="" />
                     <div class="card-topic">Publishing</div>
