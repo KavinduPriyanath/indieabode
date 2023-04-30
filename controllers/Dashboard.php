@@ -721,7 +721,6 @@ class Dashboard extends Controller
 
         $certificationType = $_POST['certificate-type'];
         $participantName = $_POST['participant-name'];
-        // $partipantPlace = $_POST['participant-place'];
         $reason = "For Winning the First Place in the";
         $jamName = $_POST['game-jam'];
 
@@ -731,7 +730,14 @@ class Dashboard extends Controller
         } else if ($certificationType == "FINALIST") {
             $reason = "For achieving place in top 10 in the";
         } else if ($certificationType == "WINNER") {
-            $reason = "For Winning the First Place in the";
+            $partipantPlace = $_POST['participant-place'];
+            if ($partipantPlace == "First Place") {
+                $reason = "For Winning the First Place in the";
+            } else if ($partipantPlace == "Second Place") {
+                $reason = "For Winning the Second Place in the";
+            } else if ($partipantPlace == "Third Place") {
+                $reason = "For Winning the Third Place in the";
+            }
         }
 
         $pdf = new TCPDF('L', 'mm', 'A4', true, 'UTF-8', true);
@@ -793,5 +799,91 @@ class Dashboard extends Controller
         $pdf->writeHTML($html);
 
         $pdf->Output("kavi.pdf", 'I');
+    }
+
+    function downloadCertificate()
+    {
+
+
+        $certificationType = $_POST['certificate-type'];
+        $participantName = $_POST['participant-name'];
+        $reason = "For Winning the First Place in the";
+        $jamName = $_POST['game-jam'];
+
+
+        if ($certificationType == "PARTICIPATION") {
+            $reason = "For his/her participation in the";
+        } else if ($certificationType == "FINALIST") {
+            $reason = "For achieving place in top 10 in the";
+        } else if ($certificationType == "WINNER") {
+            $partipantPlace = $_POST['participant-place'];
+            if ($partipantPlace == "First Place") {
+                $reason = "For Winning the First Place in the";
+            } else if ($partipantPlace == "Second Place") {
+                $reason = "For Winning the Second Place in the";
+            } else if ($partipantPlace == "Third Place") {
+                $reason = "For Winning the Third Place in the";
+            }
+        }
+
+        $pdf = new TCPDF('L', 'mm', 'A4', true, 'UTF-8', true);
+
+        $pdf->setTitle("Certification of Completion");
+
+        $pdf->SetPrintHeader(false);
+        $pdf->setPrintFooter(false);
+
+        $pdf->AddPage();
+
+        $pdf->setFont('helvetica', '', 24);
+
+        $pdf->Rect(0, 0, $pdf->getPageWidth(),    $pdf->getPageHeight(), 'DF', "",  array(184, 218, 253));
+        $pdf->SetLineStyle(array('width' => 15, 'color' => array(69, 135, 202)));
+        $pdf->Rect(0, 0, $pdf->getPageWidth(), $pdf->getPageHeight());
+
+        $html1 = <<<EOF
+                        <!DOCTYPE html>
+                        <html lang="en">
+
+                        <body>
+                        <style>
+                            * {
+                                text-align:center;
+                            }
+                        </style>
+                        <img src="/indieabode/public/images/Certificate/logo.jpg" alt="test alt attribute" width="130" height="120" border="0" />
+                        <div id="heading" style="color:black;font-size:xx-large;" ><b>CERTIFICATE OF 
+                    EOF;
+
+        $html2 = <<<EOF
+                        </b></div>
+                        <div style="font-size: x-small;">This certificate is proudly presented to </div>
+                        <div style="font-weight:bold;background-color: rgb(50, 112, 175);color: rgb(255, 255, 255);">  
+                    EOF;
+
+        $html3 = <<<EOF
+                        </div>
+                        <div style="font-size: x-small;">
+                    EOF;
+
+        $html4 = <<<EOF
+                        </div>
+                        <div>
+                    EOF;
+
+        $html5 = <<<EOF
+                        </div>
+                        <small>September 12th, 2023</small><br/><br/>
+                        <img src="/indieabode/public/images/Certificate/end.jpg" alt="test alt attribute" width="75" height="30" border="0" />
+                        </body>
+
+                        </html>
+                    EOF;
+
+        $html = $html1 . $certificationType . $html2 . $participantName . $html3 . $reason . $html4 . $jamName . $html5;
+
+        $pdf->writeHTML($html);
+
+        $pdf->Output("kavi.pdf", 'D');
     }
 }

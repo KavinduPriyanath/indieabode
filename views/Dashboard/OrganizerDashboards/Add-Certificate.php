@@ -55,7 +55,7 @@
                             <div class="card-details">
                                 <div class="upload-row">
                                     <div class="upload-col-left" id="devlog-left">
-                                        <form action="/indieabode/dashboard/viewCertificate" method="post" id="certificate-form">
+                                        <form action="" method="post" id="certificate-form">
                                             <div class="card-box">
 
                                                 <label for="">Select GameJam</label><br>
@@ -94,7 +94,7 @@
                                                 <label for="">Participant Place</label>
                                                 <p>Game related with the devlog</p>
                                                 <select id="place" name="participant-place">
-                                                    <option value="Fisrt Place">First Place</option>
+                                                    <option value="First Place">First Place</option>
                                                     <option value="Second Place">Second Place</option>
                                                     <option value="Third Place">Third Place</option>
                                                 </select>
@@ -106,8 +106,10 @@
                                     </div>
                                     <div class="upload-col-right">
 
-                                        <div class="generate-btn">View PDF</div>
-                                        <div class="download-btn">Download PDF</div>
+                                        <div class="certify-btns">
+                                            <div class="generate-btn certificate-btn">View Certificate</div>
+                                            <div class="download-btn certificate-btn">Download</div>
+                                        </div>
 
                                     </div>
                                 </div>
@@ -146,38 +148,15 @@
 
             $(".generate-btn").click(function(e) {
 
+                $('#certificate-form').attr('action', '/indieabode/dashboard/viewCertificate');
                 $('#certificate-form').submit();
 
-                // let jamName = $('#game-jam').children("option:selected").val();
-                // let certificateType = $('#type').children("option:selected").val();
-                // let participantName = $('#participant-name').val();
-                // let participantPlace = null;
+            });
 
-                // if (hasPlace == true) {
-                //     participantPlace = $('#place').children("option:selected").val();
-                // } else {
-                //     participantPlace = null;
-                // }
+            $(".download-btn").click(function(e) {
 
-                // var data = {
-                //     'jamName': jamName,
-                //     'certificateType': certificateType,
-                //     'participantName': participantName,
-                //     'participantPlace': participantPlace,
-                //     'generate_pdf': true
-                // };
-
-                // $.ajax({
-                //     type: "POST",
-                //     url: "/indieabode/dashboard/viewCertificate",
-                //     data: data,
-                //     success: function(response) {
-                //         // alert(response);
-                //         // window.location.href = "/indieabode/dashboard/viewCertificate";
-                //         alert(response);
-
-                //     },
-                // });
+                $('#certificate-form').attr('action', '/indieabode/dashboard/downloadCertificate');
+                $('#certificate-form').submit();
 
             });
 

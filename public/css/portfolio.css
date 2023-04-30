@@ -4,9 +4,18 @@
     padding-top: 10px;
 }
 
+.name-role #user-role {
+    color: #2e3542;
+}
+
+.upper-name-row {
+    display: flex;
+    align-items: center;
+}
+
 .user-detail-container{
     display:flex;
-    margin: 100px 0px 0px 180px;
+    margin: 100px 0px 0px 168px;
     justify-content: space-between;
 }
 
@@ -14,7 +23,16 @@
     width: 100px;
     height: 100px;
     background-color: wheat;
-    margin-right: 30px;
+    margin-right: 20px;
+    position: relative;
+    background-size: cover;
+}
+
+.user-detail-container-item img{
+    position: absolute;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
 }
 
 .left-container {
@@ -28,26 +46,35 @@
     display:flex;
     font-size: 18px;
     color:rgb(9, 9, 11);
+    font-weight: bold;
 
+}
+
+.portfolio-container-2 {
+    margin: 20px 170px 7px 170px;
+    font-size: 18px;
 }
 
 .user-follow-count-container div {
     margin-left: 80px;
+    
 }
 
 .user-follow-count-container .value {
     text-align: center;
+    color: #04093d;
 }
 
 .follow-btn{
-    background-color: rgb(82, 82, 86);
-    border:none;
+    margin: 0px 25px;
+    background-color: rgb(11, 50, 78);
     cursor:pointer;
-    padding:20px;
-    align-self: center;
-    color:white;
-    border-radius:20%;
-    font-size: medium;
+    padding:8px 20px;
+    color:rgb(182, 196, 229);
+    border-radius:7px;
+    font-size: 18px;
+    font-weight: 800;
+    
 }
 
 h2{
@@ -56,14 +83,10 @@ h2{
     padding-bottom:2%;
 }
 
-p{
-    margin-left:10%;
-    padding-right: 10%;
-    padding-bottom:2%;
-}
+
 
 #topic-break {
-    margin: 5px 205px 25px 180px;
+    margin: 0px 165px 15px 165px;
     border: 0.4px solid #9bc9dbdd;
 }
 
@@ -75,7 +98,7 @@ p{
 .container {
     display: flex;
     flex-wrap: wrap;
-    margin-left: 175px;
+    margin-left: 155px;
     transition: margin 0.3s ease;
 }
 
