@@ -17,4 +17,11 @@ class Admin_complaints extends Controller
 
         $this->view->render('Admin/Admin_complaints');
     }
+
+    public function viewFilteredComplaints($filter_text){
+        $this->view->complaints = $this->model->viewComplaints($filter_text);
+
+        $this->view->active=$filter_text;
+        $this->view->render('Admin/Admin_complaints');
+    }
 }

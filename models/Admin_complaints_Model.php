@@ -8,9 +8,12 @@ class Admin_complaints_Model extends Model
         parent::__construct();
     }
 
-    function viewComplaints(){
-        $sql = "SELECT * FROM `complaint`";
-        
+    function viewComplaints($type=""){
+        if ($type==""){
+            $sql = "SELECT * FROM `complaint`";
+        }else{
+            $sql = "SELECT * FROM `complaint` WHERE type='".$type."'";
+        }
 
         $stmt = $this->db->prepare($sql);
 
