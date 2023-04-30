@@ -35,6 +35,9 @@
             <a href="/indieabode/dashboard">
                 Jams
             </a>
+            <a href="/indieabode/dashboard/certificates">
+                Certificates
+            </a>
 
         </div>
         <div class="content-row">

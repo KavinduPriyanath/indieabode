@@ -345,6 +345,21 @@
                                 <div class=".ulsub">
                                     <a href="<?php echo BASE_URL; ?>gameJamForm">Host Jams <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                     <a href="<?php echo BASE_URL; ?>jamsCalender">Jam&nbsp;Calender
+
+                                        <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="dropdown" data-dropdown>
+                            <a href="#" data-dropdown-button>Certificates<i class="fa fa-angle-down droparrow"></i></a>
+
+                            <div class="dropdown-menu">
+                                <div class="arrow certificateArrow"></div>
+                                <div class=".ulsub">
+                                    <a href="<?php echo BASE_URL; ?>gameJamForm">Create&nbsp;Certficate <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                                    <a href="<?php echo BASE_URL; ?>jamsCalender">Certficate&nbsp;Library
+
                                         <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                 </div>
                             </div>
