@@ -180,6 +180,73 @@
                     </div>
                 </div>
 
+                <?php foreach ($this->secondRow as $row2) { ?>
+
+                    <?php
+                    $startMonth = substr($row2['submissionStartDate'], 5, 2);
+                    $startDate = substr($row2['submissionStartDate'], 8, 2);
+                    $endMonth = substr($row2['votingEndDate'], 5, 2);
+                    $endDate = substr($row2['votingEndDate'], 8, 2);
+                    $currentMonth = date('m');
+                    ?>
+
+                    <!-- If the jam started in previous month and ended in previous month -->
+                    <?php if ((int)$startMonth == $currentMonth - 1 && (int)$endMonth == $currentMonth - 1) { ?>
+
+
+                        <?php if ($startDate < 15) { ?>
+                            <div class="ofs-timeline-item start-p-15-am end-p-<?= $endDate ?>-pm">
+                                <h6><?= $row2['jamTitle'] ?></h6>
+                            </div>
+                        <?php } else { ?>
+                            <div class="ofs-timeline-item start-p-<?= $startDate ?>-am end-p-<?= $endDate ?>-pm">
+                                <h6><?= $row2['jamTitle'] ?></h6>
+                            </div>
+                        <?php } ?>
+
+
+                        <!-- If the jam starts in current month and ends in current month -->
+                    <?php } else if ($startMonth == $currentMonth && $endMonth == $currentMonth) { ?>
+
+                        <div class="ofs-timeline-item start-c-<?= $startDate ?>-am end-c-<?= $endDate ?>-pm">
+                            <h6><?= $row2['jamTitle'] ?></h6>
+                        </div>
+
+                        <!-- If the jam starts in next month and ends in next month -->
+                    <?php } else if ((int)$startMonth == $currentMonth + 1 && (int)$endMonth == $currentMonth + 1) { ?>
+
+                        <?php if ($endDate > 15) { ?>
+                            <div class="ofs-timeline-item start-n-<?= $startDate ?>-am end-n-15-pm">
+                                <h6><?= $row2['jamTitle'] ?></h6>
+                            </div>
+                        <?php } else { ?>
+                            <div class="ofs-timeline-item start-n-<?= $startDate ?>-am end-n-<?= $endDate ?>-pm">
+                                <h6><?= $row2['jamTitle'] ?></h6>
+                            </div>
+                        <?php } ?>
+
+
+
+                        <!-- If the jam started in month before previous month and ended in previous month -->
+                    <?php } else if ((int)$startMonth < $currentMonth - 1 && (int)$endMonth == $currentMonth - 1) { ?>
+                        <div class="ofs-timeline-item start-p-15-am end-p-<?= $endDate ?>-pm">
+                            <h6><?= $row2['jamTitle'] ?></h6>
+                        </div>
+
+                        <!-- If the jam started in previous month and ended in current month -->
+                    <?php } else if ((int)$startMonth == $currentMonth - 1 && (int)$endMonth == $currentMonth) { ?>
+                        <div class="ofs-timeline-item start-p-<?= $startDate ?>-am end-c-<?= $endDate ?>-pm">
+                            <h6><?= $row2['jamTitle'] ?></h6>
+                        </div>
+
+                        <!-- If the jam started in current month and ends in next month -->
+                    <?php } else if ((int)$startMonth == $currentMonth && (int)$endMonth == $currentMonth + 1) { ?>
+                        <div class="ofs-timeline-item start-c-<?= $startDate ?>-am end-n-<?= $endDate ?>-pm">
+                            <h6><?= $row2['jamTitle'] ?></h6>
+                        </div>
+                    <?php } ?>
+
+                <?php } ?>
                 <!-- <div class="ofs-timeline-item start-01-03-pm end-01-06-am">
                     <h6>Windy Jam 2</h6>
                 </div>

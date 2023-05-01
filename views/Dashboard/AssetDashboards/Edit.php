@@ -391,6 +391,25 @@
     </script>
 
     <script>
+        let uploadButton = document.getElementById("upload-button");
+        let chosenImage = document.getElementById("chosen-image");
+        let uploadLabel = document.getElementById("upload-label");
+
+        uploadButton.onchange = () => {
+            let reader = new FileReader();
+            reader.readAsDataURL(uploadButton.files[0]);
+            reader.onload = () => {
+                chosenImage.setAttribute("src", reader.result);
+            }
+            console.log(reader);
+
+            uploadLabel.innerText = "Replace Photo";
+            //fileName.textContent = uploadButton.files[0].name;
+
+        }
+    </script>
+
+    <script>
         const ul = document.querySelector("ul"),
             input = document.getElementById("tags"),
             tagNumb = document.querySelector(".tags-details span");

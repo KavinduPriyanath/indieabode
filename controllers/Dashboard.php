@@ -320,11 +320,14 @@ class Dashboard extends Controller
         $assetType = $_POST['asset-type'];
         $assetStyle = $_POST['asset-style'];
         // $assetPricing = 
+
+        $coverimgName = $assetID . $foreignKey;
+
         $assetLicense = $_POST['asset-license'];
         $assetVideoUrl = $_POST['asset-illustration-video'];
         $assetVisibility = $_POST['asset-visibility'];
         $assetFile = $this->model->uploadAssetFile($assetID);
-        $assetCoverImg = $this->model->uploadAssetCoverImg($assetID);
+        $assetCoverImg = $this->model->uploadAssetCoverImg($coverimgName);
 
         $newScreenshots = $this->model->uploadAssetScreenshots($assetID);
         $oldScreenshots = $_POST['old-asset-screenshots'];
@@ -348,7 +351,7 @@ class Dashboard extends Controller
             $assetPrice,
             $assetDetails,
             $assetTagline,
-            $foreignKey,
+            $assetID,
             $assetClassification,
             $assetStatus,
             $assetTags,

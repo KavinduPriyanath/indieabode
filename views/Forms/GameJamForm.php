@@ -132,8 +132,8 @@
                         <span class="circle-title">Jam Type</span>
                         <p>who will be able to join the gamejam and see its submissions</p>
                         <div class="category">
-                            <input type="radio" name="voters" value="Public" checked>Public - Anyone can vote. <br>
-                            <input type="radio" name="voters" value="Private">Private - Only users with passkey enter the jam
+                            <input type="radio" name="voters" id="Public" value="Public" checked><label for="Public">Public</label> - Anyone can vote. <br>
+                            <input type="radio" name="voters" id="Private" value="Private"><label for="Private">Private</label> - Only users with passkey enter the jam
                         </div>
                         <br>
                     </div>
@@ -155,8 +155,8 @@
                         <span class="circle-title">Visibility</span>
                         <p>Decide when is your page ready for the public.</p>
                         <div class="category">
-                            <input type="radio" name="visibility" value="Draft" checked>Draft - Only those who are added as moderators can view the page.<br>
-                            <input type="radio" name="visibility" value="Public">Public - Anyone can view the page, you can enable this after you've saved.
+                            <input type="radio" name="visibility" value="Draft" id="Draft" checked><label for="Draft">Draft</label> - Only those who are added as moderators can view the page.<br>
+                            <input type="radio" name="visibility" value="Public" id="Public-Vis"><label for="Public-Vis">Public</label> - Anyone can view the page, you can enable this after you've saved.
                         </div>
                     </div>
                 </div>

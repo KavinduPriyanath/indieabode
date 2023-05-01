@@ -32,7 +32,7 @@
 
 
     <!-- Games -->
-    <div class="topic-bar">
+    <div class="topic-bar first-bar">
         <div class="topic-bar-left">
             <h3 class="home-topics">Games</h3>
         </div>
@@ -46,7 +46,7 @@
     </div>
 
 
-    <hr id="topic-break" />
+    <hr class="topic-break" />
 
     <div class="container" id="card-container">
 
@@ -80,7 +80,7 @@
         </div>
     </div>
 
-    <hr id="topic-break" />
+    <hr class="topic-break" />
 
     <div class="container" id="card-container">
 
@@ -117,7 +117,7 @@
         </div>
     </div>
 
-    <hr id="topic-break" />
+    <hr class="topic-break" />
 
     <div class="container" id="card-container">
 
@@ -177,7 +177,7 @@
         </div>
     </div>
 
-    <hr id="topic-break" />
+    <hr class="topic-break" />
 
     <div class="container" id="card-container">
         <?php foreach ($this->gigs as $gig) { ?>

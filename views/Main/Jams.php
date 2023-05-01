@@ -164,29 +164,30 @@
                 <div class="card">
 
                     <div class="jam-name">
-                        <h3><?= $jam['jamTitle'] ?></h3>
+                        <p><?= $jam['jamTitle'] ?></p>
                     </div>
                     <div class="card-image">
                         <img src="/indieabode/public/uploads/gamejams/covers/<?= $jam['jamCoverImg'] ?>" alt="" />
                     </div>
 
-                    <div class="tagline">
+                    <div class="tagline modernWay">
                         <p><?= $jam['jamTagline'] ?></p>
                     </div>
 
+                    <div class="host">Hosted by,
+                        <span class="host-name"><?= $jam['username'] ?></span>
+
+                    </div>
 
                     <!--</div>-->
                     <div class="details">
-                        <div class="host">Hosted by,
-                            <div class="host-name"><span>kavindu priyanath</span></div>
-
-                        </div>
+                        <div class="jam-type"><?= $jam['jamType'] ?></div>
                         <!--<div class="deadline">Starts on, 
     
   </div>-->
                         <div class="count">
-                            <h2>56</h2>
-                            joined
+                            <div class="countNo"><?= $jam['joinedCount'] ?></div>
+                            <div class="countname">joined</div>
                         </div>
 
                     </div>
