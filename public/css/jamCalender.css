@@ -69,8 +69,9 @@
   }
 
   .row-inner-wrap {
-    position: fixed;
-    margin-top: -5px;
+    position: sticky;
+    left: 0;
+    margin-top: 35px;
     padding: 1.25rem;
     background-color: #d34c8b;
     border-right: 1px solid #eee;
@@ -83,6 +84,12 @@
     grid-row-end: 2;
     border-width: 0px;
     box-shadow: 0px 0px 5px 0px #00000033
+  }
+
+  .ofs-timeline-item h6 {
+    font-size: 28px;
+    text-align: center;
+    padding: 25px;
   }
 
 

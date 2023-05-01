@@ -11,7 +11,11 @@ class Jams_Model extends Model
 
     function showAllGameJams()
     {
-        $stmt = $this->db->prepare("SELECT * FROM gamejam");
+        $sql = "SELECT gamejam.gameJamID, gamejam.jamTitle, gamejam.jamType, gamejam.jamTagline,gamejam.jamCoverImg,
+                gamejam.joinedCount, gamer.username FROM gamejam INNER JOIN gamer ON 
+                gamejam.jamHostID=gamer.gamerID";
+
+        $stmt = $this->db->prepare($sql);
 
         $stmt->execute();
 
