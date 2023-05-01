@@ -398,4 +398,23 @@ class Asset_Model extends Model
 
         $stmt->execute();
     }
+
+    function ComplaintReasons()
+    {
+
+        $stmt = $this->db->prepare("SELECT * FROM complaint_reasons_items");
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+
+    function reportSubmit($reason, $description, $id, $type)
+    {
+        $sql = "INSERT INTO complaint (reason,description,gamerID,type) VALUES (?,?,?,?)";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute(["$reason", "$description", "$id", "$type"]);
+    }
 }
