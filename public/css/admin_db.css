@@ -332,13 +332,13 @@ color: #37647b;
 
 .dashboard-tabs-container{
     width: 100%;
-    height: 350px;
+    height: fit-content;
 }
 .dashboard-tabs-container .db-btn-container{
     height: 15%;
 }
 .dashboard-tabs-container .db-btn-container button{
-    width: 25%;
+    width: 20%;
     height: 100%;
     float: left;
     border: none;
@@ -346,10 +346,10 @@ color: #37647b;
     cursor: pointer;
     padding: 10px;
     font-size: 18px;
-    background-color: #eee;
+    background-color: #37647b;
 }
 .dashboard-tabs-container .db-btn-container button:hover{
-    background-color: #d7d4d4;
+    background-color: #708894;
 }
 .dashboard-tabs-container .tabPanel{
     height: 85%;
@@ -360,4 +360,67 @@ color: #37647b;
     box-sizing: border-box;
     font-size: 22px;
     display: none;
+}
+
+.db-panel{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.first-row-db{
+    display:flex;
+    gap: 5%;
+    width:100%;
+    /* justify-content: center; */
+}
+
+.second-row-db{
+    display:flex;
+    gap: 5%;
+    justify-content: flex-start;
+    margin-bottom: 5%;
+}
+
+.first-pie-chart-db{
+    padding-left:3%;
+    width: 50%;
+}
+
+.top-details-db{
+    display:flex;
+    flex-direction:column;
+    gap:5%;
+    padding-right: 3%;
+}
+
+.popular-items{
+    display:flex;
+    padding: 3%;
+    background-color: #1c5464;
+}
+
+.popular-topic{
+    color: #7ec1f9;
+    font-weight: 600;
+    margin-top: 5%;
+    font-size: 1.1em;
+}
+
+.popular-item-cover-img img{
+    width:60%;
+}
+
+.popular-item-cover-img{
+    font-size:75%;
+    color: #929799;
+}
+
+.first-pie-chart-db h3{
+    color: #1c5464;
+}
+
+.horizontal-chart{
+    margin-left: 3%;
+    background-color: #527289;
 }

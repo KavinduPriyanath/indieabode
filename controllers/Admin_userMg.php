@@ -1,5 +1,10 @@
 <?php
 
+require "includes/PHPMailer/vendor/autoload.php";
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+
 class Admin_userMg extends Controller
 {
 
@@ -43,6 +48,10 @@ class Admin_userMg extends Controller
         $result = $this->model->delete_user($userid);
         if ($result === true) {
             //echo "<script>alert('User deleted successfully.'); window.location.href = '/indieabode/Admin_userMg/viewFilteredBlockUser/block';</script>";
+
+            //send an email to the blocked user
+
+            
             $this->view->users = $this->model->viewBlockUser('block');
             $this->view->render('Admin/Admin_userMg');
         } else {
