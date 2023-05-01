@@ -21,7 +21,9 @@ class Jam extends Controller
 
             $this->view->hasJoinedGamer = $this->model->AlreadyJoinedGamer($_SESSION['id'], $gameJamID);
 
-            $this->view->games = $this->model->currentDevGames($currentUser);
+            $gamejam = $this->model->showSingleJam($gameJamID);
+
+            $this->view->games = $this->model->currentDevGames($currentUser, $gamejam['submissionStartDate']);
             //$this->view->gameDeveloper = $this->model->getGameDeveloper($this->model->showSingleGame($gameJamID));
 
             // $this->view->screenshots = $this->model->getScreenshots($assetID);
@@ -45,10 +47,12 @@ class Jam extends Controller
             if ($isJoined) {
                 // User already joined, leave the jam
                 $this->model->leaveJam($uID, $gameJamID);
+                $this->model->UpdateJamPartipants($gameJamID, "left");
                 echo "left";
             } else {
                 // User not joined, join the jam
                 $this->model->joinJam($uID, $gameJamID);
+                $this->model->UpdateJamPartipants($gameJamID, "joined");
                 echo "joined";
             }
         }
@@ -87,7 +91,10 @@ class Jam extends Controller
             $currentUser = $_SESSION['id'];
 
             $this->view->jam = $this->model->showSingleJam($gameJamID);
-            $this->view->games = $this->model->currentDevGames($currentUser);
+
+            // $gamejam = $this->model->showSingleJam($gameJamID);
+
+            // $this->view->games = $this->model->currentDevGames($currentUser, $gamejam['submissionStartDate']);
         }
 
         $this->view->submittedGames = $this->model->submittedgames($gameJamID);
@@ -106,6 +113,7 @@ class Jam extends Controller
             $gameID = $_POST['gameID'];
             $gameJamID = $_GET['id'];
             $this->model->submitproject($gameID, $gameJamID, $gamerID);
+            $this->model->UpdateGameSubmissionStatus($gameID, $gameJamID);
             // $this->view->gamejam = $this->model->showSingleJam($gameJamID);
             // $this->view->render('SingleGameJam');
 
