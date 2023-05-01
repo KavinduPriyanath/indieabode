@@ -40,36 +40,14 @@ include 'includes/navbar.php';
         <hr id="topic-break">
         <br>
 
-        <div class="projectT">
-            <h2>Submit Your Project Here</h2>
-        </div>
+
     <?php endif;  ?>
 
-    <form action="/indieabode/jam/submitproject?jamid= <?= $this->jam['gameJamID'] ?>" type="submit" method="POST">
-        <div class="card-box">
-            <span class="details">Select Your Game to Submit Here</span>
 
-            <!-- <input type="text" name="gname" placeholder="Game name" required> -->
-            <select id="type" name="gID" required>
-                <?php foreach ($this->games as $game) { ?>
-                    <option value="<?= $game['gameID'] ?>"><?= $game['gameName'] ?></option>
-                <?php } ?>
 
-            </select>
-        </div>
-
-        <div class="button">
-            <input type="submit" name="submit" id="submit" value="Submit Project">
-        </div>
-
-        <br>
-        <br>
-        <hr id="topic-break">
-        <div class="card-box">
-            <span class="details">Submitted Projects</span>
-        </div>
-
-    </form>
+    <div class="card-box">
+        <span class="details">Submitted Projects</span>
+    </div>
 
 
 

@@ -30,9 +30,6 @@ class Jam_Model extends Model
         $stmt = $this->db->prepare($sql);
 
         $stmt->execute();
-
-        // $gamejam = $stmt->fetch(PDO::FETCH_ASSOC);
-
     }
 
     function leaveJam($uID, $jID)
@@ -42,6 +39,32 @@ class Jam_Model extends Model
         $stmt = $this->db->prepare($sql);
 
         $stmt->execute();
+    }
+
+    function UpdateJamPartipants($jamID, $condition)
+    {
+
+        $sql = "SELECT * FROM gamejam WHERE gameJamID='$jamID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $jam = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $participantCount = $jam['joinedCount'];
+
+        if ($condition == "joined") {
+            $participantCount += 1;
+        } else if ($condition == "left") {
+            $participantCount -= 1;
+        }
+
+        $updateSQL = "UPDATE gamejam SET joinedCount='$participantCount' WHERE gameJamID='$jamID'";
+
+        $updateStmt = $this->db->prepare($updateSQL);
+
+        $updateStmt->execute();
     }
 
     function joinJamGamer($gamerID, $jamID)
@@ -63,9 +86,9 @@ class Jam_Model extends Model
     }
 
 
-    function currentDevGames($developerID)
+    function currentDevGames($developerID, $submissionStartDate)
     {
-        $sql = "SELECT * FROM freegame WHERE gameDeveloperID = '$developerID'";
+        $sql = "SELECT * FROM freegame WHERE gameDeveloperID = '$developerID' AND gamePrice='0' AND created_at > '$submissionStartDate'";
 
         $stmt = $this->db->prepare($sql);
 
@@ -77,6 +100,16 @@ class Jam_Model extends Model
     function submitproject($gameID, $jamID, $gamerID)
     {
         $sql = "INSERT INTO submission (submissionID, gameJamID, gamerID) VALUES ('$gameID', '$jamID', '$gamerID')";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+    }
+
+    function UpdateGameSubmissionStatus($gameID, $jamID)
+    {
+
+        $sql = "UPDATE freegame SET jamSubmission='$jamID' WHERE gameID='$gameID'";
 
         $stmt = $this->db->prepare($sql);
 
