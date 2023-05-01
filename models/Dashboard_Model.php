@@ -780,24 +780,24 @@ class Dashboard_Model extends Model
 
         if ($newImage != '') {
             $image = $newImage;
+            $game_cover_img_name = $image;
+
+
+            $game_cover_img_temp_name = $_FILES['asset-upload-cover-img']['tmp_name'];
+
+            $game_cover_img_ext = strtolower(pathinfo($game_cover_img_name, PATHINFO_EXTENSION));
+
+            if (in_array($game_cover_img_ext, $allowed_exts)) {
+                $new_game_cover_img_name = "Cover-" . $assetName . '.' . $game_cover_img_ext;
+                $game_cover_upload_path = "public/uploads/assets/cover/" . $new_game_cover_img_name;
+                move_uploaded_file($game_cover_img_temp_name, $game_cover_upload_path);
+            }
+
+            return $new_game_cover_img_name;
         } else {
             $image = $oldImage;
+            return $image;
         }
-
-        $game_cover_img_name = $image;
-
-
-        $game_cover_img_temp_name = $_FILES['asset-upload-cover-img']['tmp_name'];
-
-        $game_cover_img_ext = strtolower(pathinfo($game_cover_img_name, PATHINFO_EXTENSION));
-
-        if (in_array($game_cover_img_ext, $allowed_exts)) {
-            $new_game_cover_img_name = "Cover-" . $assetName . '.' . $game_cover_img_ext;
-            $game_cover_upload_path = "public/uploads/asset/cover/" . $new_game_cover_img_name;
-            move_uploaded_file($game_cover_img_temp_name, $game_cover_upload_path);
-        }
-
-        return $new_game_cover_img_name;
     }
 
     function uploadAssetFile($assetName)
@@ -875,7 +875,7 @@ class Dashboard_Model extends Model
         $assetPrice,
         $assetDetails,
         $assetTagline,
-        $foreignKey,
+        $assetID,
         $assetClassification,
         $assetStatus,
         $assetTags,
@@ -904,7 +904,7 @@ class Dashboard_Model extends Model
         assetVisibility = '$assetVisibility',
         assetFile = '$assetFile',
         assetCoverImg = '$assetCoverImg',
-        assetScreenshots = '$assetScreenshots' WHERE assetCreatorID='$foreignKey'";
+        assetScreenshots = '$assetScreenshots' WHERE assetID='$assetID'";
 
         $stmt = $this->db->prepare($sql);
 

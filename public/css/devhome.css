@@ -5,7 +5,7 @@
 .container {
     display: flex;
     flex-wrap: wrap;
-    margin-left: 175px;
+    margin-left: 155px;
     transition: margin 0.3s ease;
 }
 
@@ -119,7 +119,7 @@
 
 
 .home-topics {
-    margin: 10px 180px;
+    margin: 10px 160px;
 }
 
 .topic-bar {
@@ -154,4 +154,16 @@
     font-size: 18px;
     box-shadow: 0 1px 4px rgb(0 0 0 / 60%);
     display: none;
+}
+
+.topic-break {
+    color: #86AFEC;
+    background-color: #86AFEC;
+    border-width: 0px;
+    height: 0.5px;
+    margin: 0px 165px 5px 160px;
+}
+
+.first-bar {
+    margin-top: 30px;
 }
