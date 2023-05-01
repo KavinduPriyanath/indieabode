@@ -9,8 +9,26 @@ class SiteDashboard_Model extends Model
   }
 
 
+  function usertypeCount($usertype)
+  {
+    $sql = "SELECT * FROM `gamer` WHERE accountStatus=1 AND userRole='".$usertype."'";
+    $stmt = $this->db->prepare($sql);
+    $stmt->execute();
+
+    $users = $stmt->fetchAll();
+
+    $count = 0;
+
+    foreach ($users as $user) {
+      $count += 1;
+    }
+
+    return $count;
+  }
+
   function userCount()
   {
+
     $stmt = $this->db->prepare("SELECT * FROM gamer");
     $stmt->execute();
 

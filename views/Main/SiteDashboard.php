@@ -57,12 +57,69 @@
 		<main>
             <div class="dashboard-tabs-container">
                 <div class="db-btn-container">
-                    <button onclick="showPanel(0,'#7FAFDB')">Game Dashboard</button>
-                    <button onclick="showPanel(1,'#7FAFDB')">Assets Dashboard</button>
-                    <button onclick="showPanel(2,'#7FAFDB')">Game Jam Dashboard</button>
-                    <button onclick="showPanel(3,'#7FAFDB')">Gigs Dashboard</button>
+                    <button onclick="showPanel(0,'rgb(111 142 170)')">Main Dashboard</button>
+                    <button onclick="showPanel(1,'rgb(111 142 170)')">Game Dashboard</button>
+                    <button onclick="showPanel(2,'rgb(111 142 170)')">Assets Dashboard</button>
+                    <button onclick="showPanel(3,'rgb(111 142 170)')">Game Jam Dashboard</button>
+                    <button onclick="showPanel(4,'rgb(111 142 170)')">Gigs Dashboard</button>
                 </div>
 
+                <div class="tabPanel">
+					<div class="db-panel">
+						<div class="first-row-db">
+							<div class="first-pie-chart-db">
+								<h3>User Chart </h3>
+								<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+								<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+							</div>
+							<div class="top-details-db">
+								<div class="most-popular-game popular-items">
+									<div class="popular-topic">
+										Most Popular Game
+									</div>
+									<div class="popular-item-detail">
+										<div class="popular-item-cover-img">
+											<img src="/indieabode/public/uploads/games/cover/Cover-aaaaaa.jpg"><br>
+											Alboanion onLine<br>
+											Yeshan Pasindu
+										</div>
+									</div>
+									<div class="popular-item-downloads">
+										Total Downloads<br>
+										<h1>34</h1>
+									</div>
+								</div>
+								<div class="most-popular-asset popular-items">
+									<div class="popular-topic">
+										Most Popular Game
+									</div>
+									<div class="popular-item-detail">
+										<div class="popular-item-cover-img">
+											<img src="/indieabode/public/uploads/games/cover/Cover-aaaaaa.jpg"><br>
+											Alboanion onLine<br>
+											Yeshan Pasindu
+										</div>
+									</div>
+									<div class="popular-item-downloads">
+										Total Downloads<br>
+										<h1>34</h1>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="second-row-db">
+							<div class="line-chart-db">
+								<h3> Active & Block Users </h3><br>
+								<div class="horizontal-chart">
+									<canvas id="userChart" style="height: 150px; width: 100%;"></canvas>
+								</div>
+							</div>
+							<div class="second-pie-chart-db">
+								kfnrfjeswjs<p>fjrbfjbe</p>
+							</div>
+						</div>
+					</div>
+				</div>
                 <div class="tabPanel">Game Dashboard:Content</div>
                 <div class="tabPanel">Assets Dashboard:Content</div>
                 <div class="tabPanel">Game Jam Dashboard:Content</div>
@@ -77,43 +134,66 @@
 	<?php
     include 'includes/footer.php';
     ?>
-
-	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
-
 	<script>
-		var ctx = document.getElementById('myChart').getContext('2d');
-		var myChart = new Chart(ctx, {
-			type: 'line',
-			data: {
-				labels: <?php echo json_encode($this->labels); ?>,
-				datasets: [{
-						label: 'Downloaded Assests',
-						data: <?php echo json_encode($this->downloadasset_data); ?>,
-						borderColor: 'rgba(75, 192, 192, 1)',
-						backgroundColor: 'rgba(75, 192, 192, 0.2)',
-						fill: false
-					},
-					{
-						label: 'Downloaded Games',
-						data: <?php echo json_encode($this->downloadgame_data); ?>,
-						borderColor: 'rgba(0, 0, 0, 1)',
-						backgroundColor: 'rgba(0, 0, 0, 0.2)',
-						fill: false
-					}
+		window.onload = function() 
+		{
 
+		var chart = new CanvasJS.Chart("chartContainer", {
+			animationEnabled: true,
+			title: {
+				text: ""
+			},
+			backgroundColor: "#6997a4",
+			data: [{
+				type: "pie",
+				startAngle: 240,
+				yValueFormatString: "##0",
+				indexLabel: "{y} {label} ",
+				dataPoints: [
+					{y: <?php echo $this->developerCount; ?>, label: "Game Developers",color: "#208ba6"},
+					{y: <?php echo $this->gamerCount; ?>, label: "Gamers",color: "#0d424f"},
+					{y: <?php echo $this->publisherCount; ?>, label: "Game Publishers",color: "#bcf2ff"},
+					{y: <?php echo $this->jamorganizerCount; ?>, label: "Game Jam Organizers",color: "#687679"},
+					{y: <?php echo $this->assetcreatorCount; ?>, label: "Asset Creators",color: "#406687"}
 				]
+			}]
+		});
+		chart.render();
+
+
+		var ctx = document.getElementById('userChart').getContext('2d');
+			var userChart = new Chart(ctx, {
+			type: 'horizontalBar',
+			data: {
+				labels: ['Active Users', 'Blocked Users'],
+				datasets: [{
+				label: 'User Status',
+				data: [85, 15], // Replace with actual values
+				backgroundColor: [
+					'rgba(6, 96, 94, 0.5)',
+					'rgba(84, 31, 46, 0.5)'
+				],
+				borderColor: [
+					'rgba(6, 96, 94, 1)',
+					'rgba(84, 31, 46, 1)'
+				],
+				borderWidth: 1
+				}]
 			},
 			options: {
 				scales: {
-					yAxes: [{
-						ticks: {
-							beginAtZero: true
-						}
-					}]
+				xAxes: [{
+					ticks: {
+					beginAtZero: true
+					}
+				}]
 				}
 			}
 		});
+
+		}
 	</script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 
 	<script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
 	<script src="<?php echo BASE_URL; ?>public/js/admin.js"></script>
