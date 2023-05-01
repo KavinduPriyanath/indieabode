@@ -23,6 +23,14 @@ class Asset extends Controller
 
             $thisAsset = $this->model->showSingleAsset($assetID);
 
+            //Calculating the Asset File's size
+            //Getting the asset file's path
+            $assetFilePath = 'public/uploads/assets/file/' . $thisAsset['assetFile'];
+            //Using filesize function to get the size in Bytes format
+            $filesize = filesize($assetFilePath);
+            //Converting the Byte sized value of the file into MegaBytes
+            $this->view->fileSize = round($filesize / 1024 / 1024, 2);
+
             if ($thisAsset['assetPrice'] == "0") {
                 $this->view->assetPrice = "FREE";
             } else if ($thisAsset['assetPrice'] != "0") {
@@ -38,6 +46,8 @@ class Asset extends Controller
             $this->view->stats = $this->model->AssetStats($assetID);
 
             $this->view->popularAssets = $this->model->PopularAssets();
+
+            $this->view->reportReasons = $this->model->ComplaintReasons();
 
             if (isset($_SESSION['logged'])) {
                 $this->view->hasClaimed = $this->model->AlreadyClaimed($assetID, $_SESSION['id']);
@@ -267,5 +277,18 @@ class Asset extends Controller
 
 
         $this->view->render('ThankYou/AssetPurchase');
+    }
+
+    function report()
+    {
+        if (isset($_POST['report_submit'])) {
+
+            $reason = $_POST['reason'];
+            $description = $_POST['description'];
+            $type = "Asset";
+            $gamerID = $_SESSION['id'];
+
+            $this->model->reportSubmit($reason, $description, $gamerID, $type);
+        }
     }
 }

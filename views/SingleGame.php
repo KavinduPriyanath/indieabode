@@ -203,7 +203,7 @@
 
                 </div>
 
-                <div class="row">
+                <div class="row" id="first-row-right">
                     <p class="title">Release Date</p>
 
                     <p class="sub-title" id="release-date"></p>
