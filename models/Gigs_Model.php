@@ -11,7 +11,7 @@ class Gigs_Model extends Model
 
     function showAllGigs()
     {
-        $sql = "SELECT gig.gigID, gig.gigID, gig.gigName, gig.gigTagline, gig.gigCoverImg, 
+        $sql = "SELECT gig.gigID, gig.gigID, gig.name, gig.gigTagline, gig.gigCoverImg, 
         gamer.firstName, gamer.lastName, gamer.avatar, gamer.trustrank
         FROM gig INNER JOIN gamer ON gamer.gamerID = gig.gameDeveloperID";
 

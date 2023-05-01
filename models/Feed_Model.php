@@ -9,26 +9,49 @@ class Feed_Model extends Model
     }
 
 
-    function showCart()
+    function showFeed($currentUserID)
     {
         $sql = 
-        "SELECT game_cart.userID,game_cart.ActivityCheck,game_cart.addedDate,game_cart.gameID,freegame.gameName,gamer.username,gamer.avatar
-        FROM game_cart 
-        INNER JOIN freegame ON game_cart.gameID = freegame.gameID
-        INNER JOIN gamer ON game_cart.userID = gamer.gamerID
+        "SELECT devlog.devLogID,devlog.ActivityCheck,devlog.created_at,devlog.gameName,devlog.name,freegame.gameName,gamer.username,gamer.avatar
+        FROM devlog 
+        INNER JOIN freegame ON devlog.gameName = freegame.gameID
+        INNER JOIN gamer ON freegame.gameDeveloperID = gamer.gamerID
+        INNER JOIN followers ON gamer.gamerID = followers.following
+        WHERE followers.follower= '$currentUserID'
+        
 
         UNION 
         
-        SELECT game_library.id,game_library.gameID,game_library.addedDate,game_library.ActivityCheck,freegame.gameName,gamer.username,gamer.avatar
-        FROM game_library 
-        INNER JOIN freegame ON game_library.gameID = freegame.gameID
-        INNER JOIN gamer ON game_library.gamerID = gamer.gamerID
-        ORDER BY addedDate DESC";
+        SELECT gig.gigID,gig.ActivityCheck,gig.created_at,gig.game,gig.name,freegame.gameName,gamer.username,gamer.avatar
+        FROM gig 
+        INNER JOIN freegame ON gig.game = freegame.gameID
+        INNER JOIN gamer ON freegame.gameDeveloperID = gamer.gamerID
+        INNER JOIN followers ON gamer.gamerID = followers.following
+        WHERE followers.follower= '$currentUserID'
 
-        // SELECT name, time FROM table1
-        // UNION
-        // SELECT name, time FROM table2
-        // ORDER BY time DESC
+        UNION 
+        
+        SELECT crowdfund.crowdFundID,crowdfund.ActivityCheck,crowdfund.created_at,crowdfund.gameDeveloperName,crowdfund.name,freegame.gameName,gamer.username,gamer.avatar
+        FROM crowdfund 
+        INNER JOIN freegame ON crowdfund.gameName = freegame.gameID
+        INNER JOIN gamer ON freegame.gameDeveloperID = gamer.gamerID
+        INNER JOIN followers ON gamer.gamerID = followers.following
+        WHERE followers.follower= '$currentUserID'
+
+
+
+        UNION 
+        
+        SELECT freegame.gameID,freegame.ActivityCheck,freegame.created_at,freegame.gameDeveloperID,freegame.platform,freegame.gameName,gamer.username,gamer.avatar
+        FROM freegame 
+        INNER JOIN gamer ON freegame.gameDeveloperID = gamer.gamerID
+        INNER JOIN followers ON gamer.gamerID = followers.following
+        WHERE followers.follower= '$currentUserID'
+
+        
+      
+        
+        ORDER BY created_at DESC";
 
         $stmt = $this->db->prepare($sql);
 

@@ -24,7 +24,7 @@
 
 
     <div class="heading">
-        <div class="title"><?= $this->crowdfund['title']; ?></div>
+        <div class="title"><?= $this->crowdfund['name']; ?></div>
         <div class="sub-title">
             <?= $this->crowdfund['tagline']; ?>
         </div>

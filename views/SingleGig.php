@@ -26,7 +26,7 @@
 
 
     <!--Gig title goes here-->
-    <h2 id="gig-title"><?= $this->gig['gigName']; ?></h2>
+    <h2 id="gig-title"><?= $this->gig['name']; ?></h2>
 
     <div class="first-row">
         <div class="left-gig-page">
@@ -167,7 +167,7 @@
                 <?php foreach ($this->recommendedGigs as $gig) { ?>
                     <a href="/indieabode/gig?id=<?= $gig['gigID'] ?>">
                         <div class="card">
-                            <h3 id="gig-name"><?= $gig['gigName'] ?></h3>
+                            <h3 id="gig-name"><?= $gig['name'] ?></h3>
                             <div class="card-image">
                                 <img src="/indieabode/public/uploads/gigs/cover/<?= $gig['gigCoverImg'] ?>" alt="" />
                             </div>

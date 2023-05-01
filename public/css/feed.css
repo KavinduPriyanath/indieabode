@@ -1,98 +1,72 @@
-
-
-
-  
-  .column{
-    position:relative;
-    
-   left: 170px;
-   top:100px;
-  }
-  
   .panel-body {
     padding: 5px 5px ;
     
   }
    
   .title {
-    color: #8AB3CA;
-    left: 180px;
-    top: 30px;
-    position: relative;
+    color: #345060;
+    margin-left: 180px;
+    margin-top: 30px;
   }
   
-  .filter{
-    display: flex;
-      width: 682px;
-      height: 50px;
-      color: #BAC6CD;
-      background-color:#38648B;
-      align-items: center;
-      font-size:9px;
-      left: 180px;
-      top: 50px;
-      position: relative;
-      justify-content: space;
-      margin: 5px;
-  }
-  .fil{
-    margin:1px;
-  }
   
   .logo1{
     margin-left: 10px;
   }
 
 
-  .game1{
+  .box1{
+    margin-bottom: 25px;
+  }
+
+  .activit{
     display: flex;
-      width: 682px;
+  }
+  
+
+  .activity{
+    display: flex;
+      width: 852px;
       height: 50px;
-      /* padding: 0.5em; */
       background-color:#38648B;
       align-items: center;
       color: #8AB3CA;
       font-size:13px;
       left: 184px;
-      top: 57px;
+      top: 14px;
+      margin-bottom: 10px;
       position: relative;
       justify-content: space;
       margin: -1px;
       
   }
   .Uname{
-    width: 100px;
+    width: 165px;
     left: 15px;
     position: relative;
   }
   .do{
     position: relative;
-    width:125px;
-    left: 20px;
+    width:105px;
+    margin-right: 20px;
+    margin-left: 40px;
   }
+
+  .GDCname{
+    position: relative;
+    width:165px;
+    margin-right: 10px;
+    margin-left: 40px;
+  }
+
   .time{
+    width:230px;
     position: relative;
-    left: 50px;
-    color: #9DCDE8;
-  }
-  .rgame{
-    width:170px;
-    position: relative;
-    left: 90px;
+    left: 60px;
     color: #69B0D8;
     
     
   }
   
-  
-/*   
-  .logo1{
-    align-items: center;
-
-    width: 50px;
-  } */
-  
-  
-
 
   

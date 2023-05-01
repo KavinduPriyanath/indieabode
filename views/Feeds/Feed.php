@@ -13,55 +13,85 @@
         ?>
     </style>
 
-<!-- <div class="title">
+<div class="title">
   <h1>Global Feed</h1>
-</div> -->
-
-<div class="filter">
-    <div class="fil">
-        <h1>Filter:</h1>
-    </div>
-    <div class="fil">
-        <h1>New Projects</h1>
-    </div>
-    <div class="fil">
-        <h1>Gigs</h1>
-    </div>
-    <div class="fil">
-        <h1>Posts</h1>
-    </div>
-    <div class="fil">
-        <h1>Ratings</h1>
-    </div>
 </div>
 
 
 
+<div class="box1">
   
     <?php foreach ($this->feed as $feedcol) { ?>
-            <div class="game1">
+            <div class="activity">
                 <div class="logo1"> 
                     <img src="public/images/avatars/<?= $feedcol['avatar'] ?>" alt=""width="30px" height="30px" ;>      
                 </div>
-                <div class="Uname">
-                    <h3><?= $feedcol['username'] ?>   </h3>
-                </div>
-                <div class="do">
+                
+                
                     <h3> 
-                        <?php if ($feedcol['ActivityCheck']==1) { ?>
-                            add cart
-                        <?php } else { ?>
-                            add library
+                        
+                        <?php if ($feedcol['ActivityCheck']==3) { ?>
+                            <div class="activit">
+                            <div class="Uname">
+                                <h3><?= $feedcol['username'] ?>   </h3>
+                            </div>
+                            <div class="do">
+                                upload game
+                            </div>
+                            <div class="GDCname">
+                                <h3> <?= $feedcol['gameName'] ?> </h3>
+                            </div>
+                            </div>
+                        <?php } elseif ($feedcol['ActivityCheck']==4) { ?>
+                            <div class="activit">
+                            <div class="Uname">
+                                <h3> <?= $feedcol['gameName'] ?> </h3>
+                            </div>
+                            <div class="do">
+                                created gig
+                            </div>
+                            <div class="GDCname">
+                                <h3><?= $feedcol['name'] ?>   </h3>
+                            </div>
+                            </div>
+                        <?php } elseif ($feedcol['ActivityCheck']==5) { ?>
+                            <div class="activit">
+                            <div class="Uname">
+                                <h3> <?= $feedcol['gameName'] ?> </h3>
+                            </div>
+                            <div class="do">
+                                posted devlog
+                            </div>
+                            <div class="GDCname">
+                                <h3><?= $feedcol['name'] ?>   </h3>
+                            </div>
+                            </div>
+                        <?php } elseif ($feedcol['ActivityCheck']==6) { ?>
+                            <div class="activit">
+                            <div class="Uname">
+                                <h3> <?= $feedcol['gameName'] ?> </h3>
+                            </div>
+                            <div class="do">
+                            launched crowd
+                            </div>
+                            <div class="GDCname">
+                                <h3><?= $feedcol['name'] ?>   </h3>
+                            </div>
+                            </div>
                         <?php } ?>
+
+                        
+
+
                     </h3>
-                </div>
+                
                 <div class="time">
                     <?php
                     // convert the given time to a Unix timestamp
-                    $given_timestamp = strtotime($feedcol['addedDate']);
+                    $given_timestamp = strtotime($feedcol['created_at']);
 
                     // calculate the time difference between the given time and the current time, in seconds
-                    $time_diff_seconds = time() - $given_timestamp;
+                    $time_diff_seconds = time() - $given_timestamp + 12598;
 
 
                     // calculate the number of hours and minutes in the time difference
@@ -77,16 +107,14 @@
                     ?> 
                     <h3> <?= $time_diff_str ?> </h3>
                 </div>
-                <div class="rgame">
-                    <h3> <?= $feedcol['gameName'] ?> </h3>
-                </div>
+                
             </div>  
     <?php } ?>
 
 
 
 
-
+</div>
 
 
 
@@ -95,15 +123,9 @@
     <?php } else { ?>
         <script src="<?php echo BASE_URL; ?>public/js/navbarcopy.js"></script>
     <?php } ?>
-<!-- 
-Including Footer
-<style>
-  <?php include('../src/css/footer.css'); ?>
-</style>
-<?php include("../components/footer.php"); ?>
-
-
- -->
+    <?php
+    include 'includes/footer.php';
+    ?>
 
 
 </html>

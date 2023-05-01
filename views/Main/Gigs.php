@@ -151,7 +151,7 @@
         <?php foreach ($this->gigs as $gig) { ?>
             <a href="/indieabode/gig?id=<?= $gig['gigID'] ?>">
                 <div class="card">
-                    <h3 id="gig-name"><?= $gig['gigName'] ?></h3>
+                    <h3 id="gig-name"><?= $gig['name'] ?></h3>
                     <div class="card-image">
                         <img src="/indieabode/public/uploads/gigs/cover/<?= $gig['gigCoverImg'] ?>" alt="" />
                     </div>

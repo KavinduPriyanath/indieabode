@@ -11,7 +11,7 @@ class Gig_Model extends Model
 
     function showSingleGig($id)
     {
-        $sql = "SELECT gig.gigID, gig.gigName, gig.gigScreenshot, gig.gigDetails, gig.game, gig.gameDeveloperID,
+        $sql = "SELECT gig.gigID, gig.name, gig.gigScreenshot, gig.gigDetails, gig.game, gig.gameDeveloperID,
                 gig.gamePublisherID, gig.gigTagline, gig.currentStage, gig.plannedReleaseDate, gig.estimatedShare,
                 gig.expectedCost, gig.gigCoverImg, freegame.gameName, freegame.gameClassification, freegame.platform 
                 FROM gig INNER JOIN freegame ON freegame.gameID = gig.game WHERE gigID='$id'";
@@ -278,7 +278,7 @@ class Gig_Model extends Model
     function RecommendedGigs($currentID)
     {
 
-        $sql = "SELECT gig.gigID, gig.gigID, gig.gigName, gig.gigTagline, gig.gigCoverImg, 
+        $sql = "SELECT gig.gigID, gig.gigID, gig.name, gig.gigTagline, gig.gigCoverImg, 
         gamer.firstName, gamer.lastName, gamer.avatar, gamer.trustrank
         FROM gig INNER JOIN gamer ON gamer.gamerID = gig.gameDeveloperID 
         WHERE NOT gig.gigID='$currentID' ORDER BY gig.created_at 
