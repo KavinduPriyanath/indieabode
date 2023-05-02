@@ -41,8 +41,33 @@ class JamsCalender extends Controller
             }
         }
 
+        $row3 = $row2;
+        $row4 = [];
+        $row2Count = count($row2);
+
+        for ($i = 1; $i < $row2Count; $i++) {
+
+            if ($row3[$i]['submissionStartDate'] < $row3[$i - 1]['votingEndDate']) {
+                array_push($row4, $row3[$i]);
+                unset($row2[$i]);
+            }
+
+            // if ($i == 0) {
+            //     array_push($row1, $allJams[$i]);
+            // } else if ($allJams[$i]['submissionStartDate'] < $allJams[$i - 1]['votingEndDate']) {
+            //     array_push($row4, $allJams[$i]);
+            // } else if ($allJams[$i]['submissionStartDate'] > $allJams[$i - 1]['votingEndDate']) {
+            //     array_push($row1, $allJams[$i]);
+            // }
+
+        }
+
+        // print_r($row3);
+
+
         $this->view->firstRow = $row1;
         $this->view->secondRow = $row2;
+        $this->view->thirdRow = $row4;
 
         // print_r($row1);
 

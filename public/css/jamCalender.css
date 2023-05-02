@@ -11,8 +11,9 @@
   }
 
   .ofs-timeline {
+    margin-left: 165px;
     padding-bottom: 10px;
-    width: 100%;
+    width: 80%;
     height: min-content;
     overflow-x: scroll;
   }
@@ -56,11 +57,15 @@
       repeating-linear-gradient(
         to right,
         rgba(152, 191, 232, 0.516),
-        rgba(152, 191, 232, 0.516) 199px,
+        rgba(152, 191, 232, 0.208) 199px,
         #0a2144 199px,
         #1a3251 200px);
-        background-color: rgba(152, 191, 232, 0.516);
+        background-color: rgba(152, 191, 232, 0.264);
     background-position: -50px 0px;
+  }
+
+  #header-calender{
+    margin-left: 165px;
   }
 
   .row {

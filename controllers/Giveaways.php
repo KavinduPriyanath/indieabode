@@ -30,6 +30,10 @@ class Giveaways extends Controller
         $reward = $_POST['reward'];
         $userID = $_SESSION['id'];
 
+        if ($reward != 0) {
+            $this->view->updateTotalCoins = $this->model->UpdateTotalCoins($userID, $reward);
+        }
+
         $this->model->InsertDailySpin($userID, $reward);
 
         echo "Success";
