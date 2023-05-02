@@ -35,9 +35,11 @@
                     <a href="/indieabode/settings/profile">
                         <div class="sub-topics">Profile</div>
                     </a>
-                    <a href="/indieabode/settings/portfolio">
-                        <div class="sub-topics">Portfolio</div>
-                    </a>
+                    <?php if ($_SESSION['userRole'] == "game developer" || $_SESSION['userRole'] == "asset creator" || $_SESSION['userRole'] == "game publisher") { ?>
+                        <a href="/indieabode/settings/portfolio">
+                            <div class="sub-topics">Portfolio</div>
+                        </a>
+                    <?php } ?>
                     <a href="/indieabode/settings/password">
                         <div class="sub-topics">Password</div>
                     </a>
@@ -62,9 +64,11 @@
                     <a href="">
                         <div class="sub-topics">Tax Information</div>
                     </a>
-                    <a href="/indieabode/settings/revenueshare">
-                        <div class="sub-topics">Revenue Sharing</div>
-                    </a>
+                    <?php if ($_SESSION['userRole'] == "game developer" || $_SESSION['userRole'] == "asset creator" || $_SESSION['userRole'] == "game publisher") { ?>
+                        <a href="/indieabode/settings/revenueshare">
+                            <div class="sub-topics">Revenue Sharing</div>
+                        </a>
+                    <?php } ?>
                     <a href="/indieabode/settings/paymentprocessors">
                         <div class="sub-topics">Payment Processors</div>
                     </a>
