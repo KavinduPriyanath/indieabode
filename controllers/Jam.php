@@ -219,4 +219,40 @@ class Jam extends Controller
 
         $this->view->render('GameJam/Results');
     }
+
+    function report()
+    {
+
+        if (isset($_POST['report_submit'])) {
+
+            $reason = $_POST['reason'];
+            $description = $_POST['description'];
+            $submissionID = $_POST['submissionID'];
+            $jamID = $_POST['jamID'];
+            $gamerID = $_SESSION['id'];
+
+            $this->model->reportSubmit($reason, $description, $gamerID, $jamID, $submissionID);
+        }
+    }
+
+    function downloadSubmission()
+    {
+
+        $gameFileName = $this->model->downloadGameFile($_GET['id']);
+
+        $this->model->updateGameDownloadStat($_GET['id'], date("Y-m-d"));
+
+        $this->model->updateGameDownloads($_GET['id']);
+
+        $gameFilePath = 'public/uploads/games/file/';
+
+        $downloadPath = $gameFilePath . $gameFileName;
+
+        header('Cache-Control: public');
+        header('Content-Description: File Transfer');
+        header('Content-Type: application/zip');
+        header("Content-Transfer-Encoding: utf-8");
+        header("Content-Disposition: attachment; filename=$gameFileName");
+        readfile($downloadPath);
+    }
 }
