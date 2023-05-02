@@ -83,37 +83,37 @@
             const rotationValues = [{
                     minDegree: 0,
                     maxDegree: 30,
-                    value: 2
+                    value: 10
                 },
                 {
                     minDegree: 31,
                     maxDegree: 90,
-                    value: 1
+                    value: 5
                 },
                 {
                     minDegree: 91,
                     maxDegree: 150,
-                    value: 6
+                    value: 10
                 },
                 {
                     minDegree: 151,
                     maxDegree: 210,
-                    value: 5
+                    value: 15
                 },
                 {
                     minDegree: 211,
                     maxDegree: 270,
-                    value: 4
+                    value: 0
                 },
                 {
                     minDegree: 271,
                     maxDegree: 330,
-                    value: 3
+                    value: 10
                 },
                 {
                     minDegree: 331,
                     maxDegree: 360,
-                    value: 2
+                    value: 5
                 },
             ];
             //Size of each piece
@@ -135,7 +135,7 @@
                 type: "pie",
                 data: {
                     //Labels(values which are to be displayed on chart)
-                    labels: [1, 2, 3, 4, 5, 6],
+                    labels: [10, 5, 10, 15, "?", 10],
                     //Settings for dataset/pie
                     datasets: [{
                         backgroundColor: pieColors,

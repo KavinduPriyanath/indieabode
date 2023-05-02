@@ -29,4 +29,27 @@ class Giveaways_Model extends Model
 
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+    function UpdateTotalCoins($gamerID, $reward)
+    {
+
+
+        $sql = "SELECT * FROM account WHERE userID='$gamerID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $currentCoins = $user['indieCoins'];
+
+        $newCoinsCount = $currentCoins + $reward;
+
+        $updateSQL = "UPDATE account SET indieCoins='$newCoinsCount' WHERE userID='$gamerID'";
+
+        $updateStmt = $this->db->prepare($updateSQL);
+
+        $updateStmt->execute();
+    }
 }
