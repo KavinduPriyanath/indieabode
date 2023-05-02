@@ -586,6 +586,13 @@ class Dashboard extends Controller
         header('location:/indieabode/');
     }
 
+    function gamegiveaways()
+    {
+        $this->view->game = $this->model->GetGameDetails($_GET['id']);
+
+        $this->view->render('Dashboard/GameDashboards/GiveAways');
+    }
+
 
     //Game Publisher Dashboard Items
     //Game Publisher Dashboard Items
