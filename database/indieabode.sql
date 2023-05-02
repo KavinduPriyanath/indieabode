@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 01, 2023 at 09:27 PM
+-- Generation Time: May 02, 2023 at 08:50 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -47,7 +47,7 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`userID`, `profilePhoto`, `location`, `phoneNumber`, `displayName`, `twitter`, `linkedin`, `introduction`, `website`, `revenueShare`, `followers`, `following`) VALUES
-(46, 'pic.jpg', 'hrtht', '4543334', 'kavindu', 'rththt', 'hrtht', 'Hi. I\'m computer science undergraduate and indie game developer who enjoys working with games', 'thhwwww', 17, 0, 1),
+(46, 'pic.jpg', 'hrtht', '4543334', 'kavindu', 'rththt', 'hrtht', 'Hi. I\'m computer science undergraduate and indie game developer who enjoys working with games', 'thhwwww', 17, 0, 0),
 (47, '', '', '', '', '', '', '', '', 10, 0, 0),
 (48, '', '', '', '', '', '', '', '', 10, 0, 0),
 (51, '', '', '', 'oh my god', '', '', '', '', 10, 0, 0),
@@ -55,7 +55,7 @@ INSERT INTO `account` (`userID`, `profilePhoto`, `location`, `phoneNumber`, `dis
 (53, '', '', '', '', '', '', '', '', 10, 0, 0),
 (78, '', '', '', '', '', '', '', '', 10, 0, 0),
 (80, '', '', '', '', '', '', '', '', 10, 0, 0),
-(81, '', '', '', '', '', '', 'Hi. I\'m computer science undergraduate and indie game developer who enjoys working with games', '', 10, 2, 0),
+(81, '', '', '', '', '', '', 'Hi. I\'m computer science undergraduate and indie game developer who enjoys working with games', '', 10, 1, 0),
 (82, '', '', '', '', '', '', '', '', 10, 0, 0),
 (83, '', '', '', '', '', '', '', '', 10, 0, 0),
 (84, '', '', '', '', '', '', '', '', 10, 0, 0),
@@ -187,7 +187,8 @@ CREATE TABLE `asset_cart` (
 --
 
 INSERT INTO `asset_cart` (`id`, `userID`, `assetID`, `addedDate`) VALUES
-(22, 46, 19, '2023-04-28');
+(22, 46, 19, '2023-04-28'),
+(23, 46, 9, '2023-05-02');
 
 -- --------------------------------------------------------
 
@@ -271,7 +272,8 @@ CREATE TABLE `asset_reviews` (
 INSERT INTO `asset_reviews` (`id`, `rating`, `reviewTopic`, `review`, `created_date`, `userID`, `assetID`, `recommendation`) VALUES
 (1, 1, 'hiuy', 'oihyy', '2023-04-19', 46, 10, 'No'),
 (2, 3, 'jj', 'ytjytjyj', '2023-04-19', 51, 10, 'Yes'),
-(3, 3, 'rggr', 'rgrg', '2023-04-28', 78, 9, 'Yes');
+(3, 3, 'rggr', 'rgrg', '2023-04-28', 78, 9, 'Yes'),
+(4, 3, 'goyi', 'gkgo', '2023-05-02', 46, 29, 'Yes');
 
 -- --------------------------------------------------------
 
@@ -293,14 +295,14 @@ CREATE TABLE `asset_stats` (
 --
 
 INSERT INTO `asset_stats` (`assetID`, `downloads`, `views`, `ratings`, `ratingCount`, `revenue`) VALUES
-(9, 5, 13, 0, 0, 0),
+(9, 5, 14, 0, 0, 0),
 (10, 0, 15, 0, 0, 0),
 (17, 4, 7, 0, 0, 26.109),
 (18, 0, 4, 0, 0, 0),
 (19, 2, 5, 0, 0, 28.276),
 (20, 0, 4, 0, 0, 0),
 (21, 2, 3, 0, 0, 26.109),
-(29, 2, 8, 0, 0, 29.5902);
+(29, 3, 8, 0, 0, 29.5902);
 
 -- --------------------------------------------------------
 
@@ -357,7 +359,9 @@ INSERT INTO `asset_stats_history` (`id`, `assetID`, `views`, `downloads`, `ratin
 (32, 29, 1, 0, 0, 0, '2023-05-01'),
 (33, 20, 1, 0, 0, 0, '2023-05-01'),
 (34, 10, 2, 0, 0, 0, '2023-05-01'),
-(35, 17, 2, 0, 0, 0, '2023-05-01');
+(35, 17, 2, 0, 0, 0, '2023-05-01'),
+(36, 9, 1, 0, 0, 0, '2023-05-02'),
+(37, 29, 0, 1, 0, 0, '2023-05-02');
 
 -- --------------------------------------------------------
 
@@ -444,7 +448,8 @@ INSERT INTO `asset_view_tracker` (`id`, `userID`, `assetID`, `sessionID`, `viewe
 (64, 46, 9, 62, '2023-05-01'),
 (65, 46, 17, 62, '2023-05-01'),
 (66, 87, 9, 33, '2023-05-01'),
-(67, 87, 17, 33, '2023-05-01');
+(67, 87, 17, 33, '2023-05-01'),
+(68, 46, 9, 80, '2023-05-02');
 
 -- --------------------------------------------------------
 
@@ -600,6 +605,28 @@ CREATE TABLE `complaint_reason_sales` (
 
 INSERT INTO `complaint_reason_sales` (`id`, `reason`) VALUES
 (0, 'spam');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `complaint_submissions`
+--
+
+CREATE TABLE `complaint_submissions` (
+  `id` int(11) NOT NULL,
+  `gamerID` int(11) NOT NULL,
+  `reason` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `jamID` int(11) NOT NULL,
+  `submissionID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `complaint_submissions`
+--
+
+INSERT INTO `complaint_submissions` (`id`, `gamerID`, `reason`, `description`, `jamID`, `submissionID`) VALUES
+(1, 46, 'Invalid Jam Submission', 'fefef', 67, 195);
 
 -- --------------------------------------------------------
 
@@ -786,7 +813,8 @@ INSERT INTO `devlog_comments_replies` (`id`, `userID`, `commentID`, `replyMsg`, 
 (32, 46, 3, '@KRDA dwdwd', '2023-03-01'),
 (33, 46, 22, 'yo', '2023-03-08'),
 (34, 46, 22, '@Beidou yo 2', '2023-03-08'),
-(35, 46, 25, 'grgrg', '2023-04-10');
+(35, 46, 25, 'grgrg', '2023-04-10'),
+(37, 46, 22, 'toytiu', '2023-05-02');
 
 -- --------------------------------------------------------
 
@@ -805,11 +833,11 @@ CREATE TABLE `devlog_likes` (
 --
 
 INSERT INTO `devlog_likes` (`id`, `devlogID`, `userID`) VALUES
-(11, 28, 46),
 (12, 31, 46),
 (13, 36, 46),
 (14, 37, 46),
-(15, 30, 46);
+(15, 30, 46),
+(16, 28, 46);
 
 -- --------------------------------------------------------
 
@@ -904,7 +932,6 @@ CREATE TABLE `followers` (
 --
 
 INSERT INTO `followers` (`id`, `follower`, `following`, `followed_date`) VALUES
-(12, 46, 81, '2023-04-30 22:46:41'),
 (13, 52, 81, '2023-04-30 22:50:28');
 
 -- --------------------------------------------------------
@@ -1560,7 +1587,9 @@ INSERT INTO `games_view_tracker` (`id`, `userID`, `sessionID`, `gameID`, `viewed
 (336, 46, 23, 90, '2023-05-01'),
 (337, 46, 78, 96, '2023-05-01'),
 (338, 46, 62, 187, '2023-05-01'),
-(339, 46, 39, 195, '2023-05-02');
+(339, 46, 39, 195, '2023-05-02'),
+(340, 46, 80, 187, '2023-05-02'),
+(341, 46, 31, 195, '2023-05-02');
 
 -- --------------------------------------------------------
 
@@ -1735,11 +1764,11 @@ INSERT INTO `game_stats` (`id`, `gameID`, `views`, `downloads`, `ratings`, `reve
 (7, 95, 28, 4, 1, 0),
 (8, 184, 11, 3, 0, 0),
 (10, 186, 5, 0, 0, 0),
-(11, 187, 11, 4, 0, 0),
+(11, 187, 12, 6, 0, 0),
 (12, 188, 14, 1, 0, 152.48),
 (14, 189, 13, 0, 0, 295.858),
 (16, 191, 3, 1, 0, 0),
-(18, 195, 1, 0, 0, 0);
+(18, 195, 2, 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -1947,7 +1976,9 @@ INSERT INTO `game_stats_history` (`id`, `gameID`, `views`, `downloads`, `ratings
 (190, 188, 1, 0, 0, 0, '2023-05-01'),
 (191, 90, 1, 0, 0, 0, '2023-05-01'),
 (192, 96, 1, 2, 0, 0, '2023-05-01'),
-(193, 195, 1, 0, 0, 0, '2023-05-01');
+(193, 195, 1, 0, 0, 0, '2023-05-01'),
+(194, 187, 1, 2, 0, 0, '2023-05-02'),
+(195, 195, 1, 1, 0, 0, '2023-05-02');
 
 -- --------------------------------------------------------
 
@@ -2645,6 +2676,12 @@ ALTER TABLE `complaint_reason_jams`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `complaint_submissions`
+--
+ALTER TABLE `complaint_submissions`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `crowdfund`
 --
 ALTER TABLE `crowdfund`
@@ -2898,7 +2935,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `asset_cart`
 --
 ALTER TABLE `asset_cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `asset_library`
@@ -2916,19 +2953,19 @@ ALTER TABLE `asset_purchases`
 -- AUTO_INCREMENT for table `asset_reviews`
 --
 ALTER TABLE `asset_reviews`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `asset_stats_history`
 --
 ALTER TABLE `asset_stats_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `asset_view_tracker`
 --
 ALTER TABLE `asset_view_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT for table `billing_addresses`
@@ -2959,6 +2996,12 @@ ALTER TABLE `complaint_reasons_items`
 --
 ALTER TABLE `complaint_reason_jams`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `complaint_submissions`
+--
+ALTER TABLE `complaint_submissions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `crowdfund`
@@ -2994,13 +3037,13 @@ ALTER TABLE `devlog_comments`
 -- AUTO_INCREMENT for table `devlog_comments_replies`
 --
 ALTER TABLE `devlog_comments_replies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `devlog_likes`
 --
 ALTER TABLE `devlog_likes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `devlog_posttype`
@@ -3060,7 +3103,7 @@ ALTER TABLE `games_filters`
 -- AUTO_INCREMENT for table `games_view_tracker`
 --
 ALTER TABLE `games_view_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=340;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=342;
 
 --
 -- AUTO_INCREMENT for table `game_cart`
@@ -3096,7 +3139,7 @@ ALTER TABLE `game_stats`
 -- AUTO_INCREMENT for table `game_stats_history`
 --
 ALTER TABLE `game_stats_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=194;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=196;
 
 --
 -- AUTO_INCREMENT for table `gig`

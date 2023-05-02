@@ -13,6 +13,7 @@
         <?php
         include 'public/css/gamejam.css';
         include 'public/css/ratesubmissions.css';
+        include 'public/css/reportModal.css';
         ?>
     </style>
 </head>
@@ -25,7 +26,7 @@ include 'includes/navbar.php';
 
 <body>
 
-
+    <div class="flashMessage" id="flashMessage"></div>
 
     <div class="containerJam">
 
@@ -58,8 +59,11 @@ include 'includes/navbar.php';
             </div>
         </div>
         <div class="right-details">
+
             <div class="game-buttons">
-                <div class="download">Download</div>
+                <div class="report" data-modal-target="#modal">Report</div>
+                <div class="download" id="download-btn">Download</div>
+
             </div>
         </div>
     </div>
@@ -138,11 +142,75 @@ include 'includes/navbar.php';
     </div>
 
 
+    <div class="report-modal">
+        <div class="modal" id="modal">
+            <div class="modal-header">
+                <div class="title">Report page "Game Name"</div>
+                <button data-close-button class="close-button">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="report-heading">
+                    Please complete this form if you need to contact the Bullet Hell Jam Organizers
+                    about the content of this page. Your report may be
+                    shared with the creator of the submission if necessary.
+                </div>
+                <div class="report-form">
+                    <h3>Reasons</h3>
+
+                    <div class="reasons">
+
+
+                        <div class="reason">
+                            <input type="radio" name="reasons" id="" value="Invalid Jam Submission" />
+                            <label for="">Invalid Jam Submission - Mismatches with theme, breaks rules, etc</label>
+                        </div>
+                        <div class="reason">
+                            <input type="radio" name="reasons" id="" value="Broken" />
+                            <label for="">Broken - Doesn't run, download, and crashes</label>
+                        </div>
+                        <div class="reason">
+                            <input type="radio" name="reasons" id="" value="Offensive Material" />
+                            <label for="">Offensive Material</label>
+                        </div>
+                        <div class="reason">
+                            <input type="radio" name="reasons" id="" value="Uploader Not Authorized to Distribute" />
+                            <label for="">Uploader Not Authorized to Distribute</label>
+                        </div>
+                        <div class="reason">
+                            <input type="radio" name="reasons" id="" value="Miscategorized" />
+                            <label for="">Miscategorized - Shows up on wrong part of site, incorrect tags, incorrect platforms etc</label>
+                        </div>
+                        <div class="reason">
+                            <input type="radio" name="reasons" id="" value="Spam" />
+                            <label for="">Spam</label>
+                        </div>
+                        <div class="reason">
+                            <input type="radio" name="reasons" id="" value="Other" />
+                            <label for="">Other</label>
+                        </div>
+
+
+                    </div>
+
+                    <h3>Descrption</h3>
+                    <textarea name="" id="description" cols="30" rows="10"></textarea>
+
+                    <br />
+                    <button type="submit" id="report-submit">Submit Report</button>
+                </div>
+            </div>
+        </div>
+        <div id="overlay"></div>
+    </div>
+
+
     <?php
     include 'includes/footer.php';
     ?>
 
     <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
+
+    <script src="<?php echo BASE_URL; ?>public/js/reportModal.js"></script>
 
     <script>
         $(document).ready(function() {
@@ -277,6 +345,61 @@ include 'includes/navbar.php';
                 })
 
             }
+
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+
+            $('#report-submit').click(function() {
+
+
+
+                var description = $('#description').val();
+                var reason = $("input[name='reasons']:checked").val();
+                var jamID = <?= $_GET['jam'] ?>;
+                var submissionID = <?= $_GET['id'] ?>;
+
+                var data = {
+                    'description': description,
+                    'reason': reason,
+                    'jamID': jamID,
+                    'submissionID': submissionID,
+                    'report_submit': true,
+                };
+
+                $.ajax({
+                    url: "/indieabode/jam/report",
+                    method: "POST",
+                    data: data,
+                    success: function(response) {
+                        alert(response);
+                        $('#modal').removeClass("active");
+                        $('#overlay').removeClass("active");
+
+                        // alert(response);
+                    }
+                })
+
+            });
+
+
+            //Downloading the game and showing a flash message thanking
+            $('#download-btn').click(function() {
+
+                window.location.href = "/indieabode/jam/downloadSubmission?id=<?= $this->submission['gameID'] ?>";
+
+
+                $("#flashMessage").html('Thanks for downloading');
+                $("#flashMessage").fadeIn(2000);
+
+                setTimeout(function() {
+                    $("#flashMessage").fadeOut("slow");
+                }, 4000);
+
+            });
+
 
         });
     </script>

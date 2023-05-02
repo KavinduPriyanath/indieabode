@@ -54,6 +54,20 @@
     position: relative;
 }
 
+.report {
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    font-size: 22px;
+    font-weight: 700;
+    background-color: rgb(176, 198, 221);
+    color: rgb(51, 51, 140);
+    padding: 6px 13px;
+    border-radius: 6px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
 .download {
     position: absolute;
     bottom: 0px;
@@ -205,4 +219,21 @@
 
 .ranked-block .game-rank {
     font-size: 22px;
+}
+
+
+.flashMessage {
+    position: fixed;
+    z-index: 100;
+    top: 0px;
+    left: 50%;
+    background-color: #73c3e3;
+    color: black;
+    text-shadow: 1px 1px 1px #248ab2;
+    border-radius: 0 0 5px 5px;
+    padding: 8px 16px;
+    padding-top: 15px;
+    font-size: 18px;
+    box-shadow: 0 1px 4px rgb(0 0 0 / 60%);
+    display: none;
 }
