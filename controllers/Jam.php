@@ -119,6 +119,7 @@ class Jam extends Controller
             $gameJamID = $_GET['id'];
             $this->model->submitproject($gameID, $gameJamID, $gamerID);
             $this->model->UpdateGameSubmissionStatus($gameID, $gameJamID);
+            $this->model->UpdateSubmissionCount($gameJamID, "added");
             // $this->view->gamejam = $this->model->showSingleJam($gameJamID);
             // $this->view->render('SingleGameJam');
 

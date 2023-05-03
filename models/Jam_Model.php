@@ -116,6 +116,32 @@ class Jam_Model extends Model
         $stmt->execute();
     }
 
+    function UpdateSubmissionCount($gameJamId, $action)
+    {
+
+        $sql = "SELECT * FROM gamejam WHERE gameJamID='$gameJamId'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $jam = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $submissionCount = $jam['submissionsCount'];
+
+        if ($action == "added") {
+            $submissionCount += 1;
+        } else if ($action == "removed") {
+            $submissionCount -= 1;
+        }
+
+        $updateSQL = "UPDATE gamejam SET submissionsCount='$submissionCount'";
+
+        $updateStmt = $this->db->prepare($updateSQL);
+
+        $updateStmt->execute();
+    }
+
 
     function AlreadyJoinedDeveloper($uID, $jID)
     {

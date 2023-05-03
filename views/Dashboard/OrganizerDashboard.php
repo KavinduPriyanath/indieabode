@@ -57,11 +57,11 @@
 
                     <div class="right-col">
                         <div class="views">
-                            <div class="count">0</div>
+                            <div class="count"><?= $jam['joinedCount']; ?></div>
                             <div class="label">joined</div>
                         </div>
                         <div class="downloads">
-                            <div class="count">0</div>
+                            <div class="count"><?= $jam['submissionsCount']; ?></div>
                             <div class="label">submissions</div>
                         </div>
                         <div class="ratings">

@@ -1034,4 +1034,18 @@ class Dashboard_Model extends Model
             return $image;
         }
     }
+
+    function submittedGames($jamID)
+    {
+
+        $sql = "SELECT submission.submissionID, submission.status, submission.rating, freegame.gameCoverImg,
+                freegame.gameName, freegame.created_at from submission INNER JOIN freegame 
+                ON freegame.gameID=submission.submissionID WHERE submission.gameJamID = '$jamID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
 }

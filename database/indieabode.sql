@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 02, 2023 at 08:50 AM
+-- Generation Time: May 03, 2023 at 09:03 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -39,30 +39,31 @@ CREATE TABLE `account` (
   `website` varchar(200) NOT NULL,
   `revenueShare` int(11) NOT NULL DEFAULT 10,
   `followers` int(11) NOT NULL DEFAULT 0,
-  `following` int(11) NOT NULL DEFAULT 0
+  `following` int(11) NOT NULL DEFAULT 0,
+  `indieCoins` int(11) NOT NULL DEFAULT 50
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `account`
 --
 
-INSERT INTO `account` (`userID`, `profilePhoto`, `location`, `phoneNumber`, `displayName`, `twitter`, `linkedin`, `introduction`, `website`, `revenueShare`, `followers`, `following`) VALUES
-(46, 'pic.jpg', 'hrtht', '4543334', 'kavindu', 'rththt', 'hrtht', 'Hi. I\'m computer science undergraduate and indie game developer who enjoys working with games', 'thhwwww', 17, 0, 0),
-(47, '', '', '', '', '', '', '', '', 10, 0, 0),
-(48, '', '', '', '', '', '', '', '', 10, 0, 0),
-(51, '', '', '', 'oh my god', '', '', '', '', 10, 0, 0),
-(52, '', '', '', '', '', '', '', '', 10, 0, 1),
-(53, '', '', '', '', '', '', '', '', 10, 0, 0),
-(78, '', '', '', '', '', '', '', '', 10, 0, 0),
-(80, '', '', '', '', '', '', '', '', 10, 0, 0),
-(81, '', '', '', '', '', '', 'Hi. I\'m computer science undergraduate and indie game developer who enjoys working with games', '', 10, 1, 0),
-(82, '', '', '', '', '', '', '', '', 10, 0, 0),
-(83, '', '', '', '', '', '', '', '', 10, 0, 0),
-(84, '', '', '', '', '', '', '', '', 10, 0, 0),
-(86, '', '', '', '', '', '', '', '', 10, 0, 0),
-(87, '', '', '', '', '', '', '', '', 10, 0, 0),
-(89, '', '', '', '', '', '', '', '', 10, 0, 0),
-(91, '', '', '', '', '', '', '', '', 10, 0, 0);
+INSERT INTO `account` (`userID`, `profilePhoto`, `location`, `phoneNumber`, `displayName`, `twitter`, `linkedin`, `introduction`, `website`, `revenueShare`, `followers`, `following`, `indieCoins`) VALUES
+(46, 'pic.jpg', 'hrtht', '4543334', 'kavindu', 'rththt', 'hrtht', 'Hi. I\'m computer science undergraduate and indie game developer who enjoys working with games', 'thhwwww', 17, 0, 0, 50),
+(47, '', '', '', '', '', '', '', '', 10, 0, 0, 50),
+(48, '', '', '', '', '', '', '', '', 10, 0, 0, 50),
+(51, '', '', '', 'oh my god', '', '', '', '', 10, 0, 0, 50),
+(52, '', '', '', '', '', '', '', '', 10, 0, 1, 50),
+(53, '', '', '', '', '', '', '', '', 10, 0, 0, 50),
+(78, '', '', '', '', '', '', '', '', 10, 0, 0, 50),
+(80, '', '', '', '', '', '', '', '', 10, 0, 0, 50),
+(81, '', '', '', '', '', '', 'Hi. I\'m computer science undergraduate and indie game developer who enjoys working with games', '', 10, 1, 0, 50),
+(82, '', '', '', '', '', '', '', '', 10, 0, 0, 50),
+(83, '', '', '', '', '', '', '', '', 10, 0, 0, 50),
+(84, '', '', '', '', '', '', '', '', 10, 0, 0, 50),
+(86, '', '', '', '', '', '', '', '', 10, 0, 0, 55),
+(87, '', '', '', '', '', '', '', '', 10, 0, 0, 50),
+(89, '', '', '', '', '', '', '', '', 10, 0, 0, 50),
+(91, '', '', '', '', '', '', '', '', 10, 0, 0, 50);
 
 -- --------------------------------------------------------
 
@@ -100,7 +101,8 @@ INSERT INTO `activation_keys` (`id`, `userID`, `activationCode`) VALUES
 (38, 91, '26856'),
 (39, 91, '49511'),
 (40, 91, '58335'),
-(41, 91, '28040');
+(41, 91, '28040'),
+(42, 80, '18459');
 
 -- --------------------------------------------------------
 
@@ -1097,20 +1099,20 @@ CREATE TABLE `gamejam` (
 --
 
 INSERT INTO `gamejam` (`gameJamID`, `submissionStartDate`, `submissionEndDate`, `jamContent`, `votingEndDate`, `jamTitle`, `jamTagline`, `jamType`, `jamCriteria`, `jamVisibility`, `maxParticipants`, `canJoinAfterStarted`, `jamHostID`, `jamVoters`, `jamTwitter`, `jamCoverImg`, `joinedCount`, `submissionsCount`, `jamTheme`) VALUES
-(53, '2022-12-01 16:55:00', '2022-12-08 16:55:00', ' This is an online game jam, so anyone, from anywhere, aged 13 or older can enter the jam. (Those younger can take part, as long as a parent or guardian uploads the game).\r\n\r\nYou can work alone or in teams. There is no limit on the number of people per team and people can be in multiple teams.', '2022-12-15 16:55:00', 'GMTK GameJam', '48 hour game development marathon', 'Non-Ranked', 'Creativity', 'Public', 0, 1, 89, 'Public', '#gmtk', 'Cover-GMTK GameJam.jpg', 0, 0, ''),
-(55, '2023-01-02 12:00:00', '2023-01-03 12:00:00', ' Genshin Impact takes place in the fantasy world of Teyvat, home to seven nations, each of which is tied to a different element and ', '2023-01-04 12:00:00', 'GameJam', 'This is a gamejam', 'Non-Ranked', 'Creativity', 'Draft', 40, 1, 79, 'Public', '#brackeys', 'Cover-GameJam.jpg', 0, 0, ''),
-(56, '2023-04-28 16:55:00', '2023-04-20 16:55:00', ' majhcdsjc vmnb', '2023-05-02 00:00:00', 'majbhdhjsa', 'grg', 'Ranked', 'mdhcbgd', 'Draft', 67, 1, 79, 'Public', 'mhcbds', 'Cover-majbhdhjsa.jpg', 0, 0, ''),
-(57, '2022-12-01 16:55:00', '2022-12-08 16:55:00', '<p>Lost, alone and separated from family, a stray cat must untangle an ancient mystery to escape a long-forgotten city.\r\n\r\nStray is a third-person cat adventure game set amidst the detailed, neon-lit alleys of a decaying cybercity and the murky environments of its seedy underbelly. Roam surroundings high and low, defend against unforeseen threats and solve the mysteries of this unwelcoming place inhabited by curious droids and dangerous creatures.\r\n\r\nSee the world through the eyes of a cat and interact with the environment in playful ways. Be stealthy, nimble, silly, and sometimes as annoying as possible with the strange inhabitants of this mysterious world.\r\n\r\nAlong the way, the cat befriends a small flying drone, known only as B-12. With the help of this newfound companion, the duo must find a way out.\r\n\r\nStray is developed by BlueTwelve Studio, a small team from the south of France mostly made up of cats and a handful of humans.<p>\r\n<br>\r\n<p>Lost, alone and separated from family, a stray cat must untangle an ancient mystery to escape a long-forgotten city.\r\n\r\nStray is a third-person cat adventure game set amidst the detailed, neon-lit alleys of a decaying cybercity and the murky environments of its seedy underbelly. Roam surroundings high and low, defend against unforeseen threats and solve the mysteries of this unwelcoming place inhabited by curious droids and dangerous creatures.\r\n\r\nSee the world through the eyes of a cat and interact with the environment in playful ways. Be stealthy, nimble, silly, and sometimes as annoying as possible with the strange inhabitants of this mysterious world.\r\n\r\nAlong the way, the cat befriends a small flying drone, known only as B-12. With the help of this newfound companion, the duo must find a way out.\r\n\r\nStray is developed by BlueTwelve Studio, a small team from the south of France mostly made up of cats and a handful of humans.<p>', '2023-12-14 16:55:00', 'GMTK GameJam', '48 hour game development marathon', 'Non-Ranked', 'Creativity', 'Public', 0, 1, 89, 'Public', '#gmtk', 'Cover-GMTK GameJam.jpg', 0, 0, ''),
+(53, '2023-04-08 16:55:00', '2023-04-13 16:55:00', ' This is an online game jam, so anyone, from anywhere, aged 13 or older can enter the jam. (Those younger can take part, as long as a parent or guardian uploads the game).\r\n\r\nYou can work alone or in teams. There is no limit on the number of people per team and people can be in multiple teams.', '2023-04-17 16:55:00', 'GMTK GameJam 2023', '48 hour game development marathon', 'Non-Ranked', 'Creativity', 'Public', 0, 1, 89, 'Public', '#gmtk', 'Cover-GMTK GameJam.jpg', 0, 0, ''),
+(55, '2023-04-20 12:00:00', '2023-01-03 12:00:00', ' Genshin Impact takes place in the fantasy world of Teyvat, home to seven nations, each of which is tied to a different element and ', '2023-04-30 12:00:00', 'Brackeys Jam IV', 'This is a gamejam', 'Non-Ranked', 'Creativity', 'Draft', 40, 1, 79, 'Public', '#brackeys', 'Cover-GameJam.jpg', 0, 0, ''),
+(56, '2023-04-28 16:55:00', '2023-04-20 16:55:00', ' majhcdsjc vmnb', '2023-05-02 00:00:00', 'Community Jam I', 'grg', 'Ranked', 'mdhcbgd', 'Draft', 67, 1, 79, 'Public', 'mhcbds', 'Cover-majbhdhjsa.jpg', 0, 0, ''),
+(57, '2022-12-01 16:55:00', '2022-12-08 16:55:00', '<p>Lost, alone and separated from family, a stray cat must untangle an ancient mystery to escape a long-forgotten city.\r\n\r\nStray is a third-person cat adventure game set amidst the detailed, neon-lit alleys of a decaying cybercity and the murky environments of its seedy underbelly. Roam surroundings high and low, defend against unforeseen threats and solve the mysteries of this unwelcoming place inhabited by curious droids and dangerous creatures.\r\n\r\nSee the world through the eyes of a cat and interact with the environment in playful ways. Be stealthy, nimble, silly, and sometimes as annoying as possible with the strange inhabitants of this mysterious world.\r\n\r\nAlong the way, the cat befriends a small flying drone, known only as B-12. With the help of this newfound companion, the duo must find a way out.\r\n\r\nStray is developed by BlueTwelve Studio, a small team from the south of France mostly made up of cats and a handful of humans.<p>\r\n<br>\r\n<p>Lost, alone and separated from family, a stray cat must untangle an ancient mystery to escape a long-forgotten city.\r\n\r\nStray is a third-person cat adventure game set amidst the detailed, neon-lit alleys of a decaying cybercity and the murky environments of its seedy underbelly. Roam surroundings high and low, defend against unforeseen threats and solve the mysteries of this unwelcoming place inhabited by curious droids and dangerous creatures.\r\n\r\nSee the world through the eyes of a cat and interact with the environment in playful ways. Be stealthy, nimble, silly, and sometimes as annoying as possible with the strange inhabitants of this mysterious world.\r\n\r\nAlong the way, the cat befriends a small flying drone, known only as B-12. With the help of this newfound companion, the duo must find a way out.\r\n\r\nStray is developed by BlueTwelve Studio, a small team from the south of France mostly made up of cats and a handful of humans.<p>', '2023-12-14 16:55:00', 'GMTK GameJam', '48 hour game development marathon', 'Non-Ranked', 'Creativity', 'Public', 0, 1, 89, 'Public', '#gmtk', 'Cover-GMTK GameJam.jpg', 0, 2, ''),
 (58, '2023-01-02 12:00:00', '2023-05-16 00:00:00', ' Genshin Impact takes place in the fantasy world of Teyvat, home to seven nations, each of which is tied to a different element and ', '2023-01-04 12:00:00', 'GMTK GameJam', 'This is a gamejam', 'Non-Ranked', 'Creativity', 'Draft', 40, 1, 79, 'Public', '#brackeys', 'Cover-GameJam.jpg', 0, 0, ''),
-(59, '2023-12-01 16:55:00', '2023-12-08 16:55:00', ' majhcdsjc vmnb', '0000-00-00 00:00:00', 'majbhdhjsa', 'grg', 'Ranked', 'mdhcbgd', 'Draft', 67, 1, 89, 'Public', 'mhcbds', 'Cover-majbhdhjsa.jpg', 0, 0, ''),
+(59, '2023-05-16 16:55:00', '2023-12-08 16:55:00', ' majhcdsjc vmnb', '2023-05-26 00:00:00', 'Go Godot Jam 4', 'grg', 'Ranked', 'mdhcbgd', 'Draft', 67, 1, 89, 'Public', 'mhcbds', 'Cover-majbhdhjsa.jpg', 0, 0, ''),
 (60, '2023-01-02 12:00:00', '2023-01-03 12:00:00', ' Genshin Impact takes place in the fantasy world of Teyvat, home to seven nations, each of which is tied to a different element and ', '2023-01-04 12:00:00', 'GameJam', 'This is a gamejam', 'Non-Ranked', 'Creativity', 'Draft', 40, 1, 89, 'Public', '#brackeys', 'Cover-GameJam.jpg', 0, 0, ''),
 (61, '2023-12-01 16:55:00', '2023-12-08 16:55:00', ' majhcdsjc vmnb', '0000-00-00 00:00:00', 'majbhdhjsa', 'grg', 'Ranked', 'mdhcbgd', 'Draft', 67, 1, 89, 'Public', 'mhcbds', 'Cover-majbhdhjsa.jpg', 0, 0, ''),
 (62, '2023-05-04 16:55:00', '2023-05-07 16:55:00', 'gregr <b>rhrtthtrhrth </b>htrt <u>trhthththh </u>htrtttrthrthr 11', '2023-05-10 16:55:00', 'The Tool Jam 3', 'Try your best and build a game under the theme that evolves around tools', 'Ranked', 'Creativity', 'Public', 0, 0, 79, 'Public', '#tooljam ', 'Cover-The Tool Jam 3.jpg', 0, 0, 'Tool are Friends'),
 (63, '2023-03-12 16:55:00', '2023-03-18 16:55:00', '', '2023-03-20 16:55:00', 'Kenney Jam', 'Make a game using Kenney Assets in 24 hours', 'Ranked', 'Creativity', 'Public', 0, 0, 89, 'Public', '#kenny', 'Cover-Kenney Jam.png', 0, 0, 'Growth'),
-(64, '2023-03-22 16:55:00', '2023-03-24 16:55:00', '', '2023-03-28 16:55:00', 'Duchan Jam', 'Make a game using Kenney Assets in 24 hours', 'Ranked', 'Creativity', 'Public', 0, 0, 89, 'Public', '#kenny', 'Cover-Kenney Jam.png', 0, 0, 'Strong Together'),
-(65, '2023-05-03 16:55:00', '2023-05-07 16:55:00', '', '2023-05-10 16:55:00', 'Metoer Shower Jam 2023', 'fefefefefef', 'Ranked', '', 'Draft', 0, 0, 89, 'Public', '', 'Cover-Metoer Shower Jam 2023.png', 0, 0, 'Progress'),
+(64, '2023-03-22 16:55:00', '2023-03-24 16:55:00', '', '2023-03-28 16:55:00', 'Linux GameJam 2023', 'Make a game on or for GNU/Linux using any framework or engine', 'Ranked', 'Creativity', 'Public', 0, 0, 89, 'Public', '#kenny', 'Cover-Linux GameJam 2023.png', 0, 0, 'Strong Together'),
+(65, '2023-05-11 16:55:00', '2023-05-13 16:55:00', '', '2023-05-14 16:55:00', 'Scream Zone Jam 2023', 'The horrifically wonderful horror jam returns', 'Ranked', '', 'Draft', 0, 0, 89, 'Public', '', 'Cover-Scream Zone Jam 2023.png', 4, 0, 'Progress'),
 (66, '2023-05-11 16:55:00', '2023-05-12 16:55:00', '', '2023-05-17 16:55:00', 'CC Jam 2', 'fefefefefef', 'Ranked', '', 'Draft', 0, 0, 89, 'Public', '', 'Cover-Metoer Shower Jam 2023.png', 0, 0, 'Progress'),
-(67, '2023-04-26 16:55:00', '2023-05-03 16:55:00', '', '2023-05-06 16:55:00', 'Bullet Hell Jam 2023', 'Spend 10 days cramming as many bullets/projectiles as you can into a short game', 'Ranked', 'Theme, Audio, Visual, Fun', 'Draft', 0, 0, 79, 'Public', '#bulletHell', 'Cover-Bullet Hel Jam 2023.jpg', 1, 0, 'Limited');
+(67, '2023-04-26 16:55:00', '2023-05-01 16:55:00', '', '2023-05-02 16:55:00', 'Bullet Hell Jam 2023', 'Spend 10 days cramming as many bullets/projectiles as you can into a short game', 'Ranked', 'Theme, Audio, Visual, Fun', 'Draft', 0, 0, 79, 'Public', '#bulletHell', 'Cover-Bullet Hel Jam 2023.jpg', 1, 0, 'Limited');
 
 -- --------------------------------------------------------
 
@@ -1589,7 +1591,15 @@ INSERT INTO `games_view_tracker` (`id`, `userID`, `sessionID`, `gameID`, `viewed
 (338, 46, 62, 187, '2023-05-01'),
 (339, 46, 39, 195, '2023-05-02'),
 (340, 46, 80, 187, '2023-05-02'),
-(341, 46, 31, 195, '2023-05-02');
+(341, 46, 31, 195, '2023-05-02'),
+(342, 52, 66, 189, '2023-05-02'),
+(343, 84, 66, 187, '2023-05-02'),
+(344, 84, 66, 188, '2023-05-02'),
+(345, 52, 57, 188, '2023-05-02'),
+(346, 86, 13, 188, '2023-05-02'),
+(347, 52, 78, 187, '2023-05-03'),
+(348, 79, 71, 195, '2023-05-03'),
+(349, 79, 84, 195, '2023-05-03');
 
 -- --------------------------------------------------------
 
@@ -1712,7 +1722,10 @@ CREATE TABLE `game_reviews` (
 INSERT INTO `game_reviews` (`id`, `rating`, `reviewTopic`, `review`, `created_date`, `userID`, `gameID`, `recommendation`) VALUES
 (81, 2, 'grgr', 'Hey! The actual sprite without empty space in the image is about 38x20 pixels, but it depends on the animation as in some theres a sword and stuff. So because of that I kept the image size as 120x80 pixels for every animation. And the character is centere', '2023-04-10', 52, 93, 'Yes'),
 (86, 1, 'grg', 'Hey! The actual sprite without empty space in the image is about 38x20 pixels, but it depends on the animation as in some theres a sword and stuff. So because of that I kept the image size as 120x80 pixels for every animation. And the character is centered correctly to be in the middle/bottom of the whole image.', '2023-04-10', 53, 96, 'No'),
-(89, 3, 'grgrg', 'Hey! The actual sprite without empty space in the image is about 38x20 pixels, but it depends on the animation as in some theres a sword and stuff. So because of that I kept the image size as 120x80 pixels for every animation. And the character is centered correctly to be in the middle/bottom of the whole image.', '2023-04-16', 52, 92, 'No');
+(89, 3, 'grgrg', 'Hey! The actual sprite without empty space in the image is about 38x20 pixels, but it depends on the animation as in some theres a sword and stuff. So because of that I kept the image size as 120x80 pixels for every animation. And the character is centered correctly to be in the middle/bottom of the whole image.', '2023-04-16', 52, 92, 'No'),
+(95, 4, 'Really cool game', 'If you like pac-man and horror games, Dark deception is your best bet. the game takes place in a maze-like area, (multiple maze-like areas,) where you have to collect crystals called soul shards. once you collect all the soul shards, you escape the level and go to the next. BUT, each level is filled with a bunch of deadly monsters ranging from killer monkeys, to duckies with human legs that live in the sewer. the graphics are amazing, the music design is amazing, the gameplay loop is amazing, the difficulty for each level isnot too easy, or too hard, and story is also amazing. the story is the biggest part i have left unexplained, which you will probably figure it out near the end of the game, and I wont give any spoilers. ', '2023-05-02', 84, 188, 'Yes'),
+(96, 3, 'Astonishing and Suprising', 'I had like 42 hearts attack but they were worth it. When i downloaded it and the woman was talking I was wondering if I did the right thing spending time in this game, but after playing the game I do not regret downloading it.', '2023-05-02', 52, 188, 'Yes'),
+(97, 1, 'Totally Unethical', 'The developer of this game has shamelessly stolen a piece of work created by a fan for this game after the developer offered to PUBLISH this workpiece as official material, then proceeded to lie about the events on Twitter.\n\nThis is unacceptable.', '2023-05-02', 86, 188, 'Yes');
 
 -- --------------------------------------------------------
 
@@ -1764,11 +1777,11 @@ INSERT INTO `game_stats` (`id`, `gameID`, `views`, `downloads`, `ratings`, `reve
 (7, 95, 28, 4, 1, 0),
 (8, 184, 11, 3, 0, 0),
 (10, 186, 5, 0, 0, 0),
-(11, 187, 12, 6, 0, 0),
-(12, 188, 14, 1, 0, 152.48),
-(14, 189, 13, 0, 0, 295.858),
+(11, 187, 14, 7, 0, 0),
+(12, 188, 17, 2, 0, 152.48),
+(14, 189, 14, 0, 0, 295.858),
 (16, 191, 3, 1, 0, 0),
-(18, 195, 2, 1, 0, 0);
+(18, 195, 4, 3, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -1977,8 +1990,12 @@ INSERT INTO `game_stats_history` (`id`, `gameID`, `views`, `downloads`, `ratings
 (191, 90, 1, 0, 0, 0, '2023-05-01'),
 (192, 96, 1, 2, 0, 0, '2023-05-01'),
 (193, 195, 1, 0, 0, 0, '2023-05-01'),
-(194, 187, 1, 2, 0, 0, '2023-05-02'),
-(195, 195, 1, 1, 0, 0, '2023-05-02');
+(194, 187, 2, 3, 0, 0, '2023-05-02'),
+(195, 195, 1, 1, 0, 0, '2023-05-02'),
+(196, 189, 1, 0, 0, 0, '2023-05-02'),
+(197, 188, 3, 1, 0, 0, '2023-05-02'),
+(198, 187, 1, 0, 0, 0, '2023-05-03'),
+(199, 195, 2, 2, 0, 0, '2023-05-03');
 
 -- --------------------------------------------------------
 
@@ -2194,8 +2211,12 @@ INSERT INTO `joinjam_gamedevs` (`gamerID`, `gameJamID`) VALUES
 (52, 57),
 (52, 57),
 (52, 57),
+(46, 67),
+(81, 65),
+(46, 65),
 (46, 58),
-(46, 67);
+(82, 65),
+(83, 65);
 
 -- --------------------------------------------------------
 
@@ -2489,7 +2510,10 @@ CREATE TABLE `spin_wheel` (
 
 INSERT INTO `spin_wheel` (`id`, `gamerID`, `reward`, `spinned_date`) VALUES
 (4, 52, '5', '2023-05-01'),
-(5, 53, '6', '2023-05-01');
+(5, 53, '6', '2023-05-01'),
+(6, 52, '5', '2023-05-02'),
+(7, 53, '0', '2023-05-02'),
+(8, 86, '5', '2023-05-02');
 
 -- --------------------------------------------------------
 
@@ -2502,18 +2526,19 @@ CREATE TABLE `submission` (
   `submissionID` int(11) NOT NULL,
   `gameJamID` int(11) NOT NULL,
   `rating` int(11) NOT NULL DEFAULT 0,
-  `gamerID` int(11) NOT NULL
+  `gamerID` int(11) NOT NULL,
+  `status` varchar(200) NOT NULL DEFAULT 'qualified'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `submission`
 --
 
-INSERT INTO `submission` (`id`, `submissionID`, `gameJamID`, `rating`, `gamerID`) VALUES
-(1, 93, 58, 0, 46),
-(2, 183, 57, 7, 46),
-(3, 181, 57, 0, 51),
-(5, 195, 67, 0, 46);
+INSERT INTO `submission` (`id`, `submissionID`, `gameJamID`, `rating`, `gamerID`, `status`) VALUES
+(1, 93, 58, 0, 46, 'qualified'),
+(2, 183, 57, 7, 46, 'qualified'),
+(3, 181, 57, 0, 51, 'qualified'),
+(5, 195, 67, 0, 46, 'qualified');
 
 -- --------------------------------------------------------
 
@@ -2923,7 +2948,7 @@ ALTER TABLE `account`
 -- AUTO_INCREMENT for table `activation_keys`
 --
 ALTER TABLE `activation_keys`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `admin`
@@ -3103,7 +3128,7 @@ ALTER TABLE `games_filters`
 -- AUTO_INCREMENT for table `games_view_tracker`
 --
 ALTER TABLE `games_view_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=342;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=350;
 
 --
 -- AUTO_INCREMENT for table `game_cart`
@@ -3127,7 +3152,7 @@ ALTER TABLE `game_purchases`
 -- AUTO_INCREMENT for table `game_reviews`
 --
 ALTER TABLE `game_reviews`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
 
 --
 -- AUTO_INCREMENT for table `game_stats`
@@ -3139,7 +3164,7 @@ ALTER TABLE `game_stats`
 -- AUTO_INCREMENT for table `game_stats_history`
 --
 ALTER TABLE `game_stats_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=196;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=200;
 
 --
 -- AUTO_INCREMENT for table `gig`
@@ -3199,7 +3224,7 @@ ALTER TABLE `site_assets_revenue`
 -- AUTO_INCREMENT for table `spin_wheel`
 --
 ALTER TABLE `spin_wheel`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `submission`

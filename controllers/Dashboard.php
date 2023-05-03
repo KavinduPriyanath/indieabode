@@ -896,4 +896,14 @@ class Dashboard extends Controller
 
         $pdf->Output("kavi.pdf", 'D');
     }
+
+
+    function submissions()
+    {
+        $this->view->allSubmissions = $this->model->submittedGames($_GET['id']);
+
+        $this->view->jam = $this->model->GetJamDetails($_GET['id']);
+
+        $this->view->render('Dashboard/JamDashboards/Submissions');
+    }
 }
