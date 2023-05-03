@@ -23,15 +23,16 @@
   
     <?php foreach ($this->feed as $feedcol) { ?>
             <div class="activity">
-                <div class="logo1"> 
-                    <img src="public/images/avatars/<?= $feedcol['avatar'] ?>" alt=""width="30px" height="30px" ;>      
-                </div>
+                
                 
                 
                     <h3> 
                         
                         <?php if ($feedcol['ActivityCheck']==3) { ?>
                             <div class="activit">
+                            <div class="logo1"> 
+                                <img src="public/images/avatars/<?= $feedcol['avatar'] ?>" alt=""width="30px" height="30px" ;>      
+                            </div>
                             <div class="Uname">
                                 <h3><?= $feedcol['username'] ?>   </h3>
                             </div>
@@ -44,6 +45,9 @@
                             </div>
                         <?php } elseif ($feedcol['ActivityCheck']==4) { ?>
                             <div class="activit">
+                            <div class="logo1"> 
+                                <img src="/indieabode/public/uploads/games/cover/<?= $feedcol['avatar'] ?>" alt=""width="30px" height="30px" ;>      
+                            </div>
                             <div class="Uname">
                                 <h3> <?= $feedcol['gameName'] ?> </h3>
                             </div>
@@ -56,6 +60,9 @@
                             </div>
                         <?php } elseif ($feedcol['ActivityCheck']==5) { ?>
                             <div class="activit">
+                            <div class="logo1"> 
+                                <img src="/indieabode/public/uploads/games/cover/<?= $feedcol['avatar'] ?>" alt=""width="30px" height="30px" ;>      
+                            </div>
                             <div class="Uname">
                                 <h3> <?= $feedcol['gameName'] ?> </h3>
                             </div>
@@ -68,6 +75,9 @@
                             </div>
                         <?php } elseif ($feedcol['ActivityCheck']==6) { ?>
                             <div class="activit">
+                            <div class="logo1"> 
+                                <img src="/indieabode/public/uploads/games/cover/<?= $feedcol['avatar'] ?>" alt=""width="30px" height="30px" ;>      
+                            </div>
                             <div class="Uname">
                                 <h3> <?= $feedcol['gameName'] ?> </h3>
                             </div>

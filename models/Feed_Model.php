@@ -12,7 +12,7 @@ class Feed_Model extends Model
     function showFeed($currentUserID)
     {
         $sql = 
-        "SELECT devlog.devLogID,devlog.ActivityCheck,devlog.created_at,devlog.gameName,devlog.name,freegame.gameName,gamer.username,gamer.avatar
+        "SELECT devlog.devLogID,devlog.ActivityCheck,devlog.CreatedDate AS created_at,devlog.gameName,devlog.name,freegame.gameName,gamer.username,freegame.gameCoverImg AS avatar
         FROM devlog 
         INNER JOIN freegame ON devlog.gameName = freegame.gameID
         INNER JOIN gamer ON freegame.gameDeveloperID = gamer.gamerID
@@ -22,7 +22,7 @@ class Feed_Model extends Model
 
         UNION 
         
-        SELECT gig.gigID,gig.ActivityCheck,gig.created_at,gig.game,gig.name,freegame.gameName,gamer.username,gamer.avatar
+        SELECT gig.gigID,gig.ActivityCheck,gig.created_at,gig.game,gig.gigName AS name,freegame.gameName,gamer.username,freegame.gameCoverImg AS avatar
         FROM gig 
         INNER JOIN freegame ON gig.game = freegame.gameID
         INNER JOIN gamer ON freegame.gameDeveloperID = gamer.gamerID
@@ -31,7 +31,7 @@ class Feed_Model extends Model
 
         UNION 
         
-        SELECT crowdfund.crowdFundID,crowdfund.ActivityCheck,crowdfund.created_at,crowdfund.gameDeveloperName,crowdfund.name,freegame.gameName,gamer.username,gamer.avatar
+        SELECT crowdfund.crowdFundID,crowdfund.ActivityCheck,crowdfund.created_at,crowdfund.gameDeveloperName,crowdfund.title AS name,freegame.gameName,gamer.username,freegame.gameCoverImg AS avatar
         FROM crowdfund 
         INNER JOIN freegame ON crowdfund.gameName = freegame.gameID
         INNER JOIN gamer ON freegame.gameDeveloperID = gamer.gamerID
