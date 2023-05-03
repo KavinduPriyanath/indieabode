@@ -1,5 +1,10 @@
 <?php
 
+require "includes/PHPMailer/vendor/autoload.php";
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+
 class Jam extends Controller
 {
 
@@ -114,6 +119,7 @@ class Jam extends Controller
             $gameJamID = $_GET['id'];
             $this->model->submitproject($gameID, $gameJamID, $gamerID);
             $this->model->UpdateGameSubmissionStatus($gameID, $gameJamID);
+            $this->model->UpdateSubmissionCount($gameJamID, "added");
             // $this->view->gamejam = $this->model->showSingleJam($gameJamID);
             // $this->view->render('SingleGameJam');
 
@@ -136,6 +142,8 @@ class Jam extends Controller
         $this->view->jam = $this->model->showSingleJam($gameJamID);
 
         $this->view->submission = $this->model->submissionDetails($gameID);
+
+        $this->view->isBanned = $this->model->IsBanned($gameID, $gameJamID);
 
         $submission = $this->model->submissionDetails($gameID);
 
@@ -254,5 +262,60 @@ class Jam extends Controller
         header("Content-Transfer-Encoding: utf-8");
         header("Content-Disposition: attachment; filename=$gameFileName");
         readfile($downloadPath);
+    }
+
+    function banSubmission()
+    {
+
+        if ($_POST['banned_submission']) {
+
+            $submissionName = $_POST['submissionName'];
+            $submittedJam = $_POST['submittedJam'];
+            $username = $_POST['username'];
+            $email = $_POST['email'];
+
+            $submissionID = $_POST['submissionID'];
+            $jamID = $_POST['jamID'];
+
+            $this->model->BanSubmission($submissionID, $jamID);
+
+            try {
+                $mail = new PHPMailer(true);
+
+                $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+
+                $mail->isSMTP();
+                $mail->SMTPAuth = true;
+
+                $mail->Host = "smtp.gmail.com";
+                $mail->SMTPSecure = "tls";
+                $mail->Port = 587;
+
+                $mail->Username = "tech2019man@gmail.com";
+                $mail->Password = "qohvqzbaieleualv";
+
+                $mail->setFrom("tech2019man@gmail.com", "Indieabode");
+                $mail->addAddress($email);
+
+                $email_template = '
+                    <h2>Hello' . $username . '</h2>
+                    <p>Your submission ' . $submissionName . ' for ' . $submittedJam  . '</p>
+                    <p>has been banned by the hosts.</p>
+                ';
+
+                $mail->isHTML(true);
+                $mail->Subject = "New game";
+                $mail->Body = $email_template;
+
+                $mail->send();
+                //header('location:/indieabode/forgotpassword/resetmailsent');
+
+
+            } catch (Exception $e) {
+                // $query = parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
+                // parse_str($query, $result);
+                // header('location:/indieabode/game?' . http_build_query($result));
+            }
+        }
     }
 }

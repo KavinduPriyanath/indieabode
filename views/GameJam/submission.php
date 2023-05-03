@@ -28,7 +28,6 @@ include 'includes/navbar.php';
     <?php if ($this->jam) : ?>
         <div class="box">
             <h1><?= $this->jam['jamTitle']; ?></h1>
-            <p><?= $this->jam['jamTagline']; ?></p>
         </div>
 
         <div class="topics">

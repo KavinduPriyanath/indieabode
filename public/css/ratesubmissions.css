@@ -68,6 +68,18 @@
     cursor: pointer;
 }
 
+.banned-btn {
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    font-size: 22px;
+    font-weight: 700;
+    padding: 6px 13px;
+    border-radius: 6px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
 .download {
     position: absolute;
     bottom: 0px;
@@ -78,6 +90,7 @@
     color: rgb(51, 51, 140);
     padding: 6px 13px;
     border-radius: 6px;
+    cursor: pointer;
 }
 
 .more-game-details {

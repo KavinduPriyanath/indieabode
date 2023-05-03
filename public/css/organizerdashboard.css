@@ -1,0 +1,61 @@
+.all-submissions {
+    margin: 10px 120px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.submission-card {
+
+    border: 2px solid black;
+    border-radius: 4px;
+    width: 410px;
+    height: 100px;
+    padding: 5px;
+    margin: 8px;
+    display: flex;
+    justify-content: left;
+}
+
+.submission-card-left .cover-img{
+    width: 120px;
+    height: 85px;
+    background-size: cover;
+    position: relative;
+    background-color: rgb(61, 125, 221);
+}
+
+.cover-img img{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    object-fit: cover;
+}
+
+.submission-card-right {
+    width: 100%;
+    position: relative;
+}
+
+.submission-card-right .submission-name {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 3px 8px;
+}
+
+.submission-card-right .added-date {
+    font-size: 16px;
+    margin: 3px 8px;
+    font-style: italic;
+    color: rgb(47, 55, 62);
+}
+
+.submission-card-right .view-submission{
+    position: absolute;
+    right: 0px;
+    bottom: 4px;
+}
+
+.view-submission a {
+    text-decoration: none;
+}
+

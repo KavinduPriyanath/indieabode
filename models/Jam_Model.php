@@ -116,6 +116,32 @@ class Jam_Model extends Model
         $stmt->execute();
     }
 
+    function UpdateSubmissionCount($gameJamId, $action)
+    {
+
+        $sql = "SELECT * FROM gamejam WHERE gameJamID='$gameJamId'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $jam = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $submissionCount = $jam['submissionsCount'];
+
+        if ($action == "added") {
+            $submissionCount += 1;
+        } else if ($action == "removed") {
+            $submissionCount -= 1;
+        }
+
+        $updateSQL = "UPDATE gamejam SET submissionsCount='$submissionCount'";
+
+        $updateStmt = $this->db->prepare($updateSQL);
+
+        $updateStmt->execute();
+    }
+
 
     function AlreadyJoinedDeveloper($uID, $jID)
     {
@@ -192,7 +218,7 @@ class Jam_Model extends Model
     {
 
         $sql = "SELECT freegame.gameID, freegame.gameName, freegame.gameCoverImg, freegame.gameFile, freegame.platform,
-                freegame.gameTagline, freegame.gameScreenshots, gamer.username FROM freegame 
+                freegame.gameTagline, freegame.gameScreenshots, gamer.username, gamer.email FROM freegame 
                 INNER JOIN gamer ON gamer.gamerID = freegame.gameDeveloperID
                 WHERE freegame.gameID='$gameID'";
 
@@ -374,5 +400,27 @@ class Jam_Model extends Model
 
             $updateStmt->execute();
         }
+    }
+
+    function BanSubmission($submissionID, $jamID)
+    {
+
+        $sql = "UPDATE submission SET status='disqualified' WHERE submissionID='$submissionID' AND gameJamID='$jamID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+    }
+
+    function IsBanned($submissionID, $jamID)
+    {
+
+        $sql = "SELECT * FROM submission WHERE submissionID='$submissionID' AND gameJamID='$jamID' AND status='disqualified'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 }

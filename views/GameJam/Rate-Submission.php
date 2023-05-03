@@ -61,7 +61,20 @@ include 'includes/navbar.php';
         <div class="right-details">
 
             <div class="game-buttons">
-                <div class="report" data-modal-target="#modal">Report</div>
+                <?php if (empty($this->isBanned)) { ?>
+
+                    <?php if ($_SESSION['id'] == $this->jam['jamHostID']) { ?>
+                        <div class="banned-btn">Ban this Submission</div>
+                    <?php } else if ($_SESSION['userRole'] != "gamejam organizer") { ?>
+                        <div class="report" data-modal-target="#modal">Report</div>
+                    <?php } ?>
+
+                <?php } else { ?>
+
+                    <div class="banned-btn">This Submission has been banned</div>
+
+                <?php } ?>
+
                 <div class="download" id="download-btn">Download</div>
 
             </div>
@@ -352,6 +365,10 @@ include 'includes/navbar.php';
     <script>
         $(document).ready(function() {
 
+            <?php if (!empty($this->isBanned)) { ?>
+                $('.banned-btn').css('pointer-events', 'none');
+            <?php } ?>
+
             $('#report-submit').click(function() {
 
 
@@ -397,6 +414,53 @@ include 'includes/navbar.php';
                 setTimeout(function() {
                     $("#flashMessage").fadeOut("slow");
                 }, 4000);
+
+            });
+
+            $('.banned-btn').click(function() {
+
+                let message = "Are you sure you want to ban the submission <?= $this->submission['gameName'] ?>";
+
+                if (confirm(message) == true) {
+                    $('.banned-btn').text("Please Wait...");
+
+                    let submissionName = "<?= $this->submission['gameName'] ?>";
+                    let submittedJam = "<?= $this->jam['jamTitle']; ?>";
+                    let username = "<?= $this->submission['username'] ?>";
+                    let email = "<?= $this->submission['email'] ?>";
+                    let jamID = <?= $_GET['jam'] ?>;
+                    let submissionID = <?= $_GET['id'] ?>;
+
+                    var data = {
+                        'submissionName': submissionName,
+                        'submittedJam': submittedJam,
+                        'username': username,
+                        'email': email,
+                        'jamID': jamID,
+                        'submissionID': submissionID,
+                        'banned_submission': true,
+                    };
+
+                    $.ajax({
+                        url: "/indieabode/jam/banSubmission",
+                        method: "POST",
+                        data: data,
+                        success: function(response) {
+                            // alert(response);
+
+                            $("#flashMessage").html('Email has been sent');
+                            $("#flashMessage").fadeIn(2000);
+                            $('.banned-btn').text("This Submission is already banned");
+
+                            setTimeout(function() {
+                                $("#flashMessage").fadeOut("slow");
+                            }, 4000);
+                        }
+                    })
+
+                } else {
+                    //nothin happens
+                }
 
             });
 
