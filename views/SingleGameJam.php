@@ -178,12 +178,10 @@ include 'includes/navbar.php';
 
     <div class="containerJam">
         <img src="/indieabode/public/uploads/gamejams/covers/<?= $this->gamejam['jamCoverImg'] ?>" alt="" />
-        <div class="content-header">Theme of the GameJam</div>
-        <p class="theme-visibility">will visible after the Jam Started</p>
-        <div class="block">
-            <div class="details" id="theme">
-                <?= $this->gamejam['jamTheme']; ?>
-            </div>
+        <div class="content-theme">Theme of the GameJam</div>
+        <div class="theme-container">
+            <div class="theme-visibility">will be visible after the Jam Started</div>
+            <div class="theme"><?= strtoupper($this->gamejam['jamTheme']) ?></div>
         </div>
         <div class="content-header">About The Jam</div>
         <div class="block">
@@ -386,8 +384,6 @@ include 'includes/navbar.php';
 
                 if (startsIn > 0) {
 
-
-                    document.getElementById('theme').style.display = "none";
                     document.getElementById("submissionPage").style.color = "grey";
                     document.getElementById("submissionPage").style.pointerEvents = "none";
 
@@ -444,6 +440,8 @@ include 'includes/navbar.php';
 
             if (!jamStart && !votingStart) {
                 //jam hasnt begun yet
+                $('.theme-visibility').show();
+                $('.theme').hide();
 
                 <?php if (isset($_SESSION['logged']) && $_SESSION['userRole'] == "game developer") { ?>
                     $('#devBtn').show();
@@ -465,12 +463,15 @@ include 'includes/navbar.php';
 
                     <?php } ?>
                 <?php } else { ?>
-
+                    $('.jamStatus').show();
+                    $('.jamStatus').text("Starting soon");
                 <?php } ?>
 
 
             } else if (jamStart && !votingStart) {
                 //jam submission period has started
+                $('.theme-visibility').hide();
+                $('.theme').show();
 
                 <?php if (isset($_SESSION['logged']) && $_SESSION['userRole'] == "game developer") { ?>
                     $('#devBtn').show();
@@ -487,10 +488,13 @@ include 'includes/navbar.php';
                         $('#devBtn').html("Join Jam");
                     <?php } ?>
                 <?php } else { ?>
-
+                    $('.jamStatus').show();
+                    $('.jamStatus').text("Submission accepting in progress");
                 <?php } ?>
             } else if (jamStart && votingStart) {
                 //jam voting perioud has started
+                $('.theme-visibility').hide();
+                $('.theme').show();
 
                 <?php if (isset($_SESSION['logged']) && $_SESSION['userRole'] == "gamer") { ?>
                     $('#gamerBtn').show();
@@ -510,11 +514,16 @@ include 'includes/navbar.php';
                 <?php } else { ?>
 
                     $('.jamStatus').show();
-                    $('.jamStatus').text("Voting in Progress")
+                    $('.jamStatus').text("Voting in Progress");
 
                 <?php } ?>
             } else if (!jamStart && votingStart) {
                 //jam has ended.
+                $('.jamStatus').show();
+                $('.jamStatus').text("Jam Concluded");
+
+                $('.theme-visibility').hide();
+                $('.theme').show();
             }
 
 

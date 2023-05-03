@@ -225,8 +225,8 @@
                                     <a href="<?php echo BASE_URL; ?>library">Library <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                     <a href="<?php echo BASE_URL; ?>cart">Cart <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
 
-                                    <a href="/indieabode/settings/profile">Settings <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                                    <a href="/indieabode/login/logout">Log&nbsp;Out
+                                    <a href="<?php echo BASE_URL; ?>settings/profile">Settings <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                                    <a href="<?php echo BASE_URL; ?>login/logout">Log&nbsp;Out
                                         <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                 </div>
                             </div>
@@ -357,7 +357,7 @@
                             <div class="dropdown-menu">
                                 <div class="arrow certificateArrow"></div>
                                 <div class=".ulsub">
-                                    <a href="<?php echo BASE_URL; ?>gameJamForm">Create&nbsp;Certficate <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                                    <a href="<?php echo BASE_URL; ?>dashboard/certificates">Create&nbsp;Certficate <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                     <a href="<?php echo BASE_URL; ?>jamCalender">Certficate&nbsp;Library
 
                                         <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
@@ -395,8 +395,8 @@
 
                                     <hr />
 
-                                    <a>Settings <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                                    <a href="/indieabode/login/logout">Log&nbsp;Out
+                                    <a href="<?php echo BASE_URL; ?>settings/profile">Settings <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                                    <a href="<?php echo BASE_URL; ?>login/logout">Log&nbsp;Out
                                         <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                 </div>
                             </div>
@@ -409,7 +409,7 @@
                     <form action="" class="search-bar">
                         <input type="text" placeholder="Search Anything..." name="search" />
                         <button type="submit">
-                            <img src="public/images/navbar/search.png" alt="" />
+                            <img src="<?php echo BASE_URL; ?>public/images/navbar/search.png" alt="" />
                         </button>
                     </form>
                 </div>
@@ -656,7 +656,7 @@
                 <form action="" class="search-bar">
                     <input type="text" placeholder="Search Anything..." name="search" />
                     <button type="submit">
-                        <img src="public/images/navbar/search.png" alt="" />
+                        <img src="<?php echo BASE_URL; ?>public/images/navbar/search.png" alt="" />
                     </button>
                 </form>
             </div>
