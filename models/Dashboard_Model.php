@@ -1048,4 +1048,34 @@ class Dashboard_Model extends Model
 
         return $stmt->fetchAll();
     }
+
+    function FinalJamResult($jamID)
+    {
+
+        $sql = "SELECT submission.submissionID, submission.rating, freegame.gameName, freegame.gameCoverImg, gamer.username,
+                gamer.firstName, gamer.lastName FROM (freegame INNER JOIN gamer ON gamer.gamerID=freegame.gameDeveloperID) 
+                INNER JOIN submission ON freegame.gameID=submission.submissionID 
+                WHERE gameJamID='$jamID' ORDER BY rating DESC";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+
+    function AllJamSubmissionReports($jamID)
+    {
+
+        $sql = "SELECT complaint_submissions.id, complaint_submissions.reason, complaint_submissions.description, 
+                complaint_submissions.jamID, complaint_submissions.submissionID,
+                gamer.username, freegame.gameName FROM (complaint_submissions INNER JOIN gamer ON gamer.gamerID=complaint_submissions.gamerID)
+                INNER JOIN freegame ON freegame.gameID=complaint_submissions.submissionID WHERE complaint_submissions.jamID='$jamID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
 }

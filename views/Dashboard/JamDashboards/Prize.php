@@ -40,20 +40,6 @@
 
         <div class="content-row">
 
-            <div class="all-submissions">
-                <?php foreach ($this->allSubmissions as $submission) { ?>
-                    <div class="submission-card">
-                        <div class="submission-card-left">
-                            <div class="cover-img"><img src="<?php echo BASE_URL; ?>public/uploads/games/cover/<?= $submission['gameCoverImg'] ?>" alt=""></div>
-                        </div>
-                        <div class="submission-card-right">
-                            <div class="submission-name"><?= $submission['gameName'] ?></div>
-                            <div class="added-date">Added on 2023-04-01</div>
-                            <div class="view-submission"><a href="<?php echo BASE_URL; ?>jam/ratesubmission?jam=<?= $this->jam['gameJamID'] ?>&id=<?= $submission['submissionID'] ?>">View Submission</a></div>
-                        </div>
-                    </div>
-                <?php } ?>
-            </div>
 
 
         </div>
