@@ -40,29 +40,23 @@
 
         <div class="content-row">
 
-            <div class="all-submissions">
-                <?php foreach ($this->allSubmissions as $submission) { ?>
-                    <div class="submission-card">
-                        <div class="submission-card-left">
-                            <div class="cover-img"><img src="<?php echo BASE_URL; ?>public/uploads/games/cover/<?= $submission['gameCoverImg'] ?>" alt=""></div>
-                        </div>
-                        <div class="submission-card-right">
-                            <div class="submission-name"><?= $submission['gameName'] ?></div>
-                            <div class="added-date">Added on 2023-04-01</div>
-                            <div class="view-submission"><a href="<?php echo BASE_URL; ?>jam/ratesubmission?jam=<?= $this->jam['gameJamID'] ?>&id=<?= $submission['submissionID'] ?>">View Submission</a></div>
-                        </div>
+            <?php foreach ($this->allReports as $report) { ?>
+                <div class="report-card" id="report-card<?= $report['id'] ?>">
+                    <div class="report-content" onclick="Expand(<?= $report['id'] ?>)">
+                        <div class="complaint-id"><?= $report['id'] ?></div>
+                        <div class="submission-name"><a href="<?php echo BASE_URL; ?>jam/ratesubmission?jam=<?= $report['jamID'] ?>&id=<?= $report['submissionID'] ?>"><?= $report['gameName'] ?></a></div>
+                        <div class="complaint-reason"><?= $report['reason'] ?></div>
+                        <div class="reporter"><?= $report['username'] ?></div>
                     </div>
-                <?php } ?>
-            </div>
+                    <div class="report-description" id="report-description">fefef</div>
+                </div>
+            <?php } ?>
+
 
 
         </div>
     </div>
 
-
-
-    </div>
-    </div>
 
 
     <?php
@@ -71,6 +65,11 @@
 
     <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
 
+    <script>
+        function Expand(id) {
+            document.getElementById('report-card' + id).classList.toggle('active');
+        }
+    </script>
 
 </body>
 

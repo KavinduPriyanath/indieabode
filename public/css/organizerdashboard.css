@@ -59,3 +59,84 @@
     text-decoration: none;
 }
 
+
+.all-ranks {
+    margin: 20px 185px;
+}
+
+.all-ranks .title {
+    font-size: 23px;
+    font-weight: 800;
+
+}
+
+.all-ranks table {
+    margin-top: 20px;
+    border-collapse: collapse;
+    border: 1px solid rgb(20, 20, 48);
+}
+
+.all-ranks th, .all-ranks td {
+    border: 1px solid rgb(20, 20, 48);
+    text-align: center;
+    padding: 5px;
+}
+
+.all-ranks #rank-table {
+    width: 80px;
+    padding: 8px;
+    background-color: rgb(107, 167, 219);
+}
+
+.all-ranks #game-name-table {
+    width: 180px;
+    background-color: rgb(107, 167, 219);
+}
+
+/*Report Dashboard Tab*/
+.report-card {
+    background-color: rgb(147, 203, 233);
+    margin: 10px 150px;
+    border: 2px solid black;
+    border-radius: 6px;
+}
+
+.report-content {
+    padding: 13px 10px;
+    display: flex;
+    justify-content: left;
+    cur
+}
+
+.report-description {
+    background-color: rgb(93, 159, 217);
+}
+
+.report-content .complaint-id{
+    width: 100px;
+    text-align: center;
+}
+
+.report-content .submission-name {
+    width: 200px;
+    text-align: center;
+}
+
+.report-content .complaint-reason {
+    width: 400px;
+    text-align: center;
+}
+
+/* Accordian */
+.report-card .report-description{
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    transition: 1.2s;
+    background-color: #87a3bd;
+  }
+
+
+.report-card.active .report-description{
+    height: auto;
+  }

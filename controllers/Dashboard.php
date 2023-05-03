@@ -906,4 +906,33 @@ class Dashboard extends Controller
 
         $this->view->render('Dashboard/JamDashboards/Submissions');
     }
+
+    function results()
+    {
+
+        $this->view->jamResults = $this->model->FinalJamResult($_GET['id']);
+
+        $this->view->jam = $this->model->GetJamDetails($_GET['id']);
+
+        $this->view->render('Dashboard/JamDashboards/Results');
+    }
+
+    function reports()
+    {
+
+        $this->view->allReports = $this->model->AllJamSubmissionReports($_GET['id']);
+
+        $this->view->jam = $this->model->GetJamDetails($_GET['id']);
+
+        $this->view->render('Dashboard/JamDashboards/Report');
+    }
+
+    function prizes()
+    {
+
+
+        $this->view->jam = $this->model->GetJamDetails($_GET['id']);
+
+        $this->view->render('Dashboard/JamDashboards/Prize');
+    }
 }
