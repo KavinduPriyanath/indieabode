@@ -11,14 +11,9 @@ class Feed extends Controller
 
     function index()
     {
-        
-            
+        $this->view->feed = $this->model->showFeed($_SESSION['id']);
 
-
-            $this->view->feed = $this->model->showCart();
-
-        
         $this->view->render('Feeds/Feed');
     }
 
-}
+// ccc
