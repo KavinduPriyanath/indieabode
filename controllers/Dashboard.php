@@ -588,9 +588,24 @@ class Dashboard extends Controller
 
     function gamegiveaways()
     {
+        $this->view->hasGiveaway = $this->model->HasGiveAway($_GET['id']);
+
         $this->view->game = $this->model->GetGameDetails($_GET['id']);
 
         $this->view->render('Dashboard/GameDashboards/GiveAways');
+    }
+
+    function addtoGiveaways()
+    {
+
+        if ($_POST['save_giveaway'] == true) {
+
+            $gameID = $_POST['gameID'];
+            $copiesCount = $_POST['copiesCount'];
+            $pieceWorth = $_POST['copyWorth'];
+
+            $this->model->AddGiveawayItems($gameID, $copiesCount, $pieceWorth);
+        }
     }
 
 
