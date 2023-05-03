@@ -308,7 +308,7 @@
 
                                     <hr />
 
-                                    <a>Settings <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                                    <a href="<?php echo BASE_URL; ?>settings/profile">Settings <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                     <a href="/indieabode/login/logout">Log&nbsp;Out
                                         <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                 </div>
@@ -322,7 +322,7 @@
                     <form action="" class="search-bar">
                         <input type="text" placeholder="Search Anything..." name="search" />
                         <button type="submit">
-                            <img src="public/images/navbar/search.png" alt="" />
+                            <img src="<?php echo BASE_URL; ?>public/images/navbar/search.png" alt="" />
                         </button>
                     </form>
                 </div>
@@ -500,7 +500,7 @@
 
                                     <hr />
 
-                                    <a>Settings <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                                    <a href="<?php echo BASE_URL; ?>settings/profile">Settings <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                     <a href="/indieabode/login/logout">Log&nbsp;Out
                                         <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                 </div>
@@ -514,7 +514,7 @@
                     <form action="" class="search-bar">
                         <input type="text" placeholder="Search Anything..." name="search" />
                         <button type="submit">
-                            <img src="public/images/navbar/search.png" alt="" />
+                            <img src="<?php echo BASE_URL; ?>public/images/navbar/search.png" alt="" />
                         </button>
                     </form>
                 </div>
@@ -546,7 +546,7 @@
                             <form action="" class="search-bar">
                                 <input type="text" placeholder="Search Anything..." name="search" />
                                 <button type="submit">
-                                    <img src="public/images/navbar/search.png" alt="" />
+                                    <img src="<?php echo BASE_URL; ?>public/images/navbar/search.png" alt="" />
                                 </button>
                             </form>
                         </div>
@@ -640,8 +640,8 @@
                         <div class="dropdown-menu">
                             <div class="arrow arrow5"></div>
                             <div class=".ulsub">
-                                <a href="/indieabode/login">Log&nbsp;In <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                                <a href="/indieabode/register">Sign&nbsp;Up
+                                <a href="<?php echo BASE_URL; ?>login">Log&nbsp;In <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                                <a href="<?php echo BASE_URL; ?>register">Sign&nbsp;Up
                                     <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                             </div>
                         </div>

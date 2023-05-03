@@ -49,42 +49,46 @@
                         <div class="sub-topics">Two Factor Auth</div>
                     </a>
                 </div>
-                <div class="category">
-                    <div class="topics">Payments</div>
-                    <a href="">
-                        <div class="sub-topics">Credit Cards</div>
-                    </a>
-                    <a href="/indieabode/settings/billingAddress">
-                        <div class="sub-topics">Billing Address</div>
-                    </a>
-                    <a href="">
-                        <div class="sub-topics">Payout Mode</div>
-                    </a>
-                    <a href="">
-                        <div class="sub-topics">Tax Information</div>
-                    </a>
-                    <?php if ($_SESSION['userRole'] == "game developer" || $_SESSION['userRole'] == "asset creator" || $_SESSION['userRole'] == "game publisher") { ?>
-                        <a href="/indieabode/settings/revenueshare">
-                            <div class="sub-topics">Revenue Sharing</div>
+                <?php if ($_SESSION['userRole'] != "gamejam organizer") { ?>
+                    <div class="category">
+                        <div class="topics">Payments</div>
+                        <a href="">
+                            <div class="sub-topics">Credit Cards</div>
                         </a>
-                    <?php } ?>
-                    <a href="/indieabode/settings/paymentprocessors">
-                        <div class="sub-topics">Payment Processors</div>
-                    </a>
-                    <a href="">
-                        <div class="sub-topics">Support Email</div>
-                    </a>
-                </div>
-                <div class="category">
-                    <div class="topics">Contact</div>
-                    <a href="/indieabode/settings/emailNotifications">
-                        <div class="sub-topics">Email Notifications</div>
-                    </a>
-                    <a href="">
-                        <div class="sub-topics">Website Support</div>
-                    </a>
-                </div>
-                <div class="topics">Misc</div>
+                        <a href="/indieabode/settings/billingAddress">
+                            <div class="sub-topics">Billing Address</div>
+                        </a>
+                        <?php if ($_SESSION['userRole'] == "game developer" || $_SESSION['userRole'] == "asset creator" || $_SESSION['userRole'] == "game publisher") { ?>
+                            <a href="">
+                                <div class="sub-topics">Payout Mode</div>
+                            </a>
+                            <a href="">
+                                <div class="sub-topics">Tax Information</div>
+                            </a>
+                            <?php if ($_SESSION['userRole'] == "game developer" || $_SESSION['userRole'] == "asset creator") { ?>
+                                <a href="/indieabode/settings/revenueshare">
+                                    <div class="sub-topics">Revenue Sharing</div>
+                                </a>
+                            <?php } ?>
+                            <a href="/indieabode/settings/paymentprocessors">
+                                <div class="sub-topics">Payment Processors</div>
+                            </a>
+                        <?php } ?>
+                        <a href="">
+                            <div class="sub-topics">Support Email</div>
+                        </a>
+                    </div>
+                    <div class="category">
+                        <div class="topics">Contact</div>
+                        <a href="/indieabode/settings/emailNotifications">
+                            <div class="sub-topics">Email Notifications</div>
+                        </a>
+                        <a href="">
+                            <div class="sub-topics">Website Support</div>
+                        </a>
+                    </div>
+                    <div class="topics">Misc</div>
+                <?php } ?>
             </div>
             <div class="content-body">
                 <h2>Billing Address</h2>
