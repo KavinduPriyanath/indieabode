@@ -153,7 +153,7 @@
                             <p>$<?= $game['gamePrice'] ?></p>
                         <?php } ?>
                     </div>
-                    <div class="tagline"><?= $game['gameTagline'] ?></div>
+                    <div class="tagline modernWay"><?= $game['gameTagline'] ?></div>
                 </div>
             </a>
         <?php } ?>

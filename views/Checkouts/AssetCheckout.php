@@ -138,6 +138,29 @@
 
     </div>
 
+    <div id="waiting">
+        <div class="info">
+            <p id="thanks">Thank You!</p>
+            <p>An email receipt has been sent to you.</p>
+            <p>Please wait a moment until we confirm that your purchase is complete</p>
+            <div class="lds-default">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+
+    </div>
+
     <?php
     include 'includes/footer.php';
     ?>
@@ -253,9 +276,13 @@
 
             xhr.onreadystatechange = function() {
 
-                if (xhr.readyState == 4) {
-                    var t = xhr.responseText;
+                if (xhr.readyState == 1) {
 
+                    //Show waiting screen while the transaction is being processed in the server
+                    document.getElementById('waiting').style.display = "block";
+                } else if (xhr.readyState == 4) {
+                    var t = xhr.responseText;
+                    document.getElementById('waiting').style.display = "none";
 
                     if (t == "2") {
                         alert(t);
@@ -302,10 +329,7 @@
 
                         // Payment completed. It can be a successful failure.
                         payhere.onCompleted = function onCompleted(orderId) {
-                            // console.log("Payment completed. OrderID:" + orderId);
-                            // alert("Payment Completed");
-                            // Note: validate the payment and show success or failure page to the customer
-                            // window.location = "/indieabode/paymentTest/purchaseSuccessful?id=" + id;
+                            //Update the database and sent an email about the purchase
                             GamePurchaseSuccessful(id, obj['amount'], obj['order_id']);
                         };
 
@@ -375,26 +399,27 @@
 
             xhr.onreadystatechange = function() {
 
-                if (xhr.readyState == 4) {
-                    var t = xhr.responseText;
+                if (xhr.readyState == 1) {
 
+                    //Show waiting screen while the transaction is being processed in the server
+                    document.getElementById('waiting').style.display = "block";
+                } else if (xhr.readyState == 4) {
+                    var t = xhr.responseText;
+                    document.getElementById('waiting').style.display = "none";
 
                     if (t == "2") {
                         alert(t);
                     } else {
-                        window.location = "/indieabode/game/thankyou?id=" + gameID;
-                    }
 
+                        //Redirect to the game's page when transaction completed.
+                        window.location = "/indieabode/game?id=" + gameID;
+                    }
                 }
 
             }
 
             xhr.open("POST", "/indieabode/game/purchaseSuccessful?id=" + gameID, true);
             xhr.send(f);
-
-            // window.location = "/indieabode/paymentTest/purchaseSuccessful?id=" + assetID;
-
-
         }
     </script>
 
