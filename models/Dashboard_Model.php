@@ -654,6 +654,29 @@ class Dashboard_Model extends Model
         return $screenshotsURL;
     }
 
+    function AddGiveawayItems($gameID, $copiesCount, $pieceWorth)
+    {
+
+        $sql = "INSERT INTO giveaways(gameID, copiesCount, pieceWorth) VALUES ('$gameID', '$copiesCount', '$pieceWorth')";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+    }
+
+    function HasGiveAway($gameID)
+    {
+
+        $sql = "SELECT giveaways.gameID, giveaways.copiesCount, giveaways.pieceWorth, freegame.gameName, freegame.gameCoverImg, giveaways.copiesLeft
+                FROM giveaways INNER JOIN freegame ON freegame.gameID=giveaways.gameID WHERE giveaways.gameID='$gameID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
     function JamsJoined($developerID)
     {
 
