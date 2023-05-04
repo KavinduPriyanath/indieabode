@@ -93,19 +93,44 @@
                     This game already has a give away.
 
 
-                    <div class="container" id="card-container">
-                        <a href="">
-                            <div class="card">
-                                <div class="card-image"> <img src="<?php echo BASE_URL; ?>public/uploads/games/cover/<?= $this->hasGiveaway['gameCoverImg'] ?>" alt="">
+                    <div class="giveaway-container">
+                        <div class="container" id="card-container">
+                            <a href="">
+                                <div class="card">
+                                    <div class="card-image"> <img src="<?php echo BASE_URL; ?>public/uploads/games/cover/<?= $this->hasGiveaway['gameCoverImg'] ?>" alt="">
+                                    </div>
+                                    <div class="game-name">
+                                        <p><?= $this->hasGiveaway['gameName'] ?></p>
+                                    </div>
+                                    <div class="tagline"><?= $this->hasGiveaway['copiesLeft'] ?>/<?= $this->hasGiveaway['copiesCount'] ?> left</div>
                                 </div>
-                                <div class="game-name">
-                                    <p><?= $this->hasGiveaway['gameName'] ?></p>
-                                </div>
-                                <div class="tagline"><?= $this->hasGiveaway['copiesLeft'] ?>/<?= $this->hasGiveaway['copiesCount'] ?> left</div>
-                            </div>
-                        </a>
-                    </div>
+                            </a>
+                        </div>
 
+                        <div class="all-ranks">
+                            <div class="title">Jam Results</div>
+                            <table>
+                                <tr>
+                                    <th id="rank-table">Copy</th>
+                                    <th id="game-name-table">Game Name</th>
+                                    <th id="username">Winner</th>
+                                    <th id="full-name">Date</th>
+                                </tr>
+                                <?php $copy = 0; ?>
+                                <?php foreach ($this->winners as $winner) { ?>
+                                    <?php $copy += 1; ?>
+                                    <tr>
+                                        <td><?= $copy ?></td>
+                                        <td><?= $winner['gameName'] ?></td>
+                                        <td><?= $winner['username'] ?></td>
+                                        <td><?= $winner['won_date'] ?></td>
+                                    </tr>
+                                <?php } ?>
+                            </table>
+                        </div>
+
+
+                    </div>
 
                 </div>
             <?php } ?>

@@ -677,6 +677,20 @@ class Dashboard_Model extends Model
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    function GiveawayWinners($gameID)
+    {
+
+        $sql = "SELECT giveaway_claims.won_date, freegame.gameName, gamer.username
+                FROM (giveaway_claims INNER JOIN freegame ON freegame.gameID=giveaway_claims.gameID)
+                INNER JOIN gamer ON giveaway_claims.winnerID=gamer.gamerID WHERE giveaway_claims.gameID='$gameID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+
     function JamsJoined($developerID)
     {
 

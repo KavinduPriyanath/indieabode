@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 04, 2023 at 08:27 AM
+-- Generation Time: May 04, 2023 at 03:24 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -52,15 +52,15 @@ INSERT INTO `account` (`userID`, `profilePhoto`, `location`, `phoneNumber`, `dis
 (47, '', '', '', '', '', '', '', '', 10, 0, 0, 50),
 (48, '', '', '', '', '', '', '', '', 10, 0, 0, 50),
 (51, '', '', '', 'oh my god', '', '', '', '', 10, 0, 0, 50),
-(52, '', '', '', '', '', '', '', '', 10, 0, 1, 50),
-(53, '', '', '', '', '', '', '', '', 10, 0, 0, 50),
+(52, '', '', '', '', '', '', '', '', 10, 0, 1, 15),
+(53, '', '', '', '', '', '', '', '', 10, 0, 0, 10),
 (78, '', '', '', '', '', '', '', '', 10, 0, 0, 50),
 (80, '', '', '', '', '', '', '', '', 10, 0, 0, 50),
 (81, '', '', '', '', '', '', 'Hi. I\'m computer science undergraduate and indie game developer who enjoys working with games', '', 10, 1, 0, 50),
 (82, '', '', '', '', '', '', '', '', 10, 0, 0, 50),
 (83, '', '', '', '', '', '', '', '', 10, 0, 0, 50),
-(84, '', '', '', '', '', '', '', '', 10, 0, 0, 65),
-(86, '', '', '', '', '', '', '', '', 10, 0, 0, 55),
+(84, '', '', '', '', '', '', '', '', 10, 0, 0, 15),
+(86, '', '', '', '', '', '', '', '', 10, 0, 0, 15),
 (87, '', '', '', '', '', '', '', '', 10, 0, 0, 50),
 (89, '', '', '', '', '', '', '', '', 10, 0, 0, 50),
 (91, '', '', '', '', '', '', '', '', 10, 0, 0, 50);
@@ -482,7 +482,7 @@ INSERT INTO `billing_addresses` (`id`, `userID`, `fullName`, `streetLine1`, `str
 (5, 78, 'fefefjkukiuliuli', 'grgr', 'grgrg', 'rrh', 'hrg', 'grgrg', 'Sri Lanka'),
 (6, 53, 'fefefjkukiuliuli', 'grgr', 'grgrg', 'rrh', 'hrg', 'grgrg', 'Sri Lanka'),
 (7, 84, 'fefe', 'grgr', 'hrhr', 'rhh', 'rhrh', 'hrhr', 'Sri Lanka'),
-(8, 86, 'grgr', 'hrhr', 'grg', 'rgrg', 'htht', 'hth', 'Sri Lanka'),
+(8, 86, 'Pathum Sinrasa', 'No.452/C/2', 'Nagoda', 'Urapola', 'Western', '11120', 'Sri Lanka'),
 (9, 82, 'liliul', 'uililui', 'jyj', 'kuyku', 'kluili', 'uililiu', 'Sri Lanka'),
 (10, 87, 'liliul', 'uililui', 'jyj', 'kuyku', 'kluili', 'uililiu', 'Sri Lanka');
 
@@ -1043,7 +1043,10 @@ INSERT INTO `freegame` (`gameID`, `gameName`, `releaseStatus`, `gameDetails`, `g
 (188, 'Dark Deception', 'Released', '<b>ABOUT DARK DECEPTION</b><div>Dark Deception is a story driven first-person horror action maze game that mixes the fast-paced style of classic arcade games with fun horror game design. Trapped in a dark world full of nightmarish mazes and ridiculous monsters, the only way out is to face the darkness and find a way to survive.<br></div><div><br></div><div>This is the first chapter in the Dark Deception story. Investigate and survive the first maze. Be careful though. You are not alone. There are monsters in there and they are looking for you. You will face your fears. The question is - what are you afraid of?</div>', 'SS-Dark Deception46-0.jpg,SS-Dark Deception46-1.jpg,SS-Dark Deception46-2.jpg', '', 'Death awaits you in Dark Deception, There is nowhere to hide anymore', 'Adventure', 'horror,fps,first-person,multiplayer,blood,fear,night', 'Multi-Player', 'Windows', 'Base Game', 'Game-Dark Deception46.zip', 'draft', 'Cover-Dark Deception46.jpg', 46, 'Windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'Windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '30', '2023-04-21 16:24:37', 0, 0),
 (189, 'Path of Exile', 'Released', '<b>ABOUT THE GAME</b><div>You are an Exile, struggling to survive on the dark continent of Wraeclast, as you fight to earn power that will allow you to exact your revenge against those who wronged you. Created by hardcore gamers, Path of Exile is an online Action RPG set in a dark fantasy world. With a focus on visceral action combat, powerful items and deep character customization, Path of Exile is completely free and will never be pay-to-win.<br></div><div><br></div><div><b>KEY FEATURES</b></div><div><ul><li><b>Freedom. Power. Revenge.</b></li></ul>Banished for your misdeeds to the dark, brutal world of Wraeclast, you play as the Duelist, Witch, Ranger, Templar, Marauder, Shadow or the Scion class. From forsaken shores through to the ruined city of Sarn, explore Wraeclast and uncover the ancient secrets waiting for you.<br></div>', 'SS-Path of Exile82-0.jpg,SS-Path of Exile82-1.jpg,SS-Path of Exile82-2.jpg,SS-Path of Exile82-3.jpg', '', 'Struggling to survive on the vast dark continent of Wraeclast', 'RPG', 'rpg,hack and slash,action,hicraft,gore,blood', 'Multi-Player,Achievements,Multiplayer-Co-op', 'Windows,MacOS', 'Base Game', 'Game-Path of Exile82.zip', 'public', 'Cover-Path of Exile82.jpg', 82, '', '', '', '', '', '', '', '', '', '', '', '49.99', '2023-04-21 23:29:43', 0, 0),
 (191, 'Deltarune', 'Released', '', 'SS-Deltarune46-0.jpg,SS-Deltarune46-1.jpg,SS-Deltarune46-2.jpg', '', 'Meet new and old characters in a tale that steps closer to its end', 'RPG', 'Story Rich,Pixel Graphics,Funny,2D', 'Single-Player', 'Windows', 'Base Game', 'Game-Deltarune46.zip', 'draft', 'Cover-Deltarune46.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-04-26 11:57:53', 0, 0),
-(195, 'Red Hot Vengeance', 'Released', '', 'SS-Red Hot Vengeance46-0.png,SS-Red Hot Vengeance46-1.jpg,SS-Red Hot Vengeance46-2.jpg,SS-Red Hot Vengeance46-3.jpg', '', 'He had one rule: No killing women or children. Beware of hitman', 'Action', 'Free to Play,Violent,Gore,Blood,Indie', 'Single-Player,Puzzle', 'Windows', 'Base Game', 'Game-Red Hot Vengeance46.zip', 'public', 'Cover-Red Hot Vengeance46.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-02 00:24:37', 0, 67);
+(195, 'Red Hot Vengeance', 'Released', '', 'SS-Red Hot Vengeance46-0.png,SS-Red Hot Vengeance46-1.jpg,SS-Red Hot Vengeance46-2.jpg,SS-Red Hot Vengeance46-3.jpg', '', 'He had one rule: No killing women or children. Beware of hitman', 'Action', 'Free to Play,Violent,Gore,Blood,Indie', 'Single-Player,Puzzle', 'Windows', 'Base Game', 'Game-Red Hot Vengeance46.zip', 'public', 'Cover-Red Hot Vengeance46.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-02 00:24:37', 0, 67),
+(196, 'Gravitas', 'Released', '', 'SS-Gravitas82-0.jpg,SS-Gravitas82-1.jpg,SS-Gravitas82-2.jpg,SS-Gravitas82-3.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'A short-first-person puzzle game platforming game that transports  ', 'Adventure', 'puzzle,puzzle platformer,indie,platformer', 'Single-Player,Puzzle,Achievements', 'Windows', 'Base Game', 'Game-Gravitas82.zip', 'public', 'Cover-Gravitas82.jpg', 82, '', '', '', '', '', '', '', '', '', '', '', '40', '2023-05-04 12:03:39', 0, 0),
+(197, 'Island Saver', 'Released', '', 'SS-Island Saver83-0.jpg,SS-Island Saver83-1.jpg,SS-Island Saver83-2.jpg', '', 'A group of amazing islands need your help! Horrid plastic waste has w', 'Action', '', 'Multi-Player,Multiplayer-Co-op', 'Windows', 'Base Game', 'Game-Island Saver83.zip', 'public', 'Cover-Island Saver83.jpg', 83, '', '', '', '', '', '', '', '', '', '', '', '59.99', '2023-05-04 12:56:38', 0, 0),
+(198, 'Donut County', 'Released', '', 'SS-Donut County81-0.jpg,SS-Donut County81-1.jpg,SS-Donut County81-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'A story-based physics puzzle game where you play as an an ever-growin', 'Simulation', 'funny,casual,cute,puzzle,physics,indie', 'Single-Player', 'MacOS', 'Base Game', 'Game-Donut County81.zip', 'public', 'Cover-Donut County81.jpg', 81, '', '', '', '', '', '', '', '', '', '', '', '30', '2023-05-04 17:31:24', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -1600,7 +1603,15 @@ INSERT INTO `games_view_tracker` (`id`, `userID`, `sessionID`, `gameID`, `viewed
 (346, 86, 13, 188, '2023-05-02'),
 (347, 52, 78, 187, '2023-05-03'),
 (348, 79, 71, 195, '2023-05-03'),
-(349, 79, 84, 195, '2023-05-03');
+(349, 79, 84, 195, '2023-05-03'),
+(350, 86, 77, 196, '2023-05-04'),
+(351, 86, 77, 188, '2023-05-04'),
+(352, 84, 22, 196, '2023-05-04'),
+(353, 86, 24, 197, '2023-05-04'),
+(354, 84, 30, 197, '2023-05-04'),
+(355, 84, 30, 93, '2023-05-04'),
+(356, 53, 71, 198, '2023-05-04'),
+(357, 86, 93, 198, '2023-05-04');
 
 -- --------------------------------------------------------
 
@@ -1661,7 +1672,15 @@ INSERT INTO `game_library` (`id`, `gameID`, `gamerID`, `createdAt`) VALUES
 (28, 188, 84, '2023-04-22'),
 (29, 189, 84, '2023-04-22'),
 (30, 189, 86, '2023-04-22'),
-(31, 188, 86, '2023-04-22');
+(31, 188, 86, '2023-04-22'),
+(32, 196, 86, '2023-05-04'),
+(33, 196, 84, '2023-05-04'),
+(34, 197, 86, '2023-05-04'),
+(35, 197, 84, '2023-05-04'),
+(36, 198, 52, '2023-05-04'),
+(37, 198, 53, '2023-05-04'),
+(38, 198, 86, '2023-05-04'),
+(39, 198, 84, '2023-05-04');
 
 -- --------------------------------------------------------
 
@@ -1697,7 +1716,11 @@ INSERT INTO `game_purchases` (`id`, `gameID`, `buyerID`, `orderID`, `purchasedPr
 (13, 188, 84, '6443f34c510a9', 79.99, '2023-04-22'),
 (14, 189, 84, '6443f34c510a9', 79.99, '2023-04-22'),
 (15, 189, 86, '6443f6316333f', 49.99, '2023-04-22'),
-(16, 188, 86, '6443f6316333f', 30, '2023-04-22');
+(16, 188, 86, '6443f6316333f', 30, '2023-04-22'),
+(17, 196, 86, '64535743c6705', 40, '2023-05-04'),
+(18, 196, 84, '64535814c0ad2', 40, '2023-05-04'),
+(19, 197, 86, '64535e5d5af23', 59.99, '2023-05-04'),
+(20, 197, 84, '64535f5760d8a', 59.99, '2023-05-04');
 
 -- --------------------------------------------------------
 
@@ -1774,15 +1797,18 @@ INSERT INTO `game_stats` (`id`, `gameID`, `views`, `downloads`, `ratings`, `reve
 (3, 90, 31, 0, 0, 0),
 (4, 91, 35, 13, 0, 0),
 (5, 92, 40, 5, 0, 0),
-(6, 93, 23, 1, 0, 0),
+(6, 93, 24, 1, 0, 0),
 (7, 95, 28, 4, 1, 0),
 (8, 184, 11, 3, 0, 0),
 (10, 186, 5, 0, 0, 0),
 (11, 187, 14, 7, 0, 0),
-(12, 188, 17, 2, 0, 152.48),
+(12, 188, 18, 2, 0, 152.48),
 (14, 189, 14, 0, 0, 295.858),
 (16, 191, 3, 1, 0, 0),
-(18, 195, 4, 3, 0, 0);
+(18, 195, 4, 3, 0, 0),
+(19, 196, 2, 1, 0, 69.624),
+(20, 197, 2, 1, 0, 104.419),
+(21, 198, 2, 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -1996,7 +2022,12 @@ INSERT INTO `game_stats_history` (`id`, `gameID`, `views`, `downloads`, `ratings
 (196, 189, 1, 0, 0, 0, '2023-05-02'),
 (197, 188, 3, 1, 0, 0, '2023-05-02'),
 (198, 187, 1, 0, 0, 0, '2023-05-03'),
-(199, 195, 2, 2, 0, 0, '2023-05-03');
+(199, 195, 2, 2, 0, 0, '2023-05-03'),
+(200, 196, 2, 1, 0, 0, '2023-05-04'),
+(201, 188, 1, 0, 0, 0, '2023-05-04'),
+(202, 197, 2, 1, 0, 0, '2023-05-04'),
+(203, 93, 1, 0, 0, 0, '2023-05-04'),
+(204, 198, 2, 1, 0, 0, '2023-05-04');
 
 -- --------------------------------------------------------
 
@@ -2198,7 +2229,32 @@ CREATE TABLE `giveaways` (
 --
 
 INSERT INTO `giveaways` (`id`, `gameID`, `copiesCount`, `pieceWorth`, `copiesLeft`) VALUES
-(1, 96, 1, 300, 1);
+(1, 96, 1, 300, 1),
+(2, 188, 3, 450, 3),
+(3, 198, 5, 50, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `giveaway_claims`
+--
+
+CREATE TABLE `giveaway_claims` (
+  `id` int(11) NOT NULL,
+  `gameID` int(11) NOT NULL,
+  `winnerID` int(11) NOT NULL,
+  `won_date` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `giveaway_claims`
+--
+
+INSERT INTO `giveaway_claims` (`id`, `gameID`, `winnerID`, `won_date`) VALUES
+(1, 198, 84, '2023-05-04'),
+(2, 198, 86, '2023-05-04'),
+(3, 198, 52, '2023-05-04'),
+(4, 198, 53, '2023-05-04');
 
 -- --------------------------------------------------------
 
@@ -2487,7 +2543,11 @@ INSERT INTO `sitegamesrevenue` (`id`, `gameID`, `orderID`, `siteShare`, `sale_da
 (9, 188, '6443f34c510a9', 13.5983, '2023-04-22'),
 (10, 189, '6443f34c510a9', 7.999, '2023-04-22'),
 (11, 189, '6443f6316333f', 4.999, '2023-04-22'),
-(12, 188, '6443f6316333f', 5.1, '2023-04-22');
+(12, 188, '6443f6316333f', 5.1, '2023-04-22'),
+(13, 196, '64535743c6705', 4, '2023-05-04'),
+(14, 196, '64535814c0ad2', 4, '2023-05-04'),
+(15, 197, '64535e5d5af23', 5.999, '2023-05-04'),
+(16, 197, '64535f5760d8a', 5.999, '2023-05-04');
 
 -- --------------------------------------------------------
 
@@ -2536,7 +2596,10 @@ INSERT INTO `spin_wheel` (`id`, `gamerID`, `reward`, `spinned_date`) VALUES
 (6, 52, '5', '2023-05-02'),
 (7, 53, '0', '2023-05-02'),
 (8, 86, '5', '2023-05-02'),
-(9, 84, '15', '2023-05-04');
+(9, 84, '15', '2023-05-04'),
+(10, 52, '15', '2023-05-04'),
+(11, 86, '10', '2023-05-04'),
+(12, 53, '10', '2023-05-04');
 
 -- --------------------------------------------------------
 
@@ -2908,6 +2971,12 @@ ALTER TABLE `giveaways`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `giveaway_claims`
+--
+ALTER TABLE `giveaway_claims`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `joinjam_gamedevs`
 --
 ALTER TABLE `joinjam_gamedevs`
@@ -3127,7 +3196,7 @@ ALTER TABLE `freeasset`
 -- AUTO_INCREMENT for table `freegame`
 --
 ALTER TABLE `freegame`
-  MODIFY `gameID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=196;
+  MODIFY `gameID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=199;
 
 --
 -- AUTO_INCREMENT for table `gamejam`
@@ -3157,7 +3226,7 @@ ALTER TABLE `games_filters`
 -- AUTO_INCREMENT for table `games_view_tracker`
 --
 ALTER TABLE `games_view_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=350;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=358;
 
 --
 -- AUTO_INCREMENT for table `game_cart`
@@ -3169,13 +3238,13 @@ ALTER TABLE `game_cart`
 -- AUTO_INCREMENT for table `game_library`
 --
 ALTER TABLE `game_library`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `game_purchases`
 --
 ALTER TABLE `game_purchases`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `game_reviews`
@@ -3187,13 +3256,13 @@ ALTER TABLE `game_reviews`
 -- AUTO_INCREMENT for table `game_stats`
 --
 ALTER TABLE `game_stats`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `game_stats_history`
 --
 ALTER TABLE `game_stats_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=200;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=205;
 
 --
 -- AUTO_INCREMENT for table `gig`
@@ -3223,7 +3292,13 @@ ALTER TABLE `gig_purchases`
 -- AUTO_INCREMENT for table `giveaways`
 --
 ALTER TABLE `giveaways`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `giveaway_claims`
+--
+ALTER TABLE `giveaway_claims`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `library`
@@ -3247,7 +3322,7 @@ ALTER TABLE `requestedgigs`
 -- AUTO_INCREMENT for table `sitegamesrevenue`
 --
 ALTER TABLE `sitegamesrevenue`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `site_assets_revenue`
@@ -3259,7 +3334,7 @@ ALTER TABLE `site_assets_revenue`
 -- AUTO_INCREMENT for table `spin_wheel`
 --
 ALTER TABLE `spin_wheel`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `submission`
