@@ -38,7 +38,30 @@ class Admin_userMg_Model extends Model
         return $user;
     }
 
-    
+    function searchUsers($search_email, $search_id, $search_username, $search_user_role) {
+        // build query based on search parameters
+        $query = "SELECT * FROM gamer WHERE 1=1";
+        if (!empty($search_email)) {
+            $query .= " AND email='$search_email'";
+        }
+        if (!empty($search_id)) {
+            $query .= " AND gamerID='$search_id'";
+        }
+        if (!empty($search_username)) {
+            $query .= " AND username='$search_username'";
+        }
+        if (!empty($search_user_role)) {
+            $query .= " AND userRole='$search_user_role'";
+        }
+
+        $stmt = $this->db->prepare($query);
+
+        $stmt->execute();
+
+        $user_data = $stmt->fetchAll();
+
+        return $user_data;
+    }
 
     function delete_user($user_id){
         $sql = "UPDATE gamer SET accountStatus=0 WHERE gamerID = ".$user_id;

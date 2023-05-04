@@ -21,6 +21,20 @@ class Admin_userMg extends Controller
         $this->view->render('Admin/Admin_userMg');
     }
 
+    public function searchUser() {
+        // retrieve search parameters from form
+        $search_email = $_POST['search_email'] ?? '';
+        $search_id = $_POST['search_id'] ?? '';
+        $search_username = $_POST['search_username'] ?? '';
+        $search_user_role = $_POST['search_user_role'] ?? '';
+
+        $this->view->users = $this->model->searchUsers($search_email, $search_id, $search_username, $search_user_role);
+
+        // print_r($this->view->users);
+
+        $this->view->render('Admin/Admin_userMg');
+    }
+
     public function viewFilteredUser($filter_text){
         if($filter_text=="gd")
             $usertype = "game developer";
@@ -52,6 +66,7 @@ class Admin_userMg extends Controller
             //send an email to the blocked user
 
             
+            
             $this->view->users = $this->model->viewBlockUser('block');
             $this->view->render('Admin/Admin_userMg');
         } else {
@@ -61,8 +76,8 @@ class Admin_userMg extends Controller
             // echo "<script>alert('Error deleting user.'); window.location.href = '/indieabode/Admin_userMg';</script>";
             $this->view->render('Admin/Admin_userMg');
         }
-
     }
+
     public function unblockUser($userid){
         $result = $this->model->unblock_user($userid);
         if ($result === true) {
@@ -297,17 +312,6 @@ class Admin_userMg extends Controller
             $pdf->Line(50, $pdf->GetY(), $pdf->GetPageWidth() - 50, $pdf->GetY()); // draw first line
             $pdf->Ln(2); // move down by 2 units again
             $pdf->Line(50, $pdf->GetY(), $pdf->GetPageWidth() - 50, $pdf->GetY()); // draw second line
-
-            // $signature = 'John Doe';
-            // $date = date('F j, Y');
-
-            // $pdf->SetY(-30);
-            // $pdf->SetFont('helvetica', 'B', 12);
-            // $pdf->Cell(0, 10, 'Signature: '.$signature, 0, 1, 'L');
-            // $pdf->Cell(0, 10, 'Date: '.$date, 0, 1, 'R');
-            // $pdf->Line(10, $pdf->GetY(), 200, $pdf->GetY());
-
-            // print a block of text using Write()
             $pdf->Write(0, $txt, '', 0, 'C', true, 0, false, false, 0);
 
             
