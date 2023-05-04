@@ -48,6 +48,7 @@
             </a>
             <a href="/indieabode/dashboard/orders">Orders</a>
             <a href="/indieabode/dashboard/requests">Requests</a>
+            <a href="/indieabode/dashboard/advertisements">Advertisements</a>
             <a href="/indieabode/dashboard/sales">Sales&nbsp;&&nbsp;Bundles</a>
             <a href="/indieabode/dashboard/analytics">Analytics</a>
             <a href="/indieabode/dashboard/payouts">Payouts</a>

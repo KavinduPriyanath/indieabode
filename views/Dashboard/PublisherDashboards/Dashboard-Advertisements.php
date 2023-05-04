@@ -52,42 +52,22 @@
         </div>
         <div class="content-row">
 
-            <div class="devlog-cards all-gigs-cards">
-                <h3>Gigs You've Bought</h3>
-                <?php foreach ($this->gigs as $gig) { ?>
-                    <div class="game-card">
-                        <div class="left-col">
-                            <div class="icon"><img src="/indieabode/public/uploads/gigs/cover/<?= $gig['gigCoverImg'] ?>" alt=""></div>
-                            <div class="details">
-                                <div class="devlog-name"><?= $gig['gigName']; ?></div>
-                                <div class="game-name">
-                                    <?= $gig['game']; ?>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="right-col">
-                            <div class="views">
-                                <div class="count">$<?= $gig['publisherCost']; ?></div>
-                                <div class="label">cost</div>
-                            </div>
-                            <div class="downloads">
-                                <div class="count"><?= $gig['sharePercentage']; ?>%</div>
-                                <div class="label">share</div>
-                            </div>
-                            <div class="ratings">
-                                <div class="count">$<?= $gig['publisherIncome']; ?></div>
-                                <div class="label">income</div>
-                            </div>
-                        </div>
-                        <a href="/indieabode/dashboard/editgig?gameid=<?= $gig['game'] ?>&gigid=<?= $gig['gigID'] ?>">
-                            <div class="edit-btn">
-                                Edit
-                            </div>
-                        </a>
+            <a href="/indieabode/addAdvertisement" id="devlog-btn">
+                <div class="add-btn">
+                    <div class="add-logo">
+                        <img src="/indieabode/public/images/dashboard/add-devlog.png" alt="">
                     </div>
-                <?php } ?>
+                    <div class="text">Add New Advertisement</div>
+                </div>
+            </a>
+
+            <h3>Advertisement Log</h3>
+            <div class="ads-tabs">
+                <div class="ad-tab">Ongoing</div>
+                <div class="ad-tab">Requests</div>
+                <div class="ad-tab">Expired</div>
             </div>
+
 
         </div>
     </div>
