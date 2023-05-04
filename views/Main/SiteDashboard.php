@@ -64,6 +64,7 @@
                     <button onclick="showPanel(4,'rgb(111 142 170)')">Gigs Dashboard</button>
                 </div>
 
+				<!-- Main Dashboard -->
                 <div class="tabPanel">
 					<div class="db-panel">
 						<div class="first-row-db">
@@ -115,12 +116,53 @@
 								</div>
 							</div>
 							<div class="second-pie-chart-db">
-								kfnrfjeswjs<p>fjrbfjbe</p>
+								<canvas id="myChart2"></canvas>
 							</div>
 						</div>
 					</div>
 				</div>
-                <div class="tabPanel">Game Dashboard:Content</div>
+
+				<!-- Game Dashboard -->
+                <div class="tabPanel">
+					<div class="first-row-db">
+						<div class="game-tx-card">
+							<div class="card-topic">
+								<h3>Total Transactions</h3>
+							</div>
+							<div class="total-tx-amount">
+								$22345.00
+							</div>
+							<!-- <div class="tx-icon-card">
+								<i class='bx bx-money view-icon'></i>
+							</div> -->
+						</div>
+						<div class="tx-graph">
+							<canvas id="txChartGame"></canvas>
+						</div>
+						<div class="game-developer-prolific">
+							<div class="game-tx-card">
+								<div class="card-topic">
+									<h3>Total Transactions</h3>
+								</div>
+								<div class="total-tx-amount">
+									$22345.00
+								</div>
+								<!-- <div class="tx-icon-card">
+									<i class='bx bx-money view-icon'></i>
+								</div> -->
+							</div>
+						</div>
+					</div>
+					<div class="second-row-db">
+						<div class="line-chart-db">
+							<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+							<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+						</div>
+						<div class="second-pie-chart-db">
+							<canvas id="userChart" style="height: 150px; width: 100%;"></canvas>
+						</div>
+					</div>
+				</div>
                 <div class="tabPanel">Assets Dashboard:Content</div>
                 <div class="tabPanel">Game Jam Dashboard:Content</div>
                 <div class="tabPanel">Gigs Dashboard:Content</div>
@@ -177,19 +219,98 @@
 					'rgba(6, 96, 94, 1)',
 					'rgba(84, 31, 46, 1)'
 				],
-				borderWidth: 1
+				borderWidth: 2
 				}]
 			},
 			options: {
 				scales: {
 				xAxes: [{
 					ticks: {
-					beginAtZero: true
+					beginAtZero: true,
+					fontColor: 'white' // set font color for x-axis labels
+					},
+					gridLines: {
+					display: false // hide x-axis grid lines
+					}
+				}],
+				yAxes: [{
+					ticks: {
+					fontColor: 'white' // set font color for y-axis labels
+					},
+					gridLines: {
+					display: false // hide y-axis grid lines
 					}
 				}]
 				}
 			}
+			});
+		// chart.render();
+
+		var ctx2 = document.getElementById('myChart2').getContext('2d');
+		var myChart2 = new Chart(ctx2, {
+			type: 'line',
+			data: {
+				labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+				datasets: [{
+						label: 'Sales',
+						data: [12, 19, 3, 5, 2, 3, 10],
+						borderColor: 'rgba(75, 192, 192, 1)',
+						backgroundColor: 'rgba(75, 192, 192, 0.2)',
+						fill: false
+					},
+					{
+						label: 'Expenses',
+						data: [5, 2, 8, 1, 6, 9, 4],
+						borderColor: 'rgba(255, 99, 132, 1)',
+						backgroundColor: 'rgba(255, 99, 132, 0.2)',
+						fill: false
+					}
+				]
+			},
+			options: {
+				scales: {
+					yAxes: [{
+						ticks: {
+							beginAtZero: true
+						}
+					}]
+				}
+			}
 		});
+
+		//game transaction graph
+		var ctx3 = document.getElementById('txChartGame').getContext('2d');
+		var myChart2 = new Chart(ctx3, {
+			type: 'line',
+			data: {
+				labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+				datasets: [{
+						label: 'Sales',
+						data: [12, 19, 3, 5, 2, 3, 10],
+						borderColor: 'rgba(75, 192, 192, 1)',
+						backgroundColor: 'rgba(75, 192, 192, 0.2)',
+						fill: false
+					},
+					{
+						label: 'Expenses',
+						data: [5, 2, 8, 1, 6, 9, 4],
+						borderColor: 'rgba(255, 99, 132, 1)',
+						backgroundColor: 'rgba(255, 99, 132, 0.2)',
+						fill: false
+					}
+				]
+			},
+			options: {
+				scales: {
+					yAxes: [{
+						ticks: {
+							beginAtZero: true
+						}
+					}]
+				}
+			}
+		});
+		// chart.render();
 
 		}
 	</script>

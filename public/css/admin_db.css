@@ -326,6 +326,59 @@ font-size: 2em;
 color: #37647b;
 }
 
+/*complaint toggle switch styling*/
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    display: none;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #256680;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #256680;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
 
 
 /* dashboard styles */
@@ -380,6 +433,7 @@ color: #37647b;
     gap: 5%;
     justify-content: flex-start;
     margin-bottom: 5%;
+    width:100%;
 }
 
 .first-pie-chart-db{
@@ -423,4 +477,21 @@ color: #37647b;
 .horizontal-chart{
     margin-left: 3%;
     background-color: #527289;
+}
+
+.line-chart-db{
+    width: 40%;
+}
+
+/*game dashboard css */
+.game-tx-card{
+    display:flex;
+    gap: 3%;
+    margin-left: 3%;
+    padding: 3%;
+    background-color: #345575;
+}
+
+.total-tx-amount{
+    margin-top: 7%;
 }
