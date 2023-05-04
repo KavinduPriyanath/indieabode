@@ -6,6 +6,7 @@ class Admin_complaints_Model extends Model
     function __construct()
     {
         parent::__construct();
+
     }
 
     function viewComplaints($type=""){
@@ -23,5 +24,13 @@ class Admin_complaints_Model extends Model
 
         return $complaints;
     }
+
+    public function updateComplaint($complaintID, $isChecked) {
+        $sql = "UPDATE `complaint` SET checked ='" . $isChecked . "' WHERE complaintID ='" . $complaintID . "'";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute();
+    }
+
+
 
 }

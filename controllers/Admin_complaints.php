@@ -24,4 +24,16 @@ class Admin_complaints extends Controller
         $this->view->active=$filter_text;
         $this->view->render('Admin/Admin_complaints');
     }
+
+    public function updateComplaintChecked() {
+        if (isset($_POST['complaintID']) && isset($_POST['isChecked'])) {
+            $complaintID = $_POST['complaintID'];
+            $isChecked = $_POST['isChecked'];
+
+            echo 'complaintID: ' . $complaintID . '<br>';
+            echo 'isChecked: ' . $isChecked . '<br>';
+
+            $this->model->updateComplaint($complaintID, $isChecked);
+        }
+    }
 }

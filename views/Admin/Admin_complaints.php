@@ -86,6 +86,7 @@
                         <th> Description</th>
                         <th> Type</th>
 						<th> Complainer ID </th>
+						<th> Status </th>
                     </tr>
                 </thead>
 				
@@ -97,6 +98,13 @@
 							<td><?php echo $complaint['description']; ?></td>
 							<td><?php echo $complaint['type']; ?></td>
 							<td><?php echo $complaint['gamerID']; ?></td>
+							<td>
+								<label class="switch">
+									<!-- <input type="checkbox" id="toggle-switch" value="1"> -->
+									<input type="checkbox" id="toggle-switch" value="1" <?php echo $complaint['checked'] ? 'checked' : ''; ?> onclick="toggleSwitchClicked(<?php echo $complaint['complaintID']; ?>,this.checked ? 1 : 0)">
+									<span class="slider round"></span>
+								</label>
+							</td>
 						</tr>
 					<?php } ?>
 				</tbody>
@@ -120,10 +128,38 @@
 			} else {
 				window.location.href = '/indieabode/Admin_complaints/viewFilteredComplaints/' + filter_text
 			}
-
-
-
 		}
+	</script>
+
+	<script>
+
+		function toggleSwitchClicked(complaintID, isChecked) {
+			// Send AJAX request to update database
+			var xhr = new XMLHttpRequest();
+			xhr.open('POST', '/indieabode/Admin_complaints/updateComplaintChecked');
+			xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+			xhr.onload = function() {
+				if (xhr.status === 200 && xhr.responseText) {
+					console.log(xhr.responseText);
+					alert('Complaint status updated successfully!');
+				} else {
+					console.log('Error updating database.');
+					alert('Error updating complaint status.');
+				}
+			};
+			xhr.send('complaintID=' + encodeURIComponent(complaintID) + '&isChecked=' + encodeURIComponent(isChecked));
+		}
+
+		document.addEventListener('DOMContentLoaded', function() {
+			var toggleSwitches = document.querySelectorAll('[id^="toggle-switch-"]');
+			toggleSwitches.forEach(function(switchElem) {
+				switchElem.addEventListener('change', function() {
+					var isChecked = this.checked ? 1 : 0;
+					var complaintID = this.dataset.complaintId;
+					updateComplaintChecked(complaintID, isChecked);
+				});
+			});
+		});
 	</script>
 </body>
 
