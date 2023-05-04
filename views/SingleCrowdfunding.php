@@ -148,20 +148,20 @@
                 <p>Support "game name" to "crowdfund goal - develop"</p>
                 <input type="text" name="donation-amount" id="donation-amount">
                 <div class="donation-presets">
-                    <div class="preset" id="two" onclick="Donation('2.00')">
-                        $2.00
+                    <div class="preset" id="two" onclick="Donation('30.00')">
+                        $30.00
                     </div>
-                    <div class="preset" id="five" onclick="Donation('5.00')">
-                        $5.00
-                    </div>
-                    <div class="preset" id="ten" onclick="Donation('10.00')">
-                        $10.00
-                    </div>
-                    <div class="preset" id="fifty" onclick="Donation('50.00')">
+                    <div class="preset" id="five" onclick="Donation('50.00')">
                         $50.00
                     </div>
-                    <div class="preset" id="hundred" onclick="Donation('100.00')">
+                    <div class="preset" id="ten" onclick="Donation('100.00')">
                         $100.00
+                    </div>
+                    <div class="preset" id="fifty" onclick="Donation('150.00')">
+                        $150.00
+                    </div>
+                    <div class="preset" id="hundred" onclick="Donation('200.00')">
+                        $200.00
                     </div>
                 </div>
                 <div class="donate-btn" onclick="MakeADonation(<?= $this->crowdfund['crowdFundID'] ?>, document.getElementById('donation-amount').value)">

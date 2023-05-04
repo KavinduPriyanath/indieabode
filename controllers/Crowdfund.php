@@ -41,12 +41,7 @@ class Crowdfund extends Controller
         }
     }
 
-    // function reviews()
-    // {
-    //     $this->view->game = $this->model->showSingleGame($_GET['id']);
 
-    //     $this->view->render('Reviews/Game-Reviews');
-    // }
 
     function donation()
     {
@@ -65,7 +60,7 @@ class Crowdfund extends Controller
         // }
 
         // $amount = $asset['assetPrice'];
-        $amount = 30.00;
+        $amount = $donationAmount;
         $merchant_id = "1222729";
         $order_id = uniqid();
         $merchant_secret = "MjczNjU0OTYzMzM3NDA3NzYzMjczNzEyMjI2MjM4MTQ3MjE2OTkxMg==";
@@ -121,8 +116,12 @@ class Crowdfund extends Controller
 
         $developerEmail = $downloadingDev['email'];
 
+        //Update Donations table for donation history
         $this->model->successfulDonation($_GET['id'], $_SESSION['id'], $amount, $orderId);
 
+        //Update backers count, current amount of the crowdfund
+
+        //If crowdfund succeeded then get 5% cut
 
         //sending an email receipt
         try {
