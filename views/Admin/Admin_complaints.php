@@ -34,9 +34,9 @@
 				<img src="/indieabode/public/images/Admin/admin-1.png" alt="user-image" class="rounded-circle" />
 			</div>
 			<div class="user-details">
-				<div class="user-role">Admin</div>
+				<div class="user-role"><?= $_SESSION['username']; ?></div>
 				<div class="email-address">
-					<div class="box">admin@gmail.com</div>
+					<div class="box"><?= $_SESSION['email']; ?></div>
 				</div>
 			</div>
 		</div>
@@ -124,7 +124,8 @@
 	<div id="errorModal" class="modal">
 		<div class="modal-content">
 			<span class="close">&times;</span>
-			<p>Cannot turn off the switch, the complaint has already been checked.</p>
+			<p>Cannot turn off the switch, the complaint has already been checked</p>
+
 		</div>
 	</div>
 

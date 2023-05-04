@@ -42,7 +42,6 @@ class Admin_complaints extends Controller
             // Get the complainer's email address
             $complainer = $this->model->getComplainerEmail($complaintID);
             $complainerEmail = $complainer['email'];
-            // $complainerEmail = 'nadeedarshi1999@gmail.com';
             $c_username = $complainer['username'];
 
             if ($isChecked && !empty($complainerEmail)) {
