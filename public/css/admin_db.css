@@ -495,3 +495,56 @@ input:checked + .slider:before {
 .total-tx-amount{
     margin-top: 7%;
 }
+
+/*add styling to the modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+#errorModal{
+    background-color: #f6d6e2;
+    margin-bottom: 15%;
+    margin-top: 4%;
+    padding: 2%;
+    border: 1px solid #888;
+    width: 35%;
+    color: #c41b1b;
+    height: 12%;
+    left: 64%;
+}
+#successModal{
+    background-color: #84beb3;
+    margin-bottom: 15%;
+    margin-top: 4%;
+    padding: 2%;
+    border: 1px solid #2ea67a;
+    width: 29%;
+    color: #076248;
+    height: 12%;
+    left: 70%;
+}
+  
+  .close {
+    color:#010a0d;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color:#ac1717;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+
+  
