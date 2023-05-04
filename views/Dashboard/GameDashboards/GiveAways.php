@@ -91,6 +91,22 @@
             <?php } else { ?>
                 <div class="giveaway-item">
                     This game already has a give away.
+
+
+                    <div class="container" id="card-container">
+                        <a href="">
+                            <div class="card">
+                                <div class="card-image"> <img src="<?php echo BASE_URL; ?>public/uploads/games/cover/<?= $this->hasGiveaway['gameCoverImg'] ?>" alt="">
+                                </div>
+                                <div class="game-name">
+                                    <p><?= $this->hasGiveaway['gameName'] ?></p>
+                                </div>
+                                <div class="tagline"><?= $this->hasGiveaway['copiesLeft'] ?>/<?= $this->hasGiveaway['copiesCount'] ?> left</div>
+                            </div>
+                        </a>
+                    </div>
+
+
                 </div>
             <?php } ?>
 

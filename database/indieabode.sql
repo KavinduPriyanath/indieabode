@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 03, 2023 at 09:03 AM
+-- Generation Time: May 04, 2023 at 08:27 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -59,7 +59,7 @@ INSERT INTO `account` (`userID`, `profilePhoto`, `location`, `phoneNumber`, `dis
 (81, '', '', '', '', '', '', 'Hi. I\'m computer science undergraduate and indie game developer who enjoys working with games', '', 10, 1, 0, 50),
 (82, '', '', '', '', '', '', '', '', 10, 0, 0, 50),
 (83, '', '', '', '', '', '', '', '', 10, 0, 0, 50),
-(84, '', '', '', '', '', '', '', '', 10, 0, 0, 50),
+(84, '', '', '', '', '', '', '', '', 10, 0, 0, 65),
 (86, '', '', '', '', '', '', '', '', 10, 0, 0, 55),
 (87, '', '', '', '', '', '', '', '', 10, 0, 0, 50),
 (89, '', '', '', '', '', '', '', '', 10, 0, 0, 50),
@@ -628,7 +628,8 @@ CREATE TABLE `complaint_submissions` (
 --
 
 INSERT INTO `complaint_submissions` (`id`, `gamerID`, `reason`, `description`, `jamID`, `submissionID`) VALUES
-(1, 46, 'Invalid Jam Submission', 'fefef', 67, 195);
+(1, 46, 'Invalid Jam Submission', 'fefef', 67, 195),
+(2, 52, 'Offensive Material', 'I think', 67, 195);
 
 -- --------------------------------------------------------
 
@@ -1112,7 +1113,7 @@ INSERT INTO `gamejam` (`gameJamID`, `submissionStartDate`, `submissionEndDate`, 
 (64, '2023-03-22 16:55:00', '2023-03-24 16:55:00', '', '2023-03-28 16:55:00', 'Linux GameJam 2023', 'Make a game on or for GNU/Linux using any framework or engine', 'Ranked', 'Creativity', 'Public', 0, 0, 89, 'Public', '#kenny', 'Cover-Linux GameJam 2023.png', 0, 0, 'Strong Together'),
 (65, '2023-05-11 16:55:00', '2023-05-13 16:55:00', '', '2023-05-14 16:55:00', 'Scream Zone Jam 2023', 'The horrifically wonderful horror jam returns', 'Ranked', '', 'Draft', 0, 0, 89, 'Public', '', 'Cover-Scream Zone Jam 2023.png', 4, 0, 'Progress'),
 (66, '2023-05-11 16:55:00', '2023-05-12 16:55:00', '', '2023-05-17 16:55:00', 'CC Jam 2', 'fefefefefef', 'Ranked', '', 'Draft', 0, 0, 89, 'Public', '', 'Cover-Metoer Shower Jam 2023.png', 0, 0, 'Progress'),
-(67, '2023-04-26 16:55:00', '2023-05-01 16:55:00', '', '2023-05-02 16:55:00', 'Bullet Hell Jam 2023', 'Spend 10 days cramming as many bullets/projectiles as you can into a short game', 'Ranked', 'Theme, Audio, Visual, Fun', 'Draft', 0, 0, 79, 'Public', '#bulletHell', 'Cover-Bullet Hel Jam 2023.jpg', 1, 0, 'Limited');
+(67, '2023-04-26 16:55:00', '2023-05-01 16:55:00', '', '2023-05-02 16:55:00', 'Bullet Hell Jam 2023', 'Spend 10 days cramming as many bullets/projectiles as you can into a short game', 'Ranked', 'Theme, Audio, Visual, Fun', 'Draft', 0, 0, 79, 'Public', '#bulletHell', 'Cover-Bullet Hel Jam 2023.jpg', 1, 1, 'Limited');
 
 -- --------------------------------------------------------
 
@@ -2181,6 +2182,27 @@ INSERT INTO `gig_purchases` (`id`, `gigID`, `developerID`, `publisherID`, `publi
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `giveaways`
+--
+
+CREATE TABLE `giveaways` (
+  `id` int(11) NOT NULL,
+  `gameID` int(11) NOT NULL,
+  `copiesCount` int(11) NOT NULL,
+  `pieceWorth` int(11) NOT NULL,
+  `copiesLeft` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `giveaways`
+--
+
+INSERT INTO `giveaways` (`id`, `gameID`, `copiesCount`, `pieceWorth`, `copiesLeft`) VALUES
+(1, 96, 1, 300, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `handlecomplaint`
 --
 
@@ -2513,7 +2535,8 @@ INSERT INTO `spin_wheel` (`id`, `gamerID`, `reward`, `spinned_date`) VALUES
 (5, 53, '6', '2023-05-01'),
 (6, 52, '5', '2023-05-02'),
 (7, 53, '0', '2023-05-02'),
-(8, 86, '5', '2023-05-02');
+(8, 86, '5', '2023-05-02'),
+(9, 84, '15', '2023-05-04');
 
 -- --------------------------------------------------------
 
@@ -2879,6 +2902,12 @@ ALTER TABLE `gig_purchases`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `giveaways`
+--
+ALTER TABLE `giveaways`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `joinjam_gamedevs`
 --
 ALTER TABLE `joinjam_gamedevs`
@@ -3026,7 +3055,7 @@ ALTER TABLE `complaint_reason_jams`
 -- AUTO_INCREMENT for table `complaint_submissions`
 --
 ALTER TABLE `complaint_submissions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `crowdfund`
@@ -3191,6 +3220,12 @@ ALTER TABLE `gig_purchases`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `giveaways`
+--
+ALTER TABLE `giveaways`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `library`
 --
 ALTER TABLE `library`
@@ -3224,7 +3259,7 @@ ALTER TABLE `site_assets_revenue`
 -- AUTO_INCREMENT for table `spin_wheel`
 --
 ALTER TABLE `spin_wheel`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `submission`

@@ -667,7 +667,8 @@ class Dashboard_Model extends Model
     function HasGiveAway($gameID)
     {
 
-        $sql = "SELECT * FROM giveaways WHERE gameID='$gameID'";
+        $sql = "SELECT giveaways.gameID, giveaways.copiesCount, giveaways.pieceWorth, freegame.gameName, freegame.gameCoverImg, giveaways.copiesLeft
+                FROM giveaways INNER JOIN freegame ON freegame.gameID=giveaways.gameID WHERE giveaways.gameID='$gameID'";
 
         $stmt = $this->db->prepare($sql);
 
