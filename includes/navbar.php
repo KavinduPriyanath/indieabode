@@ -462,8 +462,8 @@
                             <div class="dropdown-menu">
                                 <div class="arrow adarrow"></div>
                                 <div class=".ulsub">
-                                    <a href="<?php echo BASE_URL; ?>requests">Add&nbsp;Advertisement <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                                    <a href="<?php echo BASE_URL; ?>archieve">Ad&nbsp;Dashboard <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                                    <a href="<?php echo BASE_URL; ?>addAdvertisement">Add&nbsp;Advertisement <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                                    <a href="<?php echo BASE_URL; ?>dashboard/advertisements">Ad&nbsp;Dashboard <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                     <hr />
                                     <a href="<?php echo BASE_URL; ?>gigs">Ad&nbsp;Settings
                                         <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>

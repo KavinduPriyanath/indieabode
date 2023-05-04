@@ -117,8 +117,9 @@ include 'includes/navbar.php';
                     <div class="button">
 
                         <div class="jamButtons jamBtn" id="gamerBtn"> </div>
-                        <div class="jamButtons jamBtn" id="devBtn"></div>
                         <div class="jamButtons jamBtn" id="dev-submit" data-modal-target="#modal">Submit</div>
+                        <div class="jamButtons jamBtn" id="devBtn"></div>
+
 
 
                         <div class="jamStatus"></div>
@@ -436,8 +437,6 @@ include 'includes/navbar.php';
 
 
 
-
-
             if (!jamStart && !votingStart) {
                 //jam hasnt begun yet
                 $('.theme-visibility').show();
@@ -479,12 +478,12 @@ include 'includes/navbar.php';
 
                     <?php if ($this->hasJoinedDeveloper) { ?>
 
-                        $('#dev-submit').show()
+                        $('#dev-submit').show();
                         $('#devBtn').html("Leave Jam");
 
                     <?php } else if (!$this->hasJoinedDeveloper) { ?>
 
-                        $('#dev-submit').hide()
+                        $('#dev-submit').hide();
                         $('#devBtn').html("Join Jam");
                     <?php } ?>
                 <?php } else { ?>

@@ -636,6 +636,13 @@ class Dashboard extends Controller
         $this->view->render('Dashboard/PublisherDashboards/Dashboard-Requests');
     }
 
+    function advertisements()
+    {
+
+
+        $this->view->render('Dashboard/PublisherDashboards/Dashboard-Advertisements');
+    }
+
     //Asset Creator Dashboard Items
     //Asset Creator Dashboard Items
     //Asset Creator Dashboard Items
