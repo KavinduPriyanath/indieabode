@@ -101,7 +101,9 @@
 							<td>
 								<label class="switch">
 									<!-- <input type="checkbox" id="toggle-switch" value="1"> -->
-									<input type="checkbox" id="toggle-switch" value="1" <?php echo $complaint['checked'] ? 'checked' : ''; ?> onclick="toggleSwitchClicked(<?php echo $complaint['complaintID']; ?>,this.checked ? 1 : 0)">
+									<!-- <input type="checkbox" id="toggle-switch" value="1" <?php echo $complaint['checked'] ? 'checked' : ''; ?> onclick="toggleSwitchClicked(<?php echo $complaint['complaintID']; ?>,this.checked ? 1 : 0)"> -->
+									<!-- <input type="checkbox" id="toggle-switch" value="1" <?php echo $complaint['checked'] ? 'checked' : ''; ?> onclick="toggleSwitchClicked(<?php echo $complaint['complaintID']; ?>,this.checked ? 1 : 0)" data-previous-value="<?php echo $complaint['checked'] ? 1 : 0 ?>"> -->
+									<input type="checkbox" id="toggle-switch" value="1" <?php echo $complaint['checked'] ? 'checked' : ''; ?> onclick="toggleSwitchClicked(this, <?php echo $complaint['complaintID']; ?>, this.checked ? 1 : 0)" data-previous-value="<?php echo $complaint['checked'] ? 1 : 0 ?>">
 									<span class="slider round"></span>
 								</label>
 							</td>
@@ -132,31 +134,44 @@
 	</script>
 
 	<script>
-
-		function toggleSwitchClicked(complaintID, isChecked) {
-			// Send AJAX request to update database
-			var xhr = new XMLHttpRequest();
-			xhr.open('POST', '/indieabode/Admin_complaints/updateComplaintChecked');
-			xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-			xhr.onload = function() {
+		function toggleSwitchClicked(checkboxElem, complaintID, isChecked) {
+			// Only send AJAX request if switch is turned on
+			if (isChecked) {
+				// Send AJAX request to update database
+				var xhr = new XMLHttpRequest();
+				xhr.open('POST', '/indieabode/Admin_complaints/updateComplaintChecked');
+				xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+				xhr.onload = function() {
 				if (xhr.status === 200 && xhr.responseText) {
 					console.log(xhr.responseText);
-					alert('Complaint status updated successfully!');
+					alert('Complaint status updated and sent the email successfully!');
 				} else {
 					console.log('Error updating database.');
 					alert('Error updating complaint status.');
 				}
-			};
-			xhr.send('complaintID=' + encodeURIComponent(complaintID) + '&isChecked=' + encodeURIComponent(isChecked));
+				};
+				xhr.send('complaintID=' + encodeURIComponent(complaintID) + '&isChecked=' + encodeURIComponent(isChecked));
+			} else {
+				alert('Cannot turn off the switch, the complaint has already been checked.');
+				checkboxElem.checked = true;
+				return;
+			}
 		}
 
 		document.addEventListener('DOMContentLoaded', function() {
 			var toggleSwitches = document.querySelectorAll('[id^="toggle-switch-"]');
 			toggleSwitches.forEach(function(switchElem) {
 				switchElem.addEventListener('change', function() {
-					var isChecked = this.checked ? 1 : 0;
+					var isChecked = this.checked;
 					var complaintID = this.dataset.complaintId;
-					updateComplaintChecked(complaintID, isChecked);
+					var previousValue = this.getAttribute('data-previous-value');
+					if (isChecked && previousValue === '0') {
+						this.setAttribute('data-previous-value', '1');
+						toggleSwitchClicked(complaintID, isChecked);
+					} else if (!isChecked && previousValue === '1') {
+						alert('Cannot turn off the switch, the complaint has already been checked.');
+						this.checked = true;
+					}
 				});
 			});
 		});
