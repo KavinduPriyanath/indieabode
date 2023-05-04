@@ -588,7 +588,10 @@ class Dashboard extends Controller
 
     function gamegiveaways()
     {
+
         $this->view->hasGiveaway = $this->model->HasGiveAway($_GET['id']);
+
+        $this->view->winners = $this->model->GiveawayWinners($_GET['id']);
 
         $this->view->game = $this->model->GetGameDetails($_GET['id']);
 

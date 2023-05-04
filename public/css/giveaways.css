@@ -1,28 +1,14 @@
-
-
-.flashMessage {
-    position: fixed;
-    z-index: 100;
-    top: 0px;
-    left: 50%;
-    background-color: #73c3e3;
-    color: black;
-    text-shadow: 1px 1px 1px #248ab2;
-    border-radius: 0 0 5px 5px;
-    padding: 8px 16px;
-    padding-top: 15px;
-    font-size: 18px;
-    box-shadow: 0 1px 4px rgb(0 0 0 / 60%);
-    display: none;
-}
-
 .container {
+    display: flex;
+    flex-wrap: wrap;
     margin-left: 155px;
+    transition: margin 0.3s ease;
 }
 
 .container a {
     text-decoration: none;
 }
+
 
 .card {
     /* background-color: #c3deee; */
@@ -55,6 +41,7 @@
     font-size: 20px;
     color: #1F1E1E;
     margin: 5px 10px 3px;
+    font-weight: 700;
 }
 
 
@@ -66,18 +53,40 @@
     text-align: justify;
 }
 
-.card a {
-    background-color: rgb(162, 212, 212);
-    color: black;
-    padding: 15px 20px;
-    display: block;
+
+/* Topic */
+
+.page-topic h1{
     text-align: center;
-    margin: 20px 50px;
-    text-decoration: none;
+    font-size: 25px;
+    margin: 20px 0px 5px 0px;
+    color: rgb(0, 0, 0);
 }
 
-.giveaway-container {
-    display: flex;
-    justify-content: left;
+#topic-break {
+    color: #86AFEC;
+    background-color: #86AFEC;
+    border-width: 0px;
+    height: 0.5px;
+    margin: 0px 165px 15px 158px;
 }
 
+.bottom-btn {
+    display: block;
+}
+
+.bottom-btn .claim-btn {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 4px 8px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.bottom-btn #sold-out{
+    background-color: #eb3e3e;
+}
+
+.bottom-btn .claim {
+    background-color: #86AFEC;
+}
