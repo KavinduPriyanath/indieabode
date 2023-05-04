@@ -100,9 +100,6 @@
 							<td><?php echo $complaint['gamerID']; ?></td>
 							<td>
 								<label class="switch">
-									<!-- <input type="checkbox" id="toggle-switch" value="1"> -->
-									<!-- <input type="checkbox" id="toggle-switch" value="1" <?php echo $complaint['checked'] ? 'checked' : ''; ?> onclick="toggleSwitchClicked(<?php echo $complaint['complaintID']; ?>,this.checked ? 1 : 0)"> -->
-									<!-- <input type="checkbox" id="toggle-switch" value="1" <?php echo $complaint['checked'] ? 'checked' : ''; ?> onclick="toggleSwitchClicked(<?php echo $complaint['complaintID']; ?>,this.checked ? 1 : 0)" data-previous-value="<?php echo $complaint['checked'] ? 1 : 0 ?>"> -->
 									<input type="checkbox" id="toggle-switch" value="1" <?php echo $complaint['checked'] ? 'checked' : ''; ?> onclick="toggleSwitchClicked(this, <?php echo $complaint['complaintID']; ?>, this.checked ? 1 : 0)" data-previous-value="<?php echo $complaint['checked'] ? 1 : 0 ?>">
 									<span class="slider round"></span>
 								</label>
@@ -114,6 +111,22 @@
 			</section>
 		</main>
 	</section>
+	
+	<!-- modal to display successful messages -->
+	<div id="successModal" class="modal">
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<p>Complaint status updated and email sent successfully!</p>
+		</div>
+	</div>
+
+	<!-- modal to display error messages -->
+	<div id="errorModal" class="modal">
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<p>Cannot turn off the switch, the complaint has already been checked.</p>
+		</div>
+	</div>
 
 	<?php
     include 'includes/footer.php';
@@ -144,7 +157,9 @@
 				xhr.onload = function() {
 				if (xhr.status === 200 && xhr.responseText) {
 					console.log(xhr.responseText);
-					alert('Complaint status updated and sent the email successfully!');
+					// Display success message and open modal
+					var successModal = document.getElementById('successModal');
+					successModal.style.display = 'block';
 				} else {
 					console.log('Error updating database.');
 					alert('Error updating complaint status.');
@@ -152,11 +167,33 @@
 				};
 				xhr.send('complaintID=' + encodeURIComponent(complaintID) + '&isChecked=' + encodeURIComponent(isChecked));
 			} else {
-				alert('Cannot turn off the switch, the complaint has already been checked.');
+				// Display error message and prevent toggle switch from being turned off
+				var errorModal = document.getElementById('errorModal');
+				errorModal.style.display = 'block';
 				checkboxElem.checked = true;
-				return;
 			}
 		}
+
+		// Close modal when user clicks on 'x' button
+		var closeButtons = document.getElementsByClassName('close');
+			for (var i = 0; i < closeButtons.length; i++) {
+			closeButtons[i].addEventListener('click', function() {
+				var modal = this.parentElement.parentElement;
+				modal.style.display = 'none';
+			});
+		}
+
+		// Close modal when user clicks outside of it
+		window.onclick = function(event) {
+			var modals = document.getElementsByClassName('modal');
+			for (var i = 0; i < modals.length; i++) {
+				if (event.target == modals[i]) {
+				modals[i].style.display = 'none';
+				}
+			}
+		}
+
+
 
 		document.addEventListener('DOMContentLoaded', function() {
 			var toggleSwitches = document.querySelectorAll('[id^="toggle-switch-"]');
