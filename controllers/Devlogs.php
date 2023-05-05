@@ -23,6 +23,13 @@ class Devlogs extends Controller
             }
         }
 
+        //pagination 
+        $maxLimit = 12;
+        $page = isset($_GET['page']) ? $_GET['page'] : 1;
+        $start = ($page - 1) * $maxLimit;
+        $this->view->prevPage = $page - 1;
+        $this->view->nextPage = $page + 1;
+
         $this->view->checked = [];
 
         if (isset($_GET['posttypes'])) {
@@ -32,7 +39,8 @@ class Devlogs extends Controller
             $checkedTypes =  $_GET['posttypes'];
             $this->view->devlogs = $this->model->showFilteredDevlog($checkedTypes);
         } else {
-            $this->view->devlogs = $this->model->showAllDevlogs();
+            $this->view->devlogs = $this->model->showAllDevlogs($start, $maxLimit);
+            $this->view->devlogPagesCount = $this->model->totalDevlogsPageCount($maxLimit);
         }
 
         $this->view->posttypes = $this->model->filters();
