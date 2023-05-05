@@ -27,7 +27,9 @@ class Devlogs_Model extends Model
 
         $filters = join("','", $checkedFilters);
 
-        $sql = "SELECT * FROM devlog WHERE `Type` IN ('$filters')";
+        $sql = "SELECT devlog.name, devlog.Tagline, devlog.Type, devlog.devlogImg, devlog.likeCount, devlog.commentCount,
+                devlog.devLogID, freegame.gameName FROM devlog INNER JOIN freegame ON freegame.gameID=devlog.gameName 
+                WHERE devlog.Type IN ('$filters')";
 
         $stmt = $this->db->prepare($sql);
 

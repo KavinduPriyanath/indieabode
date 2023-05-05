@@ -106,7 +106,7 @@
 
     <!--Pagination-->
 
-    <div class="pagination">
+    <div class="pagination" id="pagination-devlogs">
         <a href="/indieabode/devlogs?page=<?= $this->prevPage; ?>" id="prev"><i class="fa fa-angle-left"></i></a>
         <?php for ($i = 1; $i <= $this->devlogPagesCount; $i++) : ?>
             <a href="/indieabode/devlogs?page=<?= $i; ?>" class="active"><?= $i ?></a>
@@ -132,6 +132,10 @@
         <?php if (!isset($_GET['page']) || $_GET['page'] == $this->devlogPagesCount) { ?>
             document.getElementById("next").style.pointerEvents = "none";
         <?php  } ?>
+
+        <?php if (isset($_GET['posttypes'])) { ?>
+            document.getElementById("pagination-devlogs").style.display = "none";
+        <?php } ?>
     </script>
 
 
