@@ -9,10 +9,11 @@ class Devlogs_Model extends Model
     }
 
 
-    function showAllDevlogs()
+    function showAllDevlogs($min, $max)
     {
         $sql = "SELECT devlog.name, devlog.Tagline, devlog.Type, devlog.devlogImg, devlog.likeCount, devlog.commentCount,
-                devlog.devLogID, freegame.gameName FROM devlog INNER JOIN freegame ON freegame.gameID=devlog.gameName";
+                devlog.devLogID, freegame.gameName FROM devlog INNER JOIN freegame ON freegame.gameID=devlog.gameName 
+                LIMIT $min, $max";
 
         $stmt = $this->db->prepare($sql);
 
@@ -42,5 +43,24 @@ class Devlogs_Model extends Model
         $stmt->execute();
 
         return $stmt->fetchAll();
+    }
+
+    function totalDevlogsPageCount($maxLimit)
+    {
+
+
+        $sql = "SELECT count(devLogID) AS id FROM devlog";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $devlogsCount = $stmt->fetchAll();
+
+        $totalDevlogs = $devlogsCount[0]['id'];
+
+        $totalPages = ceil($totalDevlogs / $maxLimit);
+
+        return $totalPages;
     }
 }
