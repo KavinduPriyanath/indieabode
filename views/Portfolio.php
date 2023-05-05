@@ -77,7 +77,7 @@
                     <div class="game-intro">
                         <h3><?= $game['gameName']; ?></h3>
                     </div>
-                    <div class="tagline">
+                    <div class="tagline modernWay">
                         <?= $game['gameTagline']; ?>
                     </div>
                     <div class="game-classification">

@@ -99,12 +99,12 @@ $(document).ready(function () {
       $("#gameTaglineCheck").show();
       $("#gameTaglineCheck").text("Must use more than 40 characters");
       taglineOkay = false;
-    } else if (tagline.length > 40 && tagline.length < 70) {
+    } else if (tagline.length > 40 && tagline.length < 200) {
       $("#gameTaglineCheck").hide();
       taglineOkay = true;
     } else {
       $("#gameTaglineCheck").show();
-      $("#gameTaglineCheck").text("Cannot exceed 70 characters");
+      $("#gameTaglineCheck").text("Cannot exceed 200 characters");
       taglineOkay = false;
     }
   }

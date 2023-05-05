@@ -161,17 +161,19 @@
                         <h3><?= $crowdfunding['gameName']; ?></h3>
                     </div>
                     <div class="fund-amount">
-                        <p>122% Funded</p>
+                        <p><?= $crowdfunding['fundingPercentage'] ?>% Funded</p>
                     </div>
-                    <div class="dev">
-                        By <?= $crowdfunding['gameDeveloperName']; ?>
-                    </div>
+
                     <div class="last-row">
-                        <div class="deadline">Ends in 3 days</div>
-                        <div class="likes">
-                            <div class="logo-likes"><img src="/indieabode/public/images/devlogs/like.png" alt=""></div>
-                            <div class="like-count">11</div>
+                        <?php if (substr($crowdfunding['daysLeft'], 0, 1) == "+" && substr($crowdfunding['daysLeft'], 1, 1) != "0") { ?>
+                            <div class="deadline">Ends in <?= substr($crowdfunding['daysLeft'], 1) ?> days</div>
+                        <?php } else { ?>
+                            <div class="deadline">Ended</div>
+                        <?php } ?>
+                        <div class="dev">
+                            By <?= $crowdfunding['username']; ?>
                         </div>
+
                     </div>
 
                 </div>

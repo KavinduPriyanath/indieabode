@@ -102,6 +102,16 @@ class Jam extends Controller
             // $this->view->games = $this->model->currentDevGames($currentUser, $gamejam['submissionStartDate']);
         }
 
+        $jam = $this->model->showSingleJam($gameJamID);
+
+        if (substr($jam['votingEndDate'], 0, 10) < date("Y-m-d")) {
+            $jamEnded = true;
+        } else {
+            $jamEnded = false;
+        }
+
+        $this->view->jamEnded = $jamEnded;
+
         $this->view->submittedGames = $this->model->submittedgames($gameJamID);
 
         // print_r($sGames);
@@ -113,10 +123,10 @@ class Jam extends Controller
     function submitproject()
     {
 
-        if (isset($_POST['submit'])) {
+        if ($_POST['submission_made'] == true) {
             $gamerID = $_SESSION['id'];
             $gameID = $_POST['gameID'];
-            $gameJamID = $_GET['id'];
+            $gameJamID = $_POST['gamejamID'];
             $this->model->submitproject($gameID, $gameJamID, $gamerID);
             $this->model->UpdateGameSubmissionStatus($gameID, $gameJamID);
             $this->model->UpdateSubmissionCount($gameJamID, "added");
@@ -126,10 +136,10 @@ class Jam extends Controller
 
         }
 
-        $query = parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
-        parse_str($query, $result);
+        // $query = parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
+        // parse_str($query, $result);
 
-        header('Location:/indieabode/jam?' . http_build_query($result));
+        // header('Location:/indieabode/jam?' . http_build_query($result));
     }
 
 
@@ -138,6 +148,16 @@ class Jam extends Controller
         $gameJamID = $_GET['jam'];
 
         $gameID = $_GET['id'];
+
+        $jam = $this->model->showSingleJam($gameJamID);
+
+        if (substr($jam['votingEndDate'], 0, 10) < date("Y-m-d")) {
+            $jamEnded = true;
+        } else {
+            $jamEnded = false;
+        }
+
+        $this->view->jamEnded = $jamEnded;
 
         $this->view->jam = $this->model->showSingleJam($gameJamID);
 

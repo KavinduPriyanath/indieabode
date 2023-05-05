@@ -22,22 +22,6 @@ class Crowdfund_Model extends Model
         return $crowdfund;
     }
 
-    // function getGameDeveloper($game)
-    // {
-    //     $gameDeveloperID = $game['gameDeveloperID'];
-
-    //     $sql = "SELECT * FROM gamer WHERE gamerID='$gameDeveloperID'";
-
-    //     $stmt = $this->db->prepare($sql);
-
-    //     $stmt->execute();
-
-    //     $gameDeveloper = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    //     return $gameDeveloper;
-    // }
-
-
 
     function getScreenshots($id)
     {
