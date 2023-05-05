@@ -10,10 +10,13 @@
   margin-top: 1%;
   margin-bottom: 3%;
   padding: 1%;
-  width: 32%;
-  color: #000000;
   box-shadow: 0 2px 3px rgb(4 17 20);
   border-radius: 4px;
+  display:flex;
+  color: #0d575e;
+  font-size: 1.1em;
+  font-weight: 800;
+  gap: 2%;
 }
 
 .search-user h2{
@@ -21,18 +24,46 @@
   color: white;
 }
 
-.search-user{
-  color:#37647b;
+#search-user-input {
+  display: inline-block;
+  height: 40px;
+  margin: 0px 80px 9px 2px;
+  border-radius: 8px;
+  border: none;
+  padding: 8px 10px;
+  background-color: rgb(185 232 253 / 72%);
+  width: 100%;
+  color:#454749;
 }
 
-.search-user .user-mg-search input {
-	padding: 10px 16px;
-	border-radius: 5px;
-	outline: none;
-	background: #c8e0e4;
-	border: none;
-	transition: all .3s ease;
-	width: 90%;
+.search-user input[type=submit] {
+  background: #1f8983;
+  padding: 1%;
+  height: fit-content;
+  color: #e8e8f1;
+  font-size: 1em;
+  border: none;
+  border-radius: 15px;
+  margin-top: 21px;
+  margin-left: 5%;
+}
+
+.search-user-element select{
+  display: inline-block;
+  height: 40px;
+  margin: 21px 80px 9px 2px;
+  border-radius: 8px;
+  border: none;
+  padding: 8px 10px;
+  background-color: #aed5e8;
+  width: 100%;
+  color: #454749;
+  font-size: 1em;
+}
+
+.search-title h3{
+  font-size: 1.3em;
+  color: #18515c;
 }
 
 /*filter users by user type */
@@ -249,7 +280,7 @@ thead th:hover {
 }
 
 .del-user-btn{
-  background:#37647b;
+  background:#973752;
   padding: 3% 10% 3% 10%;
   color: white;
   font-size: 1em;
@@ -519,7 +550,24 @@ form input[type=checkbox] {
   justify-content: space-between;
 }
 
+/* The Modal (background) */
+.user-block-modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 75%;
+  top: 10%;
+  width: 25%;
+  height: 15%; 
+  overflow: auto; /* Enable scroll if needed */
+}
 
+/* Modal Content/Box */
+.user-modal-content {
+  padding: 20px;
+  border: 1px solid #888;
+  width: 100%;
+}
 
 
 

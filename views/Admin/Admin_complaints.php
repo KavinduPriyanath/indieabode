@@ -91,20 +91,26 @@
                 </thead>
 				
 				<tbody>
-					<?php foreach ($this->complaints as $complaint) { ?>
+					<?php if (empty($this->complaints)) { ?>
 						<tr>
-							<td><?php echo $complaint['complaintID']; ?></td>
-							<td><?php echo $complaint['reason']; ?></td>
-							<td><?php echo $complaint['description']; ?></td>
-							<td><?php echo $complaint['type']; ?></td>
-							<td><?php echo $complaint['gamerID']; ?></td>
-							<td>
-								<label class="switch">
-									<input type="checkbox" id="toggle-switch" value="1" <?php echo $complaint['checked'] ? 'checked' : ''; ?> onclick="toggleSwitchClicked(this, <?php echo $complaint['complaintID']; ?>, this.checked ? 1 : 0)" data-previous-value="<?php echo $complaint['checked'] ? 1 : 0 ?>">
-									<span class="slider round"></span>
-								</label>
-							</td>
+							<td colspan="6" style="text-align: center; color: #a62247; font-size: 1.1em;">No results found.</td>
 						</tr>
+					<?php } else { ?>
+						<?php foreach ($this->complaints as $complaint) { ?>
+							<tr>
+								<td><?php echo $complaint['complaintID']; ?></td>
+								<td><?php echo $complaint['reason']; ?></td>
+								<td><?php echo $complaint['description']; ?></td>
+								<td><?php echo $complaint['type']; ?></td>
+								<td><?php echo $complaint['gamerID']; ?></td>
+								<td>
+									<label class="switch">
+										<input type="checkbox" id="toggle-switch" value="1" <?php echo $complaint['checked'] ? 'checked' : ''; ?> onclick="toggleSwitchClicked(this, <?php echo $complaint['complaintID']; ?>, this.checked ? 1 : 0)" data-previous-value="<?php echo $complaint['checked'] ? 1 : 0 ?>">
+										<span class="slider round"></span>
+									</label>
+								</td>
+							</tr>
+						<?php } ?>
 					<?php } ?>
 				</tbody>
             </table>
