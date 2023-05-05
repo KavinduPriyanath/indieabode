@@ -67,20 +67,24 @@
             </div>
             <div class="backer-count"><?= $this->crowdfund['backers']; ?></div>
             <div class="backers">backers</div>
-            <div class="days-left">3</div>
-            <div class="days-caption">days to go</div>
+            <?php if ($this->expired == true) { ?>
+                <div class="expired-msg">This Crowdfund has been expired</div>
+            <?php } else { ?>
+                <div class="days-left"><?= $this->days ?></div>
+                <div class="days-caption">days to go</div>
 
-            <br>
-            <div class="btn" data-modal-target="#modal">Share</div>
-            <div class="btn" data-modal-target="#donation-modal">Back this Game</div>
-            <div class="semibtnbox">
-                <div class="semi-btn">Remind Me<i class="fa fa-bookmark-o"></i></div>
-                <div class="semi-btn">Notify me on Launch<i class="fa fa-bell-o"></i></div>
-            </div>
-            <div class="warning">
-                After backing this project you will not be able to request for any
-                refundss
-            </div>
+                <br>
+                <div class="btn" data-modal-target="#modal">Share</div>
+                <div class="btn" data-modal-target="#donation-modal">Back this Game</div>
+                <div class="semibtnbox">
+                    <div class="semi-btn">Remind Me<i class="fa fa-bookmark-o"></i></div>
+                    <div class="semi-btn">Notify me on Launch<i class="fa fa-bell-o"></i></div>
+                </div>
+                <div class="warning">
+                    After backing this project you will not be able to request for any
+                    refundss
+                </div>
+            <?php } ?>
         </div>
     </div>
     <div class="crowdfund-content">
@@ -319,7 +323,8 @@
                     if (t == "2") {
                         alert(t);
                     } else {
-                        window.location = "/indieabode/crowdfund?id=" + crowdfundID;
+                        // window.location = "/indieabode/crowdfund?id=" + crowdfundID;
+                        window.location.reload();
                     }
 
                 }

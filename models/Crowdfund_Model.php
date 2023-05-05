@@ -105,6 +105,34 @@ class Crowdfund_Model extends Model
         $stmt->execute();
     }
 
+    function UpdateCrowdfundProgress($crowdfundID, $amount)
+    {
+
+        $sql = "SELECT * FROM crowdfund WHERE crowdFundID='$crowdfundID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $crowdfund = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $backersCount = $crowdfund['backers'] + 1;
+
+        $currentAmount = $crowdfund['currentAmount'];
+
+        $paymentGatewayCut = ($amount / 100) * (3.3);
+
+        $lastDonationShare = $amount - $paymentGatewayCut;
+
+        $updatedCurrentAmount = $currentAmount + $lastDonationShare;
+
+        $updateSQL = "UPDATE crowdfund SET currentAmount='$updatedCurrentAmount', backers='$backersCount' WHERE crowdFundID='$crowdfundID'";
+
+        $updateStmt = $this->db->prepare($updateSQL);
+
+        $updateStmt->execute();
+    }
+
     function AllBackers($crowdfundId)
     {
 
@@ -163,5 +191,27 @@ class Crowdfund_Model extends Model
         $updateStmt = $this->db->prepare($updateSQL);
 
         $updateStmt->execute();
+    }
+
+    function IndieAbodeShare($crowdfundID, $CollectedTotal)
+    {
+
+        $siteShare = ($CollectedTotal / 100) * 5;
+
+        $sql = "INSERT INTO site_crowdfund_revenue(crowdfundID, siteShare) VALUES ('$crowdfundID', ''$siteShare)";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+    }
+
+    function SiteShareCollected($crowdfundID)
+    {
+
+        $sql = "UPDATE crowdfund SET siteShareCollected=1 WHERE crowdFundID='$crowdfundID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
     }
 }
