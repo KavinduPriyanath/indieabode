@@ -186,7 +186,7 @@
 
 
     <script>
-        <?php if (count($_GET) == 1 || $_GET['page'] == 1) { ?>
+        <?php if (!isset($_GET['page']) || $_GET['page'] == 1) { ?>
             document.getElementById("prev").style.pointerEvents = "none";
         <?php } else if ($_GET['page'] == $this->gamesPagesCount) { ?>
             document.getElementById("next").style.pointerEvents = "none";

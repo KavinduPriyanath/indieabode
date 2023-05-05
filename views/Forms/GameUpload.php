@@ -47,7 +47,7 @@
                             <div class="tagline-div">
                                 <label for="game-tagline">Tagline</label><br>
                                 <p>Shown when we link your game to other pages</p>
-                                <input type="text" name="game-tagline" id="game-tagline" minlength="40" maxlength="70" placeholder="Short Description about your game" />
+                                <input type="text" name="game-tagline" id="game-tagline" minlength="40" maxlength="200" placeholder="Short Description about your game" />
                                 <div class="error-msg" id="gameTaglineCheck"></div><br><br>
                             </div>
 

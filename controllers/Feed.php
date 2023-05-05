@@ -15,5 +15,4 @@ class Feed extends Controller
 
         $this->view->render('Feeds/Feed');
     }
-
-// ccc
+}

@@ -39,7 +39,7 @@ include 'includes/navbar.php';
 
             <a href="/indieabode/jam?id=<?= $this->jam['gameJamID'] ?>">Overview</a>
             <a href="/indieabode/jam/submission?id=<?= $this->jam['gameJamID'] ?>" id="submissionPage">Submissions</a>
-            <a href="/indieabode/jam/results?id=<?= $this->jam['gameJamID'] ?>">Results</a>
+            <a href="/indieabode/jam/results?id=<?= $this->jam['gameJamID'] ?>" id="resultPage">Results</a>
         </div>
 
         <hr id="topic-break">
@@ -224,6 +224,13 @@ include 'includes/navbar.php';
     <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
 
     <script src="<?php echo BASE_URL; ?>public/js/reportModal.js"></script>
+
+    <script>
+        <?php if ($this->jamEnded == false) { ?>
+            document.getElementById("resultPage").style.color = "grey";
+            document.getElementById("resultPage").style.pointerEvents = "none";
+        <?php } ?>
+    </script>
 
     <script>
         $(document).ready(function() {

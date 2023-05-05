@@ -22,6 +22,40 @@ class Crowdfund extends Controller
 
             $this->view->crowdfund = $this->model->showSingleCrowdfund($crowdfundID);
 
+            $thisCrowdfund = $this->model->showSingleCrowdfund($crowdfundID);
+
+            //Get the remaining Days Left to go of the crowdfunding
+            $todayDate = date("Y-m-d");
+
+            $endDate = $thisCrowdfund['deadline'];
+
+            $origin = new DateTime($todayDate);
+            $target = new DateTime($endDate);
+
+            $interval = $origin->diff($target);
+
+            $daysLeft = $interval->format('%R%a');
+
+            $this->view->days = $interval->format('%a');;
+
+            //Check whether the crowdfund has expired or not
+            if ($daysLeft == "+0" || substr($daysLeft, 0, 1) == "-") {
+                $this->view->expired = true;
+
+                //Check whether the crowdfund has reached its goal
+                if ($thisCrowdfund['currentAmount'] > $thisCrowdfund['expectedAmount']) {
+
+                    //If crowdfund succeeded then get 5% cut
+                    $this->model->IndieAbodeShare($crowdfundID, $thisCrowdfund['currentAmount']);
+
+                    //Mark crowdfund revenue share collected by Indieabode
+                    $this->model->SiteShareCollected($crowdfundID);
+                }
+            } else {
+                $this->view->expired = false;
+            }
+
+
             // $this->view->gameDeveloper = $this->model->getGameDeveloper($this->model->showSingleGame($gameID));
 
             $this->view->screenshots = $this->model->getScreenshots($crowdfundID);
@@ -41,12 +75,7 @@ class Crowdfund extends Controller
         }
     }
 
-    // function reviews()
-    // {
-    //     $this->view->game = $this->model->showSingleGame($_GET['id']);
 
-    //     $this->view->render('Reviews/Game-Reviews');
-    // }
 
     function donation()
     {
@@ -65,7 +94,7 @@ class Crowdfund extends Controller
         // }
 
         // $amount = $asset['assetPrice'];
-        $amount = 30.00;
+        $amount = $donationAmount;
         $merchant_id = "1222729";
         $order_id = uniqid();
         $merchant_secret = "MjczNjU0OTYzMzM3NDA3NzYzMjczNzEyMjI2MjM4MTQ3MjE2OTkxMg==";
@@ -121,8 +150,11 @@ class Crowdfund extends Controller
 
         $developerEmail = $downloadingDev['email'];
 
+        //Update Donations table for donation history
         $this->model->successfulDonation($_GET['id'], $_SESSION['id'], $amount, $orderId);
 
+        //Update backers count, current amount of the crowdfund after payment gateway cut
+        $this->model->UpdateCrowdfundProgress($_GET['id'], $amount);
 
         //sending an email receipt
         try {

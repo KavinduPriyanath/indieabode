@@ -24,6 +24,7 @@ include 'includes/navbar.php';
 <body>
 
 
+    <div class="flashMessage" id="flashMessage"></div>
 
     <div class="containerJam">
 
@@ -36,6 +37,7 @@ include 'includes/navbar.php';
 
             <a href="/indieabode/jam?id=<?= $this->gamejam['gameJamID'] ?>">Overview</a>
             <a href="/indieabode/jam/submission?id=<?= $this->gamejam['gameJamID'] ?>" id="submissionPage">Submissions</a>
+            <a href="/indieabode/jam/results?id=<?= $this->jam['gameJamID'] ?>" id="resultPage">Results</a>
         </div>
 
         <hr id="topic-break">
@@ -127,47 +129,6 @@ include 'includes/navbar.php';
                     </div>
                 </div>
 
-
-
-
-
-                <div class="box">
-                    <!-- <button data-modal-target="#modal">Submit</button> -->
-
-
-                    <div class="modal" id="modal">
-                        <div class="modal-header">
-                            <div class="title">Submit Your Project Here</div>
-                            <button data-close-button class="close-button">&times;</button>
-                        </div>
-
-                        <div class="modal-body">
-                            <form action="/indieabode/jam/submitproject?id=<?= $this->gamejam['gameJamID'] ?>" type="submit" method="POST">
-                                <div class="card-box">
-                                    <span class="details">Select Your Game to Submit Here</span>
-                                    <br>
-                                    <!-- <input type="text" name="gname" placeholder="Game name" required> -->
-                                    <select id="type" name="gameID" required>
-                                        <?php foreach ($this->games as $game) { ?>
-                                            <option value="<?= $game['gameID'] ?>"><?= $game['gameName'] ?></option>
-                                        <?php } ?>
-
-                                    </select>
-                                </div>
-
-                                <div class="button">
-                                    <input type="submit" name="submit" id="submit-submission" value="Submit Project">
-                                </div>
-
-
-                            </form>
-                        </div>
-                    </div>
-                    <div id="overlay"></div>
-
-                </div>
-
-
                 <!-- </form> -->
 
 
@@ -196,6 +157,40 @@ include 'includes/navbar.php';
     </div>
 
 
+    <div class="box">
+
+        <div class="modal" id="modal">
+            <div class="modal-header">
+                <div class="title">Submit Your Project Here</div>
+                <button data-close-button class="close-button">&times;</button>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="card-box">
+                    <span class="details">Select Your Game to Submit Here</span>
+                    <br>
+                    <!-- <input type="text" name="gname" placeholder="Game name" required> -->
+                    <select id="type" name="gameID" required>
+                        <?php foreach ($this->games as $game) { ?>
+                            <option value="<?= $game['gameID'] ?>"><?= $game['gameName'] ?></option>
+                        <?php } ?>
+
+                    </select>
+                </div>
+
+                <div class="button">
+                    <!-- <input type="submit" name="submit" id="submit-submission" value="Submit Project"> -->
+                    <div class="submission-btn" id="submit-submission">Submit</div>
+                </div>
+
+
+                </form>
+            </div>
+        </div>
+        <div id="overlay"></div>
+
+    </div>
 
 
 
@@ -270,6 +265,38 @@ include 'includes/navbar.php';
 
             });
 
+            //adding a submission to the gamejam
+            $('#submit-submission').click(function() {
+
+                let gamejamID = <?= $_GET['id'] ?>;
+                let submittedGame = $('select#type').children("option:selected").val();
+
+                var data = {
+                    'gamejamID': gamejamID,
+                    'gameID': submittedGame,
+                    'submission_made': true
+                };
+
+                $.ajax({
+                    url: "/indieabode/jam/submitproject",
+                    method: "POST",
+                    data: data,
+                    success: function(response) {
+
+                        $('#modal').removeClass("active");
+                        $('#overlay').removeClass("active");
+
+
+                        $("#flashMessage").html('Your Submission has been saved')
+                        $("#flashMessage").fadeIn(1000);
+
+                        setTimeout(function() {
+                            $("#flashMessage").fadeOut("slow");
+                        }, 4000);
+                    }
+                })
+
+            });
 
             var count_id1 = "<?= $this->gamejam['submissionStartDate']; ?>";
             var count_id2 = "<?= $this->gamejam['submissionEndDate']; ?>";
@@ -387,10 +414,14 @@ include 'includes/navbar.php';
 
                     document.getElementById("submissionPage").style.color = "grey";
                     document.getElementById("submissionPage").style.pointerEvents = "none";
+                    document.getElementById("resultPage").style.color = "grey";
+                    document.getElementById("resultPage").style.pointerEvents = "none";
 
 
                 } else if (startsIn <= 0 && endsIn > 0) {
 
+                    document.getElementById("resultPage").style.color = "grey";
+                    document.getElementById("resultPage").style.pointerEvents = "none";
 
                     // document.getElementById("submit3").style.display = 'none';
                     document.getElementById('startsEnd').innerHTML = "Ends In";
@@ -405,6 +436,8 @@ include 'includes/navbar.php';
                 } else if (endsIn < 0 && votingEndsIn > 0) {
 
 
+                    document.getElementById("resultPage").style.color = "grey";
+                    document.getElementById("resultPage").style.pointerEvents = "none";
 
                     // document.getElementById("submit2").style.display = 'none';
                     // document.getElementById('developerJoin').style.display = "none";

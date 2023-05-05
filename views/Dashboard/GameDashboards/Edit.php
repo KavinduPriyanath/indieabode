@@ -58,7 +58,7 @@
                                     <div class="tagline-div">
                                         <label id="game-tagline" for="game-tagline">Tagline</label><br>
                                         <p>Shown when we link your game to other pages</p>
-                                        <input type="text" name="game-tagline" id="game-tagline" minlength="40" maxlength="70" value="<?= $this->game['gameTagline'] ?>" placeholder="Short Description about your game" /><br><br>
+                                        <input type="text" name="game-tagline" id="game-tagline" minlength="40" maxlength="200" value="<?= $this->game['gameTagline'] ?>" placeholder="Short Description about your game" /><br><br>
                                     </div>
 
                                     <!--classification details-->

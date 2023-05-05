@@ -37,10 +37,10 @@
 
                 <?php foreach ($this->posttypes as $posttype) { ?>
                     <div class="elements">
-                        <input type="checkbox" name="posttypes[]" id="Windows" class="checkbox" value="<?= $posttype['postType']; ?>" <?php if (in_array($posttype['postType'], $this->checked)) {
-                                                                                                                                            echo "checked";
-                                                                                                                                        } ?> />
-                        <label for="Windows"><?= $posttype['postType']; ?></label>
+                        <input type="checkbox" name="posttypes[]" id="<?= $posttype['id']; ?>" class="checkbox" value="<?= $posttype['postType']; ?>" <?php if (in_array($posttype['postType'], $this->checked)) {
+                                                                                                                                                            echo "checked";
+                                                                                                                                                        } ?> />
+                        <label for="<?= $posttype['id']; ?>"><?= $posttype['postType']; ?></label>
                     </div>
                 <?php } ?>
 

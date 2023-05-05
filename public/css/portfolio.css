@@ -162,6 +162,16 @@ h2{
     text-align: justify;
 }
 
+.modernWay {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+            line-clamp: 2; 
+    -webkit-box-orient: vertical;
+ }
+
+
 .game-classification {
     margin: 0px 0px 0px 10px;
     padding-bottom: 10px;

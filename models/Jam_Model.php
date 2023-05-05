@@ -88,7 +88,7 @@ class Jam_Model extends Model
 
     function currentDevGames($developerID, $submissionStartDate)
     {
-        $sql = "SELECT * FROM freegame WHERE gameDeveloperID = '$developerID' AND gamePrice='0' AND created_at > '$submissionStartDate'";
+        $sql = "SELECT * FROM freegame WHERE gameDeveloperID = '$developerID' AND gamePrice='0' AND created_at > '$submissionStartDate' AND gameVisibility='public'";
 
         $stmt = $this->db->prepare($sql);
 

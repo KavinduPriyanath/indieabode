@@ -50,8 +50,8 @@
             <div class="card">
                 <div class="game-name"><?= $this->game['gameName']; ?></div>
                 <div class="second-rows">
-                    <div class="game-type">Base Game</div>
-                    <div class="price">Free</div>
+                    <div class="game-type"><?= $this->game['gameType'] ?></div>
+                    <div class="price"><?= $this->game['gamePrice'] ?></div>
                 </div>
                 <div class="game-tagline">
                     <?= $this->game['gameTagline']; ?>

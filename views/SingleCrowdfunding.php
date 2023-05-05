@@ -67,20 +67,24 @@
             </div>
             <div class="backer-count"><?= $this->crowdfund['backers']; ?></div>
             <div class="backers">backers</div>
-            <div class="days-left">3</div>
-            <div class="days-caption">days to go</div>
+            <?php if ($this->expired == true) { ?>
+                <div class="expired-msg">This Crowdfund has been expired</div>
+            <?php } else { ?>
+                <div class="days-left"><?= $this->days ?></div>
+                <div class="days-caption">days to go</div>
 
-            <br>
-            <div class="btn" data-modal-target="#modal">Share</div>
-            <div class="btn" data-modal-target="#donation-modal">Back this Game</div>
-            <div class="semibtnbox">
-                <div class="semi-btn">Remind Me<i class="fa fa-bookmark-o"></i></div>
-                <div class="semi-btn">Notify me on Launch<i class="fa fa-bell-o"></i></div>
-            </div>
-            <div class="warning">
-                After backing this project you will not be able to request for any
-                refundss
-            </div>
+                <br>
+                <div class="btn" data-modal-target="#modal">Share</div>
+                <div class="btn" data-modal-target="#donation-modal">Back this Game</div>
+                <div class="semibtnbox">
+                    <div class="semi-btn">Remind Me<i class="fa fa-bookmark-o"></i></div>
+                    <div class="semi-btn">Notify me on Launch<i class="fa fa-bell-o"></i></div>
+                </div>
+                <div class="warning">
+                    After backing this project you will not be able to request for any
+                    refundss
+                </div>
+            <?php } ?>
         </div>
     </div>
     <div class="crowdfund-content">
@@ -148,20 +152,20 @@
                 <p>Support "game name" to "crowdfund goal - develop"</p>
                 <input type="text" name="donation-amount" id="donation-amount">
                 <div class="donation-presets">
-                    <div class="preset" id="two" onclick="Donation('2.00')">
-                        $2.00
+                    <div class="preset" id="two" onclick="Donation('30.00')">
+                        $30.00
                     </div>
-                    <div class="preset" id="five" onclick="Donation('5.00')">
-                        $5.00
-                    </div>
-                    <div class="preset" id="ten" onclick="Donation('10.00')">
-                        $10.00
-                    </div>
-                    <div class="preset" id="fifty" onclick="Donation('50.00')">
+                    <div class="preset" id="five" onclick="Donation('50.00')">
                         $50.00
                     </div>
-                    <div class="preset" id="hundred" onclick="Donation('100.00')">
+                    <div class="preset" id="ten" onclick="Donation('100.00')">
                         $100.00
+                    </div>
+                    <div class="preset" id="fifty" onclick="Donation('150.00')">
+                        $150.00
+                    </div>
+                    <div class="preset" id="hundred" onclick="Donation('200.00')">
+                        $200.00
                     </div>
                 </div>
                 <div class="donate-btn" onclick="MakeADonation(<?= $this->crowdfund['crowdFundID'] ?>, document.getElementById('donation-amount').value)">
@@ -319,7 +323,8 @@
                     if (t == "2") {
                         alert(t);
                     } else {
-                        window.location = "/indieabode/crowdfund?id=" + crowdfundID;
+                        // window.location = "/indieabode/crowdfund?id=" + crowdfundID;
+                        window.location.reload();
                     }
 
                 }

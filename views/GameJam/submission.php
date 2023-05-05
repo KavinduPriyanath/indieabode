@@ -22,7 +22,7 @@ include 'includes/navbar.php';
 
 
 
-<div class="containerJam">
+<div class="containerJam2">
 
 
     <?php if ($this->jam) : ?>
@@ -33,7 +33,7 @@ include 'includes/navbar.php';
         <div class="topics">
             <a href="/indieabode/jam?id=<?= $this->jam['gameJamID'] ?>">Overview</a>
             <a href="/indieabode/jam/submission?id=<?= $this->jam['gameJamID'] ?>">Submissions</a>
-            <a href="/indieabode/jam/results?id=<?= $this->jam['gameJamID'] ?>">Results</a>
+            <a href="/indieabode/jam/results?id=<?= $this->jam['gameJamID'] ?>" id="resultPage">Results</a>
         </div>
 
         <hr id="topic-break">
@@ -44,7 +44,7 @@ include 'includes/navbar.php';
 
 
 
-    <div class="card-box">
+    <div class="heading-submission">
         <span class="details">Submitted Projects</span>
     </div>
 
@@ -61,7 +61,7 @@ include 'includes/navbar.php';
                         <h3><?= $submittedGame['gameName'] ?></h3>
                         <p>Free</p>
                     </div>
-                    <div class="tagline"><?= $submittedGame['gameTagline'] ?></div>
+                    <div class="tagline modernWay"><?= $submittedGame['gameTagline'] ?></div>
                 </div>
             </a>
         <?php } ?>
@@ -79,5 +79,12 @@ include 'includes/footer.php';
 
 <script src="<?php echo BASE_URL; ?>public/js/sidefilter.js"></script>
 <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
+
+<script>
+    <?php if ($this->jamEnded == false) { ?>
+        document.getElementById("resultPage").style.color = "grey";
+        document.getElementById("resultPage").style.pointerEvents = "none";
+    <?php } ?>
+</script>
 
 </html>
