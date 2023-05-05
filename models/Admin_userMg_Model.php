@@ -63,6 +63,8 @@ class Admin_userMg_Model extends Model
         return $user_data;
     }
 
+    
+
     function delete_user($user_id){
         $sql = "UPDATE gamer SET accountStatus=0 WHERE gamerID = ".$user_id;
 

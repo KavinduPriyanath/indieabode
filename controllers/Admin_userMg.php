@@ -60,35 +60,104 @@ class Admin_userMg extends Controller
 
     public function deleteUser($userid){
         $result = $this->model->delete_user($userid);
+        $del_user = $this->model->download_user($userid);
+        $userMail = $del_user['email'];
+        //$userMail = 'nadeedarshika1999@gmail.com';
         if ($result === true) {
-            //echo "<script>alert('User deleted successfully.'); window.location.href = '/indieabode/Admin_userMg/viewFilteredBlockUser/block';</script>";
-
             //send an email to the blocked user
 
-            
+            $mail = new PHPMailer(true);
+            $mail->isSMTP();
+            $mail->SMTPAuth = true;
+
+            $mail->Host = "smtp.gmail.com";
+            $mail->SMTPSecure = "tls";
+            $mail->Port = 587;
+
+            $mail->Username = "tech2019man@gmail.com";
+            $mail->Password = "qohvqzbaieleualv";
+
+            $mail->setFrom("tech2019man@gmail.com", "Indieabode Admin");
+            $mail->addAddress($userMail);
+
+            $email_template = '
+                <html>
+                <body>
+                    <p>Dear '.$del_user['username'].',</p>
+                    <p>We regret to inform you that your account on Indieabode has been blocked by our administrators. This action has been taken in response to a violation of our terms of service</p>
+                    <p>We take violations of our terms of service very seriously, and we ask that you please refrain from any further actions that may result in the suspension or termination of your account. If you have any questions or concerns about the suspension of your account, please contact us at '.$_SESSION['email'].'.</p>
+                    <p>Thank you for your cooperation and understanding.</p>
+                    <p>Sincerely,</p>
+                    <p>Indieabode Administration</p>
+                </body>
+                </html>
+            ';
+
+
+
+            $mail->isHTML(true);
+            $mail->Subject = "Your account has been blocked on Indieabode";
+            $mail->Body = $email_template;
+
+            $mail->send();
             
             $this->view->users = $this->model->viewBlockUser('block');
             $this->view->render('Admin/Admin_userMg');
         } else {
             $this->view->users = $this->model->viewUser();
 
-            // $this->view->active=$usertype;
-            // echo "<script>alert('Error deleting user.'); window.location.href = '/indieabode/Admin_userMg';</script>";
             $this->view->render('Admin/Admin_userMg');
         }
     }
 
     public function unblockUser($userid){
         $result = $this->model->unblock_user($userid);
+        $del_user = $this->model->download_user($userid);
+        $userMail = $del_user['email'];
+        //$userMail = 'nadeedarshika1999@gmail.com';
         if ($result === true) {
-            // $this->view->active=$usertype;
-            $this->view->users = $this->model->viewUser();
-            //echo "<script>alert('User deleted successfully.'); window.location.href = '/indieabode/Admin_userMg/viewFilteredBlockUser/block';</script>";
+
+            $mail = new PHPMailer(true);
+
+            $mail->isSMTP();
+            $mail->SMTPAuth = true;
+
+            $mail->Host = "smtp.gmail.com";
+            $mail->SMTPSecure = "tls";
+            $mail->Port = 587;
+
+            $mail->Username = "tech2019man@gmail.com";
+            $mail->Password = "qohvqzbaieleualv";
+
+            $mail->setFrom("tech2019man@gmail.com", "Indieabode Admin");
+            $mail->addAddress($userMail);
+
+            $email_template = '
+                <html>
+                <body>
+                    <p>Dear '.$del_user['username'].',</p>
+                    <p>We are writing to inform you that your Indieabode account has been unblocked. You can now access your account and enjoy all the features that our platform has to offer.</p>
+                    <p>We apologize for any inconvenience caused by the account block and we hope that you understand that our goal is to provide a safe and secure platform for all our users. We appreciate your patience and cooperation in this matter.</p>
+                    <p>If you have any questions or concerns, please do not hesitate to contact us at '.$_SESSION['email'].'.</p>
+                    <p>Thank you for choosing Indieabode as your gaming platform.</p>
+                    <p>Best regards,</p>
+                    <p>Indieabode Administration</p>
+                </body>
+                </html>
+            ';
+
+
+
+            $mail->isHTML(true);
+            $mail->Subject = "Your Indieabode account has been unblocked";
+            $mail->Body = $email_template;
+
+            $mail->send();
             
+            $this->view->users = $this->model->viewUser();
             $this->view->render('Admin/Admin_userMg');
         } else {
             $this->view->users = $this->model->viewBlockUser('block');
-           // echo "<script>alert('Error deleting user.'); window.location.href = '/indieabode/Admin_userMg';</script>";
             $this->view->render('Admin/Admin_userMg');
         }
 
