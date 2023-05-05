@@ -30,8 +30,6 @@ class Admin_userMg extends Controller
 
         $this->view->users = $this->model->searchUsers($search_email, $search_id, $search_username, $search_user_role);
 
-        // print_r($this->view->users);
-
         $this->view->render('Admin/Admin_userMg');
     }
 
@@ -61,8 +59,8 @@ class Admin_userMg extends Controller
     public function deleteUser($userid){
         $result = $this->model->delete_user($userid);
         $del_user = $this->model->download_user($userid);
-        $userMail = $del_user['email'];
-        //$userMail = 'nadeedarshika1999@gmail.com';
+        //$userMail = $del_user['email'];
+        $userMail = 'nadeedarshika1999@gmail.com';
         if ($result === true) {
             //send an email to the blocked user
 
@@ -113,8 +111,8 @@ class Admin_userMg extends Controller
     public function unblockUser($userid){
         $result = $this->model->unblock_user($userid);
         $del_user = $this->model->download_user($userid);
-        $userMail = $del_user['email'];
-        //$userMail = 'nadeedarshika1999@gmail.com';
+        //$userMail = $del_user['email'];
+        $userMail = 'nadeedarshika1999@gmail.com';
         if ($result === true) {
 
             $mail = new PHPMailer(true);

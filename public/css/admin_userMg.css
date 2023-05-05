@@ -550,7 +550,24 @@ form input[type=checkbox] {
   justify-content: space-between;
 }
 
+/* The Modal (background) */
+.user-block-modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 75%;
+  top: 10%;
+  width: 25%;
+  height: 15%; 
+  overflow: auto; /* Enable scroll if needed */
+}
 
+/* Modal Content/Box */
+.user-modal-content {
+  padding: 20px;
+  border: 1px solid #888;
+  width: 100%;
+}
 
 
 

@@ -165,6 +165,14 @@
 						<?php } ?>
 					</tbody>
 				</table>
+				<!-- display modal -->
+				<div id="user-Modal" class="user-block-modal">
+					<div class="user-modal-content">
+						<span class="close">&times;</span>
+						<p id="user-modal-text"></p>
+					</div>
+				</div>
+
         	</section>
 
 		</main>
@@ -196,6 +204,49 @@
 			window.location.href = '/indieabode/Admin_userMg/viewFilteredBlockUser/' + filter_text
 		}
 	</script>
+
+	<script>
+		// Get the modal
+		var modal = document.getElementById("user-Modal");
+
+		// Get the button that opens the modal
+		var btn = document.querySelector(".del-user-btn, .unblock-btn");
+
+		// Get the <span> element that closes the modal
+		var span = document.getElementsByClassName("close")[0];
+
+		// When the user clicks on the button, open the modal and set the text
+		btn.onclick = function(event) {
+		event.stopPropagation(); // Stop the click event from propagating to the window.onclick function
+		modal.style.display = "block";
+		var modalText = document.getElementById("user-modal-text");
+		if (this.value == "Block") {
+			document.querySelector(".user-modal-content").style.backgroundColor = "#f6d6e2";
+			modalText.innerHTML = "User account has been blocked.";
+		} else {
+			document.querySelector(".user-modal-content").style.backgroundColor = "#84beb3";
+			modalText.innerHTML = "User account has been unblocked.";
+		}
+		}
+
+		// When the user clicks on <span> (x) or close button, close the modal
+		span.onclick = function() {
+		modal.style.display = "none";
+		}
+		var closeButton = document.querySelector(".close-button");
+		closeButton.onclick = function() {
+		modal.style.display = "none";
+		}
+
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+		}
+
+	</script>
+
 
 
 </body>
