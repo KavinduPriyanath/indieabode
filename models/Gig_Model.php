@@ -231,6 +231,7 @@ class Gig_Model extends Model
         $stmt->execute();
     }
 
+    //Set gig status of the gig table to 1 to indicate that this gig has been purchased
     function gigPurchased($gigID)
     {
 
@@ -261,6 +262,16 @@ class Gig_Model extends Model
         $updateStmt->execute();
     }
 
+    function RemoveGigRequest($gigID, $developerID, $publisherID)
+    {
+
+        $sql = "DELETE FROM requestedgigs WHERE gigID='$gigID' AND developerID='$developerID' AND publisherID='$publisherID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+    }
+
     function GetUser($gamerID)
     {
 
@@ -275,13 +286,14 @@ class Gig_Model extends Model
         return $user;
     }
 
+    //Showing Latest gigs which does not have a publisher yet, excluding the currently viewing gig
     function RecommendedGigs($currentID)
     {
 
         $sql = "SELECT gig.gigID, gig.gigID, gig.gigName, gig.gigTagline, gig.gigCoverImg, 
         gamer.firstName, gamer.lastName, gamer.avatar, gamer.trustrank
         FROM gig INNER JOIN gamer ON gamer.gamerID = gig.gameDeveloperID 
-        WHERE NOT gig.gigID='$currentID' ORDER BY gig.created_at 
+        WHERE NOT gig.gigID='$currentID' AND NOT gig.gigStatus = 1 ORDER BY gig.created_at 
         DESC LIMIT 4";
 
         $stmt = $this->db->prepare($sql);

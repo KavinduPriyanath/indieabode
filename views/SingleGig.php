@@ -7,12 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <title>Indieabode</title>
 
     <style>
         <?php
         include 'public/css/gig.css';
         include 'public/css/gigs.css';
+        include 'public/css/shareModal.css';
         ?>
     </style>
 
@@ -28,7 +30,7 @@
     <!--Gig title goes here-->
     <h2 id="gig-title"><?= $this->gig['gigName']; ?></h2>
 
-    <div class="first-row">
+    <div class="first-row-gig">
         <div class="left-gig-page">
             <div class="image-slider">
                 <div class="slider">
@@ -55,11 +57,12 @@
                     </div>
                 </div>
             </div>
+            <div class="gig-details-heading">More About the Gig</div>
             <div class="rich-text"><?= $this->gig['gigDetails']; ?></div>
         </div>
         <div class="right-gig-page">
             <div class="gig-summary">
-                <h4>Game Summary</h4>
+                <h4>Order Summary</h4>
                 <div class="summary-details">
                     <div class="row">
                         <div class="col-1">Game Name</div>
@@ -112,7 +115,7 @@
                 <div class="request-button" id="request-button">Request Order</div>
 
 
-                <div class="share-button">Share</div>
+                <div class="share-button" data-modal-target="#share-modal">Share</div>
             </div>
             <div class="demo-download-button">
                 <a href="/indieabode/gig/downloadDemo?id=<?= $this->gig['game'] ?>">
@@ -147,11 +150,6 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="second-row">
-
-
     </div>
 
 
@@ -191,6 +189,36 @@
         </div>
     </div>
 
+    <!-- Share Modal -->
+    <div class="share-modal">
+        <div class="modal" id="share-modal">
+            <div class="modal-header">
+                <div class="title">Help by sharing</div>
+                <button data-close-button class="close-button">&times;</button>
+            </div>
+
+            <div class="content">
+                <p>Shared this game with your friends.</p>
+                <hr>
+                <p>Share this link via</p>
+                <ul class="icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-telegram-plane"></i></a>
+                </ul>
+                <p>Or copy link</p>
+                <div class="field">
+                    <i class="url-icon uil uil-link"></i>
+                    <input type="text" readonly value=" http://localhost/indieabode/game?id=<?= $this->game['gameID'] ?>" id="copytext">
+                    <button id="copy">Copy</button>
+                </div>
+            </div>
+        </div>
+        <div id="overlay"></div>
+    </div>
+
 
     <?php
     include 'includes/footer.php';
@@ -199,6 +227,8 @@
     <script src="<?php echo BASE_URL; ?>public/js/gig.js"></script>
 
     <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
+
+    <script src="<?php echo BASE_URL; ?>public/js/reportModal.js"></script>
 
 
 

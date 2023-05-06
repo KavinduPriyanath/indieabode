@@ -13,7 +13,7 @@ class Gigs_Model extends Model
     {
         $sql = "SELECT gig.gigID, gig.gigID, gig.gigName, gig.gigTagline, gig.gigCoverImg, 
         gamer.firstName, gamer.lastName, gamer.avatar, gamer.trustrank
-        FROM gig INNER JOIN gamer ON gamer.gamerID = gig.gameDeveloperID";
+        FROM gig INNER JOIN gamer ON gamer.gamerID = gig.gameDeveloperID WHERE gigStatus != 1";
 
         $stmt = $this->db->prepare($sql);
 
