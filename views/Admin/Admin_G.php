@@ -16,6 +16,8 @@
 
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+	
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@3.3.2/dist/chart.min.js"></script>
 </head>
 
 <body>
@@ -70,12 +72,6 @@
 					<h1>Game Dashboard</h1>
 					<div class="game-db-body">
 						<div class="game-db-first-row">
-							<!-- <div class="game-db-total-tx">
-								<div class="game-db-card">
-								<h3>Total Transactions</h3>
-								<p class="game-db-card-value">$10,000</p>
-								</div>
-							</div> -->
 							<div class="game-db-doughnut-chart">
 								<canvas id="game-db-pie-chart" width="300" height="200"></canvas>
 							</div>
@@ -88,9 +84,6 @@
 							</div>
 						</div>
 						<div class="game-db-second-row">
-							<!-- <div class="game-db-calender">
-								<input type="date" id="game-db-date-picker">
-							</div> -->
 							<div class="game-db-report-table">
 								<input type="date" id="game-db-date-picker">
 								<h3 class="game-db-table-heading">Payment Report on 2022.07.08th day</h3>
@@ -114,6 +107,20 @@
 									<td>$50</td>
 									</tr>
 									<tr>
+									<td>1</td>
+									<td>Game A</td>
+									<td>kavindu</td>
+									<td>2023-04-30</td>
+									<td>$50</td>
+									</tr>
+									<tr>
+									<td>1</td>
+									<td>Game A</td>
+									<td>kavindu</td>
+									<td>2023-04-30</td>
+									<td>$50</td>
+									</tr>
+									<tr>
 									<td>2</td>
 									<td>Game B</td>
 									<td>himash</td>
@@ -123,47 +130,19 @@
 								</tbody>
 								</table>
 							</div>
+
+							<div class="transaction-graph-game-tx">
+								<h3>Transaction Graph</h3>
+								<canvas id="game-tx-line-graph" style="height: 150px; width: 270px;"></canvas>
+							</div>
 						</div>
 						<div class="game-db-third-row">
-
+						<div class="downloads-uploads-graph">
+							<h3>Total Downloads and Uploads</h3>
+							<canvas id="downloads-uploads-bar-graph"></canvas>
+						</div>
 						</div>
 					</div>
-					<script>
-						window.onload = function() 
-						{
-							var gamePieChart = document.getElementById('game-db-pie-chart').getContext('2d');
-							var myChart = new Chart(gamePieChart, {
-								type: 'doughnut',
-								backgroundColor: "#6997a4",
-								data: {
-									labels: ['Early Access Games', 'Upcoming Games', 'Released Games'],
-									datasets: [{
-										label: '# of Games',
-										data: [25, 40, 35],
-										backgroundColor: [
-											'#509998',
-											'#5c7777',
-											'#245252'
-										],
-										borderColor: [
-											'#509998',
-											'#5c7777',
-											'#245252'
-										],
-										borderWidth: 1
-									}]
-								},
-								options: {
-									responsive: true,
-									maintainAspectRatio: false,
-									legend: {
-										position: 'right'
-									}
-								}
-							});
-						}
-
-					</script>
 				</div>
 
                 
@@ -179,142 +158,107 @@
     ?>
 
 	<script>
-		window.onload = function() 
-		{
+	window.onload = function() {
 
-		var chart = new CanvasJS.Chart("chartContainer", {
-			animationEnabled: true,
-			title: {
-				text: ""
-			},
+
+		var gamePieChart = document.getElementById('game-db-pie-chart').getContext('2d');
+		var myChart = new Chart(gamePieChart, {
+			type: 'doughnut',
 			backgroundColor: "#6997a4",
-			data: [{
-				type: "pie",
-				startAngle: 240,
-				yValueFormatString: "##0",
-				indexLabel: "{y} {label} ",
-				dataPoints: [
-					{y: <?php echo $this->developerCount; ?>, label: "Game Developers",color: "#208ba6"},
-					{y: <?php echo $this->gamerCount; ?>, label: "Gamers",color: "#0d424f"},
-					{y: <?php echo $this->publisherCount; ?>, label: "Game Publishers",color: "#bcf2ff"},
-					{y: <?php echo $this->jamorganizerCount; ?>, label: "Game Jam Organizers",color: "#687679"},
-					{y: <?php echo $this->assetcreatorCount; ?>, label: "Asset Creators",color: "#406687"}
-				]
+			data: {
+				labels: ['Early Access Games', 'Upcoming Games', 'Released Games'],
+				datasets: [{
+					label: '# of Games',
+					data: [25, 40, 35],
+					backgroundColor: [
+						'#509998',
+						'#5c7777',
+						'#245252'
+					],
+					borderColor: [
+						'#509998',
+						'#5c7777',
+						'#245252'
+					],
+					borderWidth: 1
+				}]
+			},
+			options: {
+				responsive: true,
+				maintainAspectRatio: false,
+				legend: {
+					position: 'right'
+				}
+			}
+		});
+
+		var ctx2 = document.getElementById('game-tx-line-graph').getContext('2d');
+		var gameTxGraph = new Chart(ctx2, {
+		type: 'line',
+		data: {
+			labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July','August','September','October','November','December'],
+			datasets: [{
+			data: [12, 19, 3, 5, 2, 3, 10,11,45,67,90,21],
+			borderColor: 'rgba(75, 192, 192, 1)',
+			backgroundColor: 'rgba(75, 192, 192, 0.2)',
+			// fill: false
+			fill: true, // fill the area under the graph
+            backgroundColor: 'rgba(75, 192, 192, 0.2)', // color of the area under the graph
 			}]
-		});
-		chart.render();
-
-
-		var ctx = document.getElementById('userChart').getContext('2d');
-			var userChart = new Chart(ctx, {
-			type: 'horizontalBar',
-			data: {
-				labels: ['Active Users', 'Blocked Users'],
-				datasets: [{
-				label: 'User Status',
-				data: [85, 15], // Replace with actual values
-				backgroundColor: [
-					'rgba(6, 96, 94, 0.5)',
-					'rgba(84, 31, 46, 0.5)'
-				],
-				borderColor: [
-					'rgba(6, 96, 94, 1)',
-					'rgba(84, 31, 46, 1)'
-				],
-				borderWidth: 2
-				}]
+		},
+		options: {
+			legend: {
+			display: false
 			},
-			options: {
-				scales: {
-				xAxes: [{
-					ticks: {
-					beginAtZero: true,
-					fontColor: 'white' // set font color for x-axis labels
-					},
-					gridLines: {
-					display: false // hide x-axis grid lines
-					}
-				}],
-				yAxes: [{
-					ticks: {
-					fontColor: 'white' // set font color for y-axis labels
-					},
-					gridLines: {
-					display: false // hide y-axis grid lines
-					}
-				}]
+			scales: {
+			yAxes: [{
+				display: false
+			}],
+			xAxes: [{
+				gridLines: {
+				display: false
+				},
+				ticks: {
+				display: false
 				}
+			}]
 			}
-			});
-		// chart.render();
-
-		var ctx2 = document.getElementById('myChart2').getContext('2d');
-		var myChart2 = new Chart(ctx2, {
-			type: 'line',
-			data: {
-				labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-				datasets: [{
-						label: 'Sales',
-						data: [12, 19, 3, 5, 2, 3, 10],
-						borderColor: 'rgba(75, 192, 192, 1)',
-						backgroundColor: 'rgba(75, 192, 192, 0.2)',
-						fill: false
-					},
-					{
-						label: 'Expenses',
-						data: [5, 2, 8, 1, 6, 9, 4],
-						borderColor: 'rgba(255, 99, 132, 1)',
-						backgroundColor: 'rgba(255, 99, 132, 0.2)',
-						fill: false
-					}
-				]
-			},
-			options: {
-				scales: {
-					yAxes: [{
-						ticks: {
-							beginAtZero: true
-						}
-					}]
-				}
-			}
-		});
-
-		//game transaction graph
-		var ctx3 = document.getElementById('txChartGame').getContext('2d');
-		var myChart2 = new Chart(ctx3, {
-			type: 'line',
-			data: {
-				labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-				datasets: [{
-						label: 'Sales',
-						data: [12, 19, 3, 5, 2, 3, 10],
-						borderColor: 'rgba(75, 192, 192, 1)',
-						backgroundColor: 'rgba(75, 192, 192, 0.2)',
-						fill: false
-					},
-					{
-						label: 'Expenses',
-						data: [5, 2, 8, 1, 6, 9, 4],
-						borderColor: 'rgba(255, 99, 132, 1)',
-						backgroundColor: 'rgba(255, 99, 132, 0.2)',
-						fill: false
-					}
-				]
-			},
-			options: {
-				scales: {
-					yAxes: [{
-						ticks: {
-							beginAtZero: true
-						}
-					}]
-				}
-			}
-		});
-		// chart.render();
 		}
+		});
+
+		var ctx3 = document.getElementById('downloads-uploads-bar-graph').getContext('2d');
+		var downloadsUploadsGraph = new Chart(ctx3, {
+			type: 'bar',
+			data: {
+				labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5'],
+				datasets: [{
+					label: 'Total Downloads',
+					data: [12, 19, 3, 5, 2],
+					backgroundColor: 'rgba(255, 99, 132, 0.2)',
+					borderColor: 'rgba(255,99,132,1)',
+					borderWidth: 1
+				}, {
+					label: 'Total Uploads',
+					data: [8, 12, 9, 7, 3],
+					backgroundColor: 'rgba(54, 162, 235, 0.2)',
+					borderColor: 'rgba(54, 162, 235, 1)',
+					borderWidth: 1
+				}]
+			},
+			options: {
+				scales: {
+					yAxes: [{
+						ticks: {
+							beginAtZero: true
+						}
+					}]
+				}
+			}
+		});
+	}
 	</script>
+
+
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 
 	<script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>

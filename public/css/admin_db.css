@@ -727,7 +727,34 @@ input:checked + .slider:before {
 }
 
 .game-db-tx-card{
-    display:flex;
+  display: flex;
+  gap: 5%;
+  background-color: #5e8794;
+  padding: 3%;
+  font-size: 1.3em;
+  margin-right: 20%;
+}
+
+.game-db-tx-card h3{
+  color: #0a2e4d;
+  font-weight: bolder;
+}
+
+.game-db-tx-card h2{
+  color: #224d67;
+  margin-top: 3%;
+}
+
+.transaction-graph-game-tx{
+  background-color: #1b505a;
+  padding: 3% 1% 3% 1%;
+}
+
+.transaction-graph-game-tx h3{
+  text-align: center;
+  font-size: 1.3em;
+  color: #c8dfe4;
+  margin-bottom: 25px;
 }
   
   
