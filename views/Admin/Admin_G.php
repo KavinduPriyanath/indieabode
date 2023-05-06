@@ -77,7 +77,7 @@
 							</div>
 							<div class="game-db-tx-card">
 								<h3>Total Transactions</h3>
-								<h2>$5678.00</h2>
+								<h2>$<?php echo $this->totalTxGames; ?></h2>
 							</div>
 							<div class="game-db-view-games">
 								<button class="game-db-btn">View All Games</button>
@@ -169,7 +169,8 @@
 				labels: ['Early Access Games', 'Upcoming Games', 'Released Games'],
 				datasets: [{
 					label: '# of Games',
-					data: [25, 40, 35],
+					// data: [25, 40, 35],
+					data: <?php echo json_encode($this->gameTypes); ?>,
 					backgroundColor: [
 						'#509998',
 						'#5c7777',
