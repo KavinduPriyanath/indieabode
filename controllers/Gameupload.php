@@ -119,9 +119,11 @@ class Gameupload extends Controller
         );
 
         //For creating a record in Game_stats table to keep track of views, downloads, and revenues
-        $this->model->UpdateGameStats($gameName, $_SESSION['id']);
+        $addedGame = $this->model->UpdateGameStats($gameName, $_SESSION['id']);
 
-        header('location:/indieabode/');
+        // header('location:/indieabode/');
+
+        header('location:' . BASE_URL . 'game?id=' . $addedGame['gameID']);
     }
 
     // function file()

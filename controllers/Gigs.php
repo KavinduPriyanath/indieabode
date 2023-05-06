@@ -22,7 +22,34 @@ class Gigs extends Controller
             }
         }
 
-        $this->view->gigs = $this->model->showAllGigs();
+        if (isset($_GET['genre']) || isset($_GET['stage']) || isset($_GET['cost']) || isset($_GET['share'])) {
+
+            $checkedGenres = [];
+            $checkedStage = null;
+            $checkedCost = null;
+            $checkedShare = null;
+
+            if (isset($_GET['genre'])) {
+                $checkedGenres = $_GET['genre'];
+            }
+
+            if (isset($_GET['stage'])) {
+                $checkedStage = $_GET['stage'];
+            }
+
+            if (isset($_GET['cost'])) {
+                $checkedCost = $_GET['cost'];
+            }
+
+            if (isset($_GET['share'])) {
+                $checkedShare = $_GET['share'];
+            }
+
+            $this->view->gigs = $this->model->showFilteredGigs($checkedGenres, $checkedStage, $checkedCost, $checkedShare);
+        } else {
+            $this->view->gigs = $this->model->showAllGigs();
+        }
+
 
         $this->view->render('Main/Gigs');
     }

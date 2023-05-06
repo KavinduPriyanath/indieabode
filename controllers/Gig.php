@@ -281,6 +281,9 @@ class Gig extends Controller
 
         $this->model->AddPublisherToGame($gigID, $publisherID);
 
+        //Remove the gig order from requests table
+        $this->model->RemoveGigRequest($gigID, $developerID, $publisherID);
+
         //sending an email receipt
         try {
             $mail = new PHPMailer(true);

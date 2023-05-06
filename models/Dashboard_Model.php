@@ -734,8 +734,6 @@ class Dashboard_Model extends Model
                 game_stats.views, game_stats.downloads, game_stats.ratings, game_stats.revenue FROM freegame 
                 INNER JOIN game_stats ON freegame.gameID = game_stats.gameID WHERE gamePublisherID = '$currentUser'";
 
-        // $sql = "SELECT * FROM freegame WHERE gamePublisherID = '$currentUser'";
-
         $stmt = $this->db->prepare($sql);
 
         $stmt->execute();

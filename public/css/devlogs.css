@@ -39,7 +39,7 @@
     position: absolute;
     z-index: 1;
     top: 170px;
-    left: 175px;
+    left: 155px;
     /* background-color: lightgray; */
     opacity: 0.9;
     overflow-x: hidden;
@@ -52,7 +52,7 @@
     padding: 10px 10px 10px 30px;
     text-decoration: none;
     font-size: 22px;
-    color: rgb(60, 54, 54);
+    color: rgb(23, 20, 46);
     display: block;
     transition: 0.3s;
 }
@@ -108,7 +108,7 @@ input[type="radio"] {
     /* background-color: rgb(195, 194, 194); */
     font-family: 'Kreon', serif;
     padding: 10px 20px 5px 15px;
-    margin: 15px 15px 0px 175px;
+    margin: 15px 15px 0px 155px;
     border-radius: 3.5px;
     cursor: pointer;
 }
@@ -145,7 +145,7 @@ input[type="radio"] {
     background-color: #86AFEC;
     border-width: 0px;
     height: 0.5px;
-    margin: 0px 150px 15px 175px;
+    margin: 0px 165px 15px 158px;
 }
 
 #filter-on {
@@ -166,7 +166,7 @@ input[type="radio"] {
 .container {
     display: flex;
     flex-wrap: wrap;
-    margin-left: 175px;
+    margin-left: 155px;
     transition: margin 0.3s ease;
 }
 

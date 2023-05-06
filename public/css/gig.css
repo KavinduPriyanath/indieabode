@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Kreon:wght@300;400;500;600;700&display=swap');
 
-.first-row {
+.first-row-gig {
     display: flex;
+    justify-content: left;
 }
 
 .image-slider {
@@ -176,13 +177,20 @@
 }
 
 /*Rich Text Styles */
+.gig-details-heading {
+  margin-left: 163px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
 .rich-text {
   background-color: rgba(113, 158, 176, 0.785);
   width: 800px;
   height: 300px;
   margin-bottom: 30px;
   margin-top: 20px;
-  margin-left: 165px;
+  margin-left: 160px;
+  padding: 6px 10px;
 }
 
 /* Profile Info */
@@ -247,7 +255,7 @@
     font-size: 0.9em;
   }
 
-  .first-row {
+  .first-row-gig {
     display: block;
   }
 
@@ -552,7 +560,7 @@
 .bottom-container {
   display: flex;
   flex-wrap: wrap;
-  margin-left: 175px;
+  margin-left: 155px;
   transition: margin 0.3s ease;
 }
 
@@ -561,7 +569,7 @@
 }
 
 #more-heading {
-  margin: 30px 0px 15px 180px;
+  margin: 10px 0px 15px 165px;
 }
 
 .more {
