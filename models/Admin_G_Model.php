@@ -9,7 +9,6 @@ class Admin_G_Model extends Model
     }
 
     function getGameTypeCount($gameType){
-      // $sql = "SELECT COUNT(*) AS total FROM freegame WHERE releaseStatus = ".$gameType;
       $sql = "SELECT COUNT(*) AS total FROM freegame WHERE releaseStatus = '$gameType'";
 
 
@@ -37,6 +36,30 @@ class Admin_G_Model extends Model
 
       return $totalTxGame;
     }
+
+    function getTxSummary(){
+      $sql = "SELECT purchasedDate, SUM(purchasedPrice) AS totalPurchases FROM game_purchases GROUP BY purchasedDate";
+      $stmt = $this->db->prepare($sql);
+      if ($stmt->execute()) {
+          $txSummary = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  
+          $dates = array();
+          $totals = array();
+  
+          foreach ($txSummary as $row) {
+              $date = $row['purchasedDate'];
+              $total = round($row['totalPurchases'], 2);
+              $dates[] = $date;
+              $totals[] = $total;
+          }
+  
+          return array('dates' => $dates, 'totals' => $totals);
+      } else {
+          // handling the error here, by returning an empty array
+          return array('dates' => array(), 'totals' => array());
+      }
+    }
+    
 
     // function recentActivities()
     // {

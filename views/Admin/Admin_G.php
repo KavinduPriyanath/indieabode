@@ -79,6 +79,7 @@
 								<h3>Total Transactions</h3>
 								<h2>$<?php echo $this->totalTxGames; ?></h2>
 							</div>
+							<div class=""></div>
 							<div class="game-db-view-games">
 								<button class="game-db-btn">View All Games</button>
 							</div>
@@ -139,7 +140,7 @@
 						<div class="game-db-third-row">
 						<div class="downloads-uploads-graph">
 							<h3>Total Downloads and Uploads</h3>
-							<canvas id="downloads-uploads-bar-graph"></canvas>
+							<canvas id="downloads-uploads-bar-graph" style="height: 220px; width: 450px;"></canvas>
 						</div>
 						</div>
 					</div>
@@ -197,9 +198,9 @@
 		var gameTxGraph = new Chart(ctx2, {
 		type: 'line',
 		data: {
-			labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July','August','September','October','November','December'],
+			labels:<?php echo json_encode($this->txDates); ?>,
 			datasets: [{
-			data: [12, 19, 3, 5, 2, 3, 10,11,45,67,90,21],
+			data: <?php echo json_encode($this->txTotals); ?>,
 			borderColor: 'rgba(75, 192, 192, 1)',
 			backgroundColor: 'rgba(75, 192, 192, 0.2)',
 			// fill: false
@@ -235,23 +236,44 @@
 				datasets: [{
 					label: 'Total Downloads',
 					data: [12, 19, 3, 5, 2],
-					backgroundColor: 'rgba(255, 99, 132, 0.2)',
-					borderColor: 'rgba(255,99,132,1)',
+					backgroundColor: 'rgba(55, 100, 123, 0.7)',
+					borderColor: 'rgba(55,100,123,1)',
 					borderWidth: 1
 				}, {
 					label: 'Total Uploads',
 					data: [8, 12, 9, 7, 3],
-					backgroundColor: 'rgba(54, 162, 235, 0.2)',
-					borderColor: 'rgba(54, 162, 235, 1)',
+					backgroundColor: 'rgba(36, 82, 82, 0.7)',
+					borderColor: 'rgba(36, 82, 82, 1)',
 					borderWidth: 1
 				}]
 			},
+			// options: {
+			// 	scales: {
+			// 		yAxes: [{
+			// 			ticks: {
+			// 				beginAtZero: true
+			// 			}
+			// 		}]
+			// 	}
+			// }
 			options: {
 				scales: {
+					xAxes: [{
+					display: false,
+					gridLines: {
+						display: false,
+						drawBorder: false
+					}
+					}],
 					yAxes: [{
-						ticks: {
-							beginAtZero: true
-						}
+					display: false,
+					gridLines: {
+						display: false,
+						drawBorder: false
+					},
+					ticks: {
+						beginAtZero: true
+					}
 					}]
 				}
 			}
