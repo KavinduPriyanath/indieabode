@@ -198,6 +198,8 @@ class Gameupload_Model extends Model
             "0",
             "0"
         ]);
+
+        return $uploadedGame;
     }
 
     function GameNameAvailabilityCheck($gameName, $userID)

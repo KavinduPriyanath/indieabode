@@ -175,33 +175,6 @@
                 <div class="buy-btn" id="view-library">In Library</div>
                 <div class="buy-btn" id="wishlist">Wishlist</div>
 
-                <div class="cartbutton">
-
-                    <!-- <?php if (!$this->hasClaimed && $this->game['gamePrice'] != "0") { ?>
-
-                        <?php if ($this->hasInCart) { ?>
-
-                            <a href="/indieabode/cart" style="text-decoration: none;">
-                                <div class="buy-btn" id="cart-btn">View In Cart</div>
-                            </a>
-                        <?php } else { ?>
-
-                            <a href="/indieabode/game/addToCart?id=<?= $this->game['gameID'] ?> " style="text-decoration: none;">
-                                <div class="buy-btn" id="cart-btn">Add to cart</div>
-                            </a>
-                        <?php } ?>
-
-                    <?php } else if (!$this->hasClaimed && $this->game['gamePrice'] == "0") { ?>
-
-                        <div class="buy-btn" id="add-to-library">Add to Library</div>
-
-                    <?php } else if ($this->hasClaimed) { ?>
-                        <a href="/indieabode/library" style="text-decoration: none;">
-                            <div class="buy-btn" id="cart-btn">In Library</div>
-                        </a>
-                    <?php } ?> -->
-
-                </div>
 
                 <div class="row" id="first-row-right">
                     <p class="title">Release Date</p>

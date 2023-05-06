@@ -53,6 +53,14 @@ class Devlog extends Controller
 
             $this->view->game = $this->model->GetGame($gameId);
 
+            $thisGame = $this->model->GetGame($gameId);
+
+            if ($thisGame['gamePrice'] == "0") {
+                $this->view->gamePrice = "FREE";
+            } else if ($thisGame['gamePrice'] != "0") {
+                $this->view->gamePrice = "$" . number_format(floatval($thisGame['gamePrice']), 2);
+            }
+
             $currentdevlog = $this->model->showSingleDevlog($devlogID);
 
 

@@ -26,113 +26,126 @@
 
     <!-- Filters-->
 
+
     <div class="side-nav" id="side-menu">
-        <p>Platform</p>
+        <form action="" method="GET">
+            <p>Genre</p>
 
-        <div class="type-filter">
-            <div class="elements">
-                <input type="checkbox" name="" id="Windows" class="checkbox" />
-                <label for="Windows">Windows</label>
+            <div class="type-filter">
+                <div class="elements">
+                    <input type="checkbox" name="genre[]" id="action" class="checkbox" value="Action" />
+                    <label for="action">Action</label>
+                </div>
+
+                <div class="elements">
+                    <input type="checkbox" name="genre[]" id="adventure" class="checkbox" value="Adventure" />
+                    <label for="adventure">Adventure</label>
+                </div>
+
+                <div class="elements">
+                    <input type="checkbox" name="genre[]" id="rpg" class="checkbox" value="RPG" />
+                    <label for="rpg">RPG</label>
+                </div>
+
+                <div class="elements">
+                    <input type="checkbox" name="genre[]" id="racing" class="checkbox" value="Racing" />
+                    <label for="racing">Racing</label>
+                </div>
+
+                <div class="elements">
+                    <input type="checkbox" name="genre[]" id="simulation" class="checkbox" value="Simulation" />
+                    <label for="simulation">Simulation</label>
+                </div>
+
+                <div class="elements">
+                    <input type="checkbox" name="genre[]" id="strategy" class="checkbox" value="Strategy" />
+                    <label for="strategy">Strategy</label>
+                </div>
             </div>
 
-            <div class="elements">
-                <input type="checkbox" name="" id="Mac" class="checkbox" />
-                <label for="Mac">Mac</label>
+            <p>Current Stage</p>
+
+            <div class="type-filter">
+                <div class="elements">
+                    <input type="radio" name="stage" id="1month" class="checkbox" value="1" />
+                    <label for="1month">1 Month</label>
+                </div>
+
+                <div class="elements">
+                    <input type="radio" name="stage" id="2month" class="checkbox" value="2" />
+                    <label for="2month">2 Month</label>
+                </div>
+
+                <div class="elements">
+                    <input type="radio" name="stage" id="3month" class="checkbox" value="3" />
+                    <label for="3month">3 Month</label>
+                </div>
+
+                <div class="elements">
+                    <input type="radio" name="stage" id="4month" class="checkbox" value="4" />
+                    <label for="4month">4 Month</label>
+                </div>
+
+                <div class="elements">
+                    <input type="radio" name="stage" id="5month" class="checkbox" value="5" />
+                    <label for="5month">5 Month</label>
+                </div>
+
+                <div class="elements">
+                    <input type="radio" name="stage" id="6month" class="checkbox" value="6" />
+                    <label for="6month">6 Month</label>
+                </div>
+
+                <div class="elements">
+                    <input type="radio" name="stage" id="12month" class="checkbox" value="12" />
+                    <label for="12month">12 Month</label>
+                </div>
             </div>
 
-            <div class="elements">
-                <input type="checkbox" name="" id="Linux" class="checkbox" />
-                <label for="Linux">Linux</label>
+            <p>Expected Cost</p>
+
+            <div class="type-filter">
+                <div class="elements">
+                    <input type="radio" name="cost" id="below500" class="checkbox" value="500-" />
+                    <label for="below500">Below $500</label>
+                </div>
+
+                <div class="elements">
+                    <input type="radio" name="cost" id="above500" class="checkbox" value="500+" />
+                    <label for="above500">Above $500</label>
+                </div>
+
+                <div class="elements">
+                    <input type="radio" name="cost" id="above1000" class="checkbox" value="1000+" />
+                    <label for="above1000">Above $1000</label>
+                </div>
             </div>
 
-            <div class="elements">
-                <input type="checkbox" name="" id="Android" class="checkbox" />
-                <label for="Android">Android</label>
+            <p>Estimated Share</p>
+
+            <div class="type-filter">
+                <div class="elements">
+                    <input type="radio" name="share" id="below10" class="checkbox" value="10-" />
+                    <label for="below10">0%-10%</label>
+                </div>
+
+                <div class="elements">
+                    <input type="radio" name="share" id="10to50" class="checkbox" value="50-" />
+                    <label for="10to50">10%-50%</label>
+                </div>
+
+
+                <div class="elements">
+                    <input type="radio" name="share" id="above50" class="checkbox" value="50+" />
+                    <label for="above50">>50%</label>
+                </div>
+
+
             </div>
-
-            <div class="elements">
-                <input type="checkbox" name="" id="Web" class="checkbox" />
-                <label for="Webx">Web</label>
-            </div>
-        </div>
-
-        <p>Price</p>
-
-        <div class="type-filter">
-            <div class="elements">
-                <input type="radio" name="" id="Released" class="checkbox" />
-                <label for="Released">Free</label>
-            </div>
-
-            <div class="elements">
-                <input type="radio" name="" id="Early" class="checkbox" />
-                <label for="Early">5 or less</label>
-            </div>
-
-            <div class="elements">
-                <input type="radio" name="" id="Upcoming" class="checkbox" />
-                <label for="Upcoming">10 or less</label>
-            </div>
-        </div>
-
-        <p>Release Status</p>
-
-        <div class="type-filter">
-            <div class="elements">
-                <input type="checkbox" name="" id="Released" class="checkbox" />
-                <label for="Released">Released</label>
-            </div>
-
-            <div class="elements">
-                <input type="checkbox" name="" id="Early" class="checkbox" />
-                <label for="Early">Early Access</label>
-            </div>
-
-            <div class="elements">
-                <input type="checkbox" name="" id="Upcoming" class="checkbox" />
-                <label for="Upcoming">Upcoming</label>
-            </div>
-        </div>
-
-        <p>Features</p>
-
-        <div class="type-filter">
-            <div class="elements">
-                <input type="checkbox" name="" id="Released" class="checkbox" />
-                <label for="Released">Single Player</label>
-            </div>
-
-            <div class="elements">
-                <input type="checkbox" name="" id="Early" class="checkbox" />
-                <label for="Early">Multi-Player</label>
-            </div>
-
-            <div class="elements">
-                <input type="checkbox" name="" id="Upcoming" class="checkbox" />
-                <label for="Upcoming">Co-op</label>
-            </div>
-
-            <div class="elements">
-                <input type="checkbox" name="" id="Upcoming" class="checkbox" />
-                <label for="Upcoming">Puzzle</label>
-            </div>
-
-            <div class="elements">
-                <input type="checkbox" name="" id="Upcoming" class="checkbox" />
-                <label for="Upcoming">Achievements</label>
-            </div>
-
-            <div class="elements">
-                <input type="checkbox" name="" id="Upcoming" class="checkbox" />
-                <label for="Upcoming">Leaderboard</label>
-            </div>
-
-            <div class="elements">
-                <input type="checkbox" name="" id="Upcoming" class="checkbox" />
-                <label for="Upcoming">Prologues</label>
-            </div>
-        </div>
+            <button type="submit" id="filter-button">Apply</button>
+        </form>
     </div>
+
     <div class="upper-break">
         <div class="trigger" onclick="openSideMenu()">
             <i class="fa fa-angle-double-right" id="filter-off"></i>
