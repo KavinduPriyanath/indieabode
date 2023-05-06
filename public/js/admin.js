@@ -1,152 +1,20 @@
-// SIDEBAR DROPDOWN
-// const allDropdown = document.querySelectorAll('#sidebar .side-dropdown');
-// const sidebar = document.getElementById('sidebar');
 
-// allDropdown.forEach(item=> {
-// 	const a = item.parentElement.querySelector('a:first-child');
-// 	a.addEventListener('click', function (e) {
-// 		e.preventDefault();
-
-// 		if(!this.classList.contains('active')) {
-// 			allDropdown.forEach(i=> {
-// 				const aLink = i.parentElement.querySelector('a:first-child');
-
-// 				aLink.classList.remove('active');
-// 				i.classList.remove('show');
-// 			})
-// 		}
-
-// 		this.classList.toggle('active');
-// 		item.classList.toggle('show');
-// 	})
-// })
-
-
-
-
-
-// // SIDEBAR COLLAPSE
-// const toggleSidebar = document.querySelector('nav .toggle-sidebar');
-// const allSideDivider = document.querySelectorAll('#sidebar .divider');
-
-// if(sidebar.classList.contains('hide')) {
-// 	allSideDivider.forEach(item=> {
-// 		item.textContent = '-'
-// 	})
-// 	allDropdown.forEach(item=> {
-// 		const a = item.parentElement.querySelector('a:first-child');
-// 		a.classList.remove('active');
-// 		item.classList.remove('show');
-// 	})
-// } else {
-// 	allSideDivider.forEach(item=> {
-// 		item.textContent = item.dataset.text;
-// 	})
-// }
-
-// toggleSidebar.addEventListener('click', function () {
-// 	sidebar.classList.toggle('hide');
-
-// 	if(sidebar.classList.contains('hide')) {
-// 		allSideDivider.forEach(item=> {
-// 			item.textContent = '-'
-// 		})
-
-// 		allDropdown.forEach(item=> {
-// 			const a = item.parentElement.querySelector('a:first-child');
-// 			a.classList.remove('active');
-// 			item.classList.remove('show');
-// 		})
-// 	} else {
-// 		allSideDivider.forEach(item=> {
-// 			item.textContent = item.dataset.text;
-// 		})
+// function loadDashboard() {
+// 	window.location.href = "/indieabode/SiteDashboard";
 // 	}
-// })
 
+// 	function loadGameDashboard() {
+// 	window.location.href = "/indieabode/Admin_G";
+// 	}
 
+// 	function loadAssetsDashboard() {
+// 	window.location.href = "/indieabode/Admin_assetD";
+// 	}
 
+// 	function loadGameJamDashboard() {
+// 	window.location.href = "/indieabode/Admin_gameJamD";
+// 	}
 
-sidebar.addEventListener('mouseleave', function () {
-	if(this.classList.contains('hide')) {
-		allDropdown.forEach(item=> {
-			const a = item.parentElement.querySelector('a:first-child');
-			a.classList.remove('active');
-			item.classList.remove('show');
-		})
-		allSideDivider.forEach(item=> {
-			item.textContent = '-'
-		})
-	}
-})
-
-
-
-sidebar.addEventListener('mouseenter', function () {
-	if(this.classList.contains('hide')) {
-		allDropdown.forEach(item=> {
-			const a = item.parentElement.querySelector('a:first-child');
-			a.classList.remove('active');
-			item.classList.remove('show');
-		})
-		allSideDivider.forEach(item=> {
-			item.textContent = item.dataset.text;
-		})
-	}
-})
-
-
-// MENU
-const allMenu = document.querySelectorAll('main .content-data .head .menu');
-
-allMenu.forEach(item=> {
-	const icon = item.querySelector('.icon');
-	const menuLink = item.querySelector('.menu-link');
-
-	icon.addEventListener('click', function () {
-		menuLink.classList.toggle('show');
-	})
-})
-
-
-
-window.addEventListener('click', function (e) {
-	if(e.target !== imgProfile) {
-		if(e.target !== dropdownProfile) {
-			if(dropdownProfile.classList.contains('show')) {
-				dropdownProfile.classList.remove('show');
-			}
-		}
-	}
-
-	allMenu.forEach(item=> {
-		const icon = item.querySelector('.icon');
-		const menuLink = item.querySelector('.menu-link');
-
-		if(e.target !== icon) {
-			if(e.target !== menuLink) {
-				if (menuLink.classList.contains('show')) {
-					menuLink.classList.remove('show')
-				}
-			}
-		}
-	})
-})
-
-
-
-const prevBtn = document.querySelector('.prev-btn');
-const nextBtn = document.querySelector('.next-btn');
-const title = document.querySelector('.calendar-title');
-const tbody = document.querySelector('.calendar-table tbody');
-
-let date = new Date(); // set the initial date to today
-let year = date.getFullYear();
-let month = date.getMonth();
-
-function renderCalendar() {
-  // clear the calendar table
-  tbody.innerHTML = '';
-
-  // set the
-}
+// 	function loadGigsDashboard() {
+// 	window.location.href = "/indieabode/Admin_GigD";
+// 	}

@@ -13,6 +13,9 @@
 		include 'public/css/admin_db.css';
 		?>
 	</style>
+
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </head>
 
 <body>
@@ -56,22 +59,22 @@
 	<section id="content">
 		<main>
             <div class="dashboard-tabs-container">
-                <div class="db-btn-container">
-                    <button onclick="showPanel(0,'rgb(111 142 170)')">Main Dashboard</button>
-                    <button onclick="showPanel(1,'rgb(111 142 170)')">Game Dashboard</button>
-                    <button onclick="showPanel(2,'rgb(111 142 170)')">Assets Dashboard</button>
-                    <button onclick="showPanel(3,'rgb(111 142 170)')">Game Jam Dashboard</button>
-                    <button onclick="showPanel(4,'rgb(111 142 170)')">Gigs Dashboard</button>
-                </div>
+				<div class="db-btn-container">
+					<a href="<?php echo BASE_URL; ?>SiteDashboard">Main Dashboard</a>
+					<a href="<?php echo BASE_URL; ?>Admin_G" >Game Dashboard</a>
+					<a href="<?php echo BASE_URL; ?>Admin_assetD" >Assets Dashboard</a>
+					<a href="<?php echo BASE_URL; ?>Admin_gameJamD" >Game Jam Dashboard</a>
+					<a href="<?php echo BASE_URL; ?>Admin_GigD" >Gigs Dashboard</a>
+				</div>
 
 				<!-- Main Dashboard -->
-                <div class="tabPanel">
+                <div class="main-db-content">
 					<div class="db-panel">
 						<div class="first-row-db">
 							<div class="first-pie-chart-db">
 								<h3>User Chart </h3>
 								<div id="chartContainer" style="height: 370px; width: 100%;"></div>
-								<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+								<!-- <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script> -->
 							</div>
 							<div class="top-details-db">
 								<div class="most-popular-game popular-items">
@@ -121,51 +124,6 @@
 						</div>
 					</div>
 				</div>
-
-				<!-- Game Dashboard -->
-                <div class="tabPanel">
-					<div class="first-row-db">
-						<div class="game-tx-card">
-							<div class="card-topic">
-								<h3>Total Transactions</h3>
-							</div>
-							<div class="total-tx-amount">
-								$22345.00
-							</div>
-							<!-- <div class="tx-icon-card">
-								<i class='bx bx-money view-icon'></i>
-							</div> -->
-						</div>
-						<div class="tx-graph">
-							<canvas id="txChartGame"></canvas>
-						</div>
-						<div class="game-developer-prolific">
-							<div class="game-tx-card">
-								<div class="card-topic">
-									<h3>Total Transactions</h3>
-								</div>
-								<div class="total-tx-amount">
-									$22345.00
-								</div>
-								<!-- <div class="tx-icon-card">
-									<i class='bx bx-money view-icon'></i>
-								</div> -->
-							</div>
-						</div>
-					</div>
-					<div class="second-row-db">
-						<div class="line-chart-db">
-							<div id="chartContainer" style="height: 370px; width: 100%;"></div>
-							<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-						</div>
-						<div class="second-pie-chart-db">
-							<canvas id="userChart" style="height: 150px; width: 100%;"></canvas>
-						</div>
-					</div>
-				</div>
-                <div class="tabPanel">Assets Dashboard:Content</div>
-                <div class="tabPanel">Game Jam Dashboard:Content</div>
-                <div class="tabPanel">Gigs Dashboard:Content</div>
             </div>
 			
 		</main>
@@ -176,6 +134,7 @@
 	<?php
     include 'includes/footer.php';
     ?>
+
 	<script>
 		window.onload = function() 
 		{
@@ -311,7 +270,6 @@
 			}
 		});
 		// chart.render();
-
 		}
 	</script>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>

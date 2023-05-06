@@ -389,6 +389,8 @@ input:checked + .slider:before {
 }
 .dashboard-tabs-container .db-btn-container{
     height: 15%;
+    background-color: #265165;
+    margin-bottom: 2%;
 }
 .dashboard-tabs-container .db-btn-container button{
     width: 20%;
@@ -403,16 +405,6 @@ input:checked + .slider:before {
 }
 .dashboard-tabs-container .db-btn-container button:hover{
     background-color: #708894;
-}
-.dashboard-tabs-container .tabPanel{
-    height: 85%;
-    background-color: gray;
-    color: white;
-    text-align: center;
-    padding-top: 105px;
-    box-sizing: border-box;
-    font-size: 22px;
-    display: none;
 }
 
 .db-panel{
@@ -545,6 +537,199 @@ input:checked + .slider:before {
     text-decoration: none;
     cursor: pointer;
   }
+
+/* Game Dashboard styles */
+.game-db-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .game-db-first-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 96%;
+    margin-bottom: 20px;
+  }
+  
+  .game-db-total-tx {
+    display: flex;
+    }
+  
+  .game-db-card {
+    background-color: #506299;
+    border-radius: 10px;
+    padding: 20px;
+    margin-right: 20px;
+  }
+  
+  .game-db-card h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .game-db-card-value {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .game-db-view-games button {
+    background-color:#2f5271;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .game-db-view-games button:hover {
+    background-color: #36647b;
+  }
+  
+  .game-db-second-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 96%;
+    margin-bottom: 3%;
+  }
+  
+  .game-db-calender input[type="date"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .game-db-table-heading{
+    margin-bottom: -4%;
+    margin-left: -20%;
+    color: #94dcce;
+  }
+  
+  .game-db-report-table {
+    width: 70%;
+    background-color: #224d67;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .game-db-report-table button {
+    background-color: #337ab7;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    margin-left: 78%;
+  }
+  
+  .game-db-report-table button:hover {
+    background-color: #286090;
+  }
+  
+  .game-db-report-table table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .game-db-report-table th,
+  .game-db-report-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  .game-db-report-table th {
+    background-color: #1b505a;
+  }
+  
+  .game-db-report-table tr:nth-child(even) {
+    background-color:#2f5367;
+  }
+  
+  .game-db-report-table tr:hover {
+    background-color: #46697e;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .game-db-first-row {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .game-db-card {
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
+  
+    .game-db-view-games button {
+      margin-top: 20px;
+    }
+  
+    .game-db-second-row {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .game-db-calender {
+      margin-bottom: 20px;
+    }
+  
+    .game-db-report-table {
+      width: 100%;
+    }
+  }
+
+  .db-btn-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+}
+
+.db-btn-container a {
+    color: #a2c7d3;
+    text-align: center;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    width: 20%;
+}
+
+.db-btn-container a:hover {
+  background-color:#436b80;
+}
+
+.db-btn-container a.active {
+  background-color: blue;
+  color: white;
+}
+
+.main-db-content{
+    background-color: #7aa0af;
+    padding: 2%;
+}
+
+.main-db-content h1{
+    text-align: center;
+    color: #224d67;
+    font-weight: 1000;
+}
+
+.game-db-tx-card{
+    display:flex;
+}
+  
   
 
   
