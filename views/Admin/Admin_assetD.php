@@ -13,15 +13,18 @@
 		include 'public/css/admin_db.css';
 		?>
 	</style>
+
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+	
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@3.3.2/dist/chart.min.js"></script>
 </head>
 
 <body>
 
 	<?php
-
-    include 'includes/navbar.php';
-    ?>
-
+	include 'includes/navbar.php';
+	?>
 
 	<!-- SIDEBAR -->
 	<section id="sidebar">
@@ -30,9 +33,9 @@
 				<img src="/indieabode/public/images/Admin/admin-1.png" alt="user-image" class="rounded-circle" />
 			</div>
 			<div class="user-details">
-				<div class="user-role">Admin</div>
+				<div class="user-role"><?= $_SESSION['username']; ?></div>
 				<div class="email-address">
-					<div class="box">admin@gmail.com</div>
+					<div class="box"><?= $_SESSION['email']; ?></div>
 				</div>
 			</div>
 		</div>
@@ -40,18 +43,7 @@
 		<!-- <a href="#" class="brand"><i class='bx bxs-smile icon'></i>Indie Abode</a> -->
 		<ul class="side-menu">
 			<li class="divider" data-text="main">Main</li>
-
-			<li><a href="<?php echo BASE_URL; ?>SiteDashboard" class="active"><i class='bx bxs-dashboard icon'></i> Dashboard <i
-						class='bx bx-chevron-right icon-right'></i> </a></li>
-
-			<!-- <ul class="side-dropdown"> -->
-			<li><a href="<?php echo BASE_URL; ?>Admin_G"><i class='bx bxs-dashboard icon'></i>Game Dashboard</a></li>
-			<li><a href="<?php echo BASE_URL; ?>Admin_assetD"><i class='bx bxs-dashboard icon'></i>Asset Dashboard</a></li>
-			<li><a href="<?php echo BASE_URL; ?>Admin_GigD"><i class='bx bxs-dashboard icon'></i>Gigs Dashboard</a></li>
-			<li><a href="<?php echo BASE_URL; ?>Admin_crowdfundD"><i class='bx bxs-dashboard icon'></i>Crowdfund Dashboard</a></li>
-			<li><a href="<?php echo BASE_URL; ?>Admin_devlogsD"><i class='bx bxs-dashboard icon'></i>Devlogs Dashboard</a></li>
-			<li><a href="<?php echo BASE_URL; ?>Admin_gameJamD"><i class='bx bxs-dashboard icon'></i>Game Jam Dashboard</a></li>
-			<!-- </ul> -->
+			<li><a href="<?php echo BASE_URL; ?>SiteDashboard" class="active"><i class='bx bxs-dashboard icon'></i> Dashboard <i class='bx bx-chevron-right icon-right'></i> </a></li>
 			<li>
 				<a href="<?php echo BASE_URL; ?>Admin_complaints"><i class='bx bxs-message-square-error icon'></i> Complaints </a>
 			</li>
@@ -67,279 +59,194 @@
 
 	<!-- NAVBAR -->
 	<section id="content">
-
-		<!-- MAIN -->
 		<main>
-			<h1 class="title">Asset Dashboard</h1>
-			<!-- <ul class="breadcrumbs">
-				<li><a href="#" class="active">Dashboard/Asset Dashboard</a></li>
-			</ul> -->
-			<div class="info-data">
-				<div class="card db-card">
-					<div class="total-views">
-						<div class="main-total-view-left total-games">
-							<h3>Uploaded Assets</h3>
-							<div class="free-download">
-								Free Assets<br>
-								<h1>135</h1>
-							</div>
-							<div class="paid-download">
-								Paid Assets<br>
-								<h1>0</h1>
-							</div>
-							<!-- <h1>13567</h1> -->
-						</div>
-						<div class="main-total-view-right">
-							<i class="fa fa-upload fa-4x bx" aria-hidden="true"></i>
-						</div>
-					</div>
+            <div class="dashboard-tabs-container">
+				<div class="db-btn-container">
+					<a href="<?php echo BASE_URL; ?>SiteDashboard">Main Dashboard</a>
+					<a href="<?php echo BASE_URL; ?>Admin_G" >Game Dashboard</a>
+					<a href="<?php echo BASE_URL; ?>Admin_assetD" >Assets Dashboard</a>
+					<a href="<?php echo BASE_URL; ?>Admin_gameJamD" >Game Jam Dashboard</a>
+					<a href="<?php echo BASE_URL; ?>Admin_GigD" >Gigs Dashboard</a>
 				</div>
-				<div class="card db-card">
-					<div class="total-views">
-						<div class="main-total-view-left total-games">
-							<h3>Total Downloads</h3>
-							<div class="free-download">
-								Free Assets<br>
-								<h1>135</h1>
+				<div class="main-db-content">
+					<h1>Asset Dashboard</h1>
+					<div class="game-db-body">
+						<div class="game-db-first-row">
+							
+							<div class="game-db-tx-card  asset-tx-card">
+								<h3>Total Transactions</h3>
+								<h2>$5678.00</h2>
 							</div>
-							<div class="paid-download">
-								Paid Assets<br>
-								<h1>0</h1>
+							<div class="game-db-doughnut-chart">
+								<canvas id="game-db-pie-chart" width="300" height="200"></canvas>
 							</div>
-							<!-- <h1>135</h1> -->
+							<div class="game-db-view-games">
+								<button class="game-db-btn">View All Assets</button>
+							</div>
 						</div>
-						<div class="main-total-view-right">
-							<i class="fa fa-download bx fa-4x" aria-hidden="true"></i>
-						</div>
-					</div>
-				</div>
-				<div class="card db-card">
-					<div class="total-views">
-						<div class="main-total-view-left">
-							<h3>Total Transactions</h3><br>
-							<h1>Rs: 1356700.00</h1>
-						</div>
-						<div class="main-total-view-right">
-							<i class="fa fa-money bx fa-4x" aria-hidden="true"></i>
-						</div>
-					</div>
+						<div class="game-db-second-row">
+							
+							<div class="transaction-graph-game-tx  tx-asset-graph">
+								<h3>Transaction Graph</h3>
+								<canvas id="game-tx-line-graph" style="height: 150px; width: 270px;"></canvas>
+							</div>
 
-				</div>
-			</div>
-			<div class="data">
-				<div class="content-data active-user">
-					<div class="recentOrders">
-						<div class="cardHeader">
-							<h2>Recent Activities</h2>
-							<a href="#" class="btn">View All</a>
-						</div>
-
-						<table>
-							<thead>
-								<tr>
-									<td>Name</td>
-									<td>User Role</td>
-									<td>Task</td>
-									<td>Time</td>
-								</tr>
-							</thead>
-
-							<!-- <tbody>
-								<tr>
-									<td>Kavindu Priyanath</td>
-									<td>Game Developer</td>
-									<td>Uploaded a Asset</td>
-									<td><span>07.39 a.m</span></td>
-								</tr>
-
-								<tr>
-									<td>Himash Liyanage</td>
-									<td>Game Publisher</td>
-									<td>Downloaded a Asset</td>
-									<td><span>08.23 a.m</span></td>
-								</tr>
-
-								<tr>
-									<td>Yeshan Pasindu</td>
-									<td>Asset Creator</td>
-									<td>Uploaded a Asset</td>
-									<td><span>09.00 a.m</span></td>
-								</tr>
-
-								<tr>
-									<td>Nadee Darshika</td>
-									<td>Game Jam Organizer</td>
-									<td>Downloaded a Asset</td>
-									<td><span>09.12 a.m</span></td>
-								</tr>
-
-								<tr>
-									<td>Prasad Darshana</td>
-									<td>Gamer</td>
-									<td>Downloaded a Asset</td>
-									<td><span>09.35 a.m</span></td>
-								</tr>
-
-								<tr>
-									<td>Nethmi Imanya</td>
-									<td>Game Developer</td>
-									<td>Uploaded a Asset</td>
-									<td><span>12.01 p.m</span></td>
-								</tr>
-
-								<tr>
-									<td>Umasha Kaumadi</td>
-									<td>Gamer</td>
-									<td>Downloaded a Asset</td>
-									<td><span>12.30 p.m</span></td>
-								</tr>
-
-								<tr>
-									<td>Kaveesha Gimhani</td>
-									<td>Game Developer</td>
-									<td>Uploaded a Asset</td>
-									<td><span>3.00 p.m</span></td>
-								</tr>
-							</tbody> -->
-
-							<tbody>
-								<?php foreach ($this->recent_activities as $user) { ?>
+							<div class="game-db-report-table">
+								<input type="date" id="game-db-date-picker">
+								<h3 class="game-db-table-heading">Payment Report on 2022.07.08th day</h3>
+								<button class="game-db-btn game-db-download-btn">Download Report</button>
+								<table>
+								<thead>
 									<tr>
-										<td>
-											<?php echo $user['name']; ?>
-										</td>
-										<td><?php echo $user['description']; ?></td>
-										<td><?php echo $user['assetName']; ?></td>
-										<td><?php echo $user['created_at']; ?></td>
-
+									<th>Transaction ID</th>
+									<th>Game Name</th>
+									<th>Gamer Name</th>
+									<th>Payment Date</th>
+									<th>Payment Amount</th>
 									</tr>
-								<?php } ?>
-							</tbody>
-
-						</table>
-					</div>
-				</div>
-				<div class="content-data popular-games">
-					<div class="popular-header">
-						<h2>Most Popular Assets</h2>
-					</div>
-					<!-- <div class="popular-cards">
-
-						<div class="popular-game-card">
-							<div class="game-cvr-img">
-								<img src="gm-2.jpg">
+								</thead>
+								<tbody>
+									<tr>
+									<td>1</td>
+									<td>Game A</td>
+									<td>kavindu</td>
+									<td>2023-04-30</td>
+									<td>$50</td>
+									</tr>
+									<tr>
+									<td>1</td>
+									<td>Game A</td>
+									<td>kavindu</td>
+									<td>2023-04-30</td>
+									<td>$50</td>
+									</tr>
+									<tr>
+									<td>1</td>
+									<td>Game A</td>
+									<td>kavindu</td>
+									<td>2023-04-30</td>
+									<td>$50</td>
+									</tr>
+									<tr>
+									<td>2</td>
+									<td>Game B</td>
+									<td>himash</td>
+									<td>2023-05-01</td>
+									<td>$100</td>
+									</tr>
+								</tbody>
+								</table>
 							</div>
 
-							<div class="game-name gm-crd">
-								The spirit and the Mouse
-							</div>
-
-							<div class="game-count gm-crd">
-								250+
-							</div>
 						</div>
-
-						<div class="popular-game-card">
-							<div class="game-cvr-img">
-								<img src="gm-2.jpg">
-							</div>
-
-							<div class="game-name gm-crd">
-								The spirit and the Mouse
-							</div>
-
-							<div class="game-count gm-crd">
-								250+
-							</div>
+						<div class="game-db-third-row">
+						<div class="downloads-uploads-graph">
+							<h3>Total Downloads and Uploads</h3>
+							<canvas id="downloads-uploads-bar-graph"></canvas>
 						</div>
-
-						<div class="popular-game-card">
-							<div class="game-cvr-img">
-								<img src="gm-2.jpg">
-							</div>
-
-							<div class="game-name gm-crd">
-								The spirit and the Mouse
-							</div>
-
-							<div class="game-count gm-crd">
-								250+
-							</div>
 						</div>
-
-					</div> -->
-					<div class="popular-cards">
-						<?php foreach ($this->top_assets as $asset) { ?>
-							<div class="popular-game-card">
-								<div class="game-cvr-img">
-									<!-- <img src=<?php echo "'" . $asset['img'] . "'"; ?>> -->
-									<img src="<?php echo '/indieabode/public/uploads/assets/cover/' . $asset['img']; ?>">
-								</div>
-
-								<div class="game-name gm-crd">
-									<?php echo $asset['name']; ?>
-								</div>
-
-								<div class="game-count gm-crd">
-									<?php echo $asset['count']; ?>+
-								</div>
-							</div>
-						<?php } ?>
-
-
 					</div>
 				</div>
 
-
-				<div class="content-data popular-assets">
-					<div class="popular-header Game-DB-Graph">
-						<h2>Transaction Graph</h2>
-						<?php
-						$data = array(12, 19, 3, 5, 2, 3);
-						$data_js = json_encode($data);
-						?>
-
-						<script>
-							var data = <?php echo $data_js; ?>;
-						</script>
-
-						<canvas id="myChart"></canvas>
-						<!-- <canvas id="myChart" style="display: block; width: 500px; height: 450px;" width="553" height="276" class="chartjs-render-monitor"></canvas> -->
-					</div>
-				</div>
-			</div>
+                
+            </div>
+			
 		</main>
 		<!-- MAIN -->
 	</section>
+	<!-- NAVBAR -->
 
 	<?php
     include 'includes/footer.php';
     ?>
 
-	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
-
 	<script>
-		var ctx = document.getElementById('myChart').getContext('2d');
-		var myChart = new Chart(ctx, {
-			type: 'line',
-			data: {
-				labels: <?php echo json_encode($this->labels); ?>,
-				datasets: [{
-						label: 'Downloaded Assests',
-						data: <?php echo json_encode($this->downloadasset_data); ?>,
-						borderColor: 'rgba(75, 192, 192, 1)',
-						backgroundColor: 'rgba(75, 192, 192, 0.2)',
-						fill: false
-					}
-					// {
-					// 	label: 'Downloaded Games',
-					// 	data: <?php echo json_encode($this->downloadgame_data); ?>,
-					// 	borderColor: 'rgba(0, 0, 0, 1)',
-					// 	backgroundColor: 'rgba(0, 0, 0, 0.2)',
-					// 	fill: false
-					// }
+	window.onload = function() {
 
-				]
+
+		var gamePieChart = document.getElementById('game-db-pie-chart').getContext('2d');
+		var myChart = new Chart(gamePieChart, {
+			type: 'doughnut',
+			backgroundColor: "#6997a4",
+			data: {
+				labels: ['Early Access Games', 'Upcoming Games', 'Released Games'],
+				datasets: [{
+					label: '# of Games',
+					data: [25, 40, 35],
+					backgroundColor: [
+						'#509998',
+						'#5c7777',
+						'#245252'
+					],
+					borderColor: [
+						'#509998',
+						'#5c7777',
+						'#245252'
+					],
+					borderWidth: 1
+				}]
+			},
+			options: {
+				responsive: true,
+				maintainAspectRatio: false,
+				legend: {
+					position: 'right'
+				}
+			}
+		});
+
+		var ctx2 = document.getElementById('game-tx-line-graph').getContext('2d');
+		var gameTxGraph = new Chart(ctx2, {
+		type: 'line',
+		data: {
+			labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July','August','September','October','November','December'],
+			datasets: [{
+			data: [12, 19, 3, 5, 2, 3, 10,11,45,67,90,21],
+			borderColor: 'rgba(75, 192, 192, 1)',
+			backgroundColor: 'rgba(75, 192, 192, 0.2)',
+			// fill: false
+			fill: true, // fill the area under the graph
+            backgroundColor: 'rgba(75, 192, 192, 0.2)', // color of the area under the graph
+			}]
+		},
+		options: {
+			legend: {
+			display: false
+			},
+			scales: {
+			yAxes: [{
+				display: false
+			}],
+			xAxes: [{
+				gridLines: {
+				display: false
+				},
+				ticks: {
+				display: false
+				}
+			}]
+			}
+		}
+		});
+
+		var ctx3 = document.getElementById('downloads-uploads-bar-graph').getContext('2d');
+		var downloadsUploadsGraph = new Chart(ctx3, {
+			type: 'bar',
+			data: {
+				labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5'],
+				datasets: [{
+					label: 'Total Downloads',
+					data: [12, 19, 3, 5, 2],
+					backgroundColor: 'rgba(255, 99, 132, 0.2)',
+					borderColor: 'rgba(255,99,132,1)',
+					borderWidth: 1
+				}, {
+					label: 'Total Uploads',
+					data: [8, 12, 9, 7, 3],
+					backgroundColor: 'rgba(54, 162, 235, 0.2)',
+					borderColor: 'rgba(54, 162, 235, 1)',
+					borderWidth: 1
+				}]
 			},
 			options: {
 				scales: {
@@ -351,13 +258,20 @@
 				}
 			}
 		});
+	}
 	</script>
 
 
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 
 	<script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
-    <script src="<?php echo BASE_URL; ?>public/js/admin.js"></script>
-
+	<script src="<?php echo BASE_URL; ?>public/js/admin.js"></script>
+    <script src="<?php echo BASE_URL; ?>public/js/admin_db.js"></script>
+	<!-- <?php if (isset($_SESSION['id']) && !empty($_SESSION['id'])) { ?>
+        <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
+    <?php } else { ?>
+        <script src="<?php echo BASE_URL; ?>public/js/navbarcopy.js"></script>
+    <?php } ?> -->
 
 </body>
 
