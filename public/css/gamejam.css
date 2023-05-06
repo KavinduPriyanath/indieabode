@@ -1,15 +1,9 @@
 .containerJam {
-
-    /* width: 100%; */
-    margin: 0 180px 0 180px;
-    /* border-radius: 25px; */
-    /* background-color: rgb(51, 88, 121); */
+    margin: 0 140px 0 160px;
 }
 
-
-
 .card-cover {
-    margin-left: 60px;
+    margin-left: 70px;
     width: 1050px;
     background-color: #bad3e192;
     border-radius: 12px;
@@ -30,8 +24,8 @@
 
 .timrline-subheading {
     display: flex;
-    text-align: center;
-    margin-left: 150px;
+    justify-content: center;
+    /* margin-left: 150px; */
 
 }
 
@@ -538,10 +532,26 @@
     padding: 5px 10px;
     border-radius: 4px;
 }
-
 .heading-submission {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 25px;
+}
+
+.heading-submission .details {
     font-size: 20px;
     font-weight: 700;
+}
+
+.heading-submission .my-submission a{
+    text-decoration: none;
+    font-size: 17px;
+    color: black;
+}
+
+.heading-submission .my-submission i {
+    font-size: 15px;
+    color: #3e4651;
 }
 
 .containerJam2 {
@@ -570,4 +580,14 @@
     font-size: 18px;
     box-shadow: 0 1px 4px rgb(0 0 0 / 60%);
     display: none;
+}
+
+.submitted-text {
+    display: none;
+    margin-top: 6px;
+    margin-left: 80px;
+    display: none;
+    color: #ba372d;
+    font-style: italic;
+    font-weight: 700;
 }

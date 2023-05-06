@@ -11,6 +11,7 @@
     <style>
         <?php
         include 'public/css/gamejam.css';
+        include 'public/css/submissionModal.css';
         ?>
     </style>
 </head>
@@ -119,6 +120,7 @@ include 'includes/navbar.php';
                     <div class="button">
 
                         <div class="jamButtons jamBtn" id="gamerBtn"> </div>
+                        <div class="submitted-text">You have already made a submission</div>
                         <div class="jamButtons jamBtn" id="dev-submit" data-modal-target="#modal">Submit</div>
                         <div class="jamButtons jamBtn" id="devBtn"></div>
 
@@ -167,32 +169,30 @@ include 'includes/navbar.php';
 
             <div class="modal-body">
 
-                <div class="card-box">
-                    <div class="existing-project">
-                        <span class="details">Existing Project</span>
-                        <br>
-                        <!-- <input type="text" name="gname" placeholder="Game name" required> -->
-                        <select id="type" name="gameID" required>
-                            <?php foreach ($this->games as $game) { ?>
-                                <option value="<?= $game['gameID'] ?>"><?= $game['gameName'] ?></option>
-                            <?php } ?>
+                <div class="note">Note: You will not be allowed to change a submission once you have submitted to the jam.</div>
+                <div class="existing-project">
+                    <div class="details">Existing Project</div>
+                    <!-- <input type="text" name="gname" placeholder="Game name" required> -->
+                    <select id="type" name="gameID" required>
+                        <?php foreach ($this->games as $game) { ?>
+                            <option value="<?= $game['gameID'] ?>"><?= $game['gameName'] ?></option>
+                        <?php } ?>
 
-                        </select>
+                    </select>
+                    <br>
 
-                        <div class="button">
-                            <!-- <input type="submit" name="submit" id="submit-submission" value="Submit Project"> -->
-                            <div class="submission-btn" id="submit-submission">Submit</div>
-                        </div>
-                    </div>
-                    <div class="new-project">
-                        <div class="header-project">Create New Project</div>
-                        <div class="upload-game-btn">Upload Game</div>
-                    </div>
-                    <div class="instruction">
-                        <p>Creating a new project? Remember to return to the jam page to make sure you've submitted</p>
-                    </div>
+                    <!-- <input type="submit" name="submit" id="submit-submission" value="Submit Project"> -->
+                    <div class="submission-btn" id="submit-submission">Submit</div>
 
                 </div>
+                <div class="new-project">
+                    <div class="header-project">Create New Project</div>
+                    <div class="upload-game-btn">Upload Game</div>
+                </div>
+                <div class="instruction">
+                    Creating a new project? Remember to return to the jam page to make sure you've submitted.
+                </div>
+
 
 
 
@@ -213,7 +213,6 @@ include 'includes/navbar.php';
 
     <script>
         $(document).ready(function() {
-
 
             //button for developers to join or leave
             $('#devBtn').click(function() {
@@ -298,6 +297,9 @@ include 'includes/navbar.php';
                         $('#modal').removeClass("active");
                         $('#overlay').removeClass("active");
 
+                        $('.submitted-text').show();
+                        $('#dev-submit').hide();
+                        $('#devBtn').hide();
 
                         $("#flashMessage").html('Your Submission has been saved')
                         $("#flashMessage").fadeIn(1000);
@@ -307,6 +309,12 @@ include 'includes/navbar.php';
                         }, 4000);
                     }
                 })
+
+            });
+
+            $('.upload-game-btn').click(function() {
+
+                window.location.href = "<?php echo BASE_URL; ?>gameupload";
 
             });
 
@@ -523,8 +531,16 @@ include 'includes/navbar.php';
 
                     <?php if ($this->hasJoinedDeveloper) { ?>
 
-                        $('#dev-submit').show();
-                        $('#devBtn').html("Leave Jam");
+                        <?php if (!empty($this->hasSubmitted)) { ?>
+                            $('.submitted-text').show();
+                            $('#dev-submit').hide();
+                            $('#devBtn').hide();
+                        <?php } else { ?>
+                            $('#dev-submit').show();
+                            $('#devBtn').html("Leave Jam");
+                        <?php } ?>
+
+
 
                     <?php } else if (!$this->hasJoinedDeveloper) { ?>
 

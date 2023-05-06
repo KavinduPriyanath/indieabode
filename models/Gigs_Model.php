@@ -96,7 +96,7 @@ class Gigs_Model extends Model
                     FROM (freegame INNER JOIN gig ON freegame.gameID=gig.game) INNER JOIN gamer ON gamer.gamerID = gig.gameDeveloperID WHERE gigStatus != 1
                     AND freegame.gameClassification IN ('$genreFilters') AND gig.currentStage = '$checkedStage' AND gig.expectedCost <= '500' 
                     AND gig.estimatedShare <= 10";
-                } else if ($checkedShare == "10+") {
+                } else if ($checkedShare == "50-") {
 
                     $sql = "SELECT gig.gigID, gig.gigID, gig.gigName, gig.gigTagline, gig.gigCoverImg, 
                     gamer.firstName, gamer.lastName, gamer.avatar, gamer.trustrank
@@ -119,7 +119,7 @@ class Gigs_Model extends Model
                     FROM (freegame INNER JOIN gig ON freegame.gameID=gig.game) INNER JOIN gamer ON gamer.gamerID = gig.gameDeveloperID WHERE gigStatus != 1
                     AND freegame.gameClassification IN ('$genreFilters') AND gig.currentStage = '$checkedStage' AND gig.expectedCost > '500' 
                     AND gig.estimatedShare <= 10";
-                } else if ($checkedShare == "10+") {
+                } else if ($checkedShare == "50-") {
 
                     $sql = "SELECT gig.gigID, gig.gigID, gig.gigName, gig.gigTagline, gig.gigCoverImg, 
                     gamer.firstName, gamer.lastName, gamer.avatar, gamer.trustrank
@@ -143,7 +143,7 @@ class Gigs_Model extends Model
                     FROM (freegame INNER JOIN gig ON freegame.gameID=gig.game) INNER JOIN gamer ON gamer.gamerID = gig.gameDeveloperID WHERE gigStatus != 1
                     AND freegame.gameClassification IN ('$genreFilters') AND gig.currentStage = '$checkedStage' AND gig.expectedCost > '1000' 
                     AND gig.estimatedShare <= 10";
-                } else if ($checkedShare == "10+") {
+                } else if ($checkedShare == "50-") {
 
                     $sql = "SELECT gig.gigID, gig.gigID, gig.gigName, gig.gigTagline, gig.gigCoverImg, 
                     gamer.firstName, gamer.lastName, gamer.avatar, gamer.trustrank
