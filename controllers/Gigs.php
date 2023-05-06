@@ -50,6 +50,28 @@ class Gigs extends Controller
             $this->view->gigs = $this->model->showAllGigs();
         }
 
+        //to keep track of the filters selected
+        $this->view->genreChecked = [];
+        $this->view->currentStage = null;
+        $this->view->expectedCost = null;
+        $this->view->estimatedShare = null;
+
+        if (isset($_GET['genre'])) {
+            $this->view->genreChecked = $_GET['genre'];
+        }
+
+        if (isset($_GET['stage'])) {
+            $this->view->currentStage = $_GET['stage'];
+        }
+
+        if (isset($_GET['cost'])) {
+            $this->view->expectedCost = $_GET['cost'];
+        }
+
+        if (isset($_GET['share'])) {
+            $this->view->estimatedShare = $_GET['share'];
+        }
+
 
         $this->view->render('Main/Gigs');
     }
