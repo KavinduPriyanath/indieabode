@@ -29,6 +29,8 @@ class Jam extends Controller
             $gamejam = $this->model->showSingleJam($gameJamID);
 
             $this->view->games = $this->model->currentDevGames($currentUser, $gamejam['submissionStartDate']);
+
+            $this->view->hasSubmitted = $this->model->HasSubmitted($currentUser, $gameJamID);
             //$this->view->gameDeveloper = $this->model->getGameDeveloper($this->model->showSingleGame($gameJamID));
 
             // $this->view->screenshots = $this->model->getScreenshots($assetID);

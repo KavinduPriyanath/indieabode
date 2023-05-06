@@ -120,6 +120,7 @@ include 'includes/navbar.php';
                     <div class="button">
 
                         <div class="jamButtons jamBtn" id="gamerBtn"> </div>
+                        <div class="submitted-text">You have already made a submission</div>
                         <div class="jamButtons jamBtn" id="dev-submit" data-modal-target="#modal">Submit</div>
                         <div class="jamButtons jamBtn" id="devBtn"></div>
 
@@ -213,7 +214,6 @@ include 'includes/navbar.php';
     <script>
         $(document).ready(function() {
 
-
             //button for developers to join or leave
             $('#devBtn').click(function() {
 
@@ -297,6 +297,9 @@ include 'includes/navbar.php';
                         $('#modal').removeClass("active");
                         $('#overlay').removeClass("active");
 
+                        $('.submitted-text').show();
+                        $('#dev-submit').hide();
+                        $('#devBtn').hide();
 
                         $("#flashMessage").html('Your Submission has been saved')
                         $("#flashMessage").fadeIn(1000);
@@ -522,8 +525,16 @@ include 'includes/navbar.php';
 
                     <?php if ($this->hasJoinedDeveloper) { ?>
 
-                        $('#dev-submit').show();
-                        $('#devBtn').html("Leave Jam");
+                        <?php if (!empty($this->hasSubmitted)) { ?>
+                            $('.submitted-text').show();
+                            $('#dev-submit').hide();
+                            $('#devBtn').hide();
+                        <?php } else { ?>
+                            $('#dev-submit').show();
+                            $('#devBtn').html("Leave Jam");
+                        <?php } ?>
+
+
 
                     <?php } else if (!$this->hasJoinedDeveloper) { ?>
 

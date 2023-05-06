@@ -423,4 +423,16 @@ class Jam_Model extends Model
 
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+    function HasSubmitted($gamerID, $jamID)
+    {
+
+        $sql = "SELECT * FROM submission WHERE gameJamID='$jamID' AND gamerID='$gamerID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }

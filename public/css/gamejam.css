@@ -1,12 +1,6 @@
 .containerJam {
-
-    /* width: 100%; */
-    margin: 0 180px 0 180px;
-    /* border-radius: 25px; */
-    /* background-color: rgb(51, 88, 121); */
+    margin: 0 140px 0 160px;
 }
-
-
 
 .card-cover {
     margin-left: 60px;
@@ -30,8 +24,8 @@
 
 .timrline-subheading {
     display: flex;
-    text-align: center;
-    margin-left: 150px;
+    justify-content: center;
+    /* margin-left: 150px; */
 
 }
 
@@ -570,4 +564,14 @@
     font-size: 18px;
     box-shadow: 0 1px 4px rgb(0 0 0 / 60%);
     display: none;
+}
+
+.submitted-text {
+    display: none;
+    margin-top: 6px;
+    margin-left: 80px;
+    display: none;
+    color: #ba372d;
+    font-style: italic;
+    font-weight: 700;
 }
