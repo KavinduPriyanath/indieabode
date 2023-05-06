@@ -312,6 +312,12 @@ include 'includes/navbar.php';
 
             });
 
+            $('.upload-game-btn').click(function() {
+
+                window.location.href = "<?php echo BASE_URL; ?>gameupload";
+
+            });
+
             var count_id1 = "<?= $this->gamejam['submissionStartDate']; ?>";
             var count_id2 = "<?= $this->gamejam['submissionEndDate']; ?>";
             var count_id3 = "<?= $this->gamejam['votingEndDate']; ?>";

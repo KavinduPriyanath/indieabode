@@ -114,6 +114,8 @@ class Jam extends Controller
 
         $this->view->jamEnded = $jamEnded;
 
+        $this->view->hasSubmitted = $this->model->HasSubmitted($currentUser, $gameJamID);
+
         $this->view->submittedGames = $this->model->submittedgames($gameJamID);
 
         // print_r($sGames);

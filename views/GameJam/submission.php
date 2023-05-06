@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Indieabode</title>
 
     <style>
@@ -45,7 +46,15 @@ include 'includes/navbar.php';
 
 
     <div class="heading-submission">
-        <span class="details">Submitted Projects</span>
+        <div class="details">Submitted Projects</div>
+        <?php if (!empty($this->hasSubmitted)) { ?>
+            <div class="my-submission">
+                <a href="<?php echo BASE_URL; ?>jam/ratesubmission?jam=<?= $this->hasSubmitted['gameJamID'] ?>&id=<?= $this->hasSubmitted['submissionID'] ?>">
+                    View Your Submission <i class="fa fa-long-arrow-right"></i>
+                </a>
+            </div>
+        <?php } ?>
+
     </div>
 
 
@@ -68,6 +77,7 @@ include 'includes/navbar.php';
 
     </div>
 
+    <br>
 
 
 </div>

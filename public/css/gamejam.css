@@ -3,7 +3,7 @@
 }
 
 .card-cover {
-    margin-left: 60px;
+    margin-left: 70px;
     width: 1050px;
     background-color: #bad3e192;
     border-radius: 12px;
@@ -532,10 +532,26 @@
     padding: 5px 10px;
     border-radius: 4px;
 }
-
 .heading-submission {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 25px;
+}
+
+.heading-submission .details {
     font-size: 20px;
     font-weight: 700;
+}
+
+.heading-submission .my-submission a{
+    text-decoration: none;
+    font-size: 17px;
+    color: black;
+}
+
+.heading-submission .my-submission i {
+    font-size: 15px;
+    color: #3e4651;
 }
 
 .containerJam2 {
