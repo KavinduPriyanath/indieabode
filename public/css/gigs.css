@@ -186,6 +186,16 @@ input[type="radio"] {
     text-align: justify;
 }
 
+.modernWay {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+            line-clamp: 2; 
+    -webkit-box-orient: vertical;
+ }
+
+
 .card a {
     background-color: rgb(162, 212, 212);
     color: black;
@@ -232,7 +242,7 @@ input[type="radio"] {
 
 
 .gig-info {
-    margin-top: 10px;
+    margin-top: 2px;
     display: flex;
     justify-content: space-between;
 }

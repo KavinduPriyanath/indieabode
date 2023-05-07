@@ -63,7 +63,11 @@
                                 <div class="devlog-name"><?= $ongoingrequest['gigName']; ?></div>
 
                                 <div class="game-name">
-                                    <?= $ongoingrequest['game']; ?>
+                                    <?php if ($ongoingrequest['gigStatus'] == 0) {
+                                        echo "Pending";
+                                    } else {
+                                        echo "Sold Out";
+                                    } ?>
                                 </div>
                             </div>
                         </div>

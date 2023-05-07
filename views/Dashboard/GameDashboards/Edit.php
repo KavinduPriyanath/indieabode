@@ -662,6 +662,11 @@
             //selecting the relevant game visibility from the database
             $("#<?= $this->game['gameVisibility'] ?>").attr("checked", true);
 
+            //If the game is a submission to a gamejam then it cannot be made non-free later
+            <?php if ($this->game['jamSubmission'] != 0) { ?>
+                $('.pricing-div input:radio:not(:checked)').attr('disabled', true);
+            <?php } ?>
+
             // <?php foreach ($this->gameScreenshots as $gameScreenshot) { ?>
 
             //     fileInput.files.push("<?= $gameScreenshot; ?>");

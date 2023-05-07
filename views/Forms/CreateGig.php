@@ -42,6 +42,7 @@
                             <label id="game-name" for="game-name">Game</label><br />
                             <p>Choose the game that you are finding a publisher for</p>
                             <select id="game-name" name="game-name" required>
+                                <option hidden disabled selected value> -- Select a Demo Game -- </option>
                                 <?php foreach ($this->games as $game) { ?>
                                     <option value="<?= $game['gameID'] ?>"><?= $game['gameName'] ?></option>
                                 <?php } ?>
@@ -51,8 +52,9 @@
                         <div class="tagline">
                             <label for="gig-tagline">Tagline</label><br />
                             <p>Shown when we link your gig to other pages</p>
-                            <input type="text" name="gig-tagline" id="gig-tagline" placeholder="Short Description about your game" required /><br />
-                            <div class="error-msg" id="gigTaglineCheck"></div><br />
+                            <input type="text" name="gig-tagline" id="gig-tagline" placeholder="Short Description about your game" max="250" /><br />
+                            <div class=" error-msg" id="gigTaglineCheck">
+                            </div><br />
                         </div>
 
                         <!--classification details-->
@@ -175,8 +177,9 @@
                                     Upload Photo
                                 </label>
                             </div>
-                            <br>
                             <div class="error-msg" id="coverImgCheck"></div>
+                            <br>
+
                         </div>
 
                         <div class="gig-video">

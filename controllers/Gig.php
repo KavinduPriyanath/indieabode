@@ -78,6 +78,18 @@ class Gig extends Controller
         }
     }
 
+    function cancelRequest()
+    {
+
+        if ($_POST['cancel_request_made'] == true) {
+
+            $gigID = $_POST['gigID'];
+            $publisherID = $_SESSION['id'];
+
+            $this->model->cancelGigRequest($gigID, $publisherID);
+        }
+    }
+
     function viewgig()
     {
 

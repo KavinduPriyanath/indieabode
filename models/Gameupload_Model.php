@@ -143,7 +143,6 @@ class Gameupload_Model extends Model
 
         //Game File
         $game_file = $_FILES['upload-game']['name'];
-        //$asset_file_size = $_FILES['upload-asset']['size'];
         $game_file_temp_name = $_FILES['upload-game']['tmp_name'];
 
         $game_file_ext = strtolower(pathinfo($game_file, PATHINFO_EXTENSION));

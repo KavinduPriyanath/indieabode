@@ -70,6 +70,16 @@ class Gig_Model extends Model
         $stmt->execute();
     }
 
+    function cancelGigRequest($gigID, $publisherID)
+    {
+
+        $sql = "DELETE FROM requestedgigs WHERE gigID='$gigID' AND publisherID='$publisherID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+    }
+
     function HasRequested($gigId, $publisherId)
     {
 

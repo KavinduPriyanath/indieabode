@@ -164,7 +164,7 @@
   margin-bottom: 20px;
 }
 
-.view-button, .request-button, .buy-button, .share-button {
+.view-button, .request-button, .buy-button, .share-button, .cancel-req-btn {
   display: block;
   margin: 10px 12px 7px 12px;
   text-align: center;
@@ -174,6 +174,7 @@
   color: #132759;
   border-radius: 8px;
   background-color: #A5B9BD;
+  cursor: pointer;
 }
 
 /*Rich Text Styles */
@@ -428,7 +429,7 @@
   height: 300px;
 }
 
-#view-button, #request-button, .share-button {
+#view-button, #request-button, .share-button, #cancel-button {
   display: none;
 }
 

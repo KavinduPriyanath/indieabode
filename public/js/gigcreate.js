@@ -73,12 +73,12 @@ $(document).ready(function () {
       $("#gigTaglineCheck").show();
       $("#gigTaglineCheck").text("Must use more than 40 characters");
       gigTaglineOkay = false;
-    } else if (gigTagline.length > 40 && gigTagline.length < 70) {
+    } else if (gigTagline.length > 40 && gigTagline.length < 250) {
       $("#gigTaglineCheck").hide();
       gigTaglineOkay = true;
     } else {
       $("#gigTaglineCheck").show();
-      $("#gigTaglineCheck").text("Cannot exceed 70 characters");
+      $("#gigTaglineCheck").text("Cannot exceed 250 characters");
       gigTaglineOkay = false;
     }
   }
