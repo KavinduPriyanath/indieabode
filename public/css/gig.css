@@ -596,3 +596,9 @@
   color: #132759;
   cursor: pointer;
 }
+
+.purchased-text {
+  display: none;
+  font-size: 17px;
+  color: rgb(136, 6, 6);
+}
