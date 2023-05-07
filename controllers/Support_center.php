@@ -76,4 +76,33 @@ class Support_center extends Controller
             $this->view->render('SupportCenter/Publishing/Overview');
         }
     }
+
+    function game_issues()
+    {
+
+        if (isset($_GET['topic'])) {
+
+            if ($_GET['topic'] == "DRMs") {
+                $this->view->render('SupportCenter/TechnicalIssues/DRMs');
+            } else if ($_GET['topic'] == "IARCs") {
+                $this->view->render('SupportCenter/TechnicalIssues/IARCs');
+            } else if ($_GET['topic'] == "CreatorCodes") {
+                $this->view->render('SupportCenter/TechnicalIssues/CreatorCodes');
+            } else if ($_GET['topic'] == "Giveaways") {
+                $this->view->render('SupportCenter/TechnicalIssues/Giveaways');
+            } else if ($_GET['topic'] == "PWYW") {
+                $this->view->render('SupportCenter/TechnicalIssues/PWYW');
+            } else if ($_GET['topic'] == "Storages") {
+                $this->view->render('SupportCenter/TechnicalIssues/Storages');
+            } else if ($_GET['topic'] == "LimitedReleases") {
+                $this->view->render('SupportCenter/TechnicalIssues/LimitedReleases');
+            } else if ($_GET['topic'] == "Reviews") {
+                $this->view->render('SupportCenter/TechnicalIssues/Reviews');
+            } else if ($_GET['topic'] == "SearchTags") {
+                $this->view->render('SupportCenter/TechnicalIssues/SearchTags');
+            }
+        } else {
+            $this->view->render('SupportCenter/TechnicalIssues/Overview');
+        }
+    }
 }
