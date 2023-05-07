@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 06, 2023 at 08:11 PM
+-- Generation Time: May 07, 2023 at 04:55 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -66,7 +66,13 @@ INSERT INTO `account` (`userID`, `profilePhoto`, `location`, `phoneNumber`, `dis
 (91, '', '', '', '', '', '', '', '', 10, 0, 0, 50),
 (92, '', '', '', '', '', '', 'Fellow indie game developer with the intention of making something unique in the gaming world one day', '', 10, 0, 0, 50),
 (93, '', '', '', '', '', '', '', '', 10, 0, 0, 50),
-(95, '', '', '', '', '', '', '', '', 10, 0, 0, 50);
+(95, '', '', '', '', '', '', '', '', 10, 0, 0, 50),
+(97, '', '', '', '', '', '', '', '', 10, 0, 0, 50),
+(98, '', '', '', '', '', '', '', '', 10, 0, 0, 50),
+(99, '', '', '', '', '', '', '', '', 10, 0, 0, 50),
+(100, '', '', '', '', '', '', '', '', 10, 0, 0, 50),
+(101, '', '', '', '', '', '', '', '', 10, 0, 0, 50),
+(102, '', '', '', '', '', '', '', '', 10, 0, 0, 50);
 
 -- --------------------------------------------------------
 
@@ -108,7 +114,13 @@ INSERT INTO `activation_keys` (`id`, `userID`, `activationCode`) VALUES
 (42, 80, '18459'),
 (43, 92, '81426'),
 (44, 93, '27749'),
-(46, 95, '35354');
+(46, 95, '35354'),
+(48, 97, '25305'),
+(49, 98, '94626'),
+(50, 99, '84620'),
+(51, 100, '26167'),
+(52, 101, '17006'),
+(53, 102, '53514');
 
 -- --------------------------------------------------------
 
@@ -500,7 +512,9 @@ INSERT INTO `billing_addresses` (`id`, `userID`, `fullName`, `streetLine1`, `str
 (8, 86, 'Pathum Sinrasa', 'No.452/C/2', 'Nagoda', 'Urapola', 'Western', '11120', 'Sri Lanka'),
 (9, 82, 'liliul', 'uililui', 'jyj', 'kuyku', 'kluili', 'uililiu', 'Sri Lanka'),
 (10, 87, 'liliul', 'uililui', 'jyj', 'kuyku', 'kluili', 'uililiu', 'Sri Lanka'),
-(11, 92, 'fgweg', 'ergreg', 'ergreg', 'ergreg', 'regerg', 'gregre', 'Sri Lanka');
+(11, 92, 'fgweg', 'ergreg', 'ergreg', 'ergreg', 'regerg', 'gregre', 'Sri Lanka'),
+(12, 100, 'ewe', 'ege', 'ee', 'egeg', 'egeg', 'gege', 'Sri Lanka'),
+(13, 99, 'egwe', 'wegewg', 'egwe', 'reger', 'ergrg', 'regrg', 'Sri Lanka');
 
 -- --------------------------------------------------------
 
@@ -1096,7 +1110,9 @@ INSERT INTO `freegame` (`gameID`, `gameName`, `releaseStatus`, `gameDetails`, `g
 (207, 'Wakfu', 'Released', '', 'SS-Wakfu93-0.jpg,SS-Wakfu93-1.jpg,SS-Wakfu93-2.jpg,SS-Wakfu93-3.jpg', '', 'STEP INTO A LIMITLESS UNIVERSE Touchdown in the World of Twelve and set off on a great adventure in WAKFU - an original massively multiplayer online role playing universe', 'RPG', 'mmorpg,anime,top down', 'Multi-Player,Online-Co-op,Multiplayer-Co-op,MMO', 'Windows', 'Base Game', 'Game-Wakfu93.zip', 'public', 'Cover-Wakfu93.jpg', 93, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-06 13:33:04', 0, 0),
 (208, 'Spiral Knights', 'Released', '', 'SS-Spiral Knights82-0.jpg,SS-Spiral Knights82-1.jpg,SS-Spiral Knights82-2.jpg,SS-Spiral Knights82-3.jpg', '', 'Join the ranks of the Spiral Knights. Stranded on an alien world, you must explore the ever-changing Clockworks beneath its surface.', 'RPG', 'free,action,rpg,tool jam,gamejam', 'Single-Player', 'Windows', 'Base Game', 'Game-Spiral Knights82.zip', 'public', 'Cover-Spiral Knights82.jpg', 82, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-06 21:05:37', 0, 62),
 (209, 'Eternal Senia', 'Early Access', '', 'SS-Eternal Senia95-0.jpg,SS-Eternal Senia95-1.jpg,SS-Eternal Senia95-2.jpg,SS-Eternal Senia95-3.jpg', '', 'Thoughts and expectations of action role playing game', 'RPG', 'action,rpg,anime,protagonist', 'Multi-Player,MMO', 'Windows', 'Base Game', 'Game-Eternal Senia95.zip', 'public', 'Cover-Eternal Senia95.jpg', 95, '', '', '', '', '', '', '', '', '', '', '', '56.49', '2023-05-06 23:12:08', 0, 0),
-(210, 'Anacrusis', 'Released', '', 'SS-Anacrusis95-0.jpg,SS-Anacrusis95-1.jpg,SS-Anacrusis95-2.jpg,SS-Anacrusis95-3.jpg', '', 'A four-player, mod-friendly, cooperative first-person shooter set aboard a massive starship stranded at the edge of space.', 'Action', 'fps,shooter,multiplayer', 'Multi-Player', 'Windows', 'Base Game', 'Game-Anacrusis95.zip', 'public', 'Cover-Anacrusis95.jpg', 95, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-06 23:16:17', 0, 62);
+(210, 'Anacrusis', 'Released', '', 'SS-Anacrusis95-0.jpg,SS-Anacrusis95-1.jpg,SS-Anacrusis95-2.jpg,SS-Anacrusis95-3.jpg', '', 'A four-player, mod-friendly, cooperative first-person shooter set aboard a massive starship stranded at the edge of space.', 'Action', 'fps,shooter,multiplayer', 'Multi-Player', 'Windows', 'Base Game', 'Game-Anacrusis95.zip', 'public', 'Cover-Anacrusis95.jpg', 95, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-06 23:16:17', 0, 62),
+(211, 'GTFO', 'Released', '', 'SS-GTFO82-0.jpg,SS-GTFO82-1.jpg,SS-GTFO82-2.jpg', '', 'GTFO is an extreme cooperative horror shooter that throws you from gripping suspense to explosive action in a heartbeat. Stealth, strategy, and teamwork are necessary to survive.', 'Action', '', 'Multi-Player', 'Windows', 'Demo', 'Game-GTFO82.zip', 'public', 'Cover-GTFO82.jpg', 82, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-07 11:27:04', 100, 0),
+(212, 'Undefeated', 'Released', '', 'SS-Undefeated46-0.jpg,SS-Undefeated46-1.jpg,SS-Undefeated46-2.jpg,SS-Undefeated46-3.jpg', '', 'Become an invincible hero with unlimited super powers on UNDEFEATED!', 'Action', 'demo,open world,super hero ,action', 'Single-Player', 'Windows', 'Demo', 'Game-Undefeated46.zip', 'public', 'Cover-Undefeated46.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-07 19:13:38', 99, 0);
 
 -- --------------------------------------------------------
 
@@ -1215,7 +1231,13 @@ INSERT INTO `gamer` (`gamerID`, `email`, `password`, `accountStatus`, `avatar`, 
 (91, '2020cs029@stu.ucsc.cmb.ac.lk', '$2y$10$ooDrFzqhYNmkl3nef6nHP.e7Vm2VjL0Q8HpgWZNIMMQ9L/HdEcPZa', 1, 'avatar2.png', 'game developer', 'fefeg', 'fefe', 'grgrg', '2023-04-29 08:13:53', '2023-04-29 08:13:53', 0, '', 2),
 (92, 'dhanuka20081203@gmail.com', '$2y$10$7fVtHEYbFG5QmGCAoMXga.4mBRQBrEBu/ARN/9l5Y9mKxDiDeAn8K', 1, 'avatar4.png', 'game developer', 'Sasa', 'Sasanka', 'Dhanuka', '2023-05-05 10:08:30', '2023-05-05 10:08:30', 1, '', 2),
 (93, 'jayakodyrusiru@gmail.com', '$2y$10$8rfpRPLvvxkvb1iZklPww.U65Bm04mpekLu2hgkNGar8eSjePKzHq', 1, 'avatar1.png', 'game developer', 'Gemba', 'Rusiru', 'Jayakodi', '2023-05-05 14:55:45', '2023-05-05 14:55:45', 1, '', 2),
-(95, 'pddw.new@gmail.com', '$2y$10$2U3Qv2z2nYGEQ3tfqCPE4.Tq9VQrkMhfbhB7N/VZ0z6xhZjTUG0Sy', 1, 'avatar4.png', 'game developer', 'Carly', 'Charles', 'Dion', '2023-05-06 16:59:10', '2023-05-06 16:59:10', 1, '', 2);
+(95, 'pddw.new@gmail.com', '$2y$10$2U3Qv2z2nYGEQ3tfqCPE4.Tq9VQrkMhfbhB7N/VZ0z6xhZjTUG0Sy', 1, 'avatar4.png', 'game developer', 'Carly', 'Charles', 'Dion', '2023-05-06 16:59:10', '2023-05-06 16:59:10', 1, '', 2),
+(97, 'sherondesilva69@gmail.com', '$2y$10$FPfrdUiihmlFuhGpj4mvZe4HhjDXUdDcyuM4HbjUhnfUUm2EQ2PHm', 1, 'avatar2.png', 'asset creator', 'Mayya', 'Mahela', 'Chamudi', '2023-05-06 18:43:20', '2023-05-06 18:43:20', 1, '', 2),
+(98, 'kimuthukisal23@gmail.com', '$2y$10$mYrs5YuPqHQuYHUDmT6jZ.XbbnE5/pJRBCLPQ3afEBrlzwSCO4Ltm', 1, 'avatar4.png', 'game publisher', 'Kimu', 'Kimuthu', 'Kisal', '2023-05-07 06:40:13', '2023-05-07 06:40:13', 1, '', 2),
+(99, 'moviecafe.2001@gmail.com', '$2y$10$diqyQzvUjrFq1QvYbLf6MO.I.Aed5744tjwy.tKGbh.yEkKzvlCOW', 1, 'avatar4.png', 'game publisher', 'Tharu', 'Imesha', 'De Silva', '2023-05-07 06:52:25', '2023-05-07 06:52:25', 1, '', 2),
+(100, 'pravindusatharasinghe1@gmail.com', '$2y$10$XI542.Va9yQc0RAC3xcP/usmSUwd1XrPKdP6Eg3VQQTMRVaHEw9i2', 1, 'avatar4.png', 'game publisher', 'PraX', 'Pravindu', 'Sathare', '2023-05-07 07:12:38', '2023-05-07 07:12:38', 1, '', 2),
+(101, 'ranasinghe.rhasr@gmail.com', '$2y$10$JQ5xjGpol8RBkYdD8/RhG.o0K3jWt2anNRIxFc5GzWl0.3N/6w2Q2', 1, 'avatar4.png', 'asset creator', 'Sandu', 'Sanduni', 'Gamage', '2023-05-07 14:49:40', '2023-05-07 14:49:40', 1, '', 2),
+(102, 'klnethmi.liyanage@gmail.com', '$2y$10$rPMX8Xdh9mnlhJIHvoIMFeKYSH1uKNDUtiNZX01F.GMQ49C/tD/W2', 1, 'avatar2.png', 'asset creator', 'Nemmi', 'Nethmie', 'Liyanage', '2023-05-07 14:53:34', '2023-05-07 14:53:34', 1, '', 2);
 
 -- --------------------------------------------------------
 
@@ -1695,7 +1717,20 @@ INSERT INTO `games_view_tracker` (`id`, `userID`, `sessionID`, `gameID`, `viewed
 (385, 82, 20, 196, '2023-05-06'),
 (386, 82, 20, 208, '2023-05-06'),
 (387, 95, 82, 209, '2023-05-06'),
-(388, 95, 82, 210, '2023-05-06');
+(388, 95, 82, 210, '2023-05-06'),
+(389, 82, 89, 186, '2023-05-07'),
+(390, 82, 89, 189, '2023-05-07'),
+(391, 82, 89, 196, '2023-05-07'),
+(392, 82, 89, 208, '2023-05-07'),
+(393, 82, 89, 211, '2023-05-07'),
+(394, 46, 21, 200, '2023-05-07'),
+(395, 46, 21, 199, '2023-05-07'),
+(396, 46, 21, 191, '2023-05-07'),
+(397, 46, 21, 195, '2023-05-07'),
+(398, 46, 21, 196, '2023-05-07'),
+(399, 46, 21, 197, '2023-05-07'),
+(400, 46, 21, 187, '2023-05-07'),
+(401, 46, 34, 212, '2023-05-07');
 
 -- --------------------------------------------------------
 
@@ -1886,17 +1921,17 @@ INSERT INTO `game_stats` (`id`, `gameID`, `views`, `downloads`, `ratings`, `reve
 (6, 93, 24, 1, 0, 0),
 (7, 95, 29, 4, 1, 0),
 (8, 184, 11, 3, 0, 0),
-(10, 186, 5, 0, 0, 0),
-(11, 187, 16, 9, 0, 0),
+(10, 186, 6, 0, 0, 0),
+(11, 187, 17, 9, 0, 0),
 (12, 188, 20, 2, 0, 152.48),
-(14, 189, 16, 0, 0, 295.858),
-(16, 191, 5, 2, 0, 0),
-(18, 195, 4, 3, 0, 0),
-(19, 196, 4, 3, 0, 104.436),
-(20, 197, 2, 1, 0, 104.419),
+(14, 189, 17, 0, 0, 295.858),
+(16, 191, 6, 2, 0, 0),
+(18, 195, 5, 3, 0, 0),
+(19, 196, 6, 3, 0, 104.436),
+(20, 197, 3, 1, 0, 104.419),
 (21, 198, 2, 1, 0, 0),
-(22, 199, 3, 2, 0, 0),
-(23, 200, 1, 0, 0, 0),
+(22, 199, 4, 2, 0, 0),
+(23, 200, 2, 0, 0, 0),
 (24, 201, 0, 0, 0, 0),
 (25, 202, 0, 0, 0, 0),
 (26, 203, 1, 1, 0, 0),
@@ -1904,9 +1939,11 @@ INSERT INTO `game_stats` (`id`, `gameID`, `views`, `downloads`, `ratings`, `reve
 (28, 205, 1, 1, 0, 0),
 (29, 206, 1, 0, 0, 0),
 (30, 207, 1, 0, 0, 0),
-(31, 208, 1, 1, 0, 0),
+(31, 208, 2, 1, 0, 0),
 (32, 209, 1, 0, 0, 0),
-(33, 210, 1, 0, 0, 0);
+(33, 210, 1, 0, 0, 0),
+(34, 211, 1, 2, 0, 0),
+(35, 212, 1, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -2154,7 +2191,19 @@ INSERT INTO `game_stats_history` (`id`, `gameID`, `views`, `downloads`, `ratings
 (230, 196, 1, 0, 0, 0, '2023-05-06'),
 (231, 208, 1, 1, 0, 0, '2023-05-06'),
 (232, 209, 1, 0, 0, 0, '2023-05-06'),
-(233, 210, 1, 0, 0, 0, '2023-05-06');
+(233, 210, 1, 0, 0, 0, '2023-05-06'),
+(234, 186, 1, 0, 0, 0, '2023-05-07'),
+(235, 189, 1, 0, 0, 0, '2023-05-07'),
+(236, 196, 2, 0, 0, 0, '2023-05-07'),
+(237, 208, 1, 0, 0, 0, '2023-05-07'),
+(238, 211, 1, 2, 0, 0, '2023-05-07'),
+(239, 200, 1, 0, 0, 0, '2023-05-07'),
+(240, 199, 1, 0, 0, 0, '2023-05-07'),
+(241, 191, 1, 0, 0, 0, '2023-05-07'),
+(242, 195, 1, 0, 0, 0, '2023-05-07'),
+(243, 197, 1, 0, 0, 0, '2023-05-07'),
+(244, 187, 1, 0, 0, 0, '2023-05-07'),
+(245, 212, 1, 0, 0, 0, '2023-05-07');
 
 -- --------------------------------------------------------
 
@@ -2194,7 +2243,9 @@ INSERT INTO `gig` (`gigID`, `gigName`, `gigTrailor`, `gigScreenshot`, `gigDetail
 (13, 'Indie Desert FPS ', 'https://www.indiegala.com/login', 'SS-Stray-0.jpg,SS-Stray-1.jpg,SS-Stray-2.jpg,SS-Stray-3.jpg', 'fefeff', 93, 51, 0, 'Surviving an endless desert after being stranded by you know', '1', '2023-04-20', '12', '1000', 'draft', 'Cover-Indie Desert FPS .jpg', NULL, 11, 0, '2023-04-11', 0),
 (20, 'This is a new gig made by me and my other', 'https://www.indieabode.ffcom', 'SS-20-0.jpg,SS-20-1.jpg,SS-20-2.jpg', 'fkh hthth<u>jyjyjyjj <b>yjtyjytjyj </b>jytjjjytjj yjtyjytj</u>', 96, 46, 0, 'I am developing an open world game with extreme high movements', '3', '2023-04-20', '13', '200', 'draft', 'Cover-20.jpg', NULL, 11, 0, '2023-04-10', 0),
 (25, 'Indie Puzzle Platformer', 'https://www.indiegala.com/login', 'SS-187-0.jpg,SS-187-1.jpg,SS-187-2.jpg', '<b>ABOUT THIS GAME</b><div>Currently I have been developing this game for five months and has gained considerably pleasing progress. Currently it contains five levels with nearly 15 minutes of gameplay. The game has been released on Indieabode as a Demo to try out for anybody who gets liking in the game features, mechanics shown in the images and videos.</div><div><br></div><div><b>DEVELOPMENT OF RECOURSE</b></div><div>Recourse is been developed in Unity game engine using C# as the programming language. As the sole developer I am responsible for all the coding, modeling, texturing and sounds also. Every model currently in use in the game is made by me using Blender and Substance Painter. For audios, and sound effects I am using Audacity and SFXR. The however still lacks on VFX but they would also be added to the game due time.</div>', 187, 81, 0, 'Stylish Puzzle Platformer with a casual gameplay loop', '1', '2024-06-17', '10', '500', 'draft', 'Cover-Indie Puzzle Platformer.jpg', NULL, 6, 0, '2023-04-21', 0),
-(26, 'New Gig 2fe', '', 'SS-187-0.jpg', '', 187, 81, 0, 'I am developing an open world game with extreme high movements', '2', '2023-04-05', '3', '1234', 'draft', 'Cover-New Gig 2fe.jpg', NULL, 4, 0, '2023-04-26', 0);
+(26, 'New Gig 2fe', '', 'SS-187-0.jpg', '', 187, 81, 0, 'I am developing an open world game with extreme high movements', '2', '2023-04-05', '3', '1234', 'draft', 'Cover-New Gig 2fe.jpg', NULL, 4, 0, '2023-04-26', 0),
+(27, 'Cooperative Horror Shooter', '', 'SS-211-0.jpg,SS-211-1.jpg,SS-211-2.jpg', '', 211, 82, 0, 'Explore the world of horror with your friends while striving to survive yourself', '6', '2025-06-17', '10', '1000', 'public', 'Cover-Cooperative Horror Shooter.jpg', NULL, 9, 2, '2023-05-07', 1),
+(28, 'Open World Super Hero Game', '', 'SS-212-0.jpg,SS-212-1.png,SS-212-2.jpg', '', 212, 46, 0, 'Become your favourite super hero super man and explore the continent flying around the globe', '2', '2024-10-03', '20', '1000', 'public', 'Cover-Open World Super Hero Game.jpg', NULL, 2, 1, '2023-05-07', 1);
 
 -- --------------------------------------------------------
 
@@ -2238,7 +2289,58 @@ INSERT INTO `gigmessages` (`msgID`, `senderID`, `receiverID`, `message`, `gigID`
 (21, 46, 47, 'hthr', 12),
 (22, 47, 46, 'what', 12),
 (23, 46, 47, 'sry', 12),
-(24, 46, 47, 'dw', 12);
+(24, 46, 47, 'dw', 12),
+(25, 98, 82, 'Hello ', 27),
+(26, 82, 98, 'yess', 27),
+(27, 82, 98, 'are you interested in this game?', 27),
+(28, 98, 82, 'yes I am', 27),
+(29, 98, 82, 'But I need to know more about you and the game', 27),
+(30, 82, 98, 'Did you check my portfolio?', 27),
+(31, 98, 82, 'Yes I did. I could say you are very professional and creative', 27),
+(32, 98, 82, 'it would be nice to work with someone who has already got experience in the field', 27),
+(33, 82, 98, 'Wow', 27),
+(34, 82, 98, 'Thank You So much', 27),
+(35, 98, 82, 'Now About the Order', 27),
+(36, 82, 98, 'Yes', 27),
+(37, 98, 82, 'So you are saying that you need $1000 ahead right?', 27),
+(38, 82, 98, 'yes sir', 27),
+(39, 98, 82, 'Will that be enough for you to successfully achieve the goal', 27),
+(40, 82, 98, 'I have calculated the whole plan and I think that would be enough', 27),
+(41, 98, 82, 'okay great. I can provide you that amount to continue your work', 27),
+(42, 98, 82, 'But the issue is the share value!', 27),
+(43, 82, 98, 'what is the suggestion sir', 27),
+(44, 98, 82, 'I could work with atleast 15%', 27),
+(45, 98, 82, 'but 10% is too low', 27),
+(46, 98, 82, 'also for this game I would prefer 20%', 27),
+(47, 98, 82, 'Is it too much for you?', 27),
+(48, 82, 98, 'I might have to think over it', 27),
+(49, 82, 98, 'can you give me 2 days max', 27),
+(50, 82, 98, 'I will inform you surely', 27),
+(51, 98, 82, 'okay no problem', 27),
+(52, 98, 82, 'take your time', 27),
+(53, 100, 82, 'hi', 27),
+(54, 100, 82, 'I would like to buy this order right now?', 27),
+(55, 82, 100, 'oh really?', 27),
+(56, 82, 100, 'no changes needed?', 27),
+(57, 100, 82, 'No nothing', 27),
+(58, 100, 82, 'I am happy with the numbers', 27),
+(59, 82, 100, 'great. Lets confirm the numbers then?', 27),
+(60, 100, 82, 'here I go', 27),
+(61, 100, 82, 'done', 27),
+(62, 100, 82, 'your turn', 27),
+(63, 82, 100, 'okay', 27),
+(64, 82, 100, 'did', 27),
+(65, 82, 100, 'Now you should be able to buy the game', 27),
+(66, 100, 82, 'yeah', 27),
+(67, 100, 82, 'it is visible', 27),
+(68, 46, 99, 'helloo', 28),
+(69, 46, 99, 'are you there?', 28),
+(70, 99, 46, 'yeah', 28),
+(71, 99, 46, 'I might like to do some changes', 28),
+(72, 46, 99, 'okay ', 28),
+(73, 99, 46, 'i customized', 28),
+(74, 99, 46, 'Wht do u think?', 28),
+(75, 46, 99, 'Its okay ig', 28);
 
 -- --------------------------------------------------------
 
@@ -2323,7 +2425,18 @@ INSERT INTO `gigs_views_tracker` (`id`, `userID`, `sessionID`, `gigID`, `viewedD
 (62, 81, 70, 13, '2023-05-06'),
 (63, 81, 70, 26, '2023-05-06'),
 (64, 81, 70, 25, '2023-05-06'),
-(65, 82, 73, 13, '2023-05-06');
+(65, 82, 73, 13, '2023-05-06'),
+(66, 82, 29, 27, '2023-05-07'),
+(67, 98, 58, 27, '2023-05-07'),
+(68, 98, 97, 27, '2023-05-07'),
+(69, 99, 89, 27, '2023-05-07'),
+(70, 98, 64, 27, '2023-05-07'),
+(71, 98, 78, 27, '2023-05-07'),
+(72, 100, 51, 27, '2023-05-07'),
+(73, 98, 75, 27, '2023-05-07'),
+(74, 100, 93, 27, '2023-05-07'),
+(75, 46, 34, 28, '2023-05-07'),
+(76, 99, 57, 28, '2023-05-07');
 
 -- --------------------------------------------------------
 
@@ -2340,15 +2453,18 @@ CREATE TABLE `gig_purchases` (
   `sharePercentage` double NOT NULL,
   `publisherIncome` double NOT NULL DEFAULT 0,
   `purchasedDate` date NOT NULL DEFAULT current_timestamp(),
-  `orderID` varchar(250) NOT NULL
+  `orderID` varchar(250) NOT NULL,
+  `developerShare` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `gig_purchases`
 --
 
-INSERT INTO `gig_purchases` (`id`, `gigID`, `developerID`, `publisherID`, `publisherCost`, `sharePercentage`, `publisherIncome`, `purchasedDate`, `orderID`) VALUES
-(5, 12, 46, 47, 1000, 15, 0, '2023-04-18', '643e31b288504');
+INSERT INTO `gig_purchases` (`id`, `gigID`, `developerID`, `publisherID`, `publisherCost`, `sharePercentage`, `publisherIncome`, `purchasedDate`, `orderID`, `developerShare`) VALUES
+(5, 12, 46, 47, 1000, 15, 0, '2023-04-18', '643e31b288504', 0),
+(6, 27, 82, 100, 1000, 10, 0, '2023-05-07', '6457a70585432', 0),
+(7, 28, 46, 99, 500, 25, 0, '2023-05-07', '6457b935c652e', 459.325);
 
 -- --------------------------------------------------------
 
@@ -2653,16 +2769,18 @@ CREATE TABLE `requestedgigs` (
   `developerCostApproval` varchar(50) DEFAULT 'null',
   `publisherShareApproval` varchar(50) DEFAULT 'null',
   `developerShareApproval` varchar(50) DEFAULT 'null',
-  `eligible` int(11) NOT NULL DEFAULT 0
+  `eligible` int(11) NOT NULL DEFAULT 0,
+  `created_at` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `requestedgigs`
 --
 
-INSERT INTO `requestedgigs` (`id`, `gigID`, `developerID`, `publisherID`, `gigToken`, `cost`, `share`, `publisherCostApproval`, `developerCostApproval`, `publisherShareApproval`, `developerShareApproval`, `eligible`) VALUES
-(40, 20, 46, 47, '2047', 0, 0, '', '', NULL, NULL, 0),
-(41, 13, 51, 47, '1347', 0, 0, 'Approved', '', '', '', 0);
+INSERT INTO `requestedgigs` (`id`, `gigID`, `developerID`, `publisherID`, `gigToken`, `cost`, `share`, `publisherCostApproval`, `developerCostApproval`, `publisherShareApproval`, `developerShareApproval`, `eligible`, `created_at`) VALUES
+(40, 20, 46, 47, '2047', 0, 0, '', '', NULL, NULL, 0, '2023-05-07'),
+(41, 13, 51, 47, '1347', 0, 0, 'Approved', '', '', '', 0, '2023-05-07'),
+(54, 27, 82, 98, '2798', 1000, 10, 'null', 'null', 'null', 'null', 0, '2023-05-07');
 
 -- --------------------------------------------------------
 
@@ -2732,6 +2850,28 @@ CREATE TABLE `site_crowdfund_revenue` (
   `crowdfundID` int(11) NOT NULL,
   `siteShare` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `site_gig_revenue`
+--
+
+CREATE TABLE `site_gig_revenue` (
+  `id` int(11) NOT NULL,
+  `gigID` int(11) NOT NULL,
+  `orderID` varchar(255) NOT NULL,
+  `siteShare` float NOT NULL,
+  `sale_date` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `site_gig_revenue`
+--
+
+INSERT INTO `site_gig_revenue` (`id`, `gigID`, `orderID`, `siteShare`, `sale_date`) VALUES
+(1, 27, '6457a70585432', 50, '2023-05-07'),
+(2, 28, '6457b935c652e', 25, '2023-05-07');
 
 -- --------------------------------------------------------
 
@@ -3189,6 +3329,12 @@ ALTER TABLE `site_crowdfund_revenue`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `site_gig_revenue`
+--
+ALTER TABLE `site_gig_revenue`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `spin_wheel`
 --
 ALTER TABLE `spin_wheel`
@@ -3214,13 +3360,13 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
 
 --
 -- AUTO_INCREMENT for table `activation_keys`
 --
 ALTER TABLE `activation_keys`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `admin`
@@ -3268,7 +3414,7 @@ ALTER TABLE `asset_view_tracker`
 -- AUTO_INCREMENT for table `billing_addresses`
 --
 ALTER TABLE `billing_addresses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `cart`
@@ -3370,7 +3516,7 @@ ALTER TABLE `freeasset`
 -- AUTO_INCREMENT for table `freegame`
 --
 ALTER TABLE `freegame`
-  MODIFY `gameID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=211;
+  MODIFY `gameID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=213;
 
 --
 -- AUTO_INCREMENT for table `gamejam`
@@ -3382,7 +3528,7 @@ ALTER TABLE `gamejam`
 -- AUTO_INCREMENT for table `gamer`
 --
 ALTER TABLE `gamer`
-  MODIFY `gamerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+  MODIFY `gamerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
 
 --
 -- AUTO_INCREMENT for table `games_cart`
@@ -3400,7 +3546,7 @@ ALTER TABLE `games_filters`
 -- AUTO_INCREMENT for table `games_view_tracker`
 --
 ALTER TABLE `games_view_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=389;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=402;
 
 --
 -- AUTO_INCREMENT for table `game_cart`
@@ -3430,37 +3576,37 @@ ALTER TABLE `game_reviews`
 -- AUTO_INCREMENT for table `game_stats`
 --
 ALTER TABLE `game_stats`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `game_stats_history`
 --
 ALTER TABLE `game_stats_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=234;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=246;
 
 --
 -- AUTO_INCREMENT for table `gig`
 --
 ALTER TABLE `gig`
-  MODIFY `gigID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `gigID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `gigmessages`
 --
 ALTER TABLE `gigmessages`
-  MODIFY `msgID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `msgID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 
 --
 -- AUTO_INCREMENT for table `gigs_views_tracker`
 --
 ALTER TABLE `gigs_views_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- AUTO_INCREMENT for table `gig_purchases`
 --
 ALTER TABLE `gig_purchases`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `giveaways`
@@ -3490,7 +3636,7 @@ ALTER TABLE `ratesubmission`
 -- AUTO_INCREMENT for table `requestedgigs`
 --
 ALTER TABLE `requestedgigs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `sitegamesrevenue`
@@ -3509,6 +3655,12 @@ ALTER TABLE `site_assets_revenue`
 --
 ALTER TABLE `site_crowdfund_revenue`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `site_gig_revenue`
+--
+ALTER TABLE `site_gig_revenue`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `spin_wheel`

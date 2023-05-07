@@ -121,22 +121,24 @@
                 <?php if (!empty($this->ongoingrequests)) { ?>
                     <?php foreach ($this->ongoingrequests as $ongoingrequest) { ?>
                         <div class="game-card">
-                            <div class="left-col">
+                            <div class="left-col" id="left-col-ongoing-gig">
                                 <div class="icon"><img src="/indieabode/public/uploads/gigs/cover/<?= $ongoingrequest['gigCoverImg'] ?>" alt=""></div>
                                 <div class="details">
-                                    <a href="/indieabode/gig/viewgig?id=<?= $ongoingrequest['gigID'] ?>&token=<?= $ongoingrequest['gigToken'] ?>">
-                                        <div class="devlog-name"><?= $ongoingrequest['gigName']; ?></div>
-                                    </a>
+                                    <div class="devlog-name"><?= $ongoingrequest['gigName']; ?></div>
                                     <div class="game-name">
-                                        <?= $ongoingrequest['game']; ?>
+                                        Requested on <?= $ongoingrequest['created_at'] ?> by <?= $ongoingrequest['firstName'] . " " . $ongoingrequest['lastName'] ?>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="right-col">
+                            <div class="right-col" id="right-col-ongoing-gig">
+                                <div class="gig-eligibility"><?php if ($ongoingrequest['eligible'] == 0) echo "Not Eligible Yet";
+                                                                else echo "Eligible"; ?></div>
                             </div>
                             <div class="edit-btn">
-                                Edit
+                                <a href="<?php echo BASE_URL; ?>gig/viewgig?id=<?= $ongoingrequest['gigID'] ?>&token=<?= $ongoingrequest['gigToken'] ?>">
+                                    View
+                                </a>
                             </div>
                         </div>
                     <?php } ?>

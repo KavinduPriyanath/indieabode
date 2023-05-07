@@ -65,7 +65,6 @@ class Gig extends Controller
     function gigrequest()
     {
 
-
         if ($_POST['gig_request_made'] == true) {
 
             $gigID = $_POST['gigID'];
@@ -73,6 +72,8 @@ class Gig extends Controller
             $expectedCost = $_POST['expectedCost'];
 
             $developer = $this->model->getGameDeveloper($this->model->showSingleGig($gigID));
+
+            $this->model->updateRequestCount($gigID, "request");
 
             $this->model->RequestGig($gigID, $developer['gamerID'], $_SESSION['id'], $expectedCost, $estimatedShare);
         }
@@ -85,6 +86,8 @@ class Gig extends Controller
 
             $gigID = $_POST['gigID'];
             $publisherID = $_SESSION['id'];
+
+            $this->model->updateRequestCount($gigID, "cancel");
 
             $this->model->cancelGigRequest($gigID, $publisherID);
         }
@@ -226,7 +229,7 @@ class Gig extends Controller
         $userDetails = $this->model->getUserDetails($_SESSION['id']);
 
         // $amount = $purchaseCost;
-        $amount = 30.00;
+        $amount = $purchaseCost;
         $merchant_id = "1222729";
         $order_id = uniqid();
         $merchant_secret = "MjczNjU0OTYzMzM3NDA3NzYzMjczNzEyMjI2MjM4MTQ3MjE2OTkxMg==";
@@ -287,14 +290,24 @@ class Gig extends Controller
 
         $publisherEmail = $publisher['email'];
 
-        $this->model->successfulPurchase($gigID, $publisherID, $developerID, $publisherCost, $share, $orderID);
+        //Give developer rest of money reducing payment gateway fee
+        $developerShare = $this->model->GameDeveloperShare($publisherCost);
 
+        //Add gig purchase details to the gig_purchases table
+        $this->model->successfulPurchase($gigID, $publisherID, $developerID, $publisherCost, $share, $orderID, $developerShare);
+
+        //Update gig status on gig table
         $this->model->gigPurchased($gigID);
 
+        //Add publisherID to the freegame tables publisher column
         $this->model->AddPublisherToGame($gigID, $publisherID);
 
         //Remove the gig order from requests table
         $this->model->RemoveGigRequest($gigID, $developerID, $publisherID);
+
+        //Cut 5% of the order as the charges to the platform
+        $this->model->IndieabodeShare($gigID, $orderID, $publisherCost);
+
 
         //sending an email receipt
         try {

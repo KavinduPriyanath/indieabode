@@ -99,6 +99,7 @@
                 </div>
                 <hr />
             </div>
+            <div class="cancel-req-btn" id="cancel-button">Cancel Request</div>
             <div class="buy-button" id="buy-order" data-modal-target="#purchase-modal">Buy Order</div>
             <div class="buy-button" id="see-dashboard">Go to Dashboard</div>
         </div>
@@ -452,6 +453,34 @@
 
     <script>
         $(document).ready(function() {
+
+            <?php if ($this->currentRequest['publisherID'] == $_SESSION['id']) { ?>
+                $('#cancel-button').show();
+
+                $('#cancel-button').click(function() {
+
+                    let gigID = <?= $this->gig['gigID'] ?>;
+
+                    var data = {
+                        'gigID': gigID,
+                        'cancel_request_made': true,
+                    };
+
+                    $.ajax({
+                        url: "/indieabode/gig/cancelRequest",
+                        method: "POST",
+                        data: data,
+                        success: function(response) {
+
+                            window.location.href = "<?php echo BASE_URL; ?>gig?id=" + <?= $_GET['id'] ?>;
+                        }
+                    })
+
+                });
+
+            <?php } ?>
+
+
 
             //if both publisher and developer has not come to an agreement on both cost and share then prevent the publisher from buying the gig
             <?php if ($this->currentRequest['eligible'] == 0) { ?>
