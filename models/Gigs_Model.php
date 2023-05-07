@@ -9,11 +9,11 @@ class Gigs_Model extends Model
     }
 
 
-    function showAllGigs()
+    function showAllGigs($min, $max)
     {
         $sql = "SELECT gig.gigID, gig.gigID, gig.gigName, gig.gigTagline, gig.gigCoverImg, 
         gamer.firstName, gamer.lastName, gamer.avatar, gamer.trustrank
-        FROM gig INNER JOIN gamer ON gamer.gamerID = gig.gameDeveloperID WHERE gigStatus != 1";
+        FROM gig INNER JOIN gamer ON gamer.gamerID = gig.gameDeveloperID WHERE gigStatus != 1 LIMIT $min, $max";
 
         $stmt = $this->db->prepare($sql);
 
@@ -545,5 +545,23 @@ class Gigs_Model extends Model
         $stmt->execute();
 
         return $stmt->fetchAll();
+    }
+
+    function totalGigsPageCount($maxLimit)
+    {
+
+        $sql = "SELECT count(gigID) AS id FROM gig";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $gigsCount = $stmt->fetchAll();
+
+        $totalGigs = $gigsCount[0]['id'];
+
+        $totalPages = ceil($totalGigs / $maxLimit);
+
+        return $totalPages;
     }
 }

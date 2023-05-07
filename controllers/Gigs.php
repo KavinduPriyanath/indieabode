@@ -22,6 +22,13 @@ class Gigs extends Controller
             }
         }
 
+        //pagination 
+        $maxLimit = 24;
+        $page = isset($_GET['page']) ? $_GET['page'] : 1;
+        $start = ($page - 1) * $maxLimit;
+        $this->view->prevPage = $page - 1;
+        $this->view->nextPage = $page + 1;
+
         if (isset($_GET['genre']) || isset($_GET['stage']) || isset($_GET['cost']) || isset($_GET['share'])) {
 
             $checkedGenres = [];
@@ -47,7 +54,8 @@ class Gigs extends Controller
 
             $this->view->gigs = $this->model->showFilteredGigs($checkedGenres, $checkedStage, $checkedCost, $checkedShare);
         } else {
-            $this->view->gigs = $this->model->showAllGigs();
+            $this->view->gigs = $this->model->showAllGigs($start, $maxLimit);
+            $this->view->gigsPagesCount = $this->model->totalGigsPageCount($maxLimit);
         }
 
         //to keep track of the filters selected
