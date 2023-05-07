@@ -11,7 +11,16 @@ class Crowdfundings extends Controller
 
     function index()
     {
-        $thisCrowdfunds = $this->model->showAllCrowdfundings();
+
+        //pagination 
+        $maxLimit = 16;
+        $page = isset($_GET['page']) ? $_GET['page'] : 1;
+        $start = ($page - 1) * $maxLimit;
+        $this->view->prevPage = $page - 1;
+        $this->view->nextPage = $page + 1;
+
+        $thisCrowdfunds = $this->model->showAllCrowdfundings($start, $maxLimit);
+        $this->view->crowdfundsPagesCount = $this->model->totalCrowdfundsPageCount($maxLimit);
 
         $crowdfundCount = count($thisCrowdfunds);
 

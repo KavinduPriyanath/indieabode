@@ -23,7 +23,7 @@ class Gigs extends Controller
         }
 
         //pagination 
-        $maxLimit = 24;
+        $maxLimit = 16;
         $page = isset($_GET['page']) ? $_GET['page'] : 1;
         $start = ($page - 1) * $maxLimit;
         $this->view->prevPage = $page - 1;
