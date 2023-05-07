@@ -83,6 +83,14 @@
   width: 412px;
 }
 
+#left-col-ongoing-gig {
+  width: 562px;
+}
+
+#right-col-ongoing-gig {
+  width: 300px;
+}
+
 .left-col .icon {
   height: 80px;
   width: 150px;

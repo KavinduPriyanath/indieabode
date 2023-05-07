@@ -11,7 +11,7 @@ class Gig_Model extends Model
 
     function showSingleGig($id)
     {
-        $sql = "SELECT gig.gigID, gig.gigName, gig.gigScreenshot, gig.gigDetails, gig.game, gig.gameDeveloperID,
+        $sql = "SELECT gig.gigID, gig.gigName, gig.gigScreenshot, gig.gigDetails, gig.game, gig.gameDeveloperID, gig.gigStatus,
                 gig.gamePublisherID, gig.gigTagline, gig.currentStage, gig.plannedReleaseDate, gig.estimatedShare,
                 gig.expectedCost, gig.gigCoverImg, freegame.gameName, freegame.gameClassification, freegame.platform 
                 FROM gig INNER JOIN freegame ON freegame.gameID = gig.game WHERE gigID='$id'";
@@ -68,6 +68,42 @@ class Gig_Model extends Model
         $stmt = $this->db->prepare($sql);
 
         $stmt->execute();
+    }
+
+    function cancelGigRequest($gigID, $publisherID)
+    {
+
+        $sql = "DELETE FROM requestedgigs WHERE gigID='$gigID' AND publisherID='$publisherID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+    }
+
+    function updateRequestCount($gigID, $action)
+    {
+
+        $sql = "SELECT * FROM gig WHERE gigID='$gigID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $gig = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $requestCount = $gig['requests'];
+
+        if ($action == "request") {
+            $requestCount += 1;
+        } else if ($action == "cancel") {
+            $requestCount -= 1;
+        }
+
+        $updateSQL = "UPDATE gig SET requests ='$requestCount' WHERE gigID='$gigID'";
+
+        $updateStmt = $this->db->prepare($updateSQL);
+
+        $updateStmt->execute();
     }
 
     function HasRequested($gigId, $publisherId)
@@ -220,11 +256,11 @@ class Gig_Model extends Model
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    function successfulPurchase($gigID, $publisherID, $developerID, $publiserCost, $share, $orderID)
+    function successfulPurchase($gigID, $publisherID, $developerID, $publiserCost, $share, $orderID, $developerShare)
     {
 
-        $sql = "INSERT INTO gig_purchases(gigID, developerID, publisherID, publisherCost, sharePercentage,orderID) 
-                VALUES ('$gigID', '$developerID', '$publisherID', '$publiserCost', '$share', '$orderID')";
+        $sql = "INSERT INTO gig_purchases(gigID, developerID, publisherID, publisherCost, sharePercentage,orderID, developerShare) 
+                VALUES ('$gigID', '$developerID', '$publisherID', '$publiserCost', '$share', '$orderID', '$developerShare')";
 
         $stmt = $this->db->prepare($sql);
 
@@ -382,5 +418,29 @@ class Gig_Model extends Model
         $stmt = $this->db->prepare($updateSQL);
 
         $stmt->execute();
+    }
+
+    //How much portion site gains from each gig purchase
+    function IndieabodeShare($gigID, $orderID, $gigPrice)
+    {
+        $sitePortion = (floatval($gigPrice) / 100) * (5);
+
+        $sql = "INSERT INTO site_gig_revenue(gigID, orderID, siteShare) VALUES ('$gigID', '$orderID', '$sitePortion')";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+    }
+
+    //Calculate the revenue the developer gained by the gig 
+    function GameDeveloperShare($gigPrice)
+    {
+        $developerShare = (floatval($gigPrice) / 100) * (95);
+
+        $paymentGatewayCut = ($developerShare / 100) * (3.3);
+
+        $finalDeveloperShare = $developerShare - $paymentGatewayCut;
+
+        return $finalDeveloperShare;
     }
 }

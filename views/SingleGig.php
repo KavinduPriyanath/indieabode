@@ -113,6 +113,7 @@
                 </div>
 
                 <div class="request-button" id="request-button">Request Order</div>
+                <div class="cancel-req-btn" id="cancel-button">Cancel Request</div>
 
 
                 <div class="share-button" data-modal-target="#share-modal">Share</div>
@@ -250,9 +251,11 @@
             <?php if (isset($_SESSION['logged']) && $_SESSION['userRole'] == 'game publisher') { ?>
                 <?php if ($this->hasRequested) { ?>
                     $('#view-button').show();
+                    $('#cancel-button').show();
                     $('#request-button').hide();
                 <?php } else { ?>
                     $('#view-button').hide();
+                    $('#cancel-button').hide();
                     $('#request-button').show();
                 <?php } ?>
             <?php } else { ?>
@@ -280,7 +283,31 @@
                     success: function(response) {
 
                         $('#view-button').show();
+                        $('#cancel-button').show();
                         $('#request-button').hide();
+                    }
+                })
+
+            });
+
+            $('#cancel-button').click(function() {
+
+                let gigID = <?= $this->gig['gigID'] ?>;
+
+                var data = {
+                    'gigID': gigID,
+                    'cancel_request_made': true,
+                };
+
+                $.ajax({
+                    url: "/indieabode/gig/cancelRequest",
+                    method: "POST",
+                    data: data,
+                    success: function(response) {
+
+                        $('#view-button').hide();
+                        $('#cancel-button').hide();
+                        $('#request-button').show();
                     }
                 })
 

@@ -64,7 +64,7 @@
                                     <div class="tagline">
                                         <label id="gig-tagline" for="gig-tagline">Tagline</label><br />
                                         <p>Shown when we link your gig to other pages</p>
-                                        <input type="text" name="gig-tagline" id="gig-tagline" value="<?= $this->gig['gigTagline'] ?>" placeholder="Short Description about your game" required /><br /><br />
+                                        <input type="text" name="gig-tagline" id="gig-tagline" value="<?= $this->gig['gigTagline'] ?>" placeholder="Short Description about your game" max="250" /><br /><br />
                                     </div>
 
                                     <!--classification details-->

@@ -345,7 +345,6 @@
                             <div class="gamefile-div">
                                 <div class="game-upload-box">
                                     <label>Upload Game</label><br>
-                                    <!-- <input type="file" id="upload-game" name="upload-game">  -->
                                     <input type="file" id="upload-game" name="upload-game" accept=".zip">
                                     <label for="upload-game" id="upload-label">
                                         Upload Game File

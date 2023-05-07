@@ -63,12 +63,18 @@
                                 <div class="devlog-name"><?= $ongoingrequest['gigName']; ?></div>
 
                                 <div class="game-name">
-                                    <?= $ongoingrequest['game']; ?>
+                                    <?php if ($ongoingrequest['gigStatus'] == 0) {
+                                        echo "Pending";
+                                    } else {
+                                        echo "Sold Out";
+                                    } ?>
                                 </div>
                             </div>
                         </div>
 
                         <div class="right-col">
+                            <div class="gig-eligibility"><?php if ($ongoingrequest['eligible'] == 0) echo "Not Eligible Yet";
+                                                            else echo "Eligible"; ?></div>
                         </div>
                         <div class="edit-btn">
                             <a href="/indieabode/gig/viewgig?id=<?= $ongoingrequest['gigID'] ?>&token=<?= $ongoingrequest['gigToken'] ?>">

@@ -68,7 +68,11 @@ class Dashboard_Model extends Model
     function showAllMyGigRequests($devId)
     {
 
-        $sql = "SELECT * FROM requestedgigs INNER JOIN gig ON requestedgigs.gigID = gig.gigID WHERE developerID='$devId'";
+        $sql = "SELECT gig.gigName, gig.gigCoverImg, requestedgigs.gigID, requestedgigs.eligible,
+                requestedgigs.gigToken, requestedgigs.created_at, gamer.firstName, gamer.lastName
+                FROM (gamer INNER JOIN requestedgigs ON requestedgigs.publisherID=gamer.gamerID) INNER JOIN 
+                gig ON requestedgigs.gigID = gig.gigID 
+                WHERE developerID='$devId'";
 
         $stmt = $this->db->prepare($sql);
 
