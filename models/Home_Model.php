@@ -120,6 +120,10 @@ class Home_Model extends Model
     }
 
     //organizer homepage
+    //organizer homepage
+    //organizer homepage
+    //organizer homepage
+    //organizer homepage
     function showThisMonthJams()
     {
 
@@ -163,6 +167,54 @@ class Home_Model extends Model
         $sql = "SELECT gamejam.gameJamID, gamejam.jamTitle, gamejam.jamType, gamejam.jamTagline,gamejam.jamCoverImg,
                 gamejam.joinedCount, gamer.username FROM gamejam INNER JOIN gamer ON 
                 gamejam.jamHostID=gamer.gamerID WHERE votingEndDate < '$currentDateTime' ORDER BY votingEndDate DESC LIMIT 4";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+
+
+    //publisher homepage
+    //publisher homepage
+    //publisher homepage
+    //publisher homepage
+
+    function showPopularGigs()
+    {
+
+        $sql = "SELECT gig.gigID, gig.gigID, gig.gigName, gig.gigTagline, gig.gigCoverImg, 
+                gamer.firstName, gamer.lastName, gamer.avatar, gamer.trustrank
+                FROM gig INNER JOIN gamer ON gamer.gamerID = gig.gameDeveloperID WHERE gigStatus != 1 ORDER BY gig.viewCount DESC LIMIT 4";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+
+    function showLatestGigs()
+    {
+
+        $sql = "SELECT gig.gigID, gig.gigID, gig.gigName, gig.gigTagline, gig.gigCoverImg, 
+                gamer.firstName, gamer.lastName, gamer.avatar, gamer.trustrank
+                FROM gig INNER JOIN gamer ON gamer.gamerID = gig.gameDeveloperID WHERE gigStatus != 1 ORDER BY gig.created_at DESC LIMIT 4";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+
+    function showMostDemandGigs()
+    {
+
+        $sql = "SELECT gig.gigID, gig.gigID, gig.gigName, gig.gigTagline, gig.gigCoverImg, 
+                gamer.firstName, gamer.lastName, gamer.avatar, gamer.trustrank
+                FROM gig INNER JOIN gamer ON gamer.gamerID = gig.gameDeveloperID WHERE gigStatus != 1 ORDER BY gig.requests DESC LIMIT 4";
 
         $stmt = $this->db->prepare($sql);
 

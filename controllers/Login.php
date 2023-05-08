@@ -50,6 +50,8 @@ class Login extends Controller
                 header('location:/indieabode/home');
             } else if ($user['userRole'] == "gamejam organizer") {
                 header('location:/indieabode/home/organizer');
+            } else if ($user['userRole'] == "game publisher") {
+                header('location:/indieabode/home/publisher');
             } else {
                 header('location:/indieabode/');
             }
@@ -130,6 +132,8 @@ class Login extends Controller
                 header('location:/indieabode/home/developer');
             } else if ($_SESSION['userRole'] == "gamejam organizer") {
                 header('location:/indieabode/home/organizer');
+            } else if ($_SESSION['userRole'] == "game publisher") {
+                header('location:/indieabode/home/publisher');
             } else {
                 header('location:/indieabode/');
             }
