@@ -110,4 +110,65 @@ class Devlog_Model extends Model
 
         $updateStmt->execute();
     }
+
+    function AlreadyClaimed($gameID, $userID)
+    {
+
+        $sql = "SELECT * FROM game_library WHERE gameID='$gameID' AND gamerID='$userID' LIMIT 1";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $game = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($game != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function AlreadyInCart($gameID, $userID)
+    {
+
+        $sql = "SELECT * FROM game_cart WHERE gameID='$gameID' AND userID='$userID' LIMIT 1";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $game = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($game != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function AddtoLibrary($gameID, $gamerID)
+    {
+
+        $sql = "INSERT INTO game_library(gamerID, gameID) VALUES (?,?)";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute(["$gamerID", "$gameID"]);
+    }
+
+    public function AddtoCart($itemID, $gamerID)
+    {
+
+        // $itemID = 57;
+
+
+
+
+        $sql = "INSERT INTO game_cart (gameID,userID) VALUES (?,?)";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute(["$itemID", "$gamerID"]);
+    }
 }

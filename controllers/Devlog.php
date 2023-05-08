@@ -36,11 +36,17 @@ class Devlog extends Controller
 
             // $this->view->ssCount = count($this->model->getScreenshots($assetID));
 
+            $gameId = $this->model->showSingleDevlog($devlogID)['gameName'];
+
             if (isset($_SESSION['logged'])) {
 
                 $likedorNot = $this->model->AlreadyLiked($_SESSION['id'], $_GET['id']);
 
                 $this->view->likesStatus = ($likedorNot == true) ? "liked" : "disliked";
+
+                $this->view->hasInCart = $this->model->AlreadyInCart($gameId, $_SESSION['id']);
+
+                $this->view->hasClaimed = $this->model->AlreadyClaimed($gameId, $_SESSION['id']);
 
                 $viewTracker = $this->model->DevlogViewTracker($_SESSION['id'], $_SESSION['session'], $devlogID);
 
@@ -49,7 +55,7 @@ class Devlog extends Controller
                 }
             }
 
-            $gameId = $this->model->showSingleDevlog($devlogID)['gameName'];
+
 
             $this->view->game = $this->model->GetGame($gameId);
 
@@ -67,6 +73,34 @@ class Devlog extends Controller
             $this->view->game = $this->model->gameDetails($currentdevlog['gameName']);
 
             $this->view->render('SingleDevlog');
+        }
+    }
+
+
+    function addtoLibrary()
+    {
+        if ($_POST['add_to_library'] == true) {
+            $gameID = $_POST['gameID'];
+
+            $gamerID = $_SESSION['id'];
+
+            $this->model->AddtoLibrary($gameID, $gamerID);
+
+            echo "1";
+        }
+    }
+
+
+    function AddToCart()
+    {
+
+        if ($_POST['add_to_cart'] == true) {
+
+            $gameID = $_POST['gameID'];
+
+            $this->model->AddtoCart($gameID, $_SESSION['id']);
+
+            echo "1";
         }
     }
 }
