@@ -30,111 +30,102 @@
 
 
     <div class="side-nav" id="side-menu">
-        <p>Types</p>
+        <form action="" method="GET">
 
-        <div class="type-filter">
-            <div class="elements">
-                <input type="checkbox" name="" id="Windows" class="checkbox" />
-                <label for="Windows">Sprite</label>
+            <?php if (isset($_SESSION['logged'])) { ?>
+                <p>Preference</p>
+
+                <div class="type-filter">
+
+
+                    <?php if ($_SESSION['userRole'] == "gamejam organizer") { ?>
+                        <div class="elements">
+                            <input type="checkbox" name="preference[]" id="myjams" class="checkbox" value="" />
+                            <label for="myjams">My Jams</label>
+                        </div>
+                    <?php } else if ($_SESSION['userRole'] == "gamer") { ?>
+
+                        <div class="elements">
+                            <input type="checkbox" name="preference[]" id="joinedjams" class="checkbox" value="" />
+                            <label for="joinedjams">Jams Joined</label>
+                        </div>
+                        <div class="elements">
+                            <input type="checkbox" name="preference[]" id="votedjams" class="checkbox" value="" />
+                            <label for="votedjams">Jams Voted</label>
+                        </div>
+
+                    <?php } else if ($_SESSION['userRole'] == "game developer") { ?>
+
+                        <div class="elements">
+                            <input type="checkbox" name="preference[]" id="jamsjoined" class="checkbox" value="" />
+                            <label for="jamsjoined">Jams Joined</label>
+                        </div>
+                        <div class="elements">
+                            <input type="checkbox" name="preference[]" id="jamssubmitted" class="checkbox" value="" />
+                            <label for="jamssubmitted">Jams Submitted</label>
+                        </div>
+
+                    <?php } ?>
+
+                </div>
+            <?php } ?>
+
+            <p>Status</p>
+
+            <div class="type-filter">
+
+
+                <div class="elements">
+                    <input type="checkbox" name="status[]" id="inprogress" class="checkbox" value="" />
+                    <label for="inprogress">In Progress</label>
+                </div>
+
+                <div class="elements">
+                    <input type="checkbox" name="status[]" id="upcoming" class="checkbox" value="" />
+                    <label for="upcoming">Upcoming</label>
+                </div>
+
+                <div class="elements">
+                    <input type="checkbox" name="status[]" id="past" class="checkbox" value="" />
+                    <label for="past">Past Jams</label>
+                </div>
+
+
             </div>
 
-            <div class="elements">
-                <input type="checkbox" name="" id="Mac" class="checkbox" />
-                <label for="Mac">Character</label>
+            <p>Genre</p>
+
+            <div class="type-filter">
+                <div class="elements">
+                    <input type="radio" name="genre" id="ranked" class="checkbox" value="Ranked" />
+                    <label for="ranked">Ranked</label>
+                </div>
+
+                <div class="elements">
+                    <input type="radio" name="genre" id="nonranked" class="checkbox" value="Non-Ranked" />
+                    <label for="nonranked">Non-Ranked</label>
+                </div>
             </div>
 
-            <div class="elements">
-                <input type="checkbox" name="" id="Linux" class="checkbox" />
-                <label for="Linux">Skybox</label>
+            <p>Type</p>
+
+            <div class="type-filter">
+                <div class="elements">
+                    <input type="radio" name="type" id="public" class="checkbox" value="Public" />
+                    <label for="public">Public</label>
+                </div>
+
+                <div class="elements">
+                    <input type="radio" name="type" id="private" class="checkbox" value="Private" />
+                    <label for="private">Private</label>
+                </div>
             </div>
 
-            <div class="elements">
-                <input type="checkbox" name="" id="Android" class="checkbox" />
-                <label for="Android">Tileset</label>
-            </div>
 
-            <div class="elements">
-                <input type="checkbox" name="" id="Web" class="checkbox" />
-                <label for="Webx">Engine</label>
-            </div>
 
-            <div class="elements">
-                <input type="checkbox" name="" id="Web" class="checkbox" />
-                <label for="Webx">Font</label>
-            </div>
 
-            <div class="elements">
-                <input type="checkbox" name="" id="Web" class="checkbox" />
-                <label for="Webx">Background</label>
-            </div>
-        </div>
-
-        <p>Price</p>
-
-        <div class="type-filter">
-            <div class="elements">
-                <input type="radio" name="" id="Released" class="checkbox" />
-                <label for="Released">Free</label>
-            </div>
-
-            <div class="elements">
-                <input type="radio" name="" id="Early" class="checkbox" />
-                <label for="Early">5 or less</label>
-            </div>
-
-            <div class="elements">
-                <input type="radio" name="" id="Upcoming" class="checkbox" />
-                <label for="Upcoming">10 or less</label>
-            </div>
-        </div>
-
-        <p>Release Status</p>
-
-        <div class="type-filter">
-            <div class="elements">
-                <input type="checkbox" name="" id="Released" class="checkbox" />
-                <label for="Released">Released</label>
-            </div>
-
-            <div class="elements">
-                <input type="checkbox" name="" id="Early" class="checkbox" />
-                <label for="Early">Prototype</label>
-            </div>
-
-            <div class="elements">
-                <input type="checkbox" name="" id="Upcoming" class="checkbox" />
-                <label for="Upcoming">Upcoming</label>
-            </div>
-        </div>
-
-        <p>Styles</p>
-
-        <div class="type-filter">
-            <div class="elements">
-                <input type="checkbox" name="" id="Released" class="checkbox" />
-                <label for="Released">Pixel Art</label>
-            </div>
-
-            <div class="elements">
-                <input type="checkbox" name="" id="Early" class="checkbox" />
-                <label for="Early">8-Bit</label>
-            </div>
-
-            <div class="elements">
-                <input type="checkbox" name="" id="Upcoming" class="checkbox" />
-                <label for="Upcoming">16-Bit</label>
-            </div>
-
-            <div class="elements">
-                <input type="checkbox" name="" id="Upcoming" class="checkbox" />
-                <label for="Upcoming">Low Poly</label>
-            </div>
-
-            <div class="elements">
-                <input type="checkbox" name="" id="Upcoming" class="checkbox" />
-                <label for="Upcoming">Voxel</label>
-            </div>
-        </div>
+            <button type="submit" id="filter-button">Apply</button>
+        </form>
     </div>
 
     <div class="upper-break">
@@ -179,12 +170,8 @@
 
                     </div>
 
-                    <!--</div>-->
                     <div class="details">
                         <div class="jam-type"><?= $jam['jamType'] ?></div>
-                        <!--<div class="deadline">Starts on, 
-    
-  </div>-->
                         <div class="count">
                             <div class="countNo"><?= $jam['joinedCount'] ?></div>
                             <div class="countname">joined</div>
@@ -197,16 +184,13 @@
     </div>
 
     <!--Pagination-->
+    <div class="pagination" id="pagination-jams">
+        <a href="/indieabode/jams?page=<?= $this->prevPage; ?>" id="prev"><i class="fa fa-angle-left"></i></a>
+        <?php for ($i = 1; $i <= $this->jamsPagesCount; $i++) : ?>
+            <a href="/indieabode/jams?page=<?= $i; ?>" class="active"><?= $i ?></a>
+        <?php endfor; ?>
 
-    <div class="pagination">
-        <a href="#"><i class="fa fa-angle-left"></i></a>
-        <a href="#" class="active">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <a href="#">5</a>
-        <a href="#">6</a>
-        <a href="#"><i class="fa fa-angle-right"></i></a>
+        <a href="/indieabode/jams?page=<?= $this->nextPage; ?>" id="next"><i class="fa fa-angle-right"></i></a>
     </div>
 
 
@@ -217,6 +201,19 @@
     <script src="<?php echo BASE_URL; ?>public/js/sidefilter.js"></script>
     <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
 
+    <script>
+        <?php if (!isset($_GET['page']) || $_GET['page'] == 1) { ?>
+            document.getElementById("prev").style.pointerEvents = "none";
+        <?php  } ?>
+
+        <?php if (!isset($_GET['page']) || $_GET['page'] == $this->jamsPagesCount) { ?>
+            document.getElementById("next").style.pointerEvents = "none";
+        <?php  } ?>
+
+        <?php if (isset($_GET['genre']) || isset($_GET['stage']) || isset($_GET['cost']) || isset($_GET['share'])) { ?>
+            document.getElementById("pagination-jams").style.display = "none";
+        <?php } ?>
+    </script>
 
 </body>
 

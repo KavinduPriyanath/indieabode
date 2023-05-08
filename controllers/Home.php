@@ -41,4 +41,26 @@ class Home extends Controller
 
         $this->view->render('HomePages/DeveloperHome');
     }
+
+    function organizer()
+    {
+        $this->view->thismonthJams = $this->model->showThisMonthJams();
+
+        $this->view->upcomingJams = $this->model->showUpcomingJams();
+
+        $this->view->pastJams = $this->model->showPastJams();
+
+        $this->view->render('HomePages/OrganizerHome');
+    }
+
+    function publisher()
+    {
+        $this->view->mostPopularGigs = $this->model->showPopularGigs();
+
+        $this->view->latestGigs = $this->model->showLatestGigs();
+
+        $this->view->mostDemandGigs = $this->model->showMostDemandGigs();
+
+        $this->view->render('HomePages/PublisherHome');
+    }
 }
