@@ -73,10 +73,6 @@
 					<div class="game-db-body">
 						<h2>Game Dashbord/Games</h2>
 						<div class="game-db-first-row game-db-extra-first">
-							<!-- <div class="game-db-doughnut-chart">
-								<canvas id="game-db-pie-chart" width="300" height="200"></canvas>
-							</div> -->
-
 							<div class="game-db-content-join">
 								<div class="game-db-view-games">
 									<button class="game-db-btn">View All Games</button>
@@ -96,10 +92,6 @@
 								<h3>Total Downloads and Uploads</h3>
 								<canvas id="downloads-uploads-bar-graph" style="height: 220px; width: 450px;"></canvas>
 							</div>
-							<div class=""></div>
-							<!-- <div class="game-db-view-games">
-								<button class="game-db-btn">View All Games</button>
-							</div> -->
 						</div>
 						<div class="game-db-second-row">
 							<div class="game-db-report-table">

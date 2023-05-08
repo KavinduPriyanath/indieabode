@@ -11,38 +11,35 @@ class Admin_crowdfundD extends Controller
 
     function index()
     {
-    //     // $this->view->userCount = $this->model->userCount();
 
-    //     // $this->view->totalDownloads = $this->model->totalDownloads();
+        // get data for the graph of no of crowdfunds
+        $Noofcrowdfunds = $this->model->getNoofcrowdfunds();
+        $this->view->total_ended_crowdfunds = $Noofcrowdfunds['ended_crowdfunds'];
+        $this->view->total_ongoing_crowdfunds = $Noofcrowdfunds['ongoing_crowdfunds'];
 
-    //     //print_r($_POST);
-    //     $downloadasset = $this->model->getData("downloadasset",30);
-    //     $downloadgame = $this->model->getData("downloadgame",30);
+        // get data for all the donations have done so far
+        $this->view->allDonations = $this->model->getTotalDonations();
 
-    //     //var_dump($downloadgame);
-        
+        //get data for the all the donations tables
+        $this->view->donations = $this->model->getAllDonations();
 
-        
+        //get data for the all the crowdfunds table
+        $this->view->crowdfunds = $this->model->getAllCrowdfunds();
 
-    //     $labels = [];
-    //     $downloadasset_data = [];
-    //     foreach($downloadasset as $row){
-    //         $labels[] = $row['date'];
-    //         $downloadasset_data[] = $row['count'];
-    //     }
+        //get total revenue share
+        $this->view->totalRevenue = $this->model->getTotalRevenue();
 
+        //get revenue shares of crowdfunds
+        $this->view->revenueCrowdfunds = $this->model->getRevenueShare();
 
-    //     $downloadgame_data = [];
-    //     foreach($downloadgame as $row){
-    
-    //         $downloadgame_data[] = $row['count'];
-    //     }
+        //get data for the revenue graph
+        $data = $this->model->revenueGraph();
+        $dates = $data['dates'];
+        $revenueShares = $data['revenueShares'];
 
-        
-
-    //     $this->view->labels=$labels;
-    //     $this->view->downloadasset_data=$downloadasset_data;
-    //     $this->view->downloadgame_data=$downloadgame_data;
+        // pass the arrays to the view
+        $this->view->dates = $dates;
+        $this->view->revenueShares = $revenueShares;
 
         $this->view->render('Admin/Admin_crowdfundD');
     }
