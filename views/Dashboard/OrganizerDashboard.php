@@ -65,7 +65,7 @@
                             <div class="label">submissions</div>
                         </div>
                         <div class="ratings">
-                            <div class="count">0</div>
+                            <div class="count"><?= $jam['ratings']; ?></div>
                             <div class="label">ratings</div>
                         </div>
                     </div>

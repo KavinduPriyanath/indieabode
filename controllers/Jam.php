@@ -214,6 +214,8 @@ class Jam extends Controller
             $this->model->SaveSubmissionRating($jamID, $submissionID, $voterID, $rating);
 
             $this->model->UpdateThisSubmissionRating($submissionID, $jamID, $rating);
+
+            $this->model->UpdateTotalRatings($jamID, $rating);
         }
     }
 

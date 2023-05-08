@@ -118,4 +118,56 @@ class Home_Model extends Model
 
         return $stmt->fetchAll();
     }
+
+    //organizer homepage
+    function showThisMonthJams()
+    {
+
+        $currentMonth = date('m');
+
+        $likeQuery = '_____' . $currentMonth . '%';
+
+        $sql = "SELECT gamejam.gameJamID, gamejam.jamTitle, gamejam.jamType, gamejam.jamTagline,gamejam.jamCoverImg,
+                gamejam.joinedCount, gamer.username FROM gamejam INNER JOIN gamer ON 
+                gamejam.jamHostID=gamer.gamerID WHERE submissionStartDate LIKE '$likeQuery' LIMIT 4";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+
+
+    function showUpcomingJams()
+    {
+
+        $currentDateTime = date('Y-m-d h:i:s');
+
+        $sql = "SELECT gamejam.gameJamID, gamejam.jamTitle, gamejam.jamType, gamejam.jamTagline,gamejam.jamCoverImg,
+                gamejam.joinedCount, gamer.username FROM gamejam INNER JOIN gamer ON 
+                gamejam.jamHostID=gamer.gamerID WHERE submissionStartDate >= '$currentDateTime' LIMIT 4";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+
+    function showPastJams()
+    {
+
+        $currentDateTime = date('Y-m-d h:i:s');
+
+        $sql = "SELECT gamejam.gameJamID, gamejam.jamTitle, gamejam.jamType, gamejam.jamTagline,gamejam.jamCoverImg,
+                gamejam.joinedCount, gamer.username FROM gamejam INNER JOIN gamer ON 
+                gamejam.jamHostID=gamer.gamerID WHERE votingEndDate < '$currentDateTime' ORDER BY votingEndDate DESC LIMIT 4";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
 }

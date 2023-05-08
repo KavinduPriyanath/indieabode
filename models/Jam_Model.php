@@ -135,7 +135,7 @@ class Jam_Model extends Model
             $submissionCount -= 1;
         }
 
-        $updateSQL = "UPDATE gamejam SET submissionsCount='$submissionCount'";
+        $updateSQL = "UPDATE gamejam SET submissionsCount='$submissionCount' WHERE gameJamID='$gameJamId'";
 
         $updateStmt = $this->db->prepare($updateSQL);
 
@@ -434,5 +434,25 @@ class Jam_Model extends Model
         $stmt->execute();
 
         return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    function UpdateTotalRatings($jamID, $rating)
+    {
+
+        $sql = "SELECT * FROM gamejam WHERE gameJamID='$jamID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $jam = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $updatedRating = $jam['ratings'] + $rating;
+
+        $updateSQL = "UPDATE gamejam SET ratings='$updatedRating' WHERE gameJamID='$jamID'";
+
+        $updateStmt = $this->db->prepare($updateSQL);
+
+        $updateStmt->execute();
     }
 }
