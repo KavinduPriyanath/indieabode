@@ -211,6 +211,10 @@ include 'includes/navbar.php';
                             <option value="skybox">Skybox</option>
                             <option value="character">Character</option>
                             <option value="tileset">Tileset</option>
+                            <option value="building">Building</option>
+                            <option value="engine">Engine</option>
+                            <option value="background">Background</option>
+                            <option value="font">Font</option>
                         </select><br><br>
                     </div>
 

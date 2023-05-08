@@ -158,13 +158,13 @@
                 <div class="card">
                     <div class="card-image game"> <img src="/indieabode/public/uploads/assets/cover/<?= $asset['assetCoverImg'] ?>" alt="">
 
-                        <div class="asset-type"> <?= $asset['assetType'] ?> </div>
+                        <div class="asset-type"> <?= ucfirst($asset['assetType']); ?> </div>
                     </div>
                     <div class="game-intro">
                         <h3><?= $asset['assetName'] ?></h3>
                         <p>Free</p>
                     </div>
-                    <div class="tagline"><?= $asset['assetTagline'] ?></div>
+                    <div class="tagline modernWay"><?= $asset['assetTagline'] ?></div>
                 </div>
             </a>
         <?php } ?>

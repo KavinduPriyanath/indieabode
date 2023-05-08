@@ -217,6 +217,10 @@
                                         <option value="skybox" id="skybox">Skybox</option>
                                         <option value="character" id="character">Character</option>
                                         <option value="tileset" id="tileset">Tileset</option>
+                                        <option value="building">Building</option>
+                                        <option value="engine">Engine</option>
+                                        <option value="background">Background</option>
+                                        <option value="font">Font</option>
                                     </select><br><br>
                                 </div>
 
