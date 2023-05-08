@@ -63,4 +63,18 @@ class Home extends Controller
 
         $this->view->render('HomePages/PublisherHome');
     }
+
+    function creator()
+    {
+
+        $this->view->topSellerAssets = $this->model->TopSellerAssets();
+
+        $this->view->latestAssets = $this->model->NewReleaseAssets();
+
+        $this->view->mostPopular = $this->model->MostPopularAssets();
+
+        $this->view->topRated = $this->model->TopRatedAssets();
+
+        $this->view->render('HomePages/CreatorHome');
+    }
 }
