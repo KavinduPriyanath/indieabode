@@ -66,23 +66,40 @@
 					<a href="<?php echo BASE_URL; ?>Admin_G" >Game Dashboard</a>
 					<a href="<?php echo BASE_URL; ?>Admin_assetD" >Assets Dashboard</a>
 					<a href="<?php echo BASE_URL; ?>Admin_gameJamD" >Game Jam Dashboard</a>
-					<a href="<?php echo BASE_URL; ?>Admin_GigD" >Gigs Dashboard</a>
+					<a href="<?php echo BASE_URL; ?>Admin_crowdfundD" >Crowdfund Dashboard</a>
 				</div>
 				<div class="main-db-content">
 					<h1>Game Dashboard</h1>
 					<div class="game-db-body">
-						<div class="game-db-first-row">
-							<div class="game-db-doughnut-chart">
+						<h2>Game Dashbord/Games</h2>
+						<div class="game-db-first-row game-db-extra-first">
+							<!-- <div class="game-db-doughnut-chart">
 								<canvas id="game-db-pie-chart" width="300" height="200"></canvas>
+							</div> -->
+
+							<div class="game-db-content-join">
+								<div class="game-db-view-games">
+									<button class="game-db-btn">View All Games</button>
+								</div>
+								<div class="game-db-tx-card">
+									<h3>Total Payments</h3>
+									<h2>$<?php echo $this->totalTxGames; ?></h2>
+								</div>
 							</div>
-							<div class="game-db-tx-card">
-								<h3>Total Transactions</h3>
-								<h2>$<?php echo $this->totalTxGames; ?></h2>
+							<div class="transaction-graph-game-tx">
+								<h3>Payments Graph</h3>
+								<canvas id="game-tx-line-graph" style="height: 150px; width: 270px;"></canvas>
+							</div>
+							
+
+							<div class="downloads-uploads-graph">
+								<h3>Total Downloads and Uploads</h3>
+								<canvas id="downloads-uploads-bar-graph" style="height: 220px; width: 450px;"></canvas>
 							</div>
 							<div class=""></div>
-							<div class="game-db-view-games">
+							<!-- <div class="game-db-view-games">
 								<button class="game-db-btn">View All Games</button>
-							</div>
+							</div> -->
 						</div>
 						<div class="game-db-second-row">
 							<div class="game-db-report-table">
@@ -131,17 +148,71 @@
 								</tbody>
 								</table>
 							</div>
-
-							<div class="transaction-graph-game-tx">
-								<h3>Transaction Graph</h3>
-								<canvas id="game-tx-line-graph" style="height: 150px; width: 270px;"></canvas>
+							<div class="game-db-doughnut-chart">
+								<canvas id="game-db-pie-chart" width="300" height="200"></canvas>
 							</div>
 						</div>
+						<h2>Game Dashbord/Revenue</h2>
 						<div class="game-db-third-row">
-						<div class="downloads-uploads-graph">
-							<h3>Total Downloads and Uploads</h3>
-							<canvas id="downloads-uploads-bar-graph" style="height: 220px; width: 450px;"></canvas>
+							<div class="game-revenue-total">
+								<h3>Game Revenues</h3>
+								<h2>$567.90</h2>
+							</div>
+
+							<div class="game-revenue-graph">
+								<h3>Revenue Graph</h3>
+								<canvas id="game-revenue-line-graph" style="height: 150px; width: 270px;"></canvas>
+							</div>
+
 						</div>
+
+						<div class="game-db-fourth-row">
+						<div class="game-db-report-table">
+								<input type="date" id="game-db-date-picker">
+								<h3 class="game-db-table-heading">Payment Report on 2022.07.08th day</h3>
+								<button class="game-db-btn game-db-download-btn">Download Report</button>
+								<table>
+								<thead>
+									<tr>
+									<th>Transaction ID</th>
+									<th>Game Name</th>
+									<th>Gamer Name</th>
+									<th>Payment Date</th>
+									<th>Payment Amount</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+									<td>1</td>
+									<td>Game A</td>
+									<td>kavindu</td>
+									<td>2023-04-30</td>
+									<td>$50</td>
+									</tr>
+									<tr>
+									<td>1</td>
+									<td>Game A</td>
+									<td>kavindu</td>
+									<td>2023-04-30</td>
+									<td>$50</td>
+									</tr>
+									<tr>
+									<td>1</td>
+									<td>Game A</td>
+									<td>kavindu</td>
+									<td>2023-04-30</td>
+									<td>$50</td>
+									</tr>
+									<tr>
+									<td>2</td>
+									<td>Game B</td>
+									<td>himash</td>
+									<td>2023-05-01</td>
+									<td>$100</td>
+									</tr>
+								</tbody>
+								</table>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -247,15 +318,6 @@
 					borderWidth: 1
 				}]
 			},
-			// options: {
-			// 	scales: {
-			// 		yAxes: [{
-			// 			ticks: {
-			// 				beginAtZero: true
-			// 			}
-			// 		}]
-			// 	}
-			// }
 			options: {
 				scales: {
 					xAxes: [{
@@ -278,6 +340,40 @@
 				}
 			}
 		});
+
+		var ctx = document.getElementById('game-revenue-line-graph').getContext('2d');
+		var gameRevenueGraph = new Chart(ctx, {
+			type: 'line',
+			data: {
+				labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+				datasets: [{
+					data: [1000, 2000, 1500, 3000, 2500, 4000],
+					borderColor: 'rgba(75, 192, 192, 1)',
+					backgroundColor: 'rgba(75, 192, 192, 0.2)',
+					fill: true, // fill the area under the graph
+					backgroundColor: 'rgba(75, 192, 192, 0.2)', // color of the area under the graph
+				}]
+			},
+			options: {
+				legend: {
+					display: false
+				},
+				scales: {
+					yAxes: [{
+						display: false
+					}],
+					xAxes: [{
+						gridLines: {
+							display: false
+						},
+						ticks: {
+							display: false
+						}
+					}]
+				}
+			}
+		});
+
 	}
 	</script>
 
