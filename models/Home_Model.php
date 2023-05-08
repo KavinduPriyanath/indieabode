@@ -54,6 +54,11 @@ class Home_Model extends Model
     }
 
     //Gamer Home Page
+    //Gamer Home Page
+    //Gamer Home Page
+    //Gamer Home Page
+    //Gamer Home Page
+    //Gamer Home Page
     function TopSellers()
     {
 
@@ -215,6 +220,62 @@ class Home_Model extends Model
         $sql = "SELECT gig.gigID, gig.gigID, gig.gigName, gig.gigTagline, gig.gigCoverImg, 
                 gamer.firstName, gamer.lastName, gamer.avatar, gamer.trustrank
                 FROM gig INNER JOIN gamer ON gamer.gamerID = gig.gameDeveloperID WHERE gigStatus != 1 ORDER BY gig.requests DESC LIMIT 4";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+
+
+    //creator homepage
+    //creator homepage
+    //creator homepage
+    //creator homepage
+    //creator homepage
+    function TopSellerAssets()
+    {
+
+        $sql = "SELECT freeasset.assetID, freeasset.assetName, freeasset.assetTagline, freeasset.assetPrice, freeasset.assetCoverImg, freeasset.assetType 
+        FROM freeasset INNER JOIN asset_stats ON freeasset.assetID = asset_stats.assetID ORDER BY asset_stats.revenue DESC LIMIT 8";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+
+    function NewReleaseAssets()
+    {
+        $sql = "SELECT * FROM freeasset ORDER BY created_at DESC LIMIT 8";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+
+    function MostPopularAssets()
+    {
+
+        $sql = "SELECT freeasset.assetID, freeasset.assetName, freeasset.assetTagline, freeasset.assetPrice, freeasset.assetCoverImg, freeasset.assetType 
+        FROM freeasset INNER JOIN asset_stats ON freeasset.assetID = asset_stats.assetID ORDER BY asset_stats.views DESC LIMIT 8";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+
+    function TopRatedAssets()
+    {
+
+        $sql = "SELECT freeasset.assetID, freeasset.assetName, freeasset.assetTagline, freeasset.assetPrice, freeasset.assetCoverImg, freeasset.assetType 
+        FROM freeasset INNER JOIN asset_stats ON freeasset.assetID = asset_stats.assetID ORDER BY asset_stats.ratings DESC LIMIT 8";
 
         $stmt = $this->db->prepare($sql);
 
