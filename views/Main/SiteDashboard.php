@@ -65,6 +65,7 @@
 					<a href="<?php echo BASE_URL; ?>Admin_assetD" >Assets Dashboard</a>
 					<a href="<?php echo BASE_URL; ?>Admin_gameJamD" >Game Jam Dashboard</a>
 					<a href="<?php echo BASE_URL; ?>Admin_crowdfundD" >Crowdfund Dashboard</a>
+					<a href="<?php echo BASE_URL; ?>Admin_GigD" >Gigs Dashboard</a>
 				</div>
 
 				<!-- Main Dashboard -->

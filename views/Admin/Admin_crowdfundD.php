@@ -67,6 +67,7 @@
 					<a href="<?php echo BASE_URL; ?>Admin_assetD" >Assets Dashboard</a>
 					<a href="<?php echo BASE_URL; ?>Admin_gameJamD" >Game Jam Dashboard</a>
 					<a href="<?php echo BASE_URL; ?>Admin_crowdfundD" >Crowdfund Dashboard</a>
+					<a href="<?php echo BASE_URL; ?>Admin_GigD" >Gigs Dashboard</a>
 				</div>
 				<div class="main-db-content">
 					<h1>Crowdfund Dashboard</h1>
@@ -170,13 +171,14 @@
 
 						<h2>Crowdfund Dashbord/Revenue</h2>
 						<div class="crowdfund-third-row">
-							<div class="total-crowdfund-revenue">
-								<h3>Total Revenues</h3>
-								<h2 style="color: #4bc0c0;">$<?php echo $this->totalRevenue; ?></h2>
-							</div>
 							<div class="crowdfund-revenue-graph">
 								<h3>Crowdfund Revenue Graph</h3>
 								<canvas id="game-tx-line-graph" style="height: 150px; width: 270px;"></canvas>
+							</div>
+							
+							<div class="total-crowdfund-revenue">
+								<h3>Total Revenues</h3>
+								<h2 style="color: #4bc0c0;">$<?php echo $this->totalRevenue; ?></h2>
 							</div>
 						</div>
 
@@ -238,14 +240,12 @@
 					// data: [25, 40, 35],
 					data: [<?php echo json_encode($this->total_ended_crowdfunds); ?>,<?php echo json_encode($this->total_ongoing_crowdfunds); ?>],
 					backgroundColor: [
-						'#509998',
-						'#5c7777',
-						'#245252'
+						'#375766',
+						'#608a9f'
 					],
 					borderColor: [
-						'#509998',
-						'#5c7777',
-						'#245252'
+						'#375766',
+						'#608a9f',
 					],
 					borderWidth: 1
 				}]

@@ -34,8 +34,34 @@ class Admin_G extends Controller
             echo 'hriynnaaaa';
         }
 
-        
+        //get upload games details
+        $uploadGames = $this->model->getUploadGame();
+        if ($uploadGames !== null) {
+            $this->view->Dates = $uploadGames['dates'];
+            $this->view->Totals = $uploadGames['totals'];
+        } else {
+            // handling the error here, such as displaying an error message to admin
+            echo 'hriynnaaaa';
+        }
 
+        //get data of game purchasings
+        $this->view->gamePurchases = $this->model->getAllPayments();
+
+        //get game revenues shares for each day
+        $totalRevenues = $this->model->getAllGameRevenues();
+        if ($totalRevenues !== null) {
+            $this->view->revenueDates = $totalRevenues['dates'];
+            $this->view->revenueTotals = $totalRevenues['totals'];
+        } else {
+            // handling the error here, such as displaying an error message to admin
+            echo 'hriynnaaaa';
+        }
+
+        //get total game revenue
+        $this->view->totalGameRevenue = $this->model->getTotalGameRevenue();
+
+        //game revenue all the details
+        $this->view->gameRevenues = $this->model->getGameRevenueShare();
         $this->view->render('Admin/Admin_G');
 
     }
