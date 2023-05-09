@@ -72,83 +72,117 @@
 				<div class="main-db-content">
 					<h1>Asset Dashboard</h1>
 					<div class="game-db-body">
-						<div class="game-db-first-row">
+						<h2>Asset Dashbord/Assets</h2>
+						<div class="game-db-first-row game-db-extra-first">
+							<div class="transaction-graph-game-tx">
+								<h3>Payments Graph</h3>
+								<canvas id="game-tx-line-graph" style="height: 150px; width: 270px;"></canvas>
+							</div>
+							<div class="game-db-content-join">
+								<div class="game-db-view-games">
+									<button class="game-db-btn">View All Games</button>
+								</div>
+								<div class="game-db-tx-card">
+									<h3>Total Payments</h3>
+									<h2>$<?php echo $this->totalTxGames; ?></h2>
+								</div>
+							</div>
 							
-							<div class="game-db-tx-card  asset-tx-card">
-								<h3>Total Transactions</h3>
-								<h2>$5678.00</h2>
+
+							<div class="downloads-uploads-graph">
+								<h3>Total Downloads and Uploads</h3>
+								<canvas id="downloads-uploads-bar-graph" style="height: 220px; width: 400px;"></canvas>
+							</div>
+						</div>
+						<div class="game-db-second-row">
+							<div class="game-db-report-table">
+								<!-- <input type="date" id="game-db-date-picker"> -->
+								<h3 class="game-db-table-heading">Payment Report on <?php echo date('Y.m.dS'); ?><sup>th</sup> Day</h3>
+								<button class="game-db-btn game-db-download-btn">Download Report</button>
+								<div class="game-db-table-container">
+									<?php if (!empty($this->gamePurchases)) { ?>
+										<table>
+											<thead>
+											<tr>
+												<th>Transaction ID</th>
+												<th>Game ID</th>
+												<th>Gamer ID</th>
+												<th>Payment Date</th>
+												<th>Payment Amount</th>
+											</tr>
+											</thead>
+											<tbody>
+											<?php foreach ($this->gamePurchases as $purchase) { ?>
+												<tr>
+												<td><?php echo $purchase['id']; ?></td>
+												<td><?php echo $purchase['gameID']; ?></td>
+												<td><?php echo $purchase['buyerID']; ?></td>
+												<td><?php echo $purchase['purchasedDate']; ?></td>
+												<td><?php echo $purchase['purchasedPrice']; ?></td>
+												</tr>
+											<?php } ?>
+											</tbody>
+										</table>
+										<?php } else { ?>
+										<td colspan="5" class="error-tr">No payments available</td>
+									<?php } ?>
+
+								</div>
+								
 							</div>
 							<div class="game-db-doughnut-chart">
 								<canvas id="game-db-pie-chart" width="300" height="200"></canvas>
 							</div>
-							<div class="game-db-view-games">
-								<button class="game-db-btn">View All Assets</button>
-							</div>
 						</div>
-						<div class="game-db-second-row">
-							
-							<div class="transaction-graph-game-tx  tx-asset-graph">
-								<h3>Transaction Graph</h3>
-								<canvas id="game-tx-line-graph" style="height: 150px; width: 270px;"></canvas>
-							</div>
-
-							<div class="game-db-report-table">
-								<input type="date" id="game-db-date-picker">
-								<h3 class="game-db-table-heading">Payment Report on 2022.07.08th day</h3>
-								<button class="game-db-btn game-db-download-btn">Download Report</button>
-								<table>
-								<thead>
-									<tr>
-									<th>Transaction ID</th>
-									<th>Game Name</th>
-									<th>Gamer Name</th>
-									<th>Payment Date</th>
-									<th>Payment Amount</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-									<td>1</td>
-									<td>Game A</td>
-									<td>kavindu</td>
-									<td>2023-04-30</td>
-									<td>$50</td>
-									</tr>
-									<tr>
-									<td>1</td>
-									<td>Game A</td>
-									<td>kavindu</td>
-									<td>2023-04-30</td>
-									<td>$50</td>
-									</tr>
-									<tr>
-									<td>1</td>
-									<td>Game A</td>
-									<td>kavindu</td>
-									<td>2023-04-30</td>
-									<td>$50</td>
-									</tr>
-									<tr>
-									<td>2</td>
-									<td>Game B</td>
-									<td>himash</td>
-									<td>2023-05-01</td>
-									<td>$100</td>
-									</tr>
-								</tbody>
-								</table>
-							</div>
-
-						</div>
+						<h2>Game Dashbord/Revenue</h2>
 						<div class="game-db-third-row">
-						<div class="downloads-uploads-graph">
-							<h3>Total Downloads and Uploads</h3>
-							<canvas id="downloads-uploads-bar-graph"></canvas>
+							<div class="game-revenue-graph">
+								<h3>Game Revenue Graph</h3>
+								<canvas id="game-revenue-line-graph" style="height: 150px; width: 270px;"></canvas>
+							</div>
+
+							<div class="game-revenue-total">
+								<h3>Game Revenues</h3>
+								<h2>$<?php echo $this->totalGameRevenue; ?></h2>
+							</div>
 						</div>
+
+						<div class="game-db-fourth-row">
+							<div class="game-db-report-table">
+									<!-- <input type="date" id="game-db-date-picker"> -->
+									<h3 class="game-db-table-heading">Game Revenue Report on <?php echo date('Y.m.dS'); ?><sup>th</sup> day</h3>
+									<button class="game-db-btn game-db-download-btn">Download Report</button>
+									<div class="game-db-table-container">
+										<?php if (!empty($this->gameRevenues)) { ?>
+											<table>
+												<thead>
+												<tr>
+													<th>Transaction ID</th>
+													<th>Game ID</th>
+													<th>Sale Date</th>
+													<th>Site Share</th>
+												</tr>
+												</thead>
+												<tbody>
+												<?php foreach ($this->gameRevenues as $revenue) { ?>
+													<tr>
+													<td><?php echo $revenue['id']; ?></td>
+													<td><?php echo $revenue['gameID']; ?></td>
+													<td><?php echo $revenue['sale_date']; ?></td>
+													<td><?php echo $revenue['siteShare']; ?></td>
+													</tr>
+												<?php } ?>
+												</tbody>
+											</table>
+											<?php } else { ?>
+											<td colspan="4" class="error-tr">No crowdfunds available</td>
+										<?php } ?>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
-
                 
             </div>
 			
@@ -173,16 +207,17 @@
 				labels: ['Early Access Games', 'Upcoming Games', 'Released Games'],
 				datasets: [{
 					label: '# of Games',
-					data: [25, 40, 35],
+					// data: [25, 40, 35],
+					data: <?php echo json_encode($this->gameTypes); ?>,
 					backgroundColor: [
-						'#509998',
-						'#5c7777',
-						'#245252'
+						'rgba(55, 87, 102, 1)',
+						'#36647b',
+						'#608a9f'
 					],
 					borderColor: [
-						'#509998',
-						'#5c7777',
-						'#245252'
+						'rgba(55, 87, 102, 0.7)',
+						'#36647b',
+						'#608a9f'
 					],
 					borderWidth: 1
 				}]
@@ -200,9 +235,9 @@
 		var gameTxGraph = new Chart(ctx2, {
 		type: 'line',
 		data: {
-			labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July','August','September','October','November','December'],
+			labels:<?php echo json_encode($this->txDates); ?>,
 			datasets: [{
-			data: [12, 19, 3, 5, 2, 3, 10,11,45,67,90,21],
+			data: <?php echo json_encode($this->txTotals); ?>,
 			borderColor: 'rgba(75, 192, 192, 1)',
 			backgroundColor: 'rgba(75, 192, 192, 0.2)',
 			// fill: false
@@ -234,31 +269,71 @@
 		var downloadsUploadsGraph = new Chart(ctx3, {
 			type: 'bar',
 			data: {
-				labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5'],
+				labels:<?php echo json_encode($this->txDates); ?>,
 				datasets: [{
-					label: 'Total Downloads',
-					data: [12, 19, 3, 5, 2],
-					backgroundColor: 'rgba(255, 99, 132, 0.2)',
-					borderColor: 'rgba(255,99,132,1)',
-					borderWidth: 1
-				}, {
 					label: 'Total Uploads',
-					data: [8, 12, 9, 7, 3],
-					backgroundColor: 'rgba(54, 162, 235, 0.2)',
-					borderColor: 'rgba(54, 162, 235, 1)',
+					data:<?php echo json_encode($this->txTotals); ?>,
+					backgroundColor: 'rgba(55, 87, 102, 0.7)',
+					borderColor: 'rgba(55, 87, 102,1)',
 					borderWidth: 1
 				}]
 			},
 			options: {
 				scales: {
+					xAxes: [{
+					display: false,
+					gridLines: {
+						display: false,
+						drawBorder: false
+					}
+					}],
 					yAxes: [{
+					display: false,
+					gridLines: {
+						display: false,
+						drawBorder: false
+					},
+					ticks: {
+						beginAtZero: true
+					}
+					}]
+				}
+			}
+		});
+
+		var ctx = document.getElementById('game-revenue-line-graph').getContext('2d');
+		var gameRevenueGraph = new Chart(ctx, {
+			type: 'line',
+			data: {
+				labels:<?php echo json_encode($this->revenueDates); ?>,
+				datasets: [{
+					data:<?php echo json_encode($this->revenueTotals); ?>,
+					borderColor: 'rgba(75, 192, 192, 1)',
+					backgroundColor: 'rgba(75, 192, 192, 0.2)',
+					fill: true, // fill the area under the graph
+					backgroundColor: 'rgba(75, 192, 192, 0.2)', // color of the area under the graph
+				}]
+			},
+			options: {
+				legend: {
+					display: false
+				},
+				scales: {
+					yAxes: [{
+						display: false
+					}],
+					xAxes: [{
+						gridLines: {
+							display: false
+						},
 						ticks: {
-							beginAtZero: true
+							display: false
 						}
 					}]
 				}
 			}
 		});
+
 	}
 	</script>
 

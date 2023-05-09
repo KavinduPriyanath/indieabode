@@ -124,7 +124,7 @@
 											</tbody>
 										</table>
 										<?php } else { ?>
-										<td colspan="5" class="error-tr">No crowdfunds available</td>
+										<td colspan="5" class="error-tr">No payments available</td>
 									<?php } ?>
 
 								</div>
@@ -175,7 +175,7 @@
 											</tbody>
 										</table>
 										<?php } else { ?>
-										<td colspan="4" class="error-tr">No crowdfunds available</td>
+										<td colspan="4" class="error-tr">No revenues available</td>
 									<?php } ?>
 								</div>
 							</div>

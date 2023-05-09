@@ -12,24 +12,45 @@ class Admin_gameJamD_Model extends Model
         $stmt = $this->db->prepare($sql);
         $stmt->execute();
         $gamejams = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        
-        $today = date('Y-m-d H:i:s');
-        foreach ($gamejams as &$gamejam) {
-            if ($gamejam['votingEndDate'] < $today) {
-                $gamejam['status'] = 'Jam has ended on '.$gamejam['votingEndDate'].' (Voting period ended)';
-                $gamejam['tag'] = "Jam Ended";
-            } elseif ($gamejam['submissionStartDate'] <= $today && $gamejam['votingEndDate'] >= $today) {
-                $gamejam['status'] = 'Jam voting is ongoing and voting will be ended on '.$gamejam['votingEndDate'];
-                $gamejam['tag'] = "Jam Voting Ongoing";
-            } elseif ($gamejam['submissionEndDate'] >= $today) {
-                $gamejam['status'] = 'Jam submission is ongoing and jam submission end and voting period would start on '.$gamejam['submissionEndDate'];
-                $gamejam['tag'] = "Jam Submission Ongoing";
-            } else {
-                $gamejam['status'] = 'Jam not yet started and submissions will be start on '.$gamejam['submissionStartDate'];
-                $gamejam['tag'] = "Jam Not yet Started";
-            }
-        }
         return $gamejams;
     }
+
+    function getRankingDataForGameJam($gameJamID) {
+        $sql = "SELECT submissionID, rating FROM submission WHERE gameJamID = ? ORDER BY rating DESC";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute(array($gameJamID));
+        $rankings = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+        $rankingData = array(
+            'firstPlace' => null,
+            'secondPlace' => null,
+            'thirdPlace' => null
+        );
+    
+        if (count($rankings) > 0) {
+            $rankingData['firstPlace'] = array(
+                'submissionID' => $rankings[0]['submissionID'],
+                'rating' => $rankings[0]['rating']
+            );
+        }
+    
+        if (count($rankings) > 1) {
+            $rankingData['secondPlace'] = array(
+                'submissionID' => $rankings[1]['submissionID'],
+                'rating' => $rankings[1]['rating']
+            );
+        }
+    
+        if (count($rankings) > 2) {
+            $rankingData['thirdPlace'] = array(
+                'submissionID' => $rankings[2]['submissionID'],
+                'rating' => $rankings[2]['rating']
+            );
+        }
+    
+        return $rankingData;
+    }
+    
+    
     
 }
