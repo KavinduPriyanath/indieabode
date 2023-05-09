@@ -1177,4 +1177,13 @@ class Dashboard_Model extends Model
 
         return $stmt->fetchAll();
     }
+
+    function deleteJam($gameJamID)
+    {
+        $sql = "DELETE FROM gamejam WHERE gameJamID='$gameJamID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+    }
 }

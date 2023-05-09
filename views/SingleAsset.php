@@ -136,7 +136,7 @@
                     <div class="details">
                         <div class="row">
                             <p class="title">Release Date</p>
-                            <p class="sub-title">5 Nov 2021</p>
+                            <p class="sub-title" id="release-date"></p>
                         </div>
                         <hr />
 
@@ -154,7 +154,7 @@
 
                         <div class="row">
                             <p class="title">Extension</p>
-                            <p class="sub-title">.<?= $this->asset['fileExtension']; ?></p>
+                            <p class="sub-title" id="file-extension"></p>
                         </div>
                         <hr />
 
@@ -355,6 +355,33 @@
     </script>
 
     <script>
+
+        
+        $(document).ready(function() {
+
+            const months = ["Jan", "Feb", "March", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+            let releaseDate = "<?= $this->asset['created_at'] ?>";
+
+            let year = releaseDate.substr(0, 4);
+            let month = releaseDate.slice(5, 7);
+            let day = releaseDate.slice(8, 10);
+            let monthName = months[parseInt(month) - 1];
+            let formattedReleaseDate = day + " " + monthName + " " + year;
+
+            $('#release-date').text(formattedReleaseDate);
+
+
+        });
+
+        //getting file extension
+        var filename = "<?= $this->asset['assetFile'] ?>";
+
+        var filetype = filename.split('.').pop();
+
+        $('#file-extension').text(filetype);
+
+
         $(document).ready(function() {
             //Manage the way buttons are shown for different users, and for those who havent logged in
             <?php if (isset($_SESSION['logged'])) { ?>
@@ -584,6 +611,7 @@
 
             });
         });
+
     </script>
 
 </body>

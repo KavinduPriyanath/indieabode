@@ -1004,4 +1004,14 @@ class Dashboard extends Controller
 
         $this->view->render('Dashboard/JamDashboards/Prize');
     }
+
+    public function deleteJam()
+    {
+        if(isset($_POST['gameJamID'])) {
+            $gameJamID = $_POST['gameJamID'];
+            
+            $this->model->deleteJam($gameJamID);
+        
+        }
+    }
 }
