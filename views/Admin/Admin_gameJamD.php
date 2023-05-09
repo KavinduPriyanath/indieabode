@@ -128,7 +128,6 @@
 		</main>
 		<!-- MAIN -->
 	</section>
-	<!-- NAVBAR -->
 
 	<?php
     include 'includes/footer.php';
