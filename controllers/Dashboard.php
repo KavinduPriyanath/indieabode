@@ -386,7 +386,28 @@ class Dashboard extends Controller
             $assetScreenshots
         );
 
-        header('location:/indieabode/');
+        // header('location:/indieabode/');
+
+        header('location:' . BASE_URL . 'asset?id=' . $assetID);
+    }
+
+    function editAssetNameAvailabilityCheck()
+    {
+
+        $assetName = $_POST['assetName'];
+        $assetID = $_POST['assetID'];
+
+        $nameAvailability = $this->model->AssetNameAvailabilityCheck($assetName, $_SESSION['id'], $assetID);
+
+        $nameAvailabilityWhole = $this->model->CheckAssetNameWholeSite($assetName, $_SESSION['id']);
+
+        if ($nameAvailability == "false") {
+            echo "unavailable";
+        } else if (!empty($nameAvailabilityWhole)) {
+            echo "warning";
+        } else {
+            echo "available";
+        }
     }
 
     function gameanalytics()

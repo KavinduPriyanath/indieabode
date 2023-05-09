@@ -55,13 +55,15 @@
 
                             <div class="upload-col-left" id="gig-left">
                                 <div class="title-div">
-                                    <label id="asset-title" for="asset-title">Title</label><br>
-                                    <input type="text" name="asset-title" id="asset-title" value="<?= $this->asset['assetName']; ?>" /><br><br>
+                                    <label for="asset-title">Title</label><br>
+                                    <input type="text" name="asset-title" id="asset-title" value="<?= $this->asset['assetName']; ?>" /><br>
+                                    <div class="error-msg" id="assetNameCheck"></div><br>
                                 </div>
 
                                 <div class="tagline-div">
-                                    <label id="asset-tagline" for="asset-tagline">Tagline</label><br>
-                                    <input type="text" name="asset-tagline" id="asset-tagline" value="<?= $this->asset['assetTagline']; ?>" placeholder="Optional" /><br><br>
+                                    <label for="asset-tagline">Tagline</label><br>
+                                    <input type="text" name="asset-tagline" id="asset-tagline" value="<?= $this->asset['assetTagline']; ?>" placeholder="Optional" /><br>
+                                    <div class="error-msg" id="assetTaglineCheck"></div><br>
                                 </div>
 
                                 <!--classification details-->
@@ -637,6 +639,99 @@
     </script>
 
 
+    <script>
+        $(document).ready(function() {
+
+            let assetNameOkay = true;
+            let taglineOkay = true;
+
+            //Check for the availability of asset name the creator chose
+            $("#asset-title").keyup(function() {
+                assetNameAvailability();
+            });
+
+            //Check whether the chosen tagline length is compatible with game platforms cards
+            $("#asset-tagline").keyup(function() {
+                taglineValidity();
+            });
+
+            function assetNameAvailability() {
+                let assetName = $("#asset-title").val();
+                let assetID = <?= $this->asset['assetID']; ?>;
+
+                var data = {
+                    'assetName': assetName,
+                    'assetID': assetID
+                };
+
+                $.ajax({
+                    type: "POST",
+                    url: "/indieabode/dashboard/editAssetNameAvailabilityCheck",
+                    data: data,
+                    success: function(response) {
+                        if (assetName.length == 0) {
+                            $("#assetNameCheck").show();
+                            $("#assetNameCheck").text("Asset Name Cannot be empty");
+                            assetNameOkay = false;
+                        } else if (response == "available") {
+                            $("#assetNameCheck").hide();
+                            assetNameOkay = true;
+                        } else if (response == "unavailable") {
+                            $("#assetNameCheck").show();
+                            $("#assetNameCheck").css("background-color", "rgb(225, 132, 132)");
+                            $("#assetNameCheck").text("You alreay have an asset with this name");
+                            assetNameOkay = false;
+                        } else if (response == "warning") {
+                            $("#assetNameCheck").show();
+                            $("#assetNameCheck").css("background-color", "#ffff80");
+                            $("#assetNameCheck").text(
+                                "Warning: Platform already has an asset with this name"
+                            );
+                            assetNameOkay = true;
+                        }
+                    },
+                });
+            }
+
+            function taglineValidity() {
+                let tagline = $("#asset-tagline").val();
+
+                if (tagline.length < 40) {
+                    $("#assetTaglineCheck").show();
+                    $("#assetTaglineCheck").text("Must use more than 40 characters");
+                    taglineOkay = false;
+                } else if (tagline.length > 40 && tagline.length < 200) {
+                    $("#assetTaglineCheck").hide();
+                    taglineOkay = true;
+                } else {
+                    $("#assetTaglineCheck").show();
+                    $("#assetTaglineCheck").text("Cannot exceed 200 characters");
+                    taglineOkay = false;
+                }
+            }
+
+
+            $("#asset-submit").click(function(e) {
+                let formSubmit = false;
+                assetNameAvailability();
+                taglineValidity();
+
+                if (
+                    assetNameOkay == false ||
+                    taglineOkay == false
+                ) {
+                    formSubmit = false;
+                } else {
+                    formSubmit = true;
+                }
+
+                if (formSubmit == false) {
+                    e.preventDefault();
+                }
+            });
+
+        });
+    </script>
 
 </body>
 

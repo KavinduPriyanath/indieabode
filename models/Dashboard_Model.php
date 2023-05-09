@@ -1002,6 +1002,36 @@ class Dashboard_Model extends Model
         return $stmt->fetchAll();
     }
 
+    function AssetNameAvailabilityCheck($assetName, $userID, $assetID)
+    {
+
+        $sql = "SELECT * FROM freeasset WHERE assetName='$assetName' AND assetCreatorID='$userID' AND NOT assetID='$assetID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $game = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (empty($game)) {
+            return "true";
+        } else {
+            return "false";
+        }
+    }
+
+    function CheckAssetNameWholeSite($assetName, $userID)
+    {
+
+        $Namesql = "SELECT * FROM freeasset WHERE assetName='$assetName' AND NOT assetCreatorID='$userID'";
+
+        $Namestmt = $this->db->prepare($Namesql);
+
+        $Namestmt->execute();
+
+        return $Namestmt->fetch(PDO::FETCH_ASSOC);
+    }
+
     //GameJam Organizer Queries
     //GameJam Organizer Queries
     //GameJam Organizer Queries
