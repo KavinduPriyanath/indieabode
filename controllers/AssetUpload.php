@@ -66,4 +66,22 @@ class AssetUpload extends Controller
 
         header('location:/indieabode/');
     }
+
+    function assetNameAvailabilityCheck()
+    {
+
+        $assetName = $_POST['assetName'];
+
+        $nameAvailability = $this->model->AssetNameAvailabilityCheck($assetName, $_SESSION['id']);
+
+        $nameAvailabilityWhole = $this->model->CheckAssetNameWholeSite($assetName, $_SESSION['id']);
+
+        if ($nameAvailability == "false") {
+            echo "unavailable";
+        } else if (!empty($nameAvailabilityWhole)) {
+            echo "warning";
+        } else {
+            echo "available";
+        }
+    }
 }
