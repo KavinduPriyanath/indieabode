@@ -62,8 +62,26 @@ class AssetUpload extends Controller
             $assetScreenshots
         );
 
-        $this->model->UpdateAssetStats($assetName);
+        $addedAsset = $this->model->UpdateAssetStats($assetName, $_SESSION['id']);
 
-        header('location:/indieabode/');
+        header('location:' . BASE_URL . 'asset?id=' . $addedAsset['assetID']);
+    }
+
+    function assetNameAvailabilityCheck()
+    {
+
+        $assetName = $_POST['assetName'];
+
+        $nameAvailability = $this->model->AssetNameAvailabilityCheck($assetName, $_SESSION['id']);
+
+        $nameAvailabilityWhole = $this->model->CheckAssetNameWholeSite($assetName, $_SESSION['id']);
+
+        if ($nameAvailability == "false") {
+            echo "unavailable";
+        } else if (!empty($nameAvailabilityWhole)) {
+            echo "warning";
+        } else {
+            echo "available";
+        }
     }
 }
