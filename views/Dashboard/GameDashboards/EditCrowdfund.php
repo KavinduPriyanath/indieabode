@@ -46,12 +46,13 @@
                         <div class="upload-row">
                             <div class="upload-col-left" id="crowdfund-left">
                                 <div class="title-div">
-                                    <label id="gig-title" for="gig-title">Crowdfund Title</label><br />
-                                    <input type="text" name="crowdfund-title" id="gig-title" value="<?= $this->crowdfund['title'] ?>" /><br /><br />
+                                    <label for="gig-title">Crowdfund Title</label><br />
+                                    <input type="text" name="crowdfund-title" id="gig-title" value="<?= $this->crowdfund['title'] ?>" /><br />
+                                    <div class="error-msg" id="titleCheck"></div><br />
                                 </div>
 
                                 <div class="game-div">
-                                    <label id="game-name" for="game-name">Game</label><br />
+                                    <label for="game-name">Game</label><br />
                                     <p>Choose the game that you are finding a publisher for</p>
                                     <select id="game-name" name="game-name" disabled>
                                         <option value="<?= $this->game['gameID'] ?>"><?= $this->game['gameName'] ?></option>
@@ -60,19 +61,21 @@
                                 </div>
 
                                 <div class="tagline-div">
-                                    <label id="gig-tagline" for="gig-tagline">Tagline</label><br />
+                                    <label for="gig-tagline">Tagline</label><br />
                                     <p>Shown when we link your gig to other pages</p>
-                                    <input type="text" name="crowdfund-tagline" id="gig-tagline" value="<?= $this->crowdfund['tagline'] ?>" placeholder="Short Description about your game" required /><br /><br />
+                                    <input type="text" name="crowdfund-tagline" id="gig-tagline" value="<?= $this->crowdfund['tagline'] ?>" placeholder="Short Description about your game" required /><br />
+                                    <div class="error-msg" id="taglineCheck"></div><br />
 
                                 </div>
 
                                 <div class="expectedAmount-div">
-                                    <label id="expected-amount" for="expected-amount">Expected Amount</label><br />
+                                    <label for="expected-amount">Expected Amount</label><br />
                                     <p id="p">
                                         The assumed amount needed for the development of the game
                                     </p>
                                     <input type="text" id="expected-cost" name="expected-amount" value="<?= $this->crowdfund['expectedAmount'] ?>" readonly />
-                                    <br /><br />
+                                    <br />
+                                    <div class="error-msg" id="expectedAmountCheck"></div><br />
                                 </div>
 
                                 <!--Releasing status-->
@@ -194,7 +197,7 @@
                             </div>
                         </div>
                         <br /><br />
-                        <button type="submit" class="submit-btn" name="game-submit">
+                        <button type="submit" class="submit-btn" id="update-btn" name="game-submit">
                             Save & View Page
                         </button>
                     </form>
@@ -306,7 +309,121 @@
         }
     </script>
 
+    <script>
+        $(document).ready(function() {
 
+            let titleOkay = true;
+            let taglineOkay = true;
+            let expectedAmountOkay = true;
+
+
+            $("#gig-title").keyup(function() {
+                crowdfundTitleAvailability();
+            });
+
+            $("#gig-tagline").keyup(function() {
+                crowdfundTaglineAvailability();
+            });
+
+            $("#expected-cost").keyup(function() {
+                crowdfundAmountValidation();
+            });
+
+
+            function crowdfundTitleAvailability() {
+                let crowdfundTitle = $("#gig-title").val();
+
+                if (crowdfundTitle.length == 0) {
+                    $("#titleCheck").show();
+                    $("#titleCheck").text("Crowdfund Title Cannot be empty");
+                    titleOkay = false;
+                } else if (crowdfundTitle.length > 0 && crowdfundTitle.length < 29) {
+                    $("#titleCheck").hide();
+                    titleOkay = true;
+                } else if (crowdfundTitle.length > 29) {
+                    $("#titleCheck").show();
+                    $("#titleCheck").text("Crowdfund Title Cannot exceed 29 letters");
+                    titleOkay = false;
+                }
+            }
+
+            function crowdfundTaglineAvailability() {
+                let gigTagline = $("#gig-tagline").val();
+
+                if (gigTagline.length < 70) {
+                    $("#taglineCheck").show();
+                    $("#taglineCheck").text("Must use more than 70 characters");
+                    taglineOkay = false;
+                } else if (gigTagline.length > 70 && gigTagline.length < 100) {
+                    $("#taglineCheck").hide();
+                    taglineOkay = true;
+                } else {
+                    $("#taglineCheck").show();
+                    $("#taglineCheck").text("Cannot exceed 100 characters");
+                    taglineOkay = false;
+                }
+            }
+
+            function crowdfundAmountValidation() {
+                var regex = /^\d*[.]?\d*$/;
+                let inputtedCost = $("#expected-cost").val();
+
+                console.log(inputtedCost.length);
+
+                if (inputtedCost.length == 0) {
+                    $("#expectedAmountCheck").show();
+                    $("#expectedAmountCheck").text("Cannot be empty");
+                    expectedAmountOkay = false;
+                } else {
+                    if (regex.test(inputtedCost)) {
+                        if (parseInt(inputtedCost) < 50) {
+                            $("#expectedAmountCheck").show();
+                            $("#expectedAmountCheck").text(
+                                "Only allowed to launch crowdfunds for greater than $50"
+                            );
+                            expectedAmountOkay = false;
+                        } else if (parseInt(inputtedCost) > 1000) {
+                            $("#expectedAmountCheck").show();
+                            $("#expectedAmountCheck").text(
+                                "Only allowed to launch crowdfunds for orders less than $1000"
+                            );
+                            expectedAmountOkay = false;
+                        } else {
+                            $("#expectedAmountCheck").hide();
+                            expectedAmountOkay = true;
+                        }
+                    } else {
+                        $("#expectedAmountCheck").show();
+                        $("#expectedAmountCheck").text("Only numeric values are allowed");
+                        expectedAmountOkay = false;
+                    }
+                }
+            }
+
+            $("#update-btn").click(function(e) {
+                let formSubmit = false;
+
+                crowdfundTitleAvailability();
+                crowdfundTaglineAvailability();
+                crowdfundAmountValidation();
+
+                if (
+                    titleOkay == false ||
+                    taglineOkay == false ||
+                    expectedAmountOkay == false
+                ) {
+                    formSubmit = false;
+                } else {
+                    formSubmit = true;
+                }
+
+                if (formSubmit == false) {
+                    e.preventDefault();
+                }
+            });
+
+        });
+    </script>
 
 
 </body>
