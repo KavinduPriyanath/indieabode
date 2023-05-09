@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 08, 2023 at 07:47 PM
+-- Generation Time: May 09, 2023 at 08:02 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -318,9 +318,13 @@ INSERT INTO `asset_stats` (`assetID`, `downloads`, `views`, `ratings`, `ratingCo
 (20, 0, 5, 0, 0, 0),
 (21, 5, 5, 0, 0, 26.109),
 (29, 3, 11, 0, 0, 29.5902),
-(31, 0, 2, 0, 0, 0),
+(31, 0, 4, 0, 0, 0),
 (32, 0, 0, 0, 0, 0),
-(33, 0, 0, 0, 0, 0);
+(33, 2, 2, 0, 0, 0),
+(34, 0, 3, 0, 0, 0),
+(35, 0, 3, 0, 0, 0),
+(36, 0, 1, 0, 0, 0),
+(37, 0, 1, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -395,7 +399,15 @@ INSERT INTO `asset_stats_history` (`id`, `assetID`, `views`, `downloads`, `ratin
 (50, 19, 1, 0, 0, 0, '2023-05-08'),
 (51, 17, 1, 0, 0, 0, '2023-05-08'),
 (52, 18, 1, 0, 0, 0, '2023-05-08'),
-(53, 31, 2, 0, 0, 0, '2023-05-08');
+(53, 31, 2, 0, 0, 0, '2023-05-08'),
+(54, 33, 1, 1, 0, 0, '2023-05-08'),
+(55, 34, 3, 0, 0, 0, '2023-05-09'),
+(56, 0, 1, 0, 0, 0, '2023-05-09'),
+(57, 35, 3, 0, 0, 0, '2023-05-09'),
+(58, 31, 2, 0, 0, 0, '2023-05-09'),
+(59, 36, 1, 0, 0, 0, '2023-05-09'),
+(60, 33, 1, 1, 0, 0, '2023-05-09'),
+(61, 37, 1, 0, 0, 0, '2023-05-09');
 
 -- --------------------------------------------------------
 
@@ -505,7 +517,20 @@ INSERT INTO `asset_view_tracker` (`id`, `userID`, `assetID`, `sessionID`, `viewe
 (87, 46, 9, 95, '2023-05-08'),
 (88, 46, 9, 10, '2023-05-08'),
 (89, 102, 31, 50, '2023-05-08'),
-(90, 101, 31, 25, '2023-05-08');
+(90, 101, 31, 25, '2023-05-08'),
+(91, 46, 33, 32, '2023-05-08'),
+(92, 102, 34, 49, '2023-05-09'),
+(93, 78, 0, 42, '2023-05-09'),
+(94, 78, 35, 42, '2023-05-09'),
+(95, 102, 31, 99, '2023-05-09'),
+(96, 102, 35, 99, '2023-05-09'),
+(97, 102, 34, 99, '2023-05-09'),
+(98, 97, 36, 53, '2023-05-09'),
+(99, 87, 33, 15, '2023-05-09'),
+(100, 87, 34, 15, '2023-05-09'),
+(101, 87, 35, 15, '2023-05-09'),
+(102, 87, 31, 15, '2023-05-09'),
+(103, 87, 37, 15, '2023-05-09');
 
 -- --------------------------------------------------------
 
@@ -721,7 +746,7 @@ CREATE TABLE `crowdfund` (
 --
 
 INSERT INTO `crowdfund` (`crowdFundID`, `currentAmount`, `deadline`, `expectedAmount`, `gameDeveloperName`, `gameName`, `title`, `tagline`, `backers`, `details`, `visibility`, `crowdfundCoverImg`, `crowdfundSS`, `crowdfundTrailer`, `viewCount`, `created_at`, `siteShareCollected`) VALUES
-(4, 77.36, '2023-06-03', 500, 46, '96', 'ergrgrtgd wdw 111', 'httrh 11', 2, 'ffwf <b>fefefeef&nbsp;</b>', 'draft', 'Cover-4.jpg', 'SS-4-0.jpg,SS-4-1.jpg', 'https://itch.io/11/my-first-game-jam-winter-2023', 12, '2023-05-04 23:14:42', 0),
+(4, 77.36, '2023-06-03', 500, 46, '96', 'ergrgrtgd wdw 111', 'httrh 11f wgkrg errogrog jregjreogj rejgergrjgierjgrej grgjregjre jrgjrgjregrjg', 2, 'ffwf <b>fefefeef </b>', 'draft', 'Cover-4.jpg', 'SS-4-0.jpg,SS-4-1.jpg', 'https://itch.io/11/my-first-game-jam-winter-2023', 13, '2023-05-04 23:14:42', 0),
 (6, 0, '2023-05-05', 100, 46, '95', 'new crowdfunding', 'gtgrtgrttrht', 0, '<h3>ABOUT THIS GAME</h3>\r\n<br>\r\n<p>Lost, alone and separated from family, a stray cat must untangle an ancient mystery to escape a long-forgotten city.\r\n\r\nStray is a third-person cat adventure game set amidst the detailed, neon-lit alleys of a decaying cybercity and the murky environments of its seedy underbelly. Roam surroundings high and low, defend against unforeseen threats and solve the mysteries of this unwelcoming place inhabited by curious droids and dangerous creatures.\r\n\r\nSee the world through the eyes of a cat and interact with the environment in playful ways. Be stealthy, nimble, silly, and sometimes as annoying as possible with the strange inhabitants of this mysterious world.\r\n\r\nAlong the way, the cat befriends a small flying drone, known only as B-12. With the help of this newfound companion, the duo must find a way out.\r\n\r\nStray is developed by BlueTwelve Studio, a small team from the south of France mostly made up of cats and a handful of humans.<p>', 'draft', 'Cover-Monster Hunter Rise.jpg', 'SS-Monster Hunter Rise-0.jpg,SS-Monster Hunter Rise-1.jpg', 'https://itch.io/jam/my-first-game-jam-winter-2023', 4, '2023-05-04 23:14:42', 0),
 (11, 0, '2023-04-26', 234, 46, '91', 'htrhrt', 'gtgrtgrttrht', 0, 'gtthh<b>gtgt</b>', 'draft', 'Cover-91.jpg', 'SS-91-0.jpg,SS-91-1.jpg,SS-91-2.jpg', 'https://itch.io/jam/my-first-game-jam-winter-2023', 4, '2023-05-04 23:14:42', 0),
 (12, 0, '2023-04-29', 51, 46, '89', 'ergrgrtgfefregreg gregerger ', 'gtgrtgrttrhte greg ererh erherhh hh thj7j eg owgrjrjgri r grgjrgj rgjjowjg ', 0, '', 'draft', 'Cover-89.jpg', 'SS-89-0.jpg,SS-89-1.jpg', 'https://itch.io/jam/my-first-game-jam-winter-2023', 4, '2023-05-04 23:14:42', 0);
@@ -803,7 +828,8 @@ INSERT INTO `crowdfund_view_tracker` (`id`, `userID`, `sessionID`, `crowdfundID`
 (25, 46, 95, 4, '2023-05-08'),
 (26, 46, 32, 4, '2023-05-08'),
 (27, 46, 32, 6, '2023-05-08'),
-(28, 46, 32, 11, '2023-05-08');
+(28, 46, 32, 11, '2023-05-08'),
+(29, 46, 66, 4, '2023-05-09');
 
 -- --------------------------------------------------------
 
@@ -1045,7 +1071,7 @@ CREATE TABLE `freeasset` (
   `assetPrice` varchar(100) NOT NULL,
   `version` varchar(10) NOT NULL DEFAULT '1.0',
   `assetDetails` text NOT NULL,
-  `assetScreenshots` varchar(255) NOT NULL,
+  `assetScreenshots` text NOT NULL,
   `assetTitle` varchar(50) NOT NULL,
   `assetTagline` varchar(255) NOT NULL,
   `assetClassification` varchar(20) NOT NULL,
@@ -1077,9 +1103,13 @@ INSERT INTO `freeasset` (`assetID`, `assetName`, `assetGenre`, `assetPrice`, `ve
 (20, 'New Asset 4', '', '50.99', '1.0', '', 'SS-New Asset 4-0.jpg,SS-New Asset 4-1.jpg,SS-New Asset 4-2.jpg', '', 'cute pixel pastel farming asset pack', '3d', 'Released', 'grgr', 'asset-New Asset 4.zip', 'open-source', 'Cover-New Asset 4.jpg', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'sprite', 'pixelart', 47, '', '', '2022-01-11 00:00:00'),
 (21, 'New Asset 5', '', '30', '1.0', '', 'SS-New Asset 5-0.png,SS-New Asset 5-1.png', '', 'cute pixel pastel farming asset pack', '3d', 'Released', 'brbr', 'asset-New Asset 5.zip', 'open-source', 'Cover-New Asset 5.png', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'sprite', 'pixelart', 78, '', '', '2023-01-01 00:00:00'),
 (29, 'New Asset 1000', '', '34', '1.0', 'fefe&nbsp;', 'SS-New Asset 1000-0.jpg,SS-New Asset 1000-1.jpg,SS-New Asset 1000-2.jpg', '', 'Animated characters, hairstyles and clothes!', '3d', 'released', 'rhgth,jytjty', 'asset-New Asset 1000.zip', 'open-source', 'Cover-New Asset 1000.jpg', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'sprite', 'pixelart', 78, '', '', '2023-04-19 11:29:38'),
-(31, 'Large Medieval Church', '', '45', '1.0', '', 'SS-Large Medieval Church-0.jpg,SS-Large Medieval Church-1.jpg,SS-Large Medieval Church-2.jpg', '', 'High Quality Textured church for your next medieval 3D game', '3d', 'Released', '', '', 'proprietary', 'Cover-Large Medieval Church.jpg', 0, '', 'building', 'lowpoly', 102, '', '', '2023-05-08 22:16:15'),
+(31, 'Large Medieval Church', '', '45', '1.0', '', 'SS-Large Medieval Church-0.jpg,SS-Large Medieval Church-1.jpg,SS-Large Medieval Church-2.jpg', '', 'High Quality Textured church for your next medieval 3D game', '3d', 'Released', '', '', 'proprietary', 'Cover-Large Medieval Church.jpg', 0, '', 'sprite', 'lowpoly', 102, '', '', '2023-05-08 22:16:15'),
 (32, 'Sci-Fi UI Pack', '', '0', '1.0', '', 'SS-Sci-Fi UI Pack-0.jpg,SS-Sci-Fi UI Pack-1.jpg,SS-Sci-Fi UI Pack-2.jpg', '', 'A sci-fi ui toolkit, which contains UI components along with a free demo scene', '2d', 'Released', 'scifi,ui,icons,backgrounds,sprite', '', 'proprietary', 'Cover-Sci-Fi UI Pack.jpg', 0, '', 'sprite', 'pixelart', 101, '', '', '2023-05-08 22:26:06'),
-(33, 'Character Editor', '', '0', '1.0', '', 'SS-Character Editor-0.jpg,SS-Character Editor-1.jpg,SS-Character Editor-2.jpg,SS-Character Editor-3.jpg', '', 'Includes all possible releases and all extensions, the built-in inventory system and the full icon collection', '3d', 'released', '', '', 'open-source', 'Cover-Character Editor.jpg', 0, '', 'sprite', 'pixelart', 102, '', '', '2023-05-08 22:35:17');
+(33, 'Character Editor', '', '0', '1.0', '', 'SS-Character Editor-0.jpg,SS-Character Editor-1.jpg,SS-Character Editor-2.jpg,SS-Character Editor-3.jpg', '', 'Includes all possible releases and all extensions, the built-in inventory system and the full icon collection', '3d', 'released', '', '', 'open-source', 'Cover-Character Editor.jpg', 0, '', 'sprite', 'pixelart', 102, '', '', '2023-05-08 22:35:17'),
+(34, 'Anime Combat Sounds', '', '50', '1.0', '', 'SS-Anime Combat Sounds-0.jpg,SS-Anime Combat Sounds-1.jpg', '', 'Epic sound effects great for Anime-fighting games, JRPG, and more!', 'audio', 'Released', 'anime,audio,sound track', 'Game-34.zip', 'proprietary', 'Cover-Anime Combat Sounds.jpg', 0, '', 'sprite', 'pixelart', 102, '', '', '2023-05-09 11:52:42'),
+(35, '2D Platformer Tileset', '', '0', '1.0', '', 'SS-2D Platformer Tileset-0.jpg,SS-2D Platformer Tileset-1.jpg,SS-2D Platformer Tileset-2.jpg', '', 'Set of tiles and props that can be used to create platformer games', '2d', 'released', 'platformer,tiles,tilesets,2d', 'asset-2D Platformer Tileset.zip', 'proprietary', 'Cover-2D Platformer Tileset.jpg', 0, '', 'sprite', 'pixelart', 78, '', '', '2023-05-09 13:12:43'),
+(36, 'Hospital Ward', '', '80', '1.0', '', 'SS-Hospital Ward-0.jpg,SS-Hospital Ward-1.jpg,SS-Hospital Ward-2.jpg', '', 'Ideal for medical training demos and hospital scenes for either high end video games or AR', '3d', 'released', 'hospital,3d,ward,asset,high quality,hd', 'asset-Hospital Ward.zip', 'open-source', 'Cover-Hospital Ward.jpg', 0, '', 'sprite', 'pixelart', 97, '', '', '2023-05-09 23:23:40'),
+(37, 'Low Poly Hospital', '', '0', '1.0', '', 'SS-Low Poly Hospital-0.jpg,SS-Low Poly Hospital-1.jpg,SS-Low Poly Hospital-2.jpg,SS-Low Poly Hospital-3.jpg', '', 'This is a three-story building with an elevator and stairs between the floors, equipped rooms, wards and the surrounding area. The building is assembled from modular parts, all doors open.', '3d', 'released', '', 'asset-Low Poly Hospital.zip', 'open-source', 'Cover-Low Poly Hospital.jpg', 0, '', 'sprite', 'pixelart', 87, '', '', '2023-05-09 23:30:42');
 
 -- --------------------------------------------------------
 
@@ -1791,7 +1821,9 @@ INSERT INTO `games_view_tracker` (`id`, `userID`, `sessionID`, `gameID`, `viewed
 (412, 47, 76, 197, '2023-05-08'),
 (413, 52, 96, 209, '2023-05-08'),
 (414, 86, 19, 201, '2023-05-08'),
-(415, 86, 19, 206, '2023-05-08');
+(415, 86, 19, 206, '2023-05-08'),
+(416, 46, 83, 212, '2023-05-09'),
+(417, 46, 68, 212, '2023-05-09');
 
 -- --------------------------------------------------------
 
@@ -2010,7 +2042,7 @@ INSERT INTO `game_stats` (`id`, `gameID`, `views`, `downloads`, `ratings`, `reve
 (32, 209, 2, 1, 0, 49.1632),
 (33, 210, 2, 0, 0, 0),
 (34, 211, 2, 2, 0, 0),
-(35, 212, 1, 0, 0, 0);
+(35, 212, 3, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -2283,7 +2315,8 @@ INSERT INTO `game_stats_history` (`id`, `gameID`, `views`, `downloads`, `ratings
 (255, 197, 1, 0, 0, 0, '2023-05-08'),
 (256, 209, 1, 1, 0, 0, '2023-05-08'),
 (257, 201, 1, 0, 0, 0, '2023-05-08'),
-(258, 206, 1, 0, 0, 0, '2023-05-08');
+(258, 206, 1, 0, 0, 0, '2023-05-08'),
+(259, 212, 2, 0, 0, 0, '2023-05-09');
 
 -- --------------------------------------------------------
 
@@ -2325,7 +2358,7 @@ INSERT INTO `gig` (`gigID`, `gigName`, `gigTrailor`, `gigScreenshot`, `gigDetail
 (25, 'Indie Puzzle Platformer', 'https://www.indiegala.com/login', 'SS-187-0.jpg,SS-187-1.jpg,SS-187-2.jpg', '<b>ABOUT THIS GAME</b><div>Currently I have been developing this game for five months and has gained considerably pleasing progress. Currently it contains five levels with nearly 15 minutes of gameplay. The game has been released on Indieabode as a Demo to try out for anybody who gets liking in the game features, mechanics shown in the images and videos.</div><div><br></div><div><b>DEVELOPMENT OF RECOURSE</b></div><div>Recourse is been developed in Unity game engine using C# as the programming language. As the sole developer I am responsible for all the coding, modeling, texturing and sounds also. Every model currently in use in the game is made by me using Blender and Substance Painter. For audios, and sound effects I am using Audacity and SFXR. The however still lacks on VFX but they would also be added to the game due time.</div>', 187, 81, 0, 'Stylish Puzzle Platformer with a casual gameplay loop', '1', '2024-06-17', '10', '500', 'draft', 'Cover-Indie Puzzle Platformer.jpg', NULL, 7, 0, '2023-04-21', 1),
 (26, 'New Gig 2fe', '', 'SS-187-0.jpg', '', 187, 81, 0, 'I am developing an open world game with extreme high movements', '2', '2023-04-05', '3', '1234', 'draft', 'Cover-New Gig 2fe.jpg', NULL, 7, 1, '2023-04-26', 0),
 (27, 'Cooperative Horror Shooter', '', 'SS-211-0.jpg,SS-211-1.jpg,SS-211-2.jpg', '', 211, 82, 0, 'Explore the world of horror with your friends while striving to survive yourself', '6', '2025-06-17', '10', '1000', 'public', 'Cover-Cooperative Horror Shooter.jpg', NULL, 10, 2, '2023-05-07', 1),
-(28, 'Open World Super Hero Game', '', 'SS-212-0.jpg,SS-212-1.png,SS-212-2.jpg', '', 212, 46, 0, 'Become your favourite super hero super man and explore the continent flying around the globe', '2', '2024-10-03', '20', '1000', 'public', 'Cover-Open World Super Hero Game.jpg', NULL, 3, 1, '2023-05-07', 1);
+(28, 'Open World Super Hero Game', '', 'SS-212-0.jpg,SS-212-1.png,SS-212-2.jpg', '', 212, 46, 0, 'Become your favourite super hero super man and explore the continent flying around the globe', '2', '2024-10-03', '20', '1000', 'public', 'Cover-Open World Super Hero Game.jpg', NULL, 4, 1, '2023-05-07', 1);
 
 -- --------------------------------------------------------
 
@@ -2531,7 +2564,8 @@ INSERT INTO `gigs_views_tracker` (`id`, `userID`, `sessionID`, `gigID`, `viewedD
 (88, 46, 10, 13, '2023-05-08'),
 (89, 46, 32, 13, '2023-05-08'),
 (90, 46, 32, 26, '2023-05-08'),
-(91, 46, 32, 20, '2023-05-08');
+(91, 46, 32, 20, '2023-05-08'),
+(92, 46, 68, 28, '2023-05-09');
 
 -- --------------------------------------------------------
 
@@ -3509,13 +3543,13 @@ ALTER TABLE `asset_reviews`
 -- AUTO_INCREMENT for table `asset_stats_history`
 --
 ALTER TABLE `asset_stats_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `asset_view_tracker`
 --
 ALTER TABLE `asset_view_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
 
 --
 -- AUTO_INCREMENT for table `billing_addresses`
@@ -3569,7 +3603,7 @@ ALTER TABLE `crowdfund_donations`
 -- AUTO_INCREMENT for table `crowdfund_view_tracker`
 --
 ALTER TABLE `crowdfund_view_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `devlog`
@@ -3617,7 +3651,7 @@ ALTER TABLE `followers`
 -- AUTO_INCREMENT for table `freeasset`
 --
 ALTER TABLE `freeasset`
-  MODIFY `assetID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `assetID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `freegame`
@@ -3653,7 +3687,7 @@ ALTER TABLE `games_filters`
 -- AUTO_INCREMENT for table `games_view_tracker`
 --
 ALTER TABLE `games_view_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=416;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=418;
 
 --
 -- AUTO_INCREMENT for table `game_cart`
@@ -3689,7 +3723,7 @@ ALTER TABLE `game_stats`
 -- AUTO_INCREMENT for table `game_stats_history`
 --
 ALTER TABLE `game_stats_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=259;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=260;
 
 --
 -- AUTO_INCREMENT for table `gig`
@@ -3707,7 +3741,7 @@ ALTER TABLE `gigmessages`
 -- AUTO_INCREMENT for table `gigs_views_tracker`
 --
 ALTER TABLE `gigs_views_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 
 --
 -- AUTO_INCREMENT for table `gig_purchases`
