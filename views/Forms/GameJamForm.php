@@ -66,19 +66,19 @@
                     <div class="card-box">
                         <span class="details">Start Date & Time*</span><br>
                         <p>Date & time for the theme reveal and start submitting games</p>
-                        <input type="datetime_local" name="Sdate" placeholder="yyyy/mm/dd 00:00" required>
+                        <input type="datetime-local" name="Sdate" placeholder="yyyy/mm/dd 00:00" required>
                     </div>
 
                     <div class="card-box">
                         <span class="details">End Date & Time*</span><br>
                         <p>Date & time to close submissions, and start voting</p>
-                        <input type="datetime_local" name="Edate" placeholder="yyyy/mm/dd 00:00" required>
+                        <input type="datetime-local" name="Edate" placeholder="yyyy/mm/dd 00:00" required>
                     </div>
 
                     <div class="card-box" id="voting-date">
                         <span class="details">Voting End Date & Time</span><br>
                         <p>Date & time to cease voting, and publish results</p>
-                        <input type="datetime_local" name="V_E_Date" placeholder="yyyy/mm/dd 00:00">
+                        <input type="datetime-local" name="V_E_Date" placeholder="yyyy/mm/dd 00:00">
                     </div>
 
                     <div class="card-box">
