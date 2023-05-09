@@ -67,61 +67,147 @@
 					<a href="<?php echo BASE_URL; ?>Admin_assetD" >Assets Dashboard</a>
 					<a href="<?php echo BASE_URL; ?>Admin_gameJamD" >Game Jam Dashboard</a>
 					<a href="<?php echo BASE_URL; ?>Admin_crowdfundD" >Crowdfund Dashboard</a>
+					<a href="<?php echo BASE_URL; ?>Admin_GigD" >Gigs Dashboard</a>
 				</div>
 				<div class="main-db-content">
-					<h1>Game Jam Dashboard</h1>
+					<h1>Crowdfund Dashboard</h1>
 					<div class="game-db-body">
-						<div class="game-db-first-row game-db-extra-first">
-							<div class="game-db-doughnut-chart">
-								<canvas id="game-db-pie-chart" width="300" height="200"></canvas>
+						<h2>Crowdfund Dashbord/Crowdfunds</h2>
+						<div class="crowdfund-first-row game-db-first-row">
+							<div class="crowdfund-db-first">
+								<div class="game-db-doughnut-chart">
+									<canvas id="game-db-pie-chart" width="300" height="200"></canvas>
+								</div>
+								<div class="total-donations">
+									<h3>Total Donations</h3>
+									<h2>$<?php echo $this->allDonations; ?></h2>
+								</div>
 							</div>
+							<div class="crowdfund-db-second">
+								<h1>Crowdfund Donations</h1>
+								<div class="table-container">
+									<table>
+										<thead>
+											<tr>
+											<th>Crowdfund ID</th>
+											<th>Donor ID</th>
+											<th>Donation Amount</th>
+											<th>Donated Date</th>
+											</tr>
+										</thead>
+										<tbody class="scrollable">
+											<?php if (empty($this->donations)): ?>
+											<tr>
+												<td colspan="4">No donations available.</td>
+											</tr>
+											<?php else: ?>
+											<?php foreach ($this->donations as $donation): ?>
+												<tr>
+												<td><?php echo $donation['crowdfundID']; ?></td>
+												<td><?php echo $donation['donorID']; ?></td>
+												<td>$<?php echo number_format($donation['donationAmount'], 2); ?></td>
+												<td><?php echo date('M d, Y', strtotime($donation['donatedDate'])); ?></td>
+												</tr>
+											<?php endforeach; ?>
+											<?php endif; ?>
+										</tbody>
+									</table>
 
+								</div>
+								
+							</div>
 						</div>
 
-						<div class="jam-db-second-row">
-							<div class="jam-db-table">
+						<div class="crowdfund-second-row">
+							<h1>All Crowdfunds</h1>
+							<div class="jam-db-table crowdfund-table-all">
+							<table>
+								<thead>
+									<tr>
+										<th>ID</th>
+										<th>Cover Image</th>
+										<th>Developer Name</th>
+										<th>Game Name</th>
+										<th>Status</th>
+										<th>Expected Amount</th>
+										<th>Current Amount</th>
+										<th>Total Backers</th>
+									</tr>
+								</thead>
+								<tbody>
+									<?php if (count($this->crowdfunds) > 0): ?>
+										<?php foreach ($this->crowdfunds as $crowdfund): ?>
+											<tr>
+												<td><?php echo $crowdfund['crowdFundID']; ?></td>
+												<td><img src="/indieabode/public/uploads/crowdfunds/covers/<?= $crowdfund['crowdfundCoverImg'] ?>" alt="cover-image"/></td>
+												<td><?php echo $crowdfund['gameDeveloperName']; ?></td>
+												<td><?php echo $crowdfund['gameName']; ?></td>
+												<!-- <td><?php echo $crowdfund['status']; ?></td> -->
+												<td>
+													<?php 
+														$deadline = strtotime($crowdfund['deadline']);
+														$now = new DateTime();
+														if ($deadline >= $now->getTimestamp()) {
+														echo 'Ongoing';
+														} else {
+														echo 'Ended';
+														}
+													?>
+												</td>
+												<td><?php echo $crowdfund['expectedAmount']; ?></td>
+												<td><?php echo $crowdfund['currentAmount']; ?></td>
+												<td><?php echo $crowdfund['backers']; ?></td>
+											</tr>
+										<?php endforeach; ?>
+									<?php else: ?>
+										<tr>
+											<td colspan="8">No crowdfunds available</td>
+										</tr>
+									<?php endif; ?>
+								</tbody>
+							</table>
+							</div>
+						</div>
+
+						<h2>Crowdfund Dashbord/Revenue</h2>
+						<div class="crowdfund-third-row">
+							<div class="crowdfund-revenue-graph">
+								<h3>Crowdfund Revenue Graph</h3>
+								<canvas id="game-tx-line-graph" style="height: 150px; width: 270px;"></canvas>
+							</div>
+							
+							<div class="total-crowdfund-revenue">
+								<h3>Total Revenues</h3>
+								<h2 style="color: #4bc0c0;">$<?php echo $this->totalRevenue; ?></h2>
+							</div>
+						</div>
+
+						<div class="crowdfund-fourth-row">
+							<h1>crowdfund revenues shared games</h1>
+							<div class="crowdfund-revenue-share-games">
 								<table>
 									<thead>
 										<tr>
-											<th>Jam ID</th>
-											<th>Cover Image</th>
-											<th>Jam Name</th>
-											<th>Jam Status</th>
-											<th>Rankings</th>
+										<th>Crowdfund ID</th>
+										<th>Game ID</th>
+										<th>Developer ID</th>
+										<th>Revenue Share</th>
 										</tr>
 									</thead>
-									<tbody>
+									<tbody style="overflow-y: scroll;">
+										<?php foreach ($this->revenueCrowdfunds as $crowdfund) { ?>
 										<tr>
-											<td>1</td>
-											<td><img src="/indieabode/public/images/Admin/jam/jam-3.png" alt="user-image"/></td>
-											<td>Spring Jam</td>
-											<td class="ongoing">Ongoing (Ends May 15)</td>
-											<td>1st Place: John<br>2nd Place: Sarah<br>3rd Place: Tom</td>
+											<td><?php echo $crowdfund['crowdFundID']; ?></td>
+											<td><?php echo $crowdfund['gameName']; ?></td>
+											<td><?php echo $crowdfund['gameDeveloperName']; ?></td>
+											<td><?php echo '$' . number_format($crowdfund['revenue_share'], 2); ?></td>
 										</tr>
-										<tr>
-											<td>2</td>
-											<td><img src="/indieabode/public/images/Admin/jam/jam-3.png" alt="user-image"/></td>
-											<td>Summer Jam</td>
-											<td class="completed">Completed</td>
-											<td>1st Place: Emily<br>2nd Place: David<br>3rd Place: Lisa</td>
-										</tr>
-										<tr>
-											<td>3</td>
-											<td><img src="/indieabode/public/images/Admin/jam/jam-3.png" alt="user-image"/></td>
-											<td>Fall Jam</td>
-											<td class="ongoing">Ongoing (Ends Oct 31)</td>
-											<td>1st Place: TBD<br>2nd Place: TBD<br>3rd Place: TBD</td>
-										</tr>
-										<tr>
-											<td>4</td>
-											<td><img src="/indieabode/public/images/Admin/jam/jam-3.png" alt="user-image"/></td>
-											<td>Winter Jam</td>
-											<td class="completed">Completed</td>
-											<td>1st Place: Alex<br>2nd Place: Rachel<br>3rd Place: Mark</td>
-										</tr>
+										<?php } ?>
 									</tbody>
 								</table>
 							</div>
+
+
 						</div>
 
 					</div>
@@ -148,20 +234,18 @@
 			type: 'doughnut',
 			backgroundColor: "#6997a4",
 			data: {
-				labels: ['Ongoing Jams', 'Finished Jams', 'Upcoming Jams'],
+				labels: ['Ended Crowdfunds', 'Ongoing Crowdfunds'],
 				datasets: [{
 					label: '# of Games',
 					// data: [25, 40, 35],
-					data: [23,67,99],
+					data: [<?php echo json_encode($this->total_ended_crowdfunds); ?>,<?php echo json_encode($this->total_ongoing_crowdfunds); ?>],
 					backgroundColor: [
-						'#509998',
-						'#5c7777',
-						'#245252'
+						'#375766',
+						'#608a9f'
 					],
 					borderColor: [
-						'#509998',
-						'#5c7777',
-						'#245252'
+						'#375766',
+						'#608a9f',
 					],
 					borderWidth: 1
 				}]
@@ -176,6 +260,39 @@
 		});
 
 
+		var ctx2 = document.getElementById('game-tx-line-graph').getContext('2d');
+		var gameTxGraph = new Chart(ctx2, {
+		type: 'line',
+		data: {
+			labels:<?php echo json_encode($this->dates); ?>,
+			datasets: [{
+			data: <?php echo json_encode($this->revenueShares); ?>,
+			borderColor: 'rgba(75, 192, 192, 1)',
+			backgroundColor: 'rgba(75, 192, 192, 0.2)',
+			// fill: false
+			fill: true, // fill the area under the graph
+            backgroundColor: 'rgba(75, 192, 192, 0.2)', // color of the area under the graph
+			}]
+		},
+		options: {
+			legend: {
+			display: false
+			},
+			scales: {
+			yAxes: [{
+				display: false
+			}],
+			xAxes: [{
+				gridLines: {
+				display: false
+				},
+				ticks: {
+				display: false
+				}
+			}]
+			}
+		}
+		});
 
 	}
 	</script>

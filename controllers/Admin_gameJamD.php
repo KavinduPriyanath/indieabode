@@ -11,39 +11,30 @@ class Admin_gameJamD extends Controller
 
     function index()
     {
+        //get all the game jams in the gamejam table
+        $this->view->gamejams = $this->model->getAllJams();
 
-    //     // $this->view->userCount = $this->model->userCount();
+        //get data for the jam graph
+        $ongoingCount = 0;
+        $finishedCount = 0;
+        $upcomingCount = 0;
 
-    //     // $this->view->totalDownloads = $this->model->totalDownloads();
+        foreach ($this->view->gamejams as $jam) {
+            switch ($jam['tag']) {
+                case 'Jam Submission Ongoing':
+                case 'Jam Voting Ongoing':
+                    $ongoingCount++;
+                    break;
+                case 'Jam Ended':
+                    $finishedCount++;
+                    break;
+                case 'Jam Not yet Started':
+                    $upcomingCount++;
+                    break;
+            }
+        }
 
-    //     //print_r($_POST);
-    //     $downloadasset = $this->model->getData("downloadasset",30);
-    //     $downloadgame = $this->model->getData("downloadgame",30);
-
-    //     //var_dump($downloadgame);
-        
-
-        
-
-    //     $labels = [];
-    //     $downloadasset_data = [];
-    //     foreach($downloadasset as $row){
-    //         $labels[] = $row['date'];
-    //         $downloadasset_data[] = $row['count'];
-    //     }
-
-
-    //     $downloadgame_data = [];
-    //     foreach($downloadgame as $row){
-    
-    //         $downloadgame_data[] = $row['count'];
-    //     }
-
-        
-
-    //     $this->view->labels=$labels;
-    //     $this->view->downloadasset_data=$downloadasset_data;
-    //     $this->view->downloadgame_data=$downloadgame_data;
+        $this->view->countJamArray = array($ongoingCount, $finishedCount, $upcomingCount);
 
         $this->view->render('Admin/Admin_gameJamD');
     }

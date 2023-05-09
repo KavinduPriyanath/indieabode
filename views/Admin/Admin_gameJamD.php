@@ -67,6 +67,7 @@
 					<a href="<?php echo BASE_URL; ?>Admin_assetD" >Assets Dashboard</a>
 					<a href="<?php echo BASE_URL; ?>Admin_gameJamD" >Game Jam Dashboard</a>
 					<a href="<?php echo BASE_URL; ?>Admin_crowdfundD" >Crowdfund Dashboard</a>
+					<a href="<?php echo BASE_URL; ?>Admin_GigD" >Gigs Dashboard</a>
 				</div>
 				<div class="main-db-content">
 					<h1>Game Jam Dashboard</h1>
@@ -75,7 +76,12 @@
 							<div class="game-db-doughnut-chart">
 								<canvas id="game-db-pie-chart" width="300" height="200"></canvas>
 							</div>
-
+<!-- 
+							<div class="popular-jam">
+								<h3>Most Popular Jam</h3>
+								<img src="/indieabode/public/images/Admin/jam/jam-3.png" alt="user-image"/>
+								<h2>23<br>Submissions</h2>
+							</div> -->
 						</div>
 
 						<div class="jam-db-second-row">
@@ -86,39 +92,28 @@
 											<th>Jam ID</th>
 											<th>Cover Image</th>
 											<th>Jam Name</th>
+											<th>Jam Host ID</th>
 											<th>Jam Status</th>
 											<th>Rankings</th>
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td>1</td>
-											<td><img src="/indieabode/public/images/Admin/jam/jam-3.png" alt="user-image"/></td>
-											<td>Spring Jam</td>
-											<td class="ongoing">Ongoing (Ends May 15)</td>
-											<td>1st Place: John<br>2nd Place: Sarah<br>3rd Place: Tom</td>
-										</tr>
-										<tr>
-											<td>2</td>
-											<td><img src="/indieabode/public/images/Admin/jam/jam-3.png" alt="user-image"/></td>
-											<td>Summer Jam</td>
-											<td class="completed">Completed</td>
-											<td>1st Place: Emily<br>2nd Place: David<br>3rd Place: Lisa</td>
-										</tr>
-										<tr>
-											<td>3</td>
-											<td><img src="/indieabode/public/images/Admin/jam/jam-3.png" alt="user-image"/></td>
-											<td>Fall Jam</td>
-											<td class="ongoing">Ongoing (Ends Oct 31)</td>
-											<td>1st Place: TBD<br>2nd Place: TBD<br>3rd Place: TBD</td>
-										</tr>
-										<tr>
-											<td>4</td>
-											<td><img src="/indieabode/public/images/Admin/jam/jam-3.png" alt="user-image"/></td>
-											<td>Winter Jam</td>
-											<td class="completed">Completed</td>
-											<td>1st Place: Alex<br>2nd Place: Rachel<br>3rd Place: Mark</td>
-										</tr>
+										<?php if (count($this->gamejams) > 0): ?>
+											<?php foreach ($this->gamejams as $gamejam): ?>
+												<tr>
+													<td><?php echo $gamejam['gameJamID']; ?></td>
+													<td><img src="/indieabode/public/images/Admin/jam/jam-3.png" alt="cover-image"/></td>
+													<td><?php echo $gamejam['jamTitle']; ?></td>
+													<td><?php echo $gamejam['jamHostID']; ?></td>
+													<td><?php echo $gamejam['tag']; ?></td>
+													<td>1st Place: John<br>2nd Place: Sarah<br>3rd Place: Tom</td>
+												</tr>
+											<?php endforeach; ?>
+										<?php else: ?>
+											<tr>
+												<td colspan="5">No gamejams available</td>
+											</tr>
+										<?php endif; ?>
 									</tbody>
 								</table>
 							</div>
@@ -133,11 +128,13 @@
 		</main>
 		<!-- MAIN -->
 	</section>
-	<!-- NAVBAR -->
 
 	<?php
     include 'includes/footer.php';
     ?>
+
+
+
 
 <script>
 	window.onload = function() {
@@ -152,7 +149,7 @@
 				datasets: [{
 					label: '# of Games',
 					// data: [25, 40, 35],
-					data: [23,67,99],
+					data:<?php echo json_encode($this->countJamArray); ?>,
 					backgroundColor: [
 						'#509998',
 						'#5c7777',

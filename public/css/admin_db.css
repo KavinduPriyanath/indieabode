@@ -544,13 +544,28 @@ input:checked + .slider:before {
     flex-direction: column;
   }
   
+  .crowdfund-first-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 96%;
+    margin-bottom: 20px;
+    margin-top:0;
+    gap:5%;
+  }
+
+  .crowdfund-db-first{
+    display:flex;
+    flex-direction: column;
+  }
+
   .game-db-first-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 96%;
     margin-bottom: 20px;
-    margin-top: 4%;
+    /* margin-top: 4%; */
     gap:5%;
   }
 /* 
@@ -565,6 +580,7 @@ input:checked + .slider:before {
 .game-db-content-join{
   display:flex;
   flex-direction: column;
+  margin-right: 5%;
 }
   .game-db-card {
     background-color: #506299;
@@ -618,12 +634,12 @@ input:checked + .slider:before {
   .game-db-table-heading{
     margin-bottom: -4%;
     margin-left: -20%;
-    color: #94dcce;
+    color:#2d4e6c;
   }
   
   .game-db-report-table {
     width: 70%;
-    background-color: #224d67;
+    background-color:#608a9f;
     border-radius: 10px;
     padding: 20px;
     display: flex;
@@ -632,7 +648,7 @@ input:checked + .slider:before {
   }
   
   .game-db-report-table button {
-    background-color: #337ab7;
+    background-color:#37647b;
     color: #fff;
     padding: 10px 20px;
     border-radius: 5px;
@@ -644,7 +660,7 @@ input:checked + .slider:before {
   }
   
   .game-db-report-table button:hover {
-    background-color: #286090;
+    background-color:#466674;
   }
   
   .game-db-report-table table {
@@ -660,17 +676,33 @@ input:checked + .slider:before {
   }
   
   .game-db-report-table th {
-    background-color: #1b505a;
+    background-color: #37647b;
+    color: white;
   }
   
   .game-db-report-table tr:nth-child(even) {
-    background-color:#2f5367;
+    background-color:#456d80;
   }
   
   .game-db-report-table tr:hover {
-    background-color: #46697e;
+    background-color:#467d8c;
   }
   
+  .game-db-table-container{
+    max-height:215px; /* set a maximum height to the div to enable scrolling */
+    overflow-y: scroll; /* add vertical scroll */
+    width: 93%;
+  }
+
+  .game-db-table-container table{
+    width: 100%;
+  }
+  .game-db-table-container thead{
+    position: sticky; /* make the table header sticky */
+    top: 0; /* stick the header to the top of the div */
+    background-color: #fff; /* set a background color to the header to differentiate from the table */
+  }
+
   @media screen and (max-width: 768px) {
     .game-db-first-row {
       flex-direction: column;
@@ -713,7 +745,7 @@ input:checked + .slider:before {
     text-decoration: none;
     padding: 10px 20px;
     font-size: 1.1em;
-    width: 20%;
+    width: fit-content;
 }
 
 .db-btn-container a:hover {
@@ -739,7 +771,7 @@ input:checked + .slider:before {
 .game-db-tx-card{
   display: flex;
   gap: 8%;
-  background-color: #5e8794;
+  background-color:#6791a4;
   padding: 10% 20% 10% 20%;
   font-size: 1.3em;
   width: fit-content;
@@ -756,14 +788,13 @@ input:checked + .slider:before {
 }
 
 .game-db-tx-card h2{
-  color: #224d67;
+  color:#2f5271;
   margin-top: 3%;
 }
 
 .transaction-graph-game-tx{
   background-color:#456d80;
   padding: 3% 1% 3% 1%;
-  margin-left: 5%;
 }
 
 .transaction-graph-game-tx h3{
@@ -780,8 +811,11 @@ input:checked + .slider:before {
 } */
 
 .game-db-body h2{
-  margin-right: 77%;
-  color: #4b768a;
+  color:#2f5271;
+}
+
+.total-donations h2{
+  color:#4bc0c0;
 }
   
 .downloads-uploads-graph h3{
@@ -794,6 +828,7 @@ input:checked + .slider:before {
 .game-db-third-row{
   display:flex;
   gap:5%;
+  margin-bottom: 2%;
 }
 .game-revenue-total{
   display: flex;
@@ -802,12 +837,19 @@ input:checked + .slider:before {
   font-size: 1.3em;
   width: fit-content;
   padding: 3%;
+  margin: 6%;
 }
 
 .game-revenue-graph{
-  background-color: #2f5367;
+  background-color:#456d80;
   padding: 3% 1% 3% 1%;
-  margin-left: 5%;
+}
+
+.game-revenue-graph h3{
+  text-align: center;
+  font-size: 1.3em;
+  color: #c8dfe4;
+  margin-bottom: 25px;
 }
 
 .game-db-fourth-roww{
@@ -827,6 +869,10 @@ input:checked + .slider:before {
   background-color: #37647b;
   color: white;
 }
+
+.crowdfund-table-all{
+  background-color:#608a9f;
+}
 .jam-db-table .ongoing {
   background-color:#509998;
 }
@@ -839,3 +885,188 @@ input:checked + .slider:before {
   width: 86px;
   height: 86px;
 }
+
+.total-donations{
+  display:flex;
+  background-color:#336075;
+  padding: 13%;
+  gap: 15%;
+}
+
+.crowdfund-db-second{
+  width:65%;
+}
+.crowdfund-db-second h1{
+  font-size: 1.2em;
+  color: #456d80;
+  text-align: center;
+  margin-bottom: 1%;
+}
+.crowdfund-db-second table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.crowdfund-db-second .table-container {
+  height: 260px;
+  overflow: auto;
+}
+
+.crowdfund-db-second thead th {
+  position: sticky;
+  top: 0;
+  background-color:#456d80;
+  color: white;
+  z-index: 1;
+}
+
+.crowdfund-db-second tbody {
+  overflow-y: scroll;
+  height: calc(100% - 35px); /* Subtract header height and border */
+}
+
+.crowdfund-db-second th,
+.crowdfund-db-second td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+.crowdfund-db-second tr:nth-child(even) {
+  background-color: #456d80;
+}
+.crowdfund-second-row h1{
+  font-size: 1.3em;
+  color: #33617b;
+  text-align: left;
+  margin-bottom: 1%;
+  margin-top: 2%;
+}
+
+.crowdfund-second-row .crowdfund-table-all{
+  max-height:368px;
+  overflow: auto;
+}
+
+.crowdfund-table-all tbody {
+  overflow-y: scroll;
+}
+.crowdfund-table-all thead {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  
+}
+.crowdfund-second-row{
+  margin-bottom: 3%;
+}
+
+.crowdfund-third-row{
+  display:flex;
+  gap:5%;
+}
+
+.total-crowdfund-revenue{
+  display: flex;
+  gap: 5%;
+  margin: 8%;
+  background-color: #456d80;
+  padding: 2%;
+}
+
+
+/* Set the height and overflow properties of the table container */
+.crowdfund-revenue-share-games {
+  height: 200px;
+  overflow-y: scroll;
+}
+
+/* Set the styles for the table */
+.crowdfund-revenue-share-games table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+/* Set the styles for the table header */
+.crowdfund-revenue-share-games thead {
+  position: sticky;
+  top: 0;
+  background-color: #336075;
+  color: #c8e0e4;
+}
+
+/* Set the styles for the table cells */
+.crowdfund-revenue-share-games th,
+.crowdfund-revenue-share-games td {
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Set the styles for the table cells in the first column */
+.crowdfund-revenue-share-games td:first-child {
+  font-weight: bold;
+}
+
+/* Set the styles for the table cells in the last column */
+.crowdfund-revenue-share-games td:last-child {
+  text-align: right;
+}
+
+.crowdfund-revenue-share-games tbody tr:nth-child(even) td {
+  background-color:#608a9f;
+}
+
+.crowdfund-fourth-row h1{
+  font-size: 1.3em;
+  color: #33617b;
+  text-align: left;
+  margin-bottom: 1%;
+  margin-top: 2%;
+}
+
+.crowdfund-revenue-graph{
+  background-color: #5e879c;
+  padding: 3% 1% 3% 1%;
+  color: #336075;
+  text-align: center;
+}
+
+.crowdfund-revenue-graph h3{
+  margin-bottom:2%;
+}
+
+.total-donations h3{
+  color: #7aa0af;
+  font-size: 1.4em;
+}
+
+.game-db-table-container .error-tr{
+  text-align: center;
+  color: #973752;
+  font-size: 1.3em;
+}
+
+.popular-jam{
+  display:flex;
+  gap:5%;
+}
+
+.popular-jam img{
+  width: 86px;
+  height: 86px;
+}
+
+.jam-db-table{
+  max-height:320px;
+  overflow-y: scroll;
+}
+.jam-db-table thead{
+  position: sticky;
+  top: 0;
+  z-index:1;
+}
+/* 
+.jam-db-table tbody{
+  overflow-y: scroll;
+} */
