@@ -1046,3 +1046,27 @@ input:checked + .slider:before {
   color: #973752;
   font-size: 1.3em;
 }
+
+.popular-jam{
+  display:flex;
+  gap:5%;
+}
+
+.popular-jam img{
+  width: 86px;
+  height: 86px;
+}
+
+.jam-db-table{
+  max-height:320px;
+  overflow-y: scroll;
+}
+.jam-db-table thead{
+  position: sticky;
+  top: 0;
+  z-index:1;
+}
+/* 
+.jam-db-table tbody{
+  overflow-y: scroll;
+} */
