@@ -45,7 +45,7 @@
                                 <div class="card-box">
                                     <label for="">Tagline</label>
                                     <p>One line summery of the devlog</p>
-                                    <input type="text" name="tagline" placeholder="tagline" id="tagline" required><br>
+                                    <input type="text" name="tagline" placeholder="tagline" id="tagline" max="200"><br>
                                     <div class="error-msg" id="devlogTaglineCheck"></div><br>
                                 </div>
 

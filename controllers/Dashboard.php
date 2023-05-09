@@ -532,7 +532,9 @@ class Dashboard extends Controller
             $gigTrailer
         );
 
-        header('location:/indieabode/');
+        // header('location:/indieabode/');
+
+        header('location:' . BASE_URL . 'gig?id=' . $gigID);
     }
 
     //Developer can delete his published gigs if they do not have any requests made by publishers
