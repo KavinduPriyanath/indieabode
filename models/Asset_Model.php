@@ -417,4 +417,45 @@ class Asset_Model extends Model
 
         $stmt->execute(["$reason", "$description", "$id", "$type"]);
     }
+
+
+    function updateAssetDownloads($assetID)
+    {
+
+        $sql = "SELECT * FROM asset_stats_history WHERE assetID='$assetID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $assetDownloads = $stmt->fetchAll();
+
+        $totalDownloads = 0;
+
+        foreach ($assetDownloads as $assetDownload) {
+            $totalDownloads = $totalDownloads + $assetDownload['downloads'];
+        }
+
+        $updateSQL = "UPDATE asset_stats SET downloads='$totalDownloads' WHERE assetID='$assetID'";
+
+        $stmt = $this->db->prepare($updateSQL);
+
+        $stmt->execute();
+    }
+
+    function downloadAssetFile($id)
+    {
+
+        $sql = "SELECT * FROM freeasset WHERE assetID='$id'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $game = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $assetFile = $game['assetFile'];
+
+        return $assetFile;
+    }
 }

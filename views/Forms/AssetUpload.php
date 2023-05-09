@@ -49,13 +49,15 @@ include 'includes/navbar.php';
 
                 <div class="upload-col-left">
                     <div class="title-div">
-                        <label id="asset-title" for="asset-title">Title</label><br>
-                        <input type="text" name="asset-title" id="asset-title" /><br><br>
+                        <label for="asset-title">Title</label><br>
+                        <input type="text" name="asset-title" id="asset-title" /><br>
+                        <div class="error-msg" id="assetNameCheck"></div><br>
                     </div>
 
                     <div class="tagline-div">
-                        <label id="asset-tagline" for="asset-tagline">Tagline</label><br>
-                        <input type="text" name="asset-tagline" id="asset-tagline" placeholder="Optional" /><br><br>
+                        <label for="asset-tagline">Tagline</label><br>
+                        <input type="text" name="asset-tagline" id="asset-tagline" placeholder="Optional" /><br>
+                        <div class="error-msg" id="assetTaglineCheck"></div><br>
                     </div>
 
                     <!--classification details-->
@@ -211,6 +213,10 @@ include 'includes/navbar.php';
                             <option value="skybox">Skybox</option>
                             <option value="character">Character</option>
                             <option value="tileset">Tileset</option>
+                            <option value="building">Building</option>
+                            <option value="engine">Engine</option>
+                            <option value="background">Background</option>
+                            <option value="font">Font</option>
                         </select><br><br>
                     </div>
 
@@ -257,6 +263,7 @@ include 'includes/navbar.php';
                                 Upload Photo
                             </label>
                         </div>
+                        <div class="error-msg" id="coverImgCheck"></div>
                     </div>
 
                     <div class="trailer-div">
@@ -280,6 +287,7 @@ include 'includes/navbar.php';
                                 <progress value="0" max="100"></progress>
                             </div>
                             <br>
+                            <div class="error-msg" id="assetFileCheck"></div>
                         </div>
                     </div>
 
@@ -299,6 +307,7 @@ include 'includes/navbar.php';
                             </label>
 
                         </div>
+                        <div class="error-msg" id="screenshotsCheck"></div>
                     </div>
                 </div>
             </div>
@@ -317,6 +326,7 @@ include 'includes/footer.php';
 </script>
 <script src=" <?php echo BASE_URL; ?>public/js/richtext.js"> </script>
 <script src=" <?php echo BASE_URL; ?>public/js/tags.js"> </script>
+<script src=" <?php echo BASE_URL; ?>public/js/assetupload.js"></script>
 
 <script>
     $(document).ready(function() {

@@ -401,7 +401,6 @@
     </script>
     <script src=" <?php echo BASE_URL; ?>public/js/richtext.js"> </script>
     <script src=" <?php echo BASE_URL; ?>public/js/tags.js"> </script>
-    <script src=" <?php echo BASE_URL; ?>public/js/gameupload.js"></script>
 
 
 

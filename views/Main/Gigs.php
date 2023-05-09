@@ -224,15 +224,14 @@
 
     <!--Pagination-->
 
-    <div class="pagination">
-        <a href="#"><i class="fa fa-angle-left"></i></a>
-        <a href="#" class="active">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <a href="#">5</a>
-        <a href="#">6</a>
-        <a href="#"><i class="fa fa-angle-right"></i></a>
+    <div class="pagination" id="pagination-gigs">
+        <a href="/indieabode/gigs?page=<?= $this->prevPage; ?>" id="prev"><i class="fa fa-angle-left"></i></a>
+        <?php for ($i = 1; $i <= $this->gigsPagesCount; $i++) : ?>
+            <a href="/indieabode/gigs?page=<?= $i; ?>" class="active"><?= $i ?></a>
+        <?php endfor; ?>
+
+        <a href="/indieabode/gigs?page=<?= $this->nextPage; ?>" id="next"><i class="fa fa-angle-right"></i></a>
+
     </div>
 
     <?php
@@ -242,6 +241,19 @@
     <script src="<?php echo BASE_URL; ?>public/js/sidefilter.js"></script>
     <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
 
+    <script>
+        <?php if (!isset($_GET['page']) || $_GET['page'] == 1) { ?>
+            document.getElementById("prev").style.pointerEvents = "none";
+        <?php  } ?>
+
+        <?php if (!isset($_GET['page']) || $_GET['page'] == $this->gigsPagesCount) { ?>
+            document.getElementById("next").style.pointerEvents = "none";
+        <?php  } ?>
+
+        <?php if (isset($_GET['genre']) || isset($_GET['stage']) || isset($_GET['cost']) || isset($_GET['share'])) { ?>
+            document.getElementById("pagination-gigs").style.display = "none";
+        <?php } ?>
+    </script>
 
 </body>
 

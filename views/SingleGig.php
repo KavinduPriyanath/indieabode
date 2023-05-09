@@ -50,10 +50,9 @@
                     </div>
                     <div class="navigation-visibility">
                         <div class="slide-icon active"></div>
-                        <div class="slide-icon"></div>
-                        <div class="slide-icon"></div>
-                        <div class="slide-icon"></div>
-                        <div class="slide-icon"></div>
+                        <?php for ($i = 0; $i < $this->ssCount - 1; $i++) { ?>
+                            <div class="slide-icon"></div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
@@ -248,7 +247,7 @@
 
             $('#release-date').text(formattedReleaseDate);
 
-            <?php if (isset($_SESSION['logged']) && $_SESSION['userRole'] == 'game publisher') { ?>
+            <?php if (isset($_SESSION['logged']) && $_SESSION['userRole'] == 'game publisher' && $this->gig['gigStatus'] == 0) { ?>
                 <?php if ($this->hasRequested) { ?>
                     $('#view-button').show();
                     $('#cancel-button').show();
@@ -260,6 +259,12 @@
                 <?php } ?>
             <?php } else { ?>
                 $('.share-button').show();
+            <?php } ?>
+
+
+            <?php if ($this->gig['gigStatus'] == 1) { ?>
+                $('#request-button').hide();
+                $('.share-button').hide();
             <?php } ?>
 
 

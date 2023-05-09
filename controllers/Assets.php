@@ -14,6 +14,13 @@ class Assets extends Controller
 
         $this->view->title = "Assets";
 
+        //pagination 
+        $maxLimit = 24;
+        $page = isset($_GET['page']) ? $_GET['page'] : 1;
+        $start = ($page - 1) * $maxLimit;
+        $this->view->prevPage = $page - 1;
+        $this->view->nextPage = $page + 1;
+
         if (isset($_GET['classification'])) {
             $assetClassification = $_GET['classification'];
 
@@ -40,7 +47,8 @@ class Assets extends Controller
                 $this->view->title = "Category: Tools";
             }
         } else {
-            $this->view->assets = $this->model->showAllAssets();
+            $this->view->assets = $this->model->showAllAssets($start, $maxLimit);
+            $this->view->totalAssetPages = $this->model->totalAssetsPageCount($maxLimit);
         }
 
         $this->view->render('Main/Assets');

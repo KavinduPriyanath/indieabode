@@ -264,12 +264,15 @@ class Asset extends Controller
 
     function AddToCart()
     {
-        $this->model->AddtoCart($_GET['id'], $_SESSION['id']);
 
-        $query = parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
-        parse_str($query, $result);
+        if ($_POST['add_to_cart'] == true) {
 
-        header('Location:/indieabode/asset?' . http_build_query($result));
+            $assetID = $_POST['assetID'];
+
+            $this->model->AddtoCart($assetID, $_SESSION['id']);
+
+            echo "1";
+        }
     }
 
     function thankyou()
@@ -289,6 +292,39 @@ class Asset extends Controller
             $gamerID = $_SESSION['id'];
 
             $this->model->reportSubmit($reason, $description, $gamerID, $type);
+        }
+    }
+
+    function downloadAsset()
+    {
+        $assetFileName = $this->model->downloadAssetFile($_GET['id']);
+
+        $this->model->updateAssetDownloadStat($_GET['id'], date("Y-m-d"));
+
+        $this->model->updateAssetDownloads($_GET['id']);
+
+        $assetFilePath = 'public/uploads/assets/file/';
+
+        $downloadPath = $assetFilePath . $assetFileName;
+
+        header('Cache-Control: public');
+        header('Content-Description: File Transfer');
+        header('Content-Type: application/zip');
+        header("Content-Transfer-Encoding: utf-8");
+        header("Content-Disposition: attachment; filename=$assetFileName");
+        readfile($downloadPath);
+    }
+
+    function addtoLibrary()
+    {
+        if ($_POST['add_to_library'] == true) {
+            $assetID = $_POST['assetID'];
+
+            $developerID = $_SESSION['id'];
+
+            $this->model->AddtoLibrary($assetID, $developerID);
+
+            echo "1";
         }
     }
 }

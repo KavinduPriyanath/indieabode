@@ -99,6 +99,7 @@
                 </div>
                 <hr />
             </div>
+            <div class="purchased-text">Reminder: This Gig has been already purchased by someone else. <br> You can Either delete the request or keep it but you can't buy this gig at any time</div>
             <div class="cancel-req-btn" id="cancel-button">Cancel Request</div>
             <div class="buy-button" id="buy-order" data-modal-target="#purchase-modal">Buy Order</div>
             <div class="buy-button" id="see-dashboard">Go to Dashboard</div>
@@ -453,6 +454,11 @@
 
     <script>
         $(document).ready(function() {
+
+            <?php if ($this->gig['gigStatus'] == 1) { ?>
+                $('.purchased-text').show();
+                $('#cancel-button').text("Delete Request");
+            <?php } ?>
 
             <?php if ($this->currentRequest['publisherID'] == $_SESSION['id']) { ?>
                 $('#cancel-button').show();

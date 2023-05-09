@@ -558,4 +558,11 @@ input[type="checkbox"] {
     margin-right: 80px;
 }
 
+
+.error-msg {
+    background-color: rgb(225, 132, 132);
+    margin: 0px 0px;
+    width: 420px;
+    display: none;
+}
   

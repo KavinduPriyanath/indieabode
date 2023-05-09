@@ -64,6 +64,7 @@
 					<a href="<?php echo BASE_URL; ?>Admin_G" >Game Dashboard</a>
 					<a href="<?php echo BASE_URL; ?>Admin_assetD" >Assets Dashboard</a>
 					<a href="<?php echo BASE_URL; ?>Admin_gameJamD" >Game Jam Dashboard</a>
+					<a href="<?php echo BASE_URL; ?>Admin_crowdfundD" >Crowdfund Dashboard</a>
 					<a href="<?php echo BASE_URL; ?>Admin_GigD" >Gigs Dashboard</a>
 				</div>
 
@@ -211,14 +212,14 @@
 			data: {
 				labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
 				datasets: [{
-						label: 'Sales',
+						label: 'Games',
 						data: [12, 19, 3, 5, 2, 3, 10],
 						borderColor: 'rgba(75, 192, 192, 1)',
 						backgroundColor: 'rgba(75, 192, 192, 0.2)',
 						fill: false
 					},
 					{
-						label: 'Expenses',
+						label: 'Assets',
 						data: [5, 2, 8, 1, 6, 9, 4],
 						borderColor: 'rgba(255, 99, 132, 1)',
 						backgroundColor: 'rgba(255, 99, 132, 0.2)',

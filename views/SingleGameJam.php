@@ -214,6 +214,13 @@ include 'includes/navbar.php';
     <script>
         $(document).ready(function() {
 
+            <?php if (isset($_SESSION['logged']) && $_SESSION['userRole'] == "gamer") { ?>
+                <?php if (!$this->hasJoinedGamer) { ?>
+                    $('#submissionPage').css('color', 'grey');
+                    $('#submissionPage').css('pointer-events', 'none');
+                <?php } ?>
+            <?php } ?>
+
             //button for developers to join or leave
             $('#devBtn').click(function() {
 
@@ -268,8 +275,12 @@ include 'includes/navbar.php';
 
                         if (response == "left") {
                             $('#gamerBtn').text("Join Jam");
+                            $('#submissionPage').css('color', 'grey');
+                            $('#submissionPage').css('pointer-events', 'none');
                         } else if (response == "joined") {
                             $('#gamerBtn').text("Leave Jam");
+                            $('#submissionPage').css('color', 'black');
+                            $('#submissionPage').css('pointer-events', 'all');
                         }
                     }
                 })

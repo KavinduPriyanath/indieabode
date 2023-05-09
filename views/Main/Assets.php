@@ -158,13 +158,13 @@
                 <div class="card">
                     <div class="card-image game"> <img src="/indieabode/public/uploads/assets/cover/<?= $asset['assetCoverImg'] ?>" alt="">
 
-                        <div class="asset-type"> <?= $asset['assetType'] ?> </div>
+                        <div class="asset-type"> <?= ucfirst($asset['assetType']); ?> </div>
                     </div>
                     <div class="game-intro">
                         <h3><?= $asset['assetName'] ?></h3>
                         <p>Free</p>
                     </div>
-                    <div class="tagline"><?= $asset['assetTagline'] ?></div>
+                    <div class="tagline modernWay"><?= $asset['assetTagline'] ?></div>
                 </div>
             </a>
         <?php } ?>
@@ -175,15 +175,15 @@
 
     <!--Pagination-->
 
-    <div class="pagination">
-        <a href="#"><i class="fa fa-angle-left"></i></a>
-        <a href="#" class="active">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <a href="#">5</a>
-        <a href="#">6</a>
-        <a href="#"><i class="fa fa-angle-right"></i></a>
+
+    <div class="pagination" id="pagination-assets">
+        <a href="/indieabode/assets?page=<?= $this->prevPage; ?>" id="prev"><i class="fa fa-angle-left"></i></a>
+        <?php for ($i = 1; $i <= $this->totalAssetPages; $i++) : ?>
+            <a href="/indieabode/assets?page=<?= $i; ?>" class="active"><?= $i ?></a>
+        <?php endfor; ?>
+
+        <a href="/indieabode/assets?page=<?= $this->nextPage; ?>" id="next"><i class="fa fa-angle-right"></i></a>
+
     </div>
 
     <?php
@@ -193,6 +193,19 @@
     <script src="<?php echo BASE_URL; ?>public/js/sidefilter.js"></script>
     <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
 
+    <script>
+        <?php if (!isset($_GET['page']) || $_GET['page'] == 1) { ?>
+            document.getElementById("prev").style.pointerEvents = "none";
+        <?php  } ?>
+
+        <?php if (!isset($_GET['page']) || $_GET['page'] == $this->totalAssetPages) { ?>
+            document.getElementById("next").style.pointerEvents = "none";
+        <?php  } ?>
+
+        <?php if (isset($_GET['type']) || isset($_GET['price']) || isset($_GET['status']) || isset($_GET['style']) || isset($_GET['classification'])) { ?>
+            document.getElementById("pagination-assets").style.display = "none";
+        <?php } ?>
+    </script>
 
 </body>
 
