@@ -76,12 +76,6 @@
 							<div class="game-db-doughnut-chart">
 								<canvas id="game-db-pie-chart" width="300" height="200"></canvas>
 							</div>
-<!-- 
-							<div class="popular-jam">
-								<h3>Most Popular Jam</h3>
-								<img src="/indieabode/public/images/Admin/jam/jam-3.png" alt="user-image"/>
-								<h2>23<br>Submissions</h2>
-							</div> -->
 						</div>
 
 						<div class="jam-db-second-row">
@@ -94,7 +88,7 @@
 											<th>Jam Name</th>
 											<th>Jam Host ID</th>
 											<th>Jam Status</th>
-											<th>Rankings</th>
+											<th>Rankings(with submission ID)</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -106,12 +100,43 @@
 													<td><?php echo $gamejam['jamTitle']; ?></td>
 													<td><?php echo $gamejam['jamHostID']; ?></td>
 													<td><?php echo $gamejam['tag']; ?></td>
-													<td>1st Place: John<br>2nd Place: Sarah<br>3rd Place: Tom</td>
+													<td>
+														<?php if ($gamejam['tag'] == 'Jam Ended'): ?>
+															<!-- <?php if (isset($gamejam['firstPlace'])): ?>
+																1<sup>st</sup>Rank: <?php echo $gamejam['firstPlace']['submissionID']; ?><br>
+															<?php else: ?>
+																1<sup>st</sup>Rank: Not available<br>
+															<?php endif; ?> -->
+															<?php if (isset($gamejam['firstPlace'])): ?>
+																1<sup>st</sup>Rank: <?php echo $gamejam['firstPlace']['submissionID']; ?><br>
+															<?php else: ?>
+																No submissions<br>
+																<?php continue; ?>
+															<?php endif; ?>
+															<?php if (isset($gamejam['secondPlace'])): ?>
+																2<sup>nd</sup>Rank: <?php echo $gamejam['secondPlace']['submissionID']; ?><br>
+															<?php else: ?>
+																2<sup>nd</sup>Rank: Not available<br>
+															<?php endif; ?>
+															<?php if (isset($gamejam['thirdPlace'])): ?>
+																3<sup>rd</sup>Rank: <?php echo $gamejam['thirdPlace']['submissionID']; ?><br>
+															<?php else: ?>
+																3<sup>rd</sup>Rank: Not available<br>
+															<?php endif; ?>
+															<?php if (!isset($gamejam['firstPlace']) && !isset($gamejam['secondPlace']) && !isset($gamejam['thirdPlace'])): ?>
+																No submissions
+															<?php endif; ?>
+														<?php elseif ($gamejam['status'] == 'ongoing'): ?>
+															No rankings yet
+														<?php else: ?>
+															Jam is currently ongoing
+														<?php endif; ?>
+													</td>
 												</tr>
 											<?php endforeach; ?>
 										<?php else: ?>
 											<tr>
-												<td colspan="5">No gamejams available</td>
+												<td colspan="6">No gamejams available</td>
 											</tr>
 										<?php endif; ?>
 									</tbody>
