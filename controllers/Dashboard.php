@@ -303,7 +303,28 @@ class Dashboard extends Controller
             $gameVisibility
         );
 
-        header('location:/indieabode/');
+        // header('location:/indieabode/');
+
+        header('location:' . BASE_URL . 'game?id=' . $gameID);
+    }
+
+    function editGameNameAvailability()
+    {
+
+        $gameName = $_POST['gameName'];
+        $gameID = $_POST['gameID'];
+
+        $nameAvailability = $this->model->GameNameAvailabilityCheck($gameName, $_SESSION['id'], $gameID);
+
+        $nameAvailabilityWhole = $this->model->CheckGameNameWholeSite($gameName, $_SESSION['id']);
+
+        if ($nameAvailability == "false") {
+            echo "unavailable";
+        } else if (!empty($nameAvailabilityWhole)) {
+            echo "warning";
+        } else {
+            echo "available";
+        }
     }
 
     function editAsset()
