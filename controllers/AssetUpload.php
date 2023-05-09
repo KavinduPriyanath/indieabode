@@ -62,9 +62,9 @@ class AssetUpload extends Controller
             $assetScreenshots
         );
 
-        $this->model->UpdateAssetStats($assetName);
+        $addedAsset = $this->model->UpdateAssetStats($assetName, $_SESSION['id']);
 
-        header('location:/indieabode/');
+        header('location:' . BASE_URL . 'asset?id=' . $addedAsset['assetID']);
     }
 
     function assetNameAvailabilityCheck()

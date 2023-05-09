@@ -138,10 +138,10 @@ class AssetUpload_Model extends Model
         return $new_asset_file_name;
     }
 
-    function UpdateAssetStats($assetName)
+    function UpdateAssetStats($assetName, $creatorID)
     {
 
-        $sql = "SELECT * FROM freeasset WHERE assetName='$assetName' LIMIT 1";
+        $sql = "SELECT * FROM freeasset WHERE assetName='$assetName' AND assetCreatorID='$creatorID' LIMIT 1";
 
         $stmt = $this->db->prepare($sql);
 
@@ -162,6 +162,8 @@ class AssetUpload_Model extends Model
             "0",
             "0"
         ]);
+
+        return $uploadedAsset;
     }
 
     function AssetNameAvailabilityCheck($assetName, $userID)
