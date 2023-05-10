@@ -49,9 +49,9 @@
 			</li>
 
 			<li class="divider" data-text="Settings">Settings</li>
-			<li><a href="<?php echo BASE_URL; ?>Admin_addNew"><i class='bx bx-user-plus icon'></i> Add new admin</a></li>
+			<!-- <li><a href="<?php echo BASE_URL; ?>Admin_addNew"><i class='bx bx-user-plus icon'></i> Add new admin</a></li> -->
 			<li>
-				<a href="<?php echo BASE_URL; ?>Admin_userMg"><i class='bx bxs-trash icon'></i> Remove user</a>
+				<a href="<?php echo BASE_URL; ?>Admin_userMg"><i class='bx bxs-trash icon'></i>User Management</a>
 			</li>
 		</ul>
 	</section>
@@ -79,34 +79,41 @@
 									<canvas id="game-db-pie-chart" width="300" height="200"></canvas>
 								</div>
 								<div class="total-donations">
-									<h3>Total Donations</h3>
-									<h2>$<?php echo $this->allDonations; ?></h2>
+									<h3>Total Transactions</h3>
+									<h2>$<?php echo $this->allTransactions; ?></h2>
 								</div>
 							</div>
 							<div class="crowdfund-db-second">
-								<h1>Crowdfund Donations</h1>
+								<h1>Ordered Gigs</h1>
 								<div class="table-container">
 									<table>
 										<thead>
 											<tr>
-											<th>Crowdfund ID</th>
-											<th>Donor ID</th>
-											<th>Donation Amount</th>
-											<th>Donated Date</th>
+											<th>Gig ID</th>
+											<th>Developer ID</th>
+											<th>Publisher ID</th>
+											<th>Share Percentage</th>
+											<th>Publisher Income</th>
+											<th>Purchased Date</th>
+											<th>Publisher Cost</th>
 											</tr>
 										</thead>
 										<tbody class="scrollable">
-											<?php if (empty($this->donations)): ?>
+											<?php if (empty($this->orderedGigs)): ?>
 											<tr>
-												<td colspan="4">No donations available.</td>
+												<td colspan="7">No donations available.</td>
 											</tr>
 											<?php else: ?>
-											<?php foreach ($this->donations as $donation): ?>
+											<?php foreach ($this->orderedGigs as $gig): ?>
 												<tr>
-												<td><?php echo $donation['crowdfundID']; ?></td>
-												<td><?php echo $donation['donorID']; ?></td>
-												<td>$<?php echo number_format($donation['donationAmount'], 2); ?></td>
-												<td><?php echo date('M d, Y', strtotime($donation['donatedDate'])); ?></td>
+												<td><?php echo $gig['gigID'];?></td>
+												<td><?php echo $gig['developerID']; ?></td>
+												<td><?php echo $gig['publisherID']; ?></td>
+												<td><?php echo $gig['sharePercentage']; ?></td>
+												<td><?php echo $gig['publisherIncome']; ?></td>
+												<td><?php echo $gig['purchasedDate']; ?></td>
+												<!-- <td><?php echo date('M d, Y', strtotime($gig['purchasedDate'])); ?></td> -->
+												<td>$<?php echo $gig['publisherCost']; ?></td>
 												</tr>
 											<?php endforeach; ?>
 											<?php endif; ?>
@@ -119,88 +126,44 @@
 						</div>
 
 						<div class="crowdfund-second-row">
-							<h1>All Crowdfunds</h1>
-							<div class="jam-db-table crowdfund-table-all">
-							<table>
-								<thead>
-									<tr>
-										<th>ID</th>
-										<th>Cover Image</th>
-										<th>Developer Name</th>
-										<th>Game Name</th>
-										<th>Status</th>
-										<th>Expected Amount</th>
-										<th>Current Amount</th>
-										<th>Total Backers</th>
-									</tr>
-								</thead>
-								<tbody>
-									<?php if (count($this->crowdfunds) > 0): ?>
-										<?php foreach ($this->crowdfunds as $crowdfund): ?>
-											<tr>
-												<td><?php echo $crowdfund['crowdFundID']; ?></td>
-												<td><img src="/indieabode/public/uploads/crowdfunds/covers/<?= $crowdfund['crowdfundCoverImg'] ?>" alt="cover-image"/></td>
-												<td><?php echo $crowdfund['gameDeveloperName']; ?></td>
-												<td><?php echo $crowdfund['gameName']; ?></td>
-												<!-- <td><?php echo $crowdfund['status']; ?></td> -->
-												<td>
-													<?php 
-														$deadline = strtotime($crowdfund['deadline']);
-														$now = new DateTime();
-														if ($deadline >= $now->getTimestamp()) {
-														echo 'Ongoing';
-														} else {
-														echo 'Ended';
-														}
-													?>
-												</td>
-												<td><?php echo $crowdfund['expectedAmount']; ?></td>
-												<td><?php echo $crowdfund['currentAmount']; ?></td>
-												<td><?php echo $crowdfund['backers']; ?></td>
-											</tr>
-										<?php endforeach; ?>
-									<?php else: ?>
-										<tr>
-											<td colspan="8">No crowdfunds available</td>
-										</tr>
-									<?php endif; ?>
-								</tbody>
-							</table>
-							</div>
+							
 						</div>
 
-						<h2>Crowdfund Dashbord/Revenue</h2>
+						<h2>Gig Dashbord/Revenue</h2>
 						<div class="crowdfund-third-row">
 							<div class="crowdfund-revenue-graph">
-								<h3>Crowdfund Revenue Graph</h3>
+								<h3>Gig Revenue Graph</h3>
 								<canvas id="game-tx-line-graph" style="height: 150px; width: 270px;"></canvas>
 							</div>
 							
 							<div class="total-crowdfund-revenue">
 								<h3>Total Revenues</h3>
-								<h2 style="color: #4bc0c0;">$<?php echo $this->totalRevenue; ?></h2>
+								<?php if(empty($this->totalRevenue)): ?>
+									<h4 style="color: #4bc0c0;">No Site Share</h4>
+								<?php else: ?>
+									<h2 style="color: #4bc0c0;">$<?php echo $this->totalRevenue; ?></h2>
+								<?php endif; ?>
 							</div>
 						</div>
 
 						<div class="crowdfund-fourth-row">
-							<h1>crowdfund revenues shared games</h1>
+							<h1>Revenues shared gigs</h1>
 							<div class="crowdfund-revenue-share-games">
 								<table>
 									<thead>
 										<tr>
-										<th>Crowdfund ID</th>
-										<th>Game ID</th>
-										<th>Developer ID</th>
-										<th>Revenue Share</th>
+										<th>Gig ID</th>
+										<th>Sale Date</th>
+										<th>Site Share</th>
 										</tr>
 									</thead>
 									<tbody style="overflow-y: scroll;">
-										<?php foreach ($this->revenueCrowdfunds as $crowdfund) { ?>
+										<?php foreach ($this->revenueGigs as $gig) { ?>
 										<tr>
-											<td><?php echo $crowdfund['crowdFundID']; ?></td>
-											<td><?php echo $crowdfund['gameName']; ?></td>
-											<td><?php echo $crowdfund['gameDeveloperName']; ?></td>
-											<td><?php echo '$' . number_format($crowdfund['revenue_share'], 2); ?></td>
+											<td><?php echo $gig['gigID']; ?></td>
+											<td><?php echo $gig['sale_date']; ?></td>
+											<td>$<?php echo $gig['siteShare']; ?></td>
+											<!-- <td><?php echo '$' . number_format($crowdfund['revenue_share'], 2); ?></td> -->
 										</tr>
 										<?php } ?>
 									</tbody>
@@ -228,17 +191,16 @@
 <script>
 	window.onload = function() {
 
-
 		var gamePieChart = document.getElementById('game-db-pie-chart').getContext('2d');
 		var myChart = new Chart(gamePieChart, {
 			type: 'doughnut',
 			backgroundColor: "#6997a4",
 			data: {
-				labels: ['Ended Crowdfunds', 'Ongoing Crowdfunds'],
+				labels: ['Ordered Gigs', 'Not Ordered Gigs'],
 				datasets: [{
 					label: '# of Games',
 					// data: [25, 40, 35],
-					data: [<?php echo json_encode($this->total_ended_crowdfunds); ?>,<?php echo json_encode($this->total_ongoing_crowdfunds); ?>],
+					data: [<?php echo json_encode($this->total_ended_gigs); ?>,<?php echo json_encode($this->total_ongoing_gigs); ?>],
 					backgroundColor: [
 						'#375766',
 						'#608a9f'
