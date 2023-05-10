@@ -317,8 +317,8 @@
 
                     console.log(text);
 
-                    if (text == "2") {
-                        alert("Product Not found");
+                    if (text == "empty") {
+                        alert("Add Your Billing Data");
                     } else {
                         //alert(text);
 

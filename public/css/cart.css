@@ -1,5 +1,12 @@
 .cart-container {
-    margin: 40px 0px 0px 180px;
+    margin: 40px 0px 0px 163px;
+  }
+
+  .cart-container h2 {
+    font-size: 26px;
+    /* margin: 35px 0px 5px 160px; */
+    margin-bottom: 5px;
+    color: rgb(48, 46, 100);
   }
 
 .content {
@@ -9,6 +16,10 @@
 .cart-items {
     display: block;
     width: 750px;
+}
+
+.cart-items hr {
+    border: 0.4px solid #9bc9dbdd;
 }
 
 .cart-item {
@@ -125,4 +136,35 @@
 
 #find-games-btn, #checkout-btn, #asset-checkout-btn, #find-assets-btn{
     display: none;
+}
+
+.empty-box {
+    display: block;
+    margin-top: 160px;
+    margin-left: 60px;
+}
+
+.empty-box .empty-icon {
+    width: 100px;
+    height: 100px;
+    margin-left: 285px;
+}
+
+.empty-icon img {
+    height: 100%;
+    width: 100%;
+}
+
+.empty-box .empty-text {
+    margin-top: 15px;
+    font-size: 23px;
+    text-align: center;
+    font-weight: 800;
+}
+
+.empty-box .empty-link {
+    font-size: 18px;
+    margin-top: 10px;
+    text-align: center;
+    text-decoration: underline;
 }
