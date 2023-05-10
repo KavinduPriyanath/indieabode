@@ -6,7 +6,14 @@
     margin: 0;
 }
 
+.sortselect{
+    background-color:rgb(137 139 171);
+    border-radius: 5px;
+}
 
+#sortbutton{
+    display: none;
+}
 
 .side-nav {
     display: inline-block;
@@ -261,3 +268,4 @@ input[type="radio"] {
     color: gray;
     border-radius: 5px;
   } */
+ 

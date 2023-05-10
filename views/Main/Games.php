@@ -104,7 +104,8 @@
 
                 <?php foreach ($this->featureFilters as $featureFilter) { ?>
                     <div class="elements">
-                        <input type="checkbox" name="features[]" id="<?= $featureFilter['filter']; ?>" class="checkbox" value="<?= $featureFilter['filter']; ?>" <?php if (in_array($featureFilter['filter'], $this->featuresChecked)) {
+                        <input type="checkbox" name="features[]" id="<?= $featureFilter['filter']; ?>" class="checkbox" value="<?= $featureFilter['filter']; ?>" 
+                        <?php if (in_array($featureFilter['filter'], $this->featuresChecked)) {
                                                                                                                                                                         echo "checked";
                                                                                                                                                                     } ?> />
                         <label for="<?= $featureFilter['filter']; ?>"><?= $featureFilter['filter']; ?></label>
@@ -114,6 +115,9 @@
 
 
             </div>
+
+            
+
             <button type="submit" id="filter-button">Apply</button>
         </form>
     </div>
@@ -127,12 +131,20 @@
                 <span><?= $this->totalSelectedFilters; ?> applied <a href="<?php echo BASE_URL; ?>games"><i class="fa fa-times-circle-o"></i></a></span>
             </div>
         </div>
-
+        <form action="/indieabode/games" method="GET" name="myForm" id="myForm">
         <div class="sort" id="sort">
-            <img src="/indieabode/public/images/games/sort.png" alt="" /> sort by: <span>Release Date</span>
-
+            <img src="/indieabode/public/images/games/sort.png" alt="" /> sort by: <span></span>
+            
+            <select name="sortWhat" class="sortselect" id="sortWhat" onchange="document.getElementById('myForm').submit();">
+                <option value="latest" id="latest" name="sortWhat" value="latest" selected>Latest Released</option>
+                <option value="priceLH" id="priceLH" name="sortWhat" value="priceLH">Price Low to High</option>
+                <option value="priceHL" id="priceHL" name="sortWhat" value="priceHL">Price High to Low</option>
+                <option value="nameA-Z" id="nameA-Z" name="sortWhat" value="nameA-Z">Name A-Z</option>
+                <option value="nameZ-A" id="nameZ-A" name="sortWhat" value="nameZ-A">Name Z-A</option>
+            </select>
         </div>
-    </div>
+        </form>
+                                                                                                                                                                </div>
 
     <hr id="topic-break" />
 
@@ -160,6 +172,8 @@
 
 
     </div>
+
+
 
     <!--Pagination-->
 
@@ -195,6 +209,21 @@
         <?php if ($this->totalSelectedFilters == 0) { ?>
             document.getElementById("applied").style.display = "none";
         <?php } ?>
+
+        // sort
+
+        const dropdown = document.getElementById('sortWhat');
+        const selectedOption = localStorage.getItem('selectedOption');
+        if (selectedOption) {
+            dropdown.value = selectedOption;
+        } else {
+            dropdown.selectedIndex = 0; // select the first option
+        }
+        dropdown.addEventListener('change', () => {
+            localStorage.setItem('selectedOption', dropdown.value);
+            document.getElementById('myForm').submit();
+        });
+        localStorage.clear();
     </script>
 
 </body>

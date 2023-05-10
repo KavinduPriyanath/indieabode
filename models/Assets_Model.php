@@ -9,9 +9,9 @@ class Assets_Model extends Model
     }
 
 
-    function showAllAssets()
+    function showAllAssets($sort,$Sorder,)
     {
-        $stmt = $this->db->prepare("SELECT * FROM freeasset");
+        $stmt = $this->db->prepare("SELECT * FROM freeasset ORDER BY $sort $Sorder");
 
         $stmt->execute();
 

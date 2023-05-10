@@ -16,6 +16,15 @@
     margin: 0;
 }
 
+/* sort */
+.sortselect{
+    background-color:rgb(137 139 171);
+    border-radius: 5px;
+}
+
+#sortbutton{
+    display: none;
+}
 
 
 .side-nav {
