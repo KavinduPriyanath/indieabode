@@ -11,6 +11,34 @@ class Crowdfundings extends Controller
 
     function index()
     {
+        // sort part
+        if (isset($_GET['sortWhat'])){
+            $sort = $_GET['sortWhat'];
+            if($sort=="latest"){
+                $Sorder = "DESC";
+                $sort = "created_at";
+            }
+            else if ($sort=="priceLH"){
+                $Sorder = "ASC";
+                $sort = "expectedAmount";
+            }
+            else if($sort=="priceHL"){
+                $Sorder = "DESC";
+                $sort = "expectedAmount";
+            }
+            else if($sort=="nameA-Z"){
+                $Sorder = "ASC";
+                $sort = "gameName";
+            }
+            else if($sort=="nameZ-A"){
+                $Sorder = "DESC";
+                $sort = "gameName";
+            }
+        }
+        else{
+            $sort = "created_at";
+            $Sorder = "DESC";
+        }
 
         //pagination 
         $maxLimit = 16;
@@ -19,7 +47,7 @@ class Crowdfundings extends Controller
         $this->view->prevPage = $page - 1;
         $this->view->nextPage = $page + 1;
 
-        $thisCrowdfunds = $this->model->showAllCrowdfundings($start, $maxLimit);
+        $thisCrowdfunds = $this->model->showAllCrowdfundings($sort,$Sorder,$start, $maxLimit);
         $this->view->crowdfundsPagesCount = $this->model->totalCrowdfundsPageCount($maxLimit);
 
         $crowdfundCount = count($thisCrowdfunds);
