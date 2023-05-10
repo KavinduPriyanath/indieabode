@@ -72,7 +72,7 @@
 				<div class="main-db-content">
 					<h1>Asset Dashboard</h1>
 					<div class="game-db-body">
-						<h2>vsgsg</h2>
+						<h2>Asset Dashboard/Assets</h2>
 						<div class="game-db-first-row game-db-extra-first">
 							<div class="transaction-graph-game-tx">
 								<h3>Payments Graph</h3>
