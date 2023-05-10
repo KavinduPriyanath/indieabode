@@ -202,7 +202,7 @@
                                 <h3><?= $popularAsset['assetName'] ?></h3>
                                 <p>Free</p>
                             </div>
-                            <div class="ptagline"><?= $popularAsset['assetTagline'] ?></div>
+                            <div class="ptagline modernWay"><?= $popularAsset['assetTagline'] ?></div>
                         </div>
                     </a>
                 <?php } ?>

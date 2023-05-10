@@ -45,7 +45,7 @@ class Asset extends Controller
 
             $this->view->stats = $this->model->AssetStats($assetID);
 
-            $this->view->popularAssets = $this->model->PopularAssets();
+            $this->view->popularAssets = $this->model->PopularAssets($thisAsset['assetType'], $thisAsset['assetID']);
 
             $this->view->reportReasons = $this->model->ComplaintReasons();
 
@@ -82,54 +82,58 @@ class Asset extends Controller
 
         $userBillingInfo = $this->model->getUserBillingInfo($_SESSION['id']);
 
-        $userDetails = $this->model->getUserDetails($_SESSION['id']);
+        if (empty($userBillingInfo)) {
+            echo "empty";
+        } else {
+            $userDetails = $this->model->getUserDetails($_SESSION['id']);
 
-        $amount = $asset['assetPrice'];
-        $item = $asset['assetName'];
-        // $amount = 30.00;
-        $merchant_id = "1222729";
-        $order_id = uniqid();
-        $merchant_secret = "MjczNjU0OTYzMzM3NDA3NzYzMjczNzEyMjI2MjM4MTQ3MjE2OTkxMg==";
-        $currency = "LKR";
+            $amount = $asset['assetPrice'];
+            $item = $asset['assetName'];
+            // $amount = 30.00;
+            $merchant_id = "1222729";
+            $order_id = uniqid();
+            $merchant_secret = "MjczNjU0OTYzMzM3NDA3NzYzMjczNzEyMjI2MjM4MTQ3MjE2OTkxMg==";
+            $currency = "LKR";
 
-        //more information
-        $address = $userBillingInfo['streetLine1'];
-        $city = $userBillingInfo['city'];
-        $country = $userBillingInfo['country'];
-        $firstName = $userDetails['firstName'];
-        $lastName = $userDetails['lastName'];
-        $email = $userDetails['email'];
+            //more information
+            $address = $userBillingInfo['streetLine1'];
+            $city = $userBillingInfo['city'];
+            $country = $userBillingInfo['country'];
+            $firstName = $userDetails['firstName'];
+            $lastName = $userDetails['lastName'];
+            $email = $userDetails['email'];
 
 
-        $hash = strtoupper(
-            md5(
-                $merchant_id .
-                    $order_id .
-                    number_format($amount, 2, '.', '') .
-                    $currency .
-                    strtoupper(md5($merchant_secret))
-            )
-        );
+            $hash = strtoupper(
+                md5(
+                    $merchant_id .
+                        $order_id .
+                        number_format($amount, 2, '.', '') .
+                        $currency .
+                        strtoupper(md5($merchant_secret))
+                )
+            );
 
-        $array = [];
+            $array = [];
 
-        $array['amount'] = $amount;
-        $array['item'] = $item;
-        $array['merchant_id'] = $merchant_id;
-        $array['order_id'] = $order_id;
-        $array['currency'] = $currency;
-        $array['hash'] = $hash;
+            $array['amount'] = $amount;
+            $array['item'] = $item;
+            $array['merchant_id'] = $merchant_id;
+            $array['order_id'] = $order_id;
+            $array['currency'] = $currency;
+            $array['hash'] = $hash;
 
-        $array['address'] = $address;
-        $array['city'] = $city;
-        $array['country'] = $country;
-        $array['firstName'] = $firstName;
-        $array['lastName'] = $lastName;
-        $array['email'] = $email;
+            $array['address'] = $address;
+            $array['city'] = $city;
+            $array['country'] = $country;
+            $array['firstName'] = $firstName;
+            $array['lastName'] = $lastName;
+            $array['email'] = $email;
 
-        $jsonObj = json_encode($array);
+            $jsonObj = json_encode($array);
 
-        echo $jsonObj;
+            echo $jsonObj;
+        }
     }
 
     function purchaseSuccessful()

@@ -76,7 +76,7 @@
                     <div class="checkout-details">
                         <div class="row">
                             <div class="label">Price</div>
-                            <div class="value">$19.99</div>
+                            <div class="value">$<?= number_format($this->asset['assetPrice'], 2) ?></div>
                         </div>
                         <div class="row">
                             <div class="label">Sale Discount</div>
@@ -85,7 +85,7 @@
                         <hr />
                         <div class="row">
                             <div class="label">Total</div>
-                            <div class="value">$19.99</div>
+                            <div class="value">$<?= number_format($this->asset['assetPrice'], 2) ?></div>
                         </div>
                     </div>
                     <div class="help">
@@ -190,8 +190,8 @@
 
                     var text = x.responseText;
 
-                    if (text == "2") {
-                        alert("Product Not found");
+                    if (text == "empty") {
+                        alert("Add Your Billing Data");
                     } else {
                         //alert(text);
 
@@ -287,7 +287,8 @@
                     if (t == "2") {
                         alert(t);
                     } else {
-                        window.location = "/indieabode/asset/thankyou?id=" + assetID;
+                        // window.location = "/indieabode/asset/thankyou?id=" + assetID;
+                        window.location = "/indieabode/asset?id=" + assetID;
                     }
 
                 }

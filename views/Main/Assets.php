@@ -162,7 +162,11 @@
                     </div>
                     <div class="game-intro">
                         <h3><?= $asset['assetName'] ?></h3>
-                        <p>Free</p>
+                        <?php if ($asset['assetPrice'] == "0") { ?>
+                            <p>Free</p>
+                        <?php } else if ($asset['assetPrice'] != "0") { ?>
+                            <p>$<?= $asset['assetPrice'] ?></p>
+                        <?php } ?>
                     </div>
                     <div class="tagline modernWay"><?= $asset['assetTagline'] ?></div>
                 </div>
