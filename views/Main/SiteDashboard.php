@@ -47,9 +47,9 @@
 			</li>
 
 			<li class="divider" data-text="Settings">Settings</li>
-			<li><a href="<?php echo BASE_URL; ?>Admin_addNew"><i class='bx bx-user-plus icon'></i> Add new admin</a></li>
+			<!-- <li><a href="<?php echo BASE_URL; ?>Admin_addNew"><i class='bx bx-user-plus icon'></i> Add new admin</a></li> -->
 			<li>
-				<a href="<?php echo BASE_URL; ?>Admin_userMg"><i class='bx bxs-trash icon'></i> Remove user</a>
+				<a href="<?php echo BASE_URL; ?>Admin_userMg"><i class='bx bxs-trash icon'></i>User Management</a>
 			</li>
 		</ul>
 	</section>
@@ -70,57 +70,30 @@
 
 				<!-- Main Dashboard -->
                 <div class="main-db-content">
+					<h1>Site Dashboard</h1>
 					<div class="db-panel">
 						<div class="first-row-db">
 							<div class="first-pie-chart-db">
 								<h3>User Chart </h3>
-								<div id="chartContainer" style="height: 370px; width: 100%;"></div>
-								<!-- <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script> -->
+								<div id="chartContainer" style="height: 100%; width: 100%;"></div>
 							</div>
-							<div class="top-details-db">
-								<div class="most-popular-game popular-items">
-									<div class="popular-topic">
-										Most Popular Game
-									</div>
-									<div class="popular-item-detail">
-										<div class="popular-item-cover-img">
-											<img src="/indieabode/public/uploads/games/cover/Cover-aaaaaa.jpg"><br>
-											Alboanion onLine<br>
-											Yeshan Pasindu
-										</div>
-									</div>
-									<div class="popular-item-downloads">
-										Total Downloads<br>
-										<h1>34</h1>
-									</div>
-								</div>
-								<div class="most-popular-asset popular-items">
-									<div class="popular-topic">
-										Most Popular Game
-									</div>
-									<div class="popular-item-detail">
-										<div class="popular-item-cover-img">
-											<img src="/indieabode/public/uploads/games/cover/Cover-aaaaaa.jpg"><br>
-											Alboanion onLine<br>
-											Yeshan Pasindu
-										</div>
-									</div>
-									<div class="popular-item-downloads">
-										Total Downloads<br>
-										<h1>34</h1>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="second-row-db">
 							<div class="line-chart-db">
 								<h3> Active & Block Users </h3><br>
 								<div class="horizontal-chart">
 									<canvas id="userChart" style="height: 150px; width: 100%;"></canvas>
 								</div>
 							</div>
-							<div class="second-pie-chart-db">
-								<canvas id="myChart2"></canvas>
+							<div class="total-revenue-site">
+								<h3>Total Revenue</h3>
+								<h2>$567.90</h2>
+							</div>
+						</div>
+						<div class="second-row-db site-db-second-row">
+							<div class="second-first-site-db">
+								<h3>Revenue Shares</h3>
+								<div class="game-db-doughnut-chart">
+									<canvas id="game-db-pie-chart" width="300" height="200"></canvas>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -204,72 +177,106 @@
 				}
 			}
 			});
-		// chart.render();
+		chart.render();
 
-		var ctx2 = document.getElementById('myChart2').getContext('2d');
-		var myChart2 = new Chart(ctx2, {
-			type: 'line',
+		var gamePieChart = document.getElementById('game-db-pie-chart').getContext('2d');
+		var myChart = new Chart(gamePieChart, {
+			type: 'doughnut',
+			backgroundColor: "#6997a4",
 			data: {
-				labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+				labels: ['Game Revenue', 'Asset Revenue', 'Gig Revenue', 'Crowdfund Revenue'],
 				datasets: [{
-						label: 'Games',
-						data: [12, 19, 3, 5, 2, 3, 10],
-						borderColor: 'rgba(75, 192, 192, 1)',
-						backgroundColor: 'rgba(75, 192, 192, 0.2)',
-						fill: false
-					},
-					{
-						label: 'Assets',
-						data: [5, 2, 8, 1, 6, 9, 4],
-						borderColor: 'rgba(255, 99, 132, 1)',
-						backgroundColor: 'rgba(255, 99, 132, 0.2)',
-						fill: false
-					}
-				]
+					label: '# of Games',
+					// data: [25, 40, 35],
+					data: [67,89,99,34],
+					backgroundColor: [
+						'#36647b',
+						'#608a9f',
+						'#3f5564',
+						'#7ea9c8'
+					],
+					borderColor: [
+						'#36647b',
+						'#608a9f',
+						'#3f5564',
+						'#7ea9c8'
+					],
+					borderWidth: 1
+				}]
 			},
 			options: {
-				scales: {
-					yAxes: [{
-						ticks: {
-							beginAtZero: true
-						}
-					}]
+				responsive: true,
+				maintainAspectRatio: false,
+				legend: {
+					position: 'right'
 				}
 			}
 		});
 
-		//game transaction graph
-		var ctx3 = document.getElementById('txChartGame').getContext('2d');
-		var myChart2 = new Chart(ctx3, {
-			type: 'line',
-			data: {
-				labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-				datasets: [{
-						label: 'Sales',
-						data: [12, 19, 3, 5, 2, 3, 10],
-						borderColor: 'rgba(75, 192, 192, 1)',
-						backgroundColor: 'rgba(75, 192, 192, 0.2)',
-						fill: false
-					},
-					{
-						label: 'Expenses',
-						data: [5, 2, 8, 1, 6, 9, 4],
-						borderColor: 'rgba(255, 99, 132, 1)',
-						backgroundColor: 'rgba(255, 99, 132, 0.2)',
-						fill: false
-					}
-				]
-			},
-			options: {
-				scales: {
-					yAxes: [{
-						ticks: {
-							beginAtZero: true
-						}
-					}]
-				}
-			}
-		});
+		// var ctx2 = document.getElementById('myChart2').getContext('2d');
+		// var myChart2 = new Chart(ctx2, {
+		// 	type: 'line',
+		// 	data: {
+		// 		labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+		// 		datasets: [{
+		// 				label: 'Games',
+		// 				data: [12, 19, 3, 5, 2, 3, 10],
+		// 				borderColor: 'rgba(75, 192, 192, 1)',
+		// 				backgroundColor: 'rgba(75, 192, 192, 0.2)',
+		// 				fill: false
+		// 			},
+		// 			{
+		// 				label: 'Assets',
+		// 				data: [5, 2, 8, 1, 6, 9, 4],
+		// 				borderColor: 'rgba(255, 99, 132, 1)',
+		// 				backgroundColor: 'rgba(255, 99, 132, 0.2)',
+		// 				fill: false
+		// 			}
+		// 		]
+		// 	},
+		// 	options: {
+		// 		scales: {
+		// 			yAxes: [{
+		// 				ticks: {
+		// 					beginAtZero: true
+		// 				}
+		// 			}]
+		// 		}
+		// 	}
+		// });
+
+		// game transaction graph
+		// var ctx3 = document.getElementById('txChartGame').getContext('2d');
+		// var myChart2 = new Chart(ctx3, {
+		// 	type: 'line',
+		// 	data: {
+		// 		labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+		// 		datasets: [{
+		// 				label: 'Sales',
+		// 				data: [12, 19, 3, 5, 2, 3, 10],
+		// 				borderColor: 'rgba(75, 192, 192, 1)',
+		// 				backgroundColor: 'rgba(75, 192, 192, 0.2)',
+		// 				fill: false
+		// 			},
+		// 			{
+		// 				label: 'Expenses',
+		// 				data: [5, 2, 8, 1, 6, 9, 4],
+		// 				borderColor: 'rgba(255, 99, 132, 1)',
+		// 				backgroundColor: 'rgba(255, 99, 132, 0.2)',
+		// 				fill: false
+		// 			}
+		// 		]
+		// 	},
+		// 	options: {
+		// 		scales: {
+		// 			yAxes: [{
+		// 				ticks: {
+		// 					beginAtZero: true
+		// 				}
+		// 			}]
+		// 		}
+		// 	}
+		// });
 		// chart.render();
 		}
 	</script>

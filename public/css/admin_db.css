@@ -428,9 +428,13 @@ input:checked + .slider:before {
     width:100%;
 }
 
+.site-db-second-row{
+  margin-left:3%;
+}
+
 .first-pie-chart-db{
     padding-left:3%;
-    width: 50%;
+    width: 35%;
 }
 
 .top-details-db{
@@ -473,6 +477,11 @@ input:checked + .slider:before {
 
 .line-chart-db{
     width: 40%;
+    margin-top: 1%;
+}
+.line-chart-db h3{
+  text-align: center;
+  color: #336075;
 }
 
 /*game dashboard css */
@@ -1070,3 +1079,25 @@ input:checked + .slider:before {
 .jam-db-table tbody{
   overflow-y: scroll;
 } */
+
+/* .first-chart-totalTx{
+  display:flex;
+  flex-direction:column;
+} */
+
+.total-revenue-site{
+  display: flex;
+    gap: 5%;
+    margin-top: 6%;
+    margin-bottom: 1%;
+    padding: 3%;
+    background-color:#336075;
+}
+
+.total-revenue-site h3{
+  color:#7aa0af;
+}
+
+.total-revenue-site h2{
+  color:#4bc0c0;
+}
