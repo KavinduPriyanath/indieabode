@@ -45,11 +45,12 @@
             <div class="user-follow-post">
                 <!--post counting-->
                 <p class="value">
-                    <?php if ($_SESSION['userRole'] == "game developer") { ?>
+                    <?php if ($this->developerDetails['userRole'] == "game developer" || $this->developerDetails['userRole'] == "game publisher") { ?>
                         <?= count($this->games); ?>
-                    <?php } else if ($_SESSION['userRole'] == "asset creator") { ?>
+                    <?php } else if ($this->developerDetails['userRole'] == "asset creator") { ?>
                         <?= count($this->assets); ?>
                     <?php } ?>
+
                 </p>
                 <p>Posts</p>
             </div>
@@ -74,7 +75,7 @@
 
     <hr id="topic-break">
 
-    <?php if ($_SESSION['logged'] && $_SESSION['userRole'] == "game developer") { ?>
+    <?php if ($_SESSION['logged'] && $this->developerDetails['userRole'] == "game developer") { ?>
         <div class="game-developer">
 
 
@@ -102,7 +103,7 @@
             </div>
 
         </div>
-    <?php } else if ($_SESSION['logged'] && $_SESSION['userRole'] == "asset creator") { ?>
+    <?php } else if ($_SESSION['logged'] && $this->developerDetails['userRole'] == "asset creator") { ?>
 
         <div class="asset-creator">
 
@@ -121,6 +122,37 @@
                             </div>
                             <div class="game-classification">
                                 Category: <?= $asset['assetClassification']; ?>
+                            </div>
+                        </div>
+                    </a>
+                <?php } ?>
+
+
+
+            </div>
+
+        </div>
+
+    <?php } else if ($_SESSION['logged'] && $this->developerDetails['userRole'] == "game publisher") { ?>
+
+
+        <div class="game-publisher">
+
+
+            <div class="container" id="card-container">
+
+                <?php foreach ($this->games as $game) { ?>
+                    <a href="/indieabode/game?id=<?= $game['gameID'] ?>">
+                        <div class="card">
+                            <div class="card-image"><img src="/indieabode/public/uploads/games/cover/<?= $game['gameCoverImg'] ?>" alt=""></div>
+                            <div class="game-intro">
+                                <h3><?= $game['gameName']; ?></h3>
+                            </div>
+                            <div class="tagline modernWay">
+                                <?= $game['gameTagline']; ?>
+                            </div>
+                            <div class="game-classification">
+                                Developer: <?= $game['username']; ?>
                             </div>
                         </div>
                     </a>

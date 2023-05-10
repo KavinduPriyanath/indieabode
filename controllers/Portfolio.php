@@ -20,14 +20,17 @@ class Portfolio extends Controller
 
         $this->view->additionalDeveloperDetails = $this->model->GetAdditionalDeveloperDetails($_GET['profile']);
 
-        if ($_SESSION['userRole'] == "game developer") {
+        if ($owner['userRole'] == "game developer") {
 
 
             $this->view->games = $this->model->GetDeveloperGames($_GET['profile']);
-        } else if ($_SESSION['userRole'] == "asset creator") {
+        } else if ($owner['userRole'] == "asset creator") {
 
 
             $this->view->assets = $this->model->GetCreatorAssets($_GET['profile']);
+        } else if ($owner['userRole'] == "game publisher") {
+
+            $this->view->games = $this->model->GetPublisherGames($_GET['profile']);
         }
 
         $this->view->render('Portfolio');
