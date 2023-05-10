@@ -35,7 +35,8 @@ class Gameupload_Model extends Model
         $GameOther,
         $platform,
         $gameType,
-        $gamePrice
+        $gamePrice,
+        $gameVisibility
     ) {
         $sql = "INSERT INTO freegame (gameName, releaseStatus, 
         gameDetails, 
@@ -58,7 +59,7 @@ class Gameupload_Model extends Model
         recommendMemory, 
         recommendStorage, 
         recommendGraphics, 
-        other, platform, gameType, gamePrice) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        other, platform, gameType, gamePrice, gameVisibility) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         $stmt = $this->db->prepare($sql);
 
@@ -88,7 +89,8 @@ class Gameupload_Model extends Model
             "$GameOther",
             "$platform",
             "$gameType",
-            "$gamePrice"
+            "$gamePrice",
+            "$gameVisibility"
         ]);
     }
 
@@ -141,7 +143,6 @@ class Gameupload_Model extends Model
 
         //Game File
         $game_file = $_FILES['upload-game']['name'];
-        //$asset_file_size = $_FILES['upload-asset']['size'];
         $game_file_temp_name = $_FILES['upload-game']['tmp_name'];
 
         $game_file_ext = strtolower(pathinfo($game_file, PATHINFO_EXTENSION));
@@ -157,5 +158,76 @@ class Gameupload_Model extends Model
         }
 
         return $new_game_file_name;
+    }
+
+    function FeatureTypes()
+    {
+
+        $sql = "SELECT * FROM games_filters WHERE type='features'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+
+    //Create a record in game_stats table using the uploaded games ID to keep track of games views, downloads & revenue
+    function UpdateGameStats($gameName, $developerID)
+    {
+
+        $sql = "SELECT * FROM freegame WHERE gameName='$gameName' AND gameDeveloperID='$developerID' LIMIT 1";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $uploadedGame = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $insertSQL = "INSERT INTO game_stats(gameID, downloads, views, ratings, revenue) VALUES (?,?,?,?,?) ";
+
+        $stmtInsert = $this->db->prepare($insertSQL);
+
+        $gameID = $uploadedGame['gameID'];
+
+        $stmtInsert->execute([
+            "$gameID",
+            "0",
+            "0",
+            "0",
+            "0"
+        ]);
+
+        return $uploadedGame;
+    }
+
+    function GameNameAvailabilityCheck($gameName, $userID)
+    {
+
+        $sql = "SELECT * FROM freegame WHERE gameName='$gameName' AND gameDeveloperID='$userID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $game = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (empty($game)) {
+            return "true";
+        } else {
+            return "false";
+        }
+    }
+
+    function CheckGameNameWholeSite($gameName, $userID)
+    {
+
+        $Namesql = "SELECT * FROM freegame WHERE gameName='$gameName' AND NOT gameDeveloperID='$userID'";
+
+        $Namestmt = $this->db->prepare($Namesql);
+
+        $Namestmt->execute();
+
+        return $Namestmt->fetch(PDO::FETCH_ASSOC);
     }
 }

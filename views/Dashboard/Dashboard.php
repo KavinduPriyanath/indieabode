@@ -25,9 +25,19 @@
         <div class="top-row">
             <div class="heading">Developer Dashboard</div>
             <div class="dev-main-stat">
-                <div id="views">views</div>
-                <div id="downloads">downloads</div>
-                <div id="revenue">revenue</div>
+
+                <div id="views">
+                    <div class="count"><?= $this->totalViews ?></div>
+                    <div class="label">views</div>
+                </div>
+                <div id="downloads">
+                    <div class="count"><?= $this->totalDownloads ?></div>
+                    <div class="label">downloads</div>
+                </div>
+                <div id="revenue">
+                    <div class="count">$<?= number_format($this->totalRevenue, 2) ?></div>
+                    <div class="label">revenue</div>
+                </div>
             </div>
         </div>
         <div class="tabs-row">
@@ -52,10 +62,10 @@
                         <div class="details">
                             <div class="game-name"><?= $game['gameName'] ?></div>
                             <div class="game-stat-tabs">
-                                <a href="">Edit</a>
-                                <a href="">Analytics</a>
-                                <a href="">Devlogs</a>
-                                <a href="">Publishers</a>
+                                <a href="/indieabode/dashboard/edit?id=<?= $game['gameID']; ?>">Edit</a>
+                                <a href="/indieabode/dashboard/gameanalytics?id=<?= $game['gameID']; ?>">Analytics</a>
+                                <a href="/indieabode/dashboard/gamedevlogs?id=<?= $game['gameID']; ?>">Devlogs</a>
+                                <!-- <a href="">Publishers</a> -->
                                 <a href="">Metadata</a>
                             </div>
                         </div>
@@ -63,19 +73,19 @@
 
                     <div class="right-col">
                         <div class="views">
-                            <div class="count">10</div>
+                            <div class="count"><?= $game['views'] ?></div>
                             <div class="label">views</div>
                         </div>
                         <div class="downloads">
-                            <div class="count">2</div>
+                            <div class="count"><?= $game['downloads'] ?></div>
                             <div class="label">downloads</div>
                         </div>
                         <div class="ratings">
-                            <div class="count">8</div>
+                            <div class="count"><?= $game['ratings'] ?></div>
                             <div class="label">ratings</div>
                         </div>
                         <div class="revenue">
-                            <div class="count">$0</div>
+                            <div class="count">$<?= number_format($game['revenue'], 2) ?></div>
                             <div class="label">revenue</div>
                         </div>
                     </div>
@@ -86,16 +96,13 @@
     </div>
 
 
+
     <?php
     include 'includes/footer.php';
     ?>
 
     <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
 
-
-
 </body>
-
-
 
 </html>

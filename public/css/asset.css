@@ -7,13 +7,13 @@
 }
 
 .carousel {
-    width: 750px;
-    height: 430px;
+    width: 810px;
+    height: 480px;
     position: relative;
-    margin: 20px 20px 20px 180px;
+    margin: 20px 20px 20px 160px;
 }
 
-.carousel > ul {
+.carousel>ul {
     margin: 0;
     padding: 0;
     list-style: none;
@@ -21,8 +21,8 @@
 
 .slide {
     position: absolute;
-    width: 750px;
-    height: 430px;
+    width: 810px;
+    height: 480px;
     /*inset: 0;*/
     opacity: 0;
 }
@@ -31,7 +31,7 @@
     opacity: 1;
 }
 
-.slide > img {
+.slide>img {
     display: block;
     width: 100%;
     height: 100%;
@@ -53,31 +53,32 @@
     border-radius: .25rem;
     padding: 0 .5rem;
     background-color: rgba(0, 0, 0, .1);
-  }
+}
 
-  .carousel-button:hover,
-  .carousel-button:focus {
+.carousel-button:hover,
+.carousel-button:focus {
     color: white;
     background-color: rgba(0, 0, 0, .2);
-  }
+}
 
-  .carousel-button:focus {
+.carousel-button:focus {
     outline: 1px solid black;
-  }
+}
 
-  .carousel-button.prev {
+.carousel-button.prev {
     left: 1rem;
-  }
+}
 
-  .carousel-button.next {
+.carousel-button.next {
     right: 1rem;
-  }
+}
 
-  .card {
-    background-color:#335879;
+.card {
+    background-color: #335879;
     position: relative;
     width: 350px;
-    margin: 20px 180px 10px 10px;
+    margin: 20px 155px 10px 10px;
+    height: auto;
     border-radius: 10px;
     padding: 8px;
 }
@@ -93,7 +94,7 @@
     margin-left: 10px;
 }
 
-.profile-info img{
+.profile-info img {
     display: inline-block;
     width: 28px;
     height: 28px;
@@ -136,7 +137,7 @@
 
 .buy-btn:hover {
     color: rgb(38, 35, 30);
-    cursor:pointer
+    cursor: pointer
 }
 
 .row {
@@ -147,7 +148,7 @@
     color: #6DA0C6;
 }
 
-.row p{
+.row p {
     margin-bottom: 3px;
 }
 
@@ -170,7 +171,7 @@
     display: flex;
 }
 
-.ratings img{
+.ratings img {
     width: 20px;
     height: 20px;
 }
@@ -201,7 +202,7 @@
     align-items: center;
 }
 
-.views-downloads p{
+.views-downloads p {
     margin-left: 5px;
 }
 
@@ -216,11 +217,11 @@
     padding: 4px 8px;
     top: 560px;
     display: inline-block;
-    width: 750px;
+    width: 810px;
     min-height: 100px;
     overflow-y: auto;
     margin-top: 35px;
-    margin-left: 180px;
+    margin-left: 160px;
     margin-bottom: 10px;
     border-radius: 7px;
     background-color: #bad3e192;
@@ -229,7 +230,7 @@
 
 /*Reviews*/
 
-
+/* 
 .reviews {
     width: 750px;
     margin-left: 180px;
@@ -284,7 +285,7 @@
 
 .review-title {
     margin: 1px;
-}
+} */
 
 
 
@@ -305,7 +306,8 @@
     color: rgb(115, 155, 198);
 }
 
-.review-form input[type=text], textarea {
+.review-form input[type=text],
+textarea {
     width: 100%;
     margin: 6px 0px;
     padding: 10px 16px;
@@ -318,7 +320,7 @@
     font-weight: bold;
 }
 
-form {
+.review-form form {
     margin-top: 15px;
 }
 
@@ -344,16 +346,16 @@ input[type=submit]:hover {
 
 #heading {
     font-size: 28px;
-    margin: 35px 0px 20px 180px;
+    margin: 35px 0px 20px 160px;
 }
 
 #topic-break {
-    margin: 5px 205px 0px 180px;
+    margin: 5px 168px 0px 160px;
     border: 0.4px solid #9bc9dbdd;
 }
 
 .topics {
-    margin: 5px 0px 0px 180px;
+    margin: 5px 0px 0px 160px;
     display: flex;
 }
 
@@ -371,7 +373,8 @@ input[type=submit]:hover {
 }
 
 
-#not-claimed a{
+#not-claimed a,
+#claimed a {
     text-decoration: none;
 }
 
@@ -382,7 +385,7 @@ input[type=submit]:hover {
 .bottom-container {
     display: flex;
     flex-wrap: wrap;
-    margin-left: 175px;
+    margin-left: 155px;
     transition: margin 0.3s ease;
 }
 
@@ -391,9 +394,9 @@ input[type=submit]:hover {
     color: black;
 }
 
-.popular-card{
+.popular-card {
     background-image: url('/indieabode/public/images/navbar/bgcard.jpg');
-    background-size:cover;
+    background-size: cover;
     background-attachment: fixed;
     width: 282.5px;
     margin: 10px;
@@ -435,7 +438,7 @@ input[type=submit]:hover {
     margin: 7px 10px 2px 10px;
 }
 
-.ptagline{
+.ptagline {
     padding: 3px 10px;
     font-size: 17px;
     color: #475872;
@@ -469,4 +472,39 @@ input[type=submit]:hover {
 
 .more {
     margin-bottom: 40px;
+}
+
+.right-details {
+    width: 350px;
+    margin: 10px 0px 0px 14px;
+    /* background-color: #234752; */
+}
+
+.button-div {
+    display: flex;
+}
+
+#report-btn, #share-btn {
+    position: relative;
+    display: block;
+    width: 170px;
+    margin: 10px 10px 7px 0px;
+    text-align: center;
+    padding: 6px 14px;
+    font-weight: bold;
+    font-size: 17px;
+    color: #0d162c;
+    border-radius: 6px;
+    border: 1px solid black;
+    background-color: transparent;
+}
+
+#report-btn i, #share-btn i {
+    margin-right: 5px;
+    color: #000000b1;
+    font-weight: bold;
+}
+
+#download-btn, #buy-btn {
+    display: none;
 }

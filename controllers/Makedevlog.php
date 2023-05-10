@@ -13,6 +13,8 @@ class Makedevlog extends Controller
     {
         $currentUser = $_SESSION['id'];
 
+        $this->view->posttypes = $this->model->DevlogPostTypes();
+
         $this->view->games = $this->model->currentDevGames($currentUser);
 
         $this->view->render('Forms/MakeDevlog');
@@ -28,7 +30,6 @@ class Makedevlog extends Controller
         $visibility = $_POST['dev-visibility'];
         $gameName = $_POST['gname'];
         $devlogImg = $this->model->uploadCoverImg($gameName);
-        $releaseDate = $_POST['rdate'];
 
         $this->model->addNewDevlog(
             $name,
@@ -38,7 +39,6 @@ class Makedevlog extends Controller
             $visibility,
             $devlogImg,
             $gameName,
-            $releaseDate
         );
 
         header('location:/indieabode/');

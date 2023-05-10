@@ -155,23 +155,25 @@
         <?php foreach ($this->crowdfundings as $crowdfunding) { ?>
             <a href="/indieabode/crowdfund?id=<?= $crowdfunding['crowdFundID']; ?>">
                 <div class="card">
-                    <div class="card-image"> <img src="/indieabode/public/uploads/crowdfunds/covers/<?= $crowdfunding['crowdfundCoverImg'] ?>" alt="">
+                    <div class="card-image"> <img src="/indieabode/public/uploads/crowdfundings/cover/<?= $crowdfunding['crowdfundCoverImg'] ?>" alt="">
                     </div>
                     <div class="game-intro">
                         <h3><?= $crowdfunding['gameName']; ?></h3>
                     </div>
                     <div class="fund-amount">
-                        <p>122% Funded</p>
+                        <p><?= $crowdfunding['fundingPercentage'] ?>% Funded</p>
                     </div>
-                    <div class="dev">
-                        By <?= $crowdfunding['gameDeveloperName']; ?>
-                    </div>
+
                     <div class="last-row">
-                        <div class="deadline">Ends in 3 days</div>
-                        <div class="likes">
-                            <div class="logo-likes"><img src="/indieabode/public/images/devlogs/like.png" alt=""></div>
-                            <div class="like-count">11</div>
+                        <?php if (substr($crowdfunding['daysLeft'], 0, 1) == "+" && substr($crowdfunding['daysLeft'], 1, 1) != "0") { ?>
+                            <div class="deadline">Ends in <?= substr($crowdfunding['daysLeft'], 1) ?> days</div>
+                        <?php } else { ?>
+                            <div class="deadline">Ended</div>
+                        <?php } ?>
+                        <div class="dev">
+                            By <?= $crowdfunding['username']; ?>
                         </div>
+
                     </div>
 
                 </div>
@@ -184,15 +186,14 @@
 
     <!--Pagination-->
 
-    <div class="pagination">
-        <a href="#"><i class="fa fa-angle-left"></i></a>
-        <a href="#" class="active">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <a href="#">5</a>
-        <a href="#">6</a>
-        <a href="#"><i class="fa fa-angle-right"></i></a>
+    <div class="pagination" id="pagination-crowdfunds">
+        <a href="/indieabode/crowdfundings?page=<?= $this->prevPage; ?>" id="prev"><i class="fa fa-angle-left"></i></a>
+        <?php for ($i = 1; $i <= $this->crowdfundsPagesCount; $i++) : ?>
+            <a href="/indieabode/crowdfundings?page=<?= $i; ?>" class="active"><?= $i ?></a>
+        <?php endfor; ?>
+
+        <a href="/indieabode/crowdfundings?page=<?= $this->nextPage; ?>" id="next"><i class="fa fa-angle-right"></i></a>
+
     </div>
 
     <?php

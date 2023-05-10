@@ -1,108 +1,109 @@
 
 .slider{
-    position: relative;
-    background: #000116;
-    width: 800px;
-    min-height: 500px;
-    margin: 20px;
-    overflow: hidden;
-    border-radius: 10px;
-  }
-  
-  .slider .slide{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    clip-path: circle(0% at 0 50%);
-  }
-  
-  .slider .slide.active{
-    clip-path: circle(150% at 0 50%);
-    transition: 2s;
-  }
-  
-  .slider .slide img{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .slider .slide .info{
-    position: absolute;
-    color: #222;
-    background: rgba(255, 255, 255, 0.3);
-    width: 75%;
-    margin-top: 50px;
-    margin-left: 50px;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 5px 25px rgb(1 1 1 / 5%);
-  }
-  
-  .slider .slide .info h2{
-    font-size: 2em;
-    font-weight: 800;
-  }
-  
-  .slider .slide .info p{
-    font-size: 1em;
-    font-weight: 400;
-  }
-  
-  .navigation{
-    height: 500px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-  }
-  
-  .slider:hover .navigation{
-    opacity: 1;
-  }
-  
-  .prev-btn, .next-btn{
-    z-index: 999;
-    font-size: 2em;
-    color: #222;
-    background: rgba(255, 255, 255, 0.8);
-    padding: 10px;
-    cursor: pointer;
-  }
-  
-  .prev-btn{
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
-  }
-  
-  .next-btn{
-    border-top-left-radius: 3px;
-    border-bottom-left-radius: 3px;
-  }
-  
-  .navigation-visibility{
-    z-index: 999;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .navigation-visibility .slide-icon{
-    z-index: 999;
-    background: rgba(255, 255, 255, 0.5);
-    width: 20px;
-    height: 10px;
-    transform: translateY(-50px);
-    margin: 0 6px;
-    border-radius: 2px;
-    box-shadow: 0 5px 25px rgb(1 1 1 / 20%);
-  }
-  
-  .navigation-visibility .slide-icon.active{
-    background: #4285F4;
-  }
-  
+  position: relative;
+  background: #000116;
+  width: 800px;
+  min-height: 500px;
+  margin: 20px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.slider .slide{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  clip-path: circle(0% at 0 50%);
+}
+
+.slider .slide.active{
+  clip-path: circle(150% at 0 50%);
+  transition: 2s;
+}
+
+.slider .slide img{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slider .slide .info{
+  position: absolute;
+  color: #222;
+  background: rgba(255, 255, 255, 0.3);
+  width: 75%;
+  margin-top: 50px;
+  margin-left: 50px;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 5px 25px rgb(1 1 1 / 5%);
+}
+
+.slider .slide .info h2{
+  font-size: 2em;
+  font-weight: 800;
+}
+
+.slider .slide .info p{
+  font-size: 1em;
+  font-weight: 400;
+}
+
+.navigation{
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.slider:hover .navigation{
+  opacity: 1;
+}
+
+.prev-btn, .next-btn{
+  z-index: 999;
+  font-size: 2em;
+  color: #222;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  cursor: pointer;
+}
+
+.prev-btn{
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.next-btn{
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.navigation-visibility{
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+}
+
+.navigation-visibility .slide-icon{
+  z-index: 999;
+  background: rgba(255, 255, 255, 0.5);
+  width: 20px;
+  height: 10px;
+  transform: translateY(-50px);
+  margin: 0 6px;
+  border-radius: 2px;
+  box-shadow: 0 5px 25px rgb(1 1 1 / 20%);
+}
+
+.navigation-visibility .slide-icon.active{
+  background: #4285F4;
+}
+
+
 
 
 /*page css */
@@ -113,3 +114,170 @@
 .crowdfund-content {
   display: flex;
 }
+
+.image-slider {
+  margin: 2px 0px 20px 140px;
+}
+
+.crowdfund-overview {
+  margin: 25px 140px 20px 20px;
+  font-size: 18px;
+}
+
+.heading {
+  margin-top: 60px;
+  text-align: center;
+  font-size: 24px;
+}
+
+.heading .title{
+  font-size: 27px;
+  font-weight: bold;
+}
+
+.crowdfund-content .details {
+  background-color: rgba(113, 158, 176, 0.785);
+  width: 800px;
+  height: 300px;
+  margin: 20px 0px 20px 160px;
+}
+
+.progress-bar {
+  width: 350px;
+  height: 8px;
+  margin: 8px 0px 8px 0px;
+}
+
+.progress-bar-background {
+  width: 100%;
+  height: 100%;
+  background-color: #A5B9BD;
+}
+
+.progress {
+  width: 200px;
+  height: 100%;
+  background-color: rgb(53, 69, 102);
+}
+
+.amount-tracker span, .backer-count, .days-left{
+  font-size: 25px;
+}
+
+.backers, .days-caption {
+  margin-bottom: 10px;
+}
+
+.btn {
+  display: block;
+  width: 350px;
+  margin: 10px 0px 7px 0px;
+  text-align: center;
+  padding: 14px;
+  font-weight: bold;
+  font-size: 23px;
+  color: #132759;
+  border-radius: 6px;
+  background-color: #A5B9BD;
+}
+
+.semibtnbox {
+  margin-top: 25px;
+  margin-bottom: 13px;
+}
+
+.semi-btn {
+  position: relative;
+  display: block;
+  width: 350px;
+  margin: 10px 0px 7px 0px;
+  text-align: center;
+  padding: 6px 14px;
+  font-weight: bold;
+  font-size: 18px;
+  color: #132759;
+  border-radius: 6px;
+  border: 1px solid black;
+  background-color: transparent;
+}
+
+.semi-btn i {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  color: #132759;
+  font-weight: bold;
+}
+
+.backer-details {
+  margin: 25px 140px 20px 40px;
+  font-size: 18px;
+  width: 350px;
+  background-color: #6da4bc77;
+  padding: 10px 17px;
+  border-radius: 6px;
+}
+
+.row-one, .row-two {
+  display: flex;
+  align-items: center;
+}
+
+.backer-info {
+  margin-top: 20px;
+}
+
+.backer-pp {
+  margin-right: 20px;
+  width: 44px;
+  height: 44px;
+  background-color: transparent;
+}
+
+.backer-pp img{
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  margin-right: 5px;
+  border-radius: 10px;
+  /* background-image: url(public/images/navbar/profile.png); */
+  background-size: cover;
+}
+
+.backed-amount {
+  font-weight: bold;
+  margin-right: 25px;
+}
+
+.backed-date {
+  position: relative;
+  padding-left: 15px;
+}
+
+.backed-date i {
+  position: absolute;
+  font-size: 7px;
+  top: 8px;
+  left: 1px;
+  color: rgb(56, 80, 107);
+}
+
+.bottom-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 155px;
+  transition: margin 0.3s ease;
+}
+
+.bottom-container a {
+  text-decoration: none;
+}
+
+#more-heading {
+  margin: 10px 0px 15px 165px;
+}
+
+.more {
+  margin-bottom: 40px;
+}
+

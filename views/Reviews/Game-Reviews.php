@@ -34,7 +34,6 @@
     <hr id="topic-break">
 
     <div class="review-header">
-        <div class="review-title">Game Name</div>
         <div class="review-body">
             <div class="column-one">
                 <div class="total-rating"><span id="average_rating">0.0</span> / 5</div>
@@ -81,7 +80,7 @@
                     <div class="rate-count">(<span id="total_two_star_review"></span>)</div>
                 </div>
                 <div class="review-progress">
-                    <div class="rate-number">1</div>
+                    <div class="rate-number">1&nbsp;</div>
                     <i class="fa fa-star checked"></i>
                     <div class="progress-bar-border">
                         <div class="progress-bar" id="one_star_progress"></div>
@@ -92,51 +91,22 @@
             <div class="column-three">
                 <div class="write-text">Write Review Here</div>
                 <?php if (isset($_SESSION['logged']) && $_SESSION['userRole'] == "gamer") { ?>
-                    <button data-modal-target="#modal">Add Review</button>
+                    <button data-modal-target="#modal" id="review-btn" class="UnReviewed">Add Review</button>
                 <?php } else if (isset($_SESSION['logged']) && $_SESSION['userRole'] != "gamer") { ?>
                     <button data-modal-target="#modal-incorrectRole">Add Review</button>
                 <?php } else { ?>
-                    <button data-modal-target="#modal-signin">Add Review</button>
+                    <div class="text"><a href="/indieabode/login">Log in with indieabode</a> to leave a review</div>
                 <?php } ?>
             </div>
         </div>
     </div>
 
     <!--Reviews-->
+    <hr id="topic-break">
     <div class="reviews">
-        <h3>Ratings</h3>
+        <h3>Ratings & Reviews</h3>
 
         <div id="review_content"></div>
-        <!-- <div class="review">
-            <div class="left">
-                <img src="/indieabode/public/images/games/profile.png" alt="" />
-                <p class="username">Kavindu&nbsp;Priyanath</p>
-                <p class="assets-count">Assets:&nbsp;27</p>
-                <p class="reviews-count">Reviews:&nbsp;11</p>
-            </div>
-            <div class="right">
-                <div class="rating-stars">
-                    <img src="/indieabode/public/images/games/Filled Star.png" alt="" />
-                    <img src="/indieabode/public/images/games/Filled Star.png" alt="" />
-                    <img src="/indieabode/public/images/games/Filled Star.png" alt="" />
-                    <img src="/indieabode/public/images/games/Filled Star.png" alt="" />
-                    <img src="/indieabode/public/images/games/Blank Star.png" alt="" />
-                    <p>12 Dec 2021</p>
-                </div>
-                <h3 class="review-title">Very Customizable</h3>
-                <p class="review-detail">
-                    Hey! The actual sprite without empty space in the image is about
-                    38x20 pixels, but it depends on the animation as in some theres a
-                    sword and stuff. So because of that I kept the image size as 120x80
-                    pixels for every animation. And the character is centered correctly
-                    to be in the middle/bottom of the whole image.
-                </p>
-                <div class="like-buttons">
-                    <img src="/indieabode/public/images/games/like.png" alt="" />
-                    <img src="/indieabode/public/images/games/dislike.png" alt="" />
-                </div>
-            </div>
-        </div> -->
 
 
     </div>
@@ -170,11 +140,22 @@
                     <h3>Your Review</h3>
                     <textarea name="review" id="review" cols="30" rows="7"></textarea>
 
+                    <input type="hidden" name="rating" id="ratingCount">
+
                     <h4>Do you recommend this game?</h4>
-                    <input type="radio" name="recommendation" id=""> Yes
-                    <input type="radio" name="recommendation" id=""> No
+                    <input type="radio" name="recommendation" id="Yes" value="Yes"> Yes
+                    <input type="radio" name="recommendation" id="No" value="No"> No
                     <br />
-                    <button type="submit" id="save-review">Post Review</button>
+                    <div class="modal-bottom">
+                        <div class="modal-submit">
+                            <button type="submit" id="save-review" class="save-review">Post Review</button>
+                        </div>
+                        <div class="modal-delete">
+                            <a href="" id="delete-review" onclick="DeleteConfirmation()">
+                                Delete Rating & Review
+                            </a>
+                        </div>
+                    </div>
 
                 </div>
             </div>
@@ -201,68 +182,29 @@
         <div id="overlay"></div>
     </div>
 
-    <div class="signin-modal">
-        <div class="modal" id="modal-signin">
-            <div class="modal-header">
-                <div class="title">Rate & Review "<?= $this->game['gameName'] ?>"</div>
-                <button data-close-button class="close-button">&times;</button>
-            </div>
-            <div class="modal-body">
 
-                <div class="report-heading">
-                    Sign-in First
+    <?php
+    include 'includes/footer.php';
+    ?>
 
 
-                </div>
 
-            </div>
-        </div>
-        <div id="overlay"></div>
-    </div>
-
-    <script src="<?php echo BASE_URL; ?>public/js/assets.js"></script>
     <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
+    <script src="<?php echo BASE_URL; ?>public/js/game-review.js"></script>
+
 
     <script>
-        const openModalButtons = document.querySelectorAll("[data-modal-target]");
-        const closeModalButtons = document.querySelectorAll("[data-close-button]");
-        const overlay = document.getElementById("overlay");
+        function DeleteConfirmation() {
+            let message = "Are you sure you want to delete your rating & review?";
+            let redirect = document.getElementById("delete-review");
 
-        openModalButtons.forEach((button) => {
-            button.addEventListener("click", () => {
-                const modal = document.querySelector(button.dataset.modalTarget);
-                openModal(modal);
-            });
-        });
-
-        overlay.addEventListener("click", () => {
-            const modals = document.querySelectorAll(".modal.active");
-            modals.forEach((modal) => {
-                closeModal(modal);
-            });
-        });
-
-        closeModalButtons.forEach((button) => {
-            button.addEventListener("click", () => {
-                const modal = button.closest(".modal");
-                closeModal(modal);
-            });
-        });
-
-        function openModal(modal) {
-            if (modal == null) return;
-            modal.classList.add("active");
-            overlay.classList.add("active");
+            if (confirm(message) == true) {
+                redirect.href = "/indieabode/gameReviews/DeleteReview?id=<?= $this->game['gameID'] ?>";
+            } else {
+                //nothin happens
+            }
         }
 
-        function closeModal(modal) {
-            if (modal == null) return;
-            modal.classList.remove("active");
-            overlay.classList.remove("active");
-        }
-    </script>
-
-    <script>
         $(document).ready(function() {
             var rating_data = 0;
 
@@ -301,23 +243,31 @@
             $('#save-review').click(function() {
 
                 var review = $('#review').val();
+                var topic = $('#topic').val();
+                var recommendation = $("input[name='recommendation']:checked").val();
+                var rating = $('#ratingCount').val();
 
                 $.ajax({
                     url: "/indieabode/gameReviews?id=<?= $this->game['gameID'] ?>",
                     method: "POST",
                     data: {
                         rating_data: rating_data,
-                        review: review
+                        review: review,
+                        topic: topic,
+                        recommendation: recommendation,
+                        rating: rating
                     },
                     success: function(data) {
                         $('#modal').removeClass("active");
                         $('#overlay').removeClass("active");
+                        $('#review-btn').html('Edit Review');
 
                         load_rating_data();
                     }
                 })
 
             });
+
 
             load_rating_data();
 
@@ -332,6 +282,39 @@
                     success: function(data) {
                         $('#average_rating').text(data.average_rating);
                         $('#total_review').text(data.total_review);
+
+                        if (data.has_reviewed) {
+                            $('#review-btn').html('Edit Review');
+                            $('#review-btn').addClass("Reviewed");
+                            $('#review-btn').removeClass('UnReviewed');
+                            $('#topic').val(data.thisUserReviewTopic);
+                            $('#review').val(data.thisUserReviewContent);
+                            $('#ratingCount').val(data.thisUserReviewAverageRating);
+                            if (data.thisUserReviewRecommendation == "Yes") {
+                                $("#Yes").prop("checked", true);
+                            } else if (data.thisUserReviewRecommendation == "No") {
+                                $("#No").prop("checked", true);
+                            }
+
+                            $('.modal-delete').css("display", "block");
+
+
+                        } else {
+                            $('#review-btn').html('Add Review');
+                            $('#review-btn').removeClass('Reviewed');
+                            $('#review-btn').addClass('UnReviewed');
+                            $('.modal-delete').css("display", "none");
+                        }
+
+                        var count_submitted_star = 0;
+
+                        $('.submit_star').each(function() {
+                            count_submitted_star++;
+                            if (Math.ceil(data.thisUserReviewAverageRating) >= count_submitted_star) {
+                                $(this).addClass('checked');
+                                $(this).removeClass('unchecked');
+                            }
+                        });
 
                         var count_star = 0;
 
@@ -371,13 +354,19 @@
 
 
                                 html += '<div class="review">';
-                                html += '<div class="left">';
+                                html += '<div class="leftr">';
+                                html += '<div class="left-icon">';
                                 html += '<img src="/indieabode/public/images/games/profile.png" alt="" />';
-                                html += '<p class="username">Kavindu&nbsp;Priyanath</p>';
-                                html += '<p class="assets-count">Assets:&nbsp;27</p>';
+                                html += '</div>';
+                                html += '<div class="left-name">';
+                                html += '<p class="username">' + data.review_data[count].reviewerName + '</p>';
+                                html += '<p class="assets-count">114 games in account</p>';
                                 html += '<p class="reviews-count">Reviews:&nbsp;11</p>';
                                 html += '</div>';
-                                html += '<div class="right">';
+                                html += '</div>';
+                                html += '<div class="rightr">';
+                                html += '<div class="recommendation">';
+                                html += '</div>';
                                 html += '<div class="rating-stars">';
 
                                 for (var star = 1; star <= 5; star++) {
@@ -388,19 +377,14 @@
                                     } else {
                                         class_name = 'unchecked';
                                     }
-
-                                    html += '<i class="fas fa-star ' + class_name + ' mr-1"></i>';
                                     html += '<i class="fa fa-star ' + class_name + ' "></i>';
                                 }
 
                                 html += '<p>12 Dec 2021</p>';
                                 html += '</div>';
-                                html += '<h3 class="review-title">Very Customizable</h3>';
+                                html += '<h3 class="review-title">' + data.review_data[count].reviewTopic + '</h3>';
                                 html += '<p class="review-detail">' + data.review_data[count].review + '</p>';
-                                html += '<div class="like-buttons">';
-                                html += '<img src="/indieabode/public/images/games/like.png" alt="" />';
-                                html += '<img src="/indieabode/public/images/games/dislike.png" alt="" />';
-                                html += '</div>';
+
                                 html += '</div>';
                                 html += '</div>';
 

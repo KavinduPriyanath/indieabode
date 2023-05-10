@@ -12,6 +12,7 @@ class Gameupload extends Controller
     function index()
     {
 
+        $this->view->features = $this->model->FeatureTypes();
 
         $this->view->render('Forms/GameUpload');
     }
@@ -21,17 +22,24 @@ class Gameupload extends Controller
 
         $gameName = $_POST['game-title'];
         $releaseStatus = $_POST['game-status'];
-        $gameDetails = $_POST['game-details'];
-        $gameScreenshots = $this->model->uploadScreenshots($gameName);
-        $gameTrailor = $_POST['game-illustration-vedio'];
+        $gameDetails = $_POST['description'];
+
+        $gameTrailor = (!empty($_POST['game-illustration-vedio'])) ? $_POST['game-illustration-vedio'] : null;
+
+
         $gameTagline = $_POST['game-tagline'];
         $gameClassification = $_POST['game-classification'];
-        $gameTags = $_POST['game-tags'];
-        $gameType = $_POST['game-type'];
-        $gameFeatures = $_POST['game-features'];
-        $gameFile = $this->model->uploadGameFile($gameName);
-        $gameCoverImg = $this->model->uploadCoverImg($gameName);
         $gameDeveloperID = $_SESSION['id'];
+
+        $gameType = $_POST['game-type'];
+
+        //A name for how file type items will saved in database
+        $TempFileName = $gameName . $gameDeveloperID;
+
+        $gameCoverImg = $this->model->uploadCoverImg($TempFileName);
+        $gameFile = $this->model->uploadGameFile($TempFileName);
+        $gameScreenshots = $this->model->uploadScreenshots($TempFileName);
+
 
         $minGameOS = $_POST['min-game-OS'];
         $minGameProcessor = $_POST['min-game-processor'];
@@ -46,7 +54,31 @@ class Gameupload extends Controller
         $GameGraphics = $_POST['game-graphics'];
         $GameOther = $_POST['game-other'];
 
-        $platform = $_POST['game-platform'];
+        $gameVisibility = $_POST['game-visibility'];
+
+        $gameTags = $_POST['game-tags'];
+
+        //getting platforms selected by the developer
+        $platform = $_POST['platform'];
+
+        $platformsCount = count($platform);
+        $platforms = [];
+        for ($i = 0; $i < $platformsCount; $i++) {
+            array_push($platforms, $platform[$i]);
+        }
+
+        $chosenPlatforms = implode(',', $platforms);
+
+        //getting features selected by the developer
+        $feature = $_POST['game-features'];
+
+        $featuresCount = count($feature);
+        $features = [];
+        for ($i = 0; $i < $featuresCount; $i++) {
+            array_push($features, $feature[$i]);
+        }
+
+        $gameFeatures = implode(',', $features);
 
         if ($_POST['game-price'] == "Free") {
             $gamePrice = 0.00;
@@ -80,11 +112,47 @@ class Gameupload extends Controller
             $GameStorage,
             $GameGraphics,
             $GameOther,
-            $platform,
+            $chosenPlatforms,
             $gameType,
-            $gamePrice
+            $gamePrice,
+            $gameVisibility
         );
 
-        header('location:/indieabode/');
+        //For creating a record in Game_stats table to keep track of views, downloads, and revenues
+        $addedGame = $this->model->UpdateGameStats($gameName, $_SESSION['id']);
+
+        // header('location:/indieabode/');
+
+        header('location:' . BASE_URL . 'game?id=' . $addedGame['gameID']);
+    }
+
+    // function file()
+    // {
+    //     if (isset($_FILES)) {
+    //         $temp_file = $_FILES['file']['tmp_name'];
+    //         $uploads_folder = "uploads/{$_FILES['file']['name']}";
+    //         $upload = move_uploaded_file($temp_file, $uploads_folder);
+    //         if ($upload == true) {
+    //             echo $_FILES['file']['name'];
+    //         }
+    //     }
+    // }
+
+    function gameNameAvailabilityCheck()
+    {
+
+        $gameName = $_POST['gameName'];
+
+        $nameAvailability = $this->model->GameNameAvailabilityCheck($gameName, $_SESSION['id']);
+
+        $nameAvailabilityWhole = $this->model->CheckGameNameWholeSite($gameName, $_SESSION['id']);
+
+        if ($nameAvailability == "false") {
+            echo "unavailable";
+        } else if (!empty($nameAvailabilityWhole)) {
+            echo "warning";
+        } else {
+            echo "available";
+        }
     }
 }

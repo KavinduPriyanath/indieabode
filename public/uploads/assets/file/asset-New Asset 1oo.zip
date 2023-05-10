@@ -1,0 +1,39 @@
+2023-03-11 11:46:50 SERVER -&gt; CLIENT: 220 smtp.gmail.com ESMTP lk15-20020a17090308cf00b001898ee9f723sm1475539plb.2 - gsmtp<br>
+2023-03-11 11:46:50 CLIENT -&gt; SERVER: EHLO localhost<br>
+2023-03-11 11:46:50 SERVER -&gt; CLIENT: 250-smtp.gmail.com at your service, [123.231.105.191]250-SIZE 35882577250-8BITMIME250-STARTTLS250-ENHANCEDSTATUSCODES250-PIPELINING250-CHUNKING250 SMTPUTF8<br>
+2023-03-11 11:46:50 CLIENT -&gt; SERVER: STARTTLS<br>
+2023-03-11 11:46:51 SERVER -&gt; CLIENT: 220 2.0.0 Ready to start TLS<br>
+2023-03-11 11:46:51 CLIENT -&gt; SERVER: EHLO localhost<br>
+2023-03-11 11:46:51 SERVER -&gt; CLIENT: 250-smtp.gmail.com at your service, [123.231.105.191]250-SIZE 35882577250-8BITMIME250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH250-ENHANCEDSTATUSCODES250-PIPELINING250-CHUNKING250 SMTPUTF8<br>
+2023-03-11 11:46:51 CLIENT -&gt; SERVER: AUTH LOGIN<br>
+2023-03-11 11:46:52 SERVER -&gt; CLIENT: 334 VXNlcm5hbWU6<br>
+2023-03-11 11:46:52 CLIENT -&gt; SERVER: [credentials hidden]<br>
+2023-03-11 11:46:52 SERVER -&gt; CLIENT: 334 UGFzc3dvcmQ6<br>
+2023-03-11 11:46:52 CLIENT -&gt; SERVER: [credentials hidden]<br>
+2023-03-11 11:46:53 SERVER -&gt; CLIENT: 235 2.7.0 Accepted<br>
+2023-03-11 11:46:53 CLIENT -&gt; SERVER: MAIL FROM:&lt;tech2019man@gmail.com&gt;<br>
+2023-03-11 11:46:53 SERVER -&gt; CLIENT: 250 2.1.0 OK lk15-20020a17090308cf00b001898ee9f723sm1475539plb.2 - gsmtp<br>
+2023-03-11 11:46:53 CLIENT -&gt; SERVER: RCPT TO:&lt;7prend@gmail.com&gt;<br>
+2023-03-11 11:46:53 SERVER -&gt; CLIENT: 250 2.1.5 OK lk15-20020a17090308cf00b001898ee9f723sm1475539plb.2 - gsmtp<br>
+2023-03-11 11:46:53 CLIENT -&gt; SERVER: DATA<br>
+2023-03-11 11:46:54 SERVER -&gt; CLIENT: 354  Go ahead lk15-20020a17090308cf00b001898ee9f723sm1475539plb.2 - gsmtp<br>
+2023-03-11 11:46:54 CLIENT -&gt; SERVER: Date: Sat, 11 Mar 2023 12:46:49 +0100<br>
+2023-03-11 11:46:54 CLIENT -&gt; SERVER: To: 7prend@gmail.com<br>
+2023-03-11 11:46:54 CLIENT -&gt; SERVER: From: Indieabode &lt;tech2019man@gmail.com&gt;<br>
+2023-03-11 11:46:54 CLIENT -&gt; SERVER: Subject: New game<br>
+2023-03-11 11:46:54 CLIENT -&gt; SERVER: Message-ID: &lt;N0JXh6OOBTgdWDHPUHfa8QZxp7xTa7LwsMzjO1h6G7Q@localhost&gt;<br>
+2023-03-11 11:46:54 CLIENT -&gt; SERVER: X-Mailer: PHPMailer 6.7.1 (https://github.com/PHPMailer/PHPMailer)<br>
+2023-03-11 11:46:54 CLIENT -&gt; SERVER: MIME-Version: 1.0<br>
+2023-03-11 11:46:54 CLIENT -&gt; SERVER: Content-Type: text/html; charset=iso-8859-1<br>
+2023-03-11 11:46:54 CLIENT -&gt; SERVER: <br>
+2023-03-11 11:46:54 CLIENT -&gt; SERVER: <br>
+2023-03-11 11:46:54 CLIENT -&gt; SERVER:                 &lt;h2&gt;Hello&lt;/h2&gt;<br>
+2023-03-11 11:46:54 CLIENT -&gt; SERVER:                 &lt;p&gt;You have purchased this game&lt;/p&gt;<br>
+2023-03-11 11:46:54 CLIENT -&gt; SERVER:             <br>
+2023-03-11 11:46:54 CLIENT -&gt; SERVER: <br>
+2023-03-11 11:46:54 CLIENT -&gt; SERVER: .<br>
+2023-03-11 11:46:55 SERVER -&gt; CLIENT: 250 2.0.0 OK  1678535215 lk15-20020a17090308cf00b001898ee9f723sm1475539plb.2 - gsmtp<br>
+2023-03-11 11:46:55 CLIENT -&gt; SERVER: QUIT<br>
+2023-03-11 11:46:55 SERVER -&gt; CLIENT: 221 2.0.0 closing connection lk15-20020a17090308cf00b001898ee9f723sm1475539plb.2 - gsmtp<br>
+<br />
+<b>Warning</b>:  readfile(public/uploads/games/file/): Failed to open stream: No such file or directory in <b>C:\xampp\htdocs\indieabode\controllers\Game.php</b> on line <b>185</b><br />

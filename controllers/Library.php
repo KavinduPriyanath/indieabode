@@ -12,8 +12,50 @@ class Library extends Controller
     function index()
     {
 
-        $this->view->myAssets = $this->model->showMyLibrary($_SESSION['id']);
+        $this->view->myAssets = $this->model->showMyAssetLibrary($_SESSION['id']);
+
+        $this->view->myGames = $this->model->showMyGameLibrary($_SESSION['id']);
 
         $this->view->render('Library');
+    }
+
+    function downloadGame()
+    {
+        $gameFileName = $this->model->downloadGameFile($_GET['id']);
+
+        $this->model->updateGameDownloadStat($_GET['id'], date("Y-m-d"));
+
+        $this->model->updateGameDownloads($_GET['id']);
+
+        $gameFilePath = 'public/uploads/games/file/';
+
+        $downloadPath = $gameFilePath . $gameFileName;
+
+        header('Cache-Control: public');
+        header('Content-Description: File Transfer');
+        header('Content-Type: application/zip');
+        header("Content-Transfer-Encoding: utf-8");
+        header("Content-Disposition: attachment; filename=$gameFileName");
+        readfile($downloadPath);
+    }
+
+    function downloadAsset()
+    {
+        $assetFileName = $this->model->downloadAssetFile($_GET['id']);
+
+        $this->model->updateAssetDownloadStat($_GET['id'], date("Y-m-d"));
+
+        $this->model->updateAssetDownloads($_GET['id']);
+
+        $assetFilePath = 'public/uploads/assets/file/';
+
+        $downloadPath = $assetFilePath . $assetFileName;
+
+        header('Cache-Control: public');
+        header('Content-Description: File Transfer');
+        header('Content-Type: application/zip');
+        header("Content-Transfer-Encoding: utf-8");
+        header("Content-Disposition: attachment; filename=$assetFileName");
+        readfile($downloadPath);
     }
 }

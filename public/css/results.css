@@ -1,0 +1,73 @@
+.winners {
+    display: flex;
+    justify-content: center;
+    margin: 30px 185px;
+}
+
+.winner-card {
+
+    height: 260px;
+    width: 300px;
+    background-color: rgb(134, 171, 230);
+    margin-right: 40px;
+}
+
+.winner-game-image {
+    background-color: rgb(161, 231, 234);
+    width: 100%;
+    height: 200px;
+    position: relative;
+}
+
+.winner-game-image img {
+    position: absolute;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.winner-card .winner-game, .winner-card .winner-place {
+    text-align: center;
+}
+
+.winner-card .winner-place{
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.winner-card .winner-game {
+    font-size: 18px;
+}
+
+.all-ranks {
+    margin: 20px 185px;
+}
+
+.all-ranks .title {
+    font-size: 23px;
+    font-weight: 800;
+
+}
+
+.all-ranks table {
+    margin-top: 20px;
+    border-collapse: collapse;
+    border: 1px solid rgb(20, 20, 48);
+}
+
+.all-ranks th, .all-ranks td {
+    border: 1px solid rgb(20, 20, 48);
+    text-align: center;
+    padding: 5px;
+}
+
+.all-ranks #rank-table {
+    width: 80px;
+    padding: 8px;
+    background-color: rgb(107, 167, 219);
+}
+
+.all-ranks #game-name-table {
+    width: 180px;
+    background-color: rgb(107, 167, 219);
+}

@@ -31,7 +31,7 @@ class Launchcrowdfunding extends Controller
         $crowdfundCoverImg = $this->model->uploadCoverImg($gameName);
         $crowdfundScreenshots = $this->model->uploadScreenshots($gameName);
         $crowdfundTrailer = $_POST['crowdfund-trailer'];
-        $developerName = $_SESSION['username'];
+        $developerName = $_SESSION['id'];
         // $developerID = $_SESSION['id'];
 
         $this->model->launchNewCrowdfund(

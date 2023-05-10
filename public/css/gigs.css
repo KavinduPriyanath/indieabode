@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Kreon:wght@300;400;500;600;700&display=swap');
+
 /* Filters*/
 
 
@@ -7,19 +7,25 @@
     margin: 0;
 }
 
+.side-nav-cover {
+    display: block;
+    height: 100%;
+}
 
 
 .side-nav {
-    height: 100%;
+    display: block;
+    /* height: 1100px; */
     width: 250px;
     position: absolute;
     z-index: 1;
-    top: 150px;
-    left: 175px;
-    background-color: lightgray;
+    top: 170px;
+    left: 155px;
+    /* background-color: lightgray; */
     opacity: 0.9;
     overflow-x: hidden;
-    padding-top: 30px;
+    overflow-y:hidden;
+    padding-top: 15px;
     transition: 0.3s;
 }
 
@@ -27,7 +33,7 @@
     padding: 10px 10px 10px 30px;
     text-decoration: none;
     font-size: 22px;
-    color: rgb(60, 54, 54);
+    color: rgb(23, 20, 46);
     display: block;
     transition: 0.3s;
 }
@@ -64,7 +70,7 @@ input[type="radio"] {
     /* background-color: rgb(195, 194, 194); */
     font-family: 'Kreon', serif;
     padding: 10px 20px 5px 15px;
-    margin: 15px 15px 0px 175px;
+    margin: 15px 15px 0px 155px;
     border-radius: 3.5px;
     cursor: pointer;
 }
@@ -101,7 +107,7 @@ input[type="radio"] {
     background-color: #86AFEC;
     border-width: 0px;
     height: 0.5px;
-    margin: 0px 150px 15px 175px;
+    margin: 0px 165px 15px 158px;
 }
 
 #filter-on {
@@ -122,7 +128,7 @@ input[type="radio"] {
 .container {
     display: flex;
     flex-wrap: wrap;
-    margin-left: 175px;
+    margin-left: 155px;
     transition: margin 0.3s ease;
 }
 
@@ -180,6 +186,16 @@ input[type="radio"] {
     text-align: justify;
 }
 
+.modernWay {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+            line-clamp: 2; 
+    -webkit-box-orient: vertical;
+ }
+
+
 .card a {
     background-color: rgb(162, 212, 212);
     color: black;
@@ -226,7 +242,7 @@ input[type="radio"] {
 
 
 .gig-info {
-    margin-top: 10px;
+    margin-top: 2px;
     display: flex;
     justify-content: space-between;
 }
@@ -256,4 +272,18 @@ input[type="radio"] {
     margin-right: 5px;
     width: 20px;
     height: 20px;
+}
+
+.pp-details h3{
+    font-size: 16px;
+}
+
+/* Gigs Archive */
+.archive-details {
+    display: block;
+    background-color: rgb(221, 77, 77);
+    padding: 3px 5px;
+    text-align: center;
+    color: rgb(168, 192, 239);
+    font-weight: bold;
 }

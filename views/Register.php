@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <title>Indieabode</title>
 
     <style>
@@ -30,23 +33,33 @@
             <!--register form-->
             <div class="full-name">
                 <div class="first-name">
-                    <label class="form-login-label" id="firstname">First Name</label>
+                    <label class="form-login-label">First Name</label>
                     <input type="text" name="firstname" id="firstname" placeholder="firstname" required />
                 </div>
                 <div class="last-name">
-                    <label class="form-login-label" id="lastname">Last Name</label>
+                    <label class="form-login-label">Last Name</label>
                     <input type="text" name="lastname" id="lastname" placeholder="lastname" required /><br>
                 </div>
             </div>
-            <label class="form-login-label">Username</label> <br>
-            <input type="text" name="username" id="user-name" placeholder="username" required /><br>
+            <div class="full-name-errors">
+                <div class="error-msg" id="firstname-check"></div>
+                <div class="error-msg" id="lastname-check"></div>
+            </div>
 
-            <label for="userrole" class="form-login-label">Who are you?</label>
-            <select id="userrole" name="userrole">
-                <?php foreach ($this->userRoles as $userRole) { ?>
-                    <option value="<?= $userRole['roleType']; ?>"><?= $userRole['roleType']; ?></option>
-                <?php } ?>
-            </select> <br>
+            <div class="username">
+                <label class="form-login-label">Username</label> <br>
+                <input type="text" name="username" id="user-name" placeholder="username" required /><br>
+            </div>
+            <div class="error-msg" id="username-check"></div>
+
+            <div class="userrole">
+                <label for="userrole" class="form-login-label">Who are you?</label>
+                <select id="userrole" name="userrole">
+                    <?php foreach ($this->userRoles as $userRole) { ?>
+                        <option value="<?= $userRole['roleType']; ?>"><?= $userRole['roleType']; ?></option>
+                    <?php } ?>
+                </select>
+            </div>
 
             <div class="form-login-label">Select your avatar</div>
             <div class="avatars">
@@ -79,29 +92,40 @@
             </div>
 
 
-            <label class="form-login-label">Email</label><br>
-            <input type="text" name="email" id="title" placeholder="email" required /><br>
+            <div class="email">
+                <label class="form-login-label">Email</label><br>
+                <input type="text" name="email" id="email" placeholder="email" required /><br>
+            </div>
+            <div class="error-msg" id="email-check"></div>
 
 
 
-
-            <label class="form-login-label">Password</label><br>
-            <input type="password" name="password" id="password" placeholder="Password" required /><br>
-
-
-
-
-
-            <label class="form-login-label">Confirm Password</label><br>
-            <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" /><br><br>
+            <div class="field password-field">
+                <label class="form-login-label">Password</label><br>
+                <input type="password" name="password" id="password" placeholder="Password" class="password" required />
+                <i class="fa fa-eye" id="eye"></i>
+            </div>
+            <div class="error-msg" id="password-check"></div>
 
 
 
+            <div class="field password-field">
+                <label class="form-login-label">Confirm Password</label><br>
+                <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" class="password" />
+                <i class="fa fa-eye" id="confirm-eye"></i>
 
-            <input type="checkbox" name="" id="checkbox" value="" onclick="checkboxClicked()">
-            <label for="" id="tos">I accept the terms of service </label><br>
+            </div>
+            <div class="error-msg" id="confirmpassword-check"></div>
 
-            <button type="submit" name="submit" id="register">Register</button><br><br>
+            <div class="terms">
+                <input type="checkbox" name="" id="checkbox" value="" onclick="checkboxClicked()">
+                <label for="" id="tos">I accept the terms of service </label>
+            </div>
+
+            <!-- <button type="submit" name="submit" id="register">Register</button><br><br> -->
+
+            <div class="error-msg" id="backend-check"></div>
+            <div class="register">Register</div>
 
         </form>
 
@@ -110,6 +134,37 @@
     <?php
     include 'includes/footer.php';
     ?>
+
+    <script src="<?php echo BASE_URL; ?>public/js/register.js"></script>
+
+    <script>
+        let passwordField = document.getElementById("password")
+        let confirmPasswordField = document.getElementById("confirmPassword");
+        let toggleIcon = document.getElementById("eye");
+        let confirmToggleIcon = document.getElementById("confirm-eye");
+
+        toggleIcon.onclick = () => {
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                toggleIcon.classList.add("active");
+            } else {
+                passwordField.type = "password";
+                toggleIcon.classList.remove("active");
+            }
+        }
+
+        confirmToggleIcon.onclick = () => {
+            if (confirmPasswordField.type === "password") {
+                confirmPasswordField.type = "text";
+                confirmToggleIcon.classList.add("active");
+            } else {
+                confirmPasswordField.type = "password";
+                confirmToggleIcon.classList.remove("active");
+            }
+        }
+    </script>
+
+
 
 </body>
 

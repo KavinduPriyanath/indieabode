@@ -17,11 +17,10 @@ class Makedevlog_Model extends Model
         $visibility,
         $devlogImg,
         $gameName,
-        $releaseDate
     ) {
         $sql = "INSERT INTO devlog (name, Tagline, description,
-        Type, Visibility, devlogImg, gameName, ReleaseDate) VALUES 
-        (?,?,?,?,?,?,?,?)";
+        Type, Visibility, devlogImg, gameName) VALUES 
+        (?,?,?,?,?,?,?)";
 
         $stmt = $this->db->prepare($sql);
 
@@ -33,7 +32,6 @@ class Makedevlog_Model extends Model
             "$visibility",
             "$devlogImg",
             "$gameName",
-            "$releaseDate"
         ]);
     }
 
@@ -64,5 +62,16 @@ class Makedevlog_Model extends Model
         }
 
         return $new_devlog_cover_img_name;
+    }
+
+    function DevlogPostTypes()
+    {
+        $sql = "SELECT * FROM devlog_posttype";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
     }
 }

@@ -11,7 +11,10 @@ class Gig_Model extends Model
 
     function showSingleGig($id)
     {
-        $sql = "SELECT * FROM gig WHERE gigID='$id' LIMIT 1";
+        $sql = "SELECT gig.gigID, gig.gigName, gig.gigScreenshot, gig.gigDetails, gig.game, gig.gameDeveloperID, gig.gigStatus,
+                gig.gamePublisherID, gig.gigTagline, gig.currentStage, gig.plannedReleaseDate, gig.estimatedShare,
+                gig.expectedCost, gig.gigCoverImg, freegame.gameName, freegame.gameClassification, freegame.platform 
+                FROM gig INNER JOIN freegame ON freegame.gameID = gig.game WHERE gigID='$id'";
 
         $stmt = $this->db->prepare($sql);
 
@@ -54,5 +57,390 @@ class Gig_Model extends Model
         $screenshots = explode(',', $ss);
 
         return $screenshots;
+    }
+
+    function RequestGig($gigId, $developerId, $publisherId, $cost, $share)
+    {
+        $token = $gigId . $publisherId;
+
+        $sql = "INSERT INTO requestedGigs(gigID, developerID, publisherID, gigToken, cost, share) VALUES ('$gigId', '$developerId', '$publisherId', '$token', '$cost', '$share')";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+    }
+
+    function cancelGigRequest($gigID, $publisherID)
+    {
+
+        $sql = "DELETE FROM requestedgigs WHERE gigID='$gigID' AND publisherID='$publisherID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+    }
+
+    function updateRequestCount($gigID, $action)
+    {
+
+        $sql = "SELECT * FROM gig WHERE gigID='$gigID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $gig = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $requestCount = $gig['requests'];
+
+        if ($action == "request") {
+            $requestCount += 1;
+        } else if ($action == "cancel") {
+            $requestCount -= 1;
+        }
+
+        $updateSQL = "UPDATE gig SET requests ='$requestCount' WHERE gigID='$gigID'";
+
+        $updateStmt = $this->db->prepare($updateSQL);
+
+        $updateStmt->execute();
+    }
+
+    function HasRequested($gigId, $publisherId)
+    {
+
+        $sql = "SELECT * FROM requestedGigs WHERE gigID='$gigId' AND publisherID='$publisherId'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $gigRequest = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!empty($gigRequest)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function currentRequest($gigId, $token)
+    {
+
+        $sql = "SELECT * FROM requestedGigs WHERE gigID='$gigId' AND gigToken='$token'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    function updateCurrentRequest($gigToken, $cost, $share, $pubShareApproval, $devShareApproval, $pubCostApproval, $devCostApproval, $eligible)
+    {
+
+
+        $sql = "UPDATE requestedgigs SET
+                cost = '$cost',
+                share = '$share',
+                publisherCostApproval = '$pubCostApproval',
+                developerCostApproval = '$devCostApproval',
+                publisherShareApproval = '$pubShareApproval',
+                developerShareApproval = '$devShareApproval',
+                eligible = '$eligible'
+                WHERE gigToken = '$gigToken'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+    }
+
+    function UpdateEligibilityOfRequest($gigToken)
+    {
+
+        $sql = "UPDATE requestedgigs SET eligible = 1 WHERE gigToken = '$gigToken'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+    }
+
+    function InsertMessages($gigId, $senderID, $receiverID, $message)
+    {
+
+        $sql = "INSERT INTO gigmessages(senderID, receiverID, message, gigID) VALUES ('$senderID', '$receiverID', '$message', '$gigId')";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+    }
+
+    function ViewMessages($currentUserId, $receiverId, $gigId)
+    {
+
+        $sql = "SELECT * FROM gigmessages LEFT JOIN gamer ON gamer.gamerID = gigmessages.senderID
+                WHERE (senderID = $currentUserId AND receiverID = $receiverId AND gigID = $gigId)
+                OR (senderID = $receiverId AND receiverID = $currentUserId AND gigID = $gigId) ORDER BY msgID";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+
+    function GigViewTracker($userID, $session, $gigID)
+    {
+
+        $sql = "SELECT * FROM gigs_views_tracker WHERE gigID='$gigID' AND userID='$userID' AND sessionID='$session'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $gameView = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (empty($gameView)) {
+            $viewSQL = "INSERT INTO gigs_views_tracker(userID, sessionID, gigID) VALUES ('$userID', '$session', '$gigID')";
+
+            $viewStmt = $this->db->prepare($viewSQL);
+
+            $viewStmt->execute();
+            return true;
+        } else if (!empty($gameView)) {
+            return false;
+        }
+    }
+
+    function UpdateGigViews($gigID)
+    {
+
+        $sql = "SELECT * FROM gig WHERE gigID='$gigID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $gig = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $viewCount = $gig['viewCount'] + 1;
+
+        $updateSQL = "UPDATE gig SET viewCount='$viewCount' WHERE gigID='$gigID'";
+
+        $updateStmt = $this->db->prepare($updateSQL);
+
+        $updateStmt->execute();
+    }
+
+    function getUserBillingInfo($userID)
+    {
+
+        $sql = "SELECT * FROM billing_addresses WHERE userID='$userID' LIMIT 1";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    function getUserDetails($userID)
+    {
+
+        $sql = "SELECT * FROM gamer WHERE gamerID='$userID' LIMIT 1";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    function successfulPurchase($gigID, $publisherID, $developerID, $publiserCost, $share, $orderID, $developerShare)
+    {
+
+        $sql = "INSERT INTO gig_purchases(gigID, developerID, publisherID, publisherCost, sharePercentage,orderID, developerShare) 
+                VALUES ('$gigID', '$developerID', '$publisherID', '$publiserCost', '$share', '$orderID', '$developerShare')";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+    }
+
+    //Set gig status of the gig table to 1 to indicate that this gig has been purchased
+    function gigPurchased($gigID)
+    {
+
+        $sql = "UPDATE gig SET gigStatus=1 WHERE gigID='$gigID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+    }
+
+    function AddPublisherToGame($gigID, $publisherID)
+    {
+
+        $sql = "SELECT * FROM gig WHERE gigID='$gigID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $gig = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $gameID = $gig['game'];
+
+        $updateSql = "UPDATE freegame SET gamePublisherID='$publisherID' WHERE gameID='$gameID'";
+
+        $updateStmt = $this->db->prepare($updateSql);
+
+        $updateStmt->execute();
+    }
+
+    function RemoveGigRequest($gigID, $developerID, $publisherID)
+    {
+
+        $sql = "DELETE FROM requestedgigs WHERE gigID='$gigID' AND developerID='$developerID' AND publisherID='$publisherID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+    }
+
+    function GetUser($gamerID)
+    {
+
+        $sql = "SELECT * FROM gamer WHERE gamerID='$gamerID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $user;
+    }
+
+    //Showing Latest gigs which does not have a publisher yet, excluding the currently viewing gig
+    function RecommendedGigs($currentID)
+    {
+
+        $sql = "SELECT gig.gigID, gig.gigID, gig.gigName, gig.gigTagline, gig.gigCoverImg, 
+        gamer.firstName, gamer.lastName, gamer.avatar, gamer.trustrank
+        FROM gig INNER JOIN gamer ON gamer.gamerID = gig.gameDeveloperID 
+        WHERE NOT gig.gigID='$currentID' AND NOT gig.gigStatus = 1 ORDER BY gig.created_at 
+        DESC LIMIT 4";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+
+    function downloadGameFile($id)
+    {
+
+        $sql = "SELECT * FROM freegame WHERE gameID='$id'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $game = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $gameFile = $game['gameFile'];
+
+        return $gameFile;
+    }
+
+    function updateGameDownloadStat($gameID, $todayDate)
+    {
+
+        $sql = "SELECT * FROM game_stats_history WHERE gameID='$gameID' AND created_at='$todayDate'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $record = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (empty($record)) {
+            $insertSQL = "INSERT INTO game_stats_history (gameID, views, downloads, ratings, reviews, created_at) VALUES ('$gameID', 0, 1, 0, 0, '$todayDate')";
+
+            $insertStmt = $this->db->prepare($insertSQL);
+
+            $insertStmt->execute();
+        } else {
+
+            $viewCount = $record['views'];
+
+            $downloadCount = $record['downloads'] + 1;
+
+            $ratingsCount = $record['ratings'];
+
+            $reviewCount = $record['reviews'];
+
+            $updateSQL = "UPDATE game_stats_history 
+            SET gameID='$gameID', 
+            views='$viewCount', 
+            downloads='$downloadCount', 
+            ratings = '$ratingsCount',
+            reviews = '$reviewCount',
+            created_at = '$todayDate' WHERE gameID = '$gameID' AND created_at='$todayDate'";
+
+            $updateStmt = $this->db->prepare($updateSQL);
+
+            $updateStmt->execute();
+        }
+    }
+
+    function updateGameDownloads($gameID)
+    {
+
+        $sql = "SELECT * FROM game_stats_history WHERE gameID='$gameID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $gameDownloads = $stmt->fetchAll();
+
+        $totalDownloads = 0;
+
+        foreach ($gameDownloads as $gameDownload) {
+            $totalDownloads = $totalDownloads + $gameDownload['downloads'];
+        }
+
+        $updateSQL = "UPDATE game_stats SET downloads='$totalDownloads' WHERE gameID='$gameID'";
+
+        $stmt = $this->db->prepare($updateSQL);
+
+        $stmt->execute();
+    }
+
+    //How much portion site gains from each gig purchase
+    function IndieabodeShare($gigID, $orderID, $gigPrice)
+    {
+        $sitePortion = (floatval($gigPrice) / 100) * (5);
+
+        $sql = "INSERT INTO site_gig_revenue(gigID, orderID, siteShare) VALUES ('$gigID', '$orderID', '$sitePortion')";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+    }
+
+    //Calculate the revenue the developer gained by the gig 
+    function GameDeveloperShare($gigPrice)
+    {
+        $developerShare = (floatval($gigPrice) / 100) * (95);
+
+        $paymentGatewayCut = ($developerShare / 100) * (3.3);
+
+        $finalDeveloperShare = $developerShare - $paymentGatewayCut;
+
+        return $finalDeveloperShare;
     }
 }

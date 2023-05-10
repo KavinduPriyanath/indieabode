@@ -1,0 +1,72 @@
+  .panel-body {
+    padding: 5px 5px ;
+    
+  }
+   
+  .title {
+    color: #345060;
+    margin-left: 180px;
+    margin-top: 30px;
+  }
+  
+  
+  .logo1{
+    margin-left: 10px;
+  }
+
+
+  .box1{
+    margin-bottom: 25px;
+  }
+
+  .activit{
+    display: flex;
+  }
+  
+/* mm */
+  .activity{
+    display: flex;
+      width: 852px;
+      height: 50px;
+      background-color:#3c5469;
+      align-items: center;
+      color: #8AB3CA;
+      font-size:13px;
+      left: 184px;
+      top: 14px;
+      margin-bottom: 10px;
+      position: relative;
+      justify-content: space;
+      margin: -1px;
+      
+  }
+  .Uname{
+    width: 165px;
+    left: 15px;
+    position: relative;
+  }
+  .do{
+    position: relative;
+    width:105px;
+    margin-right: 20px;
+    margin-left: 40px;
+  }
+
+  .GDCname{
+    position: relative;
+    width:165px;
+    margin-right: 10px;
+    margin-left: 40px;
+  }
+
+  .time{
+    width:230px;
+    position: relative;
+    left: 60px;
+    color: #69B0D8;
+    
+    
+  }
+  
+
+  

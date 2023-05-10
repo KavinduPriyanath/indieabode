@@ -36,10 +36,10 @@
 
                 <?php foreach ($this->platformFilters as $platformFilter) { ?>
                     <div class="elements">
-                        <input type="checkbox" name="platforms[]" id="Windows" class="checkbox" value="<?= $platformFilter['filter']; ?>" <?php if (in_array($platformFilter['filter'], $this->platformsChecked)) {
-                                                                                                                                                echo "checked";
-                                                                                                                                            } ?> />
-                        <label for="Windows"><?= $platformFilter['filter']; ?></label>
+                        <input type="checkbox" name="platforms[]" id="<?= $platformFilter['filter']; ?>" class="checkbox" value="<?= $platformFilter['filter']; ?>" <?php if (in_array($platformFilter['filter'], $this->platformsChecked)) {
+                                                                                                                                                                        echo "checked";
+                                                                                                                                                                    } ?> />
+                        <label for="<?= $platformFilter['filter']; ?>"><?= $platformFilter['filter']; ?></label>
                     </div>
                 <?php } ?>
 
@@ -49,17 +49,17 @@
 
             <div class="type-filter">
                 <div class="elements">
-                    <input type="radio" name="" id="Released" class="checkbox" />
+                    <input type="radio" name="" id="" class="checkbox" />
                     <label for="Released">Free</label>
                 </div>
 
                 <div class="elements">
-                    <input type="radio" name="" id="Early" class="checkbox" />
+                    <input type="radio" name="" id="" class="checkbox" />
                     <label for="Early">5 or less</label>
                 </div>
 
                 <div class="elements">
-                    <input type="radio" name="" id="Upcoming" class="checkbox" />
+                    <input type="radio" name="" id="" class="checkbox" />
                     <label for="Upcoming">10 or less</label>
                 </div>
             </div>
@@ -70,10 +70,10 @@
 
                 <?php foreach ($this->releaseFilters as $releaseFilter) { ?>
                     <div class="elements">
-                        <input type="checkbox" name="releasestatus[]" id="Released" class="checkbox" value="<?= $releaseFilter['filter']; ?>" <?php if (in_array($releaseFilter['filter'], $this->releaseStatusChecked)) {
-                                                                                                                                                    echo "checked";
-                                                                                                                                                } ?> />
-                        <label for="Released"><?= $releaseFilter['filter']; ?></label>
+                        <input type="checkbox" name="releasestatus[]" id="<?= $releaseFilter['filter']; ?>" class="checkbox" value="<?= $releaseFilter['filter']; ?>" <?php if (in_array($releaseFilter['filter'], $this->releaseStatusChecked)) {
+                                                                                                                                                                            echo "checked";
+                                                                                                                                                                        } ?> />
+                        <label for="<?= $releaseFilter['filter']; ?>"><?= $releaseFilter['filter']; ?></label>
                     </div>
                 <?php } ?>
 
@@ -85,10 +85,10 @@
 
                 <?php foreach ($this->typeFilters as $typeFilter) { ?>
                     <div class="elements">
-                        <input type="checkbox" name="gametypes[]" id="Released" class="checkbox" value="<?= $typeFilter['filter']; ?>" <?php if (in_array($typeFilter['filter'], $this->typesChecked)) {
-                                                                                                                                            echo "checked";
-                                                                                                                                        } ?> />
-                        <label for="Released"><?= $typeFilter['filter']; ?></label>
+                        <input type="checkbox" name="gametypes[]" id="<?= $typeFilter['filter']; ?>" class="checkbox" value="<?= $typeFilter['filter']; ?>" <?php if (in_array($typeFilter['filter'], $this->typesChecked)) {
+                                                                                                                                                                echo "checked";
+                                                                                                                                                            } ?> />
+                        <label for="<?= $typeFilter['filter']; ?>"><?= $typeFilter['filter']; ?></label>
                     </div>
                 <?php } ?>
 
@@ -104,10 +104,10 @@
 
                 <?php foreach ($this->featureFilters as $featureFilter) { ?>
                     <div class="elements">
-                        <input type="checkbox" name="features[]" id="Released" class="checkbox" value="<?= $featureFilter['filter']; ?>" <?php if (in_array($featureFilter['filter'], $this->featuresChecked)) {
-                                                                                                                                                echo "checked";
-                                                                                                                                            } ?> />
-                        <label for="Released"><?= $featureFilter['filter']; ?></label>
+                        <input type="checkbox" name="features[]" id="<?= $featureFilter['filter']; ?>" class="checkbox" value="<?= $featureFilter['filter']; ?>" <?php if (in_array($featureFilter['filter'], $this->featuresChecked)) {
+                                                                                                                                                                        echo "checked";
+                                                                                                                                                                    } ?> />
+                        <label for="<?= $featureFilter['filter']; ?>"><?= $featureFilter['filter']; ?></label>
                     </div>
                 <?php } ?>
 
@@ -147,9 +147,13 @@
                     </div>
                     <div class="game-intro">
                         <h3><?= $game['gameName'] ?></h3>
-                        <p>Free</p>
+                        <?php if ($game['gamePrice'] == "0") { ?>
+                            <p>Free</p>
+                        <?php } else if ($game['gamePrice'] != "0") { ?>
+                            <p>$<?= $game['gamePrice'] ?></p>
+                        <?php } ?>
                     </div>
-                    <div class="tagline"><?= $game['gameTagline'] ?></div>
+                    <div class="tagline modernWay"><?= $game['gameTagline'] ?></div>
                 </div>
             </a>
         <?php } ?>
@@ -182,7 +186,7 @@
 
 
     <script>
-        <?php if (count($_GET) == 1 || $_GET['page'] == 1) { ?>
+        <?php if (!isset($_GET['page']) || $_GET['page'] == 1) { ?>
             document.getElementById("prev").style.pointerEvents = "none";
         <?php } else if ($_GET['page'] == $this->gamesPagesCount) { ?>
             document.getElementById("next").style.pointerEvents = "none";

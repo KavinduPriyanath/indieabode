@@ -18,7 +18,11 @@ class Index extends Controller
 
         // echo "Im index controller";
 
-        // $this->view->games = $this->model->showAllGames();
+        // $this->view->games = $this->model->showRecentGames();
+
+
+
+
         $this->view->render('Home');
     }
 }
