@@ -34,12 +34,12 @@ $(document).ready(function () {
       $("#devlogTitleCheck").show();
       $("#devlogTitleCheck").text("Devlog Title Cannot be empty");
       devlogTitleOkay = false;
-    } else if (devlogTitle.length > 0 && devlogTitle.length < 29) {
+    } else if (devlogTitle.length > 0 && devlogTitle.length < 25) {
       $("#devlogTitleCheck").hide();
       devlogTitleOkay = true;
-    } else if (devlogTitle.length > 29) {
+    } else if (devlogTitle.length > 25) {
       $("#devlogTitleCheck").show();
-      $("#devlogTitleCheck").text("Devlog Title Cannot exceed 29 letters");
+      $("#devlogTitleCheck").text("Devlog Title Cannot exceed 25 letters");
       devlogTitleOkay = false;
     }
   }

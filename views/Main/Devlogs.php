@@ -95,7 +95,7 @@
                         <h3><?= $devlog['name'] ?></h3>
                     </div>
 
-                    <div class="tagline">
+                    <div class="tagline modernWay">
                         <?= $devlog['Tagline'] ?>
                     </div>
                 </div>

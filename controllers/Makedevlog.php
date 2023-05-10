@@ -41,6 +41,10 @@ class Makedevlog extends Controller
             $gameName,
         );
 
-        header('location:/indieabode/');
+        $addedDevlog = $this->model->GetThisDevlogRecord($name, $gameName);
+
+        // header('location:/indieabode/');
+
+        header('location:' . BASE_URL . 'devlog?id=' . $addedDevlog['devLogID']);
     }
 }

@@ -57,7 +57,11 @@
                     </div>
                     <div class="game-intro">
                         <h3><?= $game['gameName'] ?></h3>
-                        <p>Free</p>
+                        <?php if ($game['gamePrice'] == "0") { ?>
+                            <p>Free</p>
+                        <?php } else if ($game['gamePrice'] != "0") { ?>
+                            <p>$<?= $game['gamePrice'] ?></p>
+                        <?php } ?>
                     </div>
                     <div class="tagline modernWay"><?= $game['gameTagline'] ?></div>
                 </div>
@@ -95,7 +99,7 @@
                         <h3><?= $asset['assetName'] ?></h3>
                         <p>Free</p>
                     </div>
-                    <div class="tagline"><?= $asset['assetTagline'] ?></div>
+                    <div class="tagline modernWay"><?= $asset['assetTagline'] ?></div>
                 </div>
             </a>
         <?php } ?>
@@ -151,7 +155,7 @@
                         <h3><?= $devlog['name'] ?></h3>
                     </div>
 
-                    <div class="tagline">
+                    <div class="tagline modernWay">
                         <?= $devlog['Tagline'] ?>
                     </div>
                 </div>
@@ -203,7 +207,7 @@
                             <div class="rating-count">(7)</div>
                         </div>
                     </div>
-                    <div class="tagline"> <?= $gig['gigTagline'] ?> </div>
+                    <div class="tagline modernWay"> <?= $gig['gigTagline'] ?> </div>
                 </div>
             </a>
         <?php } ?>

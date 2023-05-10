@@ -74,4 +74,16 @@ class Makedevlog_Model extends Model
 
         return $stmt->fetchAll();
     }
+
+    function GetThisDevlogRecord($devlogName, $gameName)
+    {
+
+        $sql = "SELECT * FROM devlog WHERE name='$devlogName' AND gameName='$gameName'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }

@@ -40,7 +40,7 @@
         </div>
         <div class="content-row">
 
-            <a href="/indieabode/makedevlog" id="devlog-btn">
+            <a href="/indieabode/makedevlog?game=<?= $this->game['gameID']; ?>" id="devlog-btn">
                 <div class="add-btn">
                     <div class="add-logo">
                         <img src="/indieabode/public/images/dashboard/add-devlog.png" alt="">
