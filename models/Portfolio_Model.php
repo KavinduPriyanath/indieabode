@@ -63,6 +63,22 @@ class Portfolio_Model extends Model
         return $stmt->fetchAll();
     }
 
+    //For showing the assets of asset creator that he has published to the public
+    function GetCreatorAssets($username)
+    {
+
+        $sql = "SELECT freeasset.assetID, freeasset.assetName, freeasset.assetPrice, freeasset.assetTagline,
+                freeasset.assetCoverImg, freeasset.assetVisibility, freeasset.assetClassification FROM freeasset 
+                INNER JOIN gamer ON freeasset.assetCreatorID=gamer.gamerID 
+                WHERE gamer.username='$username' AND freeasset.assetVisibility = 'public'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+
     function FollowUser($follower, $followingUser)
     {
 

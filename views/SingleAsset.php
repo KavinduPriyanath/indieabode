@@ -99,7 +99,9 @@
                     </h2>
                     <div class="profile-info">
                         <img src="/indieabode/public/images/games/profile.png" alt="" />
-                        <p><?= $this->assetCreator['username']; ?></p>
+                        <a href="/indieabode/portfolio?profile=<?= $this->assetCreator['username']; ?>">
+                            <p><?= $this->assetCreator['username']; ?></p>
+                        </a>
                     </div>
                     <div class="price-flex">
                         <div class="category"><?= $this->asset['assetType']; ?></div>
@@ -355,8 +357,6 @@
     </script>
 
     <script>
-
-        
         $(document).ready(function() {
 
             const months = ["Jan", "Feb", "March", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -611,7 +611,6 @@
 
             });
         });
-
     </script>
 
 </body>
