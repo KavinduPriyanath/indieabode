@@ -9,11 +9,24 @@ class Gigs_Model extends Model
     }
 
 
-    function showAllGigs($sort,$Sorder,$min, $max)
+    function showAllGigs($min, $max)
     {
         $sql = "SELECT gig.gigID, gig.gigID, gig.gigName, gig.gigTagline, gig.gigCoverImg, 
         gamer.firstName, gamer.lastName, gamer.avatar, gamer.trustrank
-        FROM gig INNER JOIN gamer ON gamer.gamerID = gig.gameDeveloperID WHERE gigStatus != 1 ORDER BY $sort $Sorder LIMIT $min, $max";
+        FROM gig INNER JOIN gamer ON gamer.gamerID = gig.gameDeveloperID WHERE gigStatus != 1 LIMIT $min, $max";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+
+    function showAllSortedGigs($sort, $Sorder)
+    {
+        $sql = "SELECT gig.gigID, gig.gigID, gig.gigName, gig.gigTagline, gig.gigCoverImg, 
+        gamer.firstName, gamer.lastName, gamer.avatar, gamer.trustrank
+        FROM gig INNER JOIN gamer ON gamer.gamerID = gig.gameDeveloperID WHERE gigStatus != 1 ORDER BY $sort $Sorder";
 
         $stmt = $this->db->prepare($sql);
 

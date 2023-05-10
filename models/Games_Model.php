@@ -9,10 +9,22 @@ class Games_Model extends Model
     }
 
 
-    function showAllGames($sort,$Sorder,$min, $max)
+    function showAllGames($min, $max)
     {
-        
-        $stmt = $this->db->prepare("SELECT * FROM freegame ORDER BY $sort $Sorder LIMIT $min, $max");
+
+        $stmt = $this->db->prepare("SELECT * FROM freegame LIMIT $min, $max");
+
+        $stmt->execute();
+
+        $games = $stmt->fetchAll();
+
+        return $games;
+    }
+
+    function showAllSortedGames($sort, $Sorder)
+    {
+
+        $stmt = $this->db->prepare("SELECT * FROM freegame ORDER BY $sort $Sorder");
 
         $stmt->execute();
 
@@ -114,7 +126,7 @@ class Games_Model extends Model
         return $stmt->fetchAll();
     }
 
-    function showFilteredGames($checkedPlatformFilters, $checkedReleaseFilters, $checkedGameTypeFilters, $checkedFeatureFilters, $min, $max)
+    function showFilteredGames($checkedPlatformFilters, $checkedReleaseFilters, $checkedGameTypeFilters, $checkedFeatureFilters)
     {
 
         $platformfilters = join("','", $checkedPlatformFilters);
@@ -126,35 +138,35 @@ class Games_Model extends Model
         $featurefilters = join("','", $checkedFeatureFilters);
 
         if (!empty($platformfilters) && !empty($releasefilters) && !empty($gametypefilters) && !empty($featurefilters)) {
-            $sql = "SELECT * FROM freegame WHERE `platform` IN ('$platformfilters') AND `releaseStatus` IN ('$releasefilters') AND `gameType` IN ('$gametypefilters') AND `gameFeatures` IN ('$featurefilters') LIMIT $min, $max";
+            $sql = "SELECT * FROM freegame WHERE `platform` IN ('$platformfilters') AND `releaseStatus` IN ('$releasefilters') AND `gameType` IN ('$gametypefilters') AND `gameFeatures` IN ('$featurefilters')";
         } else if (!empty($platformfilters) && !empty($releasefilters) && !empty($gametypefilters)) {
-            $sql = "SELECT * FROM freegame WHERE `platform` IN ('$platformfilters') AND `releaseStatus` IN ('$releasefilters') AND `gameType` IN ('$gametypefilters') LIMIT $min, $max";
+            $sql = "SELECT * FROM freegame WHERE `platform` IN ('$platformfilters') AND `releaseStatus` IN ('$releasefilters') AND `gameType` IN ('$gametypefilters')";
         } else if (!empty($platformfilters) && !empty($releasefilters) && !empty($featurefilters)) {
-            $sql = "SELECT * FROM freegame WHERE `platform` IN ('$platformfilters') AND `releaseStatus` IN ('$releasefilters') AND `gameFeatures` IN ('$featurefilters') LIMIT $min, $max";
+            $sql = "SELECT * FROM freegame WHERE `platform` IN ('$platformfilters') AND `releaseStatus` IN ('$releasefilters') AND `gameFeatures` IN ('$featurefilters')";
         } else if (!empty($platformfilters) && !empty($gametypefilters) && !empty($featurefilters)) {
-            $sql = "SELECT * FROM freegame WHERE `platform` IN ('$platformfilters') AND `gameType` IN ('$gametypefilters') AND `gameFeatures` IN ('$featurefilters') LIMIT $min, $max";
+            $sql = "SELECT * FROM freegame WHERE `platform` IN ('$platformfilters') AND `gameType` IN ('$gametypefilters') AND `gameFeatures` IN ('$featurefilters')";
         } else if (!empty($releasefilters) && !empty($gametypefilters) && !empty($featurefilters)) {
-            $sql = "SELECT * FROM freegame WHERE `releaseStatus` IN ('$releasefilters') AND `gameType` IN ('$gametypefilters') AND `gameFeatures` IN ('$featurefilters') LIMIT $min, $max";
+            $sql = "SELECT * FROM freegame WHERE `releaseStatus` IN ('$releasefilters') AND `gameType` IN ('$gametypefilters') AND `gameFeatures` IN ('$featurefilters')";
         } else if (!empty($platformfilters) && !empty($releasefilters)) {
-            $sql = "SELECT * FROM freegame WHERE `platform` IN ('$platformfilters') AND `releaseStatus` IN ('$releasefilters') LIMIT $min, $max";
+            $sql = "SELECT * FROM freegame WHERE `platform` IN ('$platformfilters') AND `releaseStatus` IN ('$releasefilters')";
         } else if (!empty($releasefilters) && !empty($gametypefilters)) {
-            $sql = "SELECT * FROM freegame WHERE `releaseStatus` IN ('$releasefilters') AND `gameType` IN ('$gametypefilters') LIMIT $min, $max";
+            $sql = "SELECT * FROM freegame WHERE `releaseStatus` IN ('$releasefilters') AND `gameType` IN ('$gametypefilters')";
         } else if (!empty($gametypefilters) && !empty($featurefilters)) {
-            $sql = "SELECT * FROM freegame WHERE `gameType` IN ('$gametypefilters') AND `gameFeatures` IN ('$featurefilters') LIMIT $min, $max";
+            $sql = "SELECT * FROM freegame WHERE `gameType` IN ('$gametypefilters') AND `gameFeatures` IN ('$featurefilters')";
         } else if (!empty($platformfilters) && !empty($gametypefilters)) {
-            $sql = "SELECT * FROM freegame WHERE `platform` IN ('$platformfilters') AND `gameType` IN ('$gametypefilters') LIMIT $min, $max";
+            $sql = "SELECT * FROM freegame WHERE `platform` IN ('$platformfilters') AND `gameType` IN ('$gametypefilters')";
         } else if (!empty($platformfilters) && !empty($featurefilters)) {
-            $sql = "SELECT * FROM freegame WHERE `platform` IN ('$platformfilters') AND `gameFeatures` IN ('$featurefilters') LIMIT $min, $max";
+            $sql = "SELECT * FROM freegame WHERE `platform` IN ('$platformfilters') AND `gameFeatures` IN ('$featurefilters')";
         } else if (!empty($releasefilters) && !empty($featurefilters)) {
-            $sql = "SELECT * FROM freegame WHERE `releaseStatus` IN ('$releasefilters') AND `gameFeatures` IN ('$featurefilters') LIMIT $min, $max";
+            $sql = "SELECT * FROM freegame WHERE `releaseStatus` IN ('$releasefilters') AND `gameFeatures` IN ('$featurefilters')";
         } else if (!empty($platformfilters)) {
-            $sql = "SELECT * FROM freegame WHERE `platform` IN ('$platformfilters') LIMIT $min, $max";
+            $sql = "SELECT * FROM freegame WHERE `platform` IN ('$platformfilters')";
         } else if (!empty($releasefilters)) {
-            $sql = "SELECT * FROM freegame WHERE `releaseStatus` IN ('$releasefilters') LIMIT $min, $max";
+            $sql = "SELECT * FROM freegame WHERE `releaseStatus` IN ('$releasefilters')";
         } else if (!empty($gametypefilters)) {
-            $sql = "SELECT * FROM freegame WHERE `gameType` IN ('$gametypefilters') LIMIT $min, $max";
+            $sql = "SELECT * FROM freegame WHERE `gameType` IN ('$gametypefilters')";
         } else if (!empty($featurefilters)) {
-            $sql = "SELECT * FROM freegame WHERE `gameFeatures` IN ('$featurefilters') LIMIT $min, $max";
+            $sql = "SELECT * FROM freegame WHERE `gameFeatures` IN ('$featurefilters')";
         }
 
         $stmt = $this->db->prepare($sql);

@@ -190,17 +190,17 @@
             <i class="fa fa-angle-double-left" id="filter-on"></i> filters
         </div>
         <form action="/indieabode/gigs" method="GET" name="myForm" id="myForm">
-        <div class="sort" id="sort">
-            <img src="/indieabode/public/images/games/sort.png" alt="" /> sort by: <span></span>
-            
-            <select name="sortWhat" class="sortselect" id="sortWhat" onchange="document.getElementById('myForm').submit();">
-                <option value="latest" id="latest" name="sortWhat" value="latest" selected>Latest Released</option>
-                <option value="priceLH" id="priceLH" name="sortWhat" value="priceLH">Price Low to High</option>
-                <option value="priceHL" id="priceHL" name="sortWhat" value="priceHL">Price High to Low</option>
-                <option value="nameA-Z" id="nameA-Z" name="sortWhat" value="nameA-Z">Name A-Z</option>
-                <option value="nameZ-A" id="nameZ-A" name="sortWhat" value="nameZ-A">Name Z-A</option>
-            </select>
-        </div>
+            <div class="sort" id="sort">
+                <img src="/indieabode/public/images/games/sort.png" alt="" /> sort by: <span></span>
+
+                <select name="sortWhat" class="sortselect" id="sortWhat" onchange="document.getElementById('myForm').submit();">
+                    <option value="latest" id="latest" name="sortWhat" value="latest" selected>Latest Released</option>
+                    <option value="priceLH" id="priceLH" name="sortWhat" value="priceLH">Price Low to High</option>
+                    <option value="priceHL" id="priceHL" name="sortWhat" value="priceHL">Price High to Low</option>
+                    <option value="nameA-Z" id="nameA-Z" name="sortWhat" value="nameA-Z">Name A-Z</option>
+                    <option value="nameZ-A" id="nameZ-A" name="sortWhat" value="nameZ-A">Name Z-A</option>
+                </select>
+            </div>
         </form>
     </div>
 
@@ -258,7 +258,7 @@
             document.getElementById("next").style.pointerEvents = "none";
         <?php  } ?>
 
-        <?php if (isset($_GET['genre']) || isset($_GET['stage']) || isset($_GET['cost']) || isset($_GET['share'])) { ?>
+        <?php if (isset($_GET['genre']) || isset($_GET['stage']) || isset($_GET['cost']) || isset($_GET['share']) || isset($_GET['sortWhat'])) { ?>
             document.getElementById("pagination-gigs").style.display = "none";
         <?php } ?>
 
@@ -277,7 +277,6 @@
             document.getElementById('myForm').submit();
         });
         localStorage.clear();
-
     </script>
 
 </body>

@@ -12,7 +12,17 @@ class Assets_Model extends Model
 
     function showAllAssets($min, $max)
     {
-        $stmt = $this->db->prepare("SELECT * FROM freeasset ORDER BY $sort $Sorder LIMIT $min, $max");
+        $stmt = $this->db->prepare("SELECT * FROM freeasset LIMIT $min, $max");
+
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+
+    function showAllSortedAssets($sort, $Sorder)
+    {
+        $stmt = $this->db->prepare("SELECT * FROM freeasset ORDER BY $sort $Sorder");
 
 
         $stmt->execute();

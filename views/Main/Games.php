@@ -104,8 +104,7 @@
 
                 <?php foreach ($this->featureFilters as $featureFilter) { ?>
                     <div class="elements">
-                        <input type="checkbox" name="features[]" id="<?= $featureFilter['filter']; ?>" class="checkbox" value="<?= $featureFilter['filter']; ?>" 
-                        <?php if (in_array($featureFilter['filter'], $this->featuresChecked)) {
+                        <input type="checkbox" name="features[]" id="<?= $featureFilter['filter']; ?>" class="checkbox" value="<?= $featureFilter['filter']; ?>" <?php if (in_array($featureFilter['filter'], $this->featuresChecked)) {
                                                                                                                                                                         echo "checked";
                                                                                                                                                                     } ?> />
                         <label for="<?= $featureFilter['filter']; ?>"><?= $featureFilter['filter']; ?></label>
@@ -116,7 +115,7 @@
 
             </div>
 
-            
+
 
             <button type="submit" id="filter-button">Apply</button>
         </form>
@@ -132,19 +131,19 @@
             </div>
         </div>
         <form action="/indieabode/games" method="GET" name="myForm" id="myForm">
-        <div class="sort" id="sort">
-            <img src="/indieabode/public/images/games/sort.png" alt="" /> sort by: <span></span>
-            
-            <select name="sortWhat" class="sortselect" id="sortWhat" onchange="document.getElementById('myForm').submit();">
-                <option value="latest" id="latest" name="sortWhat" value="latest" selected>Latest Released</option>
-                <option value="priceLH" id="priceLH" name="sortWhat" value="priceLH">Price Low to High</option>
-                <option value="priceHL" id="priceHL" name="sortWhat" value="priceHL">Price High to Low</option>
-                <option value="nameA-Z" id="nameA-Z" name="sortWhat" value="nameA-Z">Name A-Z</option>
-                <option value="nameZ-A" id="nameZ-A" name="sortWhat" value="nameZ-A">Name Z-A</option>
-            </select>
-        </div>
+            <div class="sort" id="sort">
+                <img src="/indieabode/public/images/games/sort.png" alt="" /> sort by: <span></span>
+
+                <select name="sortWhat" class="sortselect" id="sortWhat" onchange="document.getElementById('myForm').submit();">
+                    <option value="latest" id="latest" name="sortWhat" value="latest" selected>Latest Released</option>
+                    <option value="priceLH" id="priceLH" name="sortWhat" value="priceLH">Price Low to High</option>
+                    <option value="priceHL" id="priceHL" name="sortWhat" value="priceHL">Price High to Low</option>
+                    <option value="nameA-Z" id="nameA-Z" name="sortWhat" value="nameA-Z">Name A-Z</option>
+                    <option value="nameZ-A" id="nameZ-A" name="sortWhat" value="nameZ-A">Name Z-A</option>
+                </select>
+            </div>
         </form>
-                                                                                                                                                                </div>
+    </div>
 
     <hr id="topic-break" />
 
@@ -177,7 +176,7 @@
 
     <!--Pagination-->
 
-    <div class="pagination">
+    <div class="pagination" id="pagination-games">
         <a href="/indieabode/games?page=<?= $this->prevPage; ?>" id="prev"><i class="fa fa-angle-left"></i></a>
         <?php for ($i = 1; $i <= $this->gamesPagesCount; $i++) : ?>
             <a href="/indieabode/games?page=<?= $i; ?>" class="active"><?= $i ?></a>
@@ -208,6 +207,10 @@
 
         <?php if ($this->totalSelectedFilters == 0) { ?>
             document.getElementById("applied").style.display = "none";
+        <?php } ?>
+
+        <?php if (isset($_GET['sortWhat']) || isset($_GET['classification']) || isset($_GET['platforms']) || isset($_GET['releasestatus']) || isset($_GET['gametypes']) || isset($_GET['features'])) { ?>
+            document.getElementById("pagination-games").style.display = "none";
         <?php } ?>
 
         // sort

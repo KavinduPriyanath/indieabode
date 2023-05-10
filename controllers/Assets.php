@@ -12,34 +12,29 @@ class Assets extends Controller
     function index()
     {
 
-        if (isset($_GET['sortWhat'])){
+        if (isset($_GET['sortWhat'])) {
             $sort = $_GET['sortWhat'];
-            if($sort=="latest"){
+            if ($sort == "latest") {
                 $Sorder = "DESC";
                 $sort = "created_at";
-            }
-            else if ($sort=="priceLH"){
+            } else if ($sort == "priceLH") {
                 $Sorder = "ASC";
                 $sort = "assetPrice";
-            }
-            else if($sort=="priceHL"){
+            } else if ($sort == "priceHL") {
                 $Sorder = "DESC";
                 $sort = "assetPrice";
-            }
-            else if($sort=="nameA-Z"){
+            } else if ($sort == "nameA-Z") {
                 $Sorder = "ASC";
                 $sort = "assetName";
-            }
-            else if($sort=="nameZ-A"){
+            } else if ($sort == "nameZ-A") {
                 $Sorder = "DESC";
                 $sort = "assetName";
             }
-        }
-        else{
+        } else {
             $sort = "created_at";
             $Sorder = "DESC";
         }
-    
+
 
         $this->view->title = "Assets";
 
@@ -75,11 +70,13 @@ class Assets extends Controller
                 $this->view->assets = $this->model->showClassifiedAssets('tools');
                 $this->view->title = "Category: Tools";
             }
+        } else if (isset($_GET['sortWhat'])) {
+
+            $this->view->assets = $this->model->showAllSortedAssets($sort, $Sorder);
         } else {
 
-            $this->view->assets = $this->model->showAllAssets($sort,$Sorder,$start, $maxLimit);
+            $this->view->assets = $this->model->showAllAssets($start, $maxLimit);
             $this->view->totalAssetPages = $this->model->totalAssetsPageCount($maxLimit);
-
         }
 
         $this->view->render('Main/Assets');

@@ -14,22 +14,19 @@ class Jams extends Controller
 
 
         // sort part
-        if (isset($_GET['sortWhat'])){
+        if (isset($_GET['sortWhat'])) {
             $sort = $_GET['sortWhat'];
-            if($sort=="latest"){
+            if ($sort == "latest") {
                 $Sorder = "ASC";
                 $sort = "submissionStartDate";
-            }
-            else if($sort=="nameA-Z"){
+            } else if ($sort == "nameA-Z") {
                 $Sorder = "ASC";
                 $sort = "jamTitle";
-            }
-            else if($sort=="nameZ-A"){
+            } else if ($sort == "nameZ-A") {
                 $Sorder = "DESC";
                 $sort = "jamTitle";
             }
-        }
-        else{
+        } else {
             $sort = "submissionStartDate";
             $Sorder = "ASC";
         }
@@ -65,8 +62,11 @@ class Jams extends Controller
             }
 
             $this->view->gamejams = $this->model->showFilteredJams($checkedPreference, $checkedStatus, $checkedType, $checkedGenre);
+        } else if (isset($_GET['sortWhat'])) {
+
+            $this->view->gamejams = $this->model->showAllSortedGameJams($sort, $Sorder);
         } else {
-            $this->view->gamejams = $this->model->showAllGameJams($sort,$Sorder,$start, $maxLimit);
+            $this->view->gamejams = $this->model->showAllGameJams($start, $maxLimit);
             $this->view->jamsPagesCount = $this->model->totalJamsPageCount($maxLimit);
         }
 
