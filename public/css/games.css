@@ -9,13 +9,12 @@
 
 
 .side-nav {
-    display: inline-block;
-    /* height: 1100px; */
+    height: 130%;
     width: 250px;
     position: absolute;
     z-index: 1;
     top: 170px;
-    left: 155px;
+    left: 175px;
     /* background-color: lightgray; */
     opacity: 0.9;
     overflow-x: hidden;
@@ -82,7 +81,7 @@ input[type="radio"] {
     /* background-color: rgb(195, 194, 194); */
     font-family: 'Kreon', serif;
     padding: 10px 20px 5px 15px;
-    margin: 15px 15px 0px 155px;
+    margin: 15px 15px 0px 175px;
     border-radius: 3.5px;
     cursor: pointer;
 }
@@ -137,7 +136,7 @@ input[type="radio"] {
     background-color: #86AFEC;
     border-width: 0px;
     height: 0.5px;
-    margin: 0px 165px 15px 158px;
+    margin: 0px 150px 15px 175px;
 }
 
 #filter-on {
@@ -158,7 +157,7 @@ input[type="radio"] {
 .container {
     display: flex;
     flex-wrap: wrap;
-    margin-left: 155px;
+    margin-left: 175px;
     transition: margin 0.3s ease;
 }
 
@@ -175,16 +174,6 @@ input[type="radio"] {
     margin: 10px;
     border-radius: 10px;
 }
-
-.modernWay {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-            line-clamp: 2; 
-    -webkit-box-orient: vertical;
- }
-
 
 .card-image {
     background-color: rgb(173, 169, 163);

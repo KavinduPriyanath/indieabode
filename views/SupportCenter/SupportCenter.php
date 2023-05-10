@@ -43,7 +43,7 @@
                 </div>
             </a>
 
-            <a href="/indieabode/support_center/game_issues">
+            <a href="">
                 <div class="card">
                     <img src="/indieabode/public/images/support_center/technical-issues.png" alt="" />
                     <div class="card-topic">Game Technical Issues</div>
@@ -56,7 +56,7 @@
 
         </div>
         <div class="second-three">
-            <a href="/indieabode/support_center/publishing">
+            <a href="">
                 <div class="card">
                     <img src="/indieabode/public/images/support_center/publishing.png" alt="" />
                     <div class="card-topic">Publishing</div>

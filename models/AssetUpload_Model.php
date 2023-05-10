@@ -11,7 +11,6 @@ class AssetUpload_Model extends Model
 
     public function uploadNewAsset(
         $assetName,
-        $assetPrice,
         $assetDetails,
         $assetTagline,
         $foreignKey,
@@ -29,7 +28,6 @@ class AssetUpload_Model extends Model
 
     ) {
         $sql = "INSERT INTO freeasset (assetName,
-        assetPrice,
         assetDetails, 
         assetTagline, 
         assetCreatorID, 
@@ -44,13 +42,12 @@ class AssetUpload_Model extends Model
         assetFile, 
         assetCoverImg, 
         assetScreenshots
-) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         $stmt = $this->db->prepare($sql);
 
         $stmt->execute([
             "$assetName",
-            "$assetPrice",
             "$assetDetails",
 
             "$assetTagline",
@@ -138,10 +135,10 @@ class AssetUpload_Model extends Model
         return $new_asset_file_name;
     }
 
-    function UpdateAssetStats($assetName, $creatorID)
+    function UpdateAssetStats($assetName)
     {
 
-        $sql = "SELECT * FROM freeasset WHERE assetName='$assetName' AND assetCreatorID='$creatorID' LIMIT 1";
+        $sql = "SELECT * FROM freeasset WHERE assetName='$assetName' LIMIT 1";
 
         $stmt = $this->db->prepare($sql);
 
@@ -162,37 +159,5 @@ class AssetUpload_Model extends Model
             "0",
             "0"
         ]);
-
-        return $uploadedAsset;
-    }
-
-    function AssetNameAvailabilityCheck($assetName, $userID)
-    {
-
-        $sql = "SELECT * FROM freeasset WHERE assetName='$assetName' AND assetCreatorID='$userID'";
-
-        $stmt = $this->db->prepare($sql);
-
-        $stmt->execute();
-
-        $game = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if (empty($game)) {
-            return "true";
-        } else {
-            return "false";
-        }
-    }
-
-    function CheckAssetNameWholeSite($assetName, $userID)
-    {
-
-        $Namesql = "SELECT * FROM freeasset WHERE assetName='$assetName' AND NOT assetCreatorID='$userID'";
-
-        $Namestmt = $this->db->prepare($Namesql);
-
-        $Namestmt->execute();
-
-        return $Namestmt->fetch(PDO::FETCH_ASSOC);
     }
 }

@@ -24,12 +24,8 @@ class Login_Model extends Model
 
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if (!empty($user)) {
-            if (password_verify($password, $user['password'])) {
-                return $user;
-            } else {
-                return null;
-            }
+        if (password_verify($password, $user['password'])) {
+            return $user;
         } else {
             return null;
         }

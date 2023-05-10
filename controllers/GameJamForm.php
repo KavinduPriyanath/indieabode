@@ -11,6 +11,8 @@ class GameJamForm extends Controller
 
     function index()
     {
+
+
         $this->view->render('Forms/GameJamForm');
     }
 
@@ -19,17 +21,18 @@ class GameJamForm extends Controller
 
         $gamejamTitle = $_POST['title'];
         $gamejamTagline = $_POST['tagline'];
-        $jamType = $_POST['ranking'];
         $jamStartDate = $_POST['Sdate'];
         $jamEndtDate = $_POST['Edate'];
-        $jamVEndDate = ($_POST['ranking'] == "Ranked") ? $_POST['V_E_Date'] : null;
-        $jamContent = $_POST['description'];
-        $jamCriteria = ($_POST['ranking'] == "Ranked") ? $_POST['criteria'] : null;
+        $jamVEndDate = $_POST['V_E_Date'];
+        $jamContent = $_POST['game-details'];
+        $jamType = $_POST['jamType'];
+        $jamCriteria = $_POST['criteria'];
         $jamVisibility = $_POST['visibility'];
+        $jamParticipants = $_POST['Max'];
+        $canJoinAfterStarted = $_POST['canJoinAfterStarted'];
         $jamHostID = $_SESSION['id'];
         $jamVoters = $_POST['voters'];
         $jamTwitterHashtag = $_POST['twitter'];
-        $jamTheme = $_POST['jamTheme'];
 
 
         $jamCoverImg = $this->model->uploadCoverImg($gamejamTitle);
@@ -45,11 +48,12 @@ class GameJamForm extends Controller
             $jamType,
             $jamCriteria,
             $jamVisibility,
+            $jamParticipants,
+            $canJoinAfterStarted,
             $jamHostID,
             $jamVoters,
             $jamTwitterHashtag,
-            $jamCoverImg,
-            $jamTheme
+            $jamCoverImg
         );
 
         header('location:/indieabode/');

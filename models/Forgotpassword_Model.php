@@ -26,27 +26,4 @@ class Forgotpassword_Model extends Model
 
         return $user;
     }
-
-    function UpdateToken($userID, $token)
-    {
-
-        $sql = "UPDATE gamer SET token='$token' WHERE gamerID='$userID'";
-
-        $stmt = $this->db->prepare($sql);
-
-        $stmt->execute();
-    }
-
-    function ResetUserPassword($userID, $token, $password, $newToken)
-    {
-
-        $sql = "UPDATE gamer SET 
-                password = '$password',
-                token = '$newToken' WHERE gamerID= '$userID' AND token='$token'";
-
-
-        $stmt = $this->db->prepare($sql);
-
-        $stmt->execute();
-    }
 }

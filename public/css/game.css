@@ -16,10 +16,10 @@
 }
 
 .carousel {
-    width: 810px;
-    height: 480px;
+    width: 750px;
+    height: 430px;
     position: relative;
-    margin: 10px 30px 20px 160px;
+    margin: 5px 20px 20px 180px;
 }
 
 .carousel > ul {
@@ -30,8 +30,8 @@
 
 .slide {
     position: absolute;
-    width: 810px;
-    height: 480px;
+    width: 750px;
+    height: 430px;
     /*inset: 0;*/
     opacity: 0;
 }
@@ -84,10 +84,10 @@
   }
 
   .card {
-    /* background-color:rgba(158, 170, 230, 0.974); */
+    background-color:rgba(14, 22, 29, 0.741);
     position: relative;
     width: 350px;
-    margin: 5px 155px 10px 10px;
+    margin: 5px 180px 10px 10px;
     border-radius: 10px;
     padding: 8px;
     
@@ -112,10 +112,9 @@
     color:#274F60;
 }
 
-.card #price {
+.card h3 {
     margin: 4px 10px 10px;
-    color:#1b3956;
-    font-size: 22px;
+    color:#8BB4DA;
 }
 
 .buy-btn {
@@ -140,12 +139,7 @@
     justify-content: space-between;
     margin: 3px 8px 0px 12px;
     font-size: 21px;
-    color:#1a3347;
-    position: relative;
-}
-
-#first-row-right {
-    margin-top: 18px;
+    color:#6DA0C6;
 }
 
 .row p{
@@ -153,22 +147,12 @@
 }
 
 .sub-title {
-    color: #25435b;
+    color: #6DA0C6;
 }
 
 .card hr {
     margin: 2px 12px;
-    border: 2px solid #395b69;
-}
-
-#gametype {
-    font-size: 18px;
-    padding: 3px 4px;
-    display: inline-block;
-    border-radius: 6px;
-    background-color: #6289AC;
-    margin: 4px 10px 10px;
-    color:#1b3956;
+    border: 2px solid #618D9F;
 }
 
 
@@ -251,36 +235,28 @@
     display: block;
     width: 100%;
     text-align: justify;
-    margin-top:500px;
+    margin-top:60%;
     color:#FFFFFF;
-}
-
-.left-details {
-    margin-top: 180px;
 }
 
 .genre-feature{
     position:absolute;
     display:flex;
     width:100%;
-    font-size: 18px;
-    font-weight: 700;
     text-align:justify;
-    margin-top:570px;
+    margin-top:70%;
     column-gap:30%;
-    color:#112344;
+    color:#ACCADB;
 
 }
 
 .genre-feature p{
-    font-size: 17px;
-    font-weight: 400;
-    color:#020617;
+    color:#C8D6DE;
 }
 
 .genre, .feature{
     padding-left: 2%;
-    border-left: 4px solid rgba(196, 227, 242, 0.48);
+    border-left: 2px solid rgba(89, 158, 173, 0.48);
 }
 
 /* Description */
@@ -288,76 +264,59 @@
 .description {
     padding: 4px 8px;
     display: inline-block;
-    width: 810px;
+    width: 750px;
     min-height: 100px;
     overflow-y: auto;
-    margin-left: 160px;
+    margin-left: 180px;
     margin-bottom: 10px;  
     border-radius: 7px;
-    font-size: 17px;
     background-color:#738FA4;
 }
 
 
 /*Reviews*/
 
-.specs-reviews {
-    width: 750px;
-    margin-left: 165px;
-    margin-bottom: 30px;
-}
 
 .reviews {
-    width: 960px;
-    margin-left: 165px;
+    width: 750px;
+    margin-left: 180px;
     margin-bottom: 30px;
-}
-
-.reviews h3 {
-    font-size: 20px;
-    margin-bottom: 17px;
 }
 
 .review {
     display: flex;
+    justify-content: space-between;
     text-align: justify;
-    margin: 10px 3px 25px;
+    margin: 10px 3px;
     padding: 8px;
     border-radius: 9px;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-    background-color: #bad3e192;
+    background-color: rgba(115, 143, 164, 0.15);
 }
+
+.reviews h3{
+    color:white;
+}
+
 .review-detail{
-    margin-top: 6px;
-    margin-right: 20px;
-    color:#000000;
+    color:#A7C5CC;
 }
 
-.leftr {
-    display: block;
-    display: flex;
-    width: 280px;
-    margin: 10px 30px 30px 20px;
-    text-align: left;
+.left {
+    margin: 30px 130px 30px 20px;
 }
 
-.leftr img {
-    margin-right: 10px;
+.left img {
     width: 40px;
     height: 40px;
 }
 
-.rightr{
-    width: 560px;
-} 
-
-.leftr p{
+.left p{
     margin: 2px;
-    
 }
 
 .assets-count , .reviews-count{
-    color:#2c3c45;
+    color:#BAD3E1;
 }
 /* 
 .reviews-count {
@@ -377,22 +336,16 @@
 
 .rating-stars p {
     margin-left: 17px;
-    color: #1d2324;
-}
-
-.rating-stars i {
-    margin-right: 5px;
+    color: #A2C0C7;
 }
 
 .review-title {
-    font-size: 21px;
     margin: 1px;
     color:#A4E1EE;
 }
 
 .username{
-    color:#000000;
-    font-weight: 700;
+    color:#77A9C6;
 }
 
 .like-buttons img{
@@ -454,7 +407,7 @@ input::placeholder, textarea::placeholder{
     font-size: 1.1rem;
 }
 
-.review-form form {
+form {
     margin-top: 15px;
 }
 
@@ -524,23 +477,23 @@ td{
 
 #heading {
     font-size: 28px;
-    margin: 35px 0px 20px 160px;
+    margin: 35px 0px 20px 180px;
 }
 
 #topic-break {
-    margin: 5px 168px 0px 160px;
+    margin: 5px 205px 0px 180px;
     border: 0.4px solid #9bc9dbdd;
 }
 
 .topics {
-    margin: 5px 0px 0px 160px;
+    margin: 5px 0px 0px 180px;
     display: flex;
 }
 
 .topics a {
     font-size: 20px;
-    margin-left: 0px;
-    margin-right: 50px;
+    margin-left: 8px;
+    margin-right: 30px;
     color: black;
     text-decoration: none;
 }
@@ -552,7 +505,7 @@ td{
 .bottom-container {
     display: flex;
     flex-wrap: wrap;
-    margin-left: 155px;
+    margin-left: 175px;
     transition: margin 0.3s ease;
 }
 
@@ -623,92 +576,9 @@ td{
 
 
 #more-heading {
-    margin: 30px 0px 15px 165px;
+    margin: 30px 0px 15px 180px;
 }
 
 .more {
     margin-bottom: 40px;
-}
-
-
-.platform-icons {
-    display: flex;
-    justify-content: right;
-    position: absolute;
-    right: 0px;
-}
-
-.platform-icons .icon{
-    margin: 8px 6px;
-    width: 18px;
-    height: 18px;
-    background-size: cover;
-    position: relative;
-    background-color: rgba(255, 255, 255, 0.347);
-}
-
-.platform-icons .icon img {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    object-fit: cover;
-}
-
-.game-details {
-    display: flex;
-}
-
-.right-details {
-    width: 350px;
-    margin: 10px 0px 0px 30px;
-    /* background-color: #234752; */
-}
-
-.button-div {
-    display: flex;
-}
-
-#report-btn, #share-btn {
-    position: relative;
-    display: block;
-    width: 150px;
-    margin: 10px 10px 7px 0px;
-    text-align: center;
-    padding: 6px 14px;
-    font-weight: bold;
-    font-size: 17px;
-    color: #0d162c;
-    border-radius: 6px;
-    border: 1px solid black;
-    background-color: transparent;
-}
-
-#report-btn i, #share-btn i {
-    margin-right: 5px;
-    color: #000000b1;
-    font-weight: bold;
-}
-
-.flashMessage {
-    position: fixed;
-    z-index: 100;
-    top: 0px;
-    left: 50%;
-    background-color: #73c3e3;
-    color: black;
-    text-shadow: 1px 1px 1px #248ab2;
-    border-radius: 0 0 5px 5px;
-    padding: 8px 16px;
-    padding-top: 15px;
-    font-size: 18px;
-    box-shadow: 0 1px 4px rgb(0 0 0 / 60%);
-    display: none;
-}
-
-#download-btn, #buy-btn {
-    display: none;
-}
-
-#wishlist {
-    display: none;
 }

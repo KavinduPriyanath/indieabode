@@ -18,12 +18,13 @@ class AssetUpload extends Controller
 
     function uploadAsset()
     {
+
         $assetName = $_POST['asset-title'];
         $assetTagline = $_POST['asset-tagline'];
         $foreignKey = $_SESSION['id'];
         $assetClassification = $_POST['asset-classification'];
         $assetStatus = $_POST['asset-status'];
-        $assetDetails = $_POST['description'];
+        $assetDetails = $_POST['asset-details'];
         $assetTags = $_POST['asset-tags'];
         $assetType = $_POST['asset-type'];
         $assetStyle = $_POST['asset-style'];
@@ -35,17 +36,9 @@ class AssetUpload extends Controller
         $assetCoverImg = $this->model->uploadCoverImg($assetName);
         $assetScreenshots = $this->model->uploadScreenshots($assetName);
 
-        if ($_POST['asset-price'] == "Free") {
-            $assetPrice = 0.00;
-        } else if ($_POST['asset-price'] == "PWYW") {
-            $assetPrice = trim($_POST['asset-pwyw-default'], "$");
-        } else if ($_POST['asset-price'] == "Paid") {
-            $assetPrice = $_POST['asset-price-paid'];
-        }
-
         $this->model->uploadNewAsset(
             $assetName,
-            $assetPrice,
+            //$assetPricing
             $assetDetails,
             $assetTagline,
             $foreignKey,
@@ -62,26 +55,8 @@ class AssetUpload extends Controller
             $assetScreenshots
         );
 
-        $addedAsset = $this->model->UpdateAssetStats($assetName, $_SESSION['id']);
+        $this->model->UpdateAssetStats($assetName);
 
-        header('location:' . BASE_URL . 'asset?id=' . $addedAsset['assetID']);
-    }
-
-    function assetNameAvailabilityCheck()
-    {
-
-        $assetName = $_POST['assetName'];
-
-        $nameAvailability = $this->model->AssetNameAvailabilityCheck($assetName, $_SESSION['id']);
-
-        $nameAvailabilityWhole = $this->model->CheckAssetNameWholeSite($assetName, $_SESSION['id']);
-
-        if ($nameAvailability == "false") {
-            echo "unavailable";
-        } else if (!empty($nameAvailabilityWhole)) {
-            echo "warning";
-        } else {
-            echo "available";
-        }
+        header('location:/indieabode/');
     }
 }

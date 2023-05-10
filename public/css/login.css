@@ -37,7 +37,7 @@
 }
 
 /*Normal Form Input*/
-form input[type=text]:not(#user-input):not(#firstname):not(#lastname), input[type=password] {
+form input[type=text], input[type=password] {
   display: inline-block;
   height: 40px;
   width: 380px;
@@ -68,7 +68,7 @@ form input[type=text]:not(#user-input):not(#firstname):not(#lastname), input[typ
   font-family: 'Kreon', serif;
 }
 
-#login, .register{
+#login, #register {
   color: #0D3860;
   background-color: #7FAFDB;
   width: 200px;
@@ -80,12 +80,6 @@ form input[type=text]:not(#user-input):not(#firstname):not(#lastname), input[typ
   font-size: 25px;
   font-family: 'Kreon', serif;
   font-weight: bold;
-  cursor: pointer;
-}
-
-.register {
-  margin-left: 110px;
-  cursor: pointer;
 }
 
 
@@ -182,7 +176,14 @@ form input[type=checkbox] {
   display: flex;
 }
 
-
+.captcha .captcha-form input {
+  width: 210px;
+  padding: 8px;
+  margin-top: 0px;
+  margin-right: 0px;
+  border-radius: 0px 0px 0px 8px;
+  /* border: 1px solid rgb(38, 103, 183); */
+}
 
 .captcha .captcha-form .captcha-refresh {
   width: 40px;
@@ -195,7 +196,16 @@ form input[type=checkbox] {
   border-radius: 0px 0px 8px 0px;
 }
 
+.check-bar {
+  text-align: left;
+  margin-left: 100px;
+}
 
+#robotlabel {
+  display: inline-block;
+  font-size: 18px;
+  color: white;
+}
 
 .container {
   height: 60px;
@@ -228,138 +238,4 @@ form input[type=checkbox] {
   justify-content: space-between;
 }
 
-#password-field {
-  position: relative;
-}
 
-.password-field {
-  position: relative;
-}
-
-.field i {
-  position: absolute;
-  right: 31px;
-  top: 52px;
-  color: #374d6f;
-  cursor: pointer;
-  /* transform: translateY(-50%); */
-}
-
-.field i.active::before {
-  color: #333;
-  content: "\f070";
-}
-
-.error-msg {
-  background-color: rgb(225, 132, 132);
-  display: block;
-  margin: 0px 21px;
-}
-
-.full-name-errors {
-  position: relative;
-  display: block;
-
-}
-
-.full-name-errors #firstname-check{
-  position: absolute;
-  display: block;
-  width: 179px;
-}
-
-.full-name-errors #lastname-check  {
-  position: absolute;
-  left: 200px;
-  display: block;
-  width: 179px;
-  
-}
-
-/* Password Reset Page */
-.reset-header {
-  display: block;
-  border-radius: 8px 8px 0px 0px;
-  background-color: #759dc0a9;
-  padding: 10px;
-}
-
-.reset-header h3 {
-  font-size: 22px;
-  margin-bottom: 8px;
-}
-
-.reset-header .sub-heading {
-  color: #3f4145;
-}
-
-#resetPassword {
-  display: inline-block;
-  color: #0D3860;
-  background-color: #7FAFDB;
-  padding: 7px 10px;
-  border: none;
-  border-radius: 6px;
-  margin-top: 11px;
-  margin-bottom: 18px;
-  font-size: 22px;
-  font-family: 'Kreon', serif;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.captcha-reader {
-  display: block;
-  width: 425px;
-}
-
-#user-input {
-  width: 185px;
-  padding: 8px;
-  border-radius: 8px 0px 0px 8px;
-  /* border: 1px solid rgb(38, 103, 183); */
-  background-color: rgb(115, 170, 193, 0.72);
-  border: none;
-}
-
-.wrapper-canvas {
-  display: flex;
-  align-content: center;
-  justify-content: center;
-
-}
-canvas {
-  border: 1px solid #000000;
-  border-radius: 0.4em;
-  padding: 5px;
-}
-
-
-#reload-button {
-  font-size: 20px;
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-  padding: 8px;
-  background-color: rgba(30, 69, 85, 0.72);
-  border: none;
-  border-radius: 0px 8px 8px 0px;
-  color: #ffffff;
-  cursor: pointer;
-}
-
-.check-bar {
-  text-align: center;
-  /* margin-left: 100px; */
-}
-
-#robotlabel {
-  display: inline-block;
-  font-size: 18px;
-  color: white;
-}
-
-.login {
-  margin-left: 110px;
-  cursor: pointer;
-}

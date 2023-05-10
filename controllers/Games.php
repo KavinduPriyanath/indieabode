@@ -12,14 +12,6 @@ class Games extends Controller
     function index()
     {
 
-        //Redirecting Unprivileged Users
-        if (isset($_SESSION['logged'])) {
-
-            if ($_SESSION['userRole'] == "asset creator") {
-                header('location:/indieabode/');
-            }
-        }
-
         //pagination 
         $maxLimit = 24;
         $page = isset($_GET['page']) ? $_GET['page'] : 1;
@@ -67,7 +59,6 @@ class Games extends Controller
             if (isset($_GET['platforms'])) {
                 $checkedPlatformTypes =  $_GET['platforms'];
             }
-
 
             if (isset($_GET['releasestatus'])) {
                 $checkedReleaseStatusTypes =  $_GET['releasestatus'];

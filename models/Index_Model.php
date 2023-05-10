@@ -9,11 +9,9 @@ class Index_Model extends Model
     }
 
 
-    // function showRecentGames()
+    // function showAllGames()
     // {
-    //     $sql = "SELECT * FROM freeagame ORDER BY created_at LIMIT 4";
-
-    //     $stmt = $this->db->prepare($sql);
+    //     $stmt = $this->db->prepare("SELECT * FROM freeagame");
 
     //     $stmt->execute();
 

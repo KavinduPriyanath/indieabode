@@ -19,11 +19,12 @@ class GameJamForm_Model extends Model
         $jamType,
         $jamCriteria,
         $jamVisibility,
+        $jamParticipants,
+        $canJoinAfterStarted,
         $jamHostID,
         $jamVoters,
         $jamTwitterHashtag,
-        $jamCoverImg,
-        $jamTheme
+        $jamCoverImg
     ) {
         $sql = "INSERT INTO gamejam (jamTitle, jamTagline, 
         submissionStartDate, 
@@ -33,11 +34,12 @@ class GameJamForm_Model extends Model
         jamType, 
         jamCriteria, 
         jamVisibility, 
+        maxParticipants, 
+        canJoinAfterStarted, 
         jamHostID, 
         jamVoters, 
         jamTwitter, 
-        jamCoverImg,
-        jamTheme) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        jamCoverImg) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         $stmt = $this->db->prepare($sql);
 
@@ -51,11 +53,12 @@ class GameJamForm_Model extends Model
             "$jamType",
             "$jamCriteria",
             "$jamVisibility",
+            "$jamParticipants",
+            "$canJoinAfterStarted",
             "$jamHostID",
             "$jamVoters",
             "$jamTwitterHashtag",
-            "$jamCoverImg",
-            "$jamTheme"
+            "$jamCoverImg"
         ]);
     }
 

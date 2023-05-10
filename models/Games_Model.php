@@ -15,9 +15,7 @@ class Games_Model extends Model
 
         $stmt->execute();
 
-        $games = $stmt->fetchAll();
-
-        return $games;
+        return $stmt->fetchAll();
     }
 
     function showClassifiedGames($gameClassification, $min, $max)

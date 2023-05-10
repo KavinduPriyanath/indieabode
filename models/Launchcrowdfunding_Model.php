@@ -66,7 +66,7 @@ class Launchcrowdfunding_Model extends Model
 
         if (in_array($crowdfund_cover_img_ext, $allowed_exts)) {
             $new_crowdfund_cover_img_name = "Cover-" . $gameName . '.' . $crowdfund_cover_img_ext;
-            $crowdfund_cover_upload_path = "public/uploads/crowdfundings/cover/" . $new_crowdfund_cover_img_name;
+            $crowdfund_cover_upload_path = "public/uploads/crowdfunds/covers/" . $new_crowdfund_cover_img_name;
             move_uploaded_file($crowdfund_cover_img_temp_name, $crowdfund_cover_upload_path);
         }
 
@@ -86,7 +86,7 @@ class Launchcrowdfunding_Model extends Model
             if (in_array($ssExt, $allowed_exts)) {
 
                 $newSSName = "SS-" . $gameName . '-' . $i . '.' . $ssExt;
-                $ss_upload_path = 'public/uploads/crowdfundings/screenshots/' . $newSSName;
+                $ss_upload_path = 'public/uploads/crowdfunds/ss/' . $newSSName;
 
                 move_uploaded_file($_FILES['crowdfund-screenshots']['tmp_name'][$i], $ss_upload_path);
 

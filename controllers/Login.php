@@ -48,12 +48,6 @@ class Login extends Controller
                 header('location:/indieabode/home/developer');
             } else if ($user['userRole'] == "gamer") {
                 header('location:/indieabode/home');
-            } else if ($user['userRole'] == "gamejam organizer") {
-                header('location:/indieabode/home/organizer');
-            } else if ($user['userRole'] == "game publisher") {
-                header('location:/indieabode/home/publisher');
-            } else if ($user['userRole'] == "asset creator") {
-                header('location:/indieabode/home/creator');
             } else {
                 header('location:/indieabode/');
             }
@@ -105,6 +99,8 @@ class Login extends Controller
                 header('location:/indieabode/failedpasswordreset');
             }
             // header('location:/indieabode/activation');
+        } else {
+            header('location:/indieabode/aa');
         }
     }
 
@@ -132,12 +128,6 @@ class Login extends Controller
             $this->model->ActivateAccount($_SESSION['id']);
             if ($_SESSION['userRole'] == "game developer") {
                 header('location:/indieabode/home/developer');
-            } else if ($_SESSION['userRole'] == "gamejam organizer") {
-                header('location:/indieabode/home/organizer');
-            } else if ($_SESSION['userRole'] == "game publisher") {
-                header('location:/indieabode/home/publisher');
-            } else if ($_SESSION['userRole'] == "asset creator") {
-                header('location:/indieabode/home/creator');
             } else {
                 header('location:/indieabode/');
             }
@@ -145,26 +135,6 @@ class Login extends Controller
             print_r($this->model->OTPValidation($first, $second, $third, $fourth, $fifth, $_SESSION['id']));
             print_r($first . $second . $third . $fourth . $fifth);
             //header('location:/indieabode/aa');
-        }
-    }
-
-
-
-    function loginValidation()
-    {
-
-        if ($_POST['login_validation'] == true) {
-
-            $email = $_POST['email'];
-            $password = $_POST['password'];
-
-            $user = $this->model->signin();
-
-            if (!empty($user)) {
-                echo "success";
-            } else {
-                echo "failure";
-            }
         }
     }
 }
