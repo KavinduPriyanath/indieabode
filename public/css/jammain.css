@@ -16,7 +16,16 @@
     margin: 0px 150px 15px 175px;
 }
 
+/* sort */
+.sortselect{
+    background-color:rgb(44 101 129);
+    border-radius: 5px;
+}
 
+#sortbutton{
+    display: none;
+}
+/* sort */
 /* Filters*/
 
 
