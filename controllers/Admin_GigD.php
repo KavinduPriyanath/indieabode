@@ -34,6 +34,7 @@ class Admin_GigD extends Controller
 
         //get revenues shares of gigs
         $this->view->revenueGigs = $this->model->getRevenueShare();
+       
 
         $this->view->render('Admin/Admin_GigD');
     }
