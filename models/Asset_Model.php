@@ -154,9 +154,11 @@ class Asset_Model extends Model
         }
     }
 
-    function PopularAssets()
+    function PopularAssets($assetType, $assetID)
     {
-        $stmt = $this->db->prepare("SELECT * FROM freeasset LIMIT 4");
+        $sql = "SELECT * FROM freeasset WHERE assetType='$assetType' AND assetID != '$assetID' ORDER BY created_at DESC LIMIT 4";
+
+        $stmt = $this->db->prepare($sql);
 
         $stmt->execute();
 

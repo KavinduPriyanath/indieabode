@@ -20,6 +20,29 @@ class Support_center extends Controller
         $this->view->render('SupportCenter/SupportCenter');
     }
 
+    function general()
+    {
+
+        if (isset($_GET['page'])) {
+
+            if ($_GET['page'] == "about") {
+                $this->view->render('SupportCenter/GeneralInfo/Overview');
+            } else if ($_GET['page'] == "gettingstarted") {
+                $this->view->render('SupportCenter/GeneralInfo/GettingStarted');
+            } else if ($_GET['page'] == "FAQ") {
+                $this->view->render('SupportCenter/GeneralInfo/FAQ');
+            } else if ($_GET['page'] == "followers") {
+                $this->view->render('SupportCenter/GeneralInfo/Followers');
+            } else if ($_GET['page'] == "community-rules") {
+                $this->view->render('SupportCenter/GeneralInfo/CommunityRules');
+            } else if ($_GET['page'] == "quality-guidelines") {
+                $this->view->render('SupportCenter/GeneralInfo/QualityGuidelines');
+            } else if ($_GET['page'] == "support-contact") {
+                $this->view->render('SupportCenter/GeneralInfo/Support&Contact');
+            }
+        }
+    }
+
     function publishing()
     {
         if (isset($_GET['games']) && isset($_GET['page'])) {

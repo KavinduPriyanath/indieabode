@@ -52,7 +52,7 @@
                 <div class="game-type"><?= $this->game['gameType'] ?></div>
                 <div class="price"><?= $this->gamePrice ?></div>
             </div>
-            <div class="game-tagline">
+            <div class="game-tagline modernWay">
                 <?= $this->game['gameTagline']; ?>
             </div>
             <div class="btn" id="devlog-btn">Add to Library</div>

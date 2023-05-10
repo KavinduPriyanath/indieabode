@@ -35,9 +35,17 @@
             </div>
         </div>
         <div id="final-value">
-            <p>Try your luck Today</p>
+            <p id="today-spin"></p>
+        </div>
+        <div class="my-details">
+            <div class="heading">You Have:</div>
+            <div class="coins">
+                <div class="coin-icon"><img src="<?php echo BASE_URL; ?>public/images/spin-wheel/coin.png" alt=""></div>
+                <div class="coin-count" id="total-coins"><?= $this->myDetails['indieCoins'] ?></div>
+            </div>
         </div>
         <div class="chances">
+            <p id="spinHead">Spins Left : </p>
             <p id="spinStatus"></p>
         </div>
 
@@ -72,10 +80,12 @@
 
             <?php if (empty($this->hasSpinned)) { ?>
                 spinBtn.disabled = false;
+                $('#today-spin').text('Try your luck Today');
+                $("#spinStatus").text("1");
             <?php } else { ?>
                 spinBtn.disabled = true;
-                $("#spinStatus").show();
-                $("#spinStatus").text("You have no chances left for today");
+                $('#today-spin').text('Come Again Tomorrow');
+                $("#spinStatus").text("0");
             <?php } ?>
 
 
@@ -184,8 +194,9 @@
                             success: function(response) {
                                 // alert(response);
                                 if (response == "Success") {
-                                    $("#spinStatus").show();
-                                    $("#spinStatus").text("You have no chances left for today");
+                                    $('#today-spin').text('Come Again Tomorrow');
+                                    $("#spinStatus").text("0");
+                                    $('#total-coins').text(<?= $this->myDetails['indieCoins'] ?> + data.reward);
                                     spinBtn.disabled = true;
                                 }
                             },

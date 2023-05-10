@@ -20,6 +20,7 @@ class Giveaways extends Controller
 
     function dailyWheel()
     {
+        $this->view->myDetails = $this->model->MyTotalCoins($_SESSION['id']);
 
         $this->view->hasSpinned = $this->model->HasSpinnedToday(date("Y-m-d"), $_SESSION['id']);
 

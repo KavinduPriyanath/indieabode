@@ -165,7 +165,7 @@ include 'includes/navbar.php';
                 <div class="report-heading">
                     Please complete this form if you need to contact the Bullet Hell Jam Organizers
                     about the content of this page. Your report may be
-                    shared with the creator of the submission if necessary.
+                    shared with the creator of the submission if needed.
                 </div>
                 <div class="report-form">
                     <h3>Reasons</h3>
@@ -174,32 +174,32 @@ include 'includes/navbar.php';
 
 
                         <div class="reason">
-                            <input type="radio" name="reasons" id="" value="Invalid Jam Submission" />
-                            <label for="">Invalid Jam Submission - Mismatches with theme, breaks rules, etc</label>
+                            <input type="radio" name="reasons" id="1" value="Invalid Jam Submission" />
+                            <label for="1">Invalid Jam Submission - Mismatches with theme, breaks rules, etc</label>
                         </div>
                         <div class="reason">
-                            <input type="radio" name="reasons" id="" value="Broken" />
-                            <label for="">Broken - Doesn't run, download, and crashes</label>
+                            <input type="radio" name="reasons" id="2" value="Broken" />
+                            <label for="2">Broken - Doesn't run, download, and crashes</label>
                         </div>
                         <div class="reason">
-                            <input type="radio" name="reasons" id="" value="Offensive Material" />
-                            <label for="">Offensive Material</label>
+                            <input type="radio" name="reasons" id="3" value="Offensive Material" />
+                            <label for="3">Offensive Material</label>
                         </div>
                         <div class="reason">
-                            <input type="radio" name="reasons" id="" value="Uploader Not Authorized to Distribute" />
-                            <label for="">Uploader Not Authorized to Distribute</label>
+                            <input type="radio" name="reasons" id="4" value="Uploader Not Authorized to Distribute" />
+                            <label for="4">Uploader Not Authorized to Distribute</label>
                         </div>
                         <div class="reason">
-                            <input type="radio" name="reasons" id="" value="Miscategorized" />
-                            <label for="">Miscategorized - Shows up on wrong part of site, incorrect tags, incorrect platforms etc</label>
+                            <input type="radio" name="reasons" id="5" value="Miscategorized" />
+                            <label for="5">Miscategorized - Shows up on wrong part of site, incorrect tags, incorrect platforms etc</label>
                         </div>
                         <div class="reason">
-                            <input type="radio" name="reasons" id="" value="Spam" />
-                            <label for="">Spam</label>
+                            <input type="radio" name="reasons" id="6" value="Spam" />
+                            <label for="6">Spam</label>
                         </div>
                         <div class="reason">
-                            <input type="radio" name="reasons" id="" value="Other" />
-                            <label for="">Other</label>
+                            <input type="radio" name="reasons" id="7" value="Other" />
+                            <label for="7">Other</label>
                         </div>
 
 
@@ -398,7 +398,6 @@ include 'includes/navbar.php';
                     method: "POST",
                     data: data,
                     success: function(response) {
-                        alert(response);
                         $('#modal').removeClass("active");
                         $('#overlay').removeClass("active");
 

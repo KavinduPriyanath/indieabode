@@ -33,12 +33,14 @@
             <a href="/indieabode/dashboard/publishers?id=<?= $this->game['gameID']; ?>">Publishers</a>
             <a href="/indieabode/dashboard/gamecrowdfunds?id=<?= $this->game['gameID']; ?>">Crowdfundings</a>
             <a href="/indieabode/dashboard/metadata?id=<?= $this->game['gameID']; ?>">Metadata</a>
-            <a href="/indieabode/dashboard/gamegiveaways?id=<?= $this->game['gameID']; ?>">Giveaways</a>
+            <?php if ($this->game['gamePrice'] != "0") { ?>
+                <a href="/indieabode/dashboard/gamegiveaways?id=<?= $this->game['gameID']; ?>">Giveaways</a>
+            <?php } ?>
 
         </div>
         <div class="content-row">
 
-            <a href="/indieabode/makedevlog" id="devlog-btn">
+            <a href="/indieabode/makedevlog?game=<?= $this->game['gameID']; ?>" id="devlog-btn">
                 <div class="add-btn">
                     <div class="add-logo">
                         <img src="/indieabode/public/images/dashboard/add-devlog.png" alt="">

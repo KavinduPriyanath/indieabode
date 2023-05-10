@@ -304,7 +304,7 @@
                                     <a href="/indieabode/dashboard">Dashboard <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                     <a href="/indieabode/assetupload">Upload&nbsp;project
                                         <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                                    <a href="/indieabode/portfolio">Portfolio <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                                    <a href="/indieabode/portfolio?profile=<?= $_SESSION['username']; ?>">Portfolio <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
 
                                     <hr />
 
@@ -496,7 +496,7 @@
                                 <div class=".ulsub">
 
                                     <a href="/indieabode/dashboard">Dashboard <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                                    <a href="/indieabode/portfolio">Portfolio <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
+                                    <a href="/indieabode/portfolio?profile=<?= $_SESSION['username']; ?>">Portfolio <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
 
                                     <hr />
 

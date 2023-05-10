@@ -48,7 +48,7 @@
 
             <div class="username">
                 <label class="form-login-label">Username</label> <br>
-                <input type="text" name="username" id="user-name" placeholder="username" required /><br>
+                <input type="text" name="username" id="user-name" placeholder="username" /><br>
             </div>
             <div class="error-msg" id="username-check"></div>
 

@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Kreon:wght@300;400;500;600;700&display=swap');
+
 body{
 	margin: 0;
 	padding: 0;
+	font-family: 'Kreon', serif;
 	height: 100vh;
 }
 
@@ -42,7 +45,7 @@ h1{
 
 
 button{
-	width: 150px;
+	display: block;
 	height: 40px;
 	margin: 25px auto 0px auto;
 	font-family: arimo;
@@ -51,7 +54,10 @@ button{
 	border-radius: 5px;
 	letter-spacing: 2px;
 	cursor: pointer;
-	background: #616161;  
+	background: #2d69d8;  
+	color: white;
+	font-weight: 700;
+	padding: 4px 8px;
 
 }
 

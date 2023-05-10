@@ -285,58 +285,56 @@ class Game extends Controller
 
         $userDetails = $this->model->getUserDetails($_SESSION['id']);
 
+        if (empty($userBillingInfo)) {
+            echo "empty";
+        } else {
+            $amount = $game['gamePrice'];
+            $item = $game['gameName'];
+            // $amount = 30.00;
+            $merchant_id = "1222729";
+            $order_id = uniqid();
+            $merchant_secret = "MjczNjU0OTYzMzM3NDA3NzYzMjczNzEyMjI2MjM4MTQ3MjE2OTkxMg==";
+            $currency = "LKR";
+
+            //more information
+            $address = $userBillingInfo['streetLine1'];
+            $city = $userBillingInfo['city'];
+            $country = $userBillingInfo['country'];
+            $firstName = $userDetails['firstName'];
+            $lastName = $userDetails['lastName'];
+            $email = $userDetails['email'];
 
 
-        // if (empty($asseID)) {
-        //     echo "2";
-        // }
+            $hash = strtoupper(
+                md5(
+                    $merchant_id .
+                        $order_id .
+                        number_format($amount, 2, '.', '') .
+                        $currency .
+                        strtoupper(md5($merchant_secret))
+                )
+            );
 
-        $amount = $game['gamePrice'];
-        $item = $game['gameName'];
-        // $amount = 30.00;
-        $merchant_id = "1222729";
-        $order_id = uniqid();
-        $merchant_secret = "MjczNjU0OTYzMzM3NDA3NzYzMjczNzEyMjI2MjM4MTQ3MjE2OTkxMg==";
-        $currency = "LKR";
+            $array = [];
 
-        //more information
-        $address = $userBillingInfo['streetLine1'];
-        $city = $userBillingInfo['city'];
-        $country = $userBillingInfo['country'];
-        $firstName = $userDetails['firstName'];
-        $lastName = $userDetails['lastName'];
-        $email = $userDetails['email'];
+            $array['amount'] = $amount;
+            $array['item'] = $item;
+            $array['merchant_id'] = $merchant_id;
+            $array['order_id'] = $order_id;
+            $array['currency'] = $currency;
+            $array['hash'] = $hash;
 
+            $array['address'] = $address;
+            $array['city'] = $city;
+            $array['country'] = $country;
+            $array['firstName'] = $firstName;
+            $array['lastName'] = $lastName;
+            $array['email'] = $email;
 
-        $hash = strtoupper(
-            md5(
-                $merchant_id .
-                    $order_id .
-                    number_format($amount, 2, '.', '') .
-                    $currency .
-                    strtoupper(md5($merchant_secret))
-            )
-        );
+            $jsonObj = json_encode($array);
 
-        $array = [];
-
-        $array['amount'] = $amount;
-        $array['item'] = $item;
-        $array['merchant_id'] = $merchant_id;
-        $array['order_id'] = $order_id;
-        $array['currency'] = $currency;
-        $array['hash'] = $hash;
-
-        $array['address'] = $address;
-        $array['city'] = $city;
-        $array['country'] = $country;
-        $array['firstName'] = $firstName;
-        $array['lastName'] = $lastName;
-        $array['email'] = $email;
-
-        $jsonObj = json_encode($array);
-
-        echo $jsonObj;
+            echo $jsonObj;
+        }
     }
 
     function purchaseSuccessful()

@@ -26,7 +26,9 @@
         <div class=" form-box">
 
             <div class="upload-topic">
-                Write a Devlog
+                Write a Devlog <?php if (isset($_GET['game'])) {
+                                    echo "for " . $_GET['game'];
+                                } ?>
             </div>
             <hr>
 
@@ -38,7 +40,7 @@
                                 <div class="card-box">
 
                                     <label for="">Title</label><br>
-                                    <input type="text" name="title" id="title" required><br>
+                                    <input type="text" name="title" id="title" max="25"><br>
                                     <div class="error-msg" id="devlogTitleCheck"></div><br>
                                 </div>
 
@@ -109,19 +111,21 @@
                                         <div class="game-content" contenteditable="true"></div>
                                         <input type="hidden" name="devLog-details" id="description">
                                     </div>
+                                    <br>
                                 </div>
 
-                                <div class="card-box">
+                                <div class="card-box" id="game-name">
                                     <label for="">Game Name</label>
                                     <p>Game related with the devlog</p>
                                     <!-- <input type="text" name="gname" placeholder="Game name" required> -->
-                                    <select id="type" name="gname" required>
+                                    <select id="gametype" name="gname" required>
                                         <?php foreach ($this->games as $game) { ?>
-                                            <option value="<?= $game['gameID'] ?>"><?= $game['gameName'] ?></option>
+                                            <option value="<?= $game['gameID'] ?>" id="<?= $game['gameID'] ?>"><?= $game['gameName'] ?></option>
                                         <?php } ?>
 
                                     </select>
-                                    <br><br>
+                                    <div class="hidden-select"></div>
+                                    <br>
                                 </div>
 
 
@@ -187,6 +191,14 @@
                 $('#description').val(text);
 
             });
+
+            <?php if (isset($_GET['game'])) { ?>
+                $('#<?= $_GET['game'] ?>').attr('selected', true);
+                $("#gametype").attr("disabled", 'disabled');
+                var html = '';
+                html += '<input type="hidden" name="gname" value="<?= $_GET['game'] ?>">';
+                $('.hidden-select').append(html);
+            <?php } ?>
         });
     </script>
 

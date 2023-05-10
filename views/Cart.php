@@ -28,41 +28,60 @@
             <div class="cart-items">
                 <hr>
                 <?php if (isset($_SESSION['logged']) && ($_SESSION['userRole'] == "game developer" || $_SESSION['userRole'] == "asset creator")) { ?>
-                    <?php foreach ($this->myAssets as $myAsset) { ?>
-                        <div class="cart-item">
-                            <div class="cart-left">
-                                <div class="item-logo"><img src="/indieabode/public/uploads/assets/cover/<?= $myAsset['assetCoverImg']; ?>" alt=""></div>
-                                <div class="item-info">
-                                    <div class="item-category"><?= $myAsset['assetClassification']; ?></div>
-                                    <div class="item-name"><?= $myAsset['assetName']; ?></div>
+                    <?php if (!empty($this->myAssets)) { ?>
+                        <?php foreach ($this->myAssets as $myAsset) { ?>
+                            <div class="cart-item">
+                                <div class="cart-left">
+                                    <div class="item-logo"><img src="/indieabode/public/uploads/assets/cover/<?= $myAsset['assetCoverImg']; ?>" alt=""></div>
+                                    <div class="item-info">
+                                        <div class="item-category"><?= $myAsset['assetClassification']; ?></div>
+                                        <div class="item-name"><?= $myAsset['assetName']; ?></div>
+                                    </div>
+                                </div>
+                                <div class="cart-right">
+                                    <div class="price"><?= "$" . $myAsset['assetPrice']; ?></div>
+                                    <a href="/indieabode/cart/removeAssetFromCart?id=<?= $myAsset['assetID']; ?>">
+                                        <div class="remove">Remove</div>
+                                    </a>
                                 </div>
                             </div>
-                            <div class="cart-right">
-                                <div class="price"><?= "$" . $myAsset['assetPrice']; ?></div>
-                                <a href="/indieabode/cart/removeAssetFromCart?id=<?= $myAsset['assetID']; ?>">
-                                    <div class="remove">Remove</div>
-                                </a>
-                            </div>
+                        <?php } ?>
+                    <?php } else { ?>
+                        <div class="empty-box">
+                            <div class="empty-icon"><img src="<?php echo BASE_URL; ?>public/images/empty/empty-cart.png" alt=""></div>
+                            <div class="empty-text">Your Cart is Empty</div>
+                            <div class="empty-link"><a href="<?php echo BASE_URL; ?>assets">Browse for more assets</a></div>
                         </div>
                     <?php } ?>
+
                 <?php } else if (isset($_SESSION['logged']) && $_SESSION['userRole'] == "gamer") { ?>
-                    <?php foreach ($this->myGames as $myGame) { ?>
-                        <div class="cart-item">
-                            <div class="cart-left">
-                                <div class="item-logo"><img src="/indieabode/public/uploads/games/cover/<?= $myGame['gameCoverImg']; ?>" alt=""></div>
-                                <div class="item-info">
-                                    <div class="item-category"><?= $myGame['gameType']; ?></div>
-                                    <div class="item-name"><?= $myGame['gameName']; ?></div>
+
+                    <?php if (!empty($this->myGames)) { ?>
+                        <?php foreach ($this->myGames as $myGame) { ?>
+                            <div class="cart-item">
+                                <div class="cart-left">
+                                    <div class="item-logo"><img src="/indieabode/public/uploads/games/cover/<?= $myGame['gameCoverImg']; ?>" alt=""></div>
+                                    <div class="item-info">
+                                        <div class="item-category"><?= $myGame['gameType']; ?></div>
+                                        <div class="item-name"><?= $myGame['gameName']; ?></div>
+                                    </div>
+                                </div>
+                                <div class="cart-right">
+                                    <div class="price"><?= "$" . $myGame['gamePrice']; ?></div>
+                                    <a href="/indieabode/cart/removeGameFromCart?id=<?= $myGame['gameID']; ?>">
+                                        <div class="remove">Remove</div>
+                                    </a>
                                 </div>
                             </div>
-                            <div class="cart-right">
-                                <div class="price"><?= "$" . $myGame['gamePrice']; ?></div>
-                                <a href="/indieabode/cart/removeGameFromCart?id=<?= $myGame['gameID']; ?>">
-                                    <div class="remove">Remove</div>
-                                </a>
-                            </div>
+                        <?php } ?>
+                    <?php } else { ?>
+                        <div class="empty-box">
+                            <div class="empty-icon"><img src="<?php echo BASE_URL; ?>public/images/empty/empty-cart.png" alt=""></div>
+                            <div class="empty-text">Your Cart is Empty</div>
+                            <div class="empty-link"><a href="<?php echo BASE_URL; ?>games">Browse for more games</a></div>
                         </div>
                     <?php } ?>
+
 
 
 
@@ -261,6 +280,12 @@
                 xhr.send(f);
             }
 
+            $('#find-games-btn').click(function(e) {
+
+                window.location.href = "<?php echo BASE_URL; ?>games";
+
+            });
+
 
             //if any assets available in developer's cart show checkout button, otherwise show find assets button
             if ($('#asset-checkout-total').val() == "0.00") {
@@ -387,6 +412,12 @@
                 xhr.open("POST", "/indieabode/cart/cartAssetCheckoutSuccessful", true);
                 xhr.send(f);
             }
+
+            $('#find-assets-btn').click(function(e) {
+
+                window.location.href = "<?php echo BASE_URL; ?>assets";
+
+            });
 
 
         });

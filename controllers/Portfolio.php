@@ -12,7 +12,6 @@ class Portfolio extends Controller
     function index()
     {
 
-
         $owner = $this->model->GetDeveloperDetails($_GET['profile']);
 
         $this->view->isFollowing = $this->model->IsFollowing($_SESSION['id'], $owner['gamerID']);
@@ -21,7 +20,18 @@ class Portfolio extends Controller
 
         $this->view->additionalDeveloperDetails = $this->model->GetAdditionalDeveloperDetails($_GET['profile']);
 
-        $this->view->games = $this->model->GetDeveloperGames($_GET['profile']);
+        if ($owner['userRole'] == "game developer") {
+
+
+            $this->view->games = $this->model->GetDeveloperGames($_GET['profile']);
+        } else if ($owner['userRole'] == "asset creator") {
+
+
+            $this->view->assets = $this->model->GetCreatorAssets($_GET['profile']);
+        } else if ($owner['userRole'] == "game publisher") {
+
+            $this->view->games = $this->model->GetPublisherGames($_GET['profile']);
+        }
 
         $this->view->render('Portfolio');
     }
