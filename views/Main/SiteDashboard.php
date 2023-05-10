@@ -47,9 +47,9 @@
 			</li>
 
 			<li class="divider" data-text="Settings">Settings</li>
-			<li><a href="<?php echo BASE_URL; ?>Admin_addNew"><i class='bx bx-user-plus icon'></i> Add new admin</a></li>
+			<!-- <li><a href="<?php echo BASE_URL; ?>Admin_addNew"><i class='bx bx-user-plus icon'></i> Add new admin</a></li> -->
 			<li>
-				<a href="<?php echo BASE_URL; ?>Admin_userMg"><i class='bx bxs-trash icon'></i> Remove user</a>
+				<a href="<?php echo BASE_URL; ?>Admin_userMg"><i class='bx bxs-trash icon'></i>User Management</a>
 			</li>
 		</ul>
 	</section>
@@ -77,7 +77,7 @@
 								<div id="chartContainer" style="height: 370px; width: 100%;"></div>
 								<!-- <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script> -->
 							</div>
-							<div class="top-details-db">
+							<!-- <div class="top-details-db">
 								<div class="most-popular-game popular-items">
 									<div class="popular-topic">
 										Most Popular Game
@@ -110,7 +110,7 @@
 										<h1>34</h1>
 									</div>
 								</div>
-							</div>
+							</div> -->
 						</div>
 						<div class="second-row-db">
 							<div class="line-chart-db">
@@ -119,9 +119,9 @@
 									<canvas id="userChart" style="height: 150px; width: 100%;"></canvas>
 								</div>
 							</div>
-							<div class="second-pie-chart-db">
+							<!-- <div class="second-pie-chart-db">
 								<canvas id="myChart2"></canvas>
-							</div>
+							</div> -->
 						</div>
 					</div>
 				</div>

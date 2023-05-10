@@ -49,9 +49,9 @@
 			</li>
 
 			<li class="divider" data-text="Settings">Settings</li>
-			<li><a href="<?php echo BASE_URL; ?>Admin_addNew"><i class='bx bx-user-plus icon'></i> Add new admin</a></li>
+			<!-- <li><a href="<?php echo BASE_URL; ?>Admin_addNew"><i class='bx bx-user-plus icon'></i> Add new admin</a></li> -->
 			<li>
-				<a href="<?php echo BASE_URL; ?>Admin_userMg"><i class='bx bxs-trash icon'></i> Remove user</a>
+				<a href="<?php echo BASE_URL; ?>Admin_userMg"><i class='bx bxs-trash icon'></i>User Management</a>
 			</li>
 		</ul>
 	</section>
@@ -72,7 +72,7 @@
 				<div class="main-db-content">
 					<h1>Asset Dashboard</h1>
 					<div class="game-db-body">
-						<h2>Asset Dashbord/Assets</h2>
+						<h2>vsgsg</h2>
 						<div class="game-db-first-row game-db-extra-first">
 							<div class="transaction-graph-game-tx">
 								<h3>Payments Graph</h3>
@@ -90,7 +90,7 @@
 							
 
 							<div class="downloads-uploads-graph">
-								<h3>Total Downloads and Uploads</h3>
+								<h3>Total Uploads</h3>
 								<canvas id="downloads-uploads-bar-graph" style="height: 220px; width: 400px;"></canvas>
 							</div>
 						</div>
