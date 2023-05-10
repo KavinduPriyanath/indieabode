@@ -46,11 +46,30 @@
 
 
 .tagline{
+    display: flex;
+    justify-content: space-between;
     padding: 3px 10px 5px;
     font-size: 17px;
     color: #475872;
     margin-bottom: 7px;
     text-align: justify;
+}
+
+.tagline .price {
+    display: flex;
+    align-items: center;
+}
+
+.price .coin-icon {
+    display: inline-block;
+    height: 17px;
+    width: 17px;
+    margin-right: 4px;
+}
+
+.coin-icon img {
+    width: 100%;
+    height: 100%;
 }
 
 
@@ -68,7 +87,7 @@
     background-color: #86AFEC;
     border-width: 0px;
     height: 0.5px;
-    margin: 0px 165px 15px 158px;
+    margin: 10px 165px 15px 158px;
 }
 
 .bottom-btn {

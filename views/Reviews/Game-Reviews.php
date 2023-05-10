@@ -12,6 +12,7 @@
     <style>
         <?php
         include 'public/css/game.css';
+        include 'public/css/alert-modal.css'
         ?><?php
             include 'public/css/game-review.css';
             ?><?php include 'public/css/review-modal.css' ?>
@@ -167,22 +168,24 @@
     </div>
 
     <div class="incorrectRole-modal">
-        <div class="modal" id="modal-incorrectRole">
-            <div class="modal-header">
-                <div class="title">Rate & Review "<?= $this->game['gameName'] ?>"</div>
-                <button data-close-button class="close-button">&times;</button>
-            </div>
-            <div class="modal-body">
+        <div class="modal-warning" id="modal-incorrectRole">
+            <div class="modal-header-warning">
 
-                <div class="report-heading">
-                    Sign-in As a Gamer
-
-
+                <div class="warning-logo">
+                    <img src="<?php echo BASE_URL; ?>public/images/empty/warning.png" alt="">
                 </div>
+                <!-- <button data-close-button class="close-button">&times;</button> -->
+            </div>
+            <div class="modal-body-warning">
+
+                <div class="user-msg">Unprivileged <br> User!</div>
+                <div class="sub-text">Login as gamer to perform <br> this action</div>
+
+                <div class="close-btn-warning" data-close-button>Close</div>
 
             </div>
         </div>
-        <div id="overlay"></div>
+        <div id="overlay-warning"></div>
     </div>
 
 
@@ -194,6 +197,7 @@
 
     <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
     <script src="<?php echo BASE_URL; ?>public/js/game-review.js"></script>
+    <script src="<?php echo BASE_URL; ?>public/js/warning.js"></script>
 
 
     <script>

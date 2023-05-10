@@ -113,6 +113,7 @@ class Games extends Controller
         } else {
 
             $this->view->games = $this->model->showAllGames($start, $maxLimit);
+            $this->view->gamesPagesCount = $this->model->totalGamesPageCount(null);
         }
 
         //to keep track of the filters selected
