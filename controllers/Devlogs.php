@@ -12,6 +12,27 @@ class Devlogs extends Controller
     function index()
     {
 
+        // sort part
+        if (isset($_GET['sortWhat'])){
+            $sort = $_GET['sortWhat'];
+            if($sort=="latest"){
+                $Sorder = "DESC";
+                $sort = "CreatedDate";
+            }
+            else if($sort=="nameA-Z"){
+                $Sorder = "ASC";
+                $sort = "name";
+            }
+            else if($sort=="nameZ-A"){
+                $Sorder = "DESC";
+                $sort = "name";
+            }
+        }
+        else{
+            $sort = "CreatedDate";
+            $Sorder = "DESC";
+        }
+    
 
         //Redirecting Unprivileged Users
         if (isset($_SESSION['logged'])) {
@@ -39,7 +60,7 @@ class Devlogs extends Controller
             $checkedTypes =  $_GET['posttypes'];
             $this->view->devlogs = $this->model->showFilteredDevlog($checkedTypes);
         } else {
-            $this->view->devlogs = $this->model->showAllDevlogs($start, $maxLimit);
+            $this->view->devlogs = $this->model->showAllDevlogs($sort,$Sorder,$start, $maxLimit);
             $this->view->devlogPagesCount = $this->model->totalDevlogsPageCount($maxLimit);
         }
 
