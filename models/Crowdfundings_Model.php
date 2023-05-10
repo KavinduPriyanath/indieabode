@@ -9,11 +9,11 @@ class Crowdfundings_Model extends Model
     }
 
 
-    function showAllCrowdfundings($sort,$Sorder,$min, $max)
+    function showAllCrowdfundings($min, $max)
     {
         $sql = "SELECT crowdfund.crowdFundID, crowdfund.deadline, crowdfund.currentAmount, crowdfund.expectedAmount, crowdfund.crowdfundCoverImg, 
                 freegame.gameName, gamer.username FROM (crowdfund INNER JOIN freegame ON freegame.gameID=crowdfund.gameName)
-                INNER JOIN gamer ON gamer.gamerID=crowdfund.gameDeveloperName  ORDER BY $sort $Sorder LIMIT $min, $max";
+                INNER JOIN gamer ON gamer.gamerID=crowdfund.gameDeveloperName LIMIT $min, $max";
 
         $stmt = $this->db->prepare($sql);
 
@@ -21,16 +21,20 @@ class Crowdfundings_Model extends Model
 
         $crowdfunds = $stmt->fetchAll();
 
-        // foreach ($crowdfunds as $thisCrowdfund) {
+        return $crowdfunds;
+    }
 
-        //     $fundingPercentage = ($thisCrowdfund['currentAmount'] / $thisCrowdfund['expectedAmount']) * 100;
+    function showAllSortedCrowdfundings($sort, $Sorder)
+    {
+        $sql = "SELECT crowdfund.crowdFundID, crowdfund.deadline, crowdfund.currentAmount, crowdfund.expectedAmount, crowdfund.crowdfundCoverImg, 
+                freegame.gameName, gamer.username FROM (crowdfund INNER JOIN freegame ON freegame.gameID=crowdfund.gameName)
+                INNER JOIN gamer ON gamer.gamerID=crowdfund.gameDeveloperName  ORDER BY crowdfund.$sort $Sorder";
 
-        //     $thisCrowdfund['fundingPercentage'] = $fundingPercentage;
-        //     $thisCrowdfund[7] = $fundingPercentage;
-        //     // // print_r($thisCrowdfund);
+        $stmt = $this->db->prepare($sql);
 
-        //     // break;
-        // }
+        $stmt->execute();
+
+        $crowdfunds = $stmt->fetchAll();
 
         return $crowdfunds;
     }

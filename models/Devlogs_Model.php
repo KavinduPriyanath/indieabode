@@ -9,11 +9,23 @@ class Devlogs_Model extends Model
     }
 
 
-    function showAllDevlogs($sort,$Sorder,$min, $max)
+    function showAllDevlogs($min, $max)
     {
         $sql = "SELECT devlog.name, devlog.Tagline, devlog.Type, devlog.devlogImg, devlog.likeCount, devlog.commentCount,
-                devlog.devLogID, freegame.gameName FROM devlog INNER JOIN freegame ON freegame.gameID=devlog.gameName ORDER BY $sort $Sorder
+                devlog.devLogID, freegame.gameName FROM devlog INNER JOIN freegame ON freegame.gameID=devlog.gameName
                 LIMIT $min, $max";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+
+    function showAllSortedDevlogs($sort, $Sorder)
+    {
+        $sql = "SELECT devlog.name, devlog.Tagline, devlog.Type, devlog.devlogImg, devlog.likeCount, devlog.commentCount,
+                devlog.devLogID, freegame.gameName FROM devlog INNER JOIN freegame ON freegame.gameID=devlog.gameName ORDER BY $sort $Sorder";
 
         $stmt = $this->db->prepare($sql);
 

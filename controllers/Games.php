@@ -12,34 +12,29 @@ class Games extends Controller
     function index()
     {
         // sort part
-            if (isset($_GET['sortWhat'])){
-                $sort = $_GET['sortWhat'];
-                if($sort=="latest"){
-                    $Sorder = "DESC";
-                    $sort = "created_at";
-                }
-                else if ($sort=="priceLH"){
-                    $Sorder = "ASC";
-                    $sort = "gamePrice";
-                }
-                else if($sort=="priceHL"){
-                    $Sorder = "DESC";
-                    $sort = "gamePrice";
-                }
-                else if($sort=="nameA-Z"){
-                    $Sorder = "ASC";
-                    $sort = "gameName";
-                }
-                else if($sort=="nameZ-A"){
-                    $Sorder = "DESC";
-                    $sort = "gameName";
-                }
-            }
-            else{
-                $sort = "created_at";
+        if (isset($_GET['sortWhat'])) {
+            $sort = $_GET['sortWhat'];
+            if ($sort == "latest") {
                 $Sorder = "DESC";
+                $sort = "created_at";
+            } else if ($sort == "priceLH") {
+                $Sorder = "ASC";
+                $sort = "gamePrice";
+            } else if ($sort == "priceHL") {
+                $Sorder = "DESC";
+                $sort = "gamePrice";
+            } else if ($sort == "nameA-Z") {
+                $Sorder = "ASC";
+                $sort = "gameName";
+            } else if ($sort == "nameZ-A") {
+                $Sorder = "DESC";
+                $sort = "gameName";
             }
-        
+        } else {
+            $sort = "created_at";
+            $Sorder = "DESC";
+        }
+
 
         //Redirecting Unprivileged Users
         if (isset($_SESSION['logged'])) {
@@ -112,10 +107,12 @@ class Games extends Controller
 
 
             $this->view->games = $this->model->showFilteredGames($checkedPlatformTypes, $checkedReleaseStatusTypes, $checkedGameTypes, $checkedFeatures, $start, $maxLimit);
-            $this->view->gamesPagesCount = $this->model->totalGamesPageCount(null);
+        } else if (isset($_GET['sortWhat'])) {
+
+            $this->view->games = $this->model->showAllSortedGames($sort, $Sorder);
         } else {
-            
-            $this->view->games = $this->model->showAllGames($sort,$Sorder,$start, $maxLimit);
+
+            $this->view->games = $this->model->showAllGames($start, $maxLimit);
             $this->view->gamesPagesCount = $this->model->totalGamesPageCount(null);
         }
 
@@ -164,5 +161,3 @@ class Games extends Controller
         echo "hello";
     }
 }
-
-

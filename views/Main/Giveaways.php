@@ -44,7 +44,15 @@
                     <div class="game-name">
                         <p><?= $item['gameName'] ?></p>
                     </div>
-                    <div class="tagline"><?= $item['copiesLeft'] ?>/<?= $item['copiesCount'] ?> left</div>
+                    <div class="tagline">
+                        <div class="copies">
+                            <?= $item['copiesLeft'] ?>/<?= $item['copiesCount'] ?> left
+                        </div>
+                        <div class="price">
+                            <div class="coin-icon"><img src="<?php echo BASE_URL; ?>public/images/spin-wheel/coin.png" alt=""></div>
+                            <div class="coin-count"> <?= $item['pieceWorth'] ?></div>
+                        </div>
+                    </div>
                 </a>
                 <div class="bottom-btn">
                     <?php if ($item['copiesLeft'] == 0) { ?>

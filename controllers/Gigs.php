@@ -12,34 +12,29 @@ class Gigs extends Controller
     function index()
     {
         // sort part
-        if (isset($_GET['sortWhat'])){
+        if (isset($_GET['sortWhat'])) {
             $sort = $_GET['sortWhat'];
-            if($sort=="latest"){
+            if ($sort == "latest") {
                 $Sorder = "DESC";
                 $sort = "created_at";
-            }
-            else if ($sort=="priceLH"){
+            } else if ($sort == "priceLH") {
                 $Sorder = "ASC";
                 $sort = "expectedCost";
-            }
-            else if($sort=="priceHL"){
+            } else if ($sort == "priceHL") {
                 $Sorder = "DESC";
                 $sort = "expectedCost";
-            }
-            else if($sort=="nameA-Z"){
+            } else if ($sort == "nameA-Z") {
                 $Sorder = "ASC";
                 $sort = "gigName";
-            }
-            else if($sort=="nameZ-A"){
+            } else if ($sort == "nameZ-A") {
                 $Sorder = "DESC";
                 $sort = "gigName";
             }
-        }
-        else{
+        } else {
             $sort = "created_at";
             $Sorder = "DESC";
         }
-    
+
 
         //Redirecting Unprivileged Users
         if (isset($_SESSION['logged'])) {
@@ -82,8 +77,11 @@ class Gigs extends Controller
             }
 
             $this->view->gigs = $this->model->showFilteredGigs($checkedGenres, $checkedStage, $checkedCost, $checkedShare);
+        } else if (isset($_GET['sortWhat'])) {
+
+            $this->view->gigs = $this->model->showAllSortedGigs($sort, $Sorder);
         } else {
-            $this->view->gigs = $this->model->showAllGigs($sort,$Sorder,$start, $maxLimit);
+            $this->view->gigs = $this->model->showAllGigs($start, $maxLimit);
             $this->view->gigsPagesCount = $this->model->totalGigsPageCount($maxLimit);
         }
 

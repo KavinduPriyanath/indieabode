@@ -106,7 +106,7 @@ class Jam extends Controller
 
         $jam = $this->model->showSingleJam($gameJamID);
 
-        if (substr($jam['votingEndDate'], 0, 10) < date("Y-m-d")) {
+        if ($jam['votingEndDate'] < date("Y-m-d H:i:s")) {
             $jamEnded = true;
         } else {
             $jamEnded = false;
@@ -139,11 +139,6 @@ class Jam extends Controller
 
 
         }
-
-        // $query = parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
-        // parse_str($query, $result);
-
-        // header('Location:/indieabode/jam?' . http_build_query($result));
     }
 
 
@@ -155,7 +150,7 @@ class Jam extends Controller
 
         $jam = $this->model->showSingleJam($gameJamID);
 
-        if (substr($jam['votingEndDate'], 0, 10) < date("Y-m-d")) {
+        if ($jam['votingEndDate'] < date("Y-m-d H:i:s")) {
             $jamEnded = true;
         } else {
             $jamEnded = false;
