@@ -9,11 +9,11 @@ class Crowdfundings_Model extends Model
     }
 
 
-    function showAllCrowdfundings($min, $max)
+    function showAllCrowdfundings($sort,$Sorder,$min, $max)
     {
         $sql = "SELECT crowdfund.crowdFundID, crowdfund.deadline, crowdfund.currentAmount, crowdfund.expectedAmount, crowdfund.crowdfundCoverImg, 
                 freegame.gameName, gamer.username FROM (crowdfund INNER JOIN freegame ON freegame.gameID=crowdfund.gameName)
-                INNER JOIN gamer ON gamer.gamerID=crowdfund.gameDeveloperName LIMIT $min, $max";
+                INNER JOIN gamer ON gamer.gamerID=crowdfund.gameDeveloperName  ORDER BY $sort $Sorder LIMIT $min, $max";
 
         $stmt = $this->db->prepare($sql);
 

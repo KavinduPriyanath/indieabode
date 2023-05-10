@@ -12,6 +12,35 @@ class Assets extends Controller
     function index()
     {
 
+        if (isset($_GET['sortWhat'])){
+            $sort = $_GET['sortWhat'];
+            if($sort=="latest"){
+                $Sorder = "DESC";
+                $sort = "created_at";
+            }
+            else if ($sort=="priceLH"){
+                $Sorder = "ASC";
+                $sort = "assetPrice";
+            }
+            else if($sort=="priceHL"){
+                $Sorder = "DESC";
+                $sort = "assetPrice";
+            }
+            else if($sort=="nameA-Z"){
+                $Sorder = "ASC";
+                $sort = "assetName";
+            }
+            else if($sort=="nameZ-A"){
+                $Sorder = "DESC";
+                $sort = "assetName";
+            }
+        }
+        else{
+            $sort = "created_at";
+            $Sorder = "DESC";
+        }
+    
+
         $this->view->title = "Assets";
 
         //pagination 
@@ -47,8 +76,10 @@ class Assets extends Controller
                 $this->view->title = "Category: Tools";
             }
         } else {
-            $this->view->assets = $this->model->showAllAssets($start, $maxLimit);
+
+            $this->view->assets = $this->model->showAllAssets($sort,$Sorder,$start, $maxLimit);
             $this->view->totalAssetPages = $this->model->totalAssetsPageCount($maxLimit);
+
         }
 
         $this->view->render('Main/Assets');

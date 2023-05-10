@@ -11,6 +11,17 @@
     padding: 0;
     margin: 0;
 }
+/* sort */
+.sortselect{
+    background-color:rgb(44 101 129);
+    border-radius: 5px;
+}
+
+#sortbutton{
+    display: none;
+}
+
+/* sort */
 
 #adddev {
     background-color: #284478; /* Green */

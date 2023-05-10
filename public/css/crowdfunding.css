@@ -32,6 +32,18 @@
     transition: 0.3s;
 }
 
+/* sort */
+.sortselect{
+    background-color:rgb(44 101 129);
+    border-radius: 5px;
+}
+
+#sortbutton{
+    display: none;
+}
+
+/* sort */
+
 .type-filter {
     padding-left: 40px;
 }

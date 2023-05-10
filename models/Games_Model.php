@@ -9,9 +9,10 @@ class Games_Model extends Model
     }
 
 
-    function showAllGames($min, $max)
+    function showAllGames($sort,$Sorder,$min, $max)
     {
-        $stmt = $this->db->prepare("SELECT * FROM freegame LIMIT $min, $max");
+        
+        $stmt = $this->db->prepare("SELECT * FROM freegame ORDER BY $sort $Sorder LIMIT $min, $max");
 
         $stmt->execute();
 

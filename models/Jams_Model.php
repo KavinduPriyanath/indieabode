@@ -9,11 +9,12 @@ class Jams_Model extends Model
     }
 
 
-    function showAllGameJams($min, $max)
+
+    function showAllGameJams($sort,$Sorder, $min, $max)
     {
         $sql = "SELECT gamejam.gameJamID, gamejam.jamTitle, gamejam.jamType, gamejam.jamTagline,gamejam.jamCoverImg,
                 gamejam.joinedCount, gamer.username FROM gamejam INNER JOIN gamer ON 
-                gamejam.jamHostID=gamer.gamerID LIMIT $min, $max";
+                gamejam.jamHostID=gamer.gamerID ORDER BY $sort $Sorder LIMIT $min, $max";
 
         $stmt = $this->db->prepare($sql);
 
