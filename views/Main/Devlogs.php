@@ -127,9 +127,7 @@
     <script>
         <?php if (!isset($_GET['page']) || $_GET['page'] == 1) { ?>
             document.getElementById("prev").style.pointerEvents = "none";
-        <?php  } ?>
-
-        <?php if (!isset($_GET['page']) || $_GET['page'] == $this->devlogPagesCount) { ?>
+        <?php  } else if ($_GET['page'] == $this->devlogPagesCount) { ?>
             document.getElementById("next").style.pointerEvents = "none";
         <?php  } ?>
 
