@@ -50,17 +50,5 @@ class Admin_GigD_Model extends Model
     //     //    GROUP BY 
     //     //     DATE(created_at)
 
-    
-        
 
-    //     $stmt = $this->db->prepare($sql);
-
-    //     $stmt->execute();
-
-    //     $count = $stmt->fetchAll();
-
-    //     return $count;
-
-    //     //add all types of validation testing here
-    // }
 }
