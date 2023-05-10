@@ -72,3 +72,44 @@
   .modal-delete {
     display: none;
   }
+
+  .report-heading {
+    margin-top: 10px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+  }
+
+  .stars {
+    margin-top: 8px;
+    display: inline-block;
+    border: 1px solid black;
+    padding: 3px 7px;
+  }
+
+  #topic{
+    width: 370px;
+    height: 30px;
+
+  }
+
+  .recommendations {
+    margin-top: 6px;
+  }
+
+  #recommend-head {
+    margin-top: 10px;
+  }
+
+  #save-review {
+    display: inline-block;
+    padding: 6px 9px;
+    background-color: rgb(68, 68, 222);
+    color: white;
+    font-size: 17px;
+    font-weight: 700;
+    border: none;
+    outline: none;
+    border-radius: 7px;
+    cursor: pointer;
+  }
