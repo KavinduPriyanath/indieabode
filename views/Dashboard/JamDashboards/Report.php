@@ -48,7 +48,7 @@
                         <div class="complaint-reason"><?= $report['reason'] ?></div>
                         <div class="reporter"><?= $report['username'] ?></div>
                     </div>
-                    <div class="report-description" id="report-description">fefef</div>
+                    <div class="report-description" id="report-description"><?= $report['description'] ?></div>
                 </div>
             <?php } ?>
 

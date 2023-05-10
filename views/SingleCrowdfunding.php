@@ -12,6 +12,7 @@
     <style>
         <?php
         include 'public/css/crowdfund.css';
+        include 'public/css/crowdfunding.css';
         ?><?php include 'public/css/shareModal.css'; ?>
     </style>
 </head>
@@ -47,10 +48,10 @@
                 </div>
                 <div class="navigation-visibility">
                     <div class="slide-icon active"></div>
-                    <div class="slide-icon"></div>
-                    <div class="slide-icon"></div>
-                    <div class="slide-icon"></div>
-                    <div class="slide-icon"></div>
+                    <?php for ($i = 0; $i < $this->ssCount - 1; $i++) { ?>
+                        <div class="slide-icon"></div>
+                    <?php } ?>
+
                 </div>
             </div>
         </div>
@@ -106,6 +107,49 @@
                     </div>
                 </div>
             <?php } ?>
+        </div>
+    </div>
+
+
+    <!--See Also -->
+    <div class="more">
+        <h3 id="more-heading">Recommended For You</h3>
+        <div class="cards-container">
+
+            <!--Cards-->
+
+            <div class="bottom-container">
+
+                <?php foreach ($this->recommendedCrowdfunds as $crowdfunding) { ?>
+                    <a href="/indieabode/crowdfund?id=<?= $crowdfunding['crowdFundID']; ?>">
+                        <div class="card">
+                            <div class="card-image"> <img src="/indieabode/public/uploads/crowdfundings/cover/<?= $crowdfunding['crowdfundCoverImg'] ?>" alt="">
+                            </div>
+                            <div class="game-intro">
+                                <h3><?= $crowdfunding['gameName']; ?></h3>
+                            </div>
+                            <div class="fund-amount">
+                                <p><?= $crowdfunding['fundingPercentage'] ?>% Funded</p>
+                            </div>
+
+                            <div class="last-row">
+                                <?php if (substr($crowdfunding['daysLeft'], 0, 1) == "+" && substr($crowdfunding['daysLeft'], 1, 1) != "0") { ?>
+                                    <div class="deadline">Ends in <?= substr($crowdfunding['daysLeft'], 1) ?> days</div>
+                                <?php } else { ?>
+                                    <div class="deadline">Ended</div>
+                                <?php } ?>
+                                <div class="dev">
+                                    By <?= $crowdfunding['username']; ?>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </a>
+                <?php } ?>
+
+
+            </div>
         </div>
     </div>
 

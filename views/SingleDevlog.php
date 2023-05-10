@@ -22,92 +22,91 @@
     include 'includes/navbar.php';
     ?>
 
+    <div class="flashMessage" id="flashMessage"></div>
+    <div class="cover-img">
+        <img src="/indieabode/public/uploads/devlogs/<?= $this->devlog['devlogImg'] ?>" alt="" />
+    </div>
 
-    <body>
-        <div class="cover-img">
-            <img src="/indieabode/public/uploads/devlogs/<?= $this->devlog['devlogImg'] ?>" alt="" />
-        </div>
-
-        <div class="container">
-            <div class="details">
-                <div class="details-top-bar">
-                    <div class="details-titlendate">
-                        <div class="title"><?= $this->devlog['name']; ?></div>
-                        <div class="published-date">Published 2 days ago</div>
-                    </div>
-                    <div class="devlog-like-btn">
-                        <?php if ($this->likesStatus == "disliked" || $this->likesStatus == null) { ?>
-                            <i class="fa fa-heart unliked like-btn" id="likeBtn"></i>
-                        <?php } else if ($this->likesStatus == "liked") { ?>
-                            <i class="fa fa-heart liked like-btn" id="likeBtn"></i>
-                        <?php } ?>
-                    </div>
+    <div class="container">
+        <div class="details">
+            <div class="details-top-bar">
+                <div class="details-titlendate">
+                    <div class="title"><?= $this->devlog['name']; ?></div>
+                    <div class="published-date">Published 2 days ago</div>
                 </div>
-                <div class="content">
-                    <?= $this->devlog['description']; ?>
+                <div class="devlog-like-btn">
+                    <?php if ($this->likesStatus == "disliked" || $this->likesStatus == null) { ?>
+                        <i class="fa fa-heart unliked like-btn" id="likeBtn"></i>
+                    <?php } else if ($this->likesStatus == "liked") { ?>
+                        <i class="fa fa-heart liked like-btn" id="likeBtn"></i>
+                    <?php } ?>
                 </div>
             </div>
-            <div class="card">
-                <div class="game-name"><?= $this->game['gameName']; ?></div>
-                <div class="second-rows">
-                    <div class="game-type"><?= $this->game['gameType'] ?></div>
-                    <div class="price"><?= $this->gamePrice ?></div>
+            <div class="content">
+                <?= $this->devlog['description']; ?>
+            </div>
+        </div>
+        <div class="card">
+            <div class="game-name"><?= $this->game['gameName']; ?></div>
+            <div class="second-rows">
+                <div class="game-type"><?= $this->game['gameType'] ?></div>
+                <div class="price"><?= $this->gamePrice ?></div>
+            </div>
+            <div class="game-tagline modernWay">
+                <?= $this->game['gameTagline']; ?>
+            </div>
+            <div class="btn" id="devlog-btn">Add to Library</div>
+            <div class="overview">
+                <div class="row">
+                    <p>Status</p>
+                    <p><?= $this->game['releaseStatus']; ?></p>
                 </div>
-                <div class="game-tagline">
-                    <?= $this->game['gameTagline']; ?>
+                <hr id="line-break">
+                <div class="row">
+                    <p>Developer</p>
+                    <p><?= $this->game['username']; ?></p>
                 </div>
-                <div class="btn" onclick="ButtonClick()">Add to Library</div>
-                <div class="overview">
-                    <div class="row">
-                        <p>Status</p>
-                        <p><?= $this->game['releaseStatus']; ?></p>
-                    </div>
-                    <hr id="line-break">
-                    <div class="row">
-                        <p>Developer</p>
-                        <p><?= $this->game['username']; ?></p>
-                    </div>
-                    <hr id="line-break">
-                    <div class="row">
-                        <p>Genre</p>
-                        <p><?= $this->game['gameClassification']; ?></p>
-                    </div>
-                    <hr id="line-break">
-                    <div class="row">
-                        <p>Platform</p>
-                        <p><?= $this->game['platform']; ?></p>
-                    </div>
-                    <hr id="line-break">
-                    <div class="row">
-                        <p>Release Date</p>
-                        <p id="release-date"></p>
-                    </div>
+                <hr id="line-break">
+                <div class="row">
+                    <p>Genre</p>
+                    <p><?= $this->game['gameClassification']; ?></p>
+                </div>
+                <hr id="line-break">
+                <div class="row">
+                    <p>Platform</p>
+                    <p><?= $this->game['platform']; ?></p>
+                </div>
+                <hr id="line-break">
+                <div class="row">
+                    <p>Release Date</p>
+                    <p id="release-date"></p>
                 </div>
             </div>
         </div>
+    </div>
 
 
-        <div class="comments-box">
+    <div class="comments-box">
 
-            <h3 id="comments-bar">Comments</h3>
-            <?php if (isset($_SESSION['logged'])) { ?>
-                <div class="main-comment">
-                    <textarea name="" id="" cols="30" rows="2" class="comment_textbox" placeholder="Write your comment..."></textarea>
-                    <br>
-                    <div class="add_comment_btn">Post Comment</div>
-                </div>
-
-
-            <?php } else { ?>
-
-
-                <div class="login-link"><a href="/indieabode/login">Log in with Indieabode</a> to leave a comment.</div>
-            <?php } ?>
-            <div class="comment-container">
+        <h3 id="comments-bar">Comments</h3>
+        <?php if (isset($_SESSION['logged'])) { ?>
+            <div class="main-comment">
+                <textarea name="" id="" cols="30" rows="2" class="comment_textbox" placeholder="Write your comment..."></textarea>
+                <br>
+                <div class="add_comment_btn">Post Comment</div>
             </div>
-        </div>
 
-    </body>
+
+        <?php } else { ?>
+
+
+            <div class="login-link"><a href="/indieabode/login">Log in with Indieabode</a> to leave a comment.</div>
+        <?php } ?>
+        <div class="comment-container">
+        </div>
+    </div>
+
+
 
 
     <?php
@@ -379,11 +378,106 @@
     </script>
 
 
+
     <script>
-        function ButtonClick() {
-            // document.getElementsByClassName("buy-btn");
-            alert("Cant perform this action as a gamedeveloper");
-        }
+        $(document).ready(function() {
+
+            let btnStatus = 0;
+
+            <?php if ($this->hasClaimed) { ?>
+                $('#devlog-btn').text("In Library");
+                btnStatus = 1;
+            <?php } else { ?>
+                <?php if ($this->game['gamePrice'] == "0") { ?>
+                    $('#devlog-btn').text("Add to Library");
+                    btnStatus = 2;
+                <?php } else if ($this->game['gamePrice'] != "0") { ?>
+                    <?php if ($this->hasInCart) { ?>
+                        $('#devlog-btn').text("View Cart");
+                        btnStatus = 3;
+                    <?php } else { ?>
+                        $('#devlog-btn').text("Add to Cart");
+                        btnStatus = 4;
+                    <?php } ?>
+                <?php } ?>
+            <?php } ?>
+
+            console.log(btnStatus);
+
+            $('#devlog-btn').click(function() {
+
+                if (btnStatus == 1) {
+                    window.location.href = "/indieabode/library";
+                } else if (btnStatus == 2) {
+
+                    let gameID = <?= $this->game['gameID']; ?>;
+
+                    var data = {
+                        'gameID': gameID,
+                        'add_to_library': true,
+                    };
+
+                    $.ajax({
+                        url: "/indieabode/devlog/addtoLibrary",
+                        method: "POST",
+                        data: data,
+                        success: function(response) {
+
+                            if (response == "1") {
+                                btnStatus = 1;
+                                $('#devlog-btn').text("In Library");
+
+                                $("#flashMessage").html('Added to the Library')
+                                $("#flashMessage").fadeIn(1000);
+
+                                setTimeout(function() {
+                                    $("#flashMessage").fadeOut("slow");
+                                }, 4000);
+
+                            }
+                            // alert(response);
+                        }
+                    })
+
+                } else if (btnStatus == 3) {
+                    window.location.href = "/indieabode/cart";
+                } else if (btnStatus == 4) {
+
+                    let gameID = <?= $this->game['gameID']; ?>;
+
+                    var data = {
+                        'gameID': gameID,
+                        'add_to_cart': true,
+                    };
+
+                    $.ajax({
+                        url: "/indieabode/devlog/AddToCart",
+                        method: "POST",
+                        data: data,
+                        success: function(response) {
+
+                            if (response == "1") {
+
+                                btnStatus = 3;
+                                $('#devlog-btn').text("View Cart");
+
+                                $("#flashMessage").html('Added to the Cart')
+                                $("#flashMessage").fadeIn(1000);
+
+                                setTimeout(function() {
+                                    $("#flashMessage").fadeOut("slow");
+                                }, 4000);
+
+                            }
+                        }
+                    })
+
+                }
+
+            });
+
+
+        });
     </script>
 
 </body>

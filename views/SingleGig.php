@@ -50,10 +50,9 @@
                     </div>
                     <div class="navigation-visibility">
                         <div class="slide-icon active"></div>
-                        <div class="slide-icon"></div>
-                        <div class="slide-icon"></div>
-                        <div class="slide-icon"></div>
-                        <div class="slide-icon"></div>
+                        <?php for ($i = 0; $i < $this->ssCount - 1; $i++) { ?>
+                            <div class="slide-icon"></div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>

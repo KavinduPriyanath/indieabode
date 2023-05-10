@@ -303,7 +303,28 @@ class Dashboard extends Controller
             $gameVisibility
         );
 
-        header('location:/indieabode/');
+        // header('location:/indieabode/');
+
+        header('location:' . BASE_URL . 'game?id=' . $gameID);
+    }
+
+    function editGameNameAvailability()
+    {
+
+        $gameName = $_POST['gameName'];
+        $gameID = $_POST['gameID'];
+
+        $nameAvailability = $this->model->GameNameAvailabilityCheck($gameName, $_SESSION['id'], $gameID);
+
+        $nameAvailabilityWhole = $this->model->CheckGameNameWholeSite($gameName, $_SESSION['id']);
+
+        if ($nameAvailability == "false") {
+            echo "unavailable";
+        } else if (!empty($nameAvailabilityWhole)) {
+            echo "warning";
+        } else {
+            echo "available";
+        }
     }
 
     function editAsset()
@@ -365,7 +386,28 @@ class Dashboard extends Controller
             $assetScreenshots
         );
 
-        header('location:/indieabode/');
+        // header('location:/indieabode/');
+
+        header('location:' . BASE_URL . 'asset?id=' . $assetID);
+    }
+
+    function editAssetNameAvailabilityCheck()
+    {
+
+        $assetName = $_POST['assetName'];
+        $assetID = $_POST['assetID'];
+
+        $nameAvailability = $this->model->AssetNameAvailabilityCheck($assetName, $_SESSION['id'], $assetID);
+
+        $nameAvailabilityWhole = $this->model->CheckAssetNameWholeSite($assetName, $_SESSION['id']);
+
+        if ($nameAvailability == "false") {
+            echo "unavailable";
+        } else if (!empty($nameAvailabilityWhole)) {
+            echo "warning";
+        } else {
+            echo "available";
+        }
     }
 
     function gameanalytics()
@@ -511,7 +553,9 @@ class Dashboard extends Controller
             $gigTrailer
         );
 
-        header('location:/indieabode/');
+        // header('location:/indieabode/');
+
+        header('location:' . BASE_URL . 'gig?id=' . $gigID);
     }
 
     //Developer can delete his published gigs if they do not have any requests made by publishers
@@ -959,5 +1003,15 @@ class Dashboard extends Controller
         $this->view->jam = $this->model->GetJamDetails($_GET['id']);
 
         $this->view->render('Dashboard/JamDashboards/Prize');
+    }
+
+    public function deleteJam()
+    {
+        if(isset($_POST['gameJamID'])) {
+            $gameJamID = $_POST['gameJamID'];
+            
+            $this->model->deleteJam($gameJamID);
+        
+        }
     }
 }

@@ -154,9 +154,11 @@ class Asset_Model extends Model
         }
     }
 
-    function PopularAssets()
+    function PopularAssets($assetType, $assetID)
     {
-        $stmt = $this->db->prepare("SELECT * FROM freeasset LIMIT 4");
+        $sql = "SELECT * FROM freeasset WHERE assetType='$assetType' AND assetID != '$assetID' ORDER BY created_at DESC LIMIT 4";
+
+        $stmt = $this->db->prepare($sql);
 
         $stmt->execute();
 
@@ -416,5 +418,46 @@ class Asset_Model extends Model
         $stmt = $this->db->prepare($sql);
 
         $stmt->execute(["$reason", "$description", "$id", "$type"]);
+    }
+
+
+    function updateAssetDownloads($assetID)
+    {
+
+        $sql = "SELECT * FROM asset_stats_history WHERE assetID='$assetID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $assetDownloads = $stmt->fetchAll();
+
+        $totalDownloads = 0;
+
+        foreach ($assetDownloads as $assetDownload) {
+            $totalDownloads = $totalDownloads + $assetDownload['downloads'];
+        }
+
+        $updateSQL = "UPDATE asset_stats SET downloads='$totalDownloads' WHERE assetID='$assetID'";
+
+        $stmt = $this->db->prepare($updateSQL);
+
+        $stmt->execute();
+    }
+
+    function downloadAssetFile($id)
+    {
+
+        $sql = "SELECT * FROM freeasset WHERE assetID='$id'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $game = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $assetFile = $game['assetFile'];
+
+        return $assetFile;
     }
 }

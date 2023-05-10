@@ -45,7 +45,7 @@ class Asset extends Controller
 
             $this->view->stats = $this->model->AssetStats($assetID);
 
-            $this->view->popularAssets = $this->model->PopularAssets();
+            $this->view->popularAssets = $this->model->PopularAssets($thisAsset['assetType'], $thisAsset['assetID']);
 
             $this->view->reportReasons = $this->model->ComplaintReasons();
 
@@ -82,54 +82,58 @@ class Asset extends Controller
 
         $userBillingInfo = $this->model->getUserBillingInfo($_SESSION['id']);
 
-        $userDetails = $this->model->getUserDetails($_SESSION['id']);
+        if (empty($userBillingInfo)) {
+            echo "empty";
+        } else {
+            $userDetails = $this->model->getUserDetails($_SESSION['id']);
 
-        $amount = $asset['assetPrice'];
-        $item = $asset['assetName'];
-        // $amount = 30.00;
-        $merchant_id = "1222729";
-        $order_id = uniqid();
-        $merchant_secret = "MjczNjU0OTYzMzM3NDA3NzYzMjczNzEyMjI2MjM4MTQ3MjE2OTkxMg==";
-        $currency = "LKR";
+            $amount = $asset['assetPrice'];
+            $item = $asset['assetName'];
+            // $amount = 30.00;
+            $merchant_id = "1222729";
+            $order_id = uniqid();
+            $merchant_secret = "MjczNjU0OTYzMzM3NDA3NzYzMjczNzEyMjI2MjM4MTQ3MjE2OTkxMg==";
+            $currency = "LKR";
 
-        //more information
-        $address = $userBillingInfo['streetLine1'];
-        $city = $userBillingInfo['city'];
-        $country = $userBillingInfo['country'];
-        $firstName = $userDetails['firstName'];
-        $lastName = $userDetails['lastName'];
-        $email = $userDetails['email'];
+            //more information
+            $address = $userBillingInfo['streetLine1'];
+            $city = $userBillingInfo['city'];
+            $country = $userBillingInfo['country'];
+            $firstName = $userDetails['firstName'];
+            $lastName = $userDetails['lastName'];
+            $email = $userDetails['email'];
 
 
-        $hash = strtoupper(
-            md5(
-                $merchant_id .
-                    $order_id .
-                    number_format($amount, 2, '.', '') .
-                    $currency .
-                    strtoupper(md5($merchant_secret))
-            )
-        );
+            $hash = strtoupper(
+                md5(
+                    $merchant_id .
+                        $order_id .
+                        number_format($amount, 2, '.', '') .
+                        $currency .
+                        strtoupper(md5($merchant_secret))
+                )
+            );
 
-        $array = [];
+            $array = [];
 
-        $array['amount'] = $amount;
-        $array['item'] = $item;
-        $array['merchant_id'] = $merchant_id;
-        $array['order_id'] = $order_id;
-        $array['currency'] = $currency;
-        $array['hash'] = $hash;
+            $array['amount'] = $amount;
+            $array['item'] = $item;
+            $array['merchant_id'] = $merchant_id;
+            $array['order_id'] = $order_id;
+            $array['currency'] = $currency;
+            $array['hash'] = $hash;
 
-        $array['address'] = $address;
-        $array['city'] = $city;
-        $array['country'] = $country;
-        $array['firstName'] = $firstName;
-        $array['lastName'] = $lastName;
-        $array['email'] = $email;
+            $array['address'] = $address;
+            $array['city'] = $city;
+            $array['country'] = $country;
+            $array['firstName'] = $firstName;
+            $array['lastName'] = $lastName;
+            $array['email'] = $email;
 
-        $jsonObj = json_encode($array);
+            $jsonObj = json_encode($array);
 
-        echo $jsonObj;
+            echo $jsonObj;
+        }
     }
 
     function purchaseSuccessful()
@@ -264,12 +268,15 @@ class Asset extends Controller
 
     function AddToCart()
     {
-        $this->model->AddtoCart($_GET['id'], $_SESSION['id']);
 
-        $query = parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
-        parse_str($query, $result);
+        if ($_POST['add_to_cart'] == true) {
 
-        header('Location:/indieabode/asset?' . http_build_query($result));
+            $assetID = $_POST['assetID'];
+
+            $this->model->AddtoCart($assetID, $_SESSION['id']);
+
+            echo "1";
+        }
     }
 
     function thankyou()
@@ -289,6 +296,39 @@ class Asset extends Controller
             $gamerID = $_SESSION['id'];
 
             $this->model->reportSubmit($reason, $description, $gamerID, $type);
+        }
+    }
+
+    function downloadAsset()
+    {
+        $assetFileName = $this->model->downloadAssetFile($_GET['id']);
+
+        $this->model->updateAssetDownloadStat($_GET['id'], date("Y-m-d"));
+
+        $this->model->updateAssetDownloads($_GET['id']);
+
+        $assetFilePath = 'public/uploads/assets/file/';
+
+        $downloadPath = $assetFilePath . $assetFileName;
+
+        header('Cache-Control: public');
+        header('Content-Description: File Transfer');
+        header('Content-Type: application/zip');
+        header("Content-Transfer-Encoding: utf-8");
+        header("Content-Disposition: attachment; filename=$assetFileName");
+        readfile($downloadPath);
+    }
+
+    function addtoLibrary()
+    {
+        if ($_POST['add_to_library'] == true) {
+            $assetID = $_POST['assetID'];
+
+            $developerID = $_SESSION['id'];
+
+            $this->model->AddtoLibrary($assetID, $developerID);
+
+            echo "1";
         }
     }
 }

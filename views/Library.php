@@ -29,81 +29,105 @@
     <?php if (isset($_SESSION['logged']) && ($_SESSION['userRole'] == 'game developer' || $_SESSION['userRole'] == 'asset creator')) { ?>
         <div class="container" id="card-container">
 
-            <?php foreach ($this->myAssets as $myAsset) { ?>
-                <div class="card">
-                    <div class="card-image game"> <img src="/indieabode/public/uploads/assets/cover/<?= $myAsset['assetCoverImg'] ?>" alt="">
+            <?php if (!empty($this->myAssets)) { ?>
+                <?php foreach ($this->myAssets as $myAsset) { ?>
+                    <div class="card">
+                        <div class="card-image game"> <img src="/indieabode/public/uploads/assets/cover/<?= $myAsset['assetCoverImg'] ?>" alt="">
 
-                        <div class="asset-type"> <?= $myAsset['assetType']; ?> </div>
-                    </div>
-                    <div class="library-container">
-                        <div class="library-left">
-                            <div class="game-intro">
-                                <h3><?= $myAsset['assetName']; ?></h3>
-                            </div>
-                            <div class="date">Added on <?= $myAsset['createdAt']; ?></div>
+                            <div class="asset-type"> <?= $myAsset['assetType']; ?> </div>
                         </div>
-                        <div class="library-right">
-                            <div class="dropdown">
-                                <button class="dropbtn"><i class="fa fa-angle-down"></i></button>
-                                <div class="dropdown-content">
-                                    <div class="options">
-                                        <a href="/indieabode/library/downloadAsset?id=<?= $myAsset['assetID']; ?>">Download</a>
-                                    </div>
-                                    <div class="options">
-                                        <a href="/indieabode/asset?id=<?= $myAsset['assetID']; ?>">Go to Store Page</a>
-                                    </div>
-                                    <div class="options">
-                                        <a href="/indieabode/asset/reviews?id=<?= $myAsset['assetID']; ?>">View Reviews</a>
-                                    </div>
-                                    <div class="options">
-                                        <a href="#">Hide Asset</a>
-                                    </div>
+                        <div class="library-container">
+                            <div class="library-left">
+                                <div class="game-intro">
+                                    <h3><?= $myAsset['assetName']; ?></h3>
+                                </div>
+                                <div class="date">Added on <?= $myAsset['createdAt']; ?></div>
+                            </div>
+                            <div class="library-right">
+                                <div class="dropdown">
+                                    <button class="dropbtn"><i class="fa fa-angle-down"></i></button>
+                                    <div class="dropdown-content">
+                                        <a href="/indieabode/library/downloadAsset?id=<?= $myAsset['assetID']; ?>">
+                                            <div class="options">
+                                                Download
+                                            </div>
+                                        </a>
+                                        <a href="/indieabode/asset?id=<?= $myAsset['assetID']; ?>">
+                                            <div class="options">
+                                                Go to Store Page
+                                            </div>
+                                        </a>
+                                        <a href="/indieabode/asset/reviews?id=<?= $myAsset['assetID']; ?>">
+                                            <div class="options">
+                                                View Reviews
+                                            </div>
+                                        </a>
 
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                <?php } ?>
+            <?php } else { ?>
+                <div class="empty-box">
+                    <div class="empty-icon"><img src="<?php echo BASE_URL; ?>public/images/empty/empty-library.png" alt=""></div>
+                    <div class="empty-text">Your Library is Empty</div>
+                    <div class="empty-link"><a href="<?php echo BASE_URL; ?>assets">Browse for more assets</a></div>
                 </div>
             <?php } ?>
+
 
         </div>
     <?php } else if (isset($_SESSION['logged']) && $_SESSION['userRole'] == 'gamer') { ?>
         <div class="container" id="card-container">
 
-            <?php foreach ($this->myGames as $myGame) { ?>
-                <div class="card">
-                    <div class="card-image game"> <img src="/indieabode/public/uploads/games/cover/<?= $myGame['gameCoverImg'] ?>" alt="">
-                    </div>
-                    <div class="library-container">
-                        <div class="library-left">
-                            <div class="game-intro">
-                                <h3><?= $myGame['gameName']; ?></h3>
-                            </div>
-                            <div class="date">Added on <?= $myGame['createdAt']; ?></div>
+            <?php if (!empty($this->myGames)) { ?>
+                <?php foreach ($this->myGames as $myGame) { ?>
+                    <div class="card">
+                        <div class="card-image game"> <img src="/indieabode/public/uploads/games/cover/<?= $myGame['gameCoverImg'] ?>" alt="">
                         </div>
-                        <div class="library-right">
-                            <div class="dropdown">
-                                <button class="dropbtn"><i class="fa fa-angle-down"></i></button>
-                                <div class="dropdown-content">
-                                    <div class="options">
-                                        <a href="/indieabode/library/downloadGame?id=<?= $myGame['gameID']; ?>">Download</a>
-                                    </div>
-                                    <div class="options">
-                                        <a href="/indieabode/game?id=<?= $myGame['gameID']; ?>">Go to Store Page</a>
-                                    </div>
-                                    <div class="options">
-                                        <a href="/indieabode/game/reviews?id=<?= $myGame['gameID']; ?>">View Reviews</a>
-                                    </div>
-                                    <div class="options">
-                                        <a href="#">Hide Game</a>
-                                    </div>
+                        <div class="library-container">
+                            <div class="library-left">
+                                <div class="game-intro">
+                                    <h3><?= $myGame['gameName']; ?></h3>
+                                </div>
+                                <div class="date">Added on <?= $myGame['createdAt']; ?></div>
+                            </div>
+                            <div class="library-right">
+                                <div class="dropdown">
+                                    <button class="dropbtn"><i class="fa fa-angle-down"></i></button>
+                                    <div class="dropdown-content">
+                                        <a href="/indieabode/library/downloadGame?id=<?= $myGame['gameID']; ?>">
+                                            <div class="options">
+                                                Download
+                                            </div>
+                                        </a>
+                                        <a href="/indieabode/game?id=<?= $myGame['gameID']; ?>">
+                                            <div class="options">
+                                                Go to Store Page
+                                            </div>
+                                        </a>
+                                        <a href="/indieabode/game/reviews?id=<?= $myGame['gameID']; ?>">
+                                            <div class="options">
+                                                View Reviews
+                                            </div>
+                                        </a>
 
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                <?php } ?>
+            <?php } else { ?>
+                <div class="empty-box">
+                    <div class="empty-icon"><img src="<?php echo BASE_URL; ?>public/images/empty/empty-library.png" alt=""></div>
+                    <div class="empty-text">Your Library is Empty</div>
+                    <div class="empty-link"><a href="<?php echo BASE_URL; ?>games">Browse for more games</a></div>
                 </div>
             <?php } ?>
+
 
         </div>
     <?php } ?>

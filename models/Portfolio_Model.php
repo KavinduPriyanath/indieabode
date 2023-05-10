@@ -63,6 +63,47 @@ class Portfolio_Model extends Model
         return $stmt->fetchAll();
     }
 
+    //For showing the assets of asset creator that he has published to the public
+    function GetCreatorAssets($username)
+    {
+
+        $sql = "SELECT freeasset.assetID, freeasset.assetName, freeasset.assetPrice, freeasset.assetTagline,
+                freeasset.assetCoverImg, freeasset.assetVisibility, freeasset.assetClassification FROM freeasset 
+                INNER JOIN gamer ON freeasset.assetCreatorID=gamer.gamerID 
+                WHERE gamer.username='$username' AND freeasset.assetVisibility = 'public'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+
+    //For showing the games of game publisher that he has published to the public
+    function GetPublisherGames($username)
+    {
+        $IDsql = "SELECT * FROM gamer WHERE username='$username'";
+
+        $IDstmt = $this->db->prepare($IDsql);
+
+        $IDstmt->execute();
+
+        $publisher = $IDstmt->fetch(PDO::FETCH_ASSOC);
+
+        $publisherID = $publisher['gamerID'];
+
+        $sql = "SELECT freegame.gameID, freegame.gameName, freegame.gamePrice, freegame.gameTagline,
+                freegame.gameCoverImg, freegame.gameVisibility, freegame.gameClassification, gamer.username FROM freegame 
+                INNER JOIN gamer ON gamer.gamerID=freegame.gameDeveloperID
+                WHERE freegame.gamePublisherID='$publisherID' AND freegame.gameVisibility = 'public'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+
     function FollowUser($follower, $followingUser)
     {
 

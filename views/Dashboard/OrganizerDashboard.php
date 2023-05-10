@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/thinline.css" />
+
     <title>Indieabode</title>
 
     <style>
@@ -51,6 +54,10 @@
                             <div class="game-name"><?= $jam['jamTitle'] ?></div>
                             <div class="game-stat-tabs">
                                 <a href="/indieabode/dashboard/edit?id=<?= $jam['gameJamID']; ?>">Edit</a>
+                                <?php if($jam['joinedCount']  <= 0){ ?>
+                                    <a class="delete-jam-btn" data-jam-id="<?= $jam['gameJamID'] ?>" data-jam-name="<?= $jam['jamTitle'] ?>">Delete</a>
+                                <?php } ?>
+                                
                             </div>
                         </div>
                     </div>
@@ -65,7 +72,7 @@
                             <div class="label">submissions</div>
                         </div>
                         <div class="ratings">
-                            <div class="count">0</div>
+                            <div class="count"><?= $jam['ratings']; ?></div>
                             <div class="label">ratings</div>
                         </div>
                     </div>
@@ -86,6 +93,53 @@
     ?>
 
     <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
+
+    
+
+    <!-- <script>
+        $(document).ready(function() {
+            $('.delete-jam').click(function() {
+                let message = "Are you sure you want to delete <?= $jam['jamTitle'] ?>?";
+                if (confirm(message)) {
+                    let gameJamID = <?= $jam['gameJamID'] ?>;
+                    $.ajax({
+                        url: "/indieabode/dashboard/deleteJam",
+                        method: "POST",
+                        data: { gameJamID: gameJamID },
+                        success: function(response) {
+                            window.location.href = "/indieabode/dashboard/";
+                        }
+                    })
+                } else {
+                    // Do nothing
+                }
+            });
+        });
+    </script> -->
+
+    <script>
+        $(document).ready(function() {
+            $('.delete-jam-btn').click(function() {
+                let gameJamName = $(this).data('jam-name');
+                let message = "Are you sure you want to delete '" + gameJamName + "' game jam?";
+                if (confirm(message)) {
+                    let gameJamID = $(this).data('jam-id');
+                    $.ajax({
+                        url: "/indieabode/dashboard/deleteJam",
+                        method: "POST",
+                        data: { gameJamID: gameJamID },
+                        success: function(response) {
+                            window.location.href = "/indieabode/dashboard/";
+                        }
+                    })
+                } else {
+                    // Do nothing
+                }
+            });
+        });          
+    </script>
+
+    
 
 </body>
 

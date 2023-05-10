@@ -96,7 +96,7 @@
                         <h3><?= $game['gameName'] ?></h3>
                         <p>Free</p>
                     </div>
-                    <div class="tagline"><?= $game['gameTagline'] ?></div>
+                    <div class="tagline modernWay"><?= $game['gameTagline'] ?></div>
                 </div>
             </a>
         <?php } ?>
@@ -132,7 +132,7 @@
                         <h3><?= $game['gameName'] ?></h3>
                         <p>Free</p>
                     </div>
-                    <div class="tagline"><?= $game['gameTagline'] ?></div>
+                    <div class="tagline modernWay"><?= $game['gameTagline'] ?></div>
                 </div>
             </a>
         <?php } ?>
@@ -168,7 +168,7 @@
                         <h3><?= $game['gameName'] ?></h3>
                         <p>Free</p>
                     </div>
-                    <div class="tagline"><?= $game['gameTagline'] ?></div>
+                    <div class="tagline modernWay"><?= $game['gameTagline'] ?></div>
                 </div>
             </a>
         <?php } ?>
@@ -204,7 +204,7 @@
                         <h3><?= $game['gameName'] ?></h3>
                         <p>Free</p>
                     </div>
-                    <div class="tagline"><?= $game['gameTagline'] ?></div>
+                    <div class="tagline modernWay"><?= $game['gameTagline'] ?></div>
                 </div>
             </a>
         <?php } ?>
@@ -241,7 +241,7 @@
                         <h3><?= $game['gameName'] ?></h3>
                         <p>Free</p>
                     </div>
-                    <div class="tagline"><?= $game['gameTagline'] ?></div>
+                    <div class="tagline modernWay"><?= $game['gameTagline'] ?></div>
                 </div>
             </a>
         <?php } ?>

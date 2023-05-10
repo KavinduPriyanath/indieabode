@@ -23,7 +23,7 @@
 
     <div class="support-cards">
         <div class="first-three">
-            <a href="">
+            <a href="/indieabode/support_center/general?page=about">
                 <div class="card">
                     <img src="/indieabode/public/images/support_center/general.png" alt="" />
                     <div class="card-topic">General Info</div>
@@ -33,7 +33,7 @@
                 </div>
             </a>
 
-            <a href="/indieabode/legal/">
+            <a href="/indieabode/legal/privacy_policy">
                 <div class="card">
                     <img src="/indieabode/public/images/support_center/legal.png" alt="" />
                     <div class="card-topic">Legal Policies</div>
@@ -43,7 +43,7 @@
                 </div>
             </a>
 
-            <a href="">
+            <a href="/indieabode/support_center/game_issues">
                 <div class="card">
                     <img src="/indieabode/public/images/support_center/technical-issues.png" alt="" />
                     <div class="card-topic">Game Technical Issues</div>
@@ -88,9 +88,6 @@
         </div>
     </div>
 
-    <div class="bottom-topic">
-        <h2>Popular Support Topics</h2>
-    </div>
 
     <?php
     include 'includes/footer.php';

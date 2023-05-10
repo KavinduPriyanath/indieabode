@@ -262,3 +262,22 @@
   color: rgb(56, 80, 107);
 }
 
+.bottom-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 155px;
+  transition: margin 0.3s ease;
+}
+
+.bottom-container a {
+  text-decoration: none;
+}
+
+#more-heading {
+  margin: 10px 0px 15px 165px;
+}
+
+.more {
+  margin-bottom: 40px;
+}
+

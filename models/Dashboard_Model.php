@@ -185,6 +185,36 @@ class Dashboard_Model extends Model
         $stmt->execute();
     }
 
+    function GameNameAvailabilityCheck($gameName, $userID, $gameID)
+    {
+
+        $sql = "SELECT * FROM freegame WHERE gameName='$gameName' AND gameDeveloperID='$userID' AND gameID !='$gameID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $game = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (empty($game)) {
+            return "true";
+        } else {
+            return "false";
+        }
+    }
+
+    function CheckGameNameWholeSite($gameName, $userID)
+    {
+
+        $Namesql = "SELECT * FROM freegame WHERE gameName='$gameName' AND NOT gameDeveloperID='$userID'";
+
+        $Namestmt = $this->db->prepare($Namesql);
+
+        $Namestmt->execute();
+
+        return $Namestmt->fetch(PDO::FETCH_ASSOC);
+    }
+
     function ThisGameDevlogs($gameID)
     {
 
@@ -972,6 +1002,36 @@ class Dashboard_Model extends Model
         return $stmt->fetchAll();
     }
 
+    function AssetNameAvailabilityCheck($assetName, $userID, $assetID)
+    {
+
+        $sql = "SELECT * FROM freeasset WHERE assetName='$assetName' AND assetCreatorID='$userID' AND NOT assetID='$assetID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $game = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (empty($game)) {
+            return "true";
+        } else {
+            return "false";
+        }
+    }
+
+    function CheckAssetNameWholeSite($assetName, $userID)
+    {
+
+        $Namesql = "SELECT * FROM freeasset WHERE assetName='$assetName' AND NOT assetCreatorID='$userID'";
+
+        $Namestmt = $this->db->prepare($Namesql);
+
+        $Namestmt->execute();
+
+        return $Namestmt->fetch(PDO::FETCH_ASSOC);
+    }
+
     //GameJam Organizer Queries
     //GameJam Organizer Queries
     //GameJam Organizer Queries
@@ -1116,5 +1176,14 @@ class Dashboard_Model extends Model
         $stmt->execute();
 
         return $stmt->fetchAll();
+    }
+
+    function deleteJam($gameJamID)
+    {
+        $sql = "DELETE FROM gamejam WHERE gameJamID='$gameJamID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
     }
 }

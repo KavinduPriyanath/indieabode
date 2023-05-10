@@ -34,7 +34,9 @@
             <a href="/indieabode/dashboard/publishers?id=<?= $this->game['gameID']; ?>">Publishers</a>
             <a href="/indieabode/dashboard/gamecrowdfunds?id=<?= $this->game['gameID']; ?>">Crowdfundings</a>
             <a href="/indieabode/dashboard/metadata?id=<?= $this->game['gameID']; ?>">Metadata</a>
-            <a href="/indieabode/dashboard/gamegiveaways?id=<?= $this->game['gameID']; ?>">Giveaways</a>
+            <?php if ($this->game['gamePrice'] != "0") { ?>
+                <a href="/indieabode/dashboard/gamegiveaways?id=<?= $this->game['gameID']; ?>">Giveaways</a>
+            <?php } ?>
 
         </div>
         <div class="content-row">
@@ -47,12 +49,13 @@
                             <div class="upload-row">
                                 <div class="upload-col-left" id="gig-left">
                                     <div class="gig-title">
-                                        <label id="gig-title" for="gig-title">Gig Title</label><br />
-                                        <input type="text" name="gig-title" id="gig-title" value="<?= $this->gig['gigName'] ?>" /><br /><br />
+                                        <label for="gig-title">Gig Title</label><br />
+                                        <input type="text" name="gig-title" id="gig-title" value="<?= $this->gig['gigName'] ?>" /><br />
+                                        <div class="error-msg" id="gigTitleCheck"></div><br />
                                     </div>
 
                                     <div class="game">
-                                        <label id="game-name" for="game-name">Game</label><br />
+                                        <label for="game-name">Game</label><br />
                                         <p>Choose the game that you are finding a publisher for</p>
                                         <select id="game-name" name="game-name" disabled>
 
@@ -62,9 +65,11 @@
                                     </div>
 
                                     <div class="tagline">
-                                        <label id="gig-tagline" for="gig-tagline">Tagline</label><br />
+                                        <label for="gig-tagline">Tagline</label><br />
                                         <p>Shown when we link your gig to other pages</p>
-                                        <input type="text" name="gig-tagline" id="gig-tagline" value="<?= $this->gig['gigTagline'] ?>" placeholder="Short Description about your game" max="250" /><br /><br />
+                                        <input type="text" name="gig-tagline" id="gig-tagline" value="<?= $this->gig['gigTagline'] ?>" placeholder="Short Description about your game" max="250" /><br />
+                                        <div class=" error-msg" id="gigTaglineCheck">
+                                        </div><br />
                                     </div>
 
                                     <!--classification details-->
@@ -147,12 +152,13 @@
                                     </div>
 
                                     <div class="expected-cost">
-                                        <label id="expected-cost" for="expected-cost">Expected Cost</label><br />
+                                        <label for="expected-cost">Expected Cost</label><br />
                                         <p id="p">
                                             The assumed amount needed for the development of the game
                                         </p>
                                         <input type="text" id="expected-cost" name="expected-cost" value="<?= $this->gig['expectedCost'] ?>" />
-                                        <br /><br />
+                                        <br />
+                                        <div class="error-msg" id="costCheck"></div><br />
                                     </div>
 
                                     <div class="gig-visibility">
@@ -222,7 +228,7 @@
                                 </div>
                             </div>
                             <br /><br />
-                            <button type="submit" class="submit-btn" name="game-submit">
+                            <button type="submit" class="submit-btn" id="update-btn" name="game-submit">
                                 Save & View Page
                             </button>
 
@@ -385,6 +391,117 @@
         });
     </script>
 
+    <script>
+        $(document).ready(function() {
+
+            let gigTitleOkay = true;
+            let gigTaglineOkay = true;
+            let expectedCostOkay = true;
+
+            $("#gig-title").keyup(function() {
+                gigTitleAvailability();
+            });
+
+            $("#gig-tagline").keyup(function() {
+                gigTaglineAvailability();
+            });
+
+            $("#expected-cost").on("input", function(e) {
+                gigCostValidation();
+            });
+
+            function gigTitleAvailability() {
+                let gigTitle = $("#gig-title").val();
+
+                if (gigTitle.length == 0) {
+                    $("#gigTitleCheck").show();
+                    $("#gigTitleCheck").text("Gig Title Cannot be empty");
+                    gigTitleOkay = false;
+                } else if (gigTitle.length > 0 && gigTitle.length < 29) {
+                    $("#gigTitleCheck").hide();
+                    gigTitleOkay = true;
+                } else if (gigTitle.length > 29) {
+                    $("#gigTitleCheck").show();
+                    $("#gigTitleCheck").text("Gig Title Cannot exceed 29 letters");
+                    gigTitleOkay = false;
+                }
+            }
+
+            function gigTaglineAvailability() {
+                let gigTagline = $("#gig-tagline").val();
+
+                if (gigTagline.length < 40) {
+                    $("#gigTaglineCheck").show();
+                    $("#gigTaglineCheck").text("Must use more than 40 characters");
+                    gigTaglineOkay = false;
+                } else if (gigTagline.length > 40 && gigTagline.length < 250) {
+                    $("#gigTaglineCheck").hide();
+                    gigTaglineOkay = true;
+                } else {
+                    $("#gigTaglineCheck").show();
+                    $("#gigTaglineCheck").text("Cannot exceed 250 characters");
+                    gigTaglineOkay = false;
+                }
+            }
+
+            function gigCostValidation() {
+                var regex = /^\d*[.]?\d*$/;
+                let inputtedCost = $("#expected-cost").val();
+
+                if (regex.test(inputtedCost)) {
+                    if (parseInt(inputtedCost) < 100) {
+                        $("#costCheck").show();
+                        $("#costCheck").text(
+                            "Only allowed to create gigs for orders greater than $100"
+                        );
+                        expectedCostOkay = false;
+                    } else if (parseInt(inputtedCost) > 10000) {
+                        $("#costCheck").show();
+                        $("#costCheck").text(
+                            "Only allowed to create gigs for orders less than $10000"
+                        );
+                        expectedCostOkay = false;
+                    } else {
+                        $("#costCheck").hide();
+                        expectedCostOkay = true;
+                    }
+                } else if (inputtedCost.length == 0) {
+                    $("#costCheck").show();
+                    $("#costCheck").text("Cannot be empty");
+                    expectedCostOkay = false;
+                } else {
+                    $("#costCheck").show();
+                    $("#costCheck").text("Only numeric values are allowed");
+                    expectedCostOkay = false;
+                }
+            }
+
+            $("#update-btn").click(function(e) {
+                let formSubmit = false;
+
+                gigTitleAvailability();
+                gigTaglineAvailability();
+                gigCostValidation();
+
+                if (
+                    gigTitleOkay == false ||
+                    gigTaglineOkay == false ||
+                    expectedCostOkay == false
+                ) {
+                    formSubmit = false;
+                } else {
+                    formSubmit = true;
+                }
+
+                console.log(gigTitleOkay + " " + gigTaglineOkay + " " + expectedCostOkay);
+
+                if (formSubmit == false) {
+                    e.preventDefault();
+                }
+            });
+
+        });
+    </script>
 
 </body>
 

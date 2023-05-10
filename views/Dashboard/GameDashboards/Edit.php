@@ -35,7 +35,9 @@
             <a href="/indieabode/dashboard/publishers?id=<?= $this->game['gameID']; ?>">Publishers</a>
             <a href="/indieabode/dashboard/gamecrowdfunds?id=<?= $this->game['gameID']; ?>">Crowdfundings</a>
             <a href="/indieabode/dashboard/metadata?id=<?= $this->game['gameID']; ?>">Metadata</a>
-            <a href="/indieabode/dashboard/gamegiveaways?id=<?= $this->game['gameID']; ?>">Giveaways</a>
+            <?php if ($this->game['gamePrice'] != "0") { ?>
+                <a href="/indieabode/dashboard/gamegiveaways?id=<?= $this->game['gameID']; ?>">Giveaways</a>
+            <?php } ?>
 
         </div>
 
@@ -51,14 +53,17 @@
                                 <div class="upload-col-left">
 
                                     <div class="title-div">
-                                        <label id="game-title" for="game-title">Title</label><br>
-                                        <input type="text" name="game-title" id="game-title" value="<?= $this->game['gameName'] ?>" /><br><br>
+                                        <label for="game-title">Title</label><br>
+                                        <input type="text" name="game-title" id="game-title-edit" value="<?= $this->game['gameName'] ?>" />
+                                        <input type="hidden" name="gameID" id="gameID" value="<?= $this->game['gameID'] ?>"><br>
+                                        <div class="error-msg" id="gameNameCheck"></div><br>
                                     </div>
 
                                     <div class="tagline-div">
-                                        <label id="game-tagline" for="game-tagline">Tagline</label><br>
+                                        <label for="game-tagline">Tagline</label><br>
                                         <p>Shown when we link your game to other pages</p>
-                                        <input type="text" name="game-tagline" id="game-tagline" minlength="40" maxlength="200" value="<?= $this->game['gameTagline'] ?>" placeholder="Short Description about your game" /><br><br>
+                                        <input type="text" name="game-tagline" id="game-tagline" minlength="40" maxlength="200" value="<?= $this->game['gameTagline'] ?>" placeholder="Short Description about your game" /><br>
+                                        <div class="error-msg" id="gameTaglineCheck"></div><br>
                                     </div>
 
                                     <!--classification details-->
@@ -116,6 +121,7 @@
                                                 <label for="ios">iOS</label>
                                             </div>
                                         </div>
+                                        <div class="error-msg" id="platformCheck"></div>
                                         <br>
                                     </div>
 
@@ -251,6 +257,7 @@
                                             <?php } ?>
 
                                         </div>
+                                        <div class="error-msg" id="featureCheck"></div>
                                         <br>
                                     </div>
 
@@ -334,7 +341,7 @@
 
                                     <div class="coverImg-div">
                                         <label id="game-upload-cover-img" for="game-upload-cover-img">Upload Cover Image</label><br>
-                                        <p>Used when we link your game with other parts of the site</p>
+                                        <p>Used when we link your game with other parts <br> of the site</p>
                                         <!-- <input type="file" id="game-upload-cover-img" name="game-upload-cover-img" accept=".jpg,.jpeg,.png"><br><br> -->
 
                                         <div class="image-upload-box">
@@ -364,14 +371,13 @@
                                             <div class="progress-bar">
                                                 <progress value="0" max="100"></progress>
                                             </div>
-
                                         </div>
                                         <br>
                                     </div>
 
                                     <div class="screenshots-div">
                                         <label id="game-screenshots" for="game-screenshots">Screenshots</label><br>
-                                        <p>These will appear on your game's page. Optional but highly recommended. Upload 3 to 5 for best results</p><br>
+                                        <p>These will appear on your game's page. Optional <br> but highly recommended. Upload 3 to 5 for best <br> results</p><br>
                                         <!-- <input type="file" id="game-screenshots" name="game-screenshots[]" accept=".jpg,.jpeg,.png" multiple="multiple"><br><br> -->
 
                                         <!-- <input type="file" name="fef" id="fef" value="pic.jpg"> -->
@@ -393,7 +399,7 @@
 
 
                             </div>
-                            <button type="submit" class="submit-btn" name="game-submit">Save & View Page</button>
+                            <button type="submit" class="update-btn" id="update-btn" name="game-submit">Save & View Page</button>
                         </form>
                     </div>
 
@@ -418,6 +424,8 @@
     <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
 
     <script src=" <?php echo BASE_URL; ?>public/js/richtext.js"> </script>
+
+    <script src=" <?php echo BASE_URL; ?>public/js/gameupload.js"></script>
 
     <script>
         const ul = document.querySelector("ul"),
@@ -725,6 +733,143 @@
     </script>
 
 
+    <script>
+        $(document).ready(function() {
+
+            //A validation only for game edit form
+            let editGameNameOkay = true;
+            let platformOkay = true;
+            let featuresOkay = true;
+
+            //Check for the availability of game name the developer chose
+            $("#game-title-edit").keyup(function() {
+                editGameNameAvailability();
+            });
+
+            $("#game-tagline").keyup(function() {
+                taglineValidity();
+            });
+
+            $(".platform-checkboxes").click(function() {
+                if ($("[name='platform[]']:checked").length != 0) {
+                    $("#platformCheck").hide();
+                    platformOkay = true;
+                }
+            });
+
+
+            $(".feature-checkboxes").click(function() {
+                if ($("[name='game-features[]']:checked").length != 0) {
+                    $("#featureCheck").hide();
+                    featuresOkay = true;
+                }
+            });
+
+            function featureSelectorCheck() {
+                let featureSelectorCount = $("[name='game-features[]']:checked").length;
+
+                if (featureSelectorCount == 0) {
+                    $("#featureCheck").show();
+                    $("#featureCheck").text("Must select atleast one feature");
+                    featuresOkay = false;
+                }
+            }
+
+            function platformSelectorCheck() {
+                let checkedPlatformCount = $("[name='platform[]']:checked").length;
+
+                if (checkedPlatformCount == 0) {
+                    $("#platformCheck").show();
+                    $("#platformCheck").text("Must select atleast one platform");
+                    platformOkay = false;
+                }
+            }
+
+            function editGameNameAvailability() {
+                let editGameName = $("#game-title-edit").val();
+                let gameID = $("#gameID").val();
+                let thisGameName = "<?= $this->game['gameName'] ?>";
+
+                var data = {
+                    gameName: editGameName,
+                    gameID: gameID,
+                };
+
+                $.ajax({
+                    type: "POST",
+                    url: "/indieabode/dashboard/editGameNameAvailability",
+                    data: data,
+                    success: function(response) {
+                        if (editGameName.length == 0) {
+                            $("#gameNameCheck").show();
+                            $("#gameNameCheck").text("Game Name Cannot be empty");
+                            editGameNameOkay = false;
+                        } else if (editGameName == thisGameName) {
+                            $("#gameNameCheck").hide();
+                            editGameNameOkay = true;
+                        } else if (response == "available") {
+                            $("#gameNameCheck").hide();
+                            editGameNameOkay = true;
+                        } else if (response == "unavailable") {
+                            $("#gameNameCheck").show();
+                            $("#gameNameCheck").css("background-color", "rgb(225, 132, 132)");
+                            $("#gameNameCheck").text("You alreay have a game with this name");
+                            editGameNameOkay = false;
+                        } else if (response == "warning") {
+                            $("#gameNameCheck").show();
+                            $("#gameNameCheck").css("background-color", "#ffff80");
+                            $("#gameNameCheck").text(
+                                "Warning: Platform already has a game with this name"
+                            );
+                            editGameNameOkay = true;
+                        }
+                    },
+                });
+            }
+
+
+            function taglineValidity() {
+                let tagline = $("#game-tagline").val();
+
+                if (tagline.length < 40) {
+                    $("#gameTaglineCheck").show();
+                    $("#gameTaglineCheck").text("Must use more than 40 characters");
+                    taglineOkay = false;
+                } else if (tagline.length > 40 && tagline.length < 200) {
+                    $("#gameTaglineCheck").hide();
+                    taglineOkay = true;
+                } else {
+                    $("#gameTaglineCheck").show();
+                    $("#gameTaglineCheck").text("Cannot exceed 200 characters");
+                    taglineOkay = false;
+                }
+            }
+
+            $("#update-btn").click(function(e) {
+                let formSubmit = false;
+                editGameNameAvailability();
+                taglineValidity();
+                platformSelectorCheck();
+                featureSelectorCheck();
+
+                if (
+                    editGameNameOkay == false ||
+                    taglineOkay == false
+                ) {
+                    formSubmit = false;
+                } else {
+                    formSubmit = true;
+                }
+
+                if (formSubmit == false) {
+                    e.preventDefault();
+                }
+            });
+
+            //end of game edit form validation
+
+        });
+    </script>
 
 
 </body>

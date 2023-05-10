@@ -48,6 +48,12 @@ class Login extends Controller
                 header('location:/indieabode/home/developer');
             } else if ($user['userRole'] == "gamer") {
                 header('location:/indieabode/home');
+            } else if ($user['userRole'] == "gamejam organizer") {
+                header('location:/indieabode/home/organizer');
+            } else if ($user['userRole'] == "game publisher") {
+                header('location:/indieabode/home/publisher');
+            } else if ($user['userRole'] == "asset creator") {
+                header('location:/indieabode/home/creator');
             } else {
                 header('location:/indieabode/');
             }
@@ -126,6 +132,12 @@ class Login extends Controller
             $this->model->ActivateAccount($_SESSION['id']);
             if ($_SESSION['userRole'] == "game developer") {
                 header('location:/indieabode/home/developer');
+            } else if ($_SESSION['userRole'] == "gamejam organizer") {
+                header('location:/indieabode/home/organizer');
+            } else if ($_SESSION['userRole'] == "game publisher") {
+                header('location:/indieabode/home/publisher');
+            } else if ($_SESSION['userRole'] == "asset creator") {
+                header('location:/indieabode/home/creator');
             } else {
                 header('location:/indieabode/');
             }
@@ -156,4 +168,3 @@ class Login extends Controller
         }
     }
 }
-

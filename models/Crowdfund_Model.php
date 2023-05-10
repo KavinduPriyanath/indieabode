@@ -198,4 +198,21 @@ class Crowdfund_Model extends Model
 
         $stmt->execute();
     }
+
+    function RecommendedCrowdfunds($crowdfundID)
+    {
+
+        $sql = "SELECT crowdfund.crowdFundID, crowdfund.deadline, crowdfund.currentAmount, crowdfund.expectedAmount, crowdfund.crowdfundCoverImg, 
+                freegame.gameName, gamer.username FROM (crowdfund INNER JOIN freegame ON freegame.gameID=crowdfund.gameName)
+                INNER JOIN gamer ON gamer.gamerID=crowdfund.gameDeveloperName WHERE crowdfund.crowdFundID != '$crowdfundID' ORDER BY crowdfund.created_at DESC 
+                LIMIT 4";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $crowdfunds = $stmt->fetchAll();
+
+        return $crowdfunds;
+    }
 }

@@ -34,7 +34,9 @@
             <a href="/indieabode/dashboard/publishers?id=<?= $this->game['gameID']; ?>">Publishers</a>
             <a href="/indieabode/dashboard/gamecrowdfunds?id=<?= $this->game['gameID']; ?>">Crowdfundings</a>
             <a href="/indieabode/dashboard/metadata?id=<?= $this->game['gameID']; ?>">Metadata</a>
-            <a href="/indieabode/dashboard/gamegiveaways?id=<?= $this->game['gameID']; ?>">Giveaways</a>
+            <?php if ($this->game['gamePrice'] != "0") { ?>
+                <a href="/indieabode/dashboard/gamegiveaways?id=<?= $this->game['gameID']; ?>">Giveaways</a>
+            <?php } ?>
 
         </div>
         <div class="content-row">
@@ -50,13 +52,15 @@
                                         <div class="card-box">
 
                                             <label for="">Title</label><br>
-                                            <input type="text" name="title" value="<?= $this->devlog['name'] ?>"><br><br>
+                                            <input type="text" id="title" name="title" value="<?= $this->devlog['name'] ?>"><br>
+                                            <div class="error-msg" id="devlogTitleCheck"></div><br>
                                         </div>
 
                                         <div class="card-box">
                                             <label for="">Tagline</label>
                                             <p>One line summery of the devlog</p>
-                                            <input type="text" name="tagline" placeholder="tagline" value="<?= $this->devlog['Tagline'] ?>"><br><br>
+                                            <input type="text" name="tagline" placeholder="tagline" id="tagline" value="<?= $this->devlog['Tagline'] ?>"><br>
+                                            <div class="error-msg" id="devlogTaglineCheck"></div><br>
                                         </div>
 
 
@@ -228,6 +232,76 @@
             //fileName.textContent = uploadButton.files[0].name;
 
         }
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            let devlogTitleOkay = true;
+            let devlogTaglineOkay = true;
+
+            $("#title").keyup(function() {
+                devlogTitleAvailability();
+            });
+
+            $("#tagline").keyup(function() {
+                devlogTaglineAvailability();
+            });
+
+            function devlogTitleAvailability() {
+                let devlogTitle = $("#title").val();
+
+                if (devlogTitle.length == 0) {
+                    $("#devlogTitleCheck").show();
+                    $("#devlogTitleCheck").text("Devlog Title Cannot be empty");
+                    devlogTitleOkay = false;
+                } else if (devlogTitle.length > 0 && devlogTitle.length < 29) {
+                    $("#devlogTitleCheck").hide();
+                    devlogTitleOkay = true;
+                } else if (devlogTitle.length > 29) {
+                    $("#devlogTitleCheck").show();
+                    $("#devlogTitleCheck").text("Devlog Title Cannot exceed 29 letters");
+                    devlogTitleOkay = false;
+                }
+            }
+
+            function devlogTaglineAvailability() {
+                let devlogTagline = $("#tagline").val();
+
+                if (devlogTagline.length < 40) {
+                    $("#devlogTaglineCheck").show();
+                    $("#devlogTaglineCheck").text("Must use more than 40 characters");
+                    devlogTaglineOkay = false;
+                } else if (devlogTagline.length >= 40 && devlogTagline.length < 200) {
+                    $("#devlogTaglineCheck").hide();
+                    devlogTaglineOkay = true;
+                } else {
+                    $("#devlogTaglineCheck").show();
+                    $("#devlogTaglineCheck").text("Cannot exceed 200 characters");
+                    devlogTaglineOkay = false;
+                }
+            }
+
+            $("#devsubmit").click(function(e) {
+                let formSubmit = false;
+
+                devlogTitleAvailability();
+                devlogTaglineAvailability();
+
+                if (
+                    devlogTitleOkay == false ||
+                    devlogTaglineOkay == false
+                ) {
+                    formSubmit = false;
+                } else {
+                    formSubmit = true;
+                }
+
+                if (formSubmit == false) {
+                    e.preventDefault();
+                }
+            });
+
+        });
     </script>
 
 

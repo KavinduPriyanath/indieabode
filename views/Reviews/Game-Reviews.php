@@ -120,10 +120,10 @@
             </div>
             <div class="modal-body">
                 <p>Please describe what you liked or disliked about this game and whether you recommend it to others.</p>
-                <p>Please remember to be polite and follow the Rules and Guidelines</p>
+                <p>Please remember to be polite and follow the Rules and Guidelines.</p>
                 <div class="report-heading">
                     Choose a rating from 1 to 5
-
+                    <br>
                     <div class="stars">
                         <i class="fa fa-star unchecked submit_star" id="submit_star_1" data-rating="1"></i>
                         <i class="fa fa-star unchecked submit_star" id="submit_star_2" data-rating="2"></i>
@@ -137,14 +137,17 @@
 
                     <h3>Review Topic</h3>
                     <input type="text" name="topic" id="topic">
+                    <br> <br>
                     <h3>Your Review</h3>
                     <textarea name="review" id="review" cols="30" rows="7"></textarea>
 
-                    <input type="hidden" name="rating" id="ratingCount">
+                    <input type="hidden" name="rating" id="ratingCount"> <br>
 
-                    <h4>Do you recommend this game?</h4>
-                    <input type="radio" name="recommendation" id="Yes" value="Yes"> Yes
-                    <input type="radio" name="recommendation" id="No" value="No"> No
+                    <h4 id="recommend-head">Do you recommend this game?</h4>
+                    <div class="recommendations">
+                        <input type="radio" name="recommendation" id="Yes" value="Yes"> <label for="Yes">Yes</label><br>
+                        <input type="radio" name="recommendation" id="No" value="No"> <label for="No">No</label>
+                    </div>
                     <br />
                     <div class="modal-bottom">
                         <div class="modal-submit">

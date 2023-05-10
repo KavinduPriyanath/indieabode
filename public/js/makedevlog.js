@@ -34,12 +34,12 @@ $(document).ready(function () {
       $("#devlogTitleCheck").show();
       $("#devlogTitleCheck").text("Devlog Title Cannot be empty");
       devlogTitleOkay = false;
-    } else if (devlogTitle.length > 0 && devlogTitle.length < 29) {
+    } else if (devlogTitle.length > 0 && devlogTitle.length < 25) {
       $("#devlogTitleCheck").hide();
       devlogTitleOkay = true;
-    } else if (devlogTitle.length > 29) {
+    } else if (devlogTitle.length > 25) {
       $("#devlogTitleCheck").show();
-      $("#devlogTitleCheck").text("Devlog Title Cannot exceed 29 letters");
+      $("#devlogTitleCheck").text("Devlog Title Cannot exceed 25 letters");
       devlogTitleOkay = false;
     }
   }
@@ -51,12 +51,12 @@ $(document).ready(function () {
       $("#devlogTaglineCheck").show();
       $("#devlogTaglineCheck").text("Must use more than 40 characters");
       devlogTaglineOkay = false;
-    } else if (devlogTagline.length >= 40 && devlogTagline.length < 70) {
+    } else if (devlogTagline.length >= 40 && devlogTagline.length < 200) {
       $("#devlogTaglineCheck").hide();
       devlogTaglineOkay = true;
     } else {
       $("#devlogTaglineCheck").show();
-      $("#devlogTaglineCheck").text("Cannot exceed 70 characters");
+      $("#devlogTaglineCheck").text("Cannot exceed 200 characters");
       devlogTaglineOkay = false;
     }
   }

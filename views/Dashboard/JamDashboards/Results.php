@@ -48,6 +48,7 @@
                         <th id="game-name-table">Game Name</th>
                         <th id="username">Username</th>
                         <th id="full-name">Full Name</th>
+                        <th id="ratings">Ratings</th>
                     </tr>
                     <?php $rank = 0; ?>
                     <?php foreach ($this->jamResults as $result) { ?>
@@ -57,6 +58,7 @@
                             <td><?= $result['gameName'] ?></td>
                             <td><?= $result['username'] ?></td>
                             <td><?= $result['firstName'] . " " . $result['lastName'] ?></td>
+                            <td><?= $result['rating'] ?></td>
                         </tr>
                     <?php } ?>
                 </table>

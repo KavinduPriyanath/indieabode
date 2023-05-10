@@ -11,45 +11,58 @@ class Admin_assetD extends Controller
 
     function index()
     {
-        $top_assets= $this->model->TopAssets();
-        $this->view->top_assets = $top_assets;
+        // get data for the game db pie chart
+        $earlyAccessGame = $this->model->getGameTypeCount('early access');
+        $upcomingGame = $this->model->getGameTypeCount('Upcoming');
+        $releasedGame = $this->model->getGameTypeCount('Released');
 
-        $recent_activities= $this->model->recentActivities();
-        $this->view->recent_activities = $recent_activities;
+        $this->view->gameTypes = [];
+        $this->view->gameTypes[0] = $earlyAccessGame;
+        $this->view->gameTypes[1] = $upcomingGame;
+        $this->view->gameTypes[2] = $releasedGame;
 
-        // $this->view->userCount = $this->model->userCount();
+        //get data for the total transactions of game
+        $this->view->totalTxGames = $this->model->getTotalTxGame();
 
-        // $this->view->totalDownloads = $this->model->totalDownloads();
-
-        //print_r($_POST);
-        $downloadasset = $this->model->getData("downloadasset",30);
-        $downloadgame = $this->model->getData("downloadgame",30);
-
-        //var_dump($downloadgame);
-        
-
-        
-
-        $labels = [];
-        $downloadasset_data = [];
-        foreach($downloadasset as $row){
-            $labels[] = $row['date'];
-            $downloadasset_data[] = $row['count'];
+        //get data for the transaction graph
+        $gameTxSummary = $this->model->getTxSummary();
+        if ($gameTxSummary !== null) {
+            $this->view->txDates = $gameTxSummary['dates'];
+            $this->view->txTotals = $gameTxSummary['totals'];
+        } else {
+            // handling the error here, such as displaying an error message to admin
+            echo 'hriynnaaaa';
         }
 
-
-        $downloadgame_data = [];
-        foreach($downloadgame as $row){
-    
-            $downloadgame_data[] = $row['count'];
+        //get upload games details
+        $uploadGames = $this->model->getUploadGame();
+        if ($uploadGames !== null) {
+            $this->view->Dates = $uploadGames['dates'];
+            $this->view->Totals = $uploadGames['totals'];
+        } else {
+            // handling the error here, such as displaying an error message to admin
+            echo 'hriynnaaaa';
         }
 
-        
+        //get data of game purchasings
+        $this->view->gamePurchases = $this->model->getAllPayments();
 
-        $this->view->labels=$labels;
-        $this->view->downloadasset_data=$downloadasset_data;
-        $this->view->downloadgame_data=$downloadgame_data;
+        //get game revenues shares for each day
+        $totalRevenues = $this->model->getAllGameRevenues();
+        if ($totalRevenues !== null) {
+            $this->view->revenueDates = $totalRevenues['dates'];
+            $this->view->revenueTotals = $totalRevenues['totals'];
+        } else {
+            // handling the error here, such as displaying an error message to admin
+            echo 'hriynnaaaa';
+        }
 
-        $this->view->render('Admin/Admin_assetD');
+        //get total game revenue
+        $this->view->totalGameRevenue = $this->model->getTotalGameRevenue();
+
+        //game revenue all the details
+        $this->view->gameRevenues = $this->model->getGameRevenueShare();
+        $this->view->render('Admin/Admin_G');
+
     }
 }

@@ -9,9 +9,11 @@ class Assets_Model extends Model
     }
 
 
-    function showAllAssets($sort,$Sorder,)
+
+    function showAllAssets($min, $max)
     {
-        $stmt = $this->db->prepare("SELECT * FROM freeasset ORDER BY $sort $Sorder");
+        $stmt = $this->db->prepare("SELECT * FROM freeasset ORDER BY $sort $Sorder LIMIT $min, $max");
+
 
         $stmt->execute();
 
@@ -42,5 +44,23 @@ class Assets_Model extends Model
         $stmt->execute();
 
         return $stmt->fetchAll();
+    }
+
+    function totalAssetsPageCount($maxLimit)
+    {
+
+        $sql = "SELECT count(assetID) AS id FROM freeasset";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $assetsCount = $stmt->fetchAll();
+
+        $totalAssets = $assetsCount[0]['id'];
+
+        $totalPages = ceil($totalAssets / $maxLimit);
+
+        return $totalPages;
     }
 }

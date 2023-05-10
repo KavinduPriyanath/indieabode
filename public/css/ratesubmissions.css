@@ -250,3 +250,32 @@
     box-shadow: 0 1px 4px rgb(0 0 0 / 60%);
     display: none;
 }
+
+/* In Modal */
+.report-form h3{
+    margin-top: 8px;
+    margin-bottom: 4px;
+}
+
+.report-form textarea {
+    width: 100%;
+    margin: 6px 0px;
+    padding: 10px 16px;
+    border: 1px solid #6289AC;
+    border-radius: 4px;
+    background-color: rgba(116, 156, 185, .2);
+    outline: none;
+}
+
+#report-submit {
+    display: inline-block;
+    padding: 6px 9px;
+    background-color: rgb(68, 68, 222);
+    color: white;
+    font-size: 17px;
+    font-weight: 700;
+    border: none;
+    outline: none;
+    border-radius: 7px;
+    cursor: pointer;
+  }

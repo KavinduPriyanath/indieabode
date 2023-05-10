@@ -99,7 +99,9 @@
                     </h2>
                     <div class="profile-info">
                         <img src="/indieabode/public/images/games/profile.png" alt="" />
-                        <p><?= $this->assetCreator['username']; ?></p>
+                        <a href="/indieabode/portfolio?profile=<?= $this->assetCreator['username']; ?>">
+                            <p><?= $this->assetCreator['username']; ?></p>
+                        </a>
                     </div>
                     <div class="price-flex">
                         <div class="category"><?= $this->asset['assetType']; ?></div>
@@ -109,25 +111,34 @@
                             <h1><?= $this->assetPrice ?></h1>
                         <?php } ?>
                     </div>
-                    <div id="not-claimed">
+
+
+                    <div class="buy-btn" id="download-btn">Download</div>
+                    <div class="buy-btn" id="buy-btn">Buy Now</div>
+
+                    <div class="buy-btn" id="add-cart-btn">Add to Cart</div>
+                    <div class="buy-btn" id="view-cart-btn">View Cart</div>
+                    <div class="buy-btn" id="add-to-library">Add to Library</div>
+                    <div class="buy-btn" id="view-library">In Library</div>
+                    <!-- <div id="not-claimed">
                         <a href="/indieabode/asset/checkout?id=<?= $this->asset['assetID'] ?>">
                             <div class="buy-btn">Buy Now</div>
                         </a>
                         <a href="/indieabode/asset/AddToCart?id=<?= $this->asset['assetID'] ?>" id="cart-link">
                             <div class="buy-btn" id="cart-btn">Add to Cart</div>
                         </a>
-                    </div>
+                    </div> -->
 
-                    <div id="claimed">
+                    <!-- <div id="claimed">
                         <a href="/indieabode/library">
                             <div class="buy-btn">In Library</div>
                         </a>
-                    </div>
+                    </div> -->
 
                     <div class="details">
                         <div class="row">
                             <p class="title">Release Date</p>
-                            <p class="sub-title">5 Nov 2021</p>
+                            <p class="sub-title" id="release-date"></p>
                         </div>
                         <hr />
 
@@ -145,7 +156,7 @@
 
                         <div class="row">
                             <p class="title">Extension</p>
-                            <p class="sub-title">.<?= $this->asset['fileExtension']; ?></p>
+                            <p class="sub-title" id="file-extension"></p>
                         </div>
                         <hr />
 
@@ -191,7 +202,7 @@
                                 <h3><?= $popularAsset['assetName'] ?></h3>
                                 <p>Free</p>
                             </div>
-                            <div class="ptagline"><?= $popularAsset['assetTagline'] ?></div>
+                            <div class="ptagline modernWay"><?= $popularAsset['assetTagline'] ?></div>
                         </div>
                     </a>
                 <?php } ?>
@@ -286,7 +297,7 @@
 
 
 
-    <?php if ($this->hasClaimed) { ?>
+    <!-- <?php if ($this->hasClaimed) { ?>
         <script>
             document.getElementById('not-claimed').style.display = 'none';
             document.getElementById('claimed').style.display = 'block';
@@ -308,7 +319,7 @@
             document.getElementById('cart-btn').innerHTML = "Add to Cart";
             document.getElementById('cart-link').href = "/indieabode/asset/AddToCart?id=<?= $this->asset['assetID'] ?>";
         </script>
-    <?php } ?>
+    <?php } ?> -->
 
 
     <script>
@@ -342,6 +353,263 @@
 
             });
 
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+
+            const months = ["Jan", "Feb", "March", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+            let releaseDate = "<?= $this->asset['created_at'] ?>";
+
+            let year = releaseDate.substr(0, 4);
+            let month = releaseDate.slice(5, 7);
+            let day = releaseDate.slice(8, 10);
+            let monthName = months[parseInt(month) - 1];
+            let formattedReleaseDate = day + " " + monthName + " " + year;
+
+            $('#release-date').text(formattedReleaseDate);
+
+
+        });
+
+        //getting file extension
+        var filename = "<?= $this->asset['assetFile'] ?>";
+
+        var filetype = filename.split('.').pop();
+
+        $('#file-extension').text(filetype);
+
+
+        $(document).ready(function() {
+            //Manage the way buttons are shown for different users, and for those who havent logged in
+            <?php if (isset($_SESSION['logged'])) { ?>
+                <?php if (!$this->hasClaimed) { ?>
+                    <?php if ($this->asset['assetPrice'] == "0") { ?>
+                        $('#download-btn').show();
+                        $('#buy-btn').hide();
+                    <?php } else if ($this->asset['assetPrice'] != "0") { ?>
+                        $('#download-btn').hide();
+                        $('#buy-btn').show();
+                    <?php } ?>
+                <?php } else if ($this->hasClaimed && $this->asset['assetPrice'] != "0") { ?>
+                    $('#download-btn').show();
+                    $('#buy-btn').hide();
+                <?php } ?>
+
+
+                //download buttons for free games
+                <?php if ($this->asset['assetPrice'] == "0") { ?>
+                    $('#download-btn').show();
+                    $('#buy-btn').hide();
+                <?php } ?>
+
+                //download buttons for paid games
+                <?php if ($this->asset['assetPrice'] != "0") { ?>
+                    <?php if ($this->hasClaimed) { ?>
+                        $('#download-btn').show();
+                        $('#buy-btn').hide();
+                    <?php } else if (!$this->hasClaimed) { ?>
+                        $('#download-btn').hide();
+                        $('#buy-btn').show();
+                    <?php } ?>
+                <?php } ?>
+
+                //show library and cart buttons for free games
+                <?php if ($this->asset['assetPrice'] == "0") { ?>
+                    $('#add-cart-btn').hide();
+                    $('#view-cart-btn').hide();
+                    <?php if ($this->hasClaimed) { ?>
+                        $('#add-to-library').hide();
+                        $('#view-library').show();
+                    <?php } else if (!$this->hasClaimed) { ?>
+                        $('#add-to-library').show();
+                        $('#view-library').hide();
+                    <?php } ?>
+                <?php } ?>
+
+                //show library and cart buttons for free games
+                <?php if ($this->asset['assetPrice'] != "0") { ?>
+                    <?php if ($this->hasClaimed) { ?>
+                        $('#add-to-library').hide();
+                        $('#view-library').show();
+                        $('#add-cart-btn').hide();
+                        $('#view-cart-btn').hide();
+                    <?php } else if (!$this->hasClaimed && $this->hasInCart) { ?>
+                        $('#add-to-library').hide();
+                        $('#view-library').hide();
+                        $('#add-cart-btn').hide();
+                        $('#view-cart-btn').show();
+                    <?php } else if (!$this->hasClaimed && !$this->hasInCart) { ?>
+                        $('#add-to-library').hide();
+                        $('#view-library').hide();
+                        $('#add-cart-btn').show();
+                        $('#view-cart-btn').hide();
+                    <?php } ?>
+                <?php } ?>
+            <?php } else { ?>
+                <?php if ($this->asset['assetPrice'] == "0") { ?>
+                    $('#download-btn').show();
+                    $('#buy-btn').hide();
+                    $('#add-to-library').show();
+                    $('#add-cart-btn').hide();
+                <?php } else { ?>
+                    $('#download-btn').hide();
+                    $('#buy-btn').show();
+                    $('#add-to-library').hide();
+                    $('#add-cart-btn').show();
+                <?php } ?>
+
+                $('#view-library').hide();
+                $('#view-cart-btn').hide();
+
+            <?php } ?>
+
+
+            //For gamers, add the item to library, for unprivileged logged users prompt an alert. Redirect users who havent logged in to login page
+            $('#add-to-library').click(function() {
+
+
+                <?php if (isset($_SESSION['logged'])) { ?>
+                    <?php if ($_SESSION['userRole'] == "game developer") { ?>
+
+
+                        let assetID = <?= $this->asset['assetID']; ?>;
+
+                        var data = {
+                            'assetID': assetID,
+                            'add_to_library': true,
+                        };
+
+                        $.ajax({
+                            url: "/indieabode/asset/addtoLibrary",
+                            method: "POST",
+                            data: data,
+                            success: function(response) {
+
+                                if (response == "1") {
+
+                                    $('#add-to-library').hide();
+                                    $('#view-library').show();
+
+                                    $("#flashMessage").html('Added to the Library')
+                                    $("#flashMessage").fadeIn(1000);
+
+                                    setTimeout(function() {
+                                        $("#flashMessage").fadeOut("slow");
+                                    }, 4000);
+
+                                }
+                                // alert(response);
+                            }
+                        })
+
+
+                    <?php } else { ?>
+                        alert("Unauthorized User Role");
+                    <?php } ?>
+                <?php } else { ?>
+                    window.location.href = "/indieabode/login";
+                <?php } ?>
+
+
+
+
+            });
+
+            //Redirect gamers to their library
+            $('#view-library').click(function() {
+
+                window.location.href = "/indieabode/library";
+
+            });
+
+            //For gamers, add the item to cart, for unprivileged logged users prompt an alert. Redirect users who havent logged in to login page
+            $('#add-cart-btn').click(function() {
+
+                <?php if (isset($_SESSION['logged'])) { ?>
+                    <?php if ($_SESSION['userRole'] == "game developer") { ?>
+
+                        let assetID = <?= $this->asset['assetID']; ?>;
+
+                        var data = {
+                            'assetID': assetID,
+                            'add_to_cart': true,
+                        };
+
+                        $.ajax({
+                            url: "/indieabode/asset/AddToCart",
+                            method: "POST",
+                            data: data,
+                            success: function(response) {
+
+                                if (response == "1") {
+
+                                    $('#add-cart-btn').hide();
+                                    $('#view-cart-btn').show();
+
+                                    $("#flashMessage").html('Added to the Cart')
+                                    $("#flashMessage").fadeIn(1000);
+
+                                    setTimeout(function() {
+                                        $("#flashMessage").fadeOut("slow");
+                                    }, 4000);
+
+                                }
+                            }
+                        })
+
+
+                    <?php } else { ?>
+                        alert("Unauthorized User Role");
+                    <?php } ?>
+                <?php } else { ?>
+                    window.location.href = "/indieabode/login";
+                <?php } ?>
+
+
+
+            });
+
+            //Redirect gamers to their cart
+            $('#view-cart-btn').click(function() {
+
+                window.location.href = "/indieabode/cart";
+
+            });
+
+            //Redirect logged gamers to checkout while unprivileged users see an alert message. Users who hasnt logged in redirect to login page
+            $('#buy-btn').click(function() {
+
+                <?php if (isset($_SESSION['logged'])) { ?>
+                    <?php if ($_SESSION['userRole'] == "game developer") { ?>
+                        window.location.href = "/indieabode/asset/checkout?id=<?= $this->asset['assetID'] ?>";
+                    <?php } else { ?>
+                        alert("Unauthorized User Role");
+                    <?php } ?>
+                <?php } else { ?>
+                    window.location.href = "/indieabode/login";
+                <?php } ?>
+
+
+
+            });
+
+            //Downloading the game and showing a flash message thanking
+            $('#download-btn').click(function() {
+
+                window.location.href = "/indieabode/asset/downloadAsset?id=<?= $this->asset['assetID'] ?>";
+
+
+                $("#flashMessage").html('Thanks for downloading');
+                $("#flashMessage").fadeIn(2000);
+
+                setTimeout(function() {
+                    $("#flashMessage").fadeOut("slow");
+                }, 4000);
+
+            });
         });
     </script>
 

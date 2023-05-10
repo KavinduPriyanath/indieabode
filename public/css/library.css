@@ -4,7 +4,7 @@
 .container {
     display: flex;
     flex-wrap: wrap;
-    margin-left: 175px;
+    margin-left: 155px;
     transition: margin 0.3s ease;
 }
 
@@ -165,12 +165,45 @@
   }
 
   #topic-break {
-    margin: 5px 205px 25px 180px;
+    margin: 5px 175px 25px 160px;
     border: 0.4px solid #9bc9dbdd;
 }
 
 #heading {
     font-size: 26px;
-    margin: 35px 0px 5px 180px;
+    margin: 35px 0px 5px 160px;
     color: rgb(48, 46, 100);
+}
+
+.empty-box {
+    display: block;
+    width: 100%;
+    margin-top: 160px;
+    margin-left: 160px;
+    margin-right: 235px;
+}
+
+.empty-box .empty-icon {
+    width: 100px;
+    height: 100px;
+    margin-left: 445px;
+}
+
+.empty-icon img {
+    height: 100%;
+    width: 100%;
+}
+
+.empty-box .empty-text {
+    margin-top: 15px;
+    font-size: 23px;
+    text-align: center;
+    font-weight: 800;
+}
+
+.empty-box .empty-link {
+    font-size: 18px;
+    margin-top: 10px;
+    text-align: center;
+    text-decoration: underline;
 }
