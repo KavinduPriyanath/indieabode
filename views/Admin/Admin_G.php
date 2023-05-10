@@ -49,9 +49,9 @@
 			</li>
 
 			<li class="divider" data-text="Settings">Settings</li>
-			<!-- <li><a href="<?php echo BASE_URL; ?>Admin_addNew"><i class='bx bx-user-plus icon'></i> Add new admin</a></li> -->
+			<li><a href="<?php echo BASE_URL; ?>Admin_addNew"><i class='bx bx-user-plus icon'></i> Add new admin</a></li>
 			<li>
-				<a href="<?php echo BASE_URL; ?>Admin_userMg"><i class='bx bxs-trash icon'></i>User Management</a>
+				<a href="<?php echo BASE_URL; ?>Admin_userMg"><i class='bx bxs-trash icon'></i> Remove user</a>
 			</li>
 		</ul>
 	</section>
@@ -157,7 +157,7 @@
 										<table>
 											<thead>
 											<tr>
-												<!-- <th>Transaction ID</th> -->
+												<th>Transaction ID</th>
 												<th>Game ID</th>
 												<th>Sale Date</th>
 												<th>Site Share</th>
@@ -166,7 +166,7 @@
 											<tbody>
 											<?php foreach ($this->gameRevenues as $revenue) { ?>
 												<tr>
-												<!-- <td><?php echo $revenue['id']; ?></td> -->
+												<td><?php echo $revenue['id']; ?></td>
 												<td><?php echo $revenue['gameID']; ?></td>
 												<td><?php echo $revenue['sale_date']; ?></td>
 												<td><?php echo $revenue['siteShare']; ?></td>

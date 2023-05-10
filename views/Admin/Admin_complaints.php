@@ -51,9 +51,9 @@
 			</li>
 
 			<li class="divider" data-text="Settings">Settings</li>
-			<!-- <li><a href="<?php echo BASE_URL; ?>Admin_addNew"><i class='bx bx-user-plus icon'></i> Add new admin</a></li> -->
+			<li><a href="<?php echo BASE_URL; ?>Admin_addNew"><i class='bx bx-user-plus icon'></i> Add new admin</a></li>
 			<li>
-				<a href="<?php echo BASE_URL; ?>Admin_userMg"><i class='bx bxs-trash icon'></i>User Management</a>
+				<a href="<?php echo BASE_URL; ?>Admin_userMg"><i class='bx bxs-trash icon'></i> Remove user</a>
 			</li>
 		</ul>
 	</section>
@@ -85,8 +85,6 @@
                         <th> Reason</th>
                         <th> Description</th>
                         <th> Type</th>
-						<th> Type Name</th>
-						<th> Owner ID</th>
 						<th> Complainer ID </th>
 						<th> Status </th>
                     </tr>
@@ -104,8 +102,6 @@
 								<td><?php echo $complaint['reason']; ?></td>
 								<td><?php echo $complaint['description']; ?></td>
 								<td><?php echo $complaint['type']; ?></td>
-								<td>Scarlet Nexus</td>
-								<td>34</td>
 								<td><?php echo $complaint['gamerID']; ?></td>
 								<td>
 									<label class="switch">

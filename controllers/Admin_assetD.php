@@ -62,7 +62,7 @@ class Admin_assetD extends Controller
 
         //game revenue all the details
         $this->view->gameRevenues = $this->model->getGameRevenueShare();
-        $this->view->render('Admin/Admin_assetD');
+        $this->view->render('Admin/Admin_G');
 
     }
 }
