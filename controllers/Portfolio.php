@@ -14,7 +14,9 @@ class Portfolio extends Controller
 
         $owner = $this->model->GetDeveloperDetails($_GET['profile']);
 
-        $this->view->isFollowing = $this->model->IsFollowing($_SESSION['id'], $owner['gamerID']);
+        if (isset($_SESSION['logged'])) {
+            $this->view->isFollowing = $this->model->IsFollowing($_SESSION['id'], $owner['gamerID']);
+        }
 
         $this->view->developerDetails = $this->model->GetDeveloperDetails($_GET['profile']);
 

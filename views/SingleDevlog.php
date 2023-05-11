@@ -143,29 +143,33 @@
                 // var reply = thisClicked.closest('.comment').find('.reply_msg').val();
 
 
-                var data = {
-                    'cliked_like': true
-                };
+                <?php if (isset($_SESSION['logged'])) { ?>
+                    var data = {
+                        'cliked_like': true
+                    };
 
-                $.ajax({
-                    type: "POST",
-                    url: "/indieabode/devlogComments?id=<?= $this->devlog['devLogID']; ?>",
-                    data: data,
-                    success: function(response) {
-                        // alert(response);
-                        // $('.reply').html("");
-                        console.log(response);
+                    $.ajax({
+                        type: "POST",
+                        url: "/indieabode/devlogComments?id=<?= $this->devlog['devLogID']; ?>",
+                        data: data,
+                        success: function(response) {
+                            // alert(response);
+                            // $('.reply').html("");
+                            console.log(response);
 
-                        if (response == '"liked"') {
-                            $("#likeBtn").addClass("liked");
-                            $("#likeBtn").removeClass("unliked");
-                        } else if (response == '"disliked"') {
-                            $("#likeBtn").addClass("unliked");
-                            $("#likeBtn").removeClass("liked");
+                            if (response == '"liked"') {
+                                $("#likeBtn").addClass("liked");
+                                $("#likeBtn").removeClass("unliked");
+                            } else if (response == '"disliked"') {
+                                $("#likeBtn").addClass("unliked");
+                                $("#likeBtn").removeClass("liked");
+                            }
+
                         }
-
-                    }
-                })
+                    })
+                <?php } else { ?>
+                    window.location.href = "/indieabode/login";
+                <?php } ?>
 
             });
 
@@ -384,21 +388,31 @@
 
             let btnStatus = 0;
 
-            <?php if ($this->hasClaimed) { ?>
-                $('#devlog-btn').text("In Library");
-                btnStatus = 1;
+            <?php if (isset($_SESSION['logged'])) { ?>
+                <?php if ($this->hasClaimed) { ?>
+                    $('#devlog-btn').text("In Library");
+                    btnStatus = 1;
+                <?php } else { ?>
+                    <?php if ($this->game['gamePrice'] == "0") { ?>
+                        $('#devlog-btn').text("Add to Library");
+                        btnStatus = 2;
+                    <?php } else if ($this->game['gamePrice'] != "0") { ?>
+                        <?php if ($this->hasInCart) { ?>
+                            $('#devlog-btn').text("View Cart");
+                            btnStatus = 3;
+                        <?php } else { ?>
+                            $('#devlog-btn').text("Add to Cart");
+                            btnStatus = 4;
+                        <?php } ?>
+                    <?php } ?>
+                <?php } ?>
             <?php } else { ?>
                 <?php if ($this->game['gamePrice'] == "0") { ?>
                     $('#devlog-btn').text("Add to Library");
                     btnStatus = 2;
                 <?php } else if ($this->game['gamePrice'] != "0") { ?>
-                    <?php if ($this->hasInCart) { ?>
-                        $('#devlog-btn').text("View Cart");
-                        btnStatus = 3;
-                    <?php } else { ?>
-                        $('#devlog-btn').text("Add to Cart");
-                        btnStatus = 4;
-                    <?php } ?>
+                    $('#devlog-btn').text("Add to Cart");
+                    btnStatus = 4;
                 <?php } ?>
             <?php } ?>
 
@@ -410,67 +424,75 @@
                     window.location.href = "/indieabode/library";
                 } else if (btnStatus == 2) {
 
-                    let gameID = <?= $this->game['gameID']; ?>;
+                    <?php if (isset($_SESSION['logged'])) { ?>
+                        let gameID = <?= $this->game['gameID']; ?>;
 
-                    var data = {
-                        'gameID': gameID,
-                        'add_to_library': true,
-                    };
+                        var data = {
+                            'gameID': gameID,
+                            'add_to_library': true,
+                        };
 
-                    $.ajax({
-                        url: "/indieabode/devlog/addtoLibrary",
-                        method: "POST",
-                        data: data,
-                        success: function(response) {
+                        $.ajax({
+                            url: "/indieabode/devlog/addtoLibrary",
+                            method: "POST",
+                            data: data,
+                            success: function(response) {
 
-                            if (response == "1") {
-                                btnStatus = 1;
-                                $('#devlog-btn').text("In Library");
+                                if (response == "1") {
+                                    btnStatus = 1;
+                                    $('#devlog-btn').text("In Library");
 
-                                $("#flashMessage").html('Added to the Library')
-                                $("#flashMessage").fadeIn(1000);
+                                    $("#flashMessage").html('Added to the Library')
+                                    $("#flashMessage").fadeIn(1000);
 
-                                setTimeout(function() {
-                                    $("#flashMessage").fadeOut("slow");
-                                }, 4000);
+                                    setTimeout(function() {
+                                        $("#flashMessage").fadeOut("slow");
+                                    }, 4000);
 
+                                }
+                                // alert(response);
                             }
-                            // alert(response);
-                        }
-                    })
+                        })
+                    <?php } else { ?>
+                        window.location.href = "<?php echo BASE_URL; ?>login";
+                    <?php } ?>
 
                 } else if (btnStatus == 3) {
                     window.location.href = "/indieabode/cart";
                 } else if (btnStatus == 4) {
 
-                    let gameID = <?= $this->game['gameID']; ?>;
+                    <?php if (isset($_SESSION['logged'])) { ?>
+                        let gameID = <?= $this->game['gameID']; ?>;
 
-                    var data = {
-                        'gameID': gameID,
-                        'add_to_cart': true,
-                    };
+                        var data = {
+                            'gameID': gameID,
+                            'add_to_cart': true,
+                        };
 
-                    $.ajax({
-                        url: "/indieabode/devlog/AddToCart",
-                        method: "POST",
-                        data: data,
-                        success: function(response) {
+                        $.ajax({
+                            url: "/indieabode/devlog/AddToCart",
+                            method: "POST",
+                            data: data,
+                            success: function(response) {
 
-                            if (response == "1") {
+                                if (response == "1") {
 
-                                btnStatus = 3;
-                                $('#devlog-btn').text("View Cart");
+                                    btnStatus = 3;
+                                    $('#devlog-btn').text("View Cart");
 
-                                $("#flashMessage").html('Added to the Cart')
-                                $("#flashMessage").fadeIn(1000);
+                                    $("#flashMessage").html('Added to the Cart')
+                                    $("#flashMessage").fadeIn(1000);
 
-                                setTimeout(function() {
-                                    $("#flashMessage").fadeOut("slow");
-                                }, 4000);
+                                    setTimeout(function() {
+                                        $("#flashMessage").fadeOut("slow");
+                                    }, 4000);
 
+                                }
                             }
-                        }
-                    })
+                        })
+                    <?php } else { ?>
+                        window.location.href = "<?php echo BASE_URL; ?>login";
+                    <?php } ?>
 
                 }
 

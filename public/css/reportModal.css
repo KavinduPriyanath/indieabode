@@ -1,4 +1,4 @@
-.modal {
+.report-modal .modal {
     position: fixed;
     top: 150px;
     left: 400px;
@@ -12,16 +12,16 @@
     max-width: 80%;
   }
 
-  .modal-body {
+  .report-modal .modal-body {
     max-height: calc(100vh - 250px);
     overflow-y: auto;
 }
   
-  .modal.active {
+.report-modal .modal.active {
     transform: scale(1);
   }
   
-  .modal-header {
+  .report-modal .modal-header {
     padding: 10px 15px;
     display: flex;
     justify-content: space-between;
@@ -29,12 +29,12 @@
     border-bottom: 1px solid black;
   }
   
-  .modal-header .title {
+  .report-modal .modal-header .title {
     font-size: 1.25rem;
     font-weight: bold;
   }
   
-  .modal-header .close-button {
+  .report-modal .modal-header .close-button {
     cursor: pointer;
     border: none;
     outline: none;
@@ -43,11 +43,11 @@
     font-weight: bold;
   }
   
-  .modal-body {
+  .report-modal .modal-body {
     padding: 10px 45px;
   }
   
-  #overlay {
+  .report-modal #overlay {
     position: fixed;
     opacity: 0;
     transition: 200ms ease-in-out;
@@ -59,7 +59,29 @@
     pointer-events: none;
   }
   
-  #overlay.active {
+  .report-modal #overlay.active {
     opacity: 1;
     pointer-events: all;
+  }
+
+  .report-modal #reasonHeading {
+    margin-top: 10px;
+  }
+
+  .report-modal #descriptionHeading {
+    margin-top: 10px;
+  }
+
+  .report-modal #report-submit {
+    margin-top: 10px;
+    display: inline-block;
+    padding: 6px 9px;
+    background-color: rgb(68, 68, 222);
+    color: white;
+    font-size: 17px;
+    font-weight: 700;
+    border: none;
+    outline: none;
+    border-radius: 7px;
+    cursor: pointer;
   }
