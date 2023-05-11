@@ -14,6 +14,7 @@
         <?php
         include 'public/css/crowdfund.css';
         include 'public/css/crowdfunding.css';
+        include 'public/css/alert-modal.css';
         ?><?php include 'public/css/shareModal.css'; ?>
     </style>
 </head>
@@ -77,7 +78,15 @@
 
                 <br>
                 <div class="btn" data-modal-target="#modal">Share</div>
-                <div class="btn" data-modal-target="#donation-modal">Back this Game</div>
+                <?php if (isset($_SESSION['logged'])) { ?>
+                    <?php if ($_SESSION['userRole'] == "gamer") { ?>
+                        <div class="btn" data-modal-target="#donation-modal">Back this Game</div>
+                    <?php } else if ($_SESSION['userRole'] == "game developer") { ?>
+                        <div class="btn" data-modal-target="#modal-incorrectRole">Back this Game</div>
+                    <?php } ?>
+                <?php } else { ?>
+                    <div class="btn" id="not-logged-donation">Back this Game</div>
+                <?php } ?>
                 <div class="semibtnbox">
                     <div class="semi-btn">Remind Me<i class="fa fa-bookmark-o"></i></div>
                     <div class="semi-btn">Notify me on Launch<i class="fa fa-bell-o"></i></div>
@@ -221,6 +230,26 @@
         <div id="overlay"></div>
     </div>
 
+    <div class="incorrectRole-modal">
+        <div class="modal-warning" id="modal-incorrectRole">
+            <div class="modal-header-warning">
+
+                <div class="warning-logo">
+                    <img src="<?php echo BASE_URL; ?>public/images/empty/warning.png" alt="">
+                </div>
+                <!-- <button data-close-button class="close-button">&times;</button> -->
+            </div>
+            <div class="modal-body-warning">
+
+                <div class="user-msg">Unprivileged <br> User!</div>
+                <div class="sub-text">Login as gamer to perform <br> this action</div>
+
+                <div class="close-btn-warning" data-warning-button>Close</div>
+
+            </div>
+        </div>
+    </div>
+
     <?php
     include 'includes/footer.php';
     ?>
@@ -232,6 +261,8 @@
 
     <script src="<?php echo BASE_URL; ?>public/js/reportModal.js"></script>
 
+    <script src="<?php echo BASE_URL; ?>public/js/warning.js"></script>
+
     <script type="text/javascript" src="https://www.payhere.lk/lib/payhere.js"></script>
 
     <script>
@@ -239,6 +270,13 @@
 
             //fill the current donation progress bar
             $('#progress').css('width', (<?= $this->crowdfund['currentAmount'] / $this->crowdfund['expectedAmount'] ?>) * 100 + '%');
+
+
+            $('#not-logged-donation').click(function() {
+
+                window.location.href = "/indieabode/login";
+
+            });
 
         });
     </script>
