@@ -80,6 +80,7 @@
 
 						<div class="jam-db-second-row">
 						<div class="jam-db-table">
+							<!--  -->
 							<table>
 								<thead>
 									<tr>
@@ -103,20 +104,20 @@
 												<td>
 													<?php if ($gamejam['tag'] == 'Jam Ended'): ?>
 														<?php if (isset($gamejam['firstPlace'])): ?>
-															1<sup>st</sup>Rank: <?php echo $gamejam['firstPlace']['submissionID']; ?><br>
+															<span style="color: #7b3737; font-weight: 1000;">1<sup>st</sup>Rank: <?php echo $gamejam['firstPlace']['submissionID']; ?></span><br>
 														<?php else: ?>
 															No submissions<br>
 															<?php continue; ?>
 														<?php endif; ?>
 														<?php if (isset($gamejam['secondPlace'])): ?>
-															2<sup>nd</sup>Rank: <?php echo $gamejam['secondPlace']['submissionID']; ?><br>
+															<span style="color: #615f16; font-weight: 1000;">2<sup>nd</sup>Rank: <?php echo $gamejam['secondPlace']['submissionID']; ?></span><br>
 														<?php else: ?>
-															2<sup>nd</sup>Rank: Not available<br>
+															<span style="color: #615f16; font-weight: 1000;">2<sup>nd</sup>Rank:</span> Not available<br>
 														<?php endif; ?>
 														<?php if (isset($gamejam['thirdPlace'])): ?>
-															3<sup>rd</sup>Rank: <?php echo $gamejam['thirdPlace']['submissionID']; ?><br>
+															<span style="color: #37647b; font-weight: 1000;">3<sup>rd</sup>Rank: <?php echo $gamejam['thirdPlace']['submissionID']; ?></span><br>
 														<?php else: ?>
-															3<sup>rd</sup>Rank: Not available<br>
+															<span style="color: #37647b; font-weight: 1000;">3<sup>rd</sup>Rank:</span> Not available<br>
 														<?php endif; ?>
 														<?php if (!isset($gamejam['firstPlace']) && !isset($gamejam['secondPlace']) && !isset($gamejam['thirdPlace'])): ?>
 															No submissions
@@ -136,6 +137,7 @@
 									<?php endif; ?>
 								</tbody>
 							</table>
+
 						</div>
 
 						</div>
@@ -173,13 +175,13 @@
 					data:<?php echo json_encode($this->countJamArray); ?>,
 					backgroundColor: [
 						'#509998',
-						'#5c7777',
-						'#245252'
+						'#36647b',
+						'#6791a4'
 					],
 					borderColor: [
 						'#509998',
-						'#5c7777',
-						'#245252'
+						'#36647b',
+						'#6791a4'
 					],
 					borderWidth: 1
 				}]

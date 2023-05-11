@@ -54,6 +54,10 @@ class SiteDashboard extends Controller
         $totTx = $totalTxGames+ $totalTxAssets + $donations + $allTransactions;
         $this->view->Tx = $totTx; 
 
+        $_SESSION['totalRevenue'] = $totalRevenues;
+        $_SESSION['totalTx'] = $totTx;
+
+
         
 
 

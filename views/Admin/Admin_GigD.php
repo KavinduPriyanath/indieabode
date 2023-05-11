@@ -74,15 +74,7 @@
 					<div class="game-db-body">
 						<h2>Gig Dashbord/Gigs</h2>
 						<div class="crowdfund-first-row game-db-first-row">
-							<div class="crowdfund-db-first">
-								<div class="game-db-doughnut-chart">
-									<canvas id="game-db-pie-chart" width="300" height="200"></canvas>
-								</div>
-								<div class="total-donations">
-									<h3>Total Transactions</h3>
-									<h2>$<?php echo $this->allTransactions; ?></h2>
-								</div>
-							</div>
+							
 							<div class="crowdfund-db-second">
 								<h1>Ordered Gigs</h1>
 								<div class="table-container">
@@ -123,6 +115,15 @@
 								</div>
 								
 							</div>
+							<div class="crowdfund-db-first">
+								<div class="game-db-doughnut-chart">
+									<canvas id="game-db-pie-chart" width="300" height="200"></canvas>
+								</div>
+								<div class="total-donations">
+									<h3>Total Transactions</h3>
+									<h2>$<?php echo $this->allTransactions; ?></h2>
+								</div>
+							</div>
 						</div>
 
 						<div class="crowdfund-second-row">
@@ -136,6 +137,10 @@
 								<canvas id="game-tx-line-graph" style="height: 150px; width: 270px;"></canvas>
 							</div>
 							
+							<div class="game-db-doughnut-chart">
+								<canvas id="game-rev-chart" width="300" height="200"></canvas>
+							</div>
+
 							<div class="total-crowdfund-revenue">
 								<h3>Total Revenues</h3>
 								<?php if(empty($this->totalRevenue)): ?>
@@ -190,6 +195,38 @@
 
 <script>
 	window.onload = function() {
+
+		var gamerevChart = document.getElementById('game-rev-chart').getContext('2d');
+		var myChart = new Chart(gamerevChart, {
+			type: 'doughnut',
+			backgroundColor: "#6997a4",
+			data: {
+				labels: ['Game Revenue', 'Total Revenue'],
+				datasets: [{
+					label: '# of Games',
+					// data: [25, 40, 35],
+					data: [<?php echo json_encode($this->totalRevenue); ?>,1000],
+					backgroundColor: [
+						// 'rgba(55, 87, 102, 1)',
+						'#36647b',
+						'#6791a4'
+					],
+					borderColor: [
+						// 'rgba(55, 87, 102, 0.7)',
+						'#36647b',
+						'#6791a4'
+					],
+					borderWidth: 1
+				}]
+			},
+			options: {
+				responsive: true,
+				maintainAspectRatio: false,
+				legend: {
+					position: 'right'
+				}
+			}
+		});
 
 		var gamePieChart = document.getElementById('game-db-pie-chart').getContext('2d');
 		var myChart = new Chart(gamePieChart, {
