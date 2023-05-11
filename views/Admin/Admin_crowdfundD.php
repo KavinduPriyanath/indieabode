@@ -178,7 +178,9 @@
 							
 							<div class="total-crowdfund-revenue">
 								<h3>Total Revenues</h3>
-								<h2 style="color: #4bc0c0;">$<?php echo $this->totalRevenue; ?></h2>
+								<!-- <h2 style="color: #4bc0c0;">$<?php echo $this->totalRevenue; ?></h2> -->
+								<h2 style="color: #4bc0c0;"><?php echo ($this->totalRevenue != '') ? '$' . $this->totalRevenue : '$0'; ?></h2>
+
 							</div>
 
 							<div class="game-db-doughnut-chart">
@@ -231,7 +233,7 @@
 
 <script>
 	window.onload = function() {
-		
+
 		var gamerevChart = document.getElementById('game-rev-chart').getContext('2d');
 		var myChart = new Chart(gamerevChart, {
 			type: 'doughnut',

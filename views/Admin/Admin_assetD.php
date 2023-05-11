@@ -74,7 +74,7 @@
 					<div class="game-db-body">
 						<h2>Asset Dashbord/Assets</h2>
 						
-						<div class="game-db-second-row">
+						<div class="game-db-second-row style="margin-top:2%;">
 							<div class="game-db-report-table">
 								<!-- <input type="date" id="game-db-date-picker"> -->
 								<h3 class="game-db-table-heading">Payment Report on <?php echo date('Y.m.dS'); ?> Day</h3>
