@@ -411,13 +411,13 @@ class Asset_Model extends Model
         return $stmt->fetchAll();
     }
 
-    function reportSubmit($reason, $description, $id, $type)
+    function reportSubmit($reason, $description, $id, $type, $itemID)
     {
-        $sql = "INSERT INTO complaint (reason,description,gamerID,type) VALUES (?,?,?,?)";
+        $sql = "INSERT INTO complaint (reason,description,gamerID,type, itemID) VALUES (?,?,?,?,?)";
 
         $stmt = $this->db->prepare($sql);
 
-        $stmt->execute(["$reason", "$description", "$id", "$type"]);
+        $stmt->execute(["$reason", "$description", "$id", "$type", "$itemID"]);
     }
 
 

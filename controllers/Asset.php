@@ -293,9 +293,10 @@ class Asset extends Controller
             $reason = $_POST['reason'];
             $description = $_POST['description'];
             $type = "Asset";
+            $itemID = $_POST['assetID'];
             $gamerID = $_SESSION['id'];
 
-            $this->model->reportSubmit($reason, $description, $gamerID, $type);
+            $this->model->reportSubmit($reason, $description, $gamerID, $type, $itemID);
         }
     }
 

@@ -367,10 +367,12 @@
 
                 var description = $('#description').val();
                 var reason = $("input[name='reasons']:checked").val();
+                var gameID = <?= $_GET['id'] ?>;
 
                 var data = {
                     'description': description,
                     'reason': reason,
+                    'gameID': gameID,
                     'report_submit': true,
                 };
 
