@@ -83,7 +83,7 @@
 							</div>
 							<div class="game-db-content-join">
 								<div class="game-db-view-games">
-									<button class="game-db-btn">View All Games</button>
+									<button id="view-all-games-btn" class="game-db-btn">View All Games</button>
 								</div>
 								<div class="game-db-tx-card">
 									<h3>Total Payments</h3>
@@ -199,10 +199,15 @@
 	<?php
     include 'includes/footer.php';
     ?>
+	<script>
+		const viewAllGamesBtn = document.getElementById('view-all-games-btn');
+		viewAllGamesBtn.addEventListener('click', () => {
+			window.location.href = '/indieabode/Site_Game';
+		});
+	</script>
 	
 	<script>
 	window.onload = function() {
-
 
 		var gamePieChart = document.getElementById('game-db-pie-chart').getContext('2d');
 		var myChart = new Chart(gamePieChart, {

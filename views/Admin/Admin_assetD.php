@@ -125,7 +125,7 @@
 							
 							<div class="game-db-content-join">
 								<div class="game-db-view-games">
-									<button class="game-db-btn">View All Assets</button>
+									<button id="view-all-assets-btn" class="game-db-btn">View All Assets</button>
 								</div>
 								<div class="game-db-tx-card">
 									<h3>Total Payments</h3>
@@ -208,40 +208,14 @@
     ?>
 
 	<script>
+		const viewAllAssetsBtn = document.getElementById('view-all-assets-btn');
+		viewAllAssetsBtn.addEventListener('click', () => {
+			window.location.href = '/indieabode/Site_Asset';
+		});
+	</script>
+
+	<script>
 	window.onload = function() {
-
-
-		// var gamePieChart = document.getElementById('game-db-pie-chart').getContext('2d');
-		// var myChart = new Chart(gamePieChart, {
-		// 	type: 'doughnut',
-		// 	backgroundColor: "#6997a4",
-		// 	data: {
-		// 		labels: ['Early Access Games', 'Upcoming Games', 'Released Games'],
-		// 		datasets: [{
-		// 			label: '# of Games',
-		// 			// data: [25, 40, 35],
-		// 			data: <?php echo json_encode($this->gameTypes); ?>,
-		// 			backgroundColor: [
-		// 				'rgba(55, 87, 102, 1)',
-		// 				'#36647b',
-		// 				'#608a9f'
-		// 			],
-		// 			borderColor: [
-		// 				'rgba(55, 87, 102, 0.7)',
-		// 				'#36647b',
-		// 				'#608a9f'
-		// 			],
-		// 			borderWidth: 1
-		// 		}]
-		// 	},
-		// 	options: {
-		// 		responsive: true,
-		// 		maintainAspectRatio: false,
-		// 		legend: {
-		// 			position: 'right'
-		// 		}
-		// 	}
-		// });
 
 		var ctx2 = document.getElementById('game-tx-line-graph').getContext('2d');
 		var gameTxGraph = new Chart(ctx2, {
