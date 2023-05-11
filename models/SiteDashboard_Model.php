@@ -92,4 +92,51 @@ class SiteDashboard_Model extends Model
     return $totalRevenue;
   }
 
+  function getTotalTxAsset(){
+    $sql = "SELECT ROUND(SUM(purchasedPrice), 2) AS totalPurchases FROM asset_purchases";
+
+    $stmt = $this->db->prepare($sql);
+
+    $stmt->execute();
+
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    $totalTxAsset = $row['totalPurchases'];
+
+    return $totalTxAsset;
+  }
+
+  function getTotalDonations() {
+    $sql = "SELECT ROUND(SUM(donationAmount), 2) AS totalDonations FROM crowdfund_donations";
+    $stmt = $this->db->prepare($sql);
+    $stmt->execute();
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    $totalDonations = $row['totalDonations'];
+    return $totalDonations;
+  }
+
+  function getTotalTxGame(){
+    $sql = "SELECT ROUND(SUM(purchasedPrice), 2) AS totalPurchases FROM game_purchases";
+
+    $stmt = $this->db->prepare($sql);
+
+    $stmt->execute();
+
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    $totalTxGame = $row['totalPurchases'];
+
+    return $totalTxGame;
+  }
+
+  function getTotalTx() {
+    $sql = "SELECT ROUND(SUM(publisherCost), 2) AS totalTx FROM gig_purchases";
+    $stmt = $this->db->prepare($sql);
+    $stmt->execute();
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    $totalTx = $row['totalTx'];
+    return $totalTx;
+}
+
+
 }

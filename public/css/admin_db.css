@@ -418,6 +418,7 @@ input:checked + .slider:before {
     gap: 5%;
     width:100%;
     /* justify-content: center; */
+    margin-top:2%;
 }
 
 .second-row-db{
@@ -428,9 +429,9 @@ input:checked + .slider:before {
     width:100%;
 }
 
-.site-db-second-row{
+/* .site-db-second-row{
   margin-left:3%;
-}
+} */
 
 .first-pie-chart-db{
     padding-left:3%;
@@ -1090,7 +1091,7 @@ input:checked + .slider:before {
   display: flex;
     gap: 5%;
     margin-top: 6%;
-    margin-bottom: 1%;
+    margin-bottom: 6%;
     padding: 3%;
     background-color:#336075;
 }

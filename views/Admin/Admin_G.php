@@ -93,7 +93,7 @@
 							
 
 							<div class="downloads-uploads-graph">
-								<h3>Total Downloads and Uploads</h3>
+								<h3>Total Game Uploads</h3>
 								<canvas id="downloads-uploads-bar-graph" style="height: 220px; width: 400px;"></canvas>
 							</div>
 						</div>
