@@ -96,11 +96,12 @@ class Crowdfund extends Controller
 
             $this->view->recommendedCrowdfunds = $thisCrowdfunds;
 
+            if (isset($_SESSION['logged'])) {
+                $viewTracker = $this->model->CrowdfundViewTracker($_SESSION['id'], $_SESSION['session'], $crowdfundID);
 
-            $viewTracker = $this->model->CrowdfundViewTracker($_SESSION['id'], $_SESSION['session'], $crowdfundID);
-
-            if ($viewTracker) {
-                $this->model->UpdateCrowdfundViews($crowdfundID);
+                if ($viewTracker) {
+                    $this->model->UpdateCrowdfundViews($crowdfundID);
+                }
             }
 
             $this->view->render('SingleCrowdfunding');

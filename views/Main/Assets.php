@@ -175,7 +175,7 @@
                         <?php if ($asset['assetPrice'] == "0") { ?>
                             <p>Free</p>
                         <?php } else if ($asset['assetPrice'] != "0") { ?>
-                            <p>$<?= $asset['assetPrice'] ?></p>
+                            <p>$<?= number_format($asset['assetPrice'], 2) ?></p>
                         <?php } ?>
                     </div>
                     <div class="tagline modernWay"><?= $asset['assetTagline'] ?></div>

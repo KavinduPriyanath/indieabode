@@ -51,6 +51,10 @@ class Creategig extends Controller
             $developerID
         );
 
-        header('location:/indieabode/');
+        $addedGig = $this->model->GetThisGigRecord($gigName, $gameName);
+
+        // header('location:/indieabode/');
+
+        header('location:' . BASE_URL . 'gig?id=' . $addedGig['gigID']);
     }
 }

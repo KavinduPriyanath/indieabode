@@ -28,45 +28,7 @@
         <?php unset($_SESSION['status']); ?>
     <?php } ?>
 
-
-
-
-
-
-    <!-- Featured-Games -->
-    <div class="topic-bar">
-        <div class="topic-bar-left">
-            <h3 class="home-topics">Featured Games</h3>
-        </div>
-        <div class="topic-bar-right">
-            <div class="view-all">
-                <a href="/indieabode/games">
-                    View all
-                </a>
-            </div>
-        </div>
-    </div>
-
-
-    <hr id="topic-break" />
-
-    <!-- <div class="container" id="card-container">
-
-        <?php foreach ($this->games as $game) { ?>
-            <a href="/indieabode/game?id=<?= $game['gameID'] ?>">
-                <div class="card">
-                    <div class="card-image"> <img src="/indieabode/public/uploads/games/cover/<?= $game['gameCoverImg'] ?>" alt="">
-                    </div>
-                    <div class="game-intro">
-                        <h3><?= $game['gameName'] ?></h3>
-                        <p>Free</p>
-                    </div>
-                    <div class="tagline"><?= $game['gameTagline'] ?></div>
-                </div>
-            </a>
-        <?php } ?>
-
-    </div> -->
+    <br>
 
     <!-- Top Sellers -->
     <div class="topic-bar">

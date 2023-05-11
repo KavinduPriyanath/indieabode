@@ -13,6 +13,7 @@
     <style>
         <?php
         include 'public/css/game.css';
+        include 'public/css/alert-modal.css';
         ?><?php include 'public/css/reportModal.css'; ?><?php include 'public/css/shareModal.css'; ?>
     </style>
 </head>
@@ -220,7 +221,11 @@
             <div class="right-details">
                 <div class="button-div">
                     <button data-modal-target="#share-modal" id="share-btn"><i class="fa fa-share-alt"></i>Share</button>
-                    <button data-modal-target="#modal" id="report-btn"><i class="fa fa-flag"></i>Report</button>
+                    <?php if (isset($_SESSION['logged'])) { ?>
+                        <button data-modal-target="#modal" id="report-btn"><i class="fa fa-flag"></i>Report</button>
+                    <?php } else { ?>
+                        <button id="report-btn" onclick="LoginRedirect()"><i class="fa fa-flag"></i>Report</button>
+                    <?php } ?>
                 </div>
             </div>
         </div>
@@ -256,7 +261,7 @@
                                 <h3><?= $popularGame['gameName'] ?></h3>
                                 <p>Free</p>
                             </div>
-                            <div class="ptagline"><?= $popularGame['gameTagline'] ?></div>
+                            <div class="ptagline modernWay"><?= $popularGame['gameTagline'] ?></div>
                         </div>
                     </a>
                 <?php } ?>
@@ -280,20 +285,21 @@
                     shared with the creator of the page if necessary.
                 </div>
                 <div class="report-form">
-                    <h3>Reasons</h3>
+                    <h3 id="reasonHeading">Reasons</h3>
 
                     <div class="reasons">
-
+                        <?php $i = 1; ?>
                         <?php foreach ($this->reportReasons as $reportReason) { ?>
                             <div class="reason">
-                                <input type="radio" name="reasons" id="" value="<?= $reportReason['reason']; ?>" />
-                                <label for=""><?= $reportReason['reason']; ?></label>
+                                <input type="radio" name="reasons" id="<?= $i; ?>" value="<?= $reportReason['reason']; ?>" />
+                                <label for="<?= $i; ?>"><?= $reportReason['reason']; ?></label>
+                                <?php $i = $i + 1; ?>
                             </div>
                         <?php } ?>
 
                     </div>
 
-                    <h3>Descrption</h3>
+                    <h3 id="descriptionHeading">Descrption</h3>
                     <textarea name="" id="description" cols="30" rows="10"></textarea>
 
                     <br />
@@ -335,6 +341,27 @@
     </div>
 
 
+    <div class="incorrectRole-modal">
+        <div class="modal-warning" id="modal-incorrectRole">
+            <div class="modal-header-warning">
+
+                <div class="warning-logo">
+                    <img src="<?php echo BASE_URL; ?>public/images/empty/warning.png" alt="">
+                </div>
+                <!-- <button data-close-button class="close-button">&times;</button> -->
+            </div>
+            <div class="modal-body-warning">
+
+                <div class="user-msg">Unprivileged <br> User!</div>
+                <div class="sub-text">Login as gamer to perform <br> this action</div>
+
+                <div class="close-btn-warning" data-warning-button>Close</div>
+
+            </div>
+        </div>
+    </div>
+
+
     <?php
     include 'includes/footer.php';
     ?>
@@ -345,7 +372,14 @@
 
     <script src="<?php echo BASE_URL; ?>public/js/reportModal.js"></script>
 
+    <script src="<?php echo BASE_URL; ?>public/js/warning.js"></script>
+
     <script>
+        function LoginRedirect() {
+
+            window.location.href = "<?php echo BASE_URL; ?>login";
+        }
+
         $(document).ready(function() {
 
             const months = ["Jan", "Feb", "March", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -367,10 +401,12 @@
 
                 var description = $('#description').val();
                 var reason = $("input[name='reasons']:checked").val();
+                var gameID = <?= $_GET['id'] ?>;
 
                 var data = {
                     'description': description,
                     'reason': reason,
+                    'gameID': gameID,
                     'report_submit': true,
                 };
 
@@ -517,7 +553,12 @@
 
 
                     <?php } else { ?>
-                        alert("Unauthorized User Role");
+                        // alert("Unauthorized User Role");
+                        $('#modal-incorrectRole').addClass("active");
+                        $('#modal-incorrectRole').addClass("active");
+                        $('#overlay').addClass("active");
+
+
                     <?php } ?>
                 <?php } else { ?>
                     window.location.href = "/indieabode/login";
@@ -572,7 +613,11 @@
 
 
                     <?php } else { ?>
-                        alert("Unauthorized User Role");
+                        // alert("Unauthorized User Role");
+
+                        $('#modal-incorrectRole').addClass("active");
+                        $('#modal-incorrectRole').addClass("active");
+                        $('#overlay').addClass("active");
                     <?php } ?>
                 <?php } else { ?>
                     window.location.href = "/indieabode/login";
@@ -596,7 +641,10 @@
                     <?php if ($_SESSION['userRole'] == "gamer") { ?>
                         window.location.href = "/indieabode/game/checkout?id=<?= $this->game['gameID'] ?>";
                     <?php } else { ?>
-                        alert("Unauthorized User Role");
+                        // alert("Unauthorized User Role");
+                        $('#modal-incorrectRole').addClass("active");
+                        $('#modal-incorrectRole').addClass("active");
+                        $('#overlay').addClass("active");
                     <?php } ?>
                 <?php } else { ?>
                     window.location.href = "/indieabode/login";

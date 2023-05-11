@@ -411,16 +411,6 @@ class Game extends Controller
 
     function report()
     {
-        // $reason = $_POST['reason'];
-        // $des = $_POST['Rdes'];
-        // $email = $_POST['email'];
-        // $id = $_SESSION['id'];
-
-        // $this->model->reportSubmit($reason, $des, $id, $email);
-
-        // $query = parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
-        // parse_str($query, $result);
-        // header('location:/indieabode/game?' . http_build_query($result));
 
         if (isset($_POST['report_submit'])) {
 
@@ -428,8 +418,9 @@ class Game extends Controller
             $description = $_POST['description'];
             $type = "Game";
             $gamerID = $_SESSION['id'];
+            $itemID = $_POST['gameID'];
 
-            $this->model->reportSubmit($reason, $description, $gamerID, $type);
+            $this->model->reportSubmit($reason, $description, $gamerID, $type, $itemID);
         }
 
         // echo "Successful";

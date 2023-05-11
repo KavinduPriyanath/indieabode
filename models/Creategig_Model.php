@@ -120,4 +120,16 @@ class Creategig_Model extends Model
 
         return $screenshotsURL;
     }
+
+    function GetThisGigRecord($gigName, $gameID)
+    {
+
+        $sql = "SELECT * FROM gig WHERE gigName='$gigName' AND game='$gameID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }

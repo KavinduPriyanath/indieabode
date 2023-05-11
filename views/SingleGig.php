@@ -179,7 +179,7 @@
                                 </div>
 
                             </div>
-                            <div class="tagline"> <?= $gig['gigTagline'] ?> </div>
+                            <div class="tagline modernWay"> <?= $gig['gigTagline'] ?> </div>
                         </div>
                     </a>
                 <?php } ?>

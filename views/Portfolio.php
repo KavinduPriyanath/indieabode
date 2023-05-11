@@ -30,9 +30,11 @@
             <div class="name-role">
                 <div class="upper-name-row">
                     <h1 id="user-name"><?= $this->developerDetails['username']; ?> </h1>
-                    <?php if ($_GET['profile'] != $_SESSION['username']) { ?>
-                        <span class="follow-btn">Follow</span>
-                        <input type="hidden" name="followingID" id="followingID" value="<?= $this->developerDetails['gamerID'] ?>">
+                    <?php if (isset($_SESSION['logged'])) { ?>
+                        <?php if ($_GET['profile'] != $_SESSION['username']) { ?>
+                            <span class="follow-btn">Follow</span>
+                            <input type="hidden" name="followingID" id="followingID" value="<?= $this->developerDetails['gamerID'] ?>">
+                        <?php } ?>
                     <?php } ?>
                 </div>
 
@@ -75,7 +77,7 @@
 
     <hr id="topic-break">
 
-    <?php if ($_SESSION['logged'] && $this->developerDetails['userRole'] == "game developer") { ?>
+    <?php if ($this->developerDetails['userRole'] == "game developer") { ?>
         <div class="game-developer">
 
 
@@ -103,7 +105,7 @@
             </div>
 
         </div>
-    <?php } else if ($_SESSION['logged'] && $this->developerDetails['userRole'] == "asset creator") { ?>
+    <?php } else if ($this->developerDetails['userRole'] == "asset creator") { ?>
 
         <div class="asset-creator">
 
@@ -133,7 +135,7 @@
 
         </div>
 
-    <?php } else if ($_SESSION['logged'] && $this->developerDetails['userRole'] == "game publisher") { ?>
+    <?php } else if ($this->developerDetails['userRole'] == "game publisher") { ?>
 
 
         <div class="game-publisher">
@@ -175,10 +177,12 @@
     <script>
         $(document).ready(function() {
 
-            <?php if (empty($this->isFollowing)) { ?>
-                $('.follow-btn').text("Follow");
-            <?php } else { ?>
-                $('.follow-btn').text("Following");
+            <?php if (isset($_SESSION['logged'])) { ?>
+                <?php if (empty($this->isFollowing)) { ?>
+                    $('.follow-btn').text("Follow");
+                <?php } else { ?>
+                    $('.follow-btn').text("Following");
+                <?php } ?>
             <?php } ?>
 
             $(".follow-btn").click(function(e) {

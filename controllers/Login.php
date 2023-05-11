@@ -160,7 +160,9 @@ class Login extends Controller
 
             $user = $this->model->signin();
 
-            if (!empty($user)) {
+            $admin = $this->model->IsAdmin();
+
+            if (!empty($user) || !empty($admin)) {
                 echo "success";
             } else {
                 echo "failure";

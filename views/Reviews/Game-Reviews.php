@@ -12,7 +12,7 @@
     <style>
         <?php
         include 'public/css/game.css';
-        include 'public/css/alert-modal.css'
+        include 'public/css/alert-modal.css';
         ?><?php
             include 'public/css/game-review.css';
             ?><?php include 'public/css/review-modal.css' ?>
@@ -181,11 +181,10 @@
                 <div class="user-msg">Unprivileged <br> User!</div>
                 <div class="sub-text">Login as gamer to perform <br> this action</div>
 
-                <div class="close-btn-warning" data-close-button>Close</div>
+                <div class="close-btn-warning" data-warning-button>Close</div>
 
             </div>
         </div>
-        <div id="overlay-warning"></div>
     </div>
 
 
