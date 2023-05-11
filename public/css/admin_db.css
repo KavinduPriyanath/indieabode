@@ -641,9 +641,10 @@ input:checked + .slider:before {
   }
 
   .game-db-table-heading{
-    margin-bottom: -4%;
-    margin-left: -20%;
+    /* margin-bottom: -4%;
+    margin-left: -20%; */
     color:#2d4e6c;
+    text-align: center;
   }
   
   .game-db-report-table {
@@ -653,7 +654,7 @@ input:checked + .slider:before {
     padding: 20px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /* align-items: center; */
   }
   
   .game-db-report-table button {
@@ -1101,3 +1102,48 @@ input:checked + .slider:before {
 .total-revenue-site h2{
   color:#4bc0c0;
 }
+
+	/* The modal (background) */
+	.db-modal {
+		display: none; 
+		position: fixed; /* Stay in place */
+		z-index: 1; /* Sit on top */
+		padding-top: 100px; /* Location of the box */
+		left: 0;
+		top: 0;
+		width: 100%; /* Full width */
+		height: 100%; /* Full height */
+		overflow: auto; /* Enable scroll if needed */
+		background-color: rgb(0,0,0); /* Fallback color */
+		background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+	}
+
+	/* Modal Content */
+	.db-modal-content {
+		background-color: #fefefe;
+		margin: auto;
+		padding: 20px;
+		border: 1px solid #888;
+		width: 80%;
+	}
+
+	/* The Close Button */
+	.db-close {
+		color: #aaaaaa;
+		float: right;
+		font-size: 28px;
+		font-weight: bold;
+	}
+
+	.db-close:hover,
+	.db-close:focus {
+		color: #000;
+		text-decoration: none;
+		cursor: pointer;
+	}
+
+  #dw-pay-btn{
+    padding: 1%;
+    margin-left: 80%;
+    margin-bottom: 2%;
+  }

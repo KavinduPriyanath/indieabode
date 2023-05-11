@@ -43,50 +43,53 @@ class SiteDashboard_Model extends Model
     return $count;
   }
 
-  function blockUserCount(){
+  function blockUserCount() {
     $sql = "SELECT COUNT(*) AS active_users,
-    (SELECT COUNT(*) FROM gamer WHERE accountStatus = 0) AS blocked_users
-    FROM gamer WHERE accountStatus = 1";
+            (SELECT COUNT(*) FROM gamer WHERE accountStatus = 0) AS blocked_users
+            FROM gamer WHERE accountStatus = 1";
 
     $stmt = $this->db->prepare($sql);
     $stmt->execute();
-    $userCounts = $stmt->fetchAll();
+    $userCounts = $stmt->fetch(PDO::FETCH_ASSOC);
     return $userCounts;
   }
 
-  
-
-
-
-  function TopGames()
-  {
-    $sql = "SELECT downloadgame.gameID, freegame.gameName as name, COUNT(downloadgame.gameID) as count, freegame.gameCoverImg as img
-      FROM downloadgame
-      LEFT JOIN freegame ON downloadgame.gameID = freegame.gameID
-      GROUP BY downloadgame.gameID, freegame.gameName ORDER BY count DESC LIMIT 3        
-      ";
+  function getTotalGameRevenue() {
+    $sql = "SELECT ROUND(SUM(siteShare), 2) AS totalGameRevenue FROM sitegamesrevenue";
     $stmt = $this->db->prepare($sql);
     $stmt->execute();
-
-    $data = $stmt->fetchAll();
-
-    // print_r($data);
-    return $data;
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    $totalGameRevenue = $row['totalGameRevenue'];
+    return $totalGameRevenue;
   }
 
-  function TopAssets(){
-    $sql = "SELECT downloadasset.assetID, freeasset.assetName as name, COUNT(downloadasset.assetID) as count, freeasset.assetCoverImg as img
-    FROM downloadasset
-    LEFT JOIN freeasset ON downloadasset.assetID = freeasset.assetID
-    GROUP BY downloadasset.assetID, freeasset.assetName ORDER BY count DESC LIMIT 3        
-    ";
+  function getTotalAssetRevenue() {
+    $sql = "SELECT ROUND(SUM(siteShare), 2) AS totalAssetRevenue FROM site_assets_revenue";
     $stmt = $this->db->prepare($sql);
     $stmt->execute();
-
-    $data = $stmt->fetchAll();
-
-
-    return $data;
-
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    $totalAssetRevenue = $row['totalAssetRevenue'];
+    return $totalAssetRevenue;
   }
+
+  function getgigTotalRevenue() {
+    $sql = "SELECT ROUND(SUM(siteShare), 2) as total_revenue_share
+    FROM site_gig_revenue";
+    $stmt = $this->db->prepare($sql);
+    $stmt->execute();
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    $totalRevenue = $row['total_revenue_share'];
+    return $totalRevenue;
+  }
+
+  function getcrowdfundTotalRevenue() {
+    $sql = "SELECT ROUND(SUM(IF(expectedAmount = currentAmount, expectedAmount * 0.05, 0)), 2) as total_revenue_share
+    FROM crowdfund WHERE expectedAmount = currentAmount";
+    $stmt = $this->db->prepare($sql);
+    $stmt->execute();
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    $totalRevenue = $row['total_revenue_share'];
+    return $totalRevenue;
+  }
+
 }

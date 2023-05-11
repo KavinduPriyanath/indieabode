@@ -18,6 +18,9 @@
 	<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 	
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@3.3.2/dist/chart.min.js"></script>
+
+	<!-- Include the html2pdf.js library -->
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script> -->
 </head>
 
 <body>
@@ -95,41 +98,40 @@
 							</div>
 						</div>
 						<div class="game-db-second-row">
-							<div class="game-db-report-table">
-								<!-- <input type="date" id="game-db-date-picker"> -->
-								<h3 class="game-db-table-heading">Payment Report on <?php echo date('Y.m.dS'); ?><sup>th</sup> Day</h3>
-								<button class="game-db-btn game-db-download-btn">Download Report</button>
+							<div class="game-db-report-table" id="report-table">
+								<h3 class="game-db-table-heading">Game Revenue Report on <?php echo date('Y.m.dS'); ?><sup>th</sup> day</h3>
+								<!-- <button id="openModalBtn" class="game-db-btn game-db-download-btn">Download Report</button> -->
+								<form action="/indieabode/Admin_G/downloadPDF" method="post"> 
+									<input type="submit" name="download_user" value="download" id="dw-pay-btn" class="download-user-btn">
+								</form>
 								<div class="game-db-table-container">
 									<?php if (!empty($this->gamePurchases)) { ?>
-										<table>
-											<thead>
+									<table>
+										<thead>
+										<tr>
+											<th>Game ID</th>
+											<th>Gamer ID</th>
+											<th>Payment Date</th>
+											<th>Payment Price</th>
+										</tr>
+										</thead>
+										<tbody>
+										<?php foreach ($this->gamePurchases as $revenue) { ?>
 											<tr>
-												<th>Transaction ID</th>
-												<th>Game ID</th>
-												<th>Gamer ID</th>
-												<th>Payment Date</th>
-												<th>Payment Amount</th>
+											<td><?php echo $revenue['gameID']; ?></td>
+											<td><?php echo $revenue['buyerID']; ?></td>
+											<td><?php echo $revenue['purchasedDate']; ?></td>
+											<td>$<?php echo $revenue['purchasedPrice']; ?></td>
 											</tr>
-											</thead>
-											<tbody>
-											<?php foreach ($this->gamePurchases as $purchase) { ?>
-												<tr>
-												<td><?php echo $purchase['id']; ?></td>
-												<td><?php echo $purchase['gameID']; ?></td>
-												<td><?php echo $purchase['buyerID']; ?></td>
-												<td><?php echo $purchase['purchasedDate']; ?></td>
-												<td><?php echo $purchase['purchasedPrice']; ?></td>
-												</tr>
-											<?php } ?>
-											</tbody>
-										</table>
-										<?php } else { ?>
-										<td colspan="5" class="error-tr">No payments available</td>
+										<?php } ?>
+										</tbody>
+									</table>
+									<?php } else { ?>
+									<td colspan="4" class="error-tr">No revenues available</td>
 									<?php } ?>
-
 								</div>
-								
 							</div>
+
 							<div class="game-db-doughnut-chart">
 								<canvas id="game-db-pie-chart" width="300" height="200"></canvas>
 							</div>
@@ -148,10 +150,13 @@
 						</div>
 
 						<div class="game-db-fourth-row">
-						<div class="game-db-report-table">
+						<div class="game-db-report-table" id="report-table">
 								<!-- <input type="date" id="game-db-date-picker"> -->
 								<h3 class="game-db-table-heading">Game Revenue Report on <?php echo date('Y.m.dS'); ?><sup>th</sup> day</h3>
-								<button class="game-db-btn game-db-download-btn">Download Report</button>
+								<!-- <button class="game-db-btn game-db-download-btn">Download Report</button> -->
+								<form action="/indieabode/Admin_G/downloadrevenuePDF" method="post"> 
+									<input type="submit" name="download_user" value="download" id="dw-pay-btn" class="download-user-btn">
+								</form>
 								<div class="game-db-table-container">
 									<?php if (!empty($this->gameRevenues)) { ?>
 										<table>
@@ -194,7 +199,7 @@
 	<?php
     include 'includes/footer.php';
     ?>
-
+	
 	<script>
 	window.onload = function() {
 

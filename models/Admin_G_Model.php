@@ -124,7 +124,7 @@ class Admin_G_Model extends Model
       $row = $stmt->fetch(PDO::FETCH_ASSOC);
       $totalGameRevenue = $row['totalGameRevenue'];
       return $totalGameRevenue;
-  }
+    }
 
   function getGameRevenueShare() {
     $sql = "SELECT * FROM sitegamesrevenue";

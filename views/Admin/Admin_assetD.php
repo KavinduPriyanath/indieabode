@@ -78,7 +78,10 @@
 							<div class="game-db-report-table">
 								<!-- <input type="date" id="game-db-date-picker"> -->
 								<h3 class="game-db-table-heading">Payment Report on <?php echo date('Y.m.dS'); ?><sup>th</sup> Day</h3>
-								<button class="game-db-btn game-db-download-btn">Download Report</button>
+								<!-- <button class="game-db-btn game-db-download-btn">Download Report</button> -->
+								<form action="/indieabode/Admin_assetD/downloadPDF" method="post"> 
+									<input type="submit" name="download_user" value="download" id="dw-pay-btn" class="download-user-btn">
+								</form>
 								<div class="game-db-table-container">
 									<?php if (!empty($this->assetPurchases)) { ?>
 										<table>
@@ -157,14 +160,17 @@
 							<div class="game-db-report-table">
 									<!-- <input type="date" id="game-db-date-picker"> -->
 									<h3 class="game-db-table-heading">Asset Revenue Report on <?php echo date('Y.m.dS'); ?><sup>th</sup> day</h3>
-									<button class="game-db-btn game-db-download-btn">Download Report</button>
+									<!-- <button class="game-db-btn game-db-download-btn">Download Report</button> -->
+									<form action="/indieabode/Admin_assetD/downloadrevenuePDF" method="post"> 
+										<input type="submit" name="download_user" value="download" id="dw-pay-btn" class="download-user-btn">
+								    </form>
 									<div class="game-db-table-container">
 										<?php if (!empty($this->assetRevenues)) { ?>
 											<table>
 												<thead>
 												<tr>
 													<th>Transaction ID</th>
-													<th>Game ID</th>
+													<th>Asset ID</th>
 													<th>Sale Date</th>
 													<th>Site Share</th>
 												</tr>

@@ -85,7 +85,7 @@
 							</div>
 							<div class="total-revenue-site">
 								<h3>Total Revenue</h3>
-								<h2>$567.90</h2>
+								<h2>$<?php echo $this->allRevenue; ?></h2>
 							</div>
 						</div>
 						<div class="second-row-db site-db-second-row">
@@ -143,7 +143,8 @@
 				labels: ['Active Users', 'Blocked Users'],
 				datasets: [{
 				label: 'User Status',
-				data: [<?php echo json_encode($this->usercounts['active_users']); ?>, <?php echo json_encode($this->usercounts['blocked_users']); ?>], // Replace with actual values
+				// data: [<?php echo json_encode($this->usercounts['active_users']); ?>, <?php echo json_encode($this->usercounts['blocked_users']); ?>], // Replace with actual values
+				data: [<?php echo json_encode($this->usercounts['active_users']); ?>, <?php echo json_encode($this->usercounts['blocked_users']); ?>],
 				backgroundColor: [
 					'rgba(6, 96, 94, 0.5)',
 					'rgba(84, 31, 46, 0.5)'
@@ -188,18 +189,18 @@
 				datasets: [{
 					label: '# of Games',
 					// data: [25, 40, 35],
-					data: [67,89,99,34],
+					data:<?php echo json_encode($this->revenues); ?> ,
 					backgroundColor: [
 						'#36647b',
 						'#608a9f',
 						'#3f5564',
-						'#7ea9c8'
+						'#527289'
 					],
 					borderColor: [
 						'#36647b',
 						'#608a9f',
 						'#3f5564',
-						'#7ea9c8'
+						'#527289'
 					],
 					borderWidth: 1
 				}]
