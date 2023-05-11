@@ -143,7 +143,7 @@
 				labels: ['Active Users', 'Blocked Users'],
 				datasets: [{
 				label: 'User Status',
-				data: [85, 15], // Replace with actual values
+				data: [<?php echo json_encode($this->usercounts['active_users']); ?>, <?php echo json_encode($this->usercounts['blocked_users']); ?>], // Replace with actual values
 				backgroundColor: [
 					'rgba(6, 96, 94, 0.5)',
 					'rgba(84, 31, 46, 0.5)'
@@ -176,7 +176,7 @@
 				}]
 				}
 			}
-			});
+		});
 		chart.render();
 
 		var gamePieChart = document.getElementById('game-db-pie-chart').getContext('2d');

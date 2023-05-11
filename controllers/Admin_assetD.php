@@ -22,13 +22,13 @@ class Admin_assetD extends Controller
         $this->view->gameTypes[2] = $releasedGame;
 
         //get data for the total transactions of game
-        $this->view->totalTxGames = $this->model->getTotalTxGame();
+        $this->view->totalTxAssets = $this->model->getTotalTxAsset();
 
         //get data for the transaction graph
-        $gameTxSummary = $this->model->getTxSummary();
-        if ($gameTxSummary !== null) {
-            $this->view->txDates = $gameTxSummary['dates'];
-            $this->view->txTotals = $gameTxSummary['totals'];
+        $assetTxSummary = $this->model->getTxSummary();
+        if ($assetTxSummary !== null) {
+            $this->view->txDates = $assetTxSummary['dates'];
+            $this->view->txTotals = $assetTxSummary['totals'];
         } else {
             // handling the error here, such as displaying an error message to admin
             echo 'hriynnaaaa';
@@ -45,10 +45,10 @@ class Admin_assetD extends Controller
         }
 
         //get data of game purchasings
-        $this->view->gamePurchases = $this->model->getAllPayments();
+        $this->view->assetPurchases = $this->model->getAllPayments();
 
         //get game revenues shares for each day
-        $totalRevenues = $this->model->getAllGameRevenues();
+        $totalRevenues = $this->model->getAllAssetRevenues();
         if ($totalRevenues !== null) {
             $this->view->revenueDates = $totalRevenues['dates'];
             $this->view->revenueTotals = $totalRevenues['totals'];
@@ -58,11 +58,11 @@ class Admin_assetD extends Controller
         }
 
         //get total game revenue
-        $this->view->totalGameRevenue = $this->model->getTotalGameRevenue();
+        $this->view->totalAssetRevenue = $this->model->getTotalAssetRevenue();
 
         //game revenue all the details
-        $this->view->gameRevenues = $this->model->getGameRevenueShare();
-        $this->view->render('Admin/Admin_G');
+        $this->view->assetRevenues = $this->model->getAssetRevenueShare();
+        $this->view->render('Admin/Admin_assetD');
 
     }
 }

@@ -73,51 +73,31 @@
 					<h1>Asset Dashboard</h1>
 					<div class="game-db-body">
 						<h2>Asset Dashbord/Assets</h2>
-						<div class="game-db-first-row game-db-extra-first">
-							<div class="transaction-graph-game-tx">
-								<h3>Payments Graph</h3>
-								<canvas id="game-tx-line-graph" style="height: 150px; width: 270px;"></canvas>
-							</div>
-							<div class="game-db-content-join">
-								<div class="game-db-view-games">
-									<button class="game-db-btn">View All Games</button>
-								</div>
-								<div class="game-db-tx-card">
-									<h3>Total Payments</h3>
-									<h2>$<?php echo $this->totalTxGames; ?></h2>
-								</div>
-							</div>
-							
-
-							<div class="downloads-uploads-graph">
-								<h3>Total Downloads and Uploads</h3>
-								<canvas id="downloads-uploads-bar-graph" style="height: 220px; width: 400px;"></canvas>
-							</div>
-						</div>
+						
 						<div class="game-db-second-row">
 							<div class="game-db-report-table">
 								<!-- <input type="date" id="game-db-date-picker"> -->
 								<h3 class="game-db-table-heading">Payment Report on <?php echo date('Y.m.dS'); ?><sup>th</sup> Day</h3>
 								<button class="game-db-btn game-db-download-btn">Download Report</button>
 								<div class="game-db-table-container">
-									<?php if (!empty($this->gamePurchases)) { ?>
+									<?php if (!empty($this->assetPurchases)) { ?>
 										<table>
 											<thead>
 											<tr>
 												<th>Transaction ID</th>
-												<th>Game ID</th>
-												<th>Gamer ID</th>
+												<th>Asset ID</th>
+												<th>Buyer ID</th>
 												<th>Payment Date</th>
 												<th>Payment Amount</th>
 											</tr>
 											</thead>
 											<tbody>
-											<?php foreach ($this->gamePurchases as $purchase) { ?>
+											<?php foreach ($this->assetPurchases as $purchase) { ?>
 												<tr>
 												<td><?php echo $purchase['id']; ?></td>
-												<td><?php echo $purchase['gameID']; ?></td>
+												<td><?php echo $purchase['assetID']; ?></td>
 												<td><?php echo $purchase['buyerID']; ?></td>
-												<td><?php echo $purchase['purchasedDate']; ?></td>
+												<td><?php echo $purchase['purchasedData']; ?></td>
 												<td><?php echo $purchase['purchasedPrice']; ?></td>
 												</tr>
 											<?php } ?>
@@ -129,31 +109,57 @@
 
 								</div>
 								
+								
 							</div>
-							<div class="game-db-doughnut-chart">
-								<canvas id="game-db-pie-chart" width="300" height="200"></canvas>
+							
+							<div class="transaction-graph-game-tx">
+								<h3>Payments Graph</h3>
+								<canvas id="game-tx-line-graph" style="height: 150px; width: 270px;"></canvas>
 							</div>
 						</div>
-						<h2>Game Dashbord/Revenue</h2>
+						<div class="game-db-first-row game-db-extra-first">
+							
+							
+							<div class="game-db-content-join">
+								<div class="game-db-view-games">
+									<button class="game-db-btn">View All Assets</button>
+								</div>
+								<div class="game-db-tx-card">
+									<h3>Total Payments</h3>
+									<h2>$<?php echo $this->totalTxAssets; ?></h2>
+								</div>
+							</div>
+							<div class="downloads-uploads-graph">
+								<h3>Total Uploads</h3>
+								<canvas id="downloads-uploads-bar-graph" style="height: 220px; width: 400px;"></canvas>
+							</div>
+							
+							<!-- <div class="game-db-doughnut-chart">
+								<canvas id="game-db-pie-chart" width="300" height="200"></canvas>
+							</div> -->
+							
+
+						</div>
+						<h2>Asset Dashbord/Revenue</h2>
 						<div class="game-db-third-row">
 							<div class="game-revenue-graph">
-								<h3>Game Revenue Graph</h3>
+								<h3>Asset Revenue Graph</h3>
 								<canvas id="game-revenue-line-graph" style="height: 150px; width: 270px;"></canvas>
 							</div>
 
 							<div class="game-revenue-total">
-								<h3>Game Revenues</h3>
-								<h2>$<?php echo $this->totalGameRevenue; ?></h2>
+								<h3>Asset Revenues</h3>
+								<h2>$<?php echo $this->totalAssetRevenue; ?></h2>
 							</div>
 						</div>
 
 						<div class="game-db-fourth-row">
 							<div class="game-db-report-table">
 									<!-- <input type="date" id="game-db-date-picker"> -->
-									<h3 class="game-db-table-heading">Game Revenue Report on <?php echo date('Y.m.dS'); ?><sup>th</sup> day</h3>
+									<h3 class="game-db-table-heading">Asset Revenue Report on <?php echo date('Y.m.dS'); ?><sup>th</sup> day</h3>
 									<button class="game-db-btn game-db-download-btn">Download Report</button>
 									<div class="game-db-table-container">
-										<?php if (!empty($this->gameRevenues)) { ?>
+										<?php if (!empty($this->assetRevenues)) { ?>
 											<table>
 												<thead>
 												<tr>
@@ -164,10 +170,10 @@
 												</tr>
 												</thead>
 												<tbody>
-												<?php foreach ($this->gameRevenues as $revenue) { ?>
+												<?php foreach ($this->assetRevenues as $revenue) { ?>
 													<tr>
 													<td><?php echo $revenue['id']; ?></td>
-													<td><?php echo $revenue['gameID']; ?></td>
+													<td><?php echo $revenue['assetID']; ?></td>
 													<td><?php echo $revenue['sale_date']; ?></td>
 													<td><?php echo $revenue['siteShare']; ?></td>
 													</tr>
@@ -175,7 +181,7 @@
 												</tbody>
 											</table>
 											<?php } else { ?>
-											<td colspan="4" class="error-tr">No crowdfunds available</td>
+											<td colspan="4" class="error-tr">No assets available</td>
 										<?php } ?>
 									</div>
 								</div>
@@ -199,37 +205,37 @@
 	window.onload = function() {
 
 
-		var gamePieChart = document.getElementById('game-db-pie-chart').getContext('2d');
-		var myChart = new Chart(gamePieChart, {
-			type: 'doughnut',
-			backgroundColor: "#6997a4",
-			data: {
-				labels: ['Early Access Games', 'Upcoming Games', 'Released Games'],
-				datasets: [{
-					label: '# of Games',
-					// data: [25, 40, 35],
-					data: <?php echo json_encode($this->gameTypes); ?>,
-					backgroundColor: [
-						'rgba(55, 87, 102, 1)',
-						'#36647b',
-						'#608a9f'
-					],
-					borderColor: [
-						'rgba(55, 87, 102, 0.7)',
-						'#36647b',
-						'#608a9f'
-					],
-					borderWidth: 1
-				}]
-			},
-			options: {
-				responsive: true,
-				maintainAspectRatio: false,
-				legend: {
-					position: 'right'
-				}
-			}
-		});
+		// var gamePieChart = document.getElementById('game-db-pie-chart').getContext('2d');
+		// var myChart = new Chart(gamePieChart, {
+		// 	type: 'doughnut',
+		// 	backgroundColor: "#6997a4",
+		// 	data: {
+		// 		labels: ['Early Access Games', 'Upcoming Games', 'Released Games'],
+		// 		datasets: [{
+		// 			label: '# of Games',
+		// 			// data: [25, 40, 35],
+		// 			data: <?php echo json_encode($this->gameTypes); ?>,
+		// 			backgroundColor: [
+		// 				'rgba(55, 87, 102, 1)',
+		// 				'#36647b',
+		// 				'#608a9f'
+		// 			],
+		// 			borderColor: [
+		// 				'rgba(55, 87, 102, 0.7)',
+		// 				'#36647b',
+		// 				'#608a9f'
+		// 			],
+		// 			borderWidth: 1
+		// 		}]
+		// 	},
+		// 	options: {
+		// 		responsive: true,
+		// 		maintainAspectRatio: false,
+		// 		legend: {
+		// 			position: 'right'
+		// 		}
+		// 	}
+		// });
 
 		var ctx2 = document.getElementById('game-tx-line-graph').getContext('2d');
 		var gameTxGraph = new Chart(ctx2, {
