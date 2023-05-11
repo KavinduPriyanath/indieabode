@@ -21,6 +21,29 @@ class SiteDashboard extends Controller
         // get active & block user counts
         $this->view->usercounts = $this->model->blockUserCount();
 
+
+        // get total revenues
+        $totalGameRevenue = $this->model->getTotalGameRevenue();
+        // print($totalGameRevenue);
+        $totalAssetRevenue = $this->model->getTotalAssetRevenue();
+        // print($totalAssetRevenue);
+        $totalGigRevenue = $this->model->getgigTotalRevenue();
+        // print($totalGigRevenue);
+        $totalCrowdfundRevenue = $this->model->getcrowdfundTotalRevenue();
+        // print($totalCrowdfundRevenue);
+
+        $totalRevenues = $totalGameRevenue +  $totalAssetRevenue + $totalGigRevenue + $totalCrowdfundRevenue ; 
+
+        // print($totalRevenues);
+        $this->view->allRevenue = $totalRevenues;
+
+        $this->view->revenues = array($totalGameRevenue , $totalAssetRevenue, $totalGigRevenue,$totalCrowdfundRevenue);
+
+
+
+
+
+
         $this->view->render('Main/SiteDashboard');
     }
 }
