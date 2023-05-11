@@ -12,7 +12,7 @@
     <style>
         <?php
         include 'public/css/game.css';
-        include 'public/css/alert-modal.css'
+        include 'public/css/alert-modal.css';
         ?><?php
             include 'public/css/game-review.css';
             ?><?php include 'public/css/review-modal.css' ?>

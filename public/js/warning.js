@@ -1,7 +1,7 @@
 //Loading the Modal
 const openWarningButtons = document.querySelectorAll("[data-modal-target]");
-const closeWarningButtons = document.querySelectorAll("[data-close-button]");
-const warningoverlay = document.getElementById("overlay-warning");
+const closeWarningButtons = document.querySelectorAll("[data-warning-button]");
+const warningoverlay = document.getElementById("overlay");
 
 openWarningButtons.forEach((button) => {
   button.addEventListener("click", () => {
@@ -10,12 +10,12 @@ openWarningButtons.forEach((button) => {
   });
 });
 
-// warningoverlay.addEventListener("click", () => {
-//   const modals = document.querySelectorAll(".modal.active");
-//   modals.forEach((modal) => {
-//     closeModal(modal);
-//   });
-// });
+warningoverlay.addEventListener("click", () => {
+  const modals = document.querySelectorAll(".modal.active");
+  modals.forEach((modal) => {
+    closeModal(modal);
+  });
+});
 
 closeWarningButtons.forEach((button) => {
   button.addEventListener("click", () => {

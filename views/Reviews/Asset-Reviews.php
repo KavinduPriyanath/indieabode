@@ -14,6 +14,7 @@
         include 'public/css/game.css';
         include 'public/css/review-modal.css';
         include 'public/css/game-review.css';
+        include 'public/css/alert-modal.css';
         ?>
     </style>
 </head>
@@ -94,9 +95,11 @@
             <div class="column-three">
                 <div class="write-text">Write Review Here</div>
 
-                <?php if (isset($_SESSION['logged'])) { ?>
+                <?php if (isset($_SESSION['logged']) && $_SESSION['id'] != $this->asset['assetCreatorID']) { ?>
                     <button data-modal-target="#modal" id="review-btn" class="UnReviewed">Add Review</button>
-                <?php } else { ?>
+                <?php } else if (isset($_SESSION['logged']) && $_SESSION['id'] == $this->asset['assetCreatorID']) { ?>
+                    <button data-modal-target="#modal-incorrectRole">Add Review</button>
+                <?php  } else { ?>
                     <div class="text"><a href="/indieabode/login">Log in with indieabode</a> to leave a review</div>
                 <?php } ?>
 
@@ -126,7 +129,7 @@
                 <p>Please remember to be polite and follow the Rules and Guidelines</p>
                 <div class="report-heading">
                     Choose a rating from 1 to 5
-
+                    <br>
                     <div class="stars">
                         <i class="fa fa-star unchecked submit_star" id="submit_star_1" data-rating="1"></i>
                         <i class="fa fa-star unchecked submit_star" id="submit_star_2" data-rating="2"></i>
@@ -167,22 +170,23 @@
     </div>
 
     <div class="incorrectRole-modal">
-        <div class="modal" id="modal-incorrectRole">
-            <div class="modal-header">
-                <div class="title">Rate & Review "<?= $this->asset['assetName'] ?>"</div>
-                <button data-close-button class="close-button">&times;</button>
-            </div>
-            <div class="modal-body">
+        <div class="modal-warning" id="modal-incorrectRole">
+            <div class="modal-header-warning">
 
-                <div class="report-heading">
-                    Sign-in As a Gamer
-
-
+                <div class="warning-logo">
+                    <img src="<?php echo BASE_URL; ?>public/images/empty/warning.png" alt="">
                 </div>
+                <!-- <button data-close-button class="close-button">&times;</button> -->
+            </div>
+            <div class="modal-body-warning">
+
+                <div class="user-msg">Unauthorized <br> Action!</div>
+                <div class="sub-text">You cannot review your <br> own assets</div>
+
+                <div class="close-btn-warning" data-warning-button>Close</div>
 
             </div>
         </div>
-        <div id="overlay"></div>
     </div>
 
 
@@ -194,6 +198,7 @@
 
     <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
     <script src="<?php echo BASE_URL; ?>public/js/game-review.js"></script>
+    <script src="<?php echo BASE_URL; ?>public/js/warning.js"></script>
 
 
 

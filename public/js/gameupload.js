@@ -72,21 +72,27 @@ $(document).ready(function () {
           $("#gameNameCheck").show();
           $("#gameNameCheck").text("Game Name Cannot be empty");
           gameNameOkay = false;
-        } else if (response == "available") {
-          $("#gameNameCheck").hide();
-          gameNameOkay = true;
-        } else if (response == "unavailable") {
+        } else if (gameName.length > 20) {
           $("#gameNameCheck").show();
-          $("#gameNameCheck").css("background-color", "rgb(225, 132, 132)");
-          $("#gameNameCheck").text("You alreay have a game with this name");
+          $("#gameNameCheck").text("Game Name Cannot exceed 20 letters");
           gameNameOkay = false;
-        } else if (response == "warning") {
-          $("#gameNameCheck").show();
-          $("#gameNameCheck").css("background-color", "#ffff80");
-          $("#gameNameCheck").text(
-            "Warning: Platform already has a game with this name"
-          );
-          gameNameOkay = true;
+        } else {
+          if (response == "available") {
+            $("#gameNameCheck").hide();
+            gameNameOkay = true;
+          } else if (response == "unavailable") {
+            $("#gameNameCheck").show();
+            $("#gameNameCheck").css("background-color", "rgb(225, 132, 132)");
+            $("#gameNameCheck").text("You alreay have a game with this name");
+            gameNameOkay = false;
+          } else if (response == "warning") {
+            $("#gameNameCheck").show();
+            $("#gameNameCheck").css("background-color", "#ffff80");
+            $("#gameNameCheck").text(
+              "Warning: Platform already has a game with this name"
+            );
+            gameNameOkay = true;
+          }
         }
       },
     });

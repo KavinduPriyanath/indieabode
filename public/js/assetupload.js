@@ -56,21 +56,29 @@ $(document).ready(function () {
           $("#assetNameCheck").show();
           $("#assetNameCheck").text("Asset Name Cannot be empty");
           assetNameOkay = false;
-        } else if (response == "available") {
-          $("#assetNameCheck").hide();
-          assetNameOkay = true;
-        } else if (response == "unavailable") {
+        } else if (assetName.length > 20) {
           $("#assetNameCheck").show();
-          $("#assetNameCheck").css("background-color", "rgb(225, 132, 132)");
-          $("#assetNameCheck").text("You alreay have an asset with this name");
+          $("#assetNameCheck").text("Asset Name Cannot exceed 20 letters");
           assetNameOkay = false;
-        } else if (response == "warning") {
-          $("#assetNameCheck").show();
-          $("#assetNameCheck").css("background-color", "#ffff80");
-          $("#assetNameCheck").text(
-            "Warning: Platform already has an asset with this name"
-          );
-          assetNameOkay = true;
+        } else {
+          if (response == "available") {
+            $("#assetNameCheck").hide();
+            assetNameOkay = true;
+          } else if (response == "unavailable") {
+            $("#assetNameCheck").show();
+            $("#assetNameCheck").css("background-color", "rgb(225, 132, 132)");
+            $("#assetNameCheck").text(
+              "You alreay have an asset with this name"
+            );
+            assetNameOkay = false;
+          } else if (response == "warning") {
+            $("#assetNameCheck").show();
+            $("#assetNameCheck").css("background-color", "#ffff80");
+            $("#assetNameCheck").text(
+              "Warning: Platform already has an asset with this name"
+            );
+            assetNameOkay = true;
+          }
         }
       },
     });
