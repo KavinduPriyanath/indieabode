@@ -23,8 +23,8 @@ class Admin_assetD_Model extends Model
       return $gameTypeCount;
     }
 
-    function getTotalTxGame(){
-      $sql = "SELECT ROUND(SUM(purchasedPrice), 2) AS totalPurchases FROM game_purchases";
+    function getTotalTxAsset(){
+      $sql = "SELECT ROUND(SUM(purchasedPrice), 2) AS totalPurchases FROM asset_purchases";
 
       $stmt = $this->db->prepare($sql);
 
@@ -32,13 +32,13 @@ class Admin_assetD_Model extends Model
 
       $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-      $totalTxGame = $row['totalPurchases'];
+      $totalTxAsset = $row['totalPurchases'];
 
-      return $totalTxGame;
+      return $totalTxAsset;
     }
 
     function getTxSummary(){
-      $sql = "SELECT purchasedDate, SUM(purchasedPrice) AS totalPurchases FROM game_purchases GROUP BY purchasedDate";
+      $sql = "SELECT purchasedData, SUM(purchasedPrice) AS totalPurchases FROM asset_purchases GROUP BY purchasedData";
       $stmt = $this->db->prepare($sql);
       if ($stmt->execute()) {
           $txSummary = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -47,7 +47,7 @@ class Admin_assetD_Model extends Model
           $totals = array();
   
           foreach ($txSummary as $row) {
-              $date = $row['purchasedDate'];
+              $date = $row['purchasedData'];
               $total = round($row['totalPurchases'], 2);
               $dates[] = $date;
               $totals[] = $total;
@@ -86,16 +86,16 @@ class Admin_assetD_Model extends Model
     }
 
     function getAllPayments() {
-      $sql = "SELECT * FROM game_purchases";
+      $sql = "SELECT * FROM asset_purchases";
       $stmt = $this->db->prepare($sql);
       $stmt->execute();
       $purchases = $stmt->fetchAll(PDO::FETCH_ASSOC);
       return $purchases;
     }
 
-    function getAllGameRevenues() {
+    function getAllAssetRevenues() {
       $sql ="SELECT sale_date, ROUND(SUM(siteShare), 2) AS totalSiteShares
-      FROM sitegamesrevenue GROUP BY sale_date";
+      FROM site_assets_revenue GROUP BY sale_date";
       $stmt = $this->db->prepare($sql);
       if ($stmt->execute()) {
         $totalRevenue = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -117,17 +117,17 @@ class Admin_assetD_Model extends Model
       }
     }
 
-    function getTotalGameRevenue() {
-      $sql = "SELECT ROUND(SUM(siteShare), 2) AS totalGameRevenue FROM sitegamesrevenue";
+    function getTotalAssetRevenue() {
+      $sql = "SELECT ROUND(SUM(siteShare), 2) AS totalAssetRevenue FROM site_assets_revenue";
       $stmt = $this->db->prepare($sql);
       $stmt->execute();
       $row = $stmt->fetch(PDO::FETCH_ASSOC);
-      $totalGameRevenue = $row['totalGameRevenue'];
-      return $totalGameRevenue;
+      $totalAssetRevenue = $row['totalAssetRevenue'];
+      return $totalAssetRevenue;
   }
 
-  function getGameRevenueShare() {
-    $sql = "SELECT * FROM sitegamesrevenue";
+  function getAssetRevenueShare() {
+    $sql = "SELECT * FROM site_assets_revenue";
     $stmt = $this->db->prepare($sql);
     $stmt->execute();
     $revenues = $stmt->fetchAll(PDO::FETCH_ASSOC);

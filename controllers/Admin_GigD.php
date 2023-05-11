@@ -11,38 +11,30 @@ class Admin_GigD extends Controller
 
     function index()
     {
-    //     // $this->view->userCount = $this->model->userCount();
 
-    //     // $this->view->totalDownloads = $this->model->totalDownloads();
+        // get data for the graph of no of crowdfunds
+        $NoofGigs = $this->model->getNoofGigs();
+        $this->view->total_ended_gigs = $NoofGigs['orderedGigs'];
+        $this->view->total_ongoing_gigs = $NoofGigs['notorderedGigs'];
 
-    //     //print_r($_POST);
-    //     $downloadasset = $this->model->getData("downloadasset",30);
-    //     $downloadgame = $this->model->getData("downloadgame",30);
+        // get data for all the donations have done so far
+        $this->view->allTransactions = $this->model->getTotalTx();
 
-    //     //var_dump($downloadgame);
-        
+        //get purchased gigs details
+        $this->view->orderedGigs = $this->model->getOrderedGigs();
+        // print_r($this->view->orderedGigs);
 
-        
+        //get data for gig revenues graph
+        $data = $this->model->revenueGraph();
+        $this->view->dates = $data['dates'];
+        $this->view->revenueShares = $data['revenueShares'];
 
-    //     $labels = [];
-    //     $downloadasset_data = [];
-    //     foreach($downloadasset as $row){
-    //         $labels[] = $row['date'];
-    //         $downloadasset_data[] = $row['count'];
-    //     }
+        //get total revenue share
+        $this->view->totalRevenue = $this->model->getTotalRevenue();
 
-
-    //     $downloadgame_data = [];
-    //     foreach($downloadgame as $row){
-    
-    //         $downloadgame_data[] = $row['count'];
-    //     }
-
-        
-
-    //     $this->view->labels=$labels;
-    //     $this->view->downloadasset_data=$downloadasset_data;
-    //     $this->view->downloadgame_data=$downloadgame_data;
+        //get revenues shares of gigs
+        $this->view->revenueGigs = $this->model->getRevenueShare();
+       
 
         $this->view->render('Admin/Admin_GigD');
     }

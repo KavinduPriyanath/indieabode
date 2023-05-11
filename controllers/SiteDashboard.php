@@ -16,6 +16,11 @@ class SiteDashboard extends Controller
         $this->view->publisherCount = $this->model->usertypeCount("game publisher");
         $this->view->jamorganizerCount = $this->model->usertypeCount("gamejam organizer");
         $this->view->assetcreatorCount = $this->model->usertypeCount("asset creator");
+
+
+        // get active & block user counts
+        $this->view->usercounts = $this->model->blockUserCount();
+
         $this->view->render('Main/SiteDashboard');
     }
 }

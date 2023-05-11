@@ -174,6 +174,8 @@ class Admin_userMg extends Controller
         }
         if($user['userRole']=="gamejam organizer"){
             $this->view->render('Admin/reports/Admin_jamOrganizer_report');
+           // $this->view->render('Admin/reports/Admin_jamOrganizer_report', ['userid' => $userid]);
+          // $this->view->render('Admin/reports/Admin_jamOrganizer_report?userid=' . $userid);
         }
         if($user['userRole']=="asset creator"){
             $ac_user = $this->model->assetCreator($userid);
