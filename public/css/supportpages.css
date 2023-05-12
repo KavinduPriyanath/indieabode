@@ -290,8 +290,12 @@ input[type="checkbox"] {
     text-decoration: underline;
 }
 
+.content-body .content-descriptions p{
+    font-size: 17px;
+}
 
-
-
+.content-descriptions span {
+    font-weight: bold;
+}
   
 

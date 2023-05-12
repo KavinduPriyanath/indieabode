@@ -203,8 +203,8 @@
             </div>
 
             <div class="content">
-                <p>Support "game name" to "crowdfund goal - develop"</p>
-                <input type="text" name="donation-amount" id="donation-amount">
+                <p>Support <span><?= $this->crowdfund['gameName'];  ?></span> to reach $<span><?= $this->crowdfund['expectedAmount'];  ?></span></p>
+                <input type="text" name="donation-amount" id="donation-amount" value="30.00">
                 <div class="donation-presets">
                     <div class="preset" id="two" onclick="Donation('30.00')">
                         $30.00

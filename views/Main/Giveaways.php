@@ -13,6 +13,7 @@
     <?php
     include 'public/css/giveaways.css';
     include 'public/css/reportModal.css';
+    include 'public/css/alert-modal.css';
     ?>
 </style>
 
@@ -61,14 +62,14 @@
                         <?php if ($this->myDetails['indieCoins'] > $item['pieceWorth']) { ?>
                             <div class="claim-btn claim" id="claim<?= $item['gameID'] ?>" data-modal-target="#modal<?= $item['gameID'] ?>">Claim</div>
                         <?php } else { ?>
-                            <div class="claim-btn claim" id="claim<?= $item['gameID'] ?>">Claim</div>
+                            <div class="claim-btn claim" id="claim<?= $item['gameID'] ?>" data-modal-target="#modal-incorrectRole">Claim</div>
                         <?php } ?>
 
                     <?php } ?>
                 </div>
             </div>
 
-            <div class="report-modal">
+            <!-- <div class="report-modal">
                 <div class="modal" id="modal<?= $item['gameID'] ?>">
                     <div class="modal-header">
                         <div class="title">Claim "<?= $item['gameName'] ?>"</div>
@@ -88,7 +89,53 @@
                     </div>
                 </div>
                 <div id="overlay<?= $item['gameID'] ?>"></div>
+            </div> -->
+
+            <div class="incorrectRole-modal">
+                <div class="modal-warning" id="modal<?= $item['gameID'] ?>">
+                    <div class="modal-header-warning">
+
+                        <div class="warning-logo">
+                            <img src="<?php echo BASE_URL; ?>public/images/spin-wheel/coin.png" alt="">
+                        </div>
+                        <!-- <button data-close-button class="close-button">&times;</button> -->
+                    </div>
+                    <div class="modal-body-warning">
+
+                        <div class="user-msg">Claim <br> <?= $item['gameName'] ?></div>
+                        <div class="sub-text">Are you sure you want to claim<br> this game for <?= $item['pieceWorth'] ?> coins! </div>
+
+                        <div class="close-btn-warning" onclick="ClaimGame(<?= $item['gameID'] ?>, <?= $item['pieceWorth'] ?>)">Claim</div>
+                        <div class="close-btn-warning" data-warning-button>Close</div>
+
+                    </div>
+                </div>
+                <div id="overlay<?= $item['gameID'] ?>"></div>
             </div>
+
+
+            <div class="incorrectRole-modal">
+                <div class="modal-warning" id="modal-incorrectRole">
+                    <div class="modal-header-warning">
+
+                        <div class="warning-logo">
+                            <img src="<?php echo BASE_URL; ?>public/images/empty/warning.png" alt="">
+                        </div>
+                        <!-- <button data-close-button class="close-button">&times;</button> -->
+                    </div>
+                    <div class="modal-body-warning">
+
+                        <div class="user-msg">Insufficient <br> Coins!</div>
+                        <div class="sub-text">You don't have enough coins to<br> claim this game</div>
+
+                        <div class="close-btn-warning" data-warning-button>Close</div>
+
+                    </div>
+                </div>
+                <div id="overlay"></div>
+            </div>
+
+
 
         <?php } ?>
     </div>
@@ -105,6 +152,7 @@
 
     <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
     <script src="<?php echo BASE_URL; ?>public/js/reportModal.js"></script>
+    <script src="<?php echo BASE_URL; ?>public/js/warning.js"></script>
 
 
     <script>
@@ -139,6 +187,45 @@
             xhr.send(f);
 
 
+        }
+    </script>
+
+    <script>
+        const openBuyModal = document.querySelectorAll("[data-modal-target]");
+        const closeBuyModal = document.querySelectorAll("[data-close-button]");
+        const Modaloverlay = document.getElementById("overlay");
+
+        openBuyModal.forEach((button) => {
+            button.addEventListener("click", () => {
+                const modal = document.querySelector(button.dataset.modalTarget);
+                openModal(modal);
+            });
+        });
+
+        Modaloverlay.addEventListener("click", () => {
+            const modals = document.querySelectorAll(".modal.active");
+            modals.forEach((modal) => {
+                closeModal(modal);
+            });
+        });
+
+        closeBuyModal.forEach((button) => {
+            button.addEventListener("click", () => {
+                const modal = button.closest(".modal");
+                closeModal(modal);
+            });
+        });
+
+        function openModal(modal) {
+            if (modal == null) return;
+            modal.classList.add("active");
+            Modaloverlay.classList.add("active");
+        }
+
+        function closeModal(modal) {
+            if (modal == null) return;
+            modal.classList.remove("active");
+            Modaloverlay.classList.remove("active");
         }
     </script>
 

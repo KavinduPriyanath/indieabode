@@ -205,10 +205,31 @@
 
 .donation-presets .preset{
   margin-right: 8px;
-  background-color: rgb(105, 116, 214);
+  padding: 3px 7px;
+  background-color: rgb(129, 140, 237);
+  cursor: pointer;
 }
 
 .donate-btn {
-  display: block;
-  margin: 10px 14px;
+  margin-top: 10px;
+    display: inline-block;
+    padding: 6px 9px;
+    background-color: rgb(68, 68, 222);
+    color: white;
+    font-size: 17px;
+    font-weight: 700;
+    border: none;
+    outline: none;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+#donation-modal input {
+  width: 250px;
+    height: 30px;
+    margin: 7px 0px;
+}
+
+#donation-modal .content span{
+  font-weight: bold;
 }
