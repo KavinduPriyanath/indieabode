@@ -102,7 +102,19 @@
 
             </div>
             <div class="content-body">
-                fe
+                <div class="content-descriptions">
+                    <h2>What are the fees?</h2>
+
+                    <p>Indieabode will only collect 5% fee from the funds collected from a launched crowdfunfing, if said crowdfunding successfully finishes its run achieving its funding goal or more.</p>
+                    <br>
+                    <p>Our payments processor, Payhere also charges a payment processing fee (exactly 3.3%). The complete fee breakdown is as followed.</p>
+                    <br>
+                    <p>If a backer pledged $30 for your crowdfund, out of that $30 only $29.01 will allocate for your crowdfunds total amount as 3.3% of $30 is being charged by payments gateway.</p>
+                    <br>
+                    <p>If a project failed to reach its funding goal, no fee will be collected at the end of the deadline by Indieabode. </p>
+                    <br>
+                    <p>Our 5% funding fee has been selected as its been set as an industry standard for creator-friendly funding.</p>
+                </div>
             </div>
         </div>
     </div>

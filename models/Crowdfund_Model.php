@@ -11,7 +11,7 @@ class Crowdfund_Model extends Model
 
     function showSingleCrowdfund($id)
     {
-        $sql = "SELECT * FROM crowdfund WHERE crowdFundID='$id' LIMIT 1";
+        $sql = "SELECT * FROM crowdfund INNER JOIN freegame ON freegame.gameID=crowdfund.gamename WHERE crowdfund.crowdFundID='$id' LIMIT 1";
 
         $stmt = $this->db->prepare($sql);
 

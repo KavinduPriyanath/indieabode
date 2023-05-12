@@ -103,6 +103,23 @@
             </div>
             <div class="content-body">
 
+
+                <div class="content-descriptions">
+                    <h2>What is Crowdfunding?</h2>
+                    <p>Indieabode also works for its developers as a funding platform for their creative projects. Its crowdfund pages are filled with ambitious, innovative, and imaginative ideas that are brought to life through the direct support of others.</p>
+                    <br>
+                    <p>Everything on Indieabode-Crowdfunding must be a project with a clear goal making a multiplayer fps or endless runner horror knight. </p>
+                    <br>
+                    <p>Indieabode crowdfunding is not a store, backers pledge to projects to help them come to life and support a creative process.</p>
+
+                    <br>
+                    <h3>Clear, transparent communication is key</h3>
+                    <br>
+                    <p>In some cases, creators will run into challenges and have to make changes to what they first promised their backers. It’s why we say that backing projects is different to making a purchase. There is inherent risk in the creative process, and things don’t always go as planned. </p>
+                    <br>
+                    <p>When that happens creators must communicate changes and delays on their projects pages and in project updates. Indieabode also has made a devlog publishing system to make this process much easier.</p>
+                </div>
+
             </div>
         </div>
     </div>

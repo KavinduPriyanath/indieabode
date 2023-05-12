@@ -30,7 +30,7 @@
         <form action="/indieabode/login/signin" method="POST" id="form">
             <div class="error-msg" id="login-check"></div>
             <div class="field">
-                <label class="form-login-label" id="username">Email or Username</label><br>
+                <label class="form-login-label" id="username">Email</label><br>
                 <input type="text" placeholder="email" name="email" id="email"><br>
             </div>
 

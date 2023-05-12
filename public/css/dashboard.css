@@ -322,3 +322,36 @@ table #column2 {
   border-radius: 7px;
   cursor: pointer;
 }
+
+/* Under Contruction Sign */
+.empty-box {
+  display: block;
+  margin-top: 100px;
+  margin-left: 60px;
+}
+
+.empty-box .empty-icon {
+  width: 100px;
+  height: 100px;
+  margin-left: 470px;
+}
+
+.empty-icon img {
+  height: 100%;
+  width: 100%;
+}
+
+.empty-box .empty-text {
+  margin-top: 15px;
+  font-size: 23px;
+  text-align: center;
+  font-weight: 800;
+}
+
+.empty-box .empty-link {
+  font-size: 18px;
+  margin-top: 10px;
+  text-align: center;
+  text-decoration: underline;
+  margin-bottom: 130px;
+}

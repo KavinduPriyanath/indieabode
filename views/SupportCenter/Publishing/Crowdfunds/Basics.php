@@ -103,6 +103,19 @@
             </div>
             <div class="content-body">
 
+                <div class="content-descriptions">
+                    <h2>What are the basics?</h2>
+                    <p>A <span>project</span> is a finite work with a clear goal that you’d like to bring to life.</p>
+                    <br>
+                    <p>The <span>funding goal</span> is the amount of money that a creator needs to complete their project.</p>
+                    <br>
+                    <p>Funding in Indieabode-Crowdfunding is <span>Permenant-All</span>. Whether or not a project reaches its goal the creator would be able to collect the funds he receives. </p>
+                    <br>
+                    <p>A <span>creator</span> is the person or team behind the idea of the project, working to bring it to life.</p>
+                    <br>
+                    <p><span>Backers</span> are folks who pledge money to join creators in bringing projects to life.</p>
+                </div>
+
             </div>
         </div>
     </div>
@@ -116,7 +129,8 @@
 
 
 
-    <script src="<?php echo BASE_URL; ?>public/js/navbar.js"></script>
+    <script src=" <?php echo BASE_URL; ?>public/js/navbar.js">
+    </script>
 
 
 

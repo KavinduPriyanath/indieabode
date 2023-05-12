@@ -18,19 +18,25 @@ class Jam extends Controller
     {
         if (isset($_GET['id'])) {
             $gameJamID = $_GET['id'];
-            $currentUser = $_SESSION['id'];
+
+            if (isset($_SESSION['logged'])) {
+
+                $currentUser = $_SESSION['id'];
+
+                $this->view->hasJoinedDeveloper = $this->model->AlreadyJoinedDeveloper($_SESSION['id'], $gameJamID);
+
+                $this->view->hasJoinedGamer = $this->model->AlreadyJoinedGamer($_SESSION['id'], $gameJamID);
+
+                $this->view->games = $this->model->currentDevGames($currentUser, $gamejam['submissionStartDate']);
+
+                $this->view->hasSubmitted = $this->model->HasSubmitted($currentUser, $gameJamID);
+            }
 
             $this->view->gamejam = $this->model->showSingleJam($gameJamID);
 
-            $this->view->hasJoinedDeveloper = $this->model->AlreadyJoinedDeveloper($_SESSION['id'], $gameJamID);
-
-            $this->view->hasJoinedGamer = $this->model->AlreadyJoinedGamer($_SESSION['id'], $gameJamID);
-
             $gamejam = $this->model->showSingleJam($gameJamID);
 
-            $this->view->games = $this->model->currentDevGames($currentUser, $gamejam['submissionStartDate']);
 
-            $this->view->hasSubmitted = $this->model->HasSubmitted($currentUser, $gameJamID);
             //$this->view->gameDeveloper = $this->model->getGameDeveloper($this->model->showSingleGame($gameJamID));
 
             // $this->view->screenshots = $this->model->getScreenshots($assetID);

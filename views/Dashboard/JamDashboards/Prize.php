@@ -31,8 +31,8 @@
         <div class="tabs-row">
             <a href="/indieabode/dashboard/edit?id=<?= $this->jam['gameJamID']; ?>">Edit Jam</a>
             <a href="/indieabode/dashboard/submissions?id=<?= $this->jam['gameJamID']; ?>">Submissions</a>
-            <a href="/indieabode/dashboard/reports?id=<?= $this->jam['gameJamID']; ?>">Reports</a>
             <a href="/indieabode/dashboard/results?id=<?= $this->jam['gameJamID']; ?>">Results</a>
+            <a href="/indieabode/dashboard/reports?id=<?= $this->jam['gameJamID']; ?>">Reports</a>
             <a href="/indieabode/dashboard/prizes?id=<?= $this->jam['gameJamID']; ?>">Prizes</a>
 
         </div>
@@ -40,7 +40,11 @@
 
         <div class="content-row">
 
-
+            <div class="empty-box">
+                <div class="empty-icon"><img src="<?php echo BASE_URL; ?>public/images/empty/under-construction.png" alt=""></div>
+                <div class="empty-text">This Page is Under Construction</div>
+                <div class="empty-link"><a href="<?php echo BASE_URL; ?>/home/organizer">Return to Home</a></div>
+            </div>
 
         </div>
     </div>

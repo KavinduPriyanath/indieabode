@@ -1154,7 +1154,7 @@ class Dashboard_Model extends Model
         $sql = "SELECT submission.submissionID, submission.rating, freegame.gameName, freegame.gameCoverImg, gamer.username,
                 gamer.firstName, gamer.lastName FROM (freegame INNER JOIN gamer ON gamer.gamerID=freegame.gameDeveloperID) 
                 INNER JOIN submission ON freegame.gameID=submission.submissionID 
-                WHERE gameJamID='$jamID' ORDER BY rating DESC";
+                WHERE gameJamID='$jamID' AND submission.status='qualified' ORDER BY rating DESC";
 
         $stmt = $this->db->prepare($sql);
 

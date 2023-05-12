@@ -60,7 +60,7 @@
                         <?php if ($game['gamePrice'] == "0") { ?>
                             <p>Free</p>
                         <?php } else if ($game['gamePrice'] != "0") { ?>
-                            <p>$<?= $game['gamePrice'] ?></p>
+                            <p>$<?= number_format($game['gamePrice'], 2) ?></p>
                         <?php } ?>
                     </div>
                     <div class="tagline modernWay"><?= $game['gameTagline'] ?></div>

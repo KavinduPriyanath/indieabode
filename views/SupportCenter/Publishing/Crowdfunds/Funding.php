@@ -103,6 +103,14 @@
             </div>
             <div class="content-body">
 
+                <div class="content-descriptions">
+                    <h2>Why funding Permanent-All?</h2>
+
+                    <p>There are many platforms that already provides all-or-nothing funding systems. But as our platform tends to promote Indie developers we have utilized Permanent-all funding system. In that way the creator will be able to collect his funds whether or not he reaches his funding goal by the deadline.</p>
+                    <br>
+                    <p>Also this way creators can continue their projects even though they couldn’t managed to get their intended funding amount.</p>
+                </div>
+
             </div>
         </div>
     </div>

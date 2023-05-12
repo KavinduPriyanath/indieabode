@@ -630,6 +630,13 @@ class Dashboard extends Controller
         header('location:/indieabode/');
     }
 
+    function metadata()
+    {
+        $this->view->game = $this->model->GetGameDetails($_GET['id']);
+
+        $this->view->render('Dashboard/GameDashboards/Metadata');
+    }
+
     function gamegiveaways()
     {
 
@@ -1007,11 +1014,10 @@ class Dashboard extends Controller
 
     public function deleteJam()
     {
-        if(isset($_POST['gameJamID'])) {
+        if (isset($_POST['gameJamID'])) {
             $gameJamID = $_POST['gameJamID'];
-            
+
             $this->model->deleteJam($gameJamID);
-        
         }
     }
 }
