@@ -418,6 +418,7 @@ input:checked + .slider:before {
     gap: 5%;
     width:100%;
     /* justify-content: center; */
+    margin-top:2%;
 }
 
 .second-row-db{
@@ -428,9 +429,9 @@ input:checked + .slider:before {
     width:100%;
 }
 
-.site-db-second-row{
+/* .site-db-second-row{
   margin-left:3%;
-}
+} */
 
 .first-pie-chart-db{
     padding-left:3%;
@@ -1090,7 +1091,7 @@ input:checked + .slider:before {
   display: flex;
     gap: 5%;
     margin-top: 6%;
-    margin-bottom: 1%;
+    margin-bottom: 6%;
     padding: 3%;
     background-color:#336075;
 }
@@ -1146,4 +1147,37 @@ input:checked + .slider:before {
     padding: 1%;
     margin-left: 80%;
     margin-bottom: 2%;
+  }
+
+  .back-arrow{
+    font-size: 1.4em;
+    color: #973752;
+    font-weight: 1000;
+  }
+
+  .all-game-table{
+    margin-top: 2%;
+  }
+
+  .free-game, .free-asset {
+    background-color: #7aa0af;
+  }
+  
+  .paid-game, .paid-asset {
+    background-color: #95a6b0;
+  }
+  
+  th.total-income,
+  td.total-income {
+    background-color:#456d80;
+    color: white;
+    text-align: center;
+  }
+
+  td.total-income {
+    font-weight: bold;
+  }
+
+  .ended-jam {
+    background-color:#6791a4;
   }

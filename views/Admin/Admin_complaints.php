@@ -85,6 +85,7 @@
                         <th> Reason</th>
                         <th> Description</th>
                         <th> Type</th>
+						<th> Type Name(with ID)</th>
 						<th> Complainer ID </th>
 						<th> Status </th>
                     </tr>
@@ -102,6 +103,7 @@
 								<td><?php echo $complaint['reason']; ?></td>
 								<td><?php echo $complaint['description']; ?></td>
 								<td><?php echo $complaint['type']; ?></td>
+								<td>Apex Legends(21)</td>
 								<td><?php echo $complaint['gamerID']; ?></td>
 								<td>
 									<label class="switch">

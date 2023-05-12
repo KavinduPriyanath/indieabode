@@ -178,7 +178,13 @@
 							
 							<div class="total-crowdfund-revenue">
 								<h3>Total Revenues</h3>
-								<h2 style="color: #4bc0c0;">$<?php echo $this->totalRevenue; ?></h2>
+								<!-- <h2 style="color: #4bc0c0;">$<?php echo $this->totalRevenue; ?></h2> -->
+								<h2 style="color: #4bc0c0;"><?php echo ($this->totalRevenue != '') ? '$' . $this->totalRevenue : '$0'; ?></h2>
+
+							</div>
+
+							<div class="game-db-doughnut-chart">
+								<canvas id="game-rev-chart" width="300" height="200"></canvas>
 							</div>
 						</div>
 
@@ -228,6 +234,37 @@
 <script>
 	window.onload = function() {
 
+		var gamerevChart = document.getElementById('game-rev-chart').getContext('2d');
+		var myChart = new Chart(gamerevChart, {
+			type: 'doughnut',
+			backgroundColor: "#6997a4",
+			data: {
+				labels: ['Game Revenue', 'Total Revenue'],
+				datasets: [{
+					label: '# of Games',
+					// data: [25, 40, 35],
+					data: [<?php echo json_encode($this->totalRevenue); ?>,1000],
+					backgroundColor: [
+						// 'rgba(55, 87, 102, 1)',
+						'#36647b',
+						'#6791a4'
+					],
+					borderColor: [
+						// 'rgba(55, 87, 102, 0.7)',
+						'#36647b',
+						'#6791a4'
+					],
+					borderWidth: 1
+				}]
+			},
+			options: {
+				responsive: true,
+				maintainAspectRatio: false,
+				legend: {
+					position: 'right'
+				}
+			}
+		});
 
 		var gamePieChart = document.getElementById('game-db-pie-chart').getContext('2d');
 		var myChart = new Chart(gamePieChart, {

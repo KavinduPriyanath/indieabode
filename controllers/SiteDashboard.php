@@ -39,8 +39,26 @@ class SiteDashboard extends Controller
 
         $this->view->revenues = array($totalGameRevenue , $totalAssetRevenue, $totalGigRevenue,$totalCrowdfundRevenue);
 
+        $totalTxGames = $this->model->getTotalTxGame();
+        $totalTxAssets = $this->model->getTotalTxAsset();
+        $donations = $this->model->getTotalDonations();
+        $allTransactions = $this->model->getTotalTx();
+
+        $TxArray = [$totalTxGames, $totalTxAssets,$donations, $allTransactions ];
+        $revArray = [$totalGameRevenue , $totalAssetRevenue ,$totalCrowdfundRevenue,$totalGigRevenue ];
+
+        // print_r($TxArray);
+        $this->view->allTxdetail = $TxArray;
+        $this->view->allRevdetail = $revArray;
+
+        $totTx = $totalTxGames+ $totalTxAssets + $donations + $allTransactions;
+        $this->view->Tx = $totTx; 
+
+        $_SESSION['totalRevenue'] = $totalRevenues;
+        $_SESSION['totalTx'] = $totTx;
 
 
+        
 
 
 

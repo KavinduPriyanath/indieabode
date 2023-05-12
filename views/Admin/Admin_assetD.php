@@ -74,10 +74,10 @@
 					<div class="game-db-body">
 						<h2>Asset Dashbord/Assets</h2>
 						
-						<div class="game-db-second-row">
+						<div class="game-db-second-row style="margin-top:2%;">
 							<div class="game-db-report-table">
 								<!-- <input type="date" id="game-db-date-picker"> -->
-								<h3 class="game-db-table-heading">Payment Report on <?php echo date('Y.m.dS'); ?><sup>th</sup> Day</h3>
+								<h3 class="game-db-table-heading">Payment Report on <?php echo date('Y.m.dS'); ?> Day</h3>
 								<!-- <button class="game-db-btn game-db-download-btn">Download Report</button> -->
 								<form action="/indieabode/Admin_assetD/downloadPDF" method="post"> 
 									<input type="submit" name="download_user" value="download" id="dw-pay-btn" class="download-user-btn">
@@ -125,7 +125,7 @@
 							
 							<div class="game-db-content-join">
 								<div class="game-db-view-games">
-									<button class="game-db-btn">View All Assets</button>
+									<button id="view-all-assets-btn" class="game-db-btn">View All Assets</button>
 								</div>
 								<div class="game-db-tx-card">
 									<h3>Total Payments</h3>
@@ -154,12 +154,16 @@
 								<h3>Asset Revenues</h3>
 								<h2>$<?php echo $this->totalAssetRevenue; ?></h2>
 							</div>
+
+							<div class="game-db-doughnut-chart">
+								<canvas id="game-rev-chart" width="300" height="200"></canvas>
+							</div>
 						</div>
 
 						<div class="game-db-fourth-row">
 							<div class="game-db-report-table">
 									<!-- <input type="date" id="game-db-date-picker"> -->
-									<h3 class="game-db-table-heading">Asset Revenue Report on <?php echo date('Y.m.dS'); ?><sup>th</sup> day</h3>
+									<h3 class="game-db-table-heading">Asset Revenue Report on <?php echo date('Y.m.dS'); ?> day</h3>
 									<!-- <button class="game-db-btn game-db-download-btn">Download Report</button> -->
 									<form action="/indieabode/Admin_assetD/downloadrevenuePDF" method="post"> 
 										<input type="submit" name="download_user" value="download" id="dw-pay-btn" class="download-user-btn">
@@ -208,40 +212,46 @@
     ?>
 
 	<script>
+		const viewAllAssetsBtn = document.getElementById('view-all-assets-btn');
+		viewAllAssetsBtn.addEventListener('click', () => {
+			window.location.href = '/indieabode/Site_Asset';
+		});
+	</script>
+
+	<script>
 	window.onload = function() {
 
-
-		// var gamePieChart = document.getElementById('game-db-pie-chart').getContext('2d');
-		// var myChart = new Chart(gamePieChart, {
-		// 	type: 'doughnut',
-		// 	backgroundColor: "#6997a4",
-		// 	data: {
-		// 		labels: ['Early Access Games', 'Upcoming Games', 'Released Games'],
-		// 		datasets: [{
-		// 			label: '# of Games',
-		// 			// data: [25, 40, 35],
-		// 			data: <?php echo json_encode($this->gameTypes); ?>,
-		// 			backgroundColor: [
-		// 				'rgba(55, 87, 102, 1)',
-		// 				'#36647b',
-		// 				'#608a9f'
-		// 			],
-		// 			borderColor: [
-		// 				'rgba(55, 87, 102, 0.7)',
-		// 				'#36647b',
-		// 				'#608a9f'
-		// 			],
-		// 			borderWidth: 1
-		// 		}]
-		// 	},
-		// 	options: {
-		// 		responsive: true,
-		// 		maintainAspectRatio: false,
-		// 		legend: {
-		// 			position: 'right'
-		// 		}
-		// 	}
-		// });
+		var gamerevChart = document.getElementById('game-rev-chart').getContext('2d');
+		var myChart = new Chart(gamerevChart, {
+			type: 'doughnut',
+			backgroundColor: "#6997a4",
+			data: {
+				labels: ['Game Revenue', 'Total Revenue'],
+				datasets: [{
+					label: '# of Games',
+					// data: [25, 40, 35],
+					data: [<?php echo json_encode($this->totalAssetRevenue); ?>,1000],
+					backgroundColor: [
+						// 'rgba(55, 87, 102, 1)',
+						'#36647b',
+						'#6791a4'
+					],
+					borderColor: [
+						// 'rgba(55, 87, 102, 0.7)',
+						'#36647b',
+						'#6791a4'
+					],
+					borderWidth: 1
+				}]
+			},
+			options: {
+				responsive: true,
+				maintainAspectRatio: false,
+				legend: {
+					position: 'right'
+				}
+			}
+		});
 
 		var ctx2 = document.getElementById('game-tx-line-graph').getContext('2d');
 		var gameTxGraph = new Chart(ctx2, {

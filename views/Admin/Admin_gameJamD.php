@@ -79,69 +79,67 @@
 						</div>
 
 						<div class="jam-db-second-row">
-							<div class="jam-db-table">
-								<table>
-									<thead>
-										<tr>
-											<th>Jam ID</th>
-											<th>Cover Image</th>
-											<th>Jam Name</th>
-											<th>Jam Host ID</th>
-											<th>Jam Status</th>
-											<th>Rankings(with submission ID)</th>
-										</tr>
-									</thead>
-									<tbody>
-										<?php if (count($this->gamejams) > 0): ?>
-											<?php foreach ($this->gamejams as $gamejam): ?>
-												<tr>
-													<td><?php echo $gamejam['gameJamID']; ?></td>
-													<td><img src="/indieabode/public/images/Admin/jam/jam-3.png" alt="cover-image"/></td>
-													<td><?php echo $gamejam['jamTitle']; ?></td>
-													<td><?php echo $gamejam['jamHostID']; ?></td>
-													<td><?php echo $gamejam['tag']; ?></td>
-													<td>
-														<?php if ($gamejam['tag'] == 'Jam Ended'): ?>
-															<!-- <?php if (isset($gamejam['firstPlace'])): ?>
-																1<sup>st</sup>Rank: <?php echo $gamejam['firstPlace']['submissionID']; ?><br>
-															<?php else: ?>
-																1<sup>st</sup>Rank: Not available<br>
-															<?php endif; ?> -->
-															<?php if (isset($gamejam['firstPlace'])): ?>
-																1<sup>st</sup>Rank: <?php echo $gamejam['firstPlace']['submissionID']; ?><br>
-															<?php else: ?>
-																No submissions<br>
-																<?php continue; ?>
-															<?php endif; ?>
-															<?php if (isset($gamejam['secondPlace'])): ?>
-																2<sup>nd</sup>Rank: <?php echo $gamejam['secondPlace']['submissionID']; ?><br>
-															<?php else: ?>
-																2<sup>nd</sup>Rank: Not available<br>
-															<?php endif; ?>
-															<?php if (isset($gamejam['thirdPlace'])): ?>
-																3<sup>rd</sup>Rank: <?php echo $gamejam['thirdPlace']['submissionID']; ?><br>
-															<?php else: ?>
-																3<sup>rd</sup>Rank: Not available<br>
-															<?php endif; ?>
-															<?php if (!isset($gamejam['firstPlace']) && !isset($gamejam['secondPlace']) && !isset($gamejam['thirdPlace'])): ?>
-																No submissions
-															<?php endif; ?>
-														<?php elseif ($gamejam['status'] == 'ongoing'): ?>
-															No rankings yet
+						<div class="jam-db-table">
+							<!--  -->
+							<table>
+								<thead>
+									<tr>
+										<th>Jam ID</th>
+										<th>Cover Image</th>
+										<th>Jam Name</th>
+										<th>Jam Host ID</th>
+										<th>Jam Status</th>
+										<th>Rankings (with submission ID)</th>
+									</tr>
+								</thead>
+								<tbody>
+									<?php if (count($this->gamejams) > 0): ?>
+										<?php foreach ($this->gamejams as $gamejam): ?>
+											<tr <?php if ($gamejam['tag'] == 'Jam Ended') echo 'class="ended-jam"'; ?>>
+												<td><?php echo $gamejam['gameJamID']; ?></td>
+												<td><img src="/indieabode/public/images/Admin/jam/jam-3.png" alt="cover-image"/></td>
+												<td><?php echo $gamejam['jamTitle']; ?></td>
+												<td><?php echo $gamejam['jamHostID']; ?></td>
+												<td><?php echo $gamejam['tag']; ?></td>
+												<td>
+													<?php if ($gamejam['tag'] == 'Jam Ended'): ?>
+														<?php if (isset($gamejam['firstPlace'])): ?>
+															<span style="color: #7b3737; font-weight: 1000;">1<sup>st</sup>Rank: <?php echo $gamejam['firstPlace']['submissionID']; ?></span><br>
 														<?php else: ?>
-															Jam is currently ongoing
+															No submissions<br>
+															<?php continue; ?>
 														<?php endif; ?>
-													</td>
-												</tr>
-											<?php endforeach; ?>
-										<?php else: ?>
-											<tr>
-												<td colspan="6">No gamejams available</td>
+														<?php if (isset($gamejam['secondPlace'])): ?>
+															<span style="color: #615f16; font-weight: 1000;">2<sup>nd</sup>Rank: <?php echo $gamejam['secondPlace']['submissionID']; ?></span><br>
+														<?php else: ?>
+															<span style="color: #615f16; font-weight: 1000;">2<sup>nd</sup>Rank:</span> Not available<br>
+														<?php endif; ?>
+														<?php if (isset($gamejam['thirdPlace'])): ?>
+															<span style="color: #37647b; font-weight: 1000;">3<sup>rd</sup>Rank: <?php echo $gamejam['thirdPlace']['submissionID']; ?></span><br>
+														<?php else: ?>
+															<span style="color: #37647b; font-weight: 1000;">3<sup>rd</sup>Rank:</span> Not available<br>
+														<?php endif; ?>
+														<?php if (!isset($gamejam['firstPlace']) && !isset($gamejam['secondPlace']) && !isset($gamejam['thirdPlace'])): ?>
+															No submissions
+														<?php endif; ?>
+													<?php elseif ($gamejam['status'] == 'ongoing'): ?>
+														No rankings yet
+													<?php else: ?>
+														Jam is currently ongoing
+													<?php endif; ?>
+												</td>
 											</tr>
-										<?php endif; ?>
-									</tbody>
-								</table>
-							</div>
+										<?php endforeach; ?>
+									<?php else: ?>
+										<tr>
+											<td colspan="6">No gamejams available</td>
+										</tr>
+									<?php endif; ?>
+								</tbody>
+							</table>
+
+						</div>
+
 						</div>
 
 					</div>
@@ -177,13 +175,13 @@
 					data:<?php echo json_encode($this->countJamArray); ?>,
 					backgroundColor: [
 						'#509998',
-						'#5c7777',
-						'#245252'
+						'#36647b',
+						'#6791a4'
 					],
 					borderColor: [
 						'#509998',
-						'#5c7777',
-						'#245252'
+						'#36647b',
+						'#6791a4'
 					],
 					borderWidth: 1
 				}]

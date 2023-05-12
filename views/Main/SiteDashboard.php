@@ -73,15 +73,15 @@
 					<h1>Site Dashboard</h1>
 					<div class="db-panel">
 						<div class="first-row-db">
-							<div class="first-pie-chart-db">
-								<h3>User Chart </h3>
-								<div id="chartContainer" style="height: 100%; width: 100%;"></div>
+							
+							
+							<div class="total-revenue-site">
+								<h3>Total Transactions</h3>
+								<h2>$<?php echo $this->Tx; ?></h2>
 							</div>
-							<div class="line-chart-db">
-								<h3> Active & Block Users </h3><br>
-								<div class="horizontal-chart">
-									<canvas id="userChart" style="height: 150px; width: 100%;"></canvas>
-								</div>
+							<div class="downloads-uploads-graph">
+								<!-- <h3>Total Game Uploads</h3> -->
+								<canvas id="downloads-uploads-bar-graph" style="height: 220px; width: 400px;"></canvas>
 							</div>
 							<div class="total-revenue-site">
 								<h3>Total Revenue</h3>
@@ -93,6 +93,16 @@
 								<h3>Revenue Shares</h3>
 								<div class="game-db-doughnut-chart">
 									<canvas id="game-db-pie-chart" width="300" height="200"></canvas>
+								</div>
+							</div>
+							<div class="first-pie-chart-db">
+								<h3>User Chart </h3>
+								<div id="chartContainer" style="height: 100%; width: 100%;"></div>
+							</div>
+							<div class="line-chart-db">
+								<h3> Active & Block Users </h3><br>
+								<div class="horizontal-chart">
+									<canvas id="userChart" style="height: 150px; width: 100%;"></canvas>
 								</div>
 							</div>
 						</div>
@@ -214,71 +224,64 @@
 			}
 		});
 
-		// var ctx2 = document.getElementById('myChart2').getContext('2d');
-		// var myChart2 = new Chart(ctx2, {
-		// 	type: 'line',
-		// 	data: {
-		// 		labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-		// 		datasets: [{
-		// 				label: 'Games',
-		// 				data: [12, 19, 3, 5, 2, 3, 10],
-		// 				borderColor: 'rgba(75, 192, 192, 1)',
-		// 				backgroundColor: 'rgba(75, 192, 192, 0.2)',
-		// 				fill: false
-		// 			},
-		// 			{
-		// 				label: 'Assets',
-		// 				data: [5, 2, 8, 1, 6, 9, 4],
-		// 				borderColor: 'rgba(255, 99, 132, 1)',
-		// 				backgroundColor: 'rgba(255, 99, 132, 0.2)',
-		// 				fill: false
-		// 			}
-		// 		]
-		// 	},
-		// 	options: {
-		// 		scales: {
-		// 			yAxes: [{
-		// 				ticks: {
-		// 					beginAtZero: true
-		// 				}
-		// 			}]
-		// 		}
-		// 	}
-		// });
+		var ctx3 = document.getElementById('downloads-uploads-bar-graph').getContext('2d');
+		var downloadsUploadsGraph = new Chart(ctx3, {
+			type: 'bar',
+			data: {
+				labels:['Games','Assets', 'Crowdfunds', 'Gigs'],
+				datasets: [{
+					label: 'Total Transactions',
+					data: <?php echo json_encode($this->allTxdetail); ?>,
+					backgroundColor: '#608a9f',
+					borderColor: '#608a9f',
+					borderWidth: 1,
+					barPercentage: 0.9,
+					categoryPercentage: 0.9
+				}, {
+					label: 'All Revenue',
+					data: <?php echo json_encode($this->allRevdetail); ?>,
+					backgroundColor: '#3f5564',
+					borderColor: '#3f5564',
+					borderWidth: 1,
+					barPercentage: 0.9,
+					categoryPercentage: 0.9
+				}]
 
-		// game transaction graph
-		// var ctx3 = document.getElementById('txChartGame').getContext('2d');
-		// var myChart2 = new Chart(ctx3, {
-		// 	type: 'line',
-		// 	data: {
-		// 		labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-		// 		datasets: [{
-		// 				label: 'Sales',
-		// 				data: [12, 19, 3, 5, 2, 3, 10],
-		// 				borderColor: 'rgba(75, 192, 192, 1)',
-		// 				backgroundColor: 'rgba(75, 192, 192, 0.2)',
-		// 				fill: false
-		// 			},
-		// 			{
-		// 				label: 'Expenses',
-		// 				data: [5, 2, 8, 1, 6, 9, 4],
-		// 				borderColor: 'rgba(255, 99, 132, 1)',
-		// 				backgroundColor: 'rgba(255, 99, 132, 0.2)',
-		// 				fill: false
-		// 			}
-		// 		]
-		// 	},
-		// 	options: {
-		// 		scales: {
-		// 			yAxes: [{
-		// 				ticks: {
-		// 					beginAtZero: true
-		// 				}
-		// 			}]
-		// 		}
-		// 	}
-		// });
-		// chart.render();
+			},
+			options: {
+				legend: {
+					display: true,
+					labels: {
+						fontColor: 'black',
+						fontSize: 14
+					}
+				},
+				scales: {
+					xAxes: [{
+						display: true,
+						scaleLabel: {
+							display: true,
+							fontColor: 'black',
+							fontSize: 16
+						},
+						gridLines: {
+							display: false,
+							drawBorder: false
+						}
+					}],
+					yAxes: [{
+						display: false,
+						gridLines: {
+							display: false,
+							drawBorder: false
+						}
+					}]
+				}
+			}
+		});
+
+
+
 		}
 	</script>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
