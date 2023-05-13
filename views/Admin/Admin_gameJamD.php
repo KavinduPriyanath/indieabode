@@ -108,18 +108,18 @@
 												<td>
 													<?php if ($gamejam['tag'] == 'Jam Ended'): ?>
 														<?php if (isset($gamejam['firstPlace'])): ?>
-															<span style="color: #7b3737; font-weight: 1000;">1<sup>st</sup>Rank: <?php echo $gamejam['firstPlace']['submissionID']; ?></span><br>
+															<span style="color: #7b3737; font-weight: 1000;">1<sup>st</sup>Rank: <?php echo $gamejam['firstPlace']; ?></span><br>
 														<?php else: ?>
 															No submissions<br>
 															<?php continue; ?>
 														<?php endif; ?>
 														<?php if (isset($gamejam['secondPlace'])): ?>
-															<span style="color: #615f16; font-weight: 1000;">2<sup>nd</sup>Rank: <?php echo $gamejam['secondPlace']['submissionID']; ?></span><br>
+															<span style="color: #615f16; font-weight: 1000;">2<sup>nd</sup>Rank: <?php echo $gamejam['secondPlace'] ; ?></span><br>
 														<?php else: ?>
 															<span style="color: #615f16; font-weight: 1000;">2<sup>nd</sup>Rank:</span> Not available<br>
 														<?php endif; ?>
 														<?php if (isset($gamejam['thirdPlace'])): ?>
-															<span style="color: #37647b; font-weight: 1000;">3<sup>rd</sup>Rank: <?php echo $gamejam['thirdPlace']['submissionID']; ?></span><br>
+															<span style="color: #37647b; font-weight: 1000;">3<sup>rd</sup>Rank: <?php echo $gamejam['thirdPlace'] ; ?></span><br>
 														<?php else: ?>
 															<span style="color: #37647b; font-weight: 1000;">3<sup>rd</sup>Rank:</span> Not available<br>
 														<?php endif; ?>

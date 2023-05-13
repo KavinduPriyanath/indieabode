@@ -24,9 +24,24 @@ class Admin_gameJamD extends Controller
                 $rankingData = $this->model->getRankingDataForGameJam($gamejam['gameJamID']);
 
                 // Set the ranking data in the game jam array
-                $gamejam['firstPlace'] = $rankingData['firstPlace'];
-                $gamejam['secondPlace'] = $rankingData['secondPlace'];
-                $gamejam['thirdPlace'] = $rankingData['thirdPlace'];
+                if(!empty($rankingData)){
+
+                   
+                    if(isset($rankingData['firstPlace']['submissionID'])){
+
+                        $gamejam['firstPlace'] =  $this->model->getGameName($rankingData['firstPlace']['submissionID']);
+                        
+                        if(isset($rankingData['secondPlace']['submissionID'])){
+                            $gamejam['secondPlace'] =  $this->model->getGameName($rankingData['secondPlace']['submissionID']);
+                            if(isset($rankingData['thirdPlace']['submissionID'])){
+                                $gamejam['thirdPlace'] =  $this->model->getGameName($rankingData['thirdPlace']['submissionID']);
+                            }
+                        }
+                    }
+
+                }
+
+                // echo !empty( $rankingData['firstPlace']['submissionID'])?$rankingData['firstPlace']['submissionID']:"null";
             } elseif ($gamejam['submissionStartDate'] <= $today && $gamejam['votingEndDate'] >= $today) {
                 $gamejam['status'] = 'Jam voting is ongoing and voting will be ended on '.$gamejam['votingEndDate'];
                 $gamejam['tag'] = "Jam Voting Ongoing";

@@ -52,5 +52,29 @@ class Admin_gameJamD_Model extends Model
     }
     
     
+    function getGameName($id=""){
+        if($id==""){
+            $complaints = "No name";
+        }else{
+            $sql = "SELECT gameName as name from freegame WHERE gameID=".$id;
+            $stmt = $this->db->prepare($sql);
+    
+            $stmt->execute();
+    
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+            // $complaints = $row['name'];
+            if ($row && isset($row['name'])) {
+                $complaints = $row['name'];
+            } else {
+                $complaints = "No name";
+            }
+        }
+
+   
+
+    return $complaints;
+}
+    
     
 }
