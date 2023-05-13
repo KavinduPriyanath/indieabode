@@ -19,6 +19,10 @@ class Jam extends Controller
         if (isset($_GET['id'])) {
             $gameJamID = $_GET['id'];
 
+            $this->view->gamejam = $this->model->showSingleJam($gameJamID);
+
+            $gamejam = $this->model->showSingleJam($gameJamID);
+
             if (isset($_SESSION['logged'])) {
 
                 $currentUser = $_SESSION['id'];
@@ -32,9 +36,7 @@ class Jam extends Controller
                 $this->view->hasSubmitted = $this->model->HasSubmitted($currentUser, $gameJamID);
             }
 
-            $this->view->gamejam = $this->model->showSingleJam($gameJamID);
 
-            $gamejam = $this->model->showSingleJam($gameJamID);
 
 
             //$this->view->gameDeveloper = $this->model->getGameDeveloper($this->model->showSingleGame($gameJamID));

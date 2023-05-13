@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 11, 2023 at 07:29 PM
+-- Generation Time: May 13, 2023 at 06:15 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -48,20 +48,20 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`userID`, `profilePhoto`, `location`, `phoneNumber`, `displayName`, `twitter`, `linkedin`, `introduction`, `website`, `revenueShare`, `followers`, `following`, `indieCoins`) VALUES
-(46, 'pic.jpg', 'hrtht', '4543334', 'kavindu', 'rththt', 'hrtht', 'Hi. I\'m computer science undergraduate and indie game developer who enjoys working with games', 'thhwwww', 17, 0, 2, 50),
+(46, 'pic.jpg', 'hrtht', '4543334', 'kavindu', 'rththt', 'hrtht', 'Hi. I\'m computer science undergraduate and indie game developer who enjoys working with games', 'thhwwww', 17, 0, 3, 50),
 (47, '', '', '', '', '', '', '', '', 10, 0, 1, 50),
 (48, '', '', '', '', '', '', '', '', 10, 0, 0, 50),
 (51, '', '', '', 'oh my god', '', '', '', '', 10, 0, 0, 50),
-(52, '', '', '', '', '', '', '', '', 10, 0, 1, 20),
-(53, '', '', '', '', '', '', '', '', 10, 0, 0, 30),
+(52, '', '', '', '', '', '', '', '', 10, 0, 1, 40),
+(53, '', '', '', '', '', '', '', '', 10, 0, 0, 95),
 (78, '', '', '', '', '', '', '', '', 10, 0, 0, 50),
 (80, '', '', '', '', '', '', '', '', 10, 0, 0, 50),
 (81, '', '', '', '', '', '', 'Hi. I\'m computer science undergraduate and indie game developer who enjoys working with games', '', 10, 2, 0, 50),
 (82, '', '', '', '', '', '', '', '', 10, 2, 0, 50),
 (83, '', '', '', '', '', '', '', '', 10, 0, 0, 50),
 (84, '', '', '', '', '', '', '', '', 10, 0, 0, 35),
-(86, '', '', '', '', '', '', '', '', 10, 0, 0, 30),
-(87, '', '', '', '', '', '', '', '', 10, 0, 1, 50),
+(86, '', '', '', '', '', '', '', '', 10, 0, 0, 100),
+(87, '', '', '', '', '', '', '', '', 10, 1, 1, 50),
 (89, '', '', '', '', '', '', '', '', 10, 0, 0, 50),
 (91, '', '', '', '', '', '', '', '', 10, 0, 0, 50),
 (92, '', '', '', '', '', '', 'Fellow indie game developer with the intention of making something unique in the gaming world one day', '', 10, 0, 0, 50),
@@ -125,7 +125,8 @@ INSERT INTO `activation_keys` (`id`, `userID`, `activationCode`) VALUES
 (54, 91, '24895'),
 (55, 91, '99618'),
 (56, 91, '68566'),
-(57, 103, '78362');
+(57, 103, '78362'),
+(58, 91, '45876');
 
 -- --------------------------------------------------------
 
@@ -207,6 +208,13 @@ CREATE TABLE `asset_cart` (
   `addedDate` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `asset_cart`
+--
+
+INSERT INTO `asset_cart` (`id`, `userID`, `assetID`, `addedDate`) VALUES
+(31, 46, 36, '2023-05-13');
+
 -- --------------------------------------------------------
 
 --
@@ -234,7 +242,8 @@ INSERT INTO `asset_library` (`id`, `assetID`, `developerID`, `createdAt`) VALUES
 (22, 21, 87, '2023-04-23'),
 (23, 10, 83, '2023-05-08'),
 (24, 31, 81, '2023-05-10'),
-(25, 38, 46, '2023-05-11');
+(25, 38, 46, '2023-05-11'),
+(26, 37, 46, '2023-05-12');
 
 -- --------------------------------------------------------
 
@@ -325,17 +334,17 @@ INSERT INTO `asset_stats` (`assetID`, `downloads`, `views`, `ratings`, `ratingCo
 (20, 1, 6, 0, 0, 0),
 (21, 5, 5, 0, 0, 26.109),
 (29, 3, 11, 0, 0, 29.5902),
-(31, 0, 8, 0, 0, 39.1635),
-(32, 0, 0, 0, 0, 0),
+(31, 0, 9, 0, 0, 39.1635),
+(32, 0, 1, 0, 0, 0),
 (33, 2, 3, 0, 0, 0),
 (34, 0, 4, 0, 0, 0),
 (35, 0, 4, 0, 0, 0),
-(36, 0, 5, 0, 0, 0),
-(37, 0, 3, 0, 0, 0),
+(36, 0, 7, 0, 0, 0),
+(37, 2, 5, 0, 0, 0),
 (38, 1, 5, 0, 0, 39.1635),
-(39, 0, 3, 0, 0, 0),
-(40, 0, 1, 0, 0, 0),
-(41, 0, 1, 0, 0, 0);
+(39, 1, 5, 0, 0, 0),
+(40, 0, 3, 0, 0, 0),
+(41, 0, 4, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -432,7 +441,18 @@ INSERT INTO `asset_stats_history` (`id`, `assetID`, `views`, `downloads`, `ratin
 (72, 39, 3, 0, 0, 0, '2023-05-11'),
 (73, 36, 1, 0, 0, 0, '2023-05-11'),
 (74, 40, 1, 0, 0, 0, '2023-05-11'),
-(75, 41, 1, 0, 0, 0, '2023-05-11');
+(75, 41, 1, 0, 0, 0, '2023-05-11'),
+(76, 41, 2, 0, 0, 0, '2023-05-12'),
+(77, 31, 1, 0, 0, 0, '2023-05-12'),
+(78, 32, 1, 0, 0, 0, '2023-05-12'),
+(79, 36, 1, 0, 0, 0, '2023-05-12'),
+(80, 37, 1, 1, 0, 0, '2023-05-12'),
+(81, 40, 2, 0, 0, 0, '2023-05-12'),
+(82, 39, 1, 0, 0, 0, '2023-05-12'),
+(83, 37, 1, 1, 0, 0, '2023-05-13'),
+(84, 39, 1, 1, 0, 0, '2023-05-13'),
+(85, 41, 1, 0, 0, 0, '2023-05-13'),
+(86, 36, 1, 0, 0, 0, '2023-05-13');
 
 -- --------------------------------------------------------
 
@@ -579,7 +599,20 @@ INSERT INTO `asset_view_tracker` (`id`, `userID`, `assetID`, `sessionID`, `viewe
 (124, 87, 39, 76, '2023-05-11'),
 (125, 78, 39, 44, '2023-05-11'),
 (126, 87, 40, 37, '2023-05-11'),
-(127, 97, 41, 78, '2023-05-11');
+(127, 97, 41, 78, '2023-05-11'),
+(128, 46, 41, 41, '2023-05-12'),
+(129, 46, 31, 83, '2023-05-12'),
+(130, 46, 32, 83, '2023-05-12'),
+(131, 46, 36, 74, '2023-05-12'),
+(132, 46, 37, 74, '2023-05-12'),
+(133, 46, 41, 19, '2023-05-12'),
+(134, 46, 40, 19, '2023-05-12'),
+(135, 46, 39, 19, '2023-05-12'),
+(136, 46, 40, 11, '2023-05-12'),
+(137, 46, 37, 53, '2023-05-13'),
+(138, 46, 39, 53, '2023-05-13'),
+(139, 46, 41, 53, '2023-05-13'),
+(140, 46, 36, 35, '2023-05-13');
 
 -- --------------------------------------------------------
 
@@ -678,7 +711,7 @@ CREATE TABLE `complaint` (
 --
 
 INSERT INTO `complaint` (`complaintID`, `reason`, `description`, `gamerID`, `type`, `itemID`, `checked`) VALUES
-(2, 'Spam', 'Not Cheerful as it claims', 46, 'Game', 0, 0),
+(2, 'Spam', 'Not Cheerful as it claims', 46, 'Game', 0, 1),
 (3, 'Spam', 'I made the same game', 46, 'Game', 0, 0),
 (4, 'Broken', 'fefef', 0, 'Asset', 0, 0),
 (5, 'Broken', 'vvnerlerv', 46, 'Game', 0, 0),
@@ -795,18 +828,19 @@ CREATE TABLE `crowdfund` (
   `crowdfundTrailer` varchar(255) NOT NULL,
   `viewCount` int(11) NOT NULL DEFAULT 0,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `siteShareCollected` int(11) NOT NULL DEFAULT 0
+  `siteShareCollected` int(11) NOT NULL DEFAULT 0,
+  `ActivityCheck` int(11) NOT NULL DEFAULT 6
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `crowdfund`
 --
 
-INSERT INTO `crowdfund` (`crowdFundID`, `currentAmount`, `deadline`, `expectedAmount`, `gameDeveloperName`, `gameName`, `title`, `tagline`, `backers`, `details`, `visibility`, `crowdfundCoverImg`, `crowdfundSS`, `crowdfundTrailer`, `viewCount`, `created_at`, `siteShareCollected`) VALUES
-(4, 77.36, '2023-06-03', 500, 46, '96', 'ergrgrtgd wdw 111', 'httrh 11f wgkrg errogrog jregjreogj rejgergrjgierjgrej grgjregjre jrgjrgjregrjg', 2, 'ffwf <b>fefefeef </b>', 'draft', 'Cover-4.jpg', 'SS-4-0.jpg,SS-4-1.jpg', 'https://itch.io/11/my-first-game-jam-winter-2023', 14, '2023-05-04 23:14:42', 0),
-(6, 0, '2023-05-05', 100, 46, '95', 'new crowdfunding', 'gtgrtgrttrht', 0, '<h3>ABOUT THIS GAME</h3>\r\n<br>\r\n<p>Lost, alone and separated from family, a stray cat must untangle an ancient mystery to escape a long-forgotten city.\r\n\r\nStray is a third-person cat adventure game set amidst the detailed, neon-lit alleys of a decaying cybercity and the murky environments of its seedy underbelly. Roam surroundings high and low, defend against unforeseen threats and solve the mysteries of this unwelcoming place inhabited by curious droids and dangerous creatures.\r\n\r\nSee the world through the eyes of a cat and interact with the environment in playful ways. Be stealthy, nimble, silly, and sometimes as annoying as possible with the strange inhabitants of this mysterious world.\r\n\r\nAlong the way, the cat befriends a small flying drone, known only as B-12. With the help of this newfound companion, the duo must find a way out.\r\n\r\nStray is developed by BlueTwelve Studio, a small team from the south of France mostly made up of cats and a handful of humans.<p>', 'draft', 'Cover-Monster Hunter Rise.jpg', 'SS-Monster Hunter Rise-0.jpg,SS-Monster Hunter Rise-1.jpg', 'https://itch.io/jam/my-first-game-jam-winter-2023', 4, '2023-05-04 23:14:42', 0),
-(11, 0, '2023-04-26', 234, 46, '91', 'htrhrt', 'gtgrtgrttrht', 0, 'gtthh<b>gtgt</b>', 'draft', 'Cover-91.jpg', 'SS-91-0.jpg,SS-91-1.jpg,SS-91-2.jpg', 'https://itch.io/jam/my-first-game-jam-winter-2023', 4, '2023-05-04 23:14:42', 0),
-(12, 0, '2023-04-29', 51, 46, '89', 'ergrgrtgfefregreg gregerger ', 'gtgrtgrttrhte greg ererh erherhh hh thj7j eg owgrjrjgri r grgjrgj rgjjowjg ', 0, '', 'draft', 'Cover-89.jpg', 'SS-89-0.jpg,SS-89-1.jpg', 'https://itch.io/jam/my-first-game-jam-winter-2023', 4, '2023-05-04 23:14:42', 0);
+INSERT INTO `crowdfund` (`crowdFundID`, `currentAmount`, `deadline`, `expectedAmount`, `gameDeveloperName`, `gameName`, `title`, `tagline`, `backers`, `details`, `visibility`, `crowdfundCoverImg`, `crowdfundSS`, `crowdfundTrailer`, `viewCount`, `created_at`, `siteShareCollected`, `ActivityCheck`) VALUES
+(4, 77.36, '2023-06-03', 500, 46, '96', 'ergrgrtgd wdw 111', 'httrh 11f wgkrg errogrog jregjreogj rejgergrjgierjgrej grgjregjre jrgjrgjregrjg', 2, 'ffwf <b>fefefeef </b>', 'draft', 'Cover-4.jpg', 'SS-4-0.jpg,SS-4-1.jpg', 'https://itch.io/11/my-first-game-jam-winter-2023', 20, '2023-05-04 23:14:42', 0, 6),
+(6, 0, '2023-05-05', 100, 46, '95', 'new crowdfunding', 'gtgrtgrttrht', 0, '<h3>ABOUT THIS GAME</h3>\r\n<br>\r\n<p>Lost, alone and separated from family, a stray cat must untangle an ancient mystery to escape a long-forgotten city.\r\n\r\nStray is a third-person cat adventure game set amidst the detailed, neon-lit alleys of a decaying cybercity and the murky environments of its seedy underbelly. Roam surroundings high and low, defend against unforeseen threats and solve the mysteries of this unwelcoming place inhabited by curious droids and dangerous creatures.\r\n\r\nSee the world through the eyes of a cat and interact with the environment in playful ways. Be stealthy, nimble, silly, and sometimes as annoying as possible with the strange inhabitants of this mysterious world.\r\n\r\nAlong the way, the cat befriends a small flying drone, known only as B-12. With the help of this newfound companion, the duo must find a way out.\r\n\r\nStray is developed by BlueTwelve Studio, a small team from the south of France mostly made up of cats and a handful of humans.<p>', 'draft', 'Cover-Monster Hunter Rise.jpg', 'SS-Monster Hunter Rise-0.jpg,SS-Monster Hunter Rise-1.jpg', 'https://itch.io/jam/my-first-game-jam-winter-2023', 4, '2023-05-04 23:14:42', 0, 6),
+(11, 0, '2023-04-26', 234, 46, '91', 'htrhrt', 'gtgrtgrttrht', 0, 'gtthh<b>gtgt</b>', 'draft', 'Cover-91.jpg', 'SS-91-0.jpg,SS-91-1.jpg,SS-91-2.jpg', 'https://itch.io/jam/my-first-game-jam-winter-2023', 4, '2023-05-04 23:14:42', 0, 6),
+(12, 0, '2023-04-29', 51, 46, '89', 'ergrgrtgfefregreg gregerger ', 'gtgrtgrttrhte greg ererh erherhh hh thj7j eg owgrjrjgri r grgjrgj rgjjowjg ', 0, '', 'draft', 'Cover-89.jpg', 'SS-89-0.jpg,SS-89-1.jpg', 'https://itch.io/jam/my-first-game-jam-winter-2023', 4, '2023-05-04 23:14:42', 0, 6);
 
 -- --------------------------------------------------------
 
@@ -887,7 +921,13 @@ INSERT INTO `crowdfund_view_tracker` (`id`, `userID`, `sessionID`, `crowdfundID`
 (27, 46, 32, 6, '2023-05-08'),
 (28, 46, 32, 11, '2023-05-08'),
 (29, 46, 66, 4, '2023-05-09'),
-(30, 46, 97, 4, '2023-05-10');
+(30, 46, 97, 4, '2023-05-10'),
+(31, 52, 81, 4, '2023-05-11'),
+(32, 46, 53, 4, '2023-05-11'),
+(33, 46, 38, 4, '2023-05-12'),
+(34, 52, 72, 4, '2023-05-12'),
+(35, 52, 30, 4, '2023-05-12'),
+(36, 52, 13, 4, '2023-05-12');
 
 -- --------------------------------------------------------
 
@@ -908,27 +948,29 @@ CREATE TABLE `devlog` (
   `CreatedDate` datetime DEFAULT current_timestamp(),
   `likeCount` int(11) NOT NULL DEFAULT 0,
   `commentCount` int(11) NOT NULL DEFAULT 0,
-  `viewCount` int(11) NOT NULL DEFAULT 0
+  `viewCount` int(11) NOT NULL DEFAULT 0,
+  `ActivityCheck` int(11) NOT NULL DEFAULT 5
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `devlog`
 --
 
-INSERT INTO `devlog` (`publishDate`, `description`, `name`, `Tagline`, `Type`, `Visibility`, `devlogImg`, `gameName`, `devLogID`, `CreatedDate`, `likeCount`, `commentCount`, `viewCount`) VALUES
-('2023-02-09 17:38:43', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis hendrerit neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum pharetra sem. Vestibulum eu est urna. Cras non ipsum non massa sodales condimentum quis eu risus. Praesent volutpat lorem a dolor tristique luctus eget sed elit. Ut facilisis faucibus justo tincidunt eleifend. Curabitur ultrices sapien id lorem posuere, vitae mattis nisi faucibus. Aliquam congue lorem sit amet velit lobortis, non venenatis massa feugiat. Aenean ut vehicula nibh, sed vehicula lacus. Praesent eu eros id leo maximus rhoncus eget eget risus. Curabitur vitae faucibus ligula, ac tincidunt dui. Sed diam massa, euismod sit amet augue a, pharetra egestas augue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\r\n\r\nIn hendrerit magna a dui tincidunt porta. Curabitur suscipit ex consectetur mauris ullamcorper rutrum. Mauris feugiat aliquet tristique. Curabitur egestas suscipit iaculis. Quisque tristique posuere augue, ac aliquet nisi vestibulum id. Curabitur efficitur nibh eu ipsum venenatis, et ornare tellus pellentesque. Nullam mollis lacus in nibh vestibulum, nec dignissim justo tristique. In congue dolor suscipit, eleifend leo et, commodo purus. Curabitur gravida risus et leo porttitor facilisis ut vestibulum ex. Donec enim tortor, commodo facilisis vestibulum non, viverra sed augue. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean ultricies metus vitae lobortis fermentum. Maecenas vulputate ante a sollicitudin congue. Duis purus erat, finibus eget magna sit amet, porta pharetra massa.\r\n\r\nVestibulum eleifend imperdiet felis sit amet placerat. Nulla auctor pretium turpis, quis porttitor lacus tempor vitae. Vestibulum semper non enim at dignissim. Mauris consequat elit ac purus congue iaculis. Aenean ac nibh a dolor efficitur fermentum. Mauris a porttitor lorem, ac gravida tellus. Cras iaculis malesuada mollis.', 'Finishing Utility Inventory', 'Bonjour! This is a post about me finally finishing the Utiltiy ', 'Game Design', 'draft', 'SS-Albion Online.png', '89', 28, '2020-12-29 00:00:00', 2, 3, 8),
-('2023-02-09 17:41:03', '', 'How to Build a Mansion', 'Showing steps of using tiles to build a mansion in the city ', 'Game Design', 'draft', '', '93', 29, '2020-12-26 00:00:00', 0, 0, 1),
-('2023-02-09 17:43:00', 'dwfwf', 'Level Editor Tutorial', 'Optimized level editor is available to players for free with extensions', 'Game Design', 'draft', 'SS-Final Fantasy VII.jpg', '93', 30, '2020-11-29 00:00:00', 1, 1, 5),
-('2023-03-07 12:55:38', 'dwdw', 'dwd', 'ddwd', 'Tutorial', 'draft', 'Cover-31.png', '89', 31, '2023-04-19 20:22:07', 1, 0, 1),
-('2023-03-12 18:12:11', 'ththt', 'tthht too', 'hth omg', 'Tutorial', 'draft', 'Cover-34.jpg', '89', 34, '2023-04-24 00:00:00', 0, 0, 0),
-('2023-04-10 04:44:15', 'fef <b>whats up</b>', 'New Devlog 1', 'Hello all i have returned with a polished new devlog', 'Marketing', 'draft', 'Cover-35.jpg', '95', 35, '2022-11-10 20:22:17', 0, 0, 2),
-('2023-04-10 04:50:44', 'grgrg&nbsp;<div><div style=\"text-align: center;\">grgrgrgrgrgrg</div><div style=\"text-align: center;\"><br></div><div>grrgrg<b>grggrggrg grgrgeeg</b></div></div>', 'fefefg', 'ggrgrggg', 'Major Update', 'draft', 'SS-89.jpg', '89', 36, '2022-11-02 00:00:00', 1, 1, 1),
-('2023-04-26 15:04:59', '', 'fefef', 'grgrgrg rger  g wgg  gg htrh g gg fewfwefef', 'Major Update', 'draft', 'SS-91.jpg', '91', 40, '2023-04-26 20:34:59', 0, 0, 2),
-('2023-05-10 08:32:03', '', 'Expendabros new multiplayer', 'The expendabros is a pixel based 2D platformer with coop features and vastly unique character customization features', 'Major Update', 'draft', 'SS-214.jpg', '214', 41, '2023-05-10 14:02:03', 1, 0, 1),
-('2023-05-10 08:54:16', '', 'Every Ascendancy Ranked', 'With 19 Ascendancy classes to pick from, the Path of Exile player base is spoiled for choice. How do the Ascendancies rank from worst to best?', 'Postmortem', 'public', 'SS-189.jpg', '189', 42, '2023-05-10 14:24:16', 1, 0, 2),
-('2023-05-10 09:21:45', '', 'New Update!', 'Enjoy the full experience of Island Saver on your mobile at anywhere at any time with your favourite person', 'Major Update', 'public', 'SS-197.jpg', '197', 44, '2023-05-10 14:51:45', 2, 0, 3),
-('2023-05-10 09:25:36', '', 'Who is Nasuverse?', 'Kinoko Nasu, writer of most of the Fate series, has many other written works that have been adapted into anime, and they exist in the same multiverse.', 'Marketing', 'public', 'SS-206.png', '206', 45, '2023-05-10 14:55:36', 0, 0, 2),
-('2023-05-10 11:38:11', '', 'Roguelike Dungeon Reveals', 'Path of Exile update 3.20 adds a roguelike dungeon to the ARPG game, reworks the Atlas Tree and Eldritch Altars, adds Ruthless mode, and buffs unique weapons', 'Major Update', 'public', 'SS-189.jpg', '189', 46, '2023-05-10 17:08:11', 0, 0, 2);
+INSERT INTO `devlog` (`publishDate`, `description`, `name`, `Tagline`, `Type`, `Visibility`, `devlogImg`, `gameName`, `devLogID`, `CreatedDate`, `likeCount`, `commentCount`, `viewCount`, `ActivityCheck`) VALUES
+('2023-02-09 17:38:43', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis hendrerit neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras fermentum pharetra sem. Vestibulum eu est urna. Cras non ipsum non massa sodales condimentum quis eu risus. Praesent volutpat lorem a dolor tristique luctus eget sed elit. Ut facilisis faucibus justo tincidunt eleifend. Curabitur ultrices sapien id lorem posuere, vitae mattis nisi faucibus. Aliquam congue lorem sit amet velit lobortis, non venenatis massa feugiat. Aenean ut vehicula nibh, sed vehicula lacus. Praesent eu eros id leo maximus rhoncus eget eget risus. Curabitur vitae faucibus ligula, ac tincidunt dui. Sed diam massa, euismod sit amet augue a, pharetra egestas augue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\r\n\r\nIn hendrerit magna a dui tincidunt porta. Curabitur suscipit ex consectetur mauris ullamcorper rutrum. Mauris feugiat aliquet tristique. Curabitur egestas suscipit iaculis. Quisque tristique posuere augue, ac aliquet nisi vestibulum id. Curabitur efficitur nibh eu ipsum venenatis, et ornare tellus pellentesque. Nullam mollis lacus in nibh vestibulum, nec dignissim justo tristique. In congue dolor suscipit, eleifend leo et, commodo purus. Curabitur gravida risus et leo porttitor facilisis ut vestibulum ex. Donec enim tortor, commodo facilisis vestibulum non, viverra sed augue. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean ultricies metus vitae lobortis fermentum. Maecenas vulputate ante a sollicitudin congue. Duis purus erat, finibus eget magna sit amet, porta pharetra massa.\r\n\r\nVestibulum eleifend imperdiet felis sit amet placerat. Nulla auctor pretium turpis, quis porttitor lacus tempor vitae. Vestibulum semper non enim at dignissim. Mauris consequat elit ac purus congue iaculis. Aenean ac nibh a dolor efficitur fermentum. Mauris a porttitor lorem, ac gravida tellus. Cras iaculis malesuada mollis.', 'Finishing Utility Inventory', 'Bonjour! This is a post about me finally finishing the Utiltiy ', 'Game Design', 'draft', 'SS-Albion Online.png', '89', 28, '2020-12-29 00:00:00', 2, 3, 9, 5),
+('2023-02-09 17:41:03', '', 'How to Build a Mansion', 'Showing steps of using tiles to build a mansion in the city ', 'Game Design', 'draft', '', '93', 29, '2020-12-26 00:00:00', 0, 0, 1, 5),
+('2023-02-09 17:43:00', 'dwfwf', 'Level Editor Tutorial', 'Optimized level editor is available to players for free with extensions', 'Game Design', 'draft', 'SS-Final Fantasy VII.jpg', '93', 30, '2020-11-29 00:00:00', 1, 1, 5, 5),
+('2023-03-07 12:55:38', 'dwdw', 'dwd', 'ddwd', 'Tutorial', 'draft', 'Cover-31.png', '89', 31, '2023-04-19 20:22:07', 1, 0, 1, 5),
+('2023-03-12 18:12:11', 'ththt', 'tthht too', 'hth omg', 'Tutorial', 'draft', 'Cover-34.jpg', '89', 34, '2023-04-24 00:00:00', 0, 0, 0, 5),
+('2023-04-10 04:44:15', 'fef <b>whats up</b>', 'New Devlog 1', 'Hello all i have returned with a polished new devlog', 'Marketing', 'draft', 'Cover-35.jpg', '95', 35, '2022-11-10 20:22:17', 0, 0, 2, 5),
+('2023-04-10 04:50:44', 'grgrg&nbsp;<div><div style=\"text-align: center;\">grgrgrgrgrgrg</div><div style=\"text-align: center;\"><br></div><div>grrgrg<b>grggrggrg grgrgeeg</b></div></div>', 'fefefg', 'ggrgrggg', 'Major Update', 'draft', 'SS-89.jpg', '89', 36, '2022-11-02 00:00:00', 1, 1, 1, 5),
+('2023-04-26 15:04:59', '', 'fefef', 'grgrgrg rger  g wgg  gg htrh g gg fewfwefef', 'Major Update', 'draft', 'SS-91.jpg', '91', 40, '2023-04-26 20:34:59', 0, 0, 2, 5),
+('2023-05-10 08:32:03', '', 'Expendabros new multiplayer', 'The expendabros is a pixel based 2D platformer with coop features and vastly unique character customization features', 'Major Update', 'draft', 'SS-214.jpg', '214', 41, '2023-05-10 14:02:03', 1, 0, 2, 5),
+('2023-05-10 08:54:16', '', 'Every Ascendancy Ranked', 'With 19 Ascendancy classes to pick from, the Path of Exile player base is spoiled for choice. How do the Ascendancies rank from worst to best?', 'Postmortem', 'public', 'SS-189.jpg', '189', 42, '2023-05-10 14:24:16', 1, 0, 2, 5),
+('2023-05-10 09:21:45', '', 'New Update!', 'Enjoy the full experience of Island Saver on your mobile at anywhere at any time with your favourite person', 'Major Update', 'public', 'SS-197.jpg', '197', 44, '2023-05-10 14:51:45', 2, 0, 4, 5),
+('2023-05-10 09:25:36', '', 'Who is Nasuverse?', 'Kinoko Nasu, writer of most of the Fate series, has many other written works that have been adapted into anime, and they exist in the same multiverse.', 'Marketing', 'public', 'SS-206.png', '206', 45, '2023-05-10 14:55:36', 0, 0, 2, 5),
+('2023-05-10 11:38:11', '', 'Roguelike Dungeon Reveals', 'Path of Exile update 3.20 adds a roguelike dungeon to the ARPG game, reworks the Atlas Tree and Eldritch Altars, adds Ruthless mode, and buffs unique weapons', 'Major Update', 'public', 'SS-189.jpg', '189', 46, '2023-05-10 17:08:11', 0, 0, 2, 5),
+('2023-05-12 23:10:06', '', 'Fire element added', 'Fire elemental ability has been on the requests received by our dev teams daily. Hence we decided to add that to this new update.', 'Major Update', 'public', 'SS-96.jpg', '96', 47, '2023-05-13 04:40:06', 0, 0, 1, 5);
 
 -- --------------------------------------------------------
 
@@ -1087,7 +1129,11 @@ INSERT INTO `devlog_view_tracker` (`id`, `userID`, `sessionID`, `devlogID`, `vie
 (30, 46, 94, 46, '2023-05-10'),
 (31, 46, 70, 44, '2023-05-11'),
 (32, 46, 70, 45, '2023-05-11'),
-(33, 52, 73, 44, '2023-05-11');
+(33, 52, 73, 44, '2023-05-11'),
+(34, 46, 41, 44, '2023-05-12'),
+(35, 46, 83, 28, '2023-05-12'),
+(36, 46, 74, 41, '2023-05-12'),
+(37, 46, 70, 47, '2023-05-13');
 
 -- --------------------------------------------------------
 
@@ -1135,7 +1181,8 @@ INSERT INTO `followers` (`id`, `follower`, `following`, `followed_date`) VALUES
 (16, 46, 82, '2023-05-10 09:12:42'),
 (18, 87, 102, '2023-05-10 12:17:19'),
 (19, 47, 82, '2023-05-10 12:43:30'),
-(21, 46, 81, '2023-05-11 00:42:10');
+(22, 46, 87, '2023-05-12 15:16:55'),
+(23, 46, 81, '2023-05-12 15:17:33');
 
 -- --------------------------------------------------------
 
@@ -1231,51 +1278,53 @@ CREATE TABLE `freegame` (
   `gamePrice` varchar(100) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `gamePublisherID` int(11) NOT NULL DEFAULT 0,
-  `jamSubmission` int(11) NOT NULL DEFAULT 0
+  `jamSubmission` int(11) NOT NULL DEFAULT 0,
+  `ActivityCheck` int(11) NOT NULL DEFAULT 3
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `freegame`
 --
 
-INSERT INTO `freegame` (`gameID`, `gameName`, `releaseStatus`, `gameDetails`, `gameScreenshots`, `gameTrailor`, `gameTagline`, `gameClassification`, `gameTags`, `gameFeatures`, `platform`, `gameType`, `gameFile`, `gameVisibility`, `gameCoverImg`, `gameDeveloperID`, `minOS`, `minProcessor`, `minMemory`, `minStorage`, `minGraphics`, `other`, `recommendOS`, `recommendProcessor`, `recommendMemory`, `recommendStorage`, `recommendGraphics`, `gamePrice`, `created_at`, `gamePublisherID`, `jamSubmission`) VALUES
-(89, 'Albion Online Z1', 'Upcoming', '', '', '', 'Free medieval fantasy MMORPG, set in a medieval world', 'Action', '', '', 'Linux', 'Demo', '', 'public', '', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-04-03 19:55:08', 47, 0),
-(90, 'Stray', 'Upcoming', '<h3>ABOUT THIS GAME</h3>\n<br>\n<p>Lost, alone and separated from family, a stray cat must untangle an ancient mystery to escape a long-forgotten city.\n\nStray is a third-person cat adventure game set amidst the detailed, neon-lit alleys of a decaying cybercity and the murky environments of its seedy underbelly. Roam surroundings high and low, defend against unforeseen threats and solve the mysteries of this unwelcoming place inhabited by curious droids and dangerous creatures.\n\nSee the world through the eyes of a cat and interact with the environment in playful ways. Be stealthy, nimble, silly, and sometimes as annoying as possible with the strange inhabitants of this mysterious world.\n\nAlong the way, the cat befriends a small flying drone, known only as B-12. With the help of this newfound companion, the duo must find a way out.\n\nStray is developed by BlueTwelve Studio, a small team from the south of France mostly made up of cats and a handful of humans.<p>', 'SS-Stray-0.jpg,SS-Stray-1.jpg,SS-Stray-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'follows a stray cat who falls into a walled city populated by robots', 'action', 'stray, cat, 3d', 'Puzzle', 'Linux', 'DLC', 'Game-Stray.zip', '0', 'Cover-Stray.jpg', 49, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'Extra Content', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '3.99', '2020-01-23 19:55:18', 0, 0),
-(91, 'Scarlet Nexus', 'Upcoming', '<h3>ABOUT THIS GAME</h3>\r\n<p>In the far distant future, a psionic hormone was discovered in the human brain, granting people extra-sensory powers and changed the world as we knew it. As humanity entered this new era, deranged mutants known as Others began to descend from the sky with a hunger for human brains. Highly resistant to conventional attack methods, extreme measures needed to be taken to battle the overwhelming threat and preserve humanity. Those with acute extra-sensory abilities, known as psionics, were our only chance to fight the onslaught from above. Since then, psionics have been scouted for their talents and recruited to the Other Suppression Force (OSF), humanity’s last line of defense.\r\n</p>\r\n<br>\r\n<p>Featuring a dual story, begin your adventure with either Yuito Sumeragi, an energetic recruit from a prestigious political family or Kasane Randall, the mysterious scout whose power and skill has gained great notoriety among the OSF. As their different experiences interweave with each other, it is only then that you will reveal the full story and unlock all the mysteries of a Brain Punk future caught between technology and psychic abilities in SCARLET NEXUS.\r\n</p>\r\n<br>\r\n<p>Kinetic Psychic Combat – Using psycho-kinetic abilities, the world around you becomes your greatest weapon. Lift, break and throw pieces of your environment to build your attack combos and lay waste to your enemies.\r\n\r\nExterminate the Others – Deranged mutants that descended from the sky, highly resistant to conventional attack methods and defenses. Tormented by the constant pain of their mutation, they seek brains of living organisms to calm their madness.\r\n\r\nDiscover a Brain Punk future – Explore and protect a futuristic Japanese landscape that combines inspirations from classic anime and western science fiction.\r\n\r\nA Dual Story Experience – Dive into a complex story of bonds, courage and heroism, crafted by minds behind the iconic Tales of Vesperia.</p>', 'SS-Scarlet Nexus-0.jpg,SS-Scarlet Nexus-1.jpg,SS-Scarlet Nexus-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'Elite psionics each armed with a talent in psychokinesis', 'RPG', 'scarlet, nexus, rpg,thhrh', 'Leaderboard', 'Windows,Linux', 'Demo', 'Game-Scarlet Nexus.zip', '0', 'Cover-Scarlet Nexus.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '2022-01-27 00:00:00', 0, 0),
-(92, 'Naruto Shippuden', 'Released', '<h3>ABOUT THIS GAME</h3>\r\n<br>\r\n<p>The latest opus in the acclaimed STORM series is taking you on a colourful and breathtaking ride. Take advantage of the totally revamped battle system and prepare to dive into the most epic fights you’ve ever seen in the NARUTO SHIPPUDEN: Ultimate Ninja STORM series!</p>\r\n<br>\r\n<p>\r\nPrepare for the most awaited STORM game ever created!</p>\r\n\r\n', 'SS-Naruto Shippuden-0.jpg,SS-Naruto Shippuden-1.jpg,SS-Naruto Shippuden-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'The latest opus in the acclaimed STORM series is taking you ', 'action', 'naruto, anime, shippuden', 'Multi-Player', 'Windows', 'Base Game', 'Game-Naruto Shippuden.zip', '0', 'Cover-Naruto Shippuden.jpg', 49, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '7.99', '2022-01-04 00:00:00', 0, 0),
-(93, 'Monster Hunter Rise', 'Released', '<h3>ABOUT THIS GAME</h3>\r\n<br>\r\n<p>Rise to the challenge and join the hunt! In Monster Hunter Rise, the latest installment in the award-winning and top-selling Monster Hunter series, you’ll become a hunter, explore brand new maps and use a variety of weapons to take down fearsome monsters as part of an all-new storyline. The PC release also comes packed with a number of additional visual and performance enhancing optimizations.</p>\r\n<br>\r\n<h3>\r\nFerocious monsters with unique ecologies</h3>\r\n<p>\r\nHunt down a plethora of monsters with distinct behaviors and deadly ferocity. From classic returning monsters to all-new creatures inspired by Japanese folklore, including the flagship wyvern Magnamalo, you’ll need to think on your feet and master their unique tendencies if you hope to reap any of the rewards!</p>\r\n\r\n', 'SS-Monster Hunter Rise-0.jpg,SS-Monster Hunter Rise-1.jpg,SS-Monster Hunter Rise-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'Rise to the challenge and join the hunt! In Monster Hunter Rise', 'Strategy', 'monster hunter, rpg, singlepla', 'Single-Player', 'Windows', 'Base Game', 'Game-Monster Hunter Rise.zip', '0', 'Cover-Monster Hunter Rise.png', 46, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', '', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '4', '2023-01-16 18:56:30', 0, 0),
-(95, 'Naruto Shippuden', 'Released', '<h3>ABOUT THIS GAME</h3>\r\n<br>\r\n<p>The latest opus in the acclaimed STORM series is taking you on a colourful and breathtaking ride. Take advantage of the totally revamped battle system and prepare to dive into the most epic fights you’ve ever seen in the NARUTO SHIPPUDEN: Ultimate Ninja STORM series!</p>\r\n<br>\r\n<p>\r\nPrepare for the most awaited STORM game ever created!</p>\r\n\r\n', 'SS-Naruto Shippuden-0.jpg,SS-Naruto Shippuden-1.jpg,SS-Naruto Shippuden-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'The latest opus in the acclaimed STORM series is taking you ', 'Action', 'naruto, anime, shippuden', 'Single-Player,Multi-Player', 'Windows,MacOS', 'Base Game', 'Game-Naruto Shippuden.zip', '', 'Cover-Naruto Shippuden.jpg', 46, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '0', '2023-01-09 00:00:00', 0, 0),
-(96, 'Final Fantasy Vi', 'Upcoming', 'f<div><u>fefef</u>ffe<div>g</div><div>rgrg</div><div>g</div><div>g</div><div><u>grgrg</u></div></div>', 'SS-Final Fantasy V-0.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'Remaster of CRISIS CORE featuring updated graphics, combats', 'Strategy', ',grgrg,hth,ff', 'Single-Player,Achievements', 'Windows,Linux', 'DLC', 'Game-Final Fantasy V.zip', '', 'Cover-Final Fantasy V.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-01-16 11:57:03', 0, 0),
-(181, 'grgr', 'Released', '', 'SS-grgr-0.jpg,SS-grgr-1.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'follows a stray cat who falls into a walled city populated by robots, ', 'action', 'game,grgre', 'Multi Player', 'Windows', 'Demo', 'Game-grgr.zip', '0', 'Cover-grgr.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-01-24 00:00:00', 0, 0),
-(183, 'Albion Online New', 'early access', 'this game is <b>Free </b>so please play', 'SS-Albion Online New-0.jpg,SS-Albion Online New-1.jpg,SS-Albion Online New-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'follows a stray cat who falls into a walled city populated by robots, ', 'simulation', 'free,albion', 'Single-Player,Multi-Player', 'Windows,Linux', 'Prologue', 'Game-Albion Online New.zip', 'draft', 'Cover-Albion Online New.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-04-19 08:38:16', 0, 0),
-(184, 'Loria', 'Released', '<b>ABOUT THIS GAME</b><div>Loria is a homage to classics from golden era of strategy games, with modern spin on controls and user experience.<br></div><div><br></div><div>Game introduces not just RTS elements but also RPG elements such as: hero units, collecting items and quest driven missions offers for a more interesting take on the RTS genre.<br></div><div><br></div><div>Goal of Loria is to take the best concepts from the classics and create a modern user-experience, intelligent AI, smooth controls, pleasing aesthetic and to add interesting content.<br></div><div><br></div><div>Loria was made with passion and love of the RTS genre, that has given us so many hours of fun.<br></div><div>Hopefully we have managed to recreate the experience and fun.<br></div><div><br></div><div>Loria features:<br></div><div><ul><li><li>2 playable races</li><li>2 campaigns with 8 missions each ( 16 missions in summary )</li><li>Entertaining story</li><li>Dozens of units, buildings and upgrades</li><li>6 unique heroes</li><li>Levelable heroes with backpack</li><li>Veteran units</li></li><li>Skirmish games</li></ul><br></div><div><b>Soundtrack is included as well in basic package.</b><br></div><div>About Multiplayer:<br></div><div><br></div>', 'SS-Loria81-0.jpg,SS-Loria81-1.png,SS-Loria81-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', ' A homage to classics from golden era of strategy games', 'RPG', 'Loria,Story,Strategy,Retro', 'Single-Player', 'Windows,MacOS,Linux', 'Base Game', 'Game-Loria81.zip', 'public', 'Cover-Loria81.jpg', 81, 'Windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'Windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '0', '2023-04-20 21:55:44', 0, 0),
-(186, 'Fallout Shelter', 'Released', '<b>ABOUT THIS GAME</b><div>Fallout Shelter puts you in control of a state-of-the-art underground Vault from Vault-Tec. Build the perfect Vault, keep your Dwellers happy, and protect them from the dangers of the Wasteland.<br></div><div><br></div><div><b>BUILD THE PERFECT VAULT</b></div><div>Create a brighter future…underground! Select from a variety of modern-day rooms to turn an excavation beneath 2,000 feet of bedrock into the very picture of Vault Life.<br></div>', 'SS-Fallout Shelter82-0.jpg,SS-Fallout Shelter82-1.jpg,SS-Fallout Shelter82-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'Puts you in control of a state-of-the-art underground Vault', 'Strategy', 'Free to Play,Survival,Base Building,Fallout Shelter', 'Single-Player', 'Windows', 'Base Game', 'Game-Fallout Shelter82.zip', 'public', 'Cover-Fallout Shelter82.jpg', 82, 'Windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'Windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '0', '2023-04-21 08:41:04', 0, 0),
-(187, 'Recourse', 'Released', '<b>ABOUT THIS GAME</b><div>Journey to a scenic arctic planet inhabited by experimental A.I. units and discarded robots. Play as Sleet, a sentient robot confronted with a series of puzzles and has little idea what is going on. Then meet Floe, an older A.I. unit, willing to help you proceed and unravel the mysteries of this beautiful desolate planet.<br></div><div><br></div><div><b>MORE ABOUT THE DEMO</b></div><div>Currently only five levels have been fully developed and implemented to be experience for free in this demo. <i><b>Having a publisher for this game is much appreciated.</b></i></div>', 'SS-Recourse81-0.jpg,SS-Recourse81-1.jpg,SS-Recourse81-2.jpg,SS-Recourse81-3.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'Curiosity is a sign of intelligence. Lets see how far can yours go?', 'Action', 'Indie,Casual,Platformer,Puzzle,Kulla,Recourse', 'Single-Player,Puzzle', 'Windows', 'Demo', 'Game-Recourse81.zip', 'public', 'Cover-Recourse81.jpg', 81, 'Windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'Windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '0', '2023-04-21 11:05:33', 0, 0),
-(188, 'Dark Deception', 'Released', '<b>ABOUT DARK DECEPTION</b><div>Dark Deception is a story driven first-person horror action maze game that mixes the fast-paced style of classic arcade games with fun horror game design. Trapped in a dark world full of nightmarish mazes and ridiculous monsters, the only way out is to face the darkness and find a way to survive.<br></div><div><br></div><div>This is the first chapter in the Dark Deception story. Investigate and survive the first maze. Be careful though. You are not alone. There are monsters in there and they are looking for you. You will face your fears. The question is - what are you afraid of?</div>', 'SS-Dark Deception46-0.jpg,SS-Dark Deception46-1.jpg,SS-Dark Deception46-2.jpg', '', 'Death awaits you in Dark Deception, There is nowhere to hide anymore', 'Adventure', 'horror,fps,first-person,multiplayer,blood,fear,night', 'Multi-Player', 'Windows', 'Base Game', 'Game-Dark Deception46.zip', 'public', 'Cover-Dark Deception46.jpg', 46, 'Windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'Windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '30', '2023-04-21 16:24:37', 0, 0),
-(189, 'Path of Exile', 'Released', '<b>ABOUT THE GAME</b><div>You are an Exile, struggling to survive on the dark continent of Wraeclast, as you fight to earn power that will allow you to exact your revenge against those who wronged you. Created by hardcore gamers, Path of Exile is an online Action RPG set in a dark fantasy world. With a focus on visceral action combat, powerful items and deep character customization, Path of Exile is completely free and will never be pay-to-win.<br></div><div><br></div><div><b>KEY FEATURES</b></div><div><ul><li><b>Freedom. Power. Revenge.</b></li></ul>Banished for your misdeeds to the dark, brutal world of Wraeclast, you play as the Duelist, Witch, Ranger, Templar, Marauder, Shadow or the Scion class. From forsaken shores through to the ruined city of Sarn, explore Wraeclast and uncover the ancient secrets waiting for you.<br></div>', 'SS-Path of Exile82-0.jpg,SS-Path of Exile82-1.jpg,SS-Path of Exile82-2.jpg,SS-Path of Exile82-3.jpg', '', 'Struggling to survive on the vast dark continent of Wraeclast', 'RPG', 'rpg,hack and slash,action,hicraft,gore,blood', 'Multi-Player,Achievements,Multiplayer-Co-op', 'Windows,MacOS', 'Base Game', 'Game-Path of Exile82.zip', 'public', 'Cover-Path of Exile82.jpg', 82, '', '', '', '', '', '', '', '', '', '', '', '49.99', '2023-04-21 23:29:43', 0, 0),
-(191, 'Deltarune', 'Released', '', 'SS-Deltarune46-0.jpg,SS-Deltarune46-1.jpg,SS-Deltarune46-2.jpg', '', 'Meet new and old characters in a tale that steps closer to its end', 'RPG', 'Story Rich,Pixel Graphics,Funny,2D', 'Single-Player', 'Windows', 'Base Game', 'Game-Deltarune46.zip', 'draft', 'Cover-Deltarune46.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-04-26 11:57:53', 0, 0),
-(195, 'Red Hot Vengeance', 'Released', '', 'SS-Red Hot Vengeance46-0.png,SS-Red Hot Vengeance46-1.jpg,SS-Red Hot Vengeance46-2.jpg,SS-Red Hot Vengeance46-3.jpg', '', 'He had one rule: No killing women or children. Beware of hitman', 'Action', 'Free to Play,Violent,Gore,Blood,Indie', 'Single-Player,Puzzle', 'Windows', 'Base Game', 'Game-Red Hot Vengeance46.zip', 'public', 'Cover-Red Hot Vengeance46.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-02 00:24:37', 0, 67),
-(196, 'Gravitas', 'Released', '', 'SS-Gravitas82-0.jpg,SS-Gravitas82-1.jpg,SS-Gravitas82-2.jpg,SS-Gravitas82-3.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'A short-first-person puzzle game platforming game that transports  ', 'Adventure', 'puzzle,puzzle platformer,indie,platformer', 'Single-Player,Puzzle,Achievements', 'Windows', 'Base Game', 'Game-Gravitas82.zip', 'public', 'Cover-Gravitas82.jpg', 82, '', '', '', '', '', '', '', '', '', '', '', '40', '2023-05-04 12:03:39', 0, 0),
-(197, 'Island Saver', 'Released', '', 'SS-Island Saver83-0.jpg,SS-Island Saver83-1.jpg,SS-Island Saver83-2.jpg', '', 'A group of amazing islands need your help! Horrid plastic waste has w', 'Action', '', 'Multi-Player,Multiplayer-Co-op', 'Windows', 'Base Game', 'Game-Island Saver83.zip', 'public', 'Cover-Island Saver83.jpg', 83, '', '', '', '', '', '', '', '', '', '', '', '59.99', '2023-05-04 12:56:38', 0, 0),
-(198, 'Donut County', 'Released', '', 'SS-Donut County81-0.jpg,SS-Donut County81-1.jpg,SS-Donut County81-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'A story-based physics puzzle game where you play as an an ever-growin', 'Simulation', 'funny,casual,cute,puzzle,physics,indie', 'Single-Player', 'MacOS', 'Base Game', 'Game-Donut County81.zip', 'public', 'Cover-Donut County81.jpg', 81, '', '', '', '', '', '', '', '', '', '', '', '30', '2023-05-04 17:31:24', 0, 0),
-(199, 'Biphase', 'Released', '', 'SS-Biphase46-0.jpg,SS-Biphase46-1.jpg,SS-Biphase46-2.jpg,SS-Biphase46-3.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', '2D platform jumping game with exploration and puzzles as its core', 'Action', 'indie,minimalist,tool jam,abstract,freetoplay,casual', 'Single-Player,Puzzle', 'Windows', 'Base Game', 'Game-Biphase46.zip', 'public', 'Cover-Biphase46.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-04 23:48:29', 0, 62),
-(200, 'Sprout', 'Released', '', 'SS-Sprout92-0.jpg,SS-Sprout92-1.jpg', '', 'A mini precision-platformer built for speed-running. Run, jump and dash your way through 100 levels across five unique lands, and restore your world to its former glory.', 'Strategy', 'indie,casual,adventure,strategy,free,gamejam,tool jam', 'Single-Player', 'Windows', 'Base Game', 'Game-Sprout92.zip', 'public', 'Cover-Sprout92.jpg', 92, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-05 16:55:29', 0, 62),
-(201, 'Hawken', 'Released', '', 'SS-Hawken83-0.jpg,SS-Hawken83-1.jpg,SS-Hawken83-2.jpg', '', 'Multiplayer mech first-person shooter video game with an unique play style and game modes', 'Action', 'multiplayer,fps,first person,mech', 'Multi-Player,Achievements', 'Windows,MacOS', 'Base Game', 'Game-Hawken83.zip', 'public', 'Cover-Hawken83.jpg', 83, '', '', '', '', '', '', '', '', '', '', '', '59.99', '2023-05-05 19:49:22', 0, 0),
-(202, 'Firestone', 'Released', '', 'SS-Firestone83-0.png,SS-Firestone83-1.jpg,SS-Firestone83-2.jpg', '', 'Firestone: Online Idle RPG is a multiplayer fantasy game with idle rpg mechanics. Collect heroes, upgrade their skills, and sent them in AFK battles or go on an incremental clicker frenzy onwards', 'RPG', 'idle,idler,party-based,rpg,action rpg', 'Online-Co-op', 'Windows', 'Demo', 'Game-Firestone83.zip', 'public', 'Cover-Firestone83.jpg', 83, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-05 19:55:17', 0, 0),
-(203, 'Room to Grow', 'Released', '', 'SS-Room to Grow83-0.jpg,SS-Room to Grow83-1.jpg,SS-Room to Grow83-2.jpg', '', 'Tackle thorny problems in this plant pushing puzzle game. Learn to maneuver like a cactus as you grow your way back to the desert!', 'Strategy', 'puzzle,difficult,sokoban,indie,singleplayer', 'Single-Player', 'Windows', 'Base Game', 'Game-Room to Grow83.zip', 'public', 'Cover-Room to Grow83.png', 83, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-05 20:00:44', 0, 62),
-(204, 'Super Auto Pets', 'Released', '', 'SS-Super Auto Pets93-0.png,SS-Super Auto Pets93-1.jpg,SS-Super Auto Pets93-2.jpg', '', 'Build the strongest team of pets and tussle with your friends!', 'Strategy', 'auto battler,free to play,multiplayer', 'Multi-Player,Achievements', 'Windows', 'Base Game', 'Game-Super Auto Pets93.zip', 'public', 'Cover-Super Auto Pets93.jpg', 93, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-05 20:40:29', 0, 62),
-(205, 'Fulfillment', 'Released', '', 'SS-Fulfillment81-0.jpg,SS-Fulfillment81-1.jpg,SS-Fulfillment81-2.jpg', '', 'Exciting Adventure About the Joys of Working at an Amazing Fulfillment Center! Short, social commentary game that is 100% free, no micro-transactions.', 'Adventure', 'casual,action,tooljam,adventure,gamejam,submission,indie', 'Single-Player', 'Windows', 'Base Game', 'Game-Fulfillment81.zip', 'public', 'Cover-Fulfillment81.jpg', 81, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-06 13:15:23', 0, 62),
-(206, 'Kinoko', 'Released', '', 'SS-Kinoko81-0.jpg,SS-Kinoko81-1.jpg,SS-Kinoko81-2.jpg,SS-Kinoko81-3.jpg', '', 'The crisp winter air fills your lungs, but you can feel the earth underneath calling for you. The warmth from the sun melts the snow away and flowers bloom. Spring is here.', 'Adventure', 'casual,indie,cute', 'Single-Player', 'Windows,Linux', 'Base Game', 'Game-Kinoko81.zip', 'public', 'Cover-Kinoko81.jpg', 81, '', '', '', '', '', '', '', '', '', '', '', '35', '2023-05-06 13:24:12', 0, 0),
-(207, 'Wakfu', 'Released', '', 'SS-Wakfu93-0.jpg,SS-Wakfu93-1.jpg,SS-Wakfu93-2.jpg,SS-Wakfu93-3.jpg', '', 'STEP INTO A LIMITLESS UNIVERSE Touchdown in the World of Twelve and set off on a great adventure in WAKFU - an original massively multiplayer online role playing universe', 'RPG', 'mmorpg,anime,top down', 'Multi-Player,Online-Co-op,Multiplayer-Co-op,MMO', 'Windows', 'Base Game', 'Game-Wakfu93.zip', 'public', 'Cover-Wakfu93.jpg', 93, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-06 13:33:04', 0, 0),
-(208, 'Spiral Knights', 'Released', '', 'SS-Spiral Knights82-0.jpg,SS-Spiral Knights82-1.jpg,SS-Spiral Knights82-2.jpg,SS-Spiral Knights82-3.jpg', '', 'Join the ranks of the Spiral Knights. Stranded on an alien world, you must explore the ever-changing Clockworks beneath its surface.', 'RPG', 'free,action,rpg,tool jam,gamejam', 'Single-Player', 'Windows', 'Base Game', 'Game-Spiral Knights82.zip', 'public', 'Cover-Spiral Knights82.jpg', 82, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-06 21:05:37', 0, 62),
-(209, 'Eternal Senia', 'Early Access', '', 'SS-Eternal Senia95-0.jpg,SS-Eternal Senia95-1.jpg,SS-Eternal Senia95-2.jpg,SS-Eternal Senia95-3.jpg', '', 'Thoughts and expectations of action role playing game', 'RPG', 'action,rpg,anime,protagonist', 'Multi-Player,MMO', 'Windows', 'Base Game', 'Game-Eternal Senia95.zip', 'public', 'Cover-Eternal Senia95.jpg', 95, '', '', '', '', '', '', '', '', '', '', '', '56.49', '2023-05-06 23:12:08', 0, 0),
-(210, 'Anacrusis', 'Released', '', 'SS-Anacrusis95-0.jpg,SS-Anacrusis95-1.jpg,SS-Anacrusis95-2.jpg,SS-Anacrusis95-3.jpg', '', 'A four-player, mod-friendly, cooperative first-person shooter set aboard a massive starship stranded at the edge of space.', 'Action', 'fps,shooter,multiplayer', 'Multi-Player', 'Windows', 'Base Game', 'Game-Anacrusis95.zip', 'public', 'Cover-Anacrusis95.jpg', 95, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-06 23:16:17', 0, 62),
-(211, 'GTFO', 'Released', '', 'SS-GTFO82-0.jpg,SS-GTFO82-1.jpg,SS-GTFO82-2.jpg', '', 'GTFO is an extreme cooperative horror shooter that throws you from gripping suspense to explosive action in a heartbeat. Stealth, strategy, and teamwork are necessary to survive.', 'Action', '', 'Multi-Player', 'Windows', 'Demo', 'Game-GTFO82.zip', 'public', 'Cover-GTFO82.jpg', 82, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-07 11:27:04', 100, 0),
-(212, 'Undefeated', 'Released', '', 'SS-Undefeated46-0.jpg,SS-Undefeated46-1.jpg,SS-Undefeated46-2.jpg,SS-Undefeated46-3.jpg', '', 'Become an invincible hero with unlimited super powers on UNDEFEATED!', 'Action', 'demo,open world,super hero ,action', 'Single-Player', 'Windows', 'Demo', 'Game-Undefeated46.zip', 'public', 'Cover-Undefeated46.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-07 19:13:38', 99, 0),
-(213, 'Dwarf Fortress', 'Released', '', 'SS-Dwarf Fortress83-0.jpg,SS-Dwarf Fortress83-1.jpg,SS-Dwarf Fortress83-2.jpg', '', 'The deepest, most intricate simulation of a world that has ever been created. Build a fortress and try to help your dwarves survive against a deeply generat', 'Simulation', 'pixel,simulation,free', 'Single-Player', 'Windows,Linux', 'Base Game', 'Game-Dwarf Fortress83.zip', 'public', 'Cover-Dwarf Fortress83.jpg', 83, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-10 07:17:32', 0, 0),
-(214, 'Expendabros', 'Released', '', 'SS-Expendabros46-0.jpg,SS-Expendabros46-1.jpg,SS-Expendabros46-2.jpg,SS-Expendabros46-3.jpg,SS-Expendabros46-4.jpg', '', 'The Expendabros have assembled and set their sights on the forces of ruthless arms dealer Conrad Stonebanks in the forests of Eastern Europe. ', 'Action', 'pixel,coop,2d', 'Co-op,Online-Co-op', 'Windows', 'Base Game', 'Game-Expendabros46.zip', 'public', 'Cover-Expendabros46.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '40', '2023-05-10 13:57:16', 0, 0),
-(215, 'Bomber Crew', 'Released', '', 'SS-Bomber Crew83-0.jpg,SS-Bomber Crew83-1.png', '', 'Chocks away! Bomber Crew is a strategic simulation game, where picking the right crew and keeping your bomber in tip top shape is the difference between completing your mission or losing it all!', 'Action', '', 'Single-Player', 'Linux', 'Demo', 'Game-Bomber Crew83.zip', 'public', 'Cover-Bomber Crew83.jpg', 83, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-11 16:01:23', 0, 0),
-(216, 'Cloud Climber', 'Released', '', 'SS-Cloud Climber81-0.jpg,SS-Cloud Climber81-1.jpg,SS-Cloud Climber81-2.jpg', '', 'A surreal first person walking sim about the end of humanity. Explore magnificent sky-bound ruins, and learn why they were built.', 'Adventure', '', 'Single-Player,Achievements', 'Windows', 'Demo', 'Game-Cloud Climber81.zip', 'public', 'Cover-Cloud Climber81.jpg', 81, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-11 16:28:06', 0, 0);
+INSERT INTO `freegame` (`gameID`, `gameName`, `releaseStatus`, `gameDetails`, `gameScreenshots`, `gameTrailor`, `gameTagline`, `gameClassification`, `gameTags`, `gameFeatures`, `platform`, `gameType`, `gameFile`, `gameVisibility`, `gameCoverImg`, `gameDeveloperID`, `minOS`, `minProcessor`, `minMemory`, `minStorage`, `minGraphics`, `other`, `recommendOS`, `recommendProcessor`, `recommendMemory`, `recommendStorage`, `recommendGraphics`, `gamePrice`, `created_at`, `gamePublisherID`, `jamSubmission`, `ActivityCheck`) VALUES
+(89, 'Albion Online Z1', 'Upcoming', '', '', '', 'Free medieval fantasy MMORPG, set in a medieval world', 'Action', '', '', 'Linux', 'Demo', '', 'public', '', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-04-03 19:55:08', 47, 0, 3),
+(90, 'Stray', 'Upcoming', '<h3>ABOUT THIS GAME</h3>\n<br>\n<p>Lost, alone and separated from family, a stray cat must untangle an ancient mystery to escape a long-forgotten city.\n\nStray is a third-person cat adventure game set amidst the detailed, neon-lit alleys of a decaying cybercity and the murky environments of its seedy underbelly. Roam surroundings high and low, defend against unforeseen threats and solve the mysteries of this unwelcoming place inhabited by curious droids and dangerous creatures.\n\nSee the world through the eyes of a cat and interact with the environment in playful ways. Be stealthy, nimble, silly, and sometimes as annoying as possible with the strange inhabitants of this mysterious world.\n\nAlong the way, the cat befriends a small flying drone, known only as B-12. With the help of this newfound companion, the duo must find a way out.\n\nStray is developed by BlueTwelve Studio, a small team from the south of France mostly made up of cats and a handful of humans.<p>', 'SS-Stray-0.jpg,SS-Stray-1.jpg,SS-Stray-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'follows a stray cat who falls into a walled city populated by robots', 'action', 'stray, cat, 3d', 'Puzzle', 'Linux', 'DLC', 'Game-Stray.zip', '0', 'Cover-Stray.jpg', 49, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'Extra Content', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '3.99', '2020-01-23 19:55:18', 0, 0, 3),
+(91, 'Scarlet Nexus', 'Upcoming', '<h3>ABOUT THIS GAME</h3>\r\n<p>In the far distant future, a psionic hormone was discovered in the human brain, granting people extra-sensory powers and changed the world as we knew it. As humanity entered this new era, deranged mutants known as Others began to descend from the sky with a hunger for human brains. Highly resistant to conventional attack methods, extreme measures needed to be taken to battle the overwhelming threat and preserve humanity. Those with acute extra-sensory abilities, known as psionics, were our only chance to fight the onslaught from above. Since then, psionics have been scouted for their talents and recruited to the Other Suppression Force (OSF), humanity’s last line of defense.\r\n</p>\r\n<br>\r\n<p>Featuring a dual story, begin your adventure with either Yuito Sumeragi, an energetic recruit from a prestigious political family or Kasane Randall, the mysterious scout whose power and skill has gained great notoriety among the OSF. As their different experiences interweave with each other, it is only then that you will reveal the full story and unlock all the mysteries of a Brain Punk future caught between technology and psychic abilities in SCARLET NEXUS.\r\n</p>\r\n<br>\r\n<p>Kinetic Psychic Combat – Using psycho-kinetic abilities, the world around you becomes your greatest weapon. Lift, break and throw pieces of your environment to build your attack combos and lay waste to your enemies.\r\n\r\nExterminate the Others – Deranged mutants that descended from the sky, highly resistant to conventional attack methods and defenses. Tormented by the constant pain of their mutation, they seek brains of living organisms to calm their madness.\r\n\r\nDiscover a Brain Punk future – Explore and protect a futuristic Japanese landscape that combines inspirations from classic anime and western science fiction.\r\n\r\nA Dual Story Experience – Dive into a complex story of bonds, courage and heroism, crafted by minds behind the iconic Tales of Vesperia.</p>', 'SS-Scarlet Nexus-0.jpg,SS-Scarlet Nexus-1.jpg,SS-Scarlet Nexus-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'Elite psionics each armed with a talent in psychokinesis', 'RPG', 'scarlet, nexus, rpg,thhrh', 'Leaderboard', 'Windows,Linux', 'Demo', 'Game-Scarlet Nexus.zip', '0', 'Cover-Scarlet Nexus.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '2022-01-27 00:00:00', 0, 0, 3),
+(92, 'Naruto Shippuden', 'Released', '<h3>ABOUT THIS GAME</h3>\r\n<br>\r\n<p>The latest opus in the acclaimed STORM series is taking you on a colourful and breathtaking ride. Take advantage of the totally revamped battle system and prepare to dive into the most epic fights you’ve ever seen in the NARUTO SHIPPUDEN: Ultimate Ninja STORM series!</p>\r\n<br>\r\n<p>\r\nPrepare for the most awaited STORM game ever created!</p>\r\n\r\n', 'SS-Naruto Shippuden-0.jpg,SS-Naruto Shippuden-1.jpg,SS-Naruto Shippuden-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'The latest opus in the acclaimed STORM series is taking you ', 'action', 'naruto, anime, shippuden', 'Multi-Player', 'Windows', 'Base Game', 'Game-Naruto Shippuden.zip', '0', 'Cover-Naruto Shippuden.jpg', 49, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '7.99', '2022-01-04 00:00:00', 0, 0, 3),
+(93, 'Monster Hunter Rise', 'Released', '<h3>ABOUT THIS GAME</h3>\r\n<br>\r\n<p>Rise to the challenge and join the hunt! In Monster Hunter Rise, the latest installment in the award-winning and top-selling Monster Hunter series, you’ll become a hunter, explore brand new maps and use a variety of weapons to take down fearsome monsters as part of an all-new storyline. The PC release also comes packed with a number of additional visual and performance enhancing optimizations.</p>\r\n<br>\r\n<h3>\r\nFerocious monsters with unique ecologies</h3>\r\n<p>\r\nHunt down a plethora of monsters with distinct behaviors and deadly ferocity. From classic returning monsters to all-new creatures inspired by Japanese folklore, including the flagship wyvern Magnamalo, you’ll need to think on your feet and master their unique tendencies if you hope to reap any of the rewards!</p>\r\n\r\n', 'SS-Monster Hunter Rise-0.jpg,SS-Monster Hunter Rise-1.jpg,SS-Monster Hunter Rise-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'Rise to the challenge and join the hunt! In Monster Hunter Rise', 'Strategy', 'monster hunter, rpg, singlepla', 'Single-Player', 'Windows', 'Base Game', 'Game-Monster Hunter Rise.zip', '0', 'Cover-Monster Hunter Rise.png', 46, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', '', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '4', '2023-01-16 18:56:30', 0, 0, 3),
+(95, 'Naruto Shippuden', 'Released', '<h3>ABOUT THIS GAME</h3>\r\n<br>\r\n<p>The latest opus in the acclaimed STORM series is taking you on a colourful and breathtaking ride. Take advantage of the totally revamped battle system and prepare to dive into the most epic fights you’ve ever seen in the NARUTO SHIPPUDEN: Ultimate Ninja STORM series!</p>\r\n<br>\r\n<p>\r\nPrepare for the most awaited STORM game ever created!</p>\r\n\r\n', 'SS-Naruto Shippuden-0.jpg,SS-Naruto Shippuden-1.jpg,SS-Naruto Shippuden-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'The latest opus in the acclaimed STORM series is taking you ', 'Action', 'naruto, anime, shippuden', 'Single-Player,Multi-Player', 'Windows,MacOS', 'Base Game', 'Game-Naruto Shippuden.zip', '', 'Cover-Naruto Shippuden.jpg', 46, 'windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '0', '2023-01-09 00:00:00', 0, 0, 3),
+(96, 'Final Fantasy Vi', 'Upcoming', 'f<div><u>fefef</u>ffe<div>g</div><div>rgrg</div><div>g</div><div>g</div><div><u>grgrg</u></div></div>', 'SS-Final Fantasy V-0.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'Remaster of CRISIS CORE featuring updated graphics, combats', 'Strategy', ',grgrg,hth,ff', 'Single-Player,Achievements', 'Windows,Linux', 'DLC', 'Game-Final Fantasy V.zip', '', 'Cover-Final Fantasy V.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-01-16 11:57:03', 0, 0, 3),
+(181, 'grgr', 'Released', '', 'SS-grgr-0.jpg,SS-grgr-1.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'follows a stray cat who falls into a walled city populated by robots, ', 'action', 'game,grgre', 'Multi Player', 'Windows', 'Demo', 'Game-grgr.zip', '0', 'Cover-grgr.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-01-24 00:00:00', 0, 0, 3),
+(183, 'Albion Online New', 'early access', 'this game is <b>Free </b>so please play', 'SS-Albion Online New-0.jpg,SS-Albion Online New-1.jpg,SS-Albion Online New-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'follows a stray cat who falls into a walled city populated by robots, ', 'simulation', 'free,albion', 'Single-Player,Multi-Player', 'Windows,Linux', 'Prologue', 'Game-Albion Online New.zip', 'draft', 'Cover-Albion Online New.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-04-19 08:38:16', 0, 0, 3),
+(184, 'Loria', 'Released', '<b>ABOUT THIS GAME</b><div>Loria is a homage to classics from golden era of strategy games, with modern spin on controls and user experience.<br></div><div><br></div><div>Game introduces not just RTS elements but also RPG elements such as: hero units, collecting items and quest driven missions offers for a more interesting take on the RTS genre.<br></div><div><br></div><div>Goal of Loria is to take the best concepts from the classics and create a modern user-experience, intelligent AI, smooth controls, pleasing aesthetic and to add interesting content.<br></div><div><br></div><div>Loria was made with passion and love of the RTS genre, that has given us so many hours of fun.<br></div><div>Hopefully we have managed to recreate the experience and fun.<br></div><div><br></div><div>Loria features:<br></div><div><ul><li><li>2 playable races</li><li>2 campaigns with 8 missions each ( 16 missions in summary )</li><li>Entertaining story</li><li>Dozens of units, buildings and upgrades</li><li>6 unique heroes</li><li>Levelable heroes with backpack</li><li>Veteran units</li></li><li>Skirmish games</li></ul><br></div><div><b>Soundtrack is included as well in basic package.</b><br></div><div>About Multiplayer:<br></div><div><br></div>', 'SS-Loria81-0.jpg,SS-Loria81-1.png,SS-Loria81-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', ' A homage to classics from golden era of strategy games', 'RPG', 'Loria,Story,Strategy,Retro', 'Single-Player', 'Windows,MacOS,Linux', 'Base Game', 'Game-Loria81.zip', 'public', 'Cover-Loria81.jpg', 81, 'Windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'Windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '0', '2023-04-20 21:55:44', 0, 0, 3),
+(186, 'Fallout Shelter', 'Released', '<b>ABOUT THIS GAME</b><div>Fallout Shelter puts you in control of a state-of-the-art underground Vault from Vault-Tec. Build the perfect Vault, keep your Dwellers happy, and protect them from the dangers of the Wasteland.<br></div><div><br></div><div><b>BUILD THE PERFECT VAULT</b></div><div>Create a brighter future…underground! Select from a variety of modern-day rooms to turn an excavation beneath 2,000 feet of bedrock into the very picture of Vault Life.<br></div>', 'SS-Fallout Shelter82-0.jpg,SS-Fallout Shelter82-1.jpg,SS-Fallout Shelter82-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'Puts you in control of a state-of-the-art underground Vault', 'Strategy', 'Free to Play,Survival,Base Building,Fallout Shelter', 'Single-Player', 'Windows', 'Base Game', 'Game-Fallout Shelter82.zip', 'public', 'Cover-Fallout Shelter82.jpg', 82, 'Windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'Windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '0', '2023-04-21 08:41:04', 0, 0, 3),
+(187, 'Recourse', 'Released', '<b>ABOUT THIS GAME</b><div>Journey to a scenic arctic planet inhabited by experimental A.I. units and discarded robots. Play as Sleet, a sentient robot confronted with a series of puzzles and has little idea what is going on. Then meet Floe, an older A.I. unit, willing to help you proceed and unravel the mysteries of this beautiful desolate planet.<br></div><div><br></div><div><b>MORE ABOUT THE DEMO</b></div><div>Currently only five levels have been fully developed and implemented to be experience for free in this demo. <i><b>Having a publisher for this game is much appreciated.</b></i></div>', 'SS-Recourse81-0.jpg,SS-Recourse81-1.jpg,SS-Recourse81-2.jpg,SS-Recourse81-3.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'Curiosity is a sign of intelligence. Lets see how far can yours go?', 'Action', 'Indie,Casual,Platformer,Puzzle,Kulla,Recourse', 'Single-Player,Puzzle', 'Windows', 'Demo', 'Game-Recourse81.zip', 'public', 'Cover-Recourse81.jpg', 81, 'Windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'Windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '0', '2023-04-21 11:05:33', 0, 0, 3),
+(188, 'Dark Deception', 'Released', '<b>ABOUT DARK DECEPTION</b><div>Dark Deception is a story driven first-person horror action maze game that mixes the fast-paced style of classic arcade games with fun horror game design. Trapped in a dark world full of nightmarish mazes and ridiculous monsters, the only way out is to face the darkness and find a way to survive.<br></div><div><br></div><div>This is the first chapter in the Dark Deception story. Investigate and survive the first maze. Be careful though. You are not alone. There are monsters in there and they are looking for you. You will face your fears. The question is - what are you afraid of?</div>', 'SS-Dark Deception46-0.jpg,SS-Dark Deception46-1.jpg,SS-Dark Deception46-2.jpg', '', 'Death awaits you in Dark Deception, There is nowhere to hide anymore', 'Adventure', 'horror,fps,first-person,multiplayer,blood,fear,night', 'Multi-Player', 'Windows', 'Base Game', 'Game-Dark Deception46.zip', 'public', 'Cover-Dark Deception46.jpg', 46, 'Windows 7', 'Intel Core I3', '4 GB', '5 GB', 'mx330', 'English', 'Windows 10', 'Intel Core I5', '8 GB', '10 GB', 'mx1650', '30', '2023-04-21 16:24:37', 0, 0, 3),
+(189, 'Path of Exile', 'Released', '<b>ABOUT THE GAME</b><div>You are an Exile, struggling to survive on the dark continent of Wraeclast, as you fight to earn power that will allow you to exact your revenge against those who wronged you. Created by hardcore gamers, Path of Exile is an online Action RPG set in a dark fantasy world. With a focus on visceral action combat, powerful items and deep character customization, Path of Exile is completely free and will never be pay-to-win.<br></div><div><br></div><div><b>KEY FEATURES</b></div><div><ul><li><b>Freedom. Power. Revenge.</b></li></ul>Banished for your misdeeds to the dark, brutal world of Wraeclast, you play as the Duelist, Witch, Ranger, Templar, Marauder, Shadow or the Scion class. From forsaken shores through to the ruined city of Sarn, explore Wraeclast and uncover the ancient secrets waiting for you.<br></div>', 'SS-Path of Exile82-0.jpg,SS-Path of Exile82-1.jpg,SS-Path of Exile82-2.jpg,SS-Path of Exile82-3.jpg', '', 'Struggling to survive on the vast dark continent of Wraeclast', 'RPG', 'rpg,hack and slash,action,hicraft,gore,blood', 'Multi-Player,Achievements,Multiplayer-Co-op', 'Windows,MacOS', 'Base Game', 'Game-Path of Exile82.zip', 'public', 'Cover-Path of Exile82.jpg', 82, '', '', '', '', '', '', '', '', '', '', '', '49.99', '2023-04-21 23:29:43', 0, 0, 3),
+(191, 'Deltarune', 'Released', '', 'SS-Deltarune46-0.jpg,SS-Deltarune46-1.jpg,SS-Deltarune46-2.jpg', '', 'Meet new and old characters in a tale that steps closer to its end', 'RPG', 'Story Rich,Pixel Graphics,Funny,2D', 'Single-Player', 'Windows', 'Base Game', 'Game-Deltarune46.zip', 'draft', 'Cover-Deltarune46.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-04-26 11:57:53', 0, 0, 3),
+(195, 'Red Hot Vengeance', 'Released', '', 'SS-Red Hot Vengeance46-0.png,SS-Red Hot Vengeance46-1.jpg,SS-Red Hot Vengeance46-2.jpg,SS-Red Hot Vengeance46-3.jpg', '', 'He had one rule: No killing women or children. Beware of hitman', 'Action', 'Free to Play,Violent,Gore,Blood,Indie', 'Single-Player,Puzzle', 'Windows', 'Base Game', 'Game-Red Hot Vengeance46.zip', 'public', 'Cover-Red Hot Vengeance46.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-02 00:24:37', 0, 67, 3),
+(196, 'Gravitas', 'Released', '', 'SS-Gravitas82-0.jpg,SS-Gravitas82-1.jpg,SS-Gravitas82-2.jpg,SS-Gravitas82-3.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'A short-first-person puzzle game platforming game that transports  ', 'Adventure', 'puzzle,puzzle platformer,indie,platformer', 'Single-Player,Puzzle,Achievements', 'Windows', 'Base Game', 'Game-Gravitas82.zip', 'public', 'Cover-Gravitas82.jpg', 82, '', '', '', '', '', '', '', '', '', '', '', '40', '2023-05-04 12:03:39', 0, 0, 3),
+(197, 'Island Saver', 'Released', '', 'SS-Island Saver83-0.jpg,SS-Island Saver83-1.jpg,SS-Island Saver83-2.jpg', '', 'A group of amazing islands need your help! Horrid plastic waste has w', 'Action', '', 'Multi-Player,Multiplayer-Co-op', 'Windows', 'Base Game', 'Game-Island Saver83.zip', 'public', 'Cover-Island Saver83.jpg', 83, '', '', '', '', '', '', '', '', '', '', '', '59.99', '2023-05-04 12:56:38', 0, 0, 3),
+(198, 'Donut County', 'Released', '', 'SS-Donut County81-0.jpg,SS-Donut County81-1.jpg,SS-Donut County81-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'A story-based physics puzzle game where you play as an an ever-growin', 'Simulation', 'funny,casual,cute,puzzle,physics,indie', 'Single-Player', 'MacOS', 'Base Game', 'Game-Donut County81.zip', 'public', 'Cover-Donut County81.jpg', 81, '', '', '', '', '', '', '', '', '', '', '', '30', '2023-05-04 17:31:24', 0, 0, 3),
+(199, 'Biphase', 'Released', '', 'SS-Biphase46-0.jpg,SS-Biphase46-1.jpg,SS-Biphase46-2.jpg,SS-Biphase46-3.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', '2D platform jumping game with exploration and puzzles as its core', 'Action', 'indie,minimalist,tool jam,abstract,freetoplay,casual', 'Single-Player,Puzzle', 'Windows', 'Base Game', 'Game-Biphase46.zip', 'public', 'Cover-Biphase46.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-04 23:48:29', 0, 62, 3),
+(200, 'Sprout', 'Released', '', 'SS-Sprout92-0.jpg,SS-Sprout92-1.jpg', '', 'A mini precision-platformer built for speed-running. Run, jump and dash your way through 100 levels across five unique lands, and restore your world to its former glory.', 'Strategy', 'indie,casual,adventure,strategy,free,gamejam,tool jam', 'Single-Player', 'Windows', 'Base Game', 'Game-Sprout92.zip', 'public', 'Cover-Sprout92.jpg', 92, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-05 16:55:29', 0, 62, 3),
+(201, 'Hawken', 'Released', '', 'SS-Hawken83-0.jpg,SS-Hawken83-1.jpg,SS-Hawken83-2.jpg', '', 'Multiplayer mech first-person shooter video game with an unique play style and game modes', 'Action', 'multiplayer,fps,first person,mech', 'Multi-Player,Achievements', 'Windows,MacOS', 'Base Game', 'Game-Hawken83.zip', 'public', 'Cover-Hawken83.jpg', 83, '', '', '', '', '', '', '', '', '', '', '', '59.99', '2023-05-05 19:49:22', 0, 0, 3),
+(202, 'Firestone', 'Released', '', 'SS-Firestone83-0.png,SS-Firestone83-1.jpg,SS-Firestone83-2.jpg', '', 'Firestone: Online Idle RPG is a multiplayer fantasy game with idle rpg mechanics. Collect heroes, upgrade their skills, and sent them in AFK battles or go on an incremental clicker frenzy onwards', 'RPG', 'idle,idler,party-based,rpg,action rpg', 'Online-Co-op', 'Windows', 'Demo', 'Game-Firestone83.zip', 'public', 'Cover-Firestone83.jpg', 83, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-05 19:55:17', 0, 0, 3),
+(203, 'Room to Grow', 'Released', '', 'SS-Room to Grow83-0.jpg,SS-Room to Grow83-1.jpg,SS-Room to Grow83-2.jpg', '', 'Tackle thorny problems in this plant pushing puzzle game. Learn to maneuver like a cactus as you grow your way back to the desert!', 'Strategy', 'puzzle,difficult,sokoban,indie,singleplayer', 'Single-Player', 'Windows', 'Base Game', 'Game-Room to Grow83.zip', 'public', 'Cover-Room to Grow83.png', 83, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-05 20:00:44', 0, 62, 3),
+(204, 'Super Auto Pets', 'Released', '', 'SS-Super Auto Pets93-0.png,SS-Super Auto Pets93-1.jpg,SS-Super Auto Pets93-2.jpg', '', 'Build the strongest team of pets and tussle with your friends!', 'Strategy', 'auto battler,free to play,multiplayer', 'Multi-Player,Achievements', 'Windows', 'Base Game', 'Game-Super Auto Pets93.zip', 'public', 'Cover-Super Auto Pets93.jpg', 93, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-05 20:40:29', 0, 62, 3),
+(205, 'Fulfillment', 'Released', '', 'SS-Fulfillment81-0.jpg,SS-Fulfillment81-1.jpg,SS-Fulfillment81-2.jpg', '', 'Exciting Adventure About the Joys of Working at an Amazing Fulfillment Center! Short, social commentary game that is 100% free, no micro-transactions.', 'Adventure', 'casual,action,tooljam,adventure,gamejam,submission,indie', 'Single-Player', 'Windows', 'Base Game', 'Game-Fulfillment81.zip', 'public', 'Cover-Fulfillment81.jpg', 81, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-06 13:15:23', 0, 62, 3),
+(206, 'Kinoko', 'Released', '', 'SS-Kinoko81-0.jpg,SS-Kinoko81-1.jpg,SS-Kinoko81-2.jpg,SS-Kinoko81-3.jpg', '', 'The crisp winter air fills your lungs, but you can feel the earth underneath calling for you. The warmth from the sun melts the snow away and flowers bloom. Spring is here.', 'Adventure', 'casual,indie,cute', 'Single-Player', 'Windows,Linux', 'Base Game', 'Game-Kinoko81.zip', 'public', 'Cover-Kinoko81.jpg', 81, '', '', '', '', '', '', '', '', '', '', '', '35', '2023-05-06 13:24:12', 0, 0, 3),
+(207, 'Wakfu', 'Released', '', 'SS-Wakfu93-0.jpg,SS-Wakfu93-1.jpg,SS-Wakfu93-2.jpg,SS-Wakfu93-3.jpg', '', 'STEP INTO A LIMITLESS UNIVERSE Touchdown in the World of Twelve and set off on a great adventure in WAKFU - an original massively multiplayer online role playing universe', 'RPG', 'mmorpg,anime,top down', 'Multi-Player,Online-Co-op,Multiplayer-Co-op,MMO', 'Windows', 'Base Game', 'Game-Wakfu93.zip', 'public', 'Cover-Wakfu93.jpg', 93, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-06 13:33:04', 0, 0, 3),
+(208, 'Spiral Knights', 'Released', '', 'SS-Spiral Knights82-0.jpg,SS-Spiral Knights82-1.jpg,SS-Spiral Knights82-2.jpg,SS-Spiral Knights82-3.jpg', '', 'Join the ranks of the Spiral Knights. Stranded on an alien world, you must explore the ever-changing Clockworks beneath its surface.', 'RPG', 'free,action,rpg,tool jam,gamejam', 'Single-Player', 'Windows', 'Base Game', 'Game-Spiral Knights82.zip', 'public', 'Cover-Spiral Knights82.jpg', 82, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-06 21:05:37', 0, 62, 3),
+(209, 'Eternal Senia', 'Early Access', '', 'SS-Eternal Senia95-0.jpg,SS-Eternal Senia95-1.jpg,SS-Eternal Senia95-2.jpg,SS-Eternal Senia95-3.jpg', '', 'Thoughts and expectations of action role playing game', 'RPG', 'action,rpg,anime,protagonist', 'Multi-Player,MMO', 'Windows', 'Base Game', 'Game-Eternal Senia95.zip', 'public', 'Cover-Eternal Senia95.jpg', 95, '', '', '', '', '', '', '', '', '', '', '', '56.49', '2023-05-06 23:12:08', 0, 0, 3),
+(210, 'Anacrusis', 'Released', '', 'SS-Anacrusis95-0.jpg,SS-Anacrusis95-1.jpg,SS-Anacrusis95-2.jpg,SS-Anacrusis95-3.jpg', '', 'A four-player, mod-friendly, cooperative first-person shooter set aboard a massive starship stranded at the edge of space.', 'Action', 'fps,shooter,multiplayer', 'Multi-Player', 'Windows', 'Base Game', 'Game-Anacrusis95.zip', 'public', 'Cover-Anacrusis95.jpg', 95, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-06 23:16:17', 0, 62, 3),
+(211, 'GTFO', 'Released', '', 'SS-GTFO82-0.jpg,SS-GTFO82-1.jpg,SS-GTFO82-2.jpg', '', 'GTFO is an extreme cooperative horror shooter that throws you from gripping suspense to explosive action in a heartbeat. Stealth, strategy, and teamwork are necessary to survive.', 'Action', '', 'Multi-Player', 'Windows', 'Demo', 'Game-GTFO82.zip', 'public', 'Cover-GTFO82.jpg', 82, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-07 11:27:04', 100, 0, 3),
+(212, 'Undefeated', 'Released', '', 'SS-Undefeated46-0.jpg,SS-Undefeated46-1.jpg,SS-Undefeated46-2.jpg,SS-Undefeated46-3.jpg', '', 'Become an invincible hero with unlimited super powers on UNDEFEATED!', 'Action', 'demo,open world,super hero ,action', 'Single-Player', 'Windows', 'Demo', 'Game-Undefeated46.zip', 'public', 'Cover-Undefeated46.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-07 19:13:38', 99, 0, 3),
+(213, 'Dwarf Fortress', 'Released', '', 'SS-Dwarf Fortress83-0.jpg,SS-Dwarf Fortress83-1.jpg,SS-Dwarf Fortress83-2.jpg', '', 'The deepest, most intricate simulation of a world that has ever been created. Build a fortress and try to help your dwarves survive against a deeply generat', 'Simulation', 'pixel,simulation,free', 'Single-Player', 'Windows,Linux', 'Base Game', 'Game-Dwarf Fortress83.zip', 'public', 'Cover-Dwarf Fortress83.jpg', 83, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-10 07:17:32', 0, 0, 3),
+(214, 'Expendabros', 'Released', '', 'SS-Expendabros46-0.jpg,SS-Expendabros46-1.jpg,SS-Expendabros46-2.jpg,SS-Expendabros46-3.jpg,SS-Expendabros46-4.jpg', '', 'The Expendabros have assembled and set their sights on the forces of ruthless arms dealer Conrad Stonebanks in the forests of Eastern Europe. ', 'Action', 'pixel,coop,2d', 'Co-op,Online-Co-op', 'Windows', 'Base Game', 'Game-Expendabros46.zip', 'public', 'Cover-Expendabros46.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '40', '2023-05-10 13:57:16', 0, 0, 3),
+(215, 'Bomber Crew', 'Released', '', 'SS-Bomber Crew83-0.jpg,SS-Bomber Crew83-1.png', '', 'Chocks away! Bomber Crew is a strategic simulation game, where picking the right crew and keeping your bomber in tip top shape is the difference between completing your mission or losing it all!', 'Action', '', 'Single-Player', 'Linux', 'Demo', 'Game-Bomber Crew83.zip', 'public', 'Cover-Bomber Crew83.jpg', 83, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-11 16:01:23', 0, 0, 3),
+(216, 'Cloud Climber', 'Released', '', 'SS-Cloud Climber81-0.jpg,SS-Cloud Climber81-1.jpg,SS-Cloud Climber81-2.jpg', '', 'A surreal first person walking sim about the end of humanity. Explore magnificent sky-bound ruins, and learn why they were built.', 'Adventure', '', 'Single-Player,Achievements', 'Windows', 'Demo', 'Game-Cloud Climber81.zip', 'public', 'Cover-Cloud Climber81.jpg', 81, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-11 16:28:06', 0, 0, 3),
+(217, 'Crew 2', 'Released', '', 'SS-Crew 246-0.jpg,SS-Crew 246-1.jpg,SS-Crew 246-2.jpg', '', 'Take on the American motorsports scene as you explore and dominate the land, air, and sea across the entire USA', 'Action', 'ergre', 'Single-Player', 'Windows', 'Base Game', 'Game-Crew 246.zip', 'public', 'Cover-Crew 246.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '40', '2023-05-13 08:39:59', 0, 0, 3);
 
 -- --------------------------------------------------------
 
@@ -1344,8 +1393,8 @@ INSERT INTO `gamejam` (`gameJamID`, `submissionStartDate`, `submissionEndDate`, 
 (62, '2023-05-04 16:55:00', '2023-05-07 16:55:00', 'gregr <b>rhrtthtrhrth </b>htrt <u>trhthththh </u>htrtttrthrthr 11', '2023-05-10 16:55:00', 'The Tool Jam 3', 'Try your best and build a game under the theme that evolves around tools', 'Ranked', 'Creativity', 'Public', 0, 0, 79, 'Public', '#tooljam ', 'Cover-The Tool Jam 3.jpg', 7, 7, 'Tool are Friends', 78),
 (63, '2023-03-12 16:55:00', '2023-03-18 16:55:00', '', '2023-03-20 16:55:00', 'Kenney Jam', 'Make a game using Kenney Assets in 24 hours', 'Ranked', 'Creativity', 'Public', 0, 0, 89, 'Public', '#kenny', 'Cover-Kenney Jam.png', 0, 7, 'Growth', 0),
 (64, '2023-03-22 16:55:00', '2023-03-24 16:55:00', '', '2023-03-28 16:55:00', 'Linux GameJam 2023', 'Make a game on or for GNU/Linux using any framework or engine', 'Ranked', 'Creativity', 'Public', 0, 0, 89, 'Public', '#kenny', 'Cover-Linux GameJam 2023.png', 0, 7, 'Strong Together', 0),
-(65, '2023-05-11 16:55:00', '2023-05-13 16:55:00', '', '2023-05-14 16:55:00', 'Scream Zone Jam 2023', 'The horrifically wonderful horror jam returns', 'Ranked', '', 'Draft', 0, 0, 89, 'Public', '', 'Cover-Scream Zone Jam 2023.png', 4, 7, 'Progress', 0),
-(66, '2023-05-11 16:55:00', '2023-05-12 16:55:00', '', '2023-05-17 16:55:00', 'CC Jam 2', 'fefefefefef', 'Ranked', '', 'Draft', 0, 0, 79, 'Public', '', 'Cover-Metoer Shower Jam 2023.png', 1, 7, 'Progress', 0),
+(65, '2023-05-11 16:55:00', '2023-05-13 16:55:00', '', '2023-05-16 16:55:00', 'Scream Zone Jam 2023', 'The horrifically wonderful horror jam returns', 'Ranked', '', 'Draft', 0, 0, 89, 'Public', '', 'Cover-Scream Zone Jam 2023.png', 4, 7, 'Progress', 0),
+(66, '2023-05-11 16:55:00', '2023-05-14 16:55:00', '', '2023-05-17 16:55:00', 'CC Jam 2', 'fefefefefef', 'Ranked', '', 'Draft', 0, 0, 79, 'Public', '', 'Cover-Metoer Shower Jam 2023.png', 0, 7, 'Progress', 0),
 (67, '2023-04-26 16:55:00', '2023-05-01 16:55:00', '', '2023-05-02 16:55:00', 'Bullet Hell Jam 2023', 'Spend 10 days cramming as many bullets/projectiles as you can into a short game', 'Ranked', 'Theme, Audio, Visual, Fun', 'Draft', 0, 0, 79, 'Public', '#bulletHell', 'Cover-Bullet Hel Jam 2023.jpg', 1, 7, 'Limited', 0);
 
 -- --------------------------------------------------------
@@ -1947,7 +1996,29 @@ INSERT INTO `games_view_tracker` (`id`, `userID`, `sessionID`, `gameID`, `viewed
 (450, 83, 94, 215, '2023-05-11'),
 (451, 81, 63, 216, '2023-05-11'),
 (452, 81, 63, 93, '2023-05-11'),
-(453, 46, 70, 197, '2023-05-11');
+(453, 46, 70, 197, '2023-05-11'),
+(454, 52, 72, 198, '2023-05-12'),
+(455, 53, 71, 189, '2023-05-12'),
+(456, 46, 41, 95, '2023-05-12'),
+(457, 46, 41, 202, '2023-05-12'),
+(458, 46, 41, 215, '2023-05-12'),
+(459, 46, 83, 198, '2023-05-12'),
+(460, 46, 83, 184, '2023-05-12'),
+(461, 46, 83, 187, '2023-05-12'),
+(462, 46, 83, 189, '2023-05-12'),
+(463, 46, 83, 188, '2023-05-12'),
+(464, 47, 38, 186, '2023-05-12'),
+(465, 52, 13, 214, '2023-05-12'),
+(466, 46, 74, 189, '2023-05-12'),
+(467, 52, 52, 189, '2023-05-12'),
+(468, 52, 52, 201, '2023-05-12'),
+(469, 52, 52, 188, '2023-05-12'),
+(470, 46, 19, 189, '2023-05-12'),
+(471, 46, 19, 199, '2023-05-12'),
+(472, 46, 11, 198, '2023-05-12'),
+(473, 86, 37, 188, '2023-05-12'),
+(474, 46, 70, 96, '2023-05-13'),
+(475, 46, 35, 217, '2023-05-13');
 
 -- --------------------------------------------------------
 
@@ -2018,7 +2089,8 @@ INSERT INTO `game_library` (`id`, `gameID`, `gamerID`, `createdAt`) VALUES
 (40, 196, 53, '2023-05-05'),
 (41, 89, 52, '2023-05-08'),
 (44, 89, 84, '2023-05-08'),
-(45, 209, 52, '2023-05-08');
+(45, 209, 52, '2023-05-08'),
+(46, 214, 52, '2023-05-12');
 
 -- --------------------------------------------------------
 
@@ -2060,7 +2132,8 @@ INSERT INTO `game_purchases` (`id`, `gameID`, `buyerID`, `orderID`, `purchasedPr
 (19, 197, 86, '64535e5d5af23', 59.99, '2023-05-04'),
 (20, 197, 84, '64535f5760d8a', 59.99, '2023-05-04'),
 (21, 196, 53, '6454dd1a67f99', 40, '2023-05-05'),
-(22, 209, 52, '6458e057c80bf', 56.49, '2023-05-08');
+(22, 209, 52, '6458e057c80bf', 56.49, '2023-05-08'),
+(23, 214, 52, '645de012af69c', 40, '2023-05-12');
 
 -- --------------------------------------------------------
 
@@ -2091,7 +2164,8 @@ INSERT INTO `game_reviews` (`id`, `rating`, `reviewTopic`, `review`, `created_da
 (96, 3, 'Astonishing and Suprising', 'I had like 42 hearts attack but they were worth it. When i downloaded it and the woman was talking I was wondering if I did the right thing spending time in this game, but after playing the game I do not regret downloading it.', '2023-05-02', 52, 188, 'Yes'),
 (97, 1, 'Totally Unethical', 'The developer of this game has shamelessly stolen a piece of work created by a fan for this game after the developer offered to PUBLISH this workpiece as official material, then proceeded to lie about the events on Twitter.\n\nThis is unacceptable.', '2023-05-02', 86, 188, 'Yes'),
 (98, 4, 'ggrg', 'grgrg', '2023-05-08', 52, 209, 'Yes'),
-(99, 5, 'Awesome Mech Game', 'I have been after playing a cool mech game for ages. Look no further this is a total blast.  A little rough around the edges in polish but it does not get a 4 star for that.\n\nThe gfx are cool esp the maps.. & gameplay is energetic and fun and the mechs are so cool with tons of tricks.  ', '2023-05-10', 52, 201, 'Yes');
+(99, 5, 'Awesome Mech Game', 'I have been after playing a cool mech game for ages. Look no further this is a total blast.  A little rough around the edges in polish but it does not get a 4 star for that.\n\nThe gfx are cool esp the maps.. & gameplay is energetic and fun and the mechs are so cool with tons of tricks.  ', '2023-05-10', 52, 201, 'Yes'),
+(100, 2, 'dvfv', 'veve', '2023-05-12', 52, 214, 'Yes');
 
 -- --------------------------------------------------------
 
@@ -2134,29 +2208,29 @@ CREATE TABLE `game_stats` (
 --
 
 INSERT INTO `game_stats` (`id`, `gameID`, `views`, `downloads`, `ratings`, `revenue`) VALUES
-(1, 96, 49, 13, 1, 0),
+(1, 96, 50, 13, 1, 0),
 (2, 89, 18, 5, 0, 0),
 (3, 90, 35, 0, 0, 0),
 (4, 91, 38, 13, 0, 0),
 (5, 92, 43, 5, 0, 0),
 (6, 93, 26, 2, 0, 0),
-(7, 95, 31, 4, 1, 0),
-(8, 184, 13, 3, 0, 0),
-(10, 186, 10, 3, 0, 0),
-(11, 187, 20, 10, 0, 0),
-(12, 188, 21, 2, 0, 152.48),
-(14, 189, 20, 0, 0, 295.858),
+(7, 95, 32, 4, 1, 0),
+(8, 184, 14, 3, 0, 0),
+(10, 186, 11, 4, 0, 0),
+(11, 187, 21, 10, 0, 0),
+(12, 188, 24, 2, 0, 152.48),
+(14, 189, 25, 2, 0, 295.858),
 (16, 191, 7, 2, 0, 0),
 (18, 195, 5, 3, 0, 0),
 (19, 196, 7, 5, 0, 104.436),
 (20, 197, 5, 1, 0, 104.419),
-(21, 198, 4, 1, 0, 0),
-(22, 199, 5, 4, 0, 0),
+(21, 198, 7, 1, 0, 0),
+(22, 199, 6, 6, 0, 0),
 (23, 200, 3, 2, 0, 0),
-(24, 201, 5, 0, 0, 0),
-(25, 202, 0, 0, 0, 0),
+(24, 201, 6, 0, 0, 0),
+(25, 202, 1, 0, 0, 0),
 (26, 203, 2, 5, 0, 0),
-(27, 204, 0, 4, 0, 0),
+(27, 204, 0, 5, 0, 0),
 (28, 205, 1, 5, 0, 0),
 (29, 206, 2, 0, 0, 0),
 (30, 207, 1, 0, 0, 0),
@@ -2166,9 +2240,10 @@ INSERT INTO `game_stats` (`id`, `gameID`, `views`, `downloads`, `ratings`, `reve
 (34, 211, 2, 2, 0, 0),
 (35, 212, 4, 1, 0, 0),
 (36, 213, 1, 0, 0, 0),
-(37, 214, 1, 0, 0, 0),
-(38, 215, 1, 1, 0, 0),
-(39, 216, 1, 0, 0, 0);
+(37, 214, 2, 1, 0, 32.1044),
+(38, 215, 2, 1, 0, 0),
+(39, 216, 1, 1, 0, 0),
+(40, 217, 1, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -2473,7 +2548,23 @@ INSERT INTO `game_stats_history` (`id`, `gameID`, `views`, `downloads`, `ratings
 (287, 215, 1, 1, 0, 0, '2023-05-11'),
 (288, 216, 1, 0, 0, 0, '2023-05-11'),
 (289, 93, 1, 1, 0, 0, '2023-05-11'),
-(290, 197, 1, 0, 0, 0, '2023-05-11');
+(290, 197, 1, 0, 0, 0, '2023-05-11'),
+(291, 198, 3, 0, 0, 0, '2023-05-12'),
+(292, 189, 5, 1, 0, 0, '2023-05-12'),
+(293, 95, 1, 0, 0, 0, '2023-05-12'),
+(294, 202, 1, 0, 0, 0, '2023-05-12'),
+(295, 215, 1, 0, 0, 0, '2023-05-12'),
+(296, 216, 0, 1, 0, 0, '2023-05-12'),
+(297, 184, 1, 0, 0, 0, '2023-05-12'),
+(298, 187, 1, 0, 0, 0, '2023-05-12'),
+(299, 188, 3, 0, 0, 0, '2023-05-12'),
+(300, 186, 1, 1, 0, 0, '2023-05-12'),
+(301, 214, 1, 1, 0, 0, '2023-05-12'),
+(302, 204, 0, 1, 0, 0, '2023-05-12'),
+(303, 201, 1, 0, 0, 0, '2023-05-12'),
+(304, 199, 1, 2, 0, 0, '2023-05-12'),
+(305, 96, 1, 0, 0, 0, '2023-05-13'),
+(306, 217, 1, 0, 0, 0, '2023-05-13');
 
 -- --------------------------------------------------------
 
@@ -2501,23 +2592,24 @@ CREATE TABLE `gig` (
   `viewCount` int(11) NOT NULL DEFAULT 0,
   `requests` int(11) NOT NULL DEFAULT 0,
   `created_at` date NOT NULL DEFAULT current_timestamp(),
-  `gigStatus` int(11) NOT NULL DEFAULT 0
+  `gigStatus` int(11) NOT NULL DEFAULT 0,
+  `ActivityCheck` int(11) NOT NULL DEFAULT 4
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `gig`
 --
 
-INSERT INTO `gig` (`gigID`, `gigName`, `gigTrailor`, `gigScreenshot`, `gigDetails`, `game`, `gameDeveloperID`, `gamePublisherID`, `gigTagline`, `currentStage`, `plannedReleaseDate`, `estimatedShare`, `expectedCost`, `visibility`, `gigCoverImg`, `orderedDate`, `viewCount`, `requests`, `created_at`, `gigStatus`) VALUES
-(12, 'Local Bus Simulator', 'https://www.indiegala.com/login', 'SS-Naruto Shippuden-0.jpg,SS-Naruto Shippuden-1.jpg,SS-Naruto Shippuden-2.jpg', 'cscsc', 89, 46, 0, 'Bus simulator game consisting with customizable local buses ', '12', '2023-04-20', '12', '1000', 'draft', 'Cover-Local Bus Simulator.jpg', NULL, 29, 0, '2023-03-15', 1),
-(13, 'Indie Desert FPS ', 'https://www.indiegala.com/login', 'SS-Stray-0.jpg,SS-Stray-1.jpg,SS-Stray-2.jpg,SS-Stray-3.jpg', 'fefeff', 93, 51, 0, 'Surviving an endless desert after being stranded by you know', '1', '2023-04-20', '12', '1000', 'draft', 'Cover-Indie Desert FPS .jpg', NULL, 19, 0, '2023-04-11', 0),
-(20, 'This is a new gig made by me and my other', 'https://www.indieabode.ffcom', 'SS-20-0.jpg,SS-20-1.jpg,SS-20-2.jpg', 'fkh hthth<u>jyjyjyjj <b>yjtyjytjyj </b>jytjjjytjj yjtyjytj</u>', 96, 46, 0, 'I am developing an open world game with extreme high movements', '3', '2023-04-20', '13', '200', 'draft', 'Cover-20.jpg', NULL, 14, 0, '2023-04-10', 0),
-(25, 'Indie Puzzle Platformer', 'https://www.indiegala.com/login', 'SS-187-0.jpg,SS-187-1.jpg,SS-187-2.jpg', '<b>ABOUT THIS GAME</b><div>Currently I have been developing this game for five months and has gained considerably pleasing progress. Currently it contains five levels with nearly 15 minutes of gameplay. The game has been released on Indieabode as a Demo to try out for anybody who gets liking in the game features, mechanics shown in the images and videos.</div><div><br></div><div><b>DEVELOPMENT OF RECOURSE</b></div><div>Recourse is been developed in Unity game engine using C# as the programming language. As the sole developer I am responsible for all the coding, modeling, texturing and sounds also. Every model currently in use in the game is made by me using Blender and Substance Painter. For audios, and sound effects I am using Audacity and SFXR. The however still lacks on VFX but they would also be added to the game due time.</div>', 187, 81, 0, 'Stylish Puzzle Platformer with a casual gameplay loop', '1', '2024-06-17', '10', '500', 'draft', 'Cover-Indie Puzzle Platformer.jpg', NULL, 7, 0, '2023-04-21', 1),
-(26, 'New Gig 2fe', '', 'SS-187-0.jpg', '', 187, 81, 0, 'I am developing an open world game with extreme high movements', '2', '2023-04-05', '3', '1234', 'draft', 'Cover-New Gig 2fe.jpg', NULL, 7, 1, '2023-04-26', 0),
-(27, 'Cooperative Horror Shooter', '', 'SS-211-0.jpg,SS-211-1.jpg,SS-211-2.jpg', '', 211, 82, 0, 'Explore the world of horror with your friends while striving to survive yourself', '6', '2025-06-17', '10', '1000', 'public', 'Cover-Cooperative Horror Shooter.jpg', NULL, 10, 2, '2023-05-07', 1),
-(28, 'Open World Super Hero Game', '', 'SS-212-0.jpg,SS-212-1.png,SS-212-2.jpg', '', 212, 46, 0, 'Become your favourite super hero super man and explore the continent flying around the globe', '2', '2024-10-03', '20', '1000', 'public', 'Cover-Open World Super Hero Game.jpg', NULL, 4, 1, '2023-05-07', 1),
-(29, 'A stylish bombing game', '', 'SS-29-0.jpg,SS-29-1.png', '', 215, 83, 0, 'Drop bombs all across the world with your favourite friends', '4', '2023-05-23', '25', '500', 'public', 'Cover-A stylish bombing game.jpg', NULL, 2, 0, '2023-05-11', 0),
-(31, 'Nostalgic Atmospheric FPS', '', 'SS-216-0.jpg,SS-216-1.jpg,SS-216-2.jpg', '', 216, 81, 0, 'Explore the world connected through the ropes which binds woods to form a bridge across the tall towers', '5', '2026-11-25', '20', '10000', 'public', 'Cover-Nostalgic Atmospheric FPS.jpg', NULL, 1, 0, '2023-05-11', 0);
+INSERT INTO `gig` (`gigID`, `gigName`, `gigTrailor`, `gigScreenshot`, `gigDetails`, `game`, `gameDeveloperID`, `gamePublisherID`, `gigTagline`, `currentStage`, `plannedReleaseDate`, `estimatedShare`, `expectedCost`, `visibility`, `gigCoverImg`, `orderedDate`, `viewCount`, `requests`, `created_at`, `gigStatus`, `ActivityCheck`) VALUES
+(12, 'Local Bus Simulator', 'https://www.indiegala.com/login', 'SS-Naruto Shippuden-0.jpg,SS-Naruto Shippuden-1.jpg,SS-Naruto Shippuden-2.jpg', 'cscsc', 89, 46, 0, 'Bus simulator game consisting with customizable local buses ', '12', '2023-04-20', '12', '1000', 'draft', 'Cover-Local Bus Simulator.jpg', NULL, 29, 0, '2023-03-15', 1, 4),
+(13, 'Indie Desert FPS ', 'https://www.indiegala.com/login', 'SS-Stray-0.jpg,SS-Stray-1.jpg,SS-Stray-2.jpg,SS-Stray-3.jpg', 'fefeff', 93, 51, 0, 'Surviving an endless desert after being stranded by you know', '1', '2023-04-20', '12', '1000', 'draft', 'Cover-Indie Desert FPS .jpg', NULL, 20, 0, '2023-04-11', 0, 4),
+(20, 'This is a new gig made by me and my other', 'https://www.indieabode.ffcom', 'SS-20-0.jpg,SS-20-1.jpg,SS-20-2.jpg', 'fkh hthth<u>jyjyjyjj <b>yjtyjytjyj </b>jytjjjytjj yjtyjytj</u>', 96, 46, 0, 'I am developing an open world game with extreme high movements', '3', '2023-04-20', '13', '200', 'draft', 'Cover-20.jpg', NULL, 14, 0, '2023-04-10', 0, 4),
+(25, 'Indie Puzzle Platformer', 'https://www.indiegala.com/login', 'SS-187-0.jpg,SS-187-1.jpg,SS-187-2.jpg', '<b>ABOUT THIS GAME</b><div>Currently I have been developing this game for five months and has gained considerably pleasing progress. Currently it contains five levels with nearly 15 minutes of gameplay. The game has been released on Indieabode as a Demo to try out for anybody who gets liking in the game features, mechanics shown in the images and videos.</div><div><br></div><div><b>DEVELOPMENT OF RECOURSE</b></div><div>Recourse is been developed in Unity game engine using C# as the programming language. As the sole developer I am responsible for all the coding, modeling, texturing and sounds also. Every model currently in use in the game is made by me using Blender and Substance Painter. For audios, and sound effects I am using Audacity and SFXR. The however still lacks on VFX but they would also be added to the game due time.</div>', 187, 81, 0, 'Stylish Puzzle Platformer with a casual gameplay loop', '1', '2024-06-17', '10', '500', 'draft', 'Cover-Indie Puzzle Platformer.jpg', NULL, 7, 0, '2023-04-21', 1, 4),
+(26, 'New Gig 2fe', '', 'SS-187-0.jpg', '', 187, 81, 0, 'I am developing an open world game with extreme high movements', '2', '2023-04-05', '3', '1234', 'draft', 'Cover-New Gig 2fe.jpg', NULL, 7, 1, '2023-04-26', 0, 4),
+(27, 'Cooperative Horror Shooter', '', 'SS-211-0.jpg,SS-211-1.jpg,SS-211-2.jpg', '', 211, 82, 0, 'Explore the world of horror with your friends while striving to survive yourself', '6', '2025-06-17', '10', '1000', 'public', 'Cover-Cooperative Horror Shooter.jpg', NULL, 10, 2, '2023-05-07', 1, 4),
+(28, 'Open World Super Hero Game', '', 'SS-212-0.jpg,SS-212-1.png,SS-212-2.jpg', '', 212, 46, 0, 'Become your favourite super hero super man and explore the continent flying around the globe', '2', '2024-10-03', '20', '1000', 'public', 'Cover-Open World Super Hero Game.jpg', NULL, 4, 1, '2023-05-07', 1, 4),
+(29, 'A stylish bombing game', '', 'SS-29-0.jpg,SS-29-1.png', '', 215, 83, 0, 'Drop bombs all across the world with your favourite friends', '4', '2023-05-23', '25', '500', 'public', 'Cover-A stylish bombing game.jpg', NULL, 3, 1, '2023-05-11', 0, 4),
+(31, 'Nostalgic Atmospheric FPS', '', 'SS-216-0.jpg,SS-216-1.jpg,SS-216-2.jpg', '', 216, 81, 0, 'Explore the world connected through the ropes which binds woods to form a bridge across the tall towers', '5', '2026-11-25', '20', '10000', 'public', 'Cover-Nostalgic Atmospheric FPS.jpg', NULL, 2, 0, '2023-05-11', 0, 4);
 
 -- --------------------------------------------------------
 
@@ -2612,7 +2704,8 @@ INSERT INTO `gigmessages` (`msgID`, `senderID`, `receiverID`, `message`, `gigID`
 (72, 46, 99, 'okay ', 28),
 (73, 99, 46, 'i customized', 28),
 (74, 99, 46, 'Wht do u think?', 28),
-(75, 46, 99, 'Its okay ig', 28);
+(75, 46, 99, 'Its okay ig', 28),
+(76, 47, 83, 'cvc', 29);
 
 -- --------------------------------------------------------
 
@@ -2731,7 +2824,10 @@ INSERT INTO `gigs_views_tracker` (`id`, `userID`, `sessionID`, `gigID`, `viewedD
 (96, 81, 63, 29, '2023-05-11'),
 (97, 81, 63, 30, '2023-05-11'),
 (98, 81, 63, 31, '2023-05-11'),
-(99, 81, 63, 13, '2023-05-11');
+(99, 81, 63, 13, '2023-05-11'),
+(100, 46, 41, 13, '2023-05-12'),
+(101, 46, 41, 31, '2023-05-12'),
+(102, 47, 38, 29, '2023-05-12');
 
 -- --------------------------------------------------------
 
@@ -2780,7 +2876,7 @@ CREATE TABLE `giveaways` (
 --
 
 INSERT INTO `giveaways` (`id`, `gameID`, `copiesCount`, `pieceWorth`, `copiesLeft`) VALUES
-(2, 188, 3, 450, 3),
+(2, 188, 3, 450, 2),
 (3, 198, 5, 50, 1);
 
 -- --------------------------------------------------------
@@ -2804,7 +2900,8 @@ INSERT INTO `giveaway_claims` (`id`, `gameID`, `winnerID`, `won_date`) VALUES
 (1, 198, 84, '2023-05-04'),
 (2, 198, 86, '2023-05-04'),
 (3, 198, 52, '2023-05-04'),
-(4, 198, 53, '2023-05-04');
+(4, 198, 53, '2023-05-04'),
+(5, 188, 86, '2023-05-12');
 
 -- --------------------------------------------------------
 
@@ -2852,8 +2949,7 @@ INSERT INTO `joinjam_gamedevs` (`gamerID`, `gameJamID`) VALUES
 (82, 62),
 (81, 62),
 (95, 62),
-(46, 59),
-(46, 66);
+(46, 59);
 
 -- --------------------------------------------------------
 
@@ -3107,7 +3203,8 @@ INSERT INTO `requestedgigs` (`id`, `gigID`, `developerID`, `publisherID`, `gigTo
 (40, 20, 46, 47, '2047', 200, 0, 'Approved', 'null', 'Approved', '', 0, '2023-05-07'),
 (41, 13, 51, 47, '1347', 0, 0, 'Approved', '', '', '', 0, '2023-05-07'),
 (54, 27, 82, 98, '2798', 1000, 10, 'null', 'null', 'null', 'null', 0, '2023-05-07'),
-(60, 26, 81, 47, '2647', 1000, 10, 'Approved', 'Approved', 'Approved', 'Approved', 1, '2023-05-08');
+(60, 26, 81, 47, '2647', 1000, 10, 'Approved', 'Approved', 'Approved', 'Approved', 1, '2023-05-08'),
+(61, 29, 83, 47, '2947', 500, 25, 'Approved', 'null', 'Approved', 'null', 0, '2023-05-12');
 
 -- --------------------------------------------------------
 
@@ -3141,7 +3238,8 @@ INSERT INTO `sitegamesrevenue` (`id`, `gameID`, `orderID`, `siteShare`, `sale_da
 (15, 197, '64535e5d5af23', 5.999, '2023-05-04'),
 (16, 197, '64535f5760d8a', 5.999, '2023-05-04'),
 (17, 196, '6454dd1a67f99', 4, '2023-05-05'),
-(18, 209, '6458e057c80bf', 5.649, '2023-05-08');
+(18, 209, '6458e057c80bf', 5.649, '2023-05-08'),
+(19, 214, '645de012af69c', 6.8, '2023-05-12');
 
 -- --------------------------------------------------------
 
@@ -3236,7 +3334,11 @@ INSERT INTO `spin_wheel` (`id`, `gamerID`, `reward`, `spinned_date`) VALUES
 (16, 52, '5', '2023-05-10'),
 (17, 53, '5', '2023-05-10'),
 (18, 84, '10', '2023-05-10'),
-(19, 86, '5', '2023-05-10');
+(19, 86, '5', '2023-05-10'),
+(20, 52, '5', '2023-05-11'),
+(21, 52, '15', '2023-05-12'),
+(22, 53, '5', '2023-05-12'),
+(23, 86, '5', '2023-05-12');
 
 -- --------------------------------------------------------
 
@@ -3266,7 +3368,7 @@ INSERT INTO `submission` (`id`, `submissionID`, `gameJamID`, `rating`, `gamerID`
 (7, 200, 62, 15, 92, 'qualified'),
 (8, 203, 62, 12, 83, 'qualified'),
 (11, 204, 62, 12, 93, 'qualified'),
-(12, 205, 62, 7, 81, 'qualified'),
+(12, 205, 62, 7, 81, 'disqualified'),
 (13, 208, 62, 13, 82, 'qualified'),
 (14, 210, 62, 8, 95, 'qualified');
 
@@ -3702,7 +3804,7 @@ ALTER TABLE `account`
 -- AUTO_INCREMENT for table `activation_keys`
 --
 ALTER TABLE `activation_keys`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT for table `admin`
@@ -3714,13 +3816,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `asset_cart`
 --
 ALTER TABLE `asset_cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `asset_library`
 --
 ALTER TABLE `asset_library`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `asset_purchases`
@@ -3738,13 +3840,13 @@ ALTER TABLE `asset_reviews`
 -- AUTO_INCREMENT for table `asset_stats_history`
 --
 ALTER TABLE `asset_stats_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
 -- AUTO_INCREMENT for table `asset_view_tracker`
 --
 ALTER TABLE `asset_view_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=141;
 
 --
 -- AUTO_INCREMENT for table `billing_addresses`
@@ -3798,13 +3900,13 @@ ALTER TABLE `crowdfund_donations`
 -- AUTO_INCREMENT for table `crowdfund_view_tracker`
 --
 ALTER TABLE `crowdfund_view_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `devlog`
 --
 ALTER TABLE `devlog`
-  MODIFY `devLogID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `devLogID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `devlog_comments`
@@ -3834,13 +3936,13 @@ ALTER TABLE `devlog_posttype`
 -- AUTO_INCREMENT for table `devlog_view_tracker`
 --
 ALTER TABLE `devlog_view_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `followers`
 --
 ALTER TABLE `followers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `freeasset`
@@ -3852,7 +3954,7 @@ ALTER TABLE `freeasset`
 -- AUTO_INCREMENT for table `freegame`
 --
 ALTER TABLE `freegame`
-  MODIFY `gameID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=217;
+  MODIFY `gameID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=218;
 
 --
 -- AUTO_INCREMENT for table `gamejam`
@@ -3882,43 +3984,43 @@ ALTER TABLE `games_filters`
 -- AUTO_INCREMENT for table `games_view_tracker`
 --
 ALTER TABLE `games_view_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=454;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=476;
 
 --
 -- AUTO_INCREMENT for table `game_cart`
 --
 ALTER TABLE `game_cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `game_library`
 --
 ALTER TABLE `game_library`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `game_purchases`
 --
 ALTER TABLE `game_purchases`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `game_reviews`
 --
 ALTER TABLE `game_reviews`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
 -- AUTO_INCREMENT for table `game_stats`
 --
 ALTER TABLE `game_stats`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `game_stats_history`
 --
 ALTER TABLE `game_stats_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=291;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=307;
 
 --
 -- AUTO_INCREMENT for table `gig`
@@ -3930,13 +4032,13 @@ ALTER TABLE `gig`
 -- AUTO_INCREMENT for table `gigmessages`
 --
 ALTER TABLE `gigmessages`
-  MODIFY `msgID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `msgID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- AUTO_INCREMENT for table `gigs_views_tracker`
 --
 ALTER TABLE `gigs_views_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
 
 --
 -- AUTO_INCREMENT for table `gig_purchases`
@@ -3954,7 +4056,7 @@ ALTER TABLE `giveaways`
 -- AUTO_INCREMENT for table `giveaway_claims`
 --
 ALTER TABLE `giveaway_claims`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `library`
@@ -3972,13 +4074,13 @@ ALTER TABLE `ratesubmission`
 -- AUTO_INCREMENT for table `requestedgigs`
 --
 ALTER TABLE `requestedgigs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `sitegamesrevenue`
 --
 ALTER TABLE `sitegamesrevenue`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `site_assets_revenue`
@@ -4002,7 +4104,7 @@ ALTER TABLE `site_gig_revenue`
 -- AUTO_INCREMENT for table `spin_wheel`
 --
 ALTER TABLE `spin_wheel`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `submission`
