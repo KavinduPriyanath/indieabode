@@ -85,6 +85,11 @@ form .card-details .card-box {
 
 }
 
+.datetime{
+    width: 95%;
+    
+}
+
 .card-details .card-box .details,
 .circle-title {
     font-weight: 1000;
@@ -242,4 +247,11 @@ form .circle-form .circle-title {
     border-radius: 8px;
     margin: 8px 0px;
     cursor: pointer;
+}
+
+.error-msg {
+    background-color: rgb(225, 132, 132);
+    margin: 0px 0px;
+    width: 470px;
+    display: none;
 }
