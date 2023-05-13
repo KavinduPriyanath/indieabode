@@ -78,6 +78,10 @@ form .card-details .card-box {
 
 }
 
+.datetime {
+    width: 80%;
+}
+
 .card-details .card-box .details {
     display: block;
     font-weight: 600;
@@ -155,7 +159,7 @@ form .circle-form .circle-title {
 /* Redactor Box */
 
 .main-content {
-    width: 90%;
+    width: 80%;
     border: 2px solid;
 
 }
@@ -242,4 +246,11 @@ form .circle-form .circle-title {
 
 .right-form input{
     width: 395.5px;
+}
+
+.error-msg {
+    background-color: rgb(225, 132, 132);
+    margin: 0px 0px;
+    width: 470px;
+    display: none;
 }

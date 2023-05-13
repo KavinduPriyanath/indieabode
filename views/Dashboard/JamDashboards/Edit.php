@@ -48,20 +48,23 @@
 
                             <div class="left-form">
                                 <div class="card-box">
-                                    <span class="details">Title*</span <p>Add unique name to stand out among other gamejams</p>
-                                    <input type="text" name="title" value="<?= $this->jam['jamTitle'] ?>">
+                                    <span class="details">Title*</span> <p>Add unique name to stand out among other gamejams</p>
+                                    <input type="text" name="title" id="jamTitle" value="<?= $this->jam['jamTitle'] ?>">
+                                    <div class="error-msg" id="titleCheck"></div><br/>
                                 </div>
 
                                 <div class="card-box">
                                     <span class="details">Jam Theme*</span>
                                     <p>This will visible to the participants during the submission period</p>
                                     <input type="text" name="jamTheme" value="<?= $this->jam['jamTheme'] ?>">
+
                                 </div>
 
                                 <div class="card-box">
                                     <span class="details">Tagline</span>
                                     <p>One line summery of the jam</p>
-                                    <input type="text" name="tagline" value="<?= $this->jam['jamTagline'] ?>" placeholder="Optional">
+                                    <input type="text" name="tagline" id="jamTagline" value="<?= $this->jam['jamTagline'] ?>" placeholder="Optional">
+                                    <div class="error-msg" id="taglineCheck"></div><br/>
                                 </div>
 
                                 <div class="circle-form">
@@ -78,19 +81,21 @@
                                 <div class="card-box">
                                     <span class="details">Start Date & Time*</span>
                                     <p>Date & time for the theme reveal and start submitting games</p>
-                                    <input type="datetime_local" name="Sdate" value="<?= $this->jam['submissionStartDate'] ?>" placeholder="yyyy/mm/dd 00:00" required>
+                                    <input type="datetime-local" name="Sdate" class="datetime" id="Sdate" value="<?= $this->jam['submissionStartDate'] ?>">
+                                    <div class="error-msg" id="startDateCheck"></div><br/>
                                 </div>
 
                                 <div class="card-box">
                                     <span class="details">End Date & Time*</span>
                                     <p>Date & time to close submissions, and start voting</p>
-                                    <input type="datetime_local" name="Edate" value="<?= $this->jam['submissionEndDate'] ?>" placeholder="yyyy/mm/dd 00:00" required>
+                                    <input type="datetime-local" name="Edate" class="datetime" id="Edate" value="<?= $this->jam['submissionEndDate'] ?>">
+                                    <div class="error-msg" id="endDateCheck"></div><br/>
                                 </div>
 
                                 <div class="card-box" id="voting-date">
                                     <span class="details">Voting End Date & Time</span>
                                     <p>Date & time to cease voting, and publish results</p>
-                                    <input type="datetime_local" name="V_E_Date" value="<?= $this->jam['votingEndDate'] ?>" placeholder="yyyy/mm/dd 00:00">
+                                    <input type="datetime-local" name="V_E_Date" class="datetime" id="V-E_Date" value="<?= $this->jam['votingEndDate'] ?>" >
                                 </div>
 
                                 <div class="card-box">
@@ -197,7 +202,7 @@
 
                         </div>
 
-                        <button class="submit" name="submit">Save & View Page</button>
+                        <button type="submit" class="submit" name="submit">Save & View Page</button>
 
 
                 </div>
@@ -224,6 +229,8 @@
 
 
 
+
+
     <script>
         $(document).ready(function() {
             $(".jamContent").click(function() {
@@ -240,6 +247,19 @@
             let details = $('#description').val();
             $('.jamContent').html(details);
         });
+
+
+        $('input[name="ranking"]').on("click", function() {
+
+            if ($(this).val() == "Ranked") {
+                $('#voting-date').show();
+                $('#criteria').show();
+            } else if ($(this).val() == "Non-Ranked") {
+                $('#voting-date').hide();
+                $('#criteria').hide();
+            }
+        });
+        
     </script>
 
     <script>
@@ -270,6 +290,175 @@
             //fileName.textContent = uploadButton.files[0].name;
 
         }
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            let titleOkay = false;
+            let taglineOkay = false;
+            let startDateOkay = false;
+            let endDateOkay = false;
+            
+
+
+
+            $("#jamTitle").keyup(function () {
+                jamTitleAvailability();
+            });
+
+            $("#jamTagline").keyup(function () {
+                jamTaglineAvailability();
+            });
+
+            $("#Sdate").change(function () {
+                jamSdateAvailability();
+            });
+
+            $("#Edate").change(function () {
+                jamEdateAvailability();
+            });
+
+           
+            
+
+            function jamTitleAvailability() {
+                let jamTitle = $("#jamTitle").val();
+
+                if (jamTitle.length == 0) {
+                    $("#titleCheck").show();
+                    $("#titleCheck").text("Jam Title Cannot be empty");
+                    titleOkay = false;
+                    scrollToJamTitle();
+                } else if (jamTitle.length > 0 && jamTitle.length < 30) {
+                    $("#titleCheck").hide();
+                    titleOkay = true;
+                } else if (jamTitle.length > 30) {
+                    $("#titleCheck").show();
+                    $("#titleCheck").text("Jam Title Cannot exceed 30 letters");
+                    titleOkay = false;
+                    scrollToJamTitle();
+                }
+            }
+
+            function scrollToJamTitle() {
+                $('html, body').animate({
+                    scrollTop: $("#jamTitle").offset().top
+                }, 100);
+                $("#jamTitle").focus();
+            }
+
+            function jamTaglineAvailability() {
+                let jamTagline = $("#jamTagline").val();
+
+                if (jamTagline.length == 0) {
+                    $("#taglineCheck").show();
+                    $("#taglineCheck").text("Tagline cannot be empty");
+                    taglineOkay = false;
+                    scrollToJamTagline();
+                } else if (jamTagline.length < 50) {
+                    $("#taglineCheck").show();
+                    $("#taglineCheck").text("Must use more than 50 characters");
+                    taglineOkay = false;
+                    scrollToJamTagline();
+                } else if (jamTagline.length > 50 && jamTagline.length < 100) {
+                    $("#taglineCheck").hide();
+                    taglineOkay = true;
+                } else {
+                    $("#taglineCheck").show();
+                    $("#taglineCheck").text("Cannot exceed 100 characters");
+                    taglineOkay = false;
+                    scrollToJamTagline();
+                }
+            }
+
+            function scrollToJamTagline() {
+                $('html, body').animate({
+                    scrollTop: $("#jamTagline").offset().top
+                }, 100);
+                $("#jamTagline").focus();
+            }
+
+            function jamSdateAvailability() {
+                let jamStartDate = $("#Sdate").val();
+
+                if (jamStartDate.length == 0) {
+                    $("#startDateCheck").show();
+                    $("#startDateCheck").text("Start Date & Time cannot be empty");
+                    scrollToJamSdate();
+                    startDateOkay = false;
+                } else if (jamStartDate.length > 0) {
+                    $("#startDateCheck").hide();
+                    startDateOkay = true;
+                }
+            }
+
+            function scrollToJamSdate() {
+                $('html, body').animate({
+                    scrollTop: $("#Sdate").offset().top
+                }, 100);
+                $("#Sdate").focus();
+            }
+
+            function jamEdateAvailability() {
+                let jamEndDate = $("#Edate").val();
+                let jamStartDate = $("#Sdate").val();
+
+                if (jamEndDate.length == 0) {
+                    $("#endDateCheck").show();
+                    $("#endDateCheck").text("End Date & Time cannot be empty");
+                    endDateOkay = false;
+                    scrollToJamEdate();
+                } else if (jamEndDate == jamStartDate) {
+                    $("#endDateCheck").show();
+                    $("#endDateCheck").text("End Date & Time cannot be same as Start Date & Time");
+                    endDateOkay = false;
+                    scrollToJamEdate();
+                } else if (jamEndDate < jamStartDate) {
+                    $("#endDateCheck").show();
+                    $("#endDateCheck").text("The end date and time cannot be prior to the start date and time");
+                    endDateOkay = false;
+                    scrollToJamEdate();
+                } else {
+                    $("#endDateCheck").hide();
+                    endDateOkay = true;
+                }
+            }
+
+            function scrollToJamEdate() {
+                $('html, body').animate({
+                    scrollTop: $("#Edate").offset().top
+                }, 100);
+                $("#Edate").focus();
+            }
+
+
+            $(".submit").click(function (e) {
+                let formSubmit = false;
+
+                jamEdateAvailability();
+                jamSdateAvailability();
+                jamTitleAvailability();
+                jamTaglineAvailability();
+            
+
+
+                if (
+                    titleOkay == false ||
+                    taglineOkay == false ||
+                    startDateOkay == false ||
+                    endDateOkay == false   
+                ) {
+                    formSubmit = false;
+                } else {
+                    formSubmit = true;
+                }
+
+                if (formSubmit == false) {
+                    e.preventDefault();
+                }
+            });
+        });
+
     </script>
 
 </body>

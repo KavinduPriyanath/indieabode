@@ -37,19 +37,22 @@
                     <div class="card-box">
                         <span class="details">Title*</span><br>
                         <p>Add unique name to stand out among other gamejams</p>
-                        <input type="text" name="title" required>
+                        <input type="text" name="title" id="jamTitle">
+                        <div class="error-msg" id="titleCheck"></div><br/>
                     </div>
 
                     <div class="card-box">
                         <span class="details">Jam Theme*</span><br>
                         <p>This will visible to the participants during the submission period</p>
-                        <input type="text" name="jamTheme" required>
+                        <input type="text" name="jamTheme"  id="jamTheme">
+                        <div class="error-msg" id="themeCheck"></div><br/>
                     </div>
 
                     <div class="card-box">
                         <span class="details">Tagline</span><br>
                         <p>One line summery of the jam</p>
-                        <input type="text" name="tagline" placeholder="Optional">
+                        <input type="text" name="tagline" id="jamTagline">
+                        <div class="error-msg" id="taglineCheck"></div><br/>
                     </div>
 
                     <div class="circle-form">
@@ -66,19 +69,21 @@
                     <div class="card-box">
                         <span class="details">Start Date & Time*</span><br>
                         <p>Date & time for the theme reveal and start submitting games</p>
-                        <input type="datetime-local" name="Sdate" placeholder="yyyy/mm/dd 00:00" required>
+                        <input type="datetime-local" class="datetime" name="Sdate" id="Sdate" >
+                        <div class="error-msg" id="startDateCheck"></div><br/>
                     </div>
 
                     <div class="card-box">
                         <span class="details">End Date & Time*</span><br>
                         <p>Date & time to close submissions, and start voting</p>
-                        <input type="datetime-local" name="Edate" placeholder="yyyy/mm/dd 00:00" required>
+                        <input type="datetime-local" class="datetime" name="Edate" id="Edate" >
+                        <div class="error-msg" id="endDateCheck"></div><br/>
                     </div>
 
                     <div class="card-box" id="voting-date">
                         <span class="details">Voting End Date & Time</span><br>
                         <p>Date & time to cease voting, and publish results</p>
-                        <input type="datetime-local" name="V_E_Date" placeholder="yyyy/mm/dd 00:00">
+                        <input type="datetime-local" class="datetime" name="V_E_Date" id="V_E_Date" >
                     </div>
 
                     <div class="card-box">
@@ -179,12 +184,13 @@
                                 Upload Photo
                             </label>
                         </div>
+                        <div class="error-msg" id="coverImgCheck"></div>
                     </div>
                 </div>
 
             </div>
 
-            <button class="submit" name="submit">Save & View Page</button>
+            <button type="submit" class="submit" name="submit">Save & View Page</button>
 
 
             <div class="conditions">
@@ -206,6 +212,7 @@ include 'includes/footer.php';
 
 <script src=" <?php echo BASE_URL; ?>public/js/navbar.js"></script>
 <script src=" <?php echo BASE_URL; ?>public/js/richtext.js"> </script>
+<script src=" <?php echo BASE_URL; ?>public/js/jam_form.js"> </script>
 
 <script>
     $(document).ready(function() {
@@ -261,6 +268,21 @@ include 'includes/footer.php';
     }
 </script>
 
+<script>
+    var today = new Date().toISOString().slice(0, 16);
+    var startDateInput = document.getElementsByName("Sdate")[0];
+    var endDateInput = document.getElementsByName("Edate")[0];
+    var votingEndDate = document.getElementsByName("V_E_Date")[0];
+
+    startDateInput.min = today;
+    startDateInput.addEventListener('change', function() {
+        endDateInput.min = startDateInput.value;
+    });
+
+    endDateInput.addEventListener('change', function() {
+        votingEndDate.min = endDateInput.value;
+    });
+</script>
 
 
 </html>
