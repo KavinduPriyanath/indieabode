@@ -98,7 +98,7 @@
 											<?php foreach ($this->assetPurchases as $purchase) { ?>
 												<tr>
 												<td><?php echo $purchase['id']; ?></td>
-												<td><?php echo $purchase['assetID']; ?></td>
+												<td><?php echo $purchase['name']; ?></td>
 												<td><?php echo $purchase['buyerID']; ?></td>
 												<td><?php echo $purchase['purchasedData']; ?></td>
 												<td><?php echo $purchase['purchasedPrice']; ?></td>
@@ -183,7 +183,7 @@
 												<?php foreach ($this->assetRevenues as $revenue) { ?>
 													<tr>
 													<td><?php echo $revenue['id']; ?></td>
-													<td><?php echo $revenue['assetID']; ?></td>
+													<td><?php echo $revenue['name']; ?></td>
 													<td><?php echo $revenue['sale_date']; ?></td>
 													<td><?php echo $revenue['siteShare']; ?></td>
 													</tr>
@@ -230,7 +230,7 @@
 				datasets: [{
 					label: '# of Games',
 					// data: [25, 40, 35],
-					data: [<?php echo json_encode($this->totalAssetRevenue); ?>,1000],
+					data: [<?php echo json_encode($this->totalAssetRevenue); ?>,<?php echo json_encode($_SESSION['totalRevenue']); ?>],
 					backgroundColor: [
 						// 'rgba(55, 87, 102, 1)',
 						'#36647b',

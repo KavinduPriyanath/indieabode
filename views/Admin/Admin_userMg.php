@@ -33,10 +33,16 @@
 			<div class="profile-picture">
 				<img src="/indieabode/public/images/Admin/admin-1.png" alt="user-image" class="rounded-circle" />
 			</div>
-			<div class="user-details">
+			<!-- <div class="user-details">
 				<div class="user-role">Admin</div>
 				<div class="email-address">
 					<div class="box">admin@gmail.com</div>
+				</div>
+			</div> -->
+			<div class="user-details">
+				<div class="user-role"><?= $_SESSION['username']; ?></div>
+				<div class="email-address">
+					<div class="box"><?= $_SESSION['email']; ?></div>
 				</div>
 			</div>
 		</div>
@@ -119,7 +125,7 @@
 							<th> Username</th>
 							<th> User Role</th>
 							<th> Email</th>
-							<th> View</th>
+							<!-- <th> View</th> -->
 							<th> Download </th>
 							<th> Block</th>
 						</tr>
@@ -139,11 +145,11 @@
 									<td><?php echo $user['username']; ?></td>
 									<td><?php echo $user['userRole']; ?></td>
 									<td><?php echo $user['email']; ?></td>
-									<td>
+									<!-- <td>
 										<form action="/indieabode/Admin_userMg/viewUser/<?php echo $user['gamerID']; ?>" method="post"> 
 											<input type="submit" name="view_user" value="view" class="download-user-btn">
 										</form>
-									</td>
+									</td> -->
 									<td>
 										<form action="/indieabode/Admin_userMg/downloadUser/<?php echo $user['gamerID']; ?>" method="post"> 
 											<input type="submit" name="download_user" value="download" class="download-user-btn">

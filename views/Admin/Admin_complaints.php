@@ -71,10 +71,10 @@
 				<button class="<?php echo $this->active == 'all' ? 'btn active' : 'btn'; ?>" onclick="filterSelection('all')"> Show all Complaints</button>
 				<a class="<?php echo $this->active == 'Game' ? 'btn active' : 'btn'; ?>" href='/indieabode/Admin_complaints/viewFilteredComplaints/Game'"> Games</a>
 				<button class=" <?php echo $this->active == 'Asset' ? 'btn active' : 'btn'; ?>" onclick="filterSelection('Asset')">Assets</button>
-					<button class="<?php echo $this->active == 'Gamejam' ? 'btn active' : 'btn'; ?>" onclick="filterSelection('Gamejam')"> Game Jams</button>
-					<button class="<?php echo $this->active == 'Gig' ? 'btn active' : 'btn'; ?>" onclick="filterSelection('Gig')">Gigs</button>
-					<button class="<?php echo $this->active == 'Crowdfund' ? 'btn active' : 'btn'; ?>" onclick="filterSelection('Crowdfund')">Crowdfunds</button>
-					<button class="<?php echo $this->active == 'Devlog' ? 'btn active' : 'btn'; ?>" onclick="filterSelection('Devlog')">Devlogs</button>
+				<button class="<?php echo $this->active == 'Gamejam' ? 'btn active' : 'btn'; ?>" onclick="filterSelection('Gamejam')"> Game Jams</button>
+				<button class="<?php echo $this->active == 'Gig' ? 'btn active' : 'btn'; ?>" onclick="filterSelection('Gig')">Gigs</button>
+				<button class="<?php echo $this->active == 'Crowdfund' ? 'btn active' : 'btn'; ?>" onclick="filterSelection('Crowdfund')">Crowdfunds</button>
+				<button class="<?php echo $this->active == 'Devlog' ? 'btn active' : 'btn'; ?>" onclick="filterSelection('Devlog')">Devlogs</button>
 			</div>
 
 			<section class="table__body">
@@ -85,25 +85,26 @@
                         <th> Reason</th>
                         <th> Description</th>
                         <th> Type</th>
-						<th> Type Name(with ID)</th>
+						<th> Item Name(with ID)</th>
 						<th> Complainer ID </th>
 						<th> Status </th>
                     </tr>
                 </thead>
 				
 				<tbody>
-					<?php if (empty($this->complaints)) { ?>
+					<?php if (empty($this->complaint)) { ?>
 						<tr>
 							<td colspan="6" style="text-align: center; color: #a62247; font-size: 1.1em;">No results found.</td>
 						</tr>
 					<?php } else { ?>
-						<?php foreach ($this->complaints as $complaint) { ?>
+						<?php foreach ($this->complaint as $complaint) { ?>
 							<tr>
 								<td><?php echo $complaint['complaintID']; ?></td>
 								<td><?php echo $complaint['reason']; ?></td>
 								<td><?php echo $complaint['description']; ?></td>
 								<td><?php echo $complaint['type']; ?></td>
-								<td>Apex Legends(21)</td>
+								<td><?php echo $complaint['name']; ?>(<?php echo $complaint['itemID']; ?>)</td>
+								<!-- <td>Apex Legends(21)</td> -->
 								<td><?php echo $complaint['gamerID']; ?></td>
 								<td>
 									<label class="switch">

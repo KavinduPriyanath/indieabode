@@ -44,8 +44,13 @@ class Admin_G extends Controller
             echo 'hriynnaaaa';
         }
 
-        //get data of game purchasings
-        $this->view->gamePurchases = $this->model->getAllPayments();
+        $gameP = $this->model->getAllPayments();
+
+        for($i=0;$i<count($gameP);$i++){
+            $gameP[$i]['name'] = $this->model->getGameName($gameP[$i]['gameID']);
+        }
+
+        $this->view->gamePurchases = $gameP;
 
         //get game revenues shares for each day
         $totalRevenues = $this->model->getAllGameRevenues();
@@ -61,7 +66,14 @@ class Admin_G extends Controller
         $this->view->totalGameRevenue = $this->model->getTotalGameRevenue();
 
         //game revenue all the details
-        $this->view->gameRevenues = $this->model->getGameRevenueShare();
+        //$this->view->gameRevenues = $this->model->getGameRevenueShare();
+        $gameR = $this->model->getGameRevenueShare();
+
+        for($i=0;$i<count($gameR);$i++){
+            $gameR[$i]['name'] = $this->model->getGameName($gameR[$i]['gameID']);
+        }
+
+        $this->view->gameRevenues = $gameR;
         $this->view->render('Admin/Admin_G');
 
 
@@ -130,8 +142,9 @@ class Admin_G extends Controller
         $gameRevenues = $this->model->getGameRevenueShare();
         foreach ($gameRevenues as $revenue) {
 
+            $aa = $this->model->getGameName($revenue['gameID']);
             $pdf->Cell(40, 6, $revenue['id'], 1, 0, 'C', 1);
-            $pdf->Cell(40, 6, $revenue['gameID'], 1, 0, 'C', 1);
+            $pdf->Cell(40, 6, $aa, 1, 0, 'C', 1);
             $pdf->Cell(40, 6, $revenue['sale_date'], 1, 0, 'C', 1);
             $totalCost = $totalCost + floatval($revenue['siteShare']);
             $pdf->Cell(40, 6, '$'.$revenue['siteShare'], 1, 1, 'R', 1);
@@ -223,7 +236,8 @@ class Admin_G extends Controller
         $gamePurchases = $this->model->getAllPayments();
         foreach ($gamePurchases as $game) {
 
-            $pdf->Cell(40, 6, $game['gameID'], 1, 0, 'C', 1);
+            $aa = $this->model->getGameName($game['gameID']);
+            $pdf->Cell(40, 6, $aa, 1, 0, 'C', 1);
             $pdf->Cell(40, 6, $game['buyerID'], 1, 0, 'C', 1);
             $pdf->Cell(40, 6, $game['purchasedDate'], 1, 0, 'C', 1);
             $totalCost = $totalCost + floatval($game['purchasedPrice']);

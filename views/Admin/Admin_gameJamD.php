@@ -85,10 +85,11 @@
 								<thead>
 									<tr>
 										<th>Jam ID</th>
-										<th>Cover Image</th>
+										<!-- <th>Cover Image</th> -->
 										<th>Jam Name</th>
 										<th>Jam Host ID</th>
 										<th>Jam Status</th>
+										<th>Total Submissions</th>
 										<th>Rankings (with submission ID)</th>
 									</tr>
 								</thead>
@@ -97,10 +98,13 @@
 										<?php foreach ($this->gamejams as $gamejam): ?>
 											<tr <?php if ($gamejam['tag'] == 'Jam Ended') echo 'class="ended-jam"'; ?>>
 												<td><?php echo $gamejam['gameJamID']; ?></td>
-												<td><img src="/indieabode/public/images/Admin/jam/jam-3.png" alt="cover-image"/></td>
+												<!-- <td><img src="/indieabode/public/images/Admin/jam/jam-3.png" alt="cover-image"/></td> -->
+												
+												<!-- <td><img src="/indieabode/public/uploads/gamejams/covers/<?= $this->gamejam['jamCoverImg'] ?>" alt="cover-image"/></td> -->
 												<td><?php echo $gamejam['jamTitle']; ?></td>
 												<td><?php echo $gamejam['jamHostID']; ?></td>
 												<td><?php echo $gamejam['tag']; ?></td>
+												<td><?php echo $gamejam['submissionsCount']; ?></td>
 												<td>
 													<?php if ($gamejam['tag'] == 'Jam Ended'): ?>
 														<?php if (isset($gamejam['firstPlace'])): ?>

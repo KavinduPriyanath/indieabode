@@ -59,8 +59,8 @@ class Admin_userMg extends Controller
     public function deleteUser($userid){
         $result = $this->model->delete_user($userid);
         $del_user = $this->model->download_user($userid);
-        //$userMail = $del_user['email'];
-        $userMail = 'nadeedarshika1999@gmail.com';
+        $userMail = $del_user['email'];
+        //$userMail = 'nadeedarshika1999@gmail.com';
         if ($result === true) {
             //send an email to the blocked user
 
@@ -111,8 +111,8 @@ class Admin_userMg extends Controller
     public function unblockUser($userid){
         $result = $this->model->unblock_user($userid);
         $del_user = $this->model->download_user($userid);
-        //$userMail = $del_user['email'];
-        $userMail = 'nadeedarshika1999@gmail.com';
+        $userMail = $del_user['email'];
+        //$userMail = 'nadeedarshika1999@gmail.com';
         if ($result === true) {
 
             $mail = new PHPMailer(true);
@@ -192,6 +192,292 @@ class Admin_userMg extends Controller
 
           
         if($user['userRole']=="game developer"){
+            require_once('includes/tcpdf/tcpdf.php');
+
+            ob_start();
+            $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+
+            // set default monospaced font
+            $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+
+            // set margins
+            $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+
+             // set auto page breaks
+            $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+
+             // Disable header and footer
+            $pdf->setPrintHeader(false);
+            $pdf->setPrintFooter(false);
+
+            // set some language-dependent strings (optional)
+            if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
+                require_once(dirname(__FILE__).'/lang/eng.php');
+                $pdf->setLanguageArray($l);
+            }
+
+            $pdf->SetFont('times', 'BI', 14);
+
+            // add a page
+            $pdf->AddPage();
+
+            $pdf->Cell(0, 10, 'INDIE ABODE', 0, 1, 'C');
+            $pdf->Cell(0, 10, 'Game Publishing Platform', 0, 1, 'C');
+            $pdf->Cell(0, 10, 'Game Developer\'s Report', 0, 1, 'C');
+
+            $pdf->SetFont('helvetica', '', 12);
+
+            $pdf->Ln(4);
+            // $name = $user['firstName'].' '.$user['lastName'];
+            $name = 'Name: ' . $user['firstName'] . ' ' . $user['lastName'];
+            // $accountStatus = ($user['accountStatus'] == 1) ? "Active" : "Blocked";
+            $currentDateTime = date('Y-m-d H:i:s');
+            // $pdf->Rect(10, 60, 70, 20, 'D');
+            $pdf->MultiCell(0, 10, $name, 0, 'L', false);
+            $pdf->MultiCell(0, 10, 'Account Status: Active', 0, 'L', false);
+            $pdf->MultiCell(0, 10, 'Date: '.$currentDateTime, 0, 'L', false);
+
+            $pdf->SetFont('helvetica', 'BU', 12);
+            $pdf->Ln(6);
+            $pdf->MultiCell(0, 10, 'Uploaded Games', 0, 'L', false);
+
+            // add a table
+            $header = array('Game Name','Price','Uploaded Date','Total Downloads','Total');
+            $pdf->Ln(10); // add some vertical spacing before the table
+            $pdf->SetFont('times', '', 14);
+            $pdf->SetFillColor(240, 240, 240); // set background color for header row
+            $pdf->SetTextColor(0); // set text color for header row
+            $pdf->SetDrawColor(255, 255, 255); // set border color for all cells
+            $pdf->Cell(40, 7, $header[0], 1, 0, 'C', 1);
+            $pdf->Cell(40, 7, $header[1], 1, 0, 'C', 1);
+            $pdf->Cell(40, 7, $header[2], 1, 0, 'C', 1);
+            $pdf->Cell(40, 7, $header[3], 1, 0, 'C', 1);
+            $pdf->Cell(40, 7, $header[4], 1, 1, 'C', 1);
+            // $pdf->Cell(40, 7, $header[4], 1, 1, 'C', 1);
+            $pdf->SetFillColor(255, 255, 255); // set background color for data rows
+            $pdf->SetTextColor(0); // set text color for data rows
+            $pdf->SetLineWidth(0.3); // Set the border width for cells
+            $pdf->SetFont('times', '', 12);
+            $totalCost = 0;
+
+            $dw_games = $this->model->getGames($userid);
+            foreach ($dw_games as $game) {
+                $dwCount = $this->model->getDwGame($game['gameID']);
+                $total = floatval($dwCount['downloads']) * floatval($game['gamePrice']);
+                $totalCost += floatval($game['gamePrice']);
+            
+                $pdf->Cell(40, 6, $game['gameName'], 1, 0, 'L', 1);
+                $pdf->Cell(40, 6, '$'.$game['gamePrice'], 1, 0, 'R', 1);
+                $pdf->Cell(40, 6, $game['created_at'], 1, 0, 'C', 1);
+                $pdf->Cell(40, 6, $dwCount['downloads'], 1, 0, 'C', 1);
+                $pdf->Cell(40, 6, '$'.$total, 1, 1, 'C', 1);
+            }   
+
+            $pdf->Ln(10);
+            // $pdf->Cell(0, 10, 'Total Earnings: $'.$totalEarnings, 0, 1, 'C');
+
+            $pdf->SetFont('helvetica', 'B', 12);
+           // $pdf->Cell(0, 10, 'Total Expenditure:     $'.$totalCost, 0, 1, 'C');
+            $pdf->Ln(2); // move down by 2 units
+            $pdf->SetLineWidth(0.5); // set line width to 0.5 units
+            $pdf->Line(50, $pdf->GetY(), $pdf->GetPageWidth() - 50, $pdf->GetY()); // draw first line
+            $pdf->Ln(2); // move down by 2 units again
+            $pdf->Line(50, $pdf->GetY(), $pdf->GetPageWidth() - 50, $pdf->GetY()); // draw second line
+
+            //PARTICIPATED CROWDFUNDS TABLE
+
+            $pdf->SetFont('helvetica', 'BU', 12);
+            $pdf->Ln(6);
+            $pdf->MultiCell(0, 10, 'Joined Jams', 0, 'L', false);
+
+            // add a table
+            $header = array('Jam Name', 'Submission Name','Rates','Joined Date');
+            $pdf->Ln(10); // add some vertical spacing before the table
+            $pdf->SetFont('times', '', 14);
+            $pdf->SetFillColor(240, 240, 240); // set background color for header row
+            $pdf->SetTextColor(0); // set text color for header row
+            $pdf->SetDrawColor(255, 255, 255); // set border color for all cells
+            $pdf->Cell(40, 7, $header[0], 1, 0, 'C', 1);
+            $pdf->Cell(40, 7, $header[1], 1, 0, 'C', 1);
+            $pdf->Cell(40, 7, $header[2], 1, 0, 'C', 1);
+            $pdf->Cell(40, 7, $header[3], 1, 1, 'C', 1);
+            // $pdf->Cell(40, 7, $header[4], 1, 1, 'C', 1);
+            $pdf->SetFillColor(255, 255, 255); // set background color for data rows
+            $pdf->SetTextColor(0); // set text color for data rows
+            $pdf->SetLineWidth(0.3); // Set the border width for cells
+            $pdf->SetFont('times', '', 12);
+            $totalCost = 0;
+
+            $submission = $this->model->jamSubmissionAll($userid);
+            foreach ($submission as $s) {
+
+                $jamname = $this->model->getJamDetail($s['gameJamID']);
+                $sname = $this->model->getSubmissionDetail($s['submissionID']);
+                // $pdf->Cell(40, 6, 'hi', 1, 0, 'C', 1);
+                $pdf->Cell(40, 6, $jamname['jamTitle'], 1, 0, 'L', 1);
+                $pdf->Cell(40, 6, $sname['gameName'], 1, 0, 'C', 1);
+                $pdf->Cell(40, 6, $s['rating'], 1, 0, 'C', 1);
+                $pdf->Cell(40, 6, $sname['created_at'], 1, 1, 'C', 1);
+
+            }    
+
+            $pdf->Ln(10);
+            // $pdf->Cell(0, 10, 'Total Earnings: $'.$totalEarnings, 0, 1, 'C');
+
+
+            $pdf->SetFont('helvetica', 'B', 12);
+           // $pdf->Cell(0, 10, 'Total Donations:     $'.$totalCost, 0, 1, 'C');
+            $pdf->Ln(2); // move down by 2 units
+            $pdf->SetLineWidth(0.5); // set line width to 0.5 units
+            $pdf->Line(50, $pdf->GetY(), $pdf->GetPageWidth() - 50, $pdf->GetY()); // draw first line
+            $pdf->Ln(2); // move down by 2 units again
+            $pdf->Line(50, $pdf->GetY(), $pdf->GetPageWidth() - 50, $pdf->GetY()); // draw second line
+            
+            //RATED JAMS TABLE
+
+            $pdf->SetFont('helvetica', 'BU', 12);
+            $pdf->Ln(6);
+            $pdf->MultiCell(0, 10, 'Created Gigs', 0, 'L', false);
+
+            // add a table
+            $header = array('Game Name', 'Estimated Share','Ordered Publisher', 'Expected Cost');
+            $pdf->Ln(10); // add some vertical spacing before the table
+            $pdf->SetFont('times', '', 14);
+            $pdf->SetFillColor(240, 240, 240); // set background color for header row
+            $pdf->SetTextColor(0); // set text color for header row
+            $pdf->SetDrawColor(255, 255, 255); // set border color for all cells
+            $pdf->Cell(40, 7, $header[0], 1, 0, 'C', 1);
+            $pdf->Cell(40, 7, $header[1], 1, 0, 'C', 1);
+            $pdf->Cell(40, 7, $header[2], 1, 0, 'C', 1);
+            $pdf->Cell(40, 7, $header[3], 1, 1, 'C', 1);
+            // $pdf->Cell(40, 7, $header[4], 1, 1, 'C', 1);
+            $pdf->SetFillColor(255, 255, 255); // set background color for data rows
+            $pdf->SetTextColor(0); // set text color for data rows
+            $pdf->SetLineWidth(0.3); // Set the border width for cells
+            $pdf->SetFont('times', '', 12);
+            $totalCost = 0;
+
+            $gigs = $this->model->getCreatedGig($userid);
+            foreach ($gigs as $gig) {
+
+                $publisher = $this->model->getPublisher($gig['gigID']);
+                //$rankings = $this->model->getRankingDataForGameJam($jam[0]['gameJamID']);
+
+                
+                // $pdf->Cell(40, 6, 'hi', 1, 0, 'C', 1);
+                $pdf->Cell(40, 6, $gig['gigName'], 1, 0, 'L', 1);
+                $pdf->Cell(40, 6, $gig['estimatedShare'], 1, 0, 'C', 1);
+                $pdf->Cell(40, 6, $publisher['publisherID'], 1, 0, 'C', 1);
+                $pdf->Cell(40, 6, '$'.$gig['expectedCost'], 1, 1, 'C', 1);
+                //$pdf->Cell(40, 6, '$'.$crowdfund['donatedAmount'], 1, 1, 'R', 1);
+
+            }    
+
+            $pdf->Ln(10);
+            // $pdf->Cell(0, 10, 'Total Earnings: $'.$totalEarnings, 0, 1, 'C');
+
+            $pdf->SetFont('helvetica', 'B', 12);
+           // $pdf->Cell(0, 10, 'Total Donations:     $'.$totalCost, 0, 1, 'C');
+            $pdf->Ln(2); // move down by 2 units
+            $pdf->SetLineWidth(0.5); // set line width to 0.5 units
+            $pdf->Line(50, $pdf->GetY(), $pdf->GetPageWidth() - 50, $pdf->GetY()); // draw first line
+            $pdf->Ln(2); // move down by 2 units again
+            $pdf->Line(50, $pdf->GetY(), $pdf->GetPageWidth() - 50, $pdf->GetY()); // draw second line
+            $pdf->Write(0, $txt, '', 0, 'C', true, 0, false, false, 0);
+            
+            
+            $pdf->SetFont('helvetica', 'BU', 12);
+            $pdf->Ln(6);
+            $pdf->MultiCell(0, 10, 'Organized Crowdfunds', 0, 'L', false);
+
+            // add a table
+            $header = array('id','Game Name', 'Total Backers','Expected Amount','Current Amount');
+            $pdf->Ln(10); // add some vertical spacing before the table
+            $pdf->SetFont('times', '', 14);
+            $pdf->SetFillColor(240, 240, 240); // set background color for header row
+            $pdf->SetTextColor(0); // set text color for header row
+            $pdf->SetDrawColor(255, 255, 255); // set border color for all cells
+            $pdf->Cell(10, 7, $header[0], 1, 0, 'C', 1);
+            $pdf->Cell(40, 7, $header[1], 1, 0, 'C', 1);
+            $pdf->Cell(40, 7, $header[2], 1, 0, 'C', 1);
+            $pdf->Cell(40, 7, $header[3], 1, 0, 'C', 1);
+            $pdf->Cell(40, 7, $header[4], 1, 1, 'C', 1);
+            // $pdf->Cell(40, 7, $header[4], 1, 1, 'C', 1);
+            $pdf->SetFillColor(255, 255, 255); // set background color for data rows
+            $pdf->SetTextColor(0); // set text color for data rows
+            $pdf->SetLineWidth(0.3); // Set the border width for cells
+            $pdf->SetFont('times', '', 12);
+            $totalCost = 0;
+
+            $cwds = $this->model->getcreateCwd($userid);
+            foreach ($cwds as $c) {
+
+                $game = $this->model->getSubmissionDetail($c['gameName']);
+                
+                $pdf->Cell(10, 6, $c['crowdFundID'], 1, 0, 'L', 1);
+                $pdf->Cell(40, 6, $game['gameName'], 1, 0, 'L', 1);
+                $pdf->Cell(40, 6, $c['backers'], 1, 0, 'C', 1);
+                $pdf->Cell(40, 6, $c['expectedAmount'], 1, 0, 'R', 1);
+                $pdf->Cell(40, 6, $c['currentAmount'], 1, 1, 'R', 1);
+
+            }   
+            
+            
+            $pdf->SetFont('helvetica', 'BU', 12);
+            $pdf->Ln(6);
+            $pdf->MultiCell(0, 10, 'Downloaded Assets', 0, 'L', false);
+
+            // add a table
+            $header = array('Asset Name', 'Downloaded Date','Price');
+            $pdf->Ln(10); // add some vertical spacing before the table
+            $pdf->SetFont('times', '', 14);
+            $pdf->SetFillColor(240, 240, 240); // set background color for header row
+            $pdf->SetTextColor(0); // set text color for header row
+            $pdf->SetDrawColor(255, 255, 255); // set border color for all cells
+            $pdf->Cell(40, 7, $header[0], 1, 0, 'C', 1);
+            $pdf->Cell(40, 7, $header[1], 1, 0, 'C', 1);
+            $pdf->Cell(40, 7, $header[2], 1, 1, 'C', 1);
+            // $pdf->Cell(40, 7, $header[4], 1, 1, 'C', 1);
+            $pdf->SetFillColor(255, 255, 255); // set background color for data rows
+            $pdf->SetTextColor(0); // set text color for data rows
+            $pdf->SetLineWidth(0.3); // Set the border width for cells
+            $pdf->SetFont('times', '', 12);
+            $totalCost = 0;
+
+            $cwds = $this->model->getdwdAssets($userid);
+            foreach ($cwds as $c) {
+
+                $game = $this->model->getAsset($c['assetID']);
+                
+                $pdf->Cell(40, 6, $game['assetName'], 1, 0, 'L', 1);
+                $pdf->Cell(40, 6, $c['purchasedData'], 1, 0, 'C', 1);
+                $pdf->Cell(40, 6, $c['purchasedPrice'], 1, 1, 'R', 1);
+
+            }    
+
+            $pdf->Ln(10);
+            // $pdf->Cell(0, 10, 'Total Earnings: $'.$totalEarnings, 0, 1, 'C');
+
+            $pdf->SetFont('helvetica', 'B', 12);
+           // $pdf->Cell(0, 10, 'Total Donations:     $'.$totalCost, 0, 1, 'C');
+            $pdf->Ln(2); // move down by 2 units
+            $pdf->SetLineWidth(0.5); // set line width to 0.5 units
+            $pdf->Line(50, $pdf->GetY(), $pdf->GetPageWidth() - 50, $pdf->GetY()); // draw first line
+            $pdf->Ln(2); // move down by 2 units again
+            $pdf->Line(50, $pdf->GetY(), $pdf->GetPageWidth() - 50, $pdf->GetY()); // draw second line
+            $pdf->Write(0, $txt, '', 0, 'C', true, 0, false, false, 0);
+
+            
+            // ---------------------------------------------------------
+
+            ob_clean();
+            ob_flush();
+            //Close and output PDF document
+            $pdf->Output('GameDeveloper.pdf', 'D');
+
+            ob_end_flush();
+            ob_end_clean();
+
             $this->view->render('Admin/reports/Admin_report');
         }
         if($user['userRole']=="gamer"){
@@ -340,14 +626,13 @@ class Admin_userMg extends Controller
             $pdf->MultiCell(0, 10, 'Rated Jams', 0, 'L', false);
 
             // add a table
-            $header = array('Jam Name', 'Rated Game','Rates','Rank');
+            $header = array('Jam Name', 'Rated Game','Rates');
             $pdf->Ln(10); // add some vertical spacing before the table
             $pdf->SetFont('times', '', 14);
             $pdf->SetFillColor(240, 240, 240); // set background color for header row
             $pdf->SetTextColor(0); // set text color for header row
             $pdf->SetDrawColor(255, 255, 255); // set border color for all cells
             $pdf->Cell(40, 7, $header[0], 1, 0, 'C', 1);
-            $pdf->Cell(40, 7, $header[1], 1, 0, 'C', 1);
             $pdf->Cell(40, 7, $header[1], 1, 0, 'C', 1);
             $pdf->Cell(40, 7, $header[2], 1, 1, 'C', 1);
             // $pdf->Cell(40, 7, $header[4], 1, 1, 'C', 1);
@@ -363,10 +648,13 @@ class Admin_userMg extends Controller
                 $id = $submission['submissionID'];
                 $jam = $this->model->getJam($id);
                 $game = $this->model->dwGames($id);
+                //$rankings = $this->model->getRankingDataForGameJam($jam[0]['gameJamID']);
+
+                
                 // $pdf->Cell(40, 6, 'hi', 1, 0, 'C', 1);
                 $pdf->Cell(40, 6, $jam[0]['jamTitle'], 1, 0, 'L', 1);
                 $pdf->Cell(40, 6, $game[0]['gameName'], 1, 0, 'C', 1);
-                $pdf->Cell(40, 6, $submission['rating'], 1, 0, 'C', 1);
+                $pdf->Cell(40, 6, $submission['rating'], 1, 1, 'C', 1);
                 //$pdf->Cell(40, 6, '$'.$crowdfund['donatedAmount'], 1, 1, 'R', 1);
 
             }    
@@ -375,7 +663,7 @@ class Admin_userMg extends Controller
             // $pdf->Cell(0, 10, 'Total Earnings: $'.$totalEarnings, 0, 1, 'C');
 
             $pdf->SetFont('helvetica', 'B', 12);
-            $pdf->Cell(0, 10, 'Total Donations:     $'.$totalCost, 0, 1, 'C');
+           // $pdf->Cell(0, 10, 'Total Donations:     $'.$totalCost, 0, 1, 'C');
             $pdf->Ln(2); // move down by 2 units
             $pdf->SetLineWidth(0.5); // set line width to 0.5 units
             $pdf->Line(50, $pdf->GetY(), $pdf->GetPageWidth() - 50, $pdf->GetY()); // draw first line
@@ -478,29 +766,17 @@ class Admin_userMg extends Controller
                 $votingEndDate = new DateTime($host['votingEndDate']);
                // $givenDateTime = new DateTime('2023-04-01 10:30:00'); // Given date and time
 
-               if($submissionStartDate < $currentDateTime) // jam started
-               {
-                    if($submissionEndDate < $currentDateTime) // jam submission ended
-                    {
-                        if($votingEndDate < $currentDateTime) // voting ended
-                        {
-                            $pdf->Cell(50, 6,'Game Jam Has Totally Ended.', 1, 0, 'C', 1);
-                        }else 
-                        {
-                            $pdf->Cell(50, 6,'Voting is ongoing', 1, 0, 'C', 1);
-                            // $pdf->Cell(80, 6,'Voting is ongoing(end on '.$votingEndDate->format('Y-m-d H:i:s'), 1, 0, 'C', 1);
-                        }
-                    }
-                    else
-                    {
-                        $pdf->Cell(50, 6,'Jam is ongoing', 1, 0, 'C', 1);
-                        //$pdf->Cell(80, 6,'Jam is ongoing(end on '.$submissionEndDate->format('Y-m-d H:i:s'), 1, 0, 'C', 1);
-                    }
-               }else
-               {
-                    $pdf->Cell(50, 6, 'Jam not yet started', 1, 0, 'C', 1);
-                    // $pdf->Cell(80, 6, 'Jam not yet started(starts on '.$submissionStartDate->format('Y-m-d H:i:s'), 1, 0, 'C', 1);
-               }
+                if($votingEndDate < $today){
+                    $pdf->Cell(40, 6, 'Jam Ended', 1, 0, 'C', 1);
+                    $rankingData = $this->model->getRankingDataForGameJam($host['gameJamID']);
+                    $first = $rankingData['firstPlace'];
+                }elseif ($submissionStartDate <= $today && $votingEndDate >= $today) {
+                    $pdf->Cell(40, 6, 'Jam Voting Ongoing', 1, 0, 'C', 1);
+                } elseif ($submissionEndDate >= $today) {
+                    $pdf->Cell(40, 6, 'Jam Submission Ongoing', 1, 0, 'C', 1);
+                } else {
+                    $pdf->Cell(40, 6, 'Jam Not yet Started', 1, 0, 'C', 1);
+                }
 
 
                 $totalSubmissions = $this->model->getTotalSubmissions($host['gameJamID']);
@@ -512,8 +788,8 @@ class Admin_userMg extends Controller
 
 
                 
-                $rankFirst = $this->model->getFirstPlace($host['gameJamID']);
-                $pdf->Cell(70, 6,$rankFirst['gameName'], 1, 1, 'C', 1);
+              //  $rankFirst = $this->model->getFirstPlace($host['gameJamID']);
+                $pdf->Cell(70, 6,$first, 1, 1, 'C', 1);
 
             }    
 
@@ -615,7 +891,7 @@ class Admin_userMg extends Controller
             $pdf->MultiCell(0, 10, 'Uploaded Assets', 0, 'L', false);
 
             // add a table
-            $header = array('Cover Image', 'Asset Name', 'Price','Uploaded Date', 'Downloads','Earnings');
+            $header = array('Asset Name', 'Price','Uploaded Date', 'Downloads','Earnings');
             $pdf->Ln(10); // add some vertical spacing before the table
             $pdf->SetFont('times', '', 14);
             $pdf->SetFillColor(240, 240, 240); // set background color for header row
@@ -623,29 +899,27 @@ class Admin_userMg extends Controller
             $pdf->SetDrawColor(255, 255, 255); // set border color for all cells
             $pdf->Cell(30, 7, $header[0], 1, 0, 'C', 1);
             $pdf->Cell(30, 7, $header[1], 1, 0, 'C', 1);
-            $pdf->Cell(30, 7, $header[2], 1, 0, 'C', 1);
+            $pdf->Cell(50, 7, $header[2], 1, 0, 'C', 1);
             $pdf->Cell(30, 7, $header[3], 1, 0, 'C', 1);
-            $pdf->Cell(30, 7, $header[4], 1, 0, 'C', 1);
-            $pdf->Cell(30, 7, $header[5], 1, 1, 'C', 1);
+            $pdf->Cell(30, 7, $header[4], 1, 1, 'C', 1);
             $pdf->SetFillColor(255, 255, 255); // set background color for data rows
             $pdf->SetTextColor(0); // set text color for data rows
             $pdf->SetFont('times', '', 12);
             $totalEarnings = 0;
             foreach ($ac_user as $user) {
 
-                $pdf->Cell(30, 6, 'hi', 1, 0, 'C', 1);
                 $pdf->Cell(30, 6, $user['assetName'], 1, 0, 'C', 1);
                 if($user['assetPrice']=='')
                     $pdf->Cell(30, 6, 'Free', 1, 0, 'C', 1);
                 else
                     $pdf->Cell(30, 6, $user['assetPrice'], 1, 0, 'C', 1);
-                $pdf->Cell(30, 6, $user['created_at'], 1, 0, 'C', 1);
+                $pdf->Cell(50, 6, $user['created_at'], 1, 0, 'C', 1);
 
                 $downloads = $this->model->downloadAssets($user['assetID']);
 
                 print_r($downloads);
                 if($downloads != 0)
-                    $pdf->Cell(30, 6, $downloads, 1, 0, 'C', 1);
+                    $pdf->Cell(30, 6, $downloads['downloads'], 1, 0, 'C', 1);
                 else
                     $pdf->Cell(30, 6, 0, 1, 0, 'C', 1);
 
@@ -754,13 +1028,13 @@ class Admin_userMg extends Controller
             $pdf->MultiCell(0, 10, 'Ordered Gigs', 0, 'L', false);
 
             // add a table
-            $header = array('Game Name', 'Estimated Share','Date', 'Ordered Amount');
+            $header = array('Game Name', 'Share Percentage','Date', 'Ordered Amount');
             $pdf->Ln(10); // add some vertical spacing before the table
             $pdf->SetFont('times', '', 14);
             $pdf->SetFillColor(240, 240, 240); // set background color for header row
             $pdf->SetTextColor(0); // set text color for header row
             $pdf->SetDrawColor(255, 255, 255); // set border color for all cells
-            $pdf->Cell(40, 7, $header[0], 1, 0, 'C', 1);
+            $pdf->Cell(60, 7, $header[0], 1, 0, 'C', 1);
             $pdf->Cell(40, 7, $header[1], 1, 0, 'C', 1);
             $pdf->Cell(40, 7, $header[2], 1, 0, 'C', 1);
             $pdf->Cell(40, 7, $header[3], 1, 1, 'C', 1);
@@ -772,11 +1046,13 @@ class Admin_userMg extends Controller
             foreach ($gp_user as $user) {
 
                 // $pdf->Cell(40, 6, 'hi', 1, 0, 'C', 1);
-                $pdf->Cell(40, 6, $user['game'], 1, 0, 'C', 1);
-                $pdf->Cell(40, 6, $user['estimatedShare'], 1, 0, 'C', 1);
-                $pdf->Cell(40, 6, $user['orderedDate'], 1, 0, 'C', 1);
-                $totalCost = $totalCost + floatval($user['expectedCost']);
-                $pdf->Cell(40, 6, '$'.$user['expectedCost'], 1, 1, 'C', 1);
+                $gigs = $this->model->getGig($user['gigID']);
+                
+                $pdf->Cell(60, 6, $gigs['gigName'], 1, 0, 'C', 1);
+                $pdf->Cell(40, 6, $user['sharePercentage'], 1, 0, 'C', 1);
+                $pdf->Cell(40, 6, $user['purchasedDate'], 1, 0, 'C', 1);
+                $totalCost = $totalCost + floatval($user['publisherCost']);
+                $pdf->Cell(40, 6, '$'.$user['publisherCost'], 1, 1, 'C', 1);
 
             }    
 

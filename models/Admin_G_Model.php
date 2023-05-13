@@ -133,4 +133,24 @@ class Admin_G_Model extends Model
     $revenues = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $revenues;
   }
+
+  function getGameName($id){
+        
+    $sql = "SELECT gameName as name from freegame WHERE gameID=".$id;
+    $stmt = $this->db->prepare($sql);
+
+    $stmt->execute();
+
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // $complaints = $row['name'];
+    if ($row && isset($row['name'])) {
+        $complaints = $row['name'];
+    } else {
+        $complaints = "No name";
+    }
+
+
+    return $complaints;
+    }
 }
