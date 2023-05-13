@@ -498,3 +498,9 @@
     z-index: -1;
     background-color: transparent;
   }
+
+
+  .ofs-timeline-track a {
+    text-decoration: none;
+    color: black;
+  }

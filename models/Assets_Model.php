@@ -12,7 +12,7 @@ class Assets_Model extends Model
 
     function showAllAssets($min, $max)
     {
-        $stmt = $this->db->prepare("SELECT * FROM freeasset LIMIT $min, $max");
+        $stmt = $this->db->prepare("SELECT * FROM freeasset ORDER BY created_at DESC LIMIT $min, $max");
 
 
         $stmt->execute();

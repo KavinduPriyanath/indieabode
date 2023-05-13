@@ -76,4 +76,16 @@ class GameJamForm_Model extends Model
 
         return $new_jam_cover_img_name;
     }
+
+    function GetThisJamRecord($jamName, $jamHostID)
+    {
+
+        $sql = "SELECT * FROM gamejam WHERE jamTitle='$jamName' AND jamHostID='$jamHostID'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }

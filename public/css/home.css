@@ -13,3 +13,36 @@
     box-shadow: 0 1px 4px rgb(0 0 0 / 60%);
     display: none;
 }
+
+/* Under Contruction Sign */
+.empty-box {
+    display: block;
+    margin-top: 200px;
+    margin-left: 60px;
+  }
+  
+  .empty-box .empty-icon {
+    width: 100px;
+    height: 100px;
+    margin-left: 680px;
+  }
+  
+  .empty-icon img {
+    height: 100%;
+    width: 100%;
+  }
+  
+  .empty-box .empty-text {
+    margin-top: 15px;
+    font-size: 23px;
+    text-align: center;
+    font-weight: 800;
+  }
+  
+  .empty-box .empty-link {
+    font-size: 18px;
+    margin-top: 10px;
+    text-align: center;
+    text-decoration: underline;
+    margin-bottom: 130px;
+  }

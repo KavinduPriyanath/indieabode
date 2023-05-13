@@ -48,6 +48,10 @@ class Launchcrowdfunding extends Controller
             $developerName
         );
 
-        header('location:/indieabode/');
+        $addedCrowdfund = $this->model->GetThisCrowdfundRecord($crowdfundName, $gameName);
+
+        // header('location:/indieabode/');
+
+        header('location:' . BASE_URL . 'crowdfund?id=' . $addedCrowdfund['crowdFundID']);
     }
 }

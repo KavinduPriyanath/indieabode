@@ -52,6 +52,9 @@
                     <a href="/indieabode/support_center/game_issues?topic=LimitedReleases">
                         <div class="sub-topics">Limited Releases</div>
                     </a>
+                    <a href="/indieabode/support_center/game_issues?topic=LimitedReleases">
+                        <div class="sub-topics">Trust Rank</div>
+                    </a>
                     <a href="/indieabode/support_center/game_issues?topic=Reviews">
                         <div class="sub-topics">Reviews</div>
                     </a>

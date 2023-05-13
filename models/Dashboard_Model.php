@@ -54,7 +54,8 @@ class Dashboard_Model extends Model
 
     function showAllMyGigs($id)
     {
-        $sql = "SELECT * FROM gig WHERE gameDeveloperID='$id'";
+        $sql = "SELECT gig.gigID, gig.gigName, gig.game, gig.viewCount, gig.requests, gig.gigCoverImg, freegame.gameName
+                FROM gig INNER JOIN freegame ON freegame.gameID=gig.game WHERE gig.gameDeveloperID='$id'";
 
         $stmt = $this->db->prepare($sql);
 

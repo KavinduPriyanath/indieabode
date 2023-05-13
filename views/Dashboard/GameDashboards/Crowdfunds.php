@@ -40,7 +40,7 @@
         </div>
         <div class="content-row">
 
-            <a href="/indieabode/creategig" id="gig-btn">
+            <a href="/indieabode/launchcrowdfunding" id="gig-btn">
                 <div class="add-btn" id="crowdfundingbtn">
                     <div class="add-logo">
                         <img src="/indieabode/public/images/dashboard/add-devlog.png" alt="">

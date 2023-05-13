@@ -173,7 +173,7 @@ include 'includes/navbar.php';
                 <div class="existing-project">
                     <div class="details">Existing Project</div>
                     <!-- <input type="text" name="gname" placeholder="Game name" required> -->
-                    <select id="type" name="gameID" required>
+                    <select id="type" name="gameID" class="subgames" required>
                         <?php foreach ($this->games as $game) { ?>
                             <option value="<?= $game['gameID'] ?>"><?= $game['gameName'] ?></option>
                         <?php } ?>
@@ -213,6 +213,7 @@ include 'includes/navbar.php';
 
     <script>
         $(document).ready(function() {
+
 
             <?php if (isset($_SESSION['logged']) && $_SESSION['userRole'] == "gamer") { ?>
                 <?php if (!$this->hasJoinedGamer) { ?>
@@ -290,36 +291,45 @@ include 'includes/navbar.php';
             //adding a submission to the gamejam
             $('#submit-submission').click(function() {
 
-                let gamejamID = <?= $_GET['id'] ?>;
-                let submittedGame = $('select#type').children("option:selected").val();
+                var length = $('.subgames > option').length;
+                if (length == 0) {
+                    alert("You do not have any valid submissions to made");
+                } else {
 
-                var data = {
-                    'gamejamID': gamejamID,
-                    'gameID': submittedGame,
-                    'submission_made': true
-                };
+                    let gamejamID = <?= $_GET['id'] ?>;
+                    let submittedGame = $('select#type').children("option:selected").val();
 
-                $.ajax({
-                    url: "/indieabode/jam/submitproject",
-                    method: "POST",
-                    data: data,
-                    success: function(response) {
+                    var data = {
+                        'gamejamID': gamejamID,
+                        'gameID': submittedGame,
+                        'submission_made': true
+                    };
 
-                        $('#modal').removeClass("active");
-                        $('#overlay').removeClass("active");
+                    $.ajax({
+                        url: "/indieabode/jam/submitproject",
+                        method: "POST",
+                        data: data,
+                        success: function(response) {
 
-                        $('.submitted-text').show();
-                        $('#dev-submit').hide();
-                        $('#devBtn').hide();
+                            $('#modal').removeClass("active");
+                            $('#overlay').removeClass("active");
 
-                        $("#flashMessage").html('Your Submission has been saved')
-                        $("#flashMessage").fadeIn(1000);
+                            $('.submitted-text').show();
+                            $('#dev-submit').hide();
+                            $('#devBtn').hide();
 
-                        setTimeout(function() {
-                            $("#flashMessage").fadeOut("slow");
-                        }, 4000);
-                    }
-                })
+                            $("#flashMessage").html('Your Submission has been saved')
+                            $("#flashMessage").fadeIn(1000);
+
+                            setTimeout(function() {
+                                $("#flashMessage").fadeOut("slow");
+                            }, 4000);
+                        }
+                    })
+
+                }
+
+
 
             });
 

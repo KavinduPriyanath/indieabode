@@ -13,7 +13,7 @@ class Crowdfundings_Model extends Model
     {
         $sql = "SELECT crowdfund.crowdFundID, crowdfund.deadline, crowdfund.currentAmount, crowdfund.expectedAmount, crowdfund.crowdfundCoverImg, 
                 freegame.gameName, gamer.username FROM (crowdfund INNER JOIN freegame ON freegame.gameID=crowdfund.gameName)
-                INNER JOIN gamer ON gamer.gamerID=crowdfund.gameDeveloperName LIMIT $min, $max";
+                INNER JOIN gamer ON gamer.gamerID=crowdfund.gameDeveloperName ORDER BY crowdfund.created_at DESC LIMIT $min, $max";
 
         $stmt = $this->db->prepare($sql);
 

@@ -64,6 +64,16 @@
             </div>
             <div class="content-body">
 
+                <h2>Digital Rights Management</h2>
+
+                <p>Indieabode is totally DRM free platform. All the assets, games and any other product it contains has no DRMs attached.</p>
+                <br>
+
+                <h3>Why DRM free?</h3>
+                <p>Mostly DRM only favours the developers while consumers, in our case gamers hate them. They limit the fun and add restrictions to the product. Also having DRM embedded in indie games can vastly affect the sales of those games.
+                    As Indiebaode is platform consisted mostly of indie games we have decided to go with no DRM policy.
+                </p>
+
             </div>
         </div>
     </div>

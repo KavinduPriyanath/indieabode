@@ -39,7 +39,7 @@ class Assets extends Controller
         $this->view->title = "Assets";
 
         //pagination 
-        $maxLimit = 24;
+        $maxLimit = 20;
         $page = isset($_GET['page']) ? $_GET['page'] : 1;
         $start = ($page - 1) * $maxLimit;
         $this->view->prevPage = $page - 1;

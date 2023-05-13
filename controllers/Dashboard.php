@@ -488,7 +488,8 @@ class Dashboard extends Controller
             $devlogImg
         );
 
-        header('location:/indieabode/');
+        // header('location:/indieabode/');
+        header('location:' . BASE_URL . 'devlog?id=' . $devlogID);
     }
 
     function publishers()
@@ -627,7 +628,9 @@ class Dashboard extends Controller
             $screenshots
         );
 
-        header('location:/indieabode/');
+        // header('location:/indieabode/');
+
+        header('location:' . BASE_URL . 'crowdfund?id=' . $crowdfundID);
     }
 
     function metadata()

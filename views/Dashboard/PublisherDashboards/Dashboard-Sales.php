@@ -51,7 +51,11 @@
             <a href="/indieabode/dashboard/payouts">Payouts</a>
         </div>
         <div class="content-row">
-
+            <div class="empty-box">
+                <div class="empty-icon"><img src="<?php echo BASE_URL; ?>public/images/empty/under-construction.png" alt=""></div>
+                <div class="empty-text">This Page is Under Construction</div>
+                <div class="empty-link"><a href="<?php echo BASE_URL; ?>/home/developer">Return to Home</a></div>
+            </div>
 
 
         </div>

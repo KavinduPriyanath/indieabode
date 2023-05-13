@@ -83,7 +83,7 @@
                                 <div class="details">
                                     <div class="devlog-name"><?= $gig['gigName']; ?></div>
                                     <div class="game-name">
-                                        <?= $gig['game']; ?>
+                                        <?= $gig['gameName']; ?>
                                     </div>
                                 </div>
                             </div>

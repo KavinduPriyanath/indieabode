@@ -474,7 +474,7 @@
 
 
                 <?php if (isset($_SESSION['logged'])) { ?>
-                    <?php if ($_SESSION['userRole'] == "game developer") { ?>
+                    <?php if ($_SESSION['userRole'] == "game developer" || $_SESSION['userRole'] == "asset creator") { ?>
 
 
                         let assetID = <?= $this->asset['assetID']; ?>;
@@ -531,7 +531,7 @@
             $('#add-cart-btn').click(function() {
 
                 <?php if (isset($_SESSION['logged'])) { ?>
-                    <?php if ($_SESSION['userRole'] == "game developer") { ?>
+                    <?php if ($_SESSION['userRole'] == "game developer" || $_SESSION['userRole'] == "asset creator") { ?>
 
                         let assetID = <?= $this->asset['assetID']; ?>;
 
@@ -585,7 +585,7 @@
             $('#buy-btn').click(function() {
 
                 <?php if (isset($_SESSION['logged'])) { ?>
-                    <?php if ($_SESSION['userRole'] == "game developer") { ?>
+                    <?php if ($_SESSION['userRole'] == "game developer" || $_SESSION['userRole'] == "asset creator") { ?>
                         window.location.href = "/indieabode/asset/checkout?id=<?= $this->asset['assetID'] ?>";
                     <?php } else { ?>
                         alert("Unauthorized User Role");
