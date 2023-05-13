@@ -12,7 +12,7 @@ class Devlogs_Model extends Model
     function showAllDevlogs($min, $max)
     {
         $sql = "SELECT devlog.name, devlog.Tagline, devlog.Type, devlog.devlogImg, devlog.likeCount, devlog.commentCount,
-                devlog.devLogID, freegame.gameName FROM devlog INNER JOIN freegame ON freegame.gameID=devlog.gameName
+                devlog.devLogID, freegame.gameName FROM devlog INNER JOIN freegame ON freegame.gameID=devlog.gameName ORDER BY createdDate DESC
                 LIMIT $min, $max";
 
         $stmt = $this->db->prepare($sql);

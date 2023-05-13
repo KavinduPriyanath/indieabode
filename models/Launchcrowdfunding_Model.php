@@ -98,4 +98,16 @@ class Launchcrowdfunding_Model extends Model
 
         return $screenshotsURL;
     }
+
+    function GetThisCrowdfundRecord($crowdfundName, $gameName)
+    {
+
+        $sql = "SELECT * FROM crowdfund WHERE title='$crowdfundName' AND gameName='$gameName'";
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }

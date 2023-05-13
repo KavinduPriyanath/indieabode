@@ -36,7 +36,7 @@ class Crowdfundings extends Controller
         }
 
         //pagination 
-        $maxLimit = 16;
+        $maxLimit = 12;
         $page = isset($_GET['page']) ? $_GET['page'] : 1;
         $start = ($page - 1) * $maxLimit;
         $this->view->prevPage = $page - 1;
@@ -57,7 +57,7 @@ class Crowdfundings extends Controller
 
         $origin = new DateTime($todayDate);
 
-        for ($i = 0; $i < 4; $i++) {
+        for ($i = 0; $i < $crowdfundCount; $i++) {
 
             $fundingPercentage = ($thisCrowdfunds[$i]['currentAmount'] / $thisCrowdfunds[$i]['expectedAmount']) * 100;
 

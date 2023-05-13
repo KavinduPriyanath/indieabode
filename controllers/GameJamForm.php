@@ -22,14 +22,14 @@ class GameJamForm extends Controller
         $jamType = $_POST['ranking'];
         $jamStartDate = $_POST['Sdate'];
         $jamEndtDate = $_POST['Edate'];
-        $jamVEndDate = ($_POST['ranking'] == "Ranked") ? $_POST['V_E_Date'] : null;
+        $jamVEndDate = ($_POST['ranking'] == "Ranked") ? $_POST['V_E_Date'] : $_POST['Edate'];
         $jamContent = $_POST['description'];
         $jamCriteria = ($_POST['ranking'] == "Ranked") ? $_POST['criteria'] : null;
         $jamVisibility = $_POST['visibility'];
         $jamHostID = $_SESSION['id'];
         $jamVoters = $_POST['voters'];
         $jamTwitterHashtag = $_POST['twitter'];
-        $jamTheme = $_POST['jamTheme'];
+        $jamTheme = ($_POST['ranking'] == "Ranked") ? $_POST['jamTheme'] : null;
 
 
         $jamCoverImg = $this->model->uploadCoverImg($gamejamTitle);
@@ -52,6 +52,8 @@ class GameJamForm extends Controller
             $jamTheme
         );
 
-        header('location:/indieabode/');
+        $hostedJam = $this->model->GetThisJamRecord($gamejamTitle, $jamHostID);
+
+        header('location:' . BASE_URL . 'jam?id=' . $hostedJam['gameJamID']);
     }
 }

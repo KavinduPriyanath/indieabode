@@ -323,7 +323,7 @@ input[type="radio"] {
     text-decoration: none;
   }
 
-  .pagination a.active {
+  /* .pagination a.active {
     background-color: #bec4be;
     border: 2px solid black;
     border-radius: 5px;
@@ -332,5 +332,5 @@ input[type="radio"] {
   .pagination a:hover:not(.active) {
     color: gray;
     border-radius: 5px;
-  }
+  } */
 

@@ -12,7 +12,7 @@ class Games_Model extends Model
     function showAllGames($min, $max)
     {
 
-        $stmt = $this->db->prepare("SELECT * FROM freegame LIMIT $min, $max");
+        $stmt = $this->db->prepare("SELECT * FROM freegame ORDER BY created_at DESC LIMIT $min, $max");
 
         $stmt->execute();
 

@@ -22,7 +22,7 @@ class JamsCalender_Model extends Model
         $nextMonthVotingEndDate = '2023-' . $nextMonth . '-%';
 
 
-        $sql = "SELECT gamejamID, submissionStartDate, votingEndDate, jamTitle 
+        $sql = "SELECT gameJamID, submissionStartDate, votingEndDate, jamTitle 
                 FROM gamejam WHERE submissionStartDate LIKE '$previousMonthSubmissionDate' OR 
                 votingEndDate LIKE '$previousMonthVotingEndDate' OR
                 submissionStartDate LIKE '$currentMonthSubmissionDate' OR

@@ -269,21 +269,24 @@ input[type="radio"] {
 }
 
 .pagination a {
-    color: rgb(138, 190, 237);
+    color: rgb(0, 0, 0);
     padding: 8px 12px;
     text-decoration: none;
 }
 
 .pagination a.active {
-    background-color: rgba(217, 217, 217, 0.11);
-    border: 2px solid rgba(217, 217, 217, 0.11);
+    font-size: 16px;
+    font-weight: 800;
+    /* background-color: rgba(217, 217, 217, 0.11); */
+    /* border: 2px solid rgba(217, 217, 217, 0.11); */
+    /* background-color: #94B6D6; */
     border-radius: 5px;
 }
 
-.pagination a:hover:not(.active) {
+/* .pagination a:hover:not(.active) {
     color: gray;
     border-radius: 5px;
-}
+} */
 
 /* .checkbox{
     position: absolute;
