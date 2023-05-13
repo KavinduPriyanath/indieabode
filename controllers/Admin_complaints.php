@@ -16,7 +16,25 @@ class Admin_complaints extends Controller
 
     function index()
     {
-        $this->view->complaints = $this->model->viewComplaints();
+        $complaints = $this->model->viewComplaints();
+
+        for($i=0;$i<count($complaints);$i++){
+            if($complaints[$i]['type']=='Game'){
+                // echo "echo ek awa game ekata";
+                $complaints[$i]['name']= $this->model->getGameName($complaints[$i]['itemID']);
+            }
+            else if($complaints[$i]['type']=='Asset'){
+                // echo "echo ek awa asset ekata";
+                $complaints[$i]['name']=$this->model->getAssetName($complaints[$i]['itemID']);
+            }
+            else {
+                // echo "echo ek awa ";
+                $complaints[$i]['name']=  'no name';
+            }
+        }
+
+        $this->view->complaint = $complaints;
+        // print_r($complaints);
 
         $this->view->active="all";
 

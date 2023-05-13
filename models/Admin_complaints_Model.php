@@ -54,4 +54,42 @@ class Admin_complaints_Model extends Model
 
 
 
+    function getGameName($id){
+        
+            $sql = "SELECT gameName as name from freegame WHERE gameID=".$id;
+            $stmt = $this->db->prepare($sql);
+    
+            $stmt->execute();
+    
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+            // $complaints = $row['name'];
+            if ($row && isset($row['name'])) {
+                $complaints = $row['name'];
+            } else {
+                $complaints = "No name";
+            }
+       
+
+        return $complaints;
+    }
+    function getAssetName($id){
+        
+            $sql = "SELECT assetName as name from freeasset WHERE assetID=".$id;
+            $stmt = $this->db->prepare($sql);
+    
+            $stmt->execute();
+    
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+            // $complaints = $row['name'];
+            if ($row && isset($row['name'])) {
+                $complaints = $row['name'];
+            } else {
+                $complaints = "No name";
+            }
+        
+
+        return $complaints;
+    }
 }

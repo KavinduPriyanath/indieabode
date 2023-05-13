@@ -45,7 +45,15 @@ class Admin_assetD extends Controller
         }
 
         //get data of game purchasings
-        $this->view->assetPurchases = $this->model->getAllPayments();
+       // $this->view->assetPurchases = $this->model->getAllPayments();
+
+        $gameR = $this->model->getAllPayments();
+
+        for($i=0;$i<count($gameR);$i++){
+            $gameR[$i]['name'] = $this->model->getAssetName($gameR[$i]['assetID']);
+        }
+
+        $this->view->assetPurchases = $gameR;
 
         //get game revenues shares for each day
         $totalRevenues = $this->model->getAllAssetRevenues();
@@ -60,8 +68,16 @@ class Admin_assetD extends Controller
         //get total game revenue
         $this->view->totalAssetRevenue = $this->model->getTotalAssetRevenue();
 
+        $assetR = $this->model->getAssetRevenueShare();
+
+        for($i=0;$i<count($assetR);$i++){
+            $assetR[$i]['name'] = $this->model->getAssetName($assetR[$i]['assetID']);
+        }
+
+        $this->view->assetRevenues = $assetR;
+
         //game revenue all the details
-        $this->view->assetRevenues = $this->model->getAssetRevenueShare();
+       // $this->view->assetRevenues = $this->model->getAssetRevenueShare();
         $this->view->render('Admin/Admin_assetD');
 
     }
@@ -128,8 +144,9 @@ class Admin_assetD extends Controller
         $assetRevenues = $this->model->getAssetRevenueShare();
         foreach ($assetRevenues as $revenue) {
 
+            $aa = $this->model->getAssetName($revenue['assetID']);
             $pdf->Cell(40, 6, $revenue['id'], 1, 0, 'C', 1);
-            $pdf->Cell(40, 6, $revenue['assetID'], 1, 0, 'C', 1);
+            $pdf->Cell(40, 6, $aa, 1, 0, 'C', 1);
             $pdf->Cell(40, 6, $revenue['sale_date'], 1, 0, 'C', 1);
             $totalCost = $totalCost + floatval($revenue['siteShare']);
             $pdf->Cell(40, 6, '$'.$revenue['siteShare'], 1, 1, 'R', 1);
@@ -221,7 +238,9 @@ class Admin_assetD extends Controller
         $assetPurchases = $this->model->getAllPayments();
         foreach ($assetPurchases as $asset) {
 
-            $pdf->Cell(40, 6, $asset['assetID'], 1, 0, 'C', 1);
+            $aa = $this->model->getAssetName($asset['assetID']);
+
+            $pdf->Cell(40, 6, $aa, 1, 0, 'C', 1);
             $pdf->Cell(40, 6, $asset['buyerID'], 1, 0, 'C', 1);
             $pdf->Cell(40, 6, $asset['purchasedData'], 1, 0, 'C', 1);
             $totalCost = $totalCost + floatval($asset['purchasedPrice']);

@@ -133,4 +133,24 @@ class Admin_assetD_Model extends Model
     $revenues = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $revenues;
   }
+
+  function getAssetName($id){
+        
+    $sql = "SELECT assetName as name from freeasset WHERE assetID=".$id;
+    $stmt = $this->db->prepare($sql);
+
+    $stmt->execute();
+
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // $complaints = $row['name'];
+    if ($row && isset($row['name'])) {
+        $complaints = $row['name'];
+    } else {
+        $complaints = "No name";
+    }
+
+
+  return $complaints;
+  }
 }

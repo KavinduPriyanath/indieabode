@@ -98,7 +98,7 @@
 											<?php foreach ($this->assetPurchases as $purchase) { ?>
 												<tr>
 												<td><?php echo $purchase['id']; ?></td>
-												<td><?php echo $purchase['assetID']; ?></td>
+												<td><?php echo $purchase['name']; ?></td>
 												<td><?php echo $purchase['buyerID']; ?></td>
 												<td><?php echo $purchase['purchasedData']; ?></td>
 												<td><?php echo $purchase['purchasedPrice']; ?></td>
@@ -183,7 +183,7 @@
 												<?php foreach ($this->assetRevenues as $revenue) { ?>
 													<tr>
 													<td><?php echo $revenue['id']; ?></td>
-													<td><?php echo $revenue['assetID']; ?></td>
+													<td><?php echo $revenue['name']; ?></td>
 													<td><?php echo $revenue['sale_date']; ?></td>
 													<td><?php echo $revenue['siteShare']; ?></td>
 													</tr>

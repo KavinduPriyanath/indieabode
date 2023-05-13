@@ -119,7 +119,7 @@ class Admin_userMg_Model extends Model
     }
 
     function downloadAssets($assetID){
-        $sql = "SELECT COUNT(*) AS total FROM downloadasset WHERE assetID = ".$assetID;
+        $sql = "SELECT * FROM asset_stats WHERE assetID = ".$assetID;
 
         $stmt = $this->db->prepare($sql);
 
@@ -127,9 +127,7 @@ class Admin_userMg_Model extends Model
 
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        $downloads = $row['total'];
-
-        return $downloads;
+        return $row;
     }
 
     function assetPrice($assetID){
@@ -172,7 +170,8 @@ class Admin_userMg_Model extends Model
     function gamePublisher($user_id){
 
         
-        $sql = "SELECT * FROM gig WHERE gamePublisherID = ".$user_id;
+        $sql = "SELECT * FROM gig_purchases WHERE publisherID = ".$user_id;
+        
 
         $stmt = $this->db->prepare($sql);
 
@@ -181,6 +180,20 @@ class Admin_userMg_Model extends Model
         $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         return $user;
+    }
+    function getGig($gigID){
+
+        
+        $sql = "SELECT * FROM gig WHERE gigID = ".$gigID;
+        
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $gig = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $gig;
     }
 
      //Report for Game Jam Organizer
@@ -248,7 +261,7 @@ class Admin_userMg_Model extends Model
     function gamer($user_id){
 
     
-        $sql = "SELECT * FROM downloadgame WHERE gamerID = ".$user_id;
+        $sql = "SELECT * FROM game_purchases WHERE buyerID = ".$user_id;
 
         $stmt = $this->db->prepare($sql);
 
@@ -334,5 +347,163 @@ class Admin_userMg_Model extends Model
         $ratedjam = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         return $ratedjam;
+    }
+
+    function getGames($userid){
+        $sql = "SELECT * FROM freegame WHERE gameDeveloperID=".$userid;
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $submissions = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        //echo $user;
+        return $submissions;
+    }
+    function getSubmissionDetail($id){
+        $sql = "SELECT * FROM freegame WHERE gameID=".$id;
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $submissions = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $submissions;
+    }
+
+    function getDwGame($id){
+        $sql = "SELECT * FROM game_stats WHERE gameID=".$id;
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $submissions = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        //echo $user;
+        return $submissions;
+    }
+    function getJamDetail($id){
+        $sql = "SELECT * FROM gamejam WHERE gameJamID=".$id;
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $submissions = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        //echo $user;
+        return $submissions;
+    }
+
+    function jamSubmissionAll($userid){
+        $sql = "SELECT * FROM submission WHERE gamerID=".$userid;
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $submissions = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        //echo $user;
+        return $submissions;
+    }
+
+    function getCreatedGig($id){
+        $sql = "SELECT * FROM gig WHERE gameDeveloperID=".$id;
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $submissions = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        //echo $user;
+        return $submissions;
+    }
+    function getPublisher($id){
+        $sql = "SELECT * FROM gig_purchases WHERE gigID=".$id;
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $submissions = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        //echo $user;
+        return $submissions;
+    }
+
+    function getcreateCwd($id){
+        $sql = "SELECT * FROM crowdfund WHERE gameDeveloperName=".$id;
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $submissions = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        //echo $user;
+        return $submissions;
+    }
+    function getdwdAssets($id){
+        $sql = "SELECT * FROM asset_purchases WHERE buyerID=".$id;
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $submissions = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        //echo $user;
+        return $submissions;
+    }
+    function getAsset($id){
+        $sql = "SELECT * FROM freeasset WHERE assetID=".$id;
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute();
+
+        $submissions = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        //echo $user;
+        return $submissions;
+    }
+
+    function getAllJams($userid){
+        $sql = "SELECT * FROM gamejam WHERE jamHostID=".$userid;
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute();
+        $gamejams = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $gamejams;
+    }
+
+    function getRankingDataForGameJam($gameJamID) {
+        $sql = "SELECT submissionID, rating FROM submission WHERE gameJamID = ? ORDER BY rating DESC";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute(array($gameJamID));
+        $rankings = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+        $rankingData = array(
+            'firstPlace' => null,
+            'secondPlace' => null,
+            'thirdPlace' => null
+        );
+    
+        if (count($rankings) > 0) {
+            $rankingData['firstPlace'] = array(
+                'submissionID' => $rankings[0]['submissionID'],
+                'rating' => $rankings[0]['rating']
+            );
+        }
+    
+        if (count($rankings) > 1) {
+            $rankingData['secondPlace'] = array(
+                'submissionID' => $rankings[1]['submissionID'],
+                'rating' => $rankings[1]['rating']
+            );
+        }
+    
+        if (count($rankings) > 2) {
+            $rankingData['thirdPlace'] = array(
+                'submissionID' => $rankings[2]['submissionID'],
+                'rating' => $rankings[2]['rating']
+            );
+        }
+    
+        return $rankingData;
     }
 }

@@ -125,7 +125,7 @@
 								<thead>
 									<tr>
 										<th>ID</th>
-										<th>Cover Image</th>
+										<!-- <th>Cover Image</th> -->
 										<th>Developer Name</th>
 										<th>Game Name</th>
 										<th>Status</th>
@@ -139,7 +139,7 @@
 										<?php foreach ($this->crowdfunds as $crowdfund): ?>
 											<tr>
 												<td><?php echo $crowdfund['crowdFundID']; ?></td>
-												<td><img src="/indieabode/public/uploads/crowdfunds/covers/<?= $crowdfund['crowdfundCoverImg'] ?>" alt="cover-image"/></td>
+												<!-- <td><img src="/indieabode/public/uploads/crowdfundings/covers/<?= $crowdfund['crowdfundCoverImg'] ?>" alt="cover-image"/></td> -->
 												<td><?php echo $crowdfund['gameDeveloperName']; ?></td>
 												<td><?php echo $crowdfund['gameName']; ?></td>
 												<!-- <td><?php echo $crowdfund['status']; ?></td> -->

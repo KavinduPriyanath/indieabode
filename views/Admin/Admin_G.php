@@ -118,7 +118,7 @@
 										<tbody>
 										<?php foreach ($this->gamePurchases as $revenue) { ?>
 											<tr>
-											<td><?php echo $revenue['gameID']; ?></td>
+											<td><?php echo $revenue['name']; ?></td>
 											<td><?php echo $revenue['buyerID']; ?></td>
 											<td><?php echo $revenue['purchasedDate']; ?></td>
 											<td>$<?php echo $revenue['purchasedPrice']; ?></td>
@@ -176,7 +176,7 @@
 											<?php foreach ($this->gameRevenues as $revenue) { ?>
 												<tr>
 												<td><?php echo $revenue['id']; ?></td>
-												<td><?php echo $revenue['gameID']; ?></td>
+												<td><?php echo $revenue['name']; ?></td>
 												<td><?php echo $revenue['sale_date']; ?></td>
 												<td><?php echo $revenue['siteShare']; ?></td>
 												</tr>

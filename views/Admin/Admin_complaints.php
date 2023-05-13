@@ -85,25 +85,26 @@
                         <th> Reason</th>
                         <th> Description</th>
                         <th> Type</th>
-						<th> Type Name(with ID)</th>
+						<th> Item Name(with ID)</th>
 						<th> Complainer ID </th>
 						<th> Status </th>
                     </tr>
                 </thead>
 				
 				<tbody>
-					<?php if (empty($this->complaints)) { ?>
+					<?php if (empty($this->complaint)) { ?>
 						<tr>
 							<td colspan="6" style="text-align: center; color: #a62247; font-size: 1.1em;">No results found.</td>
 						</tr>
 					<?php } else { ?>
-						<?php foreach ($this->complaints as $complaint) { ?>
+						<?php foreach ($this->complaint as $complaint) { ?>
 							<tr>
 								<td><?php echo $complaint['complaintID']; ?></td>
 								<td><?php echo $complaint['reason']; ?></td>
 								<td><?php echo $complaint['description']; ?></td>
 								<td><?php echo $complaint['type']; ?></td>
-								<td>Apex Legends(21)</td>
+								<td><?php echo $complaint['name']; ?>(<?php echo $complaint['itemID']; ?>)</td>
+								<!-- <td>Apex Legends(21)</td> -->
 								<td><?php echo $complaint['gamerID']; ?></td>
 								<td>
 									<label class="switch">
