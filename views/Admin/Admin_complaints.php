@@ -71,10 +71,10 @@
 				<button class="<?php echo $this->active == 'all' ? 'btn active' : 'btn'; ?>" onclick="filterSelection('all')"> Show all Complaints</button>
 				<a class="<?php echo $this->active == 'Game' ? 'btn active' : 'btn'; ?>" href='/indieabode/Admin_complaints/viewFilteredComplaints/Game'"> Games</a>
 				<button class=" <?php echo $this->active == 'Asset' ? 'btn active' : 'btn'; ?>" onclick="filterSelection('Asset')">Assets</button>
-					<button class="<?php echo $this->active == 'Gamejam' ? 'btn active' : 'btn'; ?>" onclick="filterSelection('Gamejam')"> Game Jams</button>
-					<button class="<?php echo $this->active == 'Gig' ? 'btn active' : 'btn'; ?>" onclick="filterSelection('Gig')">Gigs</button>
-					<button class="<?php echo $this->active == 'Crowdfund' ? 'btn active' : 'btn'; ?>" onclick="filterSelection('Crowdfund')">Crowdfunds</button>
-					<button class="<?php echo $this->active == 'Devlog' ? 'btn active' : 'btn'; ?>" onclick="filterSelection('Devlog')">Devlogs</button>
+				<button class="<?php echo $this->active == 'Gamejam' ? 'btn active' : 'btn'; ?>" onclick="filterSelection('Gamejam')"> Game Jams</button>
+				<button class="<?php echo $this->active == 'Gig' ? 'btn active' : 'btn'; ?>" onclick="filterSelection('Gig')">Gigs</button>
+				<button class="<?php echo $this->active == 'Crowdfund' ? 'btn active' : 'btn'; ?>" onclick="filterSelection('Crowdfund')">Crowdfunds</button>
+				<button class="<?php echo $this->active == 'Devlog' ? 'btn active' : 'btn'; ?>" onclick="filterSelection('Devlog')">Devlogs</button>
 			</div>
 
 			<section class="table__body">

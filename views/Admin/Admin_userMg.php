@@ -33,10 +33,16 @@
 			<div class="profile-picture">
 				<img src="/indieabode/public/images/Admin/admin-1.png" alt="user-image" class="rounded-circle" />
 			</div>
-			<div class="user-details">
+			<!-- <div class="user-details">
 				<div class="user-role">Admin</div>
 				<div class="email-address">
 					<div class="box">admin@gmail.com</div>
+				</div>
+			</div> -->
+			<div class="user-details">
+				<div class="user-role"><?= $_SESSION['username']; ?></div>
+				<div class="email-address">
+					<div class="box"><?= $_SESSION['email']; ?></div>
 				</div>
 			</div>
 		</div>

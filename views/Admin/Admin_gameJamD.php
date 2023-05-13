@@ -89,6 +89,7 @@
 										<th>Jam Name</th>
 										<th>Jam Host ID</th>
 										<th>Jam Status</th>
+										<th>Total Submissions</th>
 										<th>Rankings (with submission ID)</th>
 									</tr>
 								</thead>
@@ -103,6 +104,7 @@
 												<td><?php echo $gamejam['jamTitle']; ?></td>
 												<td><?php echo $gamejam['jamHostID']; ?></td>
 												<td><?php echo $gamejam['tag']; ?></td>
+												<td><?php echo $gamejam['submissionsCount']; ?></td>
 												<td>
 													<?php if ($gamejam['tag'] == 'Jam Ended'): ?>
 														<?php if (isset($gamejam['firstPlace'])): ?>

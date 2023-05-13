@@ -205,7 +205,7 @@
 				datasets: [{
 					label: '# of Games',
 					// data: [25, 40, 35],
-					data: [<?php echo json_encode($this->totalRevenue); ?>,1000],
+					data: [<?php echo json_encode($this->totalRevenue); ?>,<?php echo json_encode( $_SESSION['totalRevenue']); ?>],
 					backgroundColor: [
 						// 'rgba(55, 87, 102, 1)',
 						'#36647b',
