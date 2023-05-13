@@ -41,6 +41,10 @@ class Admin_gameJamD extends Controller
 
                 }
 
+
+
+                
+
                 // echo !empty( $rankingData['firstPlace']['submissionID'])?$rankingData['firstPlace']['submissionID']:"null";
             } elseif ($gamejam['submissionStartDate'] <= $today && $gamejam['votingEndDate'] >= $today) {
                 $gamejam['status'] = 'Jam voting is ongoing and voting will be ended on '.$gamejam['votingEndDate'];
