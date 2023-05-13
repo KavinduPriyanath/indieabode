@@ -56,7 +56,7 @@
                 <div class="devlog-cards">
                     <div class="game-card">
                         <div class="left-col">
-                            <div class="icon"><img src="/indieabode/public/uploads/games/cover/<?= $this->gig['gigCoverImg'] ?>" alt=""></div>
+                            <div class="icon"><img src="/indieabode/public/uploads/gigs/cover/<?= $this->gig['gigCoverImg'] ?>" alt=""></div>
                             <div class="details">
                                 <div class="devlog-name"><?= $this->gig['gigName']; ?></div>
                                 <div class="game-name">
