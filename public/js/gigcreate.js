@@ -4,6 +4,7 @@ $(document).ready(function () {
   let expectedCostOkay = false;
   let gigCoverImgOkay = false;
   let gigScreenshotsOkay = false;
+  let demoOkay = false;
 
   $("#gig-title").keyup(function () {
     gigTitleAvailability();
@@ -115,6 +116,18 @@ $(document).ready(function () {
     }
   }
 
+  function gigDemoAvailability() {
+    var selectedDemo = $("#game-name").children("option:selected").val();
+    if (selectedDemo == undefined) {
+      $("#demoCheck").show();
+      $("#demoCheck").text("No game demo selected");
+      demoOkay = false;
+    } else {
+      demoOkay = true;
+      $("#demoCheck").hide();
+    }
+  }
+
   $(".submit-btn").click(function (e) {
     let formSubmit = false;
 
@@ -123,13 +136,15 @@ $(document).ready(function () {
     gigCostValidation();
     coverImgCheck();
     screenshotsCheck();
+    gigDemoAvailability();
 
     if (
       gigTitleOkay == false ||
       gigTaglineOkay == false ||
       expectedCostOkay == false ||
       gigCoverImgOkay == false ||
-      gigScreenshotsOkay == false
+      gigScreenshotsOkay == false ||
+      demoOkay == false
     ) {
       formSubmit = false;
     } else {

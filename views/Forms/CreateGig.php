@@ -46,7 +46,8 @@
                                 <?php foreach ($this->games as $game) { ?>
                                     <option value="<?= $game['gameID'] ?>"><?= $game['gameName'] ?></option>
                                 <?php } ?>
-                            </select><br /><br />
+                            </select><br />
+                            <div class="error-msg" id="demoCheck"></div><br />
                         </div>
 
                         <div class="tagline">
@@ -238,6 +239,9 @@
                 $('#description').val(text);
 
             });
+
+            // var length = $('#game-name > option').length;
+
         });
     </script>
 
