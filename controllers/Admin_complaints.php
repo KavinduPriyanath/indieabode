@@ -42,12 +42,26 @@ class Admin_complaints extends Controller
     }
 
     public function viewFilteredComplaints($filter_text){
-        $this->view->complaints = $this->model->viewComplaints($filter_text);
-
+        $complaints = $this->model->viewComplaints($filter_text);
+        for($i=0;$i<count($complaints);$i++){
+            if($complaints[$i]['type']=='Game'){
+                // echo "echo ek awa game ekata";
+                $complaints[$i]['name']= $this->model->getGameName($complaints[$i]['itemID']);
+            }
+            else if($complaints[$i]['type']=='Asset'){
+                // echo "echo ek awa asset ekata";
+                $complaints[$i]['name']=$this->model->getAssetName($complaints[$i]['itemID']);
+            }
+            else {
+                // echo "echo ek awa ";
+                $complaints[$i]['name']=  'no name';
+            }
+        }
+        // print_r($cs);
+        $this->view->complaint = $complaints;
         $this->view->active=$filter_text;
         $this->view->render('Admin/Admin_complaints');
     }
-
     public function updateComplaintChecked()
     {
         if (isset($_POST['complaintID']) && isset($_POST['isChecked'])) {

@@ -519,7 +519,7 @@ input:checked + .slider:before {
     border: 1px solid #888;
     width: 35%;
     color: #c41b1b;
-    height: 12%;
+    height: 13%;
     left: 64%;
 }
 #successModal{
@@ -530,7 +530,7 @@ input:checked + .slider:before {
     border: 1px solid #2ea67a;
     width: 29%;
     color: #076248;
-    height: 12%;
+    height: 13%;
     left: 70%;
 }
   
