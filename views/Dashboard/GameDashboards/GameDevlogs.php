@@ -88,6 +88,7 @@
                     <?php } ?>
                 </div>
             <?php } else { ?>
+                <div class="zero-icon"><img src="<?php echo BASE_URL; ?>public/images/empty/empty-folder.png" alt=""></div>
                 <div class="empty-msg">- This game has not published any devlogs -</div>
 
             <?php } ?>

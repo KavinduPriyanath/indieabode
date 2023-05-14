@@ -76,7 +76,7 @@
         <?php } else { ?>
             <!-- <div class="empty-msg">- No games for the searched query -</div> -->
             <div class="empty-box">
-                <div class="empty-icon"><img src="<?php echo BASE_URL; ?>public/images/empty/empty-library.png" alt=""></div>
+                <div class="empty-icon"><img src="<?php echo BASE_URL; ?>public/images/empty/search.png" alt=""></div>
                 <div class="empty-text">- No games found for the searched query -</div>
             </div>
         <?php } ?>
