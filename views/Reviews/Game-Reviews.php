@@ -366,8 +366,8 @@
                                 html += '</div>';
                                 html += '<div class="left-name">';
                                 html += '<p class="username">' + data.review_data[count].reviewerName + '</p>';
-                                html += '<p class="assets-count">114 games in account</p>';
-                                html += '<p class="reviews-count">Reviews:&nbsp;11</p>';
+                                html += '<p class="assets-count">0 games in account</p>';
+                                html += '<p class="reviews-count">Reviews:&nbsp;1</p>';
                                 html += '</div>';
                                 html += '</div>';
                                 html += '<div class="rightr">';
@@ -386,7 +386,7 @@
                                     html += '<i class="fa fa-star ' + class_name + ' "></i>';
                                 }
 
-                                html += '<p>12 Dec 2021</p>';
+                                html += '<p>15 May 2023</p>';
                                 html += '</div>';
                                 html += '<h3 class="review-title">' + data.review_data[count].reviewTopic + '</h3>';
                                 html += '<p class="review-detail">' + data.review_data[count].review + '</p>';

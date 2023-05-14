@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 14, 2023 at 12:14 PM
+-- Generation Time: May 14, 2023 at 08:16 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -53,21 +53,21 @@ INSERT INTO `account` (`userID`, `profilePhoto`, `location`, `phoneNumber`, `dis
 (48, '', '', '', '', '', '', '', '', 10, 0, 0, 50),
 (51, '', '', '', 'oh my god', '', '', '', '', 10, 0, 0, 50),
 (52, '', '', '', '', '', '', '', '', 10, 0, 1, 40),
-(53, '', '', '', '', '', '', '', '', 10, 0, 0, 95),
+(53, '', '', '', '', '', '', '', '', 10, 0, 0, 5),
 (78, '', '', '', '', '', '', '', '', 10, 0, 0, 50),
 (80, '', '', '', '', '', '', '', '', 10, 0, 0, 50),
 (81, '', '', '', '', '', '', 'Hi. I\'m computer science undergraduate and indie game developer who enjoys working with games', '', 10, 2, 0, 50),
-(82, '', '', '', '', '', '', '', '', 10, 2, 0, 50),
-(83, '', '', '', '', '', '', '', '', 10, 0, 0, 50),
+(82, '', '', '', '', '', '', '', '', 10, 3, 0, 50),
+(83, '', '', '', '', '', '', '', '', 10, 0, 1, 50),
 (84, '', '', '', '', '', '', '', '', 10, 0, 0, 35),
 (86, '', '', '', '', '', '', '', '', 10, 0, 2, 110),
 (87, '', '', '', '', '', '', '', '', 10, 2, 1, 50),
 (89, '', '', '', '', '', '', '', '', 10, 0, 0, 50),
 (91, '', '', '', '', '', '', '', '', 10, 0, 0, 50),
 (92, '', '', '', '', '', '', 'Fellow indie game developer with the intention of making something unique in the gaming world one day', '', 10, 0, 0, 50),
-(93, '', '', '', '', '', '', '', '', 10, 1, 0, 50),
+(93, '', '', '', '', '', '', '', '', 10, 1, 2, 50),
 (95, '', '', '', '', '', '', '', '', 10, 1, 1, 50),
-(97, '', '', '', '', '', '', '', '', 10, 0, 0, 50),
+(97, '', '', '', '', '', '', '', '', 10, 2, 0, 50),
 (98, '', '', '', '', '', '', '', '', 10, 0, 0, 50),
 (99, '', '', '', '', '', '', '', '', 10, 0, 0, 50),
 (100, '', '', '', '', '', '', '', '', 10, 0, 0, 50),
@@ -237,7 +237,8 @@ INSERT INTO `asset_library` (`id`, `assetID`, `developerID`, `createdAt`) VALUES
 (24, 31, 81, '2023-05-10'),
 (25, 38, 46, '2023-05-11'),
 (26, 37, 46, '2023-05-12'),
-(27, 18, 97, '2023-05-13');
+(27, 18, 97, '2023-05-13'),
+(28, 29, 102, '2023-05-14');
 
 -- --------------------------------------------------------
 
@@ -269,7 +270,8 @@ INSERT INTO `asset_purchases` (`id`, `assetID`, `buyerID`, `orderID`, `purchased
 (25, 19, 82, '6444d2173979b', 32.49, '2023-04-23'),
 (26, 21, 87, '64453ce3ded5c', 30, '2023-04-23'),
 (27, 31, 81, '645b7fb56497e', 45, '2023-05-10'),
-(28, 38, 46, '645c6c67aea26', 45, '2023-05-11');
+(28, 38, 46, '645c6c67aea26', 45, '2023-05-11'),
+(29, 29, 102, '6460f7b3994f9', 34, '2023-05-14');
 
 -- --------------------------------------------------------
 
@@ -320,27 +322,21 @@ CREATE TABLE `asset_stats` (
 --
 
 INSERT INTO `asset_stats` (`assetID`, `downloads`, `views`, `ratings`, `ratingCount`, `revenue`) VALUES
-(9, 5, 19, 0, 0, 0),
 (10, 5, 18, 0, 0, 0),
-(17, 5, 10, 0, 0, 26.109),
-(18, 1, 8, 0, 0, 0),
-(19, 2, 9, 0, 0, 28.276),
-(20, 1, 7, 0, 0, 0),
-(21, 5, 6, 0, 0, 26.109),
-(29, 3, 11, 0, 0, 29.5902),
+(29, 4, 13, 0, 0, 59.1804),
 (31, 0, 11, 0, 0, 39.1635),
 (32, 0, 1, 0, 0, 0),
 (33, 2, 3, 0, 0, 0),
-(34, 0, 4, 0, 0, 0),
+(34, 0, 6, 0, 0, 0),
 (35, 0, 5, 0, 0, 0),
 (36, 0, 8, 0, 0, 0),
-(37, 3, 7, 0, 0, 0),
+(37, 3, 8, 0, 0, 0),
 (38, 1, 5, 0, 0, 39.1635),
-(39, 2, 7, 0, 0, 0),
+(39, 2, 8, 0, 0, 0),
 (40, 0, 6, 0, 0, 0),
 (41, 0, 7, 0, 0, 0),
-(42, 2, 7, 0, 0, 0),
-(43, 0, 4, 0, 0, 0);
+(42, 3, 12, 0, 0, 0),
+(43, 0, 7, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -455,17 +451,20 @@ INSERT INTO `asset_stats_history` (`id`, `assetID`, `views`, `downloads`, `ratin
 (90, 18, 1, 1, 0, 0, '2023-05-13'),
 (91, 42, 1, 1, 0, 0, '2023-05-13'),
 (92, 43, 2, 0, 0, 0, '2023-05-13'),
-(93, 43, 2, 0, 0, 0, '2023-05-14'),
+(93, 43, 5, 0, 0, 0, '2023-05-14'),
 (94, 35, 1, 0, 0, 0, '2023-05-14'),
-(95, 42, 6, 1, 0, 0, '2023-05-14'),
+(95, 42, 11, 2, 0, 0, '2023-05-14'),
 (96, 41, 2, 0, 0, 0, '2023-05-14'),
 (97, 40, 2, 0, 0, 0, '2023-05-14'),
-(98, 39, 1, 0, 0, 0, '2023-05-14'),
+(98, 39, 2, 0, 0, 0, '2023-05-14'),
 (99, 17, 1, 0, 0, 0, '2023-05-14'),
 (100, 19, 1, 0, 0, 0, '2023-05-14'),
 (101, 20, 1, 0, 0, 0, '2023-05-14'),
 (102, 18, 1, 0, 0, 0, '2023-05-14'),
-(103, 21, 1, 0, 0, 0, '2023-05-14');
+(103, 21, 1, 0, 0, 0, '2023-05-14'),
+(104, 34, 2, 0, 0, 0, '2023-05-14'),
+(105, 29, 2, 1, 0, 0, '2023-05-14'),
+(106, 37, 1, 0, 0, 0, '2023-05-14');
 
 -- --------------------------------------------------------
 
@@ -657,7 +656,21 @@ INSERT INTO `asset_view_tracker` (`id`, `userID`, `assetID`, `sessionID`, `viewe
 (169, 102, 18, 43, '2023-05-14'),
 (170, 102, 21, 43, '2023-05-14'),
 (171, 82, 42, 75, '2023-05-14'),
-(172, 82, 42, 89, '2023-05-14');
+(172, 82, 42, 89, '2023-05-14'),
+(173, 81, 42, 20, '2023-05-14'),
+(174, 81, 43, 20, '2023-05-14'),
+(175, 93, 42, 40, '2023-05-14'),
+(176, 93, 42, 81, '2023-05-14'),
+(177, 93, 43, 81, '2023-05-14'),
+(178, 102, 43, 11, '2023-05-14'),
+(179, 102, 34, 11, '2023-05-14'),
+(180, 102, 29, 11, '2023-05-14'),
+(181, 78, 29, 73, '2023-05-14'),
+(182, 102, 42, 84, '2023-05-14'),
+(183, 102, 39, 84, '2023-05-14'),
+(184, 102, 37, 84, '2023-05-14'),
+(185, 102, 34, 84, '2023-05-14'),
+(186, 83, 42, 15, '2023-05-14');
 
 -- --------------------------------------------------------
 
@@ -695,7 +708,8 @@ INSERT INTO `billing_addresses` (`id`, `userID`, `fullName`, `streetLine1`, `str
 (12, 100, 'ewe', 'ege', 'ee', 'egeg', 'egeg', 'gege', 'Sri Lanka'),
 (13, 99, 'egwe', 'wegewg', 'egwe', 'reger', 'ergrg', 'regrg', 'Sri Lanka'),
 (14, 83, 'Tharindu Lasath Dananjaya', 'No:231/C/2', 'Bogahamula', 'Haggalla', 'Sabaragamu', '12300', 'Sri Lanka'),
-(15, 81, 'Kulith Thamuditha', 'No.212/2', 'Polgahalanda', 'Kaduwela', 'Western', '11120', 'Sri Lanka');
+(15, 81, 'Kulith Thamuditha', 'No.212/2', 'Polgahalanda', 'Kaduwela', 'Western', '11120', 'Sri Lanka'),
+(16, 102, 'Nethmie Tharushika', 'No.231/C', 'Wanni Mawatha', 'Kilinochchi', 'North', '11220', 'Sri Lanka');
 
 -- --------------------------------------------------------
 
@@ -761,7 +775,8 @@ INSERT INTO `complaint` (`complaintID`, `reason`, `description`, `gamerID`, `typ
 (4, 'Broken', 'fefef', 0, 'Asset', 0, 0),
 (5, 'Broken', 'vvnerlerv', 46, 'Game', 0, 0),
 (6, 'Offensive material', 'efnefne', 46, 'Game', 183, 0),
-(7, 'Offensive material', 'efenfefeffe', 46, 'Asset', 36, 0);
+(7, 'Offensive material', 'efenfefeffe', 46, 'Asset', 36, 0),
+(8, 'Broken', 'Does not run as it says on MacOS', 93, 'Game', 226, 0);
 
 -- --------------------------------------------------------
 
@@ -1039,7 +1054,7 @@ INSERT INTO `devlog` (`publishDate`, `description`, `name`, `Tagline`, `Type`, `
 ('2023-05-10 09:21:45', '', 'New Update!', 'Enjoy the full experience of Island Saver on your mobile at anywhere at any time with your favourite person', 'Major Update', 'public', 'SS-197.jpg', '197', 44, '2023-05-10 14:51:45', 2, 0, 6, 5),
 ('2023-05-10 09:25:36', '', 'Who is Nasuverse?', 'Kinoko Nasu, writer of most of the Fate series, has many other written works that have been adapted into anime, and they exist in the same multiverse.', 'Marketing', 'public', 'SS-206.png', '206', 45, '2023-05-10 14:55:36', 0, 0, 2, 5),
 ('2023-05-10 11:38:11', '', 'Roguelike Dungeon Reveals', 'Path of Exile update 3.20 adds a roguelike dungeon to the ARPG game, reworks the Atlas Tree and Eldritch Altars, adds Ruthless mode, and buffs unique weapons', 'Major Update', 'public', 'Cover-46.jpg', '189', 46, '2023-05-10 17:08:11', 0, 0, 3, 5),
-('2023-05-12 23:10:06', '', 'Fire element added', 'Fire elemental ability has been on the requests received by our dev teams daily. Hence we decided to add that to this new update.', 'Major Update', 'public', 'SS-96.jpg', '96', 47, '2023-05-13 04:40:06', 0, 0, 1, 5);
+('2023-05-12 23:10:06', '', 'Fire element added', 'Fire elemental ability has been on the requests received by our dev teams daily. Hence we decided to add that to this new update.', 'Major Update', 'public', 'SS-96.jpg', '96', 47, '2023-05-13 04:40:06', 0, 0, 2, 5);
 
 -- --------------------------------------------------------
 
@@ -1211,7 +1226,8 @@ INSERT INTO `devlog_view_tracker` (`id`, `userID`, `sessionID`, `devlogID`, `vie
 (43, 86, 32, 42, '2023-05-14'),
 (44, 86, 32, 44, '2023-05-14'),
 (45, 86, 42, 42, '2023-05-14'),
-(46, 86, 42, 44, '2023-05-14');
+(46, 86, 42, 44, '2023-05-14'),
+(47, 93, 81, 47, '2023-05-14');
 
 -- --------------------------------------------------------
 
@@ -1263,7 +1279,10 @@ INSERT INTO `followers` (`id`, `follower`, `following`, `followed_date`) VALUES
 (23, 46, 81, '2023-05-12 15:17:33'),
 (24, 95, 87, '2023-05-13 16:38:21'),
 (25, 86, 95, '2023-05-14 10:38:59'),
-(26, 86, 93, '2023-05-14 10:39:03');
+(26, 86, 93, '2023-05-14 10:39:03'),
+(30, 93, 97, '2023-05-14 18:08:13'),
+(31, 93, 82, '2023-05-14 20:19:51'),
+(32, 83, 97, '2023-05-14 23:29:28');
 
 -- --------------------------------------------------------
 
@@ -1302,14 +1321,8 @@ CREATE TABLE `freeasset` (
 --
 
 INSERT INTO `freeasset` (`assetID`, `assetName`, `assetGenre`, `assetPrice`, `version`, `assetDetails`, `assetScreenshots`, `assetTitle`, `assetTagline`, `assetClassification`, `assetReleaseStatus`, `assetTags`, `assetFile`, `assetLicense`, `assetCoverImg`, `assetVisibility`, `assetVideoURL`, `assetType`, `assetStyle`, `assetCreatorID`, `fileSize`, `fileExtension`, `created_at`) VALUES
-(9, 'Sprout Lands 2', '', '30', '1.0', '', 'SS-Sprout Lands-0.png,SS-Sprout Lands-1.png', '', 'Cute pixel pastel farming asset pack for free', '2d', 'Released', 'pixel art, sprout la', 'Game-9.zip', 'proprietary', 'Cover-987.png', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'sprite', 'pixelart', 87, '', '', '2023-04-17 20:17:28'),
 (10, 'Cozy People', '', '0', '1.0', '', 'SS-Cozy People-0.png,SS-Cozy People-1.png', '', 'Animated characters, hairstyles and clothes!', '3d', 'Released', 'food, sprites, icons', 'asset-Cozy People.zip', 'open-source', 'Cover-Cozy People.png', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'sprite', 'pixelart', 47, '', '', '2023-04-23 00:00:00'),
-(17, 'Sprout Lands', '', '30', '1.0', '', 'SS-Sprout Lands-0.png,SS-Sprout Lands-1.png', '', 'Cute pixel pastel farming asset pack for free', '2d', 'Released', 'pixel art, sprout la', 'Game-9.zip', 'proprietary', 'Cover-9.png', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'sprite', 'pixelart', 87, '', '', '2023-01-08 00:00:00'),
-(18, 'New Asset 2', '', '0', '1.0', '', 'SS-New Asset 2-0.jpg,SS-New Asset 2-1.jpg,SS-New Asset 2-2.png', '', 'cute pixel pastel farming asset pack', 'visualEffects', 'Released', 'fefef', 'asset-New Asset 2.zip', 'proprietary', 'Cover-New Asset 2.jpg', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'skybox', '8bit', 87, '', '', '2023-01-24 00:00:00'),
-(19, 'Sprout Lands', '', '30', '1.0', '', 'SS-Sprout Lands-0.png,SS-Sprout Lands-1.png', '', 'Cute pixel pastel farming asset pack for free', '2d', 'Released', 'pixel art, sprout la', 'Game-9.zip', 'proprietary', 'Cover-9.png', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'sprite', 'pixelart', 87, '', '', '2022-01-28 00:00:00'),
-(20, 'New Asset 4', '', '50.99', '1.0', '', 'SS-New Asset 4-0.jpg,SS-New Asset 4-1.jpg,SS-New Asset 4-2.jpg', '', 'cute pixel pastel farming asset pack', '3d', 'Released', 'grgr', 'asset-New Asset 4.zip', 'open-source', 'Cover-New Asset 4.jpg', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'sprite', 'pixelart', 87, '', '', '2022-01-11 00:00:00'),
-(21, 'New Asset 5', '', '30', '1.0', '', 'SS-New Asset 5-0.png,SS-New Asset 5-1.png', '', 'cute pixel pastel farming asset pack', '3d', 'Released', 'brbr', 'asset-New Asset 5.zip', 'open-source', 'Cover-New Asset 5.png', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'sprite', 'pixelart', 78, '', '', '2023-01-01 00:00:00'),
-(29, 'New Asset 1000', '', '34', '1.0', 'fefe&nbsp;', 'SS-New Asset 1000-0.jpg,SS-New Asset 1000-1.jpg,SS-New Asset 1000-2.jpg', '', 'Animated characters, hairstyles and clothes!', '3d', 'released', 'rhgth,jytjty', 'asset-New Asset 1000.zip', 'open-source', 'Cover-New Asset 1000.jpg', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'sprite', 'pixelart', 78, '', '', '2023-04-19 11:29:38'),
+(29, 'Tree pack', '', '34', '1.0', 'fefe ', 'SS-New Asset 1000-0.jpg,SS-New Asset 1000-1.jpg,SS-New Asset 1000-2.jpg', '', 'Animated characters, hairstyles and clothes!', '3d', 'Released', 'rhgth,jytjty', 'Game-29.zip', 'open-source', 'Cover-2978.jpg', 0, 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'sprite', 'pixelart', 78, '', '', '2023-04-19 11:29:38'),
 (31, 'Medieval Church', '', '45', '1.0', '', 'SS-Large Medieval Church-0.jpg,SS-Large Medieval Church-1.jpg,SS-Large Medieval Church-2.jpg', '', 'High Quality Textured church for your next medieval 3D game', '3d', 'Released', '', '', 'proprietary', 'Cover-Large Medieval Church.jpg', 0, '', 'sprite', 'lowpoly', 102, '', '', '2023-05-08 22:16:15'),
 (32, 'Sci-Fi UI Pack', '', '0', '1.0', '', 'SS-Sci-Fi UI Pack-0.jpg,SS-Sci-Fi UI Pack-1.jpg,SS-Sci-Fi UI Pack-2.jpg', '', 'A sci-fi ui toolkit, which contains UI components along with a free demo scene', '2d', 'Released', 'scifi,ui,icons,backgrounds,sprite', '', 'proprietary', 'Cover-Sci-Fi UI Pack.jpg', 0, '', 'sprite', 'pixelart', 101, '', '', '2023-05-08 22:26:06'),
 (33, 'Character Editor', '', '0', '1.0', '', 'SS-Character Editor-0.jpg,SS-Character Editor-1.jpg,SS-Character Editor-2.jpg,SS-Character Editor-3.jpg', '', 'Includes all possible releases and all extensions, the built-in inventory system and the full icon collection', '3d', 'released', '', '', 'open-source', 'Cover-Character Editor.jpg', 0, '', 'sprite', 'pixelart', 102, '', '', '2023-05-08 22:35:17'),
@@ -1409,13 +1422,16 @@ INSERT INTO `freegame` (`gameID`, `gameName`, `releaseStatus`, `gameDetails`, `g
 (216, 'Cloud Climber', 'Released', '', 'SS-Cloud Climber81-0.jpg,SS-Cloud Climber81-1.jpg,SS-Cloud Climber81-2.jpg', '', 'A surreal first person walking sim about the end of humanity. Explore magnificent sky-bound ruins, and learn why they were built.', 'Adventure', '', 'Single-Player,Achievements', 'Windows', 'Demo', 'Game-Cloud Climber81.zip', 'public', 'Cover-Cloud Climber81.jpg', 81, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-11 16:28:06', 0, 0, 3),
 (217, 'Crew 2', 'Released', '', 'SS-Crew 246-0.jpg,SS-Crew 246-1.jpg,SS-Crew 246-2.jpg', '', 'Take on the American motorsports scene as you explore and dominate the land, air, and sea across the entire USA', 'Action', 'ergre', 'Single-Player', 'Windows', 'Base Game', 'Game-Crew 246.zip', 'public', 'Cover-Crew 246.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '40', '2023-05-13 08:39:59', 0, 0, 3),
 (218, 'Frostbunk', 'Released', '', 'SS-Frostbunk46-0.jpg,SS-Frostbunk46-1.jpg,SS-Frostbunk46-2.jpg', '', 'Frostpunk is the first society survival game. As the ruler of the last city on Earth, it is your duty to manage both its citizens and infrastructure.', 'Action', 'frostbunk,survival', 'Single-Player', 'Windows', 'Base Game', 'Game-Frostbunk46.zip', 'public', 'Cover-Frostbunk46.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-13 15:49:12', 0, 65, 3),
-(219, 'Northgard', 'Released', '', 'SS-Northgard83-0.jpg,SS-Northgard83-1.jpg,SS-Northgard83-2.jpg', '', 'Northgard is a strategy game based on Norse mythology in which you control a clan of Vikings vying for the control of a mysterious newfound continent.', 'RPG', '', 'Single-Player', 'Windows', 'Base Game', 'Game-Northgard83.zip', 'public', 'Cover-Northgard83.jpg', 83, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-13 16:01:40', 0, 65, 3),
+(219, 'Northgard', 'Released', '', 'SS-Northgard83-0.jpg,SS-Northgard83-1.jpg,SS-Northgard83-2.jpg', '', 'Northgard is a strategy game based on Norse mythology in which you control a clan of Vikings vying for the control of a mysterious newfound continent.', 'RPG', '', 'Single-Player', 'Windows', 'Base Game', 'Game-Northgard83.zip', 'public', 'Cover-Northgard83.jpg', 83, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-13 16:01:40', 0, 66, 3),
 (220, 'CrimeSight', 'Released', '', 'SS-CrimeSight93-0.jpg,SS-CrimeSight93-1.jpg,SS-CrimeSight93-2.jpg', '', 'In CRIMESIGHT, test your wits against others in a cutting-edge simulation of a crime yet to be committed! Will you help the mastermind criminal AI Moriarty commit nefarious deeds?', 'Simulation', '', 'Single-Player,Puzzle', 'Windows', 'Base Game', 'Game-CrimeSight93.zip', 'public', 'Cover-CrimeSight93.jpg', 93, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-13 16:17:34', 0, 65, 3),
-(221, 'Volcano Princess', 'Released', '', 'SS-Volcano Princess81-0.jpg,SS-Volcano Princess81-1.jpg,SS-Volcano Princess81-2.jpg', '', 'Prepare the next monarch by finding her hobbies, training her for battle, and befriending the citizens she will one day protect. ', 'RPG', '', 'Single-Player', 'Windows', 'Base Game', 'Game-Volcano Princess81.zip', 'public', 'Cover-Volcano Princess81.jpg', 81, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-13 16:27:58', 0, 65, 3),
+(221, 'Volcano Princess', 'Released', '', 'SS-Volcano Princess81-0.jpg,SS-Volcano Princess81-1.jpg,SS-Volcano Princess81-2.jpg', '', 'Prepare the next monarch by finding her hobbies, training her for battle, and befriending the citizens she will one day protect. ', 'RPG', '', 'Single-Player', 'Windows', 'Base Game', 'Game-Volcano Princess81.zip', 'public', 'Cover-Volcano Princess81.jpg', 81, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-13 16:27:58', 0, 66, 3),
 (222, 'Astronimo', 'Released', '', 'SS-Astronimo95-0.jpg,SS-Astronimo95-1.jpg,SS-Astronimo95-2.jpg', '', 'Astronimo is a construction platform puzzler that takes you and your friends out of this world into a vast solar system, providing them with expansive creation tools to stretch the bounds ', 'Simulation', '', 'Single-Player', 'Windows', 'Base Game', 'Game-Astronimo95.zip', 'public', 'Cover-Astronimo95.jpg', 95, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-13 16:36:50', 0, 65, 3),
 (223, 'Genshin Impact', 'Released', '', 'SS-Genshin Impact46-0.jpg,SS-Genshin Impact46-1.jpg,SS-Genshin Impact46-2.jpg', '', 'Genshin Impact is an action role-playing game developed by miHoYo, and published by miHoYo in mainland China and by HoYoverse worldwide.', 'Action', '', 'Single-Player', 'Windows', 'Base Game', 'Game-Genshin Impact46.zip', 'public', 'Cover-Genshin Impact46.jpg', 46, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-13 21:56:43', 0, 0, 3),
 (224, 'Stellaris', 'Released', '', 'SS-Stellaris83-0.jpg,SS-Stellaris83-1.jpg,SS-Stellaris83-2.jpg', '', 'Explore a galaxy full of wonders in this sci-fi grand strategy game from Paradox Development Studios.', 'Action', '', 'Single-Player', 'Windows', 'Base Game', 'Game-Stellaris83.zip', 'public', 'Cover-Stellaris83.jpg', 83, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-13 23:40:50', 0, 0, 3),
-(225, 'Tile Town', 'Released', '', 'SS-Tile Town82-0.png,SS-Tile Town82-1.png,SS-Tile Town82-2.png', '', 'Tile Town is a chill strategy game set on a hexagonal grid. Plop down various building tiles to get the highest score possible, all while creating a colorful medieval town in the process.', 'Action', '', 'Single-Player', 'Windows', 'Base Game', 'Game-Tile Town82.zip', 'public', 'Cover-Tile Town82.jpg', 82, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-14 12:39:31', 0, 0, 3);
+(225, 'Tile Town', 'Released', '', 'SS-Tile Town82-0.png,SS-Tile Town82-1.png,SS-Tile Town82-2.png', '', 'Tile Town is a chill strategy game set on a hexagonal grid. Plop down various building tiles to get the highest score possible, all while creating a colorful medieval town in the process.', 'Action', '', 'Single-Player', 'Windows', 'Base Game', 'Game-Tile Town82.zip', 'public', 'Cover-Tile Town82.jpg', 82, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-14 12:39:31', 0, 0, 3),
+(226, 'VoidTrain', 'Early Access', '', 'SS-VoidTrain93-0.jpg,SS-VoidTrain93-1.jpg,SS-VoidTrain93-2.jpg', 'https://www.youtube.com/watch?v=dnJUE2ptB5U', 'Become a crew member of an Interdimensional Express Train! Discover a new world full of mysterious creatures, enemies and places. ', 'RPG', 'open world', 'Single-Player', 'MacOS', 'Base Game', 'Game-VoidTrain93.zip', 'public', 'Cover-VoidTrain93.jpg', 93, '', '', '', '', '', '', '', '', '', '', '', '59.99', '2023-05-14 17:47:36', 0, 0, 3),
+(227, 'Foundation', 'Released', '', 'SS-Faoundation93-0.jpg,SS-Faoundation93-1.jpg,SS-Faoundation93-2.jpg', '', 'Foundation is a grid-less, laidback medieval city-building game with a focus on organic development, monument construction and resource management.', 'Action', '', 'Single-Player', 'Windows', 'Base Game', 'Game-Faoundation93.zip', 'public', 'Cover-Faoundation93.jpg', 93, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-14 18:05:45', 0, 66, 3),
+(228, 'Hardwest', 'Released', '', 'SS-Hardwest83-0.jpg,SS-Hardwest83-1.jpg,SS-Hardwest83-2.jpg', '', 'When a tragic turn of events sets one man down a path of supernatural chaos and revenge, he must brutally hunt down all those who wronged him. ', 'Action', '', 'Single-Player', 'Windows', 'Base Game', 'Game-Hardwest83.zip', 'public', 'Cover-Hardwest83.jpg', 83, '', '', '', '', '', '', '', '', '', '', '', '0', '2023-05-14 23:26:40', 0, 0, 3);
 
 -- --------------------------------------------------------
 
@@ -1485,7 +1501,7 @@ INSERT INTO `gamejam` (`gameJamID`, `submissionStartDate`, `submissionEndDate`, 
 (63, '2023-03-12 16:55:00', '2023-03-18 16:55:00', '', '2023-03-20 16:55:00', 'Kenney Jam', 'Make a game using Kenney Assets in 24 hours', 'Ranked', 'Creativity', 'Public', 0, 0, 89, 'Public', '#kenny', 'Cover-Kenney Jam.png', 0, 7, 'Growth', 0),
 (64, '2023-03-22 16:55:00', '2023-03-24 16:55:00', '', '2023-03-28 16:55:00', 'Linux GameJam 2023', 'Make a game on or for GNU/Linux using any framework or engine', 'Ranked', 'Creativity', 'Public', 0, 0, 89, 'Public', '#kenny', 'Cover-Linux GameJam 2023.png', 0, 7, 'Strong Together', 0),
 (65, '2023-05-11 16:55:00', '2023-05-13 16:55:00', '', '2023-05-16 16:55:00', 'Scream Zone Jam 2023', 'The horrifically wonderful horror jam returns', 'Ranked', '', 'Public', 0, 0, 89, 'Public', '', 'Cover-Scream Zone Jam 2023.png', 6, 5, 'Progress', 0),
-(66, '2023-05-11 16:55:00', '2023-05-16 16:55:00', '', '2023-05-17 16:55:00', 'CC Jam 3', 'Every year at this time group of nerd devs come together with the hope of organizing another CC Jam', 'Ranked', '', 'Public', 0, 0, 79, 'Public', '', 'Cover-CC Jam 3.png', 1, 7, 'Limited ', 0),
+(66, '2023-05-11 16:55:00', '2023-05-16 16:55:00', '', '2023-05-17 16:55:00', 'CC Jam 3', 'Every year at this time group of nerd devs come together with the hope of organizing another CC Jam', 'Ranked', '', 'Public', 0, 0, 79, 'Public', '', 'Cover-CC Jam 3.png', 4, 10, 'Limited ', 0),
 (67, '2023-04-26 16:55:00', '2023-05-01 16:55:00', '', '2023-05-02 16:55:00', 'Bullet Hell Jam 2023', 'Spend 10 days cramming as many bullets/projectiles as you can into a short game', 'Ranked', 'Theme, Audio, Visual, Fun', 'Public', 0, 0, 79, 'Public', '#bulletHell', 'Cover-Bullet Hel Jam 2023.jpg', 1, 7, 'Limited', 0),
 (68, '2023-05-30 18:21:00', '2023-06-07 18:21:00', '', '2023-06-10 18:21:00', 'Adventurer Jam 2023', 'Create an adventure game within two weeks in solo or in teams', 'Ranked', '', 'Public', 0, 0, 79, 'Public', '#aj2023', 'Cover-Adventurer Jam 2023.jpg', 0, 0, 'Friends Vs Foes', 0),
 (69, '2023-06-06 18:48:00', '2023-06-13 18:48:00', '', '2023-06-13 18:48:00', 'Global GameJam', 'Make whatever game you like within a week and compete with other participants', 'Non-Ranked', '', 'Public', 0, 0, 79, 'Public', '', 'Cover-Global GameJam.jpg', 0, 0, '', 0);
@@ -2136,7 +2152,20 @@ INSERT INTO `games_view_tracker` (`id`, `userID`, `sessionID`, `gameID`, `viewed
 (497, 47, 40, 89, '2023-05-14'),
 (498, 83, 43, 96, '2023-05-14'),
 (499, 83, 43, 89, '2023-05-14'),
-(500, 100, 76, 211, '2023-05-14');
+(500, 100, 76, 211, '2023-05-14'),
+(501, 81, 20, 213, '2023-05-14'),
+(502, 82, 59, 224, '2023-05-14'),
+(503, 82, 59, 212, '2023-05-14'),
+(504, 93, 47, 226, '2023-05-14'),
+(505, 93, 40, 227, '2023-05-14'),
+(506, 93, 81, 226, '2023-05-14'),
+(507, 93, 81, 225, '2023-05-14'),
+(508, 93, 81, 227, '2023-05-14'),
+(509, 47, 69, 224, '2023-05-14'),
+(510, 46, 44, 213, '2023-05-14'),
+(511, 46, 44, 211, '2023-05-14'),
+(512, 52, 76, 224, '2023-05-14'),
+(513, 83, 15, 228, '2023-05-14');
 
 -- --------------------------------------------------------
 
@@ -2208,7 +2237,10 @@ INSERT INTO `game_library` (`id`, `gameID`, `gamerID`, `createdAt`) VALUES
 (41, 89, 52, '2023-05-08'),
 (44, 89, 84, '2023-05-08'),
 (45, 209, 52, '2023-05-08'),
-(46, 214, 52, '2023-05-12');
+(46, 214, 52, '2023-05-12'),
+(48, 214, 53, '2023-05-14'),
+(49, 198, 53, '2023-05-14'),
+(50, 198, 53, '2023-05-14');
 
 -- --------------------------------------------------------
 
@@ -2283,7 +2315,8 @@ INSERT INTO `game_reviews` (`id`, `rating`, `reviewTopic`, `review`, `created_da
 (97, 1, 'Totally Unethical', 'The developer of this game has shamelessly stolen a piece of work created by a fan for this game after the developer offered to PUBLISH this workpiece as official material, then proceeded to lie about the events on Twitter.\n\nThis is unacceptable.', '2023-05-02', 86, 188, 'Yes'),
 (98, 4, 'ggrg', 'grgrg', '2023-05-08', 52, 209, 'Yes'),
 (99, 5, 'Awesome Mech Game', 'I have been after playing a cool mech game for ages. Look no further this is a total blast.  A little rough around the edges in polish but it does not get a 4 star for that.\n\nThe gfx are cool esp the maps.. & gameplay is energetic and fun and the mechs are so cool with tons of tricks.  ', '2023-05-10', 52, 201, 'Yes'),
-(100, 2, 'dvfv', 'veve', '2023-05-12', 52, 214, 'Yes');
+(100, 2, 'dvfv', 'veve', '2023-05-12', 52, 214, 'Yes'),
+(101, 4, 'This is actually great Game', 'Cannot say much other than a must play game', '2023-05-14', 52, 224, 'Yes');
 
 -- --------------------------------------------------------
 
@@ -2355,11 +2388,11 @@ INSERT INTO `game_stats` (`id`, `gameID`, `views`, `downloads`, `ratings`, `reve
 (31, 208, 3, 4, 0, 0),
 (32, 209, 4, 1, 0, 49.1632),
 (33, 210, 2, 1, 0, 0),
-(34, 211, 3, 2, 0, 0),
-(35, 212, 4, 5, 0, 0),
-(36, 213, 1, 1, 0, 0),
+(34, 211, 4, 2, 0, 0),
+(35, 212, 5, 5, 0, 0),
+(36, 213, 3, 3, 0, 0),
 (37, 214, 2, 1, 0, 32.1044),
-(38, 215, 2, 1, 0, 0),
+(38, 215, 2, 2, 0, 0),
 (39, 216, 1, 1, 0, 0),
 (40, 217, 1, 0, 0, 0),
 (41, 218, 2, 0, 0, 0),
@@ -2368,8 +2401,11 @@ INSERT INTO `game_stats` (`id`, `gameID`, `views`, `downloads`, `ratings`, `reve
 (44, 221, 1, 1, 0, 0),
 (45, 222, 2, 2, 0, 0),
 (46, 223, 1, 0, 0, 0),
-(47, 224, 3, 1, 0, 0),
-(48, 225, 2, 0, 0, 0);
+(47, 224, 6, 1, 0, 0),
+(48, 225, 3, 0, 0, 0),
+(49, 226, 2, 0, 0, 0),
+(50, 227, 2, 0, 0, 0),
+(51, 228, 1, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -2702,18 +2738,22 @@ INSERT INTO `game_stats_history` (`id`, `gameID`, `views`, `downloads`, `ratings
 (315, 224, 1, 0, 0, 0, '2023-05-13'),
 (316, 198, 1, 0, 0, 0, '2023-05-13'),
 (317, 89, 1, 0, 0, 0, '2023-05-13'),
-(318, 212, 0, 4, 0, 0, '2023-05-14'),
+(318, 212, 1, 4, 0, 0, '2023-05-14'),
 (319, 222, 1, 1, 0, 0, '2023-05-14'),
 (320, 220, 1, 1, 0, 0, '2023-05-14'),
 (321, 189, 1, 0, 0, 0, '2023-05-14'),
 (322, 209, 2, 0, 0, 0, '2023-05-14'),
-(323, 224, 2, 1, 0, 0, '2023-05-14'),
+(323, 224, 5, 1, 0, 0, '2023-05-14'),
 (324, 207, 1, 0, 0, 0, '2023-05-14'),
-(325, 225, 2, 0, 0, 0, '2023-05-14'),
-(326, 213, 0, 1, 0, 0, '2023-05-14'),
+(325, 225, 3, 0, 0, 0, '2023-05-14'),
+(326, 213, 2, 3, 0, 0, '2023-05-14'),
 (327, 89, 2, 0, 0, 0, '2023-05-14'),
 (328, 96, 1, 0, 0, 0, '2023-05-14'),
-(329, 211, 1, 0, 0, 0, '2023-05-14');
+(329, 211, 2, 0, 0, 0, '2023-05-14'),
+(330, 226, 2, 0, 0, 0, '2023-05-14'),
+(331, 227, 2, 0, 0, 0, '2023-05-14'),
+(332, 215, 0, 1, 0, 0, '2023-05-14'),
+(333, 228, 1, 0, 0, 0, '2023-05-14');
 
 -- --------------------------------------------------------
 
@@ -2752,12 +2792,12 @@ CREATE TABLE `gig` (
 INSERT INTO `gig` (`gigID`, `gigName`, `gigTrailor`, `gigScreenshot`, `gigDetails`, `game`, `gameDeveloperID`, `gamePublisherID`, `gigTagline`, `currentStage`, `plannedReleaseDate`, `estimatedShare`, `expectedCost`, `visibility`, `gigCoverImg`, `orderedDate`, `viewCount`, `requests`, `created_at`, `gigStatus`, `ActivityCheck`) VALUES
 (12, 'Local Bus Simulator', 'https://www.indiegala.com/login', 'SS-Naruto Shippuden-0.jpg,SS-Naruto Shippuden-1.jpg,SS-Naruto Shippuden-2.jpg', 'cscsc', 89, 46, 0, 'Bus simulator game consisting with customizable local buses ', '12', '2023-04-20', '12', '1000', 'draft', 'Cover-Local Bus Simulator.jpg', NULL, 29, 0, '2023-03-15', 1, 4),
 (13, 'Indie Desert FPS ', 'https://www.indiegala.com/login', 'SS-Stray-0.jpg,SS-Stray-1.jpg,SS-Stray-2.jpg,SS-Stray-3.jpg', 'fefeff', 93, 51, 0, 'Surviving an endless desert after being stranded by you know', '1', '2023-04-20', '12', '1000', 'draft', 'Cover-Indie Desert FPS .jpg', NULL, 20, 0, '2023-04-11', 0, 4),
-(20, 'Cold Cool Game', 'https://www.indieabode.ffcom', 'SS-20-0.jpg,SS-20-1.jpg,SS-20-2.jpg', 'fkh hthth<u>jyjyjyjj <b>yjtyjytjyj </b>jytjjjytjj yjtyjytj</u>', 96, 46, 0, 'I am developing an open world game with extreme high movements', '3', '2023-04-20', '13', '200', 'draft', 'Cover-20.jpg', NULL, 14, 0, '2023-04-10', 0, 4),
+(20, 'Cold Cool Game', 'https://www.indieabode.ffcom', 'SS-20-0.jpg,SS-20-1.jpg,SS-20-2.jpg', 'fkh hthth<u>jyjyjyjj <b>yjtyjytjyj </b>jytjjjytjj yjtyjytj</u>', 96, 46, 0, 'I am developing an open world game with extreme high movements', '3', '2023-04-20', '13', '200', 'draft', 'Cover-20.jpg', NULL, 15, 0, '2023-04-10', 0, 4),
 (25, 'Indie Puzzle Platformer', 'https://www.indiegala.com/login', 'SS-187-0.jpg,SS-187-1.jpg,SS-187-2.jpg', '<b>ABOUT THIS GAME</b><div>Currently I have been developing this game for five months and has gained considerably pleasing progress. Currently it contains five levels with nearly 15 minutes of gameplay. The game has been released on Indieabode as a Demo to try out for anybody who gets liking in the game features, mechanics shown in the images and videos.</div><div><br></div><div><b>DEVELOPMENT OF RECOURSE</b></div><div>Recourse is been developed in Unity game engine using C# as the programming language. As the sole developer I am responsible for all the coding, modeling, texturing and sounds also. Every model currently in use in the game is made by me using Blender and Substance Painter. For audios, and sound effects I am using Audacity and SFXR. The however still lacks on VFX but they would also be added to the game due time.</div>', 187, 81, 0, 'Stylish Puzzle Platformer with a casual gameplay loop', '1', '2024-06-17', '10', '500', 'draft', 'Cover-Indie Puzzle Platformer.jpg', NULL, 7, 0, '2023-04-21', 1, 4),
 (26, 'New Gig 2fe', '', 'SS-187-0.jpg', '', 187, 81, 0, 'I am developing an open world game with extreme high movements', '2', '2023-04-05', '3', '1234', 'draft', 'Cover-New Gig 2fe.jpg', NULL, 7, 1, '2023-04-26', 0, 4),
 (27, 'Cooperative Horror Shooter', '', 'SS-211-0.jpg,SS-211-1.jpg,SS-211-2.jpg', '', 211, 82, 0, 'Explore the world of horror with your friends while striving to survive yourself', '6', '2025-06-17', '10', '1000', 'public', 'Cover-Cooperative Horror Shooter.jpg', NULL, 11, 2, '2023-05-07', 1, 4),
 (28, 'Open World Super Hero Game', '', 'SS-212-0.jpg,SS-212-1.png,SS-212-2.jpg', '', 212, 46, 0, 'Become your favourite super hero super man and explore the continent flying around the globe', '2', '2024-10-03', '20', '1000', 'public', 'Cover-Open World Super Hero Game.jpg', NULL, 5, 1, '2023-05-07', 1, 4),
-(29, 'A stylish bombing game', '', 'SS-29-0.jpg,SS-29-1.png', '', 215, 83, 0, 'Drop bombs all across the world with your favourite friends', '4', '2023-05-23', '25', '500', 'public', 'Cover-A stylish bombing game.jpg', NULL, 5, 1, '2023-05-11', 0, 4),
+(29, 'A stylish bombing game', '', 'SS-29-0.jpg,SS-29-1.png', '', 215, 83, 0, 'Drop bombs all across the world with your favourite friends', '4', '2023-05-23', '25', '500', 'public', 'Cover-A stylish bombing game.jpg', NULL, 7, 0, '2023-05-11', 0, 4),
 (31, 'Nostalgic Atmospheric FPS', '', 'SS-216-0.jpg,SS-216-1.jpg,SS-216-2.jpg', '', 216, 81, 0, 'Explore the world connected through the ropes which binds woods to form a bridge across the tall towers', '5', '2026-11-25', '20', '10000', 'public', 'Cover-Nostalgic Atmospheric FPS.jpg', NULL, 4, 2, '2023-05-11', 0, 4);
 
 -- --------------------------------------------------------
@@ -3000,7 +3040,10 @@ INSERT INTO `gigs_views_tracker` (`id`, `userID`, `sessionID`, `gigID`, `viewedD
 (105, 100, 76, 28, '2023-05-14'),
 (106, 100, 76, 27, '2023-05-14'),
 (107, 100, 76, 29, '2023-05-14'),
-(108, 100, 76, 31, '2023-05-14');
+(108, 100, 76, 31, '2023-05-14'),
+(109, 100, 75, 29, '2023-05-14'),
+(110, 47, 69, 20, '2023-05-14'),
+(111, 47, 69, 29, '2023-05-14');
 
 -- --------------------------------------------------------
 
@@ -3050,9 +3093,12 @@ CREATE TABLE `giveaways` (
 
 INSERT INTO `giveaways` (`id`, `gameID`, `copiesCount`, `pieceWorth`, `copiesLeft`) VALUES
 (2, 188, 3, 450, 2),
-(3, 198, 5, 50, 1),
-(5, 214, 5, 100, 5),
-(6, 201, 3, 500, 3);
+(3, 198, 5, 50, 0),
+(5, 214, 5, 100, 4),
+(6, 201, 3, 500, 3),
+(7, 206, 5, 150, 5),
+(8, 226, 4, 300, 4),
+(9, 197, 5, 300, 5);
 
 -- --------------------------------------------------------
 
@@ -3076,7 +3122,10 @@ INSERT INTO `giveaway_claims` (`id`, `gameID`, `winnerID`, `won_date`) VALUES
 (2, 198, 86, '2023-05-04'),
 (3, 198, 52, '2023-05-04'),
 (4, 198, 53, '2023-05-04'),
-(5, 188, 86, '2023-05-12');
+(5, 188, 86, '2023-05-12'),
+(6, 214, 53, '2023-05-14'),
+(7, 198, 53, '2023-05-14'),
+(8, 198, 53, '2023-05-14');
 
 -- --------------------------------------------------------
 
@@ -3127,7 +3176,10 @@ INSERT INTO `joinjam_gamedevs` (`gamerID`, `gameJamID`) VALUES
 (46, 59),
 (93, 65),
 (95, 65),
-(82, 66);
+(82, 66),
+(81, 66),
+(93, 66),
+(83, 66);
 
 -- --------------------------------------------------------
 
@@ -3379,13 +3431,12 @@ CREATE TABLE `requestedgigs` (
 --
 
 INSERT INTO `requestedgigs` (`id`, `gigID`, `developerID`, `publisherID`, `gigToken`, `cost`, `share`, `publisherCostApproval`, `developerCostApproval`, `publisherShareApproval`, `developerShareApproval`, `eligible`, `created_at`) VALUES
-(40, 20, 46, 47, '2047', 200, 0, 'Approved', 'null', 'Approved', '', 0, '2023-05-07'),
 (41, 13, 51, 47, '1347', 0, 0, 'Approved', '', '', '', 0, '2023-05-07'),
 (54, 27, 82, 98, '2798', 1000, 10, 'null', 'null', 'null', 'null', 0, '2023-05-07'),
 (60, 26, 81, 47, '2647', 1000, 10, 'Approved', 'Approved', 'Approved', 'Approved', 1, '2023-05-08'),
-(61, 29, 83, 47, '2947', 500, 25, 'null', 'null', 'null', 'null', 0, '2023-05-12'),
 (62, 31, 81, 47, '3147', 10000, 20, 'null', 'null', 'null', 'null', 0, '2023-05-13'),
-(64, 31, 81, 100, '31100', 10000, 25, 'null', 'Approved', 'null', 'Approved', 0, '2023-05-14');
+(64, 31, 81, 100, '31100', 10000, 25, 'null', 'Approved', 'null', 'Approved', 0, '2023-05-14'),
+(70, 20, 46, 47, '2047', 200, 13, 'null', 'null', 'null', 'null', 0, '2023-05-14');
 
 -- --------------------------------------------------------
 
@@ -3446,7 +3497,8 @@ INSERT INTO `site_assets_revenue` (`id`, `assetID`, `orderID`, `siteShare`, `sal
 (3, 19, '6444d2173979b', 3.249, '2023-04-23'),
 (4, 21, '64453ce3ded5c', 3, '2023-04-23'),
 (5, 31, '645b7fb56497e', 4.5, '2023-05-10'),
-(6, 38, '645c6c67aea26', 4.5, '2023-05-11');
+(6, 38, '645c6c67aea26', 4.5, '2023-05-11'),
+(7, 29, '6460f7b3994f9', 3.4, '2023-05-14');
 
 -- --------------------------------------------------------
 
@@ -3520,7 +3572,9 @@ INSERT INTO `spin_wheel` (`id`, `gamerID`, `reward`, `spinned_date`) VALUES
 (21, 52, '15', '2023-05-12'),
 (22, 53, '5', '2023-05-12'),
 (23, 86, '5', '2023-05-12'),
-(24, 86, '10', '2023-05-14');
+(24, 86, '10', '2023-05-14'),
+(25, 84, '0', '2023-05-14'),
+(26, 53, '10', '2023-05-14');
 
 -- --------------------------------------------------------
 
@@ -3557,7 +3611,10 @@ INSERT INTO `submission` (`id`, `submissionID`, `gameJamID`, `rating`, `gamerID`
 (17, 219, 65, 0, 83, 'qualified'),
 (18, 220, 65, 0, 93, 'qualified'),
 (19, 221, 65, 0, 81, 'qualified'),
-(20, 222, 65, 0, 95, 'qualified');
+(20, 222, 65, 0, 95, 'qualified'),
+(21, 221, 66, 0, 81, 'qualified'),
+(22, 227, 66, 0, 93, 'qualified'),
+(23, 219, 66, 0, 83, 'qualified');
 
 -- --------------------------------------------------------
 
@@ -4009,13 +4066,13 @@ ALTER TABLE `asset_cart`
 -- AUTO_INCREMENT for table `asset_library`
 --
 ALTER TABLE `asset_library`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `asset_purchases`
 --
 ALTER TABLE `asset_purchases`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `asset_reviews`
@@ -4027,19 +4084,19 @@ ALTER TABLE `asset_reviews`
 -- AUTO_INCREMENT for table `asset_stats_history`
 --
 ALTER TABLE `asset_stats_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
 
 --
 -- AUTO_INCREMENT for table `asset_view_tracker`
 --
 ALTER TABLE `asset_view_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=173;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=187;
 
 --
 -- AUTO_INCREMENT for table `billing_addresses`
 --
 ALTER TABLE `billing_addresses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `cart`
@@ -4051,7 +4108,7 @@ ALTER TABLE `cart`
 -- AUTO_INCREMENT for table `complaint`
 --
 ALTER TABLE `complaint`
-  MODIFY `complaintID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `complaintID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `complaint_reasons_items`
@@ -4123,13 +4180,13 @@ ALTER TABLE `devlog_posttype`
 -- AUTO_INCREMENT for table `devlog_view_tracker`
 --
 ALTER TABLE `devlog_view_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `followers`
 --
 ALTER TABLE `followers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `freeasset`
@@ -4141,7 +4198,7 @@ ALTER TABLE `freeasset`
 -- AUTO_INCREMENT for table `freegame`
 --
 ALTER TABLE `freegame`
-  MODIFY `gameID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=226;
+  MODIFY `gameID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=229;
 
 --
 -- AUTO_INCREMENT for table `gamejam`
@@ -4171,7 +4228,7 @@ ALTER TABLE `games_filters`
 -- AUTO_INCREMENT for table `games_view_tracker`
 --
 ALTER TABLE `games_view_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=501;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=514;
 
 --
 -- AUTO_INCREMENT for table `game_cart`
@@ -4183,7 +4240,7 @@ ALTER TABLE `game_cart`
 -- AUTO_INCREMENT for table `game_library`
 --
 ALTER TABLE `game_library`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `game_purchases`
@@ -4195,19 +4252,19 @@ ALTER TABLE `game_purchases`
 -- AUTO_INCREMENT for table `game_reviews`
 --
 ALTER TABLE `game_reviews`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
 -- AUTO_INCREMENT for table `game_stats`
 --
 ALTER TABLE `game_stats`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `game_stats_history`
 --
 ALTER TABLE `game_stats_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=330;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=334;
 
 --
 -- AUTO_INCREMENT for table `gig`
@@ -4219,13 +4276,13 @@ ALTER TABLE `gig`
 -- AUTO_INCREMENT for table `gigmessages`
 --
 ALTER TABLE `gigmessages`
-  MODIFY `msgID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
+  MODIFY `msgID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
 
 --
 -- AUTO_INCREMENT for table `gigs_views_tracker`
 --
 ALTER TABLE `gigs_views_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
 
 --
 -- AUTO_INCREMENT for table `gig_purchases`
@@ -4237,13 +4294,13 @@ ALTER TABLE `gig_purchases`
 -- AUTO_INCREMENT for table `giveaways`
 --
 ALTER TABLE `giveaways`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `giveaway_claims`
 --
 ALTER TABLE `giveaway_claims`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `library`
@@ -4261,7 +4318,7 @@ ALTER TABLE `ratesubmission`
 -- AUTO_INCREMENT for table `requestedgigs`
 --
 ALTER TABLE `requestedgigs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
 -- AUTO_INCREMENT for table `sitegamesrevenue`
@@ -4273,7 +4330,7 @@ ALTER TABLE `sitegamesrevenue`
 -- AUTO_INCREMENT for table `site_assets_revenue`
 --
 ALTER TABLE `site_assets_revenue`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `site_crowdfund_revenue`
@@ -4291,13 +4348,13 @@ ALTER TABLE `site_gig_revenue`
 -- AUTO_INCREMENT for table `spin_wheel`
 --
 ALTER TABLE `spin_wheel`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `submission`
 --
 ALTER TABLE `submission`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `user_role`
