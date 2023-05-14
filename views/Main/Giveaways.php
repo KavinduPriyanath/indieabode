@@ -23,6 +23,11 @@
     include 'includes/navbar.php';
     ?>
 
+    <?php if (isset($_SESSION['add'])) { ?>
+
+        <div class="flashMessage" id="flashMessage">Claimed Successfully</div>
+        <?php unset($_SESSION['add']); ?>
+    <?php } ?>
 
 
     <div class="page-topic">
@@ -156,6 +161,18 @@
 
 
     <script>
+        $(function() {
+
+            $("#flashMessage").fadeIn(1000);
+
+            setTimeout(function() {
+                $("#flashMessage").fadeOut("slow");
+            }, 2000);
+        });
+    </script>
+
+
+    <script>
         function ClaimGame(gameID, PieceWorth) {
 
             var f = new FormData();
@@ -178,6 +195,8 @@
                     } else {
                         document.getElementById('modal' + gameID).classList.remove("active");
                         document.getElementById('overlay' + gameID).classList.remove("active");
+                        <?php $_SESSION['add'] = "claimed"; ?>
+                        location.reload(true);
                     }
                 }
 
