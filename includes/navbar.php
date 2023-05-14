@@ -464,7 +464,7 @@
                                     <a href="<?php echo BASE_URL; ?>addAdvertisement">Add&nbsp;Advertisement <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                     <a href="<?php echo BASE_URL; ?>dashboard/advertisements">Ad&nbsp;Dashboard <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                     <hr />
-                                    <a href="<?php echo BASE_URL; ?>gigs">Ad&nbsp;Settings
+                                    <a href="<?php echo BASE_URL; ?>addAdvertisement/settings">Ad&nbsp;Settings
                                         <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                 </div>
                             </div>

@@ -155,7 +155,7 @@ class Dashboard extends Controller
     function edit()
     {
 
-        if ($_SESSION['userRole'] == "game developer") {
+        if ($_SESSION['userRole'] == "game developer" || $_SESSION['userRole'] == "game publisher") {
 
             $this->view->classifications = $this->model->GetDropdowns('classification');
 

@@ -18,4 +18,11 @@ class AddAdvertisement extends Controller
 
         $this->view->render('Forms/AddAdvertisement');
     }
+
+    function settings()
+    {
+
+
+        $this->view->render('Publisher/AdSettings');
+    }
 }
