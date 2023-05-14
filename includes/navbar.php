@@ -358,7 +358,7 @@
                                 <div class="arrow certificateArrow"></div>
                                 <div class=".ulsub">
                                     <a href="<?php echo BASE_URL; ?>dashboard/certificates">Create&nbsp;Certficate <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
-                                    <a href="<?php echo BASE_URL; ?>jamCalender">Certficate&nbsp;Library
+                                    <a href="<?php echo BASE_URL; ?>jams/certificateLibrary">Certficate&nbsp;Library
 
                                         <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                 </div>

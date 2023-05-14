@@ -793,7 +793,9 @@ class Dashboard extends Controller
             $jamID
         );
 
-        header('location:/indieabode/');
+        // header('location:/indieabode/');
+
+        header('location:' . BASE_URL . 'jam?id=' . $jamID);
     }
 
     function certificates()

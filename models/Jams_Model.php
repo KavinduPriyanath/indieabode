@@ -14,7 +14,7 @@ class Jams_Model extends Model
     {
         $sql = "SELECT gamejam.gameJamID, gamejam.jamTitle, gamejam.jamType, gamejam.jamTagline,gamejam.jamCoverImg,
                 gamejam.joinedCount, gamer.username FROM gamejam INNER JOIN gamer ON 
-                gamejam.jamHostID=gamer.gamerID LIMIT $min, $max";
+                gamejam.jamHostID=gamer.gamerID WHERE gamejam.jamVisibility='Public' ORDER BY gamejam.submissionEndDate DESC LIMIT $min, $max";
 
         $stmt = $this->db->prepare($sql);
 

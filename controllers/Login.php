@@ -16,16 +16,36 @@ class Login extends Controller
 
     function index()
     {
-        $this->view->render('Login');
+
+        if (isset($_SESSION['logged'])) {
+
+            if ($_SESSION['userRole'] == "game developer") {
+                header('location:/indieabode/home/developer');
+            } else if ($_SESSION['userRole'] == "asset creator") {
+                header('location:/indieabode/home/creator');
+            } else if ($_SESSION['userRole'] == "gamer") {
+                header('location:/indieabode/home');
+            } else if ($_SESSION['userRole'] == "game publisher") {
+                header('location:/indieabode/home/publisher');
+            } else if ($_SESSION['userRole'] == "gamejam organizer") {
+                header('location:/indieabode/home/organizer');
+            }
+        } else {
+            $this->view->render('Login');
+        }
     }
 
     function signin()
     {
-        $user = $this->model->signin();
+
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+
+        $user = $this->model->signin($email, $password);
 
         $admin = $this->model->IsAdmin();
 
-        $this->view->loggedUser = $this->model->signin();
+        $this->view->loggedUser = $this->model->signin($email, $password);
 
         if (!empty($admin)) {
             $_SESSION['logged'] = $admin['id'];
@@ -158,7 +178,7 @@ class Login extends Controller
             $email = $_POST['email'];
             $password = $_POST['password'];
 
-            $user = $this->model->signin();
+            $user = $this->model->signin($email, $password);
 
             $admin = $this->model->IsAdmin();
 

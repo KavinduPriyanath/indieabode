@@ -74,4 +74,10 @@ class Jams extends Controller
 
         $this->view->render('Main/Jams');
     }
+
+    function certificateLibrary()
+    {
+
+        $this->view->render('GameJam/CertificateLibrary');
+    }
 }

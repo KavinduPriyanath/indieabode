@@ -259,7 +259,7 @@ input[type="radio"] {
 
 .card:hover {
     background-color: rgb(49, 46, 46);
-    color: white;
+    /* color: white; */
     cursor: pointer;
     transform: scale(1.02);
     transition: all 0.5s ease;
