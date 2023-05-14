@@ -55,6 +55,12 @@
             </div>
             <div class="content-body">
 
+                <div class="empty-box">
+                    <div class="empty-icon"><img src="<?php echo BASE_URL; ?>public/images/empty/progress.png" alt=""></div>
+                    <div class="empty-text">This Page will be Published Soon</div>
+                    <div class="empty-link"><a href="<?php echo BASE_URL; ?>/home/">Return to Home</a></div>
+                </div>
+
             </div>
         </div>
     </div>
