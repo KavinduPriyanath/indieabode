@@ -188,7 +188,7 @@
         <?php } ?>
 
     </div>
-
+    <br>
 
     <?php
     include 'includes/footer.php';

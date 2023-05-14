@@ -38,14 +38,14 @@
                         <div class="upload-col-left">
 
                             <div class="title-div">
-                                <label for="game-title">Title</label><br>
+                                <label for="game-title">Title*</label><br>
                                 <input type="text" name="game-title" id="game-title" />
                                 <div class="error-msg" id="gameNameCheck"></div><br><br>
 
                             </div>
 
                             <div class="tagline-div">
-                                <label for="game-tagline">Tagline</label><br>
+                                <label for="game-tagline">Tagline*</label><br>
                                 <p>Shown when we link your game to other pages</p>
                                 <input type="text" name="game-tagline" id="game-tagline" minlength="40" maxlength="200" placeholder="Short Description about your game" />
                                 <div class="error-msg" id="gameTaglineCheck"></div><br><br>
@@ -77,7 +77,7 @@
 
                             <!--Releasing status-->
                             <div class="platform-div">
-                                <label id="" for="">Platform</label><br>
+                                <label id="" for="">Platform*</label><br>
                                 <p>Select for what platforms your game is designed to be played</p>
                                 <!-- <select id="" name="game-platform">
                                     <option value="Windows" selected>Windows</option>
@@ -228,7 +228,7 @@
 
 
                             <div class="features-div">
-                                <label id="game-features" for="game-features">Features</label>
+                                <label id="game-features" for="game-features">Features*</label>
                                 <p id="p">Special features your game has that players would prefer</p>
                                 <!-- <input type="text" id="game-features" name="game-features" /> <br><br> -->
                                 <div class="feature-checkboxes">
@@ -323,7 +323,7 @@
                         <div class="upload-col-right">
 
                             <div class="coverImg-div">
-                                <label id="game-upload-cover-img" for="game-upload-cover-img">Upload Cover Image</label><br>
+                                <label id="game-upload-cover-img" for="game-upload-cover-img">Upload Cover Image*</label><br>
                                 <p>Used when we link your game with other parts of the site</p>
                                 <!-- <input type="file" id="game-upload-cover-img" name="game-upload-cover-img" accept=".jpg,.jpeg,.png"><br><br> -->
 
@@ -344,7 +344,7 @@
 
                             <div class="gamefile-div">
                                 <div class="game-upload-box">
-                                    <label>Upload Game</label><br>
+                                    <label>Upload Game*</label><br>
                                     <input type="file" id="upload-game" name="upload-game" accept=".zip">
                                     <label for="upload-game" id="upload-label">
                                         Upload Game File
@@ -359,7 +359,7 @@
                             </div>
 
                             <div class="screenshots-div">
-                                <label id="game-screenshots" for="game-screenshots">Screenshots</label><br>
+                                <label id="game-screenshots" for="game-screenshots">Screenshots*</label><br>
                                 <p>These will appear on your game's page. Optional but highly recommended. Upload 3 to 5 for best results</p><br>
                                 <!-- <input type="file" id="game-screenshots" name="game-screenshots[]" accept=".jpg,.jpeg,.png" multiple="multiple"><br><br> -->
 

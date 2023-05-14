@@ -11,10 +11,10 @@ class Login_Model extends Model
         //session_start();
     }
 
-    public function signin()
+    public function signin($email, $password)
     {
-        $email = $_POST['email'];
-        $password = $_POST['password'];
+        // $email = $_POST['email'];
+        // $password = $_POST['password'];
 
         $sql = "SELECT * FROM gamer WHERE email = '$email' LIMIT 1";
 

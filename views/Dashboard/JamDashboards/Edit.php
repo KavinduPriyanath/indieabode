@@ -48,9 +48,10 @@
 
                             <div class="left-form">
                                 <div class="card-box">
-                                    <span class="details">Title*</span> <p>Add unique name to stand out among other gamejams</p>
+                                    <span class="details">Title*</span>
+                                    <p>Add unique name to stand out among other gamejams</p>
                                     <input type="text" name="title" id="jamTitle" value="<?= $this->jam['jamTitle'] ?>">
-                                    <div class="error-msg" id="titleCheck"></div><br/>
+                                    <div class="error-msg" id="titleCheck"></div><br />
                                 </div>
 
                                 <div class="card-box">
@@ -64,7 +65,7 @@
                                     <span class="details">Tagline</span>
                                     <p>One line summery of the jam</p>
                                     <input type="text" name="tagline" id="jamTagline" value="<?= $this->jam['jamTagline'] ?>" placeholder="Optional">
-                                    <div class="error-msg" id="taglineCheck"></div><br/>
+                                    <div class="error-msg" id="taglineCheck"></div><br />
                                 </div>
 
                                 <div class="circle-form">
@@ -82,20 +83,20 @@
                                     <span class="details">Start Date & Time*</span>
                                     <p>Date & time for the theme reveal and start submitting games</p>
                                     <input type="datetime-local" name="Sdate" class="datetime" id="Sdate" value="<?= $this->jam['submissionStartDate'] ?>">
-                                    <div class="error-msg" id="startDateCheck"></div><br/>
+                                    <div class="error-msg" id="startDateCheck"></div><br />
                                 </div>
 
                                 <div class="card-box">
                                     <span class="details">End Date & Time*</span>
                                     <p>Date & time to close submissions, and start voting</p>
                                     <input type="datetime-local" name="Edate" class="datetime" id="Edate" value="<?= $this->jam['submissionEndDate'] ?>">
-                                    <div class="error-msg" id="endDateCheck"></div><br/>
+                                    <div class="error-msg" id="endDateCheck"></div><br />
                                 </div>
 
                                 <div class="card-box" id="voting-date">
                                     <span class="details">Voting End Date & Time</span>
                                     <p>Date & time to cease voting, and publish results</p>
-                                    <input type="datetime-local" name="V_E_Date" class="datetime" id="V-E_Date" value="<?= $this->jam['votingEndDate'] ?>" >
+                                    <input type="datetime-local" name="V_E_Date" class="datetime" id="V-E_Date" value="<?= $this->jam['votingEndDate'] ?>">
                                 </div>
 
                                 <div class="card-box">
@@ -259,7 +260,6 @@
                 $('#criteria').hide();
             }
         });
-        
     </script>
 
     <script>
@@ -293,33 +293,33 @@
     </script>
 
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             let titleOkay = false;
             let taglineOkay = false;
             let startDateOkay = false;
             let endDateOkay = false;
-            
 
 
 
-            $("#jamTitle").keyup(function () {
+
+            $("#jamTitle").keyup(function() {
                 jamTitleAvailability();
             });
 
-            $("#jamTagline").keyup(function () {
+            $("#jamTagline").keyup(function() {
                 jamTaglineAvailability();
             });
 
-            $("#Sdate").change(function () {
+            $("#Sdate").change(function() {
                 jamSdateAvailability();
             });
 
-            $("#Edate").change(function () {
+            $("#Edate").change(function() {
                 jamEdateAvailability();
             });
 
-           
-            
+
+
 
             function jamTitleAvailability() {
                 let jamTitle = $("#jamTitle").val();
@@ -432,21 +432,21 @@
             }
 
 
-            $(".submit").click(function (e) {
+            $(".submit").click(function(e) {
                 let formSubmit = false;
 
                 jamEdateAvailability();
                 jamSdateAvailability();
                 jamTitleAvailability();
                 jamTaglineAvailability();
-            
+
 
 
                 if (
                     titleOkay == false ||
                     taglineOkay == false ||
                     startDateOkay == false ||
-                    endDateOkay == false   
+                    endDateOkay == false
                 ) {
                     formSubmit = false;
                 } else {
@@ -458,7 +458,6 @@
                 }
             });
         });
-
     </script>
 
 </body>
