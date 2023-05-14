@@ -692,7 +692,7 @@ class Dashboard_Model extends Model
     function AddGiveawayItems($gameID, $copiesCount, $pieceWorth)
     {
 
-        $sql = "INSERT INTO giveaways(gameID, copiesCount, pieceWorth) VALUES ('$gameID', '$copiesCount', '$pieceWorth')";
+        $sql = "INSERT INTO giveaways(gameID, copiesCount, pieceWorth, copiesLeft) VALUES ('$gameID', '$copiesCount', '$pieceWorth', '$copiesCount')";
 
         $stmt = $this->db->prepare($sql);
 
