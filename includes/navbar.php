@@ -371,7 +371,6 @@
                             <div class="dropdown-menu">
                                 <div class="arrow arrow4"></div>
                                 <div class=".ulsub">
-                                    <a href="<?php echo BASE_URL; ?>feed">Feed <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                     <a href="<?php echo BASE_URL; ?>forum">Forum <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>
                                     <a href="<?php echo BASE_URL; ?>support_center">Help&nbsp;&&nbsp;Support
                                         <i class="fa fa-angle-right rightdown single"></i><i class="fa fa-angle-double-right rightdown double"></i></a>

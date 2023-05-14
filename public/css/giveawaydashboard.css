@@ -81,3 +81,21 @@
     justify-content: left;
 }
 
+.giveaway-item h3 {
+    margin-left: 130px;
+    margin-bottom: 20px;
+}
+
+.giveaway-container .all-ranks {
+    margin-left: 70px;
+}
+
+.all-ranks .title {
+    font-size: 17px;
+    margin-bottom: 7px;
+}
+
+.all-ranks th {
+    background-color: #73c3e3;
+}
+

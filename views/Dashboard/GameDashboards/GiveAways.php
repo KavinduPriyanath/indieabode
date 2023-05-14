@@ -90,7 +90,7 @@
                 </div>
             <?php } else { ?>
                 <div class="giveaway-item">
-                    This game already has a give away.
+                    <h3>This game already has a give away.</h3>
 
 
                     <div class="giveaway-container">
@@ -108,7 +108,7 @@
                         </div>
 
                         <div class="all-ranks">
-                            <div class="title">Jam Results</div>
+                            <div class="title">- Giveaway Results -</div>
                             <table>
                                 <tr>
                                     <th id="rank-table">Copy</th>
@@ -170,15 +170,18 @@
                     success: function(response) {
                         // alert(response);
 
-                        $('.outer-box').hide();
-                        $('.giveaway-item').show();
+                        // $('.outer-box').hide();
+                        // $('.giveaway-item').show();
 
                         $('#flashMessage').html("Giveaway Added");
                         $("#flashMessage").fadeIn(500);
 
                         setTimeout(function() {
                             $("#flashMessage").fadeOut("slow");
+                            location.reload(true);
                         }, 2000);
+
+                        // location.reload(true);
 
                     },
                 });

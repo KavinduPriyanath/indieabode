@@ -69,12 +69,16 @@
                             <h3><?= $game['gameName'] ?></h3>
                             <p>Free</p>
                         </div>
-                        <div class="tagline"><?= $game['gameTagline'] ?></div>
+                        <div class="tagline modernWay"><?= $game['gameTagline'] ?></div>
                     </div>
                 </a>
             <?php } ?>
         <?php } else { ?>
-            <div class="empty-msg">- No games for the searched query -</div>
+            <!-- <div class="empty-msg">- No games for the searched query -</div> -->
+            <div class="empty-box">
+                <div class="empty-icon"><img src="<?php echo BASE_URL; ?>public/images/empty/empty-library.png" alt=""></div>
+                <div class="empty-text">- No games found for the searched query -</div>
+            </div>
         <?php } ?>
     </div>
 
@@ -137,7 +141,7 @@
                                                                                 <div class="rating-count">(7)</div>\
                                                                             </div>\
                                                                         </div>\
-                                                                        <div class="gtagline"> ' + value.gigTagline + '</div>\
+                                                                        <div class="gtagline modernWay"> ' + value.gigTagline + '</div>\
                                                                     </div>\
                                                                 </a>\ ');
                                 } else if (id == "assets") {
@@ -152,7 +156,7 @@
                                                         <h3>' + value.assetName + '</h3>\
                                                         <p>Free</p>\
                                                     </div>\
-                                                    <div class="tagline">' + value.assetTagline + '</div>\
+                                                    <div class="tagline modernWay">' + value.assetTagline + '</div>\
                                                 </div>\
                                             </a>\ ');
 
