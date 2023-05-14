@@ -301,6 +301,8 @@ table #column2 {
 
 .empty-msg {
   text-align: center;
+  font-size: 17px;
+  margin-bottom: 150px;
 }
 
 #certificate-heading {
@@ -354,4 +356,16 @@ table #column2 {
   text-align: center;
   text-decoration: underline;
   margin-bottom: 130px;
+}
+
+.zero-icon {
+  margin-top: 50px;
+  width: 45px;
+  height: 45px;
+  margin-left: 535px;
+}
+
+.zero-icon img{
+  width: 100%;
+  height: 100%;
 }
